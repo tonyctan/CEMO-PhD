@@ -1,4 +1,3 @@
-
 % Encoding: UTF-8
 @article{abubakar:2020,
   author  = {Mohd Zamri {Abu Bakar} and Saridan {Abu Bakar}},
@@ -3529,13 +3528,14 @@
   year    = {1989},
   file    = {Weighted likelihood estimation of ability in item response theory:Warm (1989).pdf:PDF}
 }
-@conference{west:2020,
+
+@Conference{west:2020a,
   author    = {Tracey West and Laura D. {de Zwaan}},
   booktitle = {American Council of Consumer Interests Conference},
   title     = {Financial socialisation of {Australian} university students: Differences in gender},
-  year      = {2020},
+  url       = {https://research-repository.griffith.edu.au/bitstream/handle/10072/401600/West459321-Published.pdf},
   file      = {Financial socialisation of Australian university students\: Differences in gender:West & de Zwaan (2020).pdf:PDF},
-  url       = {https://research-repository.griffith.edu.au/bitstream/handle/10072/401600/West459321-Published.pdf}
+  year      = {2020},
 }
 @article{white:1982,
   author  = {Halbert White},
@@ -4065,8 +4065,6 @@
   titleaddon = {Bachelor's Thesis, {Tallinn University of Technology}},
   url        = {https://digikogu.taltech.ee/et/Download/3654e2ee-460c-4bae-aa52-388b524ada2d/Finantskirjaoskuseolulisusvlakoormusetekkimise.pdf},
 }
-@Article{,
-}
 @Article{debeckker:2021,
   author  = {Kenneth {De Beckker} and Kristof {De Witte} and Geert {Van Campenhout}},
   doi     = {10.1016/j.jebo.2021.06022},
@@ -4128,7 +4126,7 @@
 @Article{yunikawati:2021,
   author       = {Nur Anita Yunikawati and Magistyo Purboyo Priambodo and Emma Yunika Puspasari and Ni'matul Istiqomah},
   doi          = {10.18502/kss.v5i8.9346},
-  journaltitle = {International Research Conference on Economics and Business},
+  journal      = {International Research Conference on Economics and Business},
   pages        = {41--48},
   title        = {Is it important for elementary school students to learn the basics of finance?},
   volume       = {2021},
@@ -4138,7 +4136,7 @@
 @Article{thaariq:2021,
   author       = {Rahmanda Muhammad Thaariq and Arif Anindita and Hafizha Dea Iftina},
   doi          = {10.21098/bemp.v24i2.1650},
-  journaltitle = {Bulletin of Monetary Economics and Banking},
+  journal      = {Bulletin of Monetary Economics and Banking},
   number       = {2},
   pages        = {255--282},
   title        = {The internet miracle: The impact of internet access on household saving in {Indonesia}},
@@ -4146,3 +4144,41 @@
   year         = {2021},
   file         = {The internet miracle\: The impact of internet access on household saving in Indonesia:Thaariq, anindita & Iftina (2021).pdf:PDF},
 }
+@Article{kanbur:2021,
+  author       = {Ravi Kanbur and Andy Snell},
+  doi          = {10.1111/ecoj.12637},
+  journal      = {Economic Journal},
+  number       = {July},
+  pages        = {2216--2239},
+  title        = {Inequality indices as tests of fairness},
+  volume       = {129},
+  year         = {2021},
+  file         = {Inequality indices as tests of fairness:Kanbur & Snell (2019).pdf:PDF}
+}
+
+@Presentation{suryawati:2020,
+  author     = {Rindah F. Suryawati and Afriliany Dian Oetari},
+  doi        = {10.4108/eai.14-9-2020.2304486},
+  eventdate  = {2020-09-14/2020-09-16},
+  eventtitle = {International Conference on Sustainable Management and Innovation},
+  title      = {The influence of lifestyle and financial literacy on saving behavior for undergraduate students in {Indonesia}},
+  titleaddon = {Paper presentation},
+  venue      = {Bogor, West Java, Indonesia},
+  file       = {The influence of lifestyle and financial literacy on saving behavior for undergraduate students in Indonesia:Suryawati & Oetari (2020).pdf:PDF},
+}
+
+@Article{west:2020b,
+  author       = {Tracey West and Laura de Zwaan and Di Johnson},
+  doi          = {10.2139/ssrn.3668705},
+  journal      = {SSRN Electronic Journal},
+  pages        = {1--21},
+  title        = {Boosting Women: Why They Decline to Provide Responses to Financial Literacy Questions},
+  year         = {2020},
+  date         = {2020},
+  journaltitle = {{SSRN} Electronic Journal},
+  publisher    = {Elsevier {BV}},
+}
+
+@Comment{jabref-meta: databaseType:biblatex;}
+
+@Comment{jabref-entrytype: presentation: req[doi;author;title;titleaddon;eventtitle;venue;eventdate] opt[subtitle;url]}

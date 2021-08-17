@@ -4168,15 +4168,12 @@
 }
 
 @Article{west:2020b,
-  author       = {Tracey West and Laura de Zwaan and Di Johnson},
-  doi          = {10.2139/ssrn.3668705},
-  journal      = {SSRN Electronic Journal},
-  pages        = {1--21},
-  title        = {Boosting Women: Why They Decline to Provide Responses to Financial Literacy Questions},
-  year         = {2020},
-  date         = {2020},
-  journaltitle = {{SSRN} Electronic Journal},
-  publisher    = {Elsevier {BV}},
+  author  = {Tracey West and Laura de Zwaan and Di Johnson},
+  doi     = {10.2139/ssrn.3668705},
+  journal = {{SSRN} Electronic Journal},
+  pages   = {1--21},
+  title   = {Boosting Women: Why They Decline to Provide Responses to Financial Literacy Questions},
+  year    = {2020},
 }
 
 @Comment{jabref-meta: databaseType:biblatex;}

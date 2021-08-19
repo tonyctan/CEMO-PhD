@@ -4188,6 +4188,41 @@
   file      = {The role of socio-economic background, family economy education, and financial literacy on student decision making:Tetep, Mulyana, Suherman & Widyanti (2021).pdf:PDF},
 }
 
+@Article{flores:2015,
+  author       = {Maria Assun{\c{c}}{\~{a}}o Flores and Ana Margarida Veiga Sim{\~{a}}o and Alexandra Barros and Diana Pereira},
+  doi          = {10.1080/03075079.2014.881348},
+  journal      = {Studies in Higher Education},
+  number       = {9},
+  pages        = {1523--1534},
+  title        = {Perceptions of effectiveness, fairness and feedback of assessment methods: A study in higher education},
+  volume       = {40},
+  year         = {2015},
+  file         = {Perceptions of effectiveness, fairness and feedback of assessment methods\: A study in higher education:Flores, Simao, Barros & Pereira (2015).pdf:PDF},
+  journaltitle = {Studies in Higher Education},
+}
+
+@Article{koljatic:2021,
+  author  = {Mladen Koljatic and M{\'{o}}nica Silva and Stephen G. Sireci},
+  doi     = {10.1111/emip.12425},
+  journal = {Educational Measurement: Issues and Practice},
+  pages   = {1--6},
+  title   = {College Admission Tests and Social Responsibility},
+  year    = {2021},
+  file    = {College admission tests and social responsibility:Koljatic, Silva & Sireci (2021).pdf:PDF},
+}
+
+@InBook{camilli:2006,
+  author    = {Gregory Camilli},
+  booktitle = {Educational mearement},
+  editor    = {Robert L. Brennan},
+  pages     = {221--256},
+  publisher = {American Council on Education and Praeger Publishers},
+  title     = {Test fairness},
+  year      = {2006},
+  edition   = {4th},
+  url       = {https://www.researchgate.net/profile/Gregory-Camilli/publication/265086461_Test_fairness/links/578e4ae908ae81b4466ec0f8/Test-fairness.pdf},
+}
+
 @Comment{jabref-meta: databaseType:biblatex;}
 
 @Comment{jabref-entrytype: presentation: req[doi;author;title;titleaddon;eventtitle;venue;eventdate] opt[subtitle]}

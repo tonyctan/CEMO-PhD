@@ -6,7 +6,7 @@ PRIVATE/
 *.bbl
 *.bcf
 *.blg
-*.fbd_latexmk
+*.*latexmk
 *.fff
 *.fls
 *.lof
@@ -17,4 +17,5 @@ PRIVATE/
 !/Mplus/**/*.out
 *.run.xml
 *.snm
+*.synctex.gz
 *.toc

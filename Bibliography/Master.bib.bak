@@ -4221,6 +4221,19 @@
   year      = {2006},
   edition   = {4th},
   url       = {https://www.researchgate.net/profile/Gregory-Camilli/publication/265086461_Test_fairness/links/578e4ae908ae81b4466ec0f8/Test-fairness.pdf},
+  file      = {Test fairness:Camilli (2006).pdf:PDF},
+}
+
+@Article{joo:2021,
+  author  = {Seang-Hwane Joo and Lale Khorramdel and Kentaro Yamamoto and Hyo Jeong Shin and Frederic Robin},
+  doi     = {10.1111/emip.12404},
+  journal = {Educational Measurement: Issues and Practice},
+  number  = {2},
+  pages   = {37--48},
+  title   = {Evaluating Item Fit Statistic Thresholds in {PISA}: Analysis of Cross-Country Comparability of Cognitive Items},
+  volume  = {40},
+  year    = {2021},
+  file    = {Evaluating item fit statistic thresholds in PISA\: Analysis of cross-country comparability of cognitive items:Joo, Khorramdel, Yamamoto, Shin & Robin (2021).pdf:PDF},
 }
 
 @Comment{jabref-meta: databaseType:biblatex;}

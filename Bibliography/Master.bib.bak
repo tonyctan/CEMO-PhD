@@ -4258,6 +4258,27 @@
   file    = {Association between financial education, affective and cognitive financial knowledge, and financial behavior:Delgadillo & Lee (2021).pdf:PDF},
 }
 
+@Article{jackson:2019,
+  author       = {Michelle Jackson},
+  doi          = {10.1177/0049124119852376},
+  journal      = {Sociological Methods & Research},
+  number       = {3},
+  pages        = {1215--1242},
+  title        = {Expansion, enrollment, and inequality of educational opportunity},
+  volume       = {50},
+  year         = {2021},
+  file         = {Expansion, enrollment, and inequality of educational opportunity:Jackson (2021).pdf:PDF},
+  journaltitle = {Sociological Methods {\&} Research},
+}
+
+@Book{standards:2014,
+  author    = {{AERA} and {APA} and {NCME}},
+  publisher = {American Educational Research Association},
+  title     = {Standars for educational and psychological testing},
+  url       = {https://www.testingstandards.net/uploads/7/6/6/4/76643089/standards_2014edition.pdf},
+  year      = {2014},
+}
+
 @Comment{jabref-meta: databaseType:biblatex;}
 
 @Comment{jabref-entrytype: presentation: req[doi;author;title;titleaddon;eventtitle;venue;eventdate] opt[subtitle]}

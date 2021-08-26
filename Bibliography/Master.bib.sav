@@ -4289,8 +4289,9 @@
   title   = {Comparability of {GCSE} examinations in different subjects: An application of the {Rasch} model},
   volume  = {34},
   year    = {2008},
+  file    = {Comparability of GCSE examinations in different subjects\: An application of the Rasch model:Coe (2008).pdf:PDF},
 }
 
 @Comment{jabref-meta: databaseType:biblatex;}
 
-@Comment{jabref-entrytype: presentation: req[doi;author;title;titleaddon;eventtitle;venue;eventdate] opt[subtitle]}
+@Comment{jabref-entrytype: presentation: req[doi;author;title;titleaddon;eventtitle;venue;eventdate] opt[subtitle;url]}

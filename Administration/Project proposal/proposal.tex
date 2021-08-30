@@ -19,6 +19,9 @@
 % Avoid breaking a word into two lines
 \usepackage[none]{hyphenat}
 
+% Activate AMS packages for typing maths
+\usepackage{amsmath,amssymb}
+
 % Change line spacing
 \usepackage{setspace}
 \setstretch{2}
@@ -90,13 +93,25 @@
 %//tip The second form, popular in journal articles, is the alternative or directional hypothesis. The investigator makes a prediction about the expected outcome, basing this prediction on prior literature and studies on the topic that suggest a potential outcome. For example, the researcher may predict that "scores will be higher for Group A than for Group B" on the dependent variable or that "Group A will change more than Group B" on the outcome. These dxamples illustrate a directional hypothesis because an expected prediction (e.e.g, higher, more change) is made.
 %//tip Another type of alternative statement is the non-directional hypothesis--a prediction is made, but the exact form of differences (e.g., higher, lower, more, less) is not specified because the researcher does not know what can be predicted from past literature. Thus, the investigator might write, "There is a difference" between the two groups.
 
-\section{Quantitative Methods}
+\section{Methods}
 
 \subsection{Sample}
 
-\subsection{Variables}
+For this study, students' GPA records will be captured from the Norwegian registry covering the decade between 2010 and 2020. GDPR registration is lodged through the NSD Portal and the UiO ethics approval is also obtained. All data import, storage, and analyses are to be conducted within the secured infrastructure TSD provided by the UiO Central IT Division. TSD logs all activities and no data or results can be copied out of the restricted system without prior approval from project leaders.
+
+Under the advisory of \textcite{he:2015}, subjects with fewer than 1,000 candidates and students taking fewer than two GPA subjects will be excluded from subsequent analyses. Each year's record (score matrix) should contain $N$ rows representing the number of valid candidates and $L$ columns reflecting the usable number of GPA subjects in that year. Since no student takes \emph{all} the GPA subjects, a large proportion of the score matrices will remain missing by design. The existence of missing data does not pose any problems for using the Rasch model as the model functions at the individual item and items as long as there is sufficient overlap across subjects in the score matrix. The ability to deal with incomplete data is one major advantage of using the Rasch model for studying inter-subject comparability.
+
+\subsection{Rasch Model}
+
+The Rasch model was developed in the 1960s for establishing measurement scales and for improving test development \parencite{rasch:1980}. In Rasch modelling, the underlying ability or latent trait  of the person to be measured by the test ($\theta$) and the characteristics of the items in the test ($\delta_j$) are specified, and a logistic function ($\Lambda$) is used to describe the probability that the person will successfully score a particular item ($x_j=1$) given their ability $\theta$ and the characteristics of the item $\delta_j$ \parencite{deayala:2009}:
+\begin{equation}
+    \mathbb{P} \left( x_j=1 | \theta, \delta_j \right) = \Lambda(\theta - \delta_j) = \frac{1}{1 + e^{- \left( \theta - \delta_j \right) }. }
+\end{equation}
+
+
 
 \subsection{Data Analysis}
+
 
 \subsection{Hypothesised Results}
 

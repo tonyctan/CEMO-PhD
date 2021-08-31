@@ -4266,8 +4266,8 @@
   pages        = {1215--1242},
   title        = {Expansion, enrollment, and inequality of educational opportunity},
   volume       = {50},
-  year         = {2021},
-  file         = {Expansion, enrollment, and inequality of educational opportunity:Jackson (2021).pdf:PDF},
+  year         = {2019},
+  file         = {Expansion, enrollment, and inequality of educational opportunity:Jackson (2019).pdf:PDF},
   journaltitle = {Sociological Methods {\&} Research},
 }
 
@@ -4340,6 +4340,54 @@
   year      = {2021},
   date      = {2021},
   file      = {Game design in financial literacy\: Exploring design patterns for a collaborative and inclusive serious game from different perspectives:Paessens & Winther (2021).pdf:PDF},
+}
+
+@InBook{pfandler:2021,
+  author    = {Andrea Maria Pf{\"a}ndler},
+  booktitle = {Game-based learning across the disciplines},
+  doi       = {10.1007/978-3-030-75142-5_4},
+  editor    = {C. Aprea and D. Ifenthaler},
+  pages     = {61--87},
+  publisher = {Springer},
+  title     = {Development and pilot testing of a financial literacy game for young adults: The happy life game},
+  year      = {2021},
+  date      = {2021},
+  file      = {Development and pilot testing of a financial literacy game for young adults\: The happy life game:Pfandler (2021).pdf:PDF},
+}
+
+@InBook{savard:2021,
+  author    = {Annie Savard and Alexandre Cavalcante},
+  booktitle = {Financial Numeracy in Mathematics Education},
+  doi       = {10.1007/978-3-030-73588-3_1},
+  editor    = {A. Savard and A. Cavalcante},
+  pages     = {3--8},
+  publisher = {Springer},
+  title     = {Financial education and mathematics education: a cross-cutting analysis of the epistemological intersection of financial numeracy},
+  year      = {2021},
+  date      = {2021},
+  file      = {Financial education and mathematics education\: A cross-cutting analysis of the epistemological intersection of financial numeracy:Savard & Cavalcante (2021).pdf:PDF},
+}
+
+@Thesis{pina:2021,
+  author      = {Alexandra Rodrigues Pina},
+  date        = {2021},
+  institution = {Universidade do Porto},
+  title       = {Financial literacy level and saving propensity of {Portuguese} higher education students: Is there a relation?},
+  titleaddon  = {Master Thesis},
+  url         = {https://repositorio-aberto.up.pt/bitstream/10216/135899/2/491400.pdf},
+}
+
+@InBook{turineck:2021,
+  author    = {Louis-Philippe Turineck and Annie Savard},
+  booktitle = {Financial numeracy in mathematics education},
+  doi       = {10.1007/978-3-030-73588-3_11},
+  editor    = {A. Savard and A. Cavalcante},
+  pages     = {99--104},
+  publisher = {Springer},
+  title     = {Some financial numeracy tasks for secondary-school mathematics classes},
+  year      = {2021},
+  date      = {2021},
+  file      = {Some financial numeracy tasks for secondary-school mathematics classes:Turineck & Savard (2021).pdf:PDF},
 }
 
 @Comment{jabref-meta: databaseType:biblatex;}

@@ -81,4 +81,33 @@
   sortkey   = {{Ayala, R. J. de}},
 }
 
+@Book{rasch:1980,
+  author    = {Georg Rasch},
+  publisher = {University of Chicago Press},
+  title     = {Probabilistic models for some intelligence and attainment tests},
+  year      = {1980},
+}
+
+@Article{andrich:1978,
+  author  = {David Andrich},
+  doi     = {10.1111/j.2044-8317.1978.tb00575.x},
+  journal = {British Journal of Mathematical and Statistical Psychology},
+  number  = {1},
+  pages   = {84--98},
+  title   = {A binomial latent trait model for the study of {Likert}-style attitude questionnaires},
+  volume  = {31},
+  year    = {1978},
+}
+
+@Article{masters:1982,
+  author  = {Geoff N. Masters},
+  doi     = {10.1007/BF02296272},
+  journal = {Psychometrika},
+  number  = {2},
+  pages   = {149--174},
+  title   = {A {Rasch} model for partial credit scoring},
+  volume  = {47},
+  year    = {1982},
+}
+
 @Comment{jabref-meta: databaseType:bibtex;}

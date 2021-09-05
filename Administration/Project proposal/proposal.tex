@@ -23,7 +23,11 @@
 \usepackage{amsmath,amssymb}
 
 \newcommand{\p}[1]{\mathbb{P}\left(#1\right)}
+\newcommand{\E}[1]{\mathbb{E}\left(#1\right)}
 \renewcommand{\exp}[1]{\mathrm{exp}\left\{#1\right\}}
+
+% Insert images
+\usepackage{graphicx}
 
 % Change line spacing
 \usepackage{setspace}
@@ -124,26 +128,29 @@ The Rasch model was developed in the 1960s for establishing measurement scales a
         \end{aligned}
     \right.
 \end{equation}
-where $\delta_k$ is the location of the $k$-th step on the latent trait continuum and is referred to as the item step parameter associated with a grade category, step difficulty or threshold. $\p{\theta, x}$ in \cref{eq:pcm} Model parameters in \cref{eq:pcm} can be solved using joint maximum likelihood estimation or the conditional maximum likelihood estimation.
+where $\delta_k$ is the location of the $k$-th step on the latent trait continuum, often referred to as the item step parameter associated with a grade category, step difficulty or threshold. $\p{\theta, x}$ is commonly known as the category response function or the item category probability curve (CPC). Model parameters in \cref{eq:pcm} can be solved using joint maximum likelihood estimation \parencite{molenaar:1995} or the conditional maximum likelihood estimation \parencite{andersen:1972}.
 
-% indeterminacy
+\subsection{Difficulty Parameters}
 
+It is important to highlight that $\delta_k$ cannot be interpreted as the difficulty of scoring $k$ in a subject. \textcite{wu:2007} proposed measures of subject difficulty based on expected scores by first defining the item characteristic curve (ICC):
+    $ \E{\theta} = \sum_{x=0}^m x\p{\theta,x}, $
+then the difficulty of scoring $k$ ($d_k$) as the ability at which the expected score on the ICC is $k-0.5$:
+\begin{equation}
+    d_k = \theta | _{\E{\theta} = k - 0.5}.
+\end{equation}
+The overall difficulty of a subject ($D$) can be obtained by averaging all step parameters:
+\begin{equation}
+    D = \frac{1}{m} \sum_{k=1}^m \delta_k.
+\end{equation}
+This study aims to ascertain the grade difficulties ($d_k$) as well as the overall difficulty of each subject, similar to Figure 13 of \textcite{he:2015}:
+\begin{figure}[ht]
+    \includegraphics[scale=1]{expected_result.jpg}
+    \centering
+\end{figure}
 
-
-\subsection{Data Analysis}
-
+\subsection{Data Analyses}
 
 \subsection{Hypothesised Results}
-
-
-
-
-
-
-
-
-
-
 
 \printbibliography
 

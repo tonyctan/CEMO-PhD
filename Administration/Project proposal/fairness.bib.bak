@@ -71,6 +71,7 @@
   title       = {Inter-subject comparability of exam standards in {GCSE} and {A Level}},
   year        = {2015},
   type        = {ISC Working Paper 3},
+  url         = {https://assets.publishing.service.gov.uk/government/uploads/system/uploads/attachment_data/file/606044/3-inter-subject-comparability-of-exam-standards-in-gcse-and-a-level.pdf},
 }
 
 @Book{deayala:2009,
@@ -108,6 +109,69 @@
   title   = {A {Rasch} model for partial credit scoring},
   volume  = {47},
   year    = {1982},
+}
+
+@Article{muraki:1992,
+  author  = {Eiji Muraki},
+  doi     = {10.1002/j.2333-8504.1992.tb01436.x},
+  journal = {{ETS} Research Report Series},
+  number  = {1},
+  pages   = {1--30},
+  title   = {A generalized partial credit model: Application of an {EM} algorithm},
+  volume  = {1992},
+  year    = {1992},
+}
+
+@TechReport{haberman:2004,
+  author      = {Shelby J. Haberman},
+  institution = {ETS},
+  title       = {Joint and conditional maximum likelihood estimation for the {Rasch} model for binary responses},
+  year        = {2004},
+  type        = {Research Report 04-20},
+  file        = {Joint and conditional maximum likelihood estimation for the Rasch model for binary responses:Haberman (2004).pdf:PDF},
+  url         = {https://files.eric.ed.gov/fulltext/EJ1110899.pdf},
+}
+
+@Article{christensen:2013,
+  author  = {Karl Bang Christensen},
+  doi     = {10.1155/2013/617475},
+  journal = {{ISRN} Computational Mathematics},
+  number  = {617475},
+  pages   = {1--8},
+  title   = {Conditional maximum likelihood estimation in polytomous {Rasch} models using {SAS}},
+  volume  = {2013},
+  year    = {2013},
+  file    = {Conditional maximum likelihood estimation in polytomous Rasch models using SAS:Christensen (2013).pdf:PDF},
+}
+
+@Article{andersen:1972,
+  author  = {E. B. Andersen},
+  doi     = {10.1111/j.2517-6161.1972.tb00887.x},
+  journal = {Journal of the Royal Statistical Society: Series B (Methodological)},
+  number  = {1},
+  pages   = {42--54},
+  title   = {The numerical solution of a set of conditional estimation equations},
+  volume  = {34},
+  year    = {1972},
+}
+
+@InBook{molenaar:1995,
+  author    = {Ivo W. Molenaar},
+  booktitle = {{Rasch} models},
+  editor    = {Gerhard H. Fischer and Ivo W. Molenaar},
+  pages     = {39--51},
+  publisher = {Springer},
+  title     = {Estimation of item parameters},
+  year      = {1995},
+  doi       = {10.1007/978-1-4612-4230-7_3},
+}
+
+@Book{wu:2007,
+  author    = {Margaret Wu and Ray Adams},
+  publisher = {Educational Measurement Solutions},
+  title     = {Applying the {Rasch} model to psycho-social measurement: A practical aproach},
+  year      = {2007},
+  url       = {http://www.bwgriffin.com/gsu/courses/edur8331/edur8331-content/15-irt/2007-Wu-Apply-Rasch-Measurement.pdf},
 }
 
 @Comment{jabref-meta: databaseType:bibtex;}

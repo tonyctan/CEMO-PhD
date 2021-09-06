@@ -4390,6 +4390,192 @@
   file      = {Some financial numeracy tasks for secondary-school mathematics classes:Turineck & Savard (2021).pdf:PDF},
 }
 
+@Thesis{jackson:2021,
+  author      = {Julia Lee Jackson},
+  date        = {2021},
+  institution = {Walden University},
+  title       = {Financial illiteracy and minority small business failure},
+  titleaddon  = {Doctoral Dissertation},
+  url         = {https://scholarworks.waldenu.edu/cgi/viewcontent.cgi?article=12194&context=dissertations},
+}
+
+@Article{tveit:2014,
+  author  = {Sverre Tveit},
+  doi     = {10.1080/0969594x.2013.830079},
+  journal = {Assessment in Education: Principles, Policy \& Practice},
+  number  = {2},
+  pages   = {221--237},
+  title   = {Profiles of educational assessment systems worldwide: Educational assessment in {Norway}},
+  volume  = {21},
+  year    = {2014},
+  file    = {Profiles of education assessment systems worldwide\: Educational assessment in Norway:Tveit (2014).pdf:PDF},
+}
+
+@Article{hovdhaugen:2018,
+  author  = {Elisabeth Hovdhaugen and Tine Sophie Pr{\o}itz and Idunn Seland},
+  doi     = {10.5617/adno.6276},
+  journal = {Acta Didactica Norge},
+  number  = {4},
+  pages   = {{Art. 0}},
+  title   = {National examination grades and final classroom grades---two of a kind?},
+  volume  = {12},
+  year    = {2018},
+  file    = {National examination grades and final classroom grades---two of a kind?:[Norwegian] Hovdhaugen, Proitz & Seland (2018).pdf:PDF},
+}
+
+@Article{tveit:2018,
+  author  = {Sverre Tveit and Rolf Vegar Olsen},
+  doi     = {10.5617/adno.6381},
+  journal = {Acta Didactica Norge},
+  number  = {4},
+  pages   = {{Art. 18}},
+  title   = {The multiple roles of national exams in the certification, governing and support of learning and instruction in {Norwegian} secondary education},
+  volume  = {12},
+  year    = {2018},
+  file    = {The multiple roles of national exams in the certification, governing and support of learning and instruction in Norwegian secondary education:[Norwegian] Tveit & Olsen (2018).pdf:PDF},
+}
+
+@Book{olson:2021,
+  author    = {Rolf V. Olsen},
+  publisher = {Personal communication, 9 June 2021},
+  title     = {Fairness-issues related to exams and teacher-made grade in the {Norwegian context}},
+  year      = {2021},
+    file    = {Fairness exam standpunkt:Fairness exam standpunkt.docx:DOCX},
+}
+
+@TechReport{he:2015,
+  author      = {Qingping He and Ian Stockford},
+  institution = {Office of Qualifications and Examinations Regulation},
+  title       = {Inter-subject comparability of exam standards in {GCSE} and {A Level}},
+  year        = {2015},
+  type        = {ISC Working Paper 3},
+  file        = {Inter-subject comparability of exam standards in GCSE and A Level:He & Stockford (2015).pdf:PDF},
+  url         = {https://assets.publishing.service.gov.uk/government/uploads/system/uploads/attachment_data/file/606044/3-inter-subject-comparability-of-exam-standards-in-gcse-and-a-level.pdf},
+}
+
+@Book{deayala:2009,
+  author    = {R. J. {de Ayala}},
+  publisher = {Guilford},
+  title     = {The theory and practice of item response theory},
+  year      = {2009},
+  sortkey   = {{Ayala, R. J. de}},
+}
+
+@Book{rasch:1980,
+  author    = {Georg Rasch},
+  publisher = {University of Chicago Press},
+  title     = {Probabilistic models for some intelligence and attainment tests},
+  year      = {1980},
+}
+
+@Article{andrich:1978,
+  author  = {David Andrich},
+  doi     = {10.1111/j.2044-8317.1978.tb00575.x},
+  journal = {British Journal of Mathematical and Statistical Psychology},
+  number  = {1},
+  pages   = {84--98},
+  title   = {A binomial latent trait model for the study of {Likert}-style attitude questionnaires},
+  volume  = {31},
+  year    = {1978},
+}
+
+@Article{masters:1982,
+  author  = {Geoff N. Masters},
+  doi     = {10.1007/BF02296272},
+  journal = {Psychometrika},
+  number  = {2},
+  pages   = {149--174},
+  title   = {A {Rasch} model for partial credit scoring},
+  volume  = {47},
+  year    = {1982},
+  file    = {A Rasch model for artial credit scoring:Masters (1982).pdf:PDF},
+}
+
+@Article{muraki:1992,
+  author  = {Eiji Muraki},
+  doi     = {10.1002/j.2333-8504.1992.tb01436.x},
+  journal = {{ETS} Research Report Series},
+  number  = {1},
+  pages   = {1--30},
+  title   = {A generalized partial credit model: Application of an {EM} algorithm},
+  volume  = {1992},
+  year    = {1992},
+  file  = {A generalized partial credit model: Application of an EM algorithm:Muraki (1992).pdf:PDF},
+}
+
+
+@TechReport{haberman:2004,
+  author      = {Shelby J. Haberman},
+  institution = {ETS},
+  title       = {Joint and conditional maximum likelihood estimation for the {Rasch} model for binary responses},
+  year        = {2004},
+  type        = {Research Report 04-20},
+  file        = {Joint and conditional maximum likelihood estimation for the Rasch model for binary responses:Haberman (2004).pdf:PDF},
+  url         = {https://files.eric.ed.gov/fulltext/EJ1110899.pdf},
+}
+
+@Article{christensen:2013,
+  author  = {Karl Bang Christensen},
+  doi     = {10.1155/2013/617475},
+  journal = {{ISRN} Computational Mathematics},
+  number  = {617475},
+  pages   = {1--8},
+  title   = {Conditional maximum likelihood estimation in polytomous {Rasch} models using {SAS}},
+  volume  = {2013},
+  year    = {2013},
+  file    = {Conditional maximum likelihood estimation in polytomous Rasch models using SAS:Christensen (2013).pdf:PDF},
+}
+
+@Article{andersen:1972,
+  author  = {E. B. Andersen},
+  doi     = {10.1111/j.2517-6161.1972.tb00887.x},
+  journal = {Journal of the Royal Statistical Society: Series B (Methodological)},
+  number  = {1},
+  pages   = {42--54},
+  title   = {The numerical solution of a set of conditional estimation equations},
+  volume  = {34},
+  year    = {1972},
+}
+
+@InBook{molenaar:1995,
+  author    = {Ivo W. Molenaar},
+  booktitle = {{Rasch} models},
+  editor    = {Gerhard H. Fischer and Ivo W. Molenaar},
+  pages     = {39--51},
+  publisher = {Springer},
+  title     = {Estimation of item parameters},
+  year      = {1995},
+  doi       = {10.1007/978-1-4612-4230-7_3},
+}
+
+@Book{wu:2007,
+  author    = {Margaret Wu and Ray Adams},
+  publisher = {Educational Measurement Solutions},
+  title     = {Applying the {Rasch} model to psycho-social measurement: A practical aproach},
+  year      = {2007},
+  url       = {http://www.bwgriffin.com/gsu/courses/edur8331/edur8331-content/15-irt/2007-Wu-Apply-Rasch-Measurement.pdf},
+}
+
+@Article{korobko:2008,
+  author  = {Oksana B. Korobko and Cees A. W. Glas and Roel J. Bosker and Johan W. Luyten},
+  doi     = {10.1111/j.1745-3984.2007.00057.x},
+  journal = {Journal of Educational Measurement},
+  number  = {2},
+  pages   = {139--157},
+  title   = {Comparing the Difficulty of Examination Subjects with Item Response Theory},
+  volume  = {45},
+  year    = {2008},
+  file    = {Comparing the difficulty of examination subjects with item response theory:Korobko, Glas, Bosker & Luyten (2008).pdf:PDF},
+}
+
+@Book{ssb:completion,
+  author    = {SSB},
+  date      = {2021},
+  publisher = {{Statistisk sentralbyr{\aa} [Statistics Norway]}},
+  title     = {Completion rates of pupils in upper secondary education},
+  url       = {https://www.ssb.no/en/utdanning/videregaende-utdanning/statistikk/gjennomforing-i-videregaende-opplaering},
+}
+
 @Comment{jabref-meta: databaseType:biblatex;}
 
 @Comment{jabref-entrytype: presentation: req[doi;author;title;titleaddon;eventtitle;venue;eventdate] opt[subtitle]}

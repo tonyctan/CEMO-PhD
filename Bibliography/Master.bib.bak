@@ -4609,10 +4609,10 @@
 @InBook{birnbaum:1968,
   author    = {Allan Birnbaum},
   booktitle = {Statistical theories of mental test scores},
-  editor    = {Frederic M. Lord and Melvin R. Novick},
-  pages     = {397--460},
-  publisher = {Addison-Sesley},
   title     = {Some latent trait models and their use in inferring an examinee's ability},
+  editor    = {Frederic M. Lord and Melvin R. Novick},
+  pages     = {395--479},
+  publisher = {Addison-Wesley},
   year      = {1968},
 }
 
@@ -4650,4 +4650,4 @@
 
 @Comment{jabref-meta: databaseType:biblatex;}
 
-@Comment{jabref-entrytype: presentation: req[doi;author;title;titleaddon;eventtitle;venue;eventdate] opt[subtitle]}
+@Comment{jabref-entrytype: presentation: req[doi;author;title;titleaddon;eventtitle;venue;eventdate] opt[subtitle;url]}

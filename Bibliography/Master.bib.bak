@@ -4648,6 +4648,42 @@
   file    = {Item parameter estimation in meltistage designs\: A comparison of different estimation approaches for the Rasch model:Steinfeld & Robitzsch (2021).pdf:PDF},
 }
 
+@Article{holmes:2018,
+  author  = {Stephen D. Holmes and Michelle Meadows and Ian Stockford and Qingping He},
+  doi     = {10.1080/15305058.2018.1486316},
+  journal = {International Journal of Testing},
+  number  = {4},
+  pages   = {366--391},
+  title   = {Investigating the comparability of examination difficulty using comparative judgement and {Rasch} modelling},
+  volume  = {18},
+  year    = {2018},
+  file    = {Investigating the comparability of examination difficulty using comparative judgement and Rasch modelling:Holmes, Meadows, Stockford & He (2018).pdf:PDF},
+}
+
+@Article{veas:2020,
+  author  = {Alejandro Veas and Leandro Navas and Teresa {Pozo-Rico} and Pablo Mi{\~n}ano},
+  doi     = {10.3389/fpsyg.2020.00127},
+  journal = {Frontiers in Psychology},
+  number  = {127},
+  pages   = {1--8},
+  title   = {University entrance examinations in {Spain}: Using the construct comparability approach to analyze standards quality},
+  volume  = {11},
+  year    = {2020},
+  file    = {University entrance examinations in Spain\: Using the construct comparability approach to analyze standards quality:Veas, Navas, Pozo-Rico & Minano (2020).pdf:PDF},
+}
+
+@Article{he:2018,
+  author  = {Qingping He and Ian Stockford and Michelle Meadows},
+  doi     = {10.1080/03054985.2018.1430562},
+  journal = {Oxford Review of Education},
+  number  = {4},
+  pages   = {494--513},
+  title   = {Inter-subject comparability of examination standards in {GCSE} and {GCE} in {England}},
+  volume  = {44},
+  year    = {2018},
+  file    = {Inter-subject comparability of examination standards in GCSE and GCE in England:He, Stockford & Meadows (2018).pdf:PDF},
+}
+
 @Comment{jabref-meta: databaseType:biblatex;}
 
-@Comment{jabref-entrytype: presentation: req[doi;author;title;titleaddon;eventtitle;venue;eventdate] opt[subtitle;url]}
+@Comment{jabref-entrytype: presentation: req[doi;author;title;titleaddon;eventtitle;venue;eventdate] opt[subtitle]}

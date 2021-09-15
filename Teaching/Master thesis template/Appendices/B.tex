@@ -1,0 +1,48 @@
+%\setcounter{secnumdepth}{0}
+\chapter{Analysis Code, Additional Tables and Figures}
+
+Full analysis code can be obtained from the author's GitHub page:
+
+\href{https://github.com/tonyctan/CEMO-master-thesis}{https://github.com/tonyctan/CEMO-master-thesis}
+
+\section{Data Merging}\label{R.reimport}
+
+\begin{singlespacing}
+    \lstinputlisting[language=R,style=vscodeR,linerange={5-114}]{./R/3 Reimport.R}
+\end{singlespacing}
+
+\input{./Tables/Sample}
+
+\input{./Tables/Cronbach}
+
+\section{Multilevel Multiple Imputation}
+
+\subsection{\cM Input}\label{sec:MMI}
+
+\begin{singlespacing}
+    \lstinputlisting[style=vscodeMplus]{./Mplus/MMI/MMI.inp}
+\end{singlespacing}
+
+\subsection{Selected \cM Output}
+
+\begin{singlespacing}
+    \lstinputlisting[style=vscodeMplus_out,linerange={2909-2967}]{./Mplus/MMI/MMI.out}
+\end{singlespacing}
+
+\input{./Tables/MMI_diagnostic}
+
+\includepdf[pages=-,width=\textwidth]{./Figures/MMI_diagnostic.pdf}
+
+\section{MSEM Analysis Code}
+
+\subsection{\cM Input}
+
+\begin{singlespacing}
+    \lstinputlisting[style=vscodeMplus]{./Mplus/M3/Two-structured.inp}
+\end{singlespacing}
+
+\subsection{Selected \cM Output}\label{sec:rsq}
+
+\begin{singlespacing}
+    \lstinputlisting[style=vscodeMplus_out,linerange={991-1007}]{./Mplus/M3/Two-structured.out}
+\end{singlespacing}

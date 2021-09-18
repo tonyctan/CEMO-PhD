@@ -4,7 +4,7 @@
 \usepackage{duoforside}
 
 \title{Identifying School Climate Variables Associated with Financial Literacy Outcomes in PISA 2018 Data}
-%\subtitle{A Multilevel Structural Equation Modelling Approach}
+\subtitle{A Multilevel Structural Equation Modelling Approach}
 \author{Tony C. A. Tan}
 
 \begin{document}
@@ -18,7 +18,21 @@
     short
 ]
 
-% Chapter 1 Introduction
-\input{Sections/1}
+% Use \include{} rather than \input{} so that each section is on a new page.
+
+% Acknowledgements
+\include{Sections/Acknowledgements.tex}
+
+% Popular Abstract
+\include{Sections/Abstract0.tex}
+
+% Abstract ENG
+\include{Sections/AbstractENG.tex}
+
+% Abstract NOR (optional but good to have)
+\include{Sections/AbstractNOR.tex}
+
+% Chapter 1
+\include{Sections/1.tex}
 
 \end{document}

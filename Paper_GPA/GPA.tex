@@ -1,0 +1,62 @@
+\documentclass[
+    a4paper,            % Paper size
+    11pt,               % Font size
+    stu,                % Format as assignment
+%   donotrepeattitle,   % Start body text without repeating title
+    noextraspace,       % Reduce spaces between section header and text
+    floatsintext,       % Insert tables and figures with texts
+    biblatex,           % Use BibLaTeX for references
+    colorlinks=true,        % Colour all links
+    linkcolor=red,          % Cross-references in red
+    anchorcolor=black,      % Keep anchors black
+    citecolor=blue,         % In-text-referencs in blue
+    urlcolor=blue,          % DOIs and URLs are in blue
+    bookmarks=true,         % Generate bookmarks for PDF readers
+    bookmarksopen=false,    % Expand all bookmarks as default
+    bookmarksnumbered=true  % Keep section number in bookmarks
+]{apa7}
+
+% Activate AMS packages for typing maths
+\usepackage{amsmath,amssymb}
+\newcommand{\p}[1]{\mathbb{P}\left(#1\right)}
+\newcommand{\E}[1]{\mathbb{E}\left(#1\right)}
+\renewcommand{\exp}[1]{\mathrm{exp}\left\{#1\right\}}
+
+% Change line spacing
+\usepackage{setspace}
+\setstretch{2}  % 2 = double spacing
+
+% Avoid breaking a word into two lines
+\usepackage[none]{hyphenat}
+
+\usepackage[nameinlink,noabbrev,capitalise]{cleveref}
+
+% Package biblatex has already been loaded by apa7.
+% Only need to specify the bib library
+\addbibresource{../Bibliography/Master.bib}
+\newcommand{\poscite}[1]{\citeauthor{#1}'s (\citeyear{#1})}
+
+\title{Identifying Inter-subject Difficulties in Norwegian\\
+GPA Data Using Item Response Theory}
+\author{Tony C. A. Tan}
+\affiliation{{Centre for Educational Measurement, University of Oslo}}
+\course{Continuous Draft}
+\professor{Prof Rolf V. Olsen \& Dr Astrid M. J. Sands{\o}r}
+\duedate{Autumn 2021}
+
+\begin{document}
+\maketitle
+
+\input{1_Introduction.tex}  % Use \input{} for Intro.tex so that the title and the first paragraph stay on the same page.
+
+\include{2_Framework.tex}   % Use \include{} from the second chapter on, such that new chapter, new page.
+
+\include{3_Methods.tex}
+
+\include{4_Results.tex}
+
+\include{5_Discussions.tex}
+
+\printbibliography
+
+\end{document}

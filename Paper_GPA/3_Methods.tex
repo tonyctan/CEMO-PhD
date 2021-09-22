@@ -10,4 +10,14 @@ Missing patterns are not missing at random. If a candidate chose to do physics, 
 
 \subsection{Marginal Maximum Likelihood}
 
-Here comes the maths!
+A unidemensional generalised partial credit model \parencite{muraki:1992} with the probability that Candidate $n$'s score in Subject $i$ ($x_{ni}$) is Grade $j$ ($j=0, \dots, m$) is given by
+\begin{equation}\label{eqn:gpcm}
+    p(x_{ni}=j | d_{ni} = 1; \theta_n) = \frac{\exp{j \alpha_i \theta_n - \sum_{h=1}^j \beta_{ih}} }{ 1+ \sum_{h=1}^m \exp{h \alpha_i \theta_h - \sum_{k=1}^h \beta_{ik}} },
+\end{equation}
+where $\theta_n$ is the unidemensional proficiency parameter that represents the overall proficiency of Candidate $n$.
+
+In MML, a likelihood function ($\ell$) is maximised where the candidates' proficiency parameters ($\theta$) are integrated out of the likelihood. The marginal log-likelihood for a unidemensional GPCM is given by
+\begin{equation}\label{eqn:ll}
+    \ell = \sum_p \sum_{n | p} \log \int \prod_i p( x_{ni} = j | d_{ni}; \theta ) g(\theta; \mu_p, \sigma^2) \dd \theta,
+\end{equation}
+where $x_{ni}$ is the observed grade, $p( x_{ni} | d_{ni}; \theta )$ is equal to \cref{eqn:gpcm} evaluated at $x_{ni}$ if $d_{ni}=1$, and $p(x_{ni} | d_{ni}; \theta) = 1$ if $d_{ni} = 0$. In addition, $g(\theta; \mu_p, \sigma^2)$ is the normal pdf with mean $\mu_p$ and variance $\sigma^2$. The model can be identified by choosing standard normal $\mathcal{N}(0,1)$.

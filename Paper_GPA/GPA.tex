@@ -23,6 +23,13 @@
 \renewcommand{\exp}[1]{\mathrm{exp}\left\{#1\right\}}
 \newcommand{\dd}{\mathrm{d}}
 
+\usepackage{bm}
+\newcommand{\m}[1]{\boldsymbol{#1}}
+
+\usepackage{scalerel}
+\newcommand{\T}[1]{\m{#1}^{\raisebox{1.5\depth}{\scaleto{\intercal}{5pt}}}}
+\newcommand{\Ts}{^{\raisebox{1.5\depth}{\scaleto{\intercal}{5pt}}}}
+
 % Change line spacing
 \usepackage{setspace}
 \setstretch{2}  % 2 = double spacing

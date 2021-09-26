@@ -36,9 +36,9 @@ where $\theta_n$ is the unidemensional proficiency parameter that represents the
 
 In MML, a likelihood function ($\ell$) is maximised where the candidates' proficiency parameters ($\theta$) are integrated out of the likelihood. The marginal log-likelihood for a unidemensional GPCM is given by
 \begin{equation}\label{eqn:ll}
-    \ell_\text{uni-dim} = \sum_p \sum_{n | p} \log \int \prod_i p( x_{ni} | d_{ni}; \theta ) g(\theta; \mu_p, \sigma^2) \dd \theta,
+    \ell_\text{unidimensional} = \sum_p \sum_{n | p} \log \int \prod_i p( x_{ni} | d_{ni}; \theta ) g(\theta; \mu_p, \sigma^2) \dd \theta,
 \end{equation}
-where $x_{ni}$ is the observed grade, $p( x_{ni} | d_{ni}; \theta )$ is equal to \cref{eqn:gpcm} evaluated at $x_{ni}$ if $d_{ni}=1$, and $p(x_{ni} | d_{ni}; \theta) = 1$ if $d_{ni} = 0$. In addition, $g(\theta; \mu_p, \sigma^2)$ is the normal pdf with mean $\mu_p$ and variance $\sigma^2$. The model can be identified by choosing a standard normal $\mathcal{N}(0,1)$ \parencite{korobko:2008}.
+where $x_{ni}$ is the observed grade, $p( \cdot )$ is equal to \cref{eqn:gpcm} evaluated at $x_{ni}$ if $d_{ni}=1$, and $p( \cdot ) = 1$ if $d_{ni} = 0$. In addition, $g(\theta; \mu_p, \sigma^2)$ is the normal pdf with mean $\mu_p$ and variance $\sigma^2$. The model can be identified by choosing a standard normal $\mathcal{N}(0,1)$ \parencite{korobko:2008}.
 
 \subsubsection{Multidimensionality}
 
@@ -49,6 +49,13 @@ There exists strong believes among educational scientists that learners' profici
 \end{equation}
 with $\m{\theta}_n$ following a multivariate normal distribution with mean $\m{\mu}_p$ and variance-covariance matrix $\m{\Sigma}$. Similar to the unidemensional case, \cref{eqn:mgpcm} is identified by setting $\m{\mu}_p=\m{0}$ and $\m{\Sigma} = \m{I}$ the identity matrix. The log-likelihood of a multidimensional GPCM then becomes:
 \begin{equation}\label{eqn:mll}
-    \ell_\text{multi-dim} = \sum_{p} \sum_{n | p} \log \int \cdots \int \prod_i p( x_{ni} | d_{ni}; \m{\theta} ) g( \m{\theta}; \m{\mu}_p, \m{\Sigma} ) \dd \m{\theta},
+    \ell_\text{multidimensional} = \sum_{p} \sum_{n | p} \log \int \cdots \int \prod_i p( x_{ni} | d_{ni}; \m{\theta} ) g( \m{\theta}; \m{\mu}_p, \m{\Sigma} ) \dd \m{\theta},
 \end{equation}
 with each component sharing similar interpretations to the unidemensional counterpart in \cref{eqn:ll}.
+
+\subsection{Interaction between Subject Choice and Proficiency}
+
+Under the advisory of \textcite{korobko:2008}, a latent variable $\theta^+$ is introduced to reflect student's propensity of choosing a particular subject. Augmenting $\theta^+$ to $\m{\theta}=\left(\theta_1, \cdots, \theta_F\right)\Ts$ yields $\m{\theta}^+=\left(\theta_1, \cdots, \theta_F, \theta^+\right)\Ts$, with a corresponding marginal likelihood:
+\begin{equation}\label{eqn:lli}
+    \ell_\text{interaction} = \sum_p \sum_{ n | p} \log \int \cdots \int \prod_i \left[ p \left( x_{ni} | d_{ni}; \m{\theta} \right) p \left( d_{ni}; \theta^+ \right) \right] g(\m{\theta}^+; \m{\mu}_p, \m{\Sigma}) \dd \m{\theta}^+ .
+\end{equation}

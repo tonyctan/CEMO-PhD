@@ -4714,6 +4714,14 @@
   file       = {Comparison of examination grades using item response theory\: A case study:Korobko (2007).pdf:PDF},
 }
 
+@Book{caulkins:1996,
+  author    = {Jonathan P. Caulkins and Patrick D. Larkey and Jifa Wei},
+  publisher = {Carnegie Mellon University},
+  title     = {Adjusting {GPA} to reflect course difficulty},
+  doi       = {10.1184/R1/6470981.V1},
+  year      = {1996},
+}
+
 @Comment{jabref-meta: databaseType:biblatex;}
 
-@Comment{jabref-entrytype: presentation: req[doi;author;title;titleaddon;eventtitle;venue;eventdate] opt[subtitle]}
+@Comment{jabref-entrytype: presentation: req[doi;author;title;titleaddon;eventtitle;venue;eventdate] opt[subtitle;url]}

@@ -1,0 +1,69 @@
+\documentclass[
+    a4paper,            % Paper size
+    11pt,               % Font size
+    stu,                % Format as assignment
+%   donotrepeattitle,   % Start body text without repeating title
+    noextraspace,       % Reduce spaces between section header and text
+    floatsintext,       % Insert tables and figures with texts
+    biblatex,           % Use BibLaTeX for references
+    colorlinks=true,        % Colour all links
+    linkcolor=red,          % Cross-references in red
+    anchorcolor=black,      % Keep anchors black
+    citecolor=blue,         % In-text-referencs in blue
+    urlcolor=blue,          % DOIs and URLs are in blue
+    bookmarks=true,         % Generate bookmarks for PDF readers
+    bookmarksopen=false,    % Expand all bookmarks as default
+    bookmarksnumbered=true  % Keep section number in bookmarks
+]{apa7}
+
+% Avoid breaking a word into two lines
+\usepackage[none]{hyphenat}
+
+% Activate AMS packages for typing maths
+\usepackage{amsmath,amssymb}
+
+\newcommand{\p}[1]{\mathbb{P}\left(#1\right)}
+\newcommand{\E}[1]{\mathbb{E}\left(#1\right)}
+\renewcommand{\exp}[1]{\mathrm{exp}\left\{#1\right\}}
+
+% Insert images
+\usepackage{graphicx}
+
+% Change line spacing
+\usepackage{setspace}
+\setstretch{1.5}
+
+\usepackage[nameinlink,noabbrev,capitalise]{cleveref}
+
+% Package biblatex has already been loaded by apa7.
+% Only need to specify the bib library
+\addbibresource{../../../../Bibliography/Master.bib}
+\newcommand{\poscite}[1]{\citeauthor{#1}'s (\citeyear{#1})}
+
+\title{A Comparison between Qualitative and Quantitative Approaches to Assessment Fairness}
+\author{Tony C. A. Tan}
+\affiliation{Centre for Educational Measurement, University of Oslo}
+\course{UV9030 Research Design}
+\professor{Prof {\O}istein Anmarkrud \& Prof Marte Blikstad-Balas}
+\duedate{30 October 2021}
+
+\begin{document}
+\maketitle
+
+\section{Background and Rationale}
+
+\section{Overview of the Two Papers}
+
+\subsection{Purpose Statement}
+
+\subsection{Methodology}
+
+\subsection{Analytic Approach}
+
+\subsection{Findings}
+
+\section{Quality Evaluation}
+
+\printbibliography
+
+\end{document}

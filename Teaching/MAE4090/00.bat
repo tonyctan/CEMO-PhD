@@ -1,4 +1,3 @@
-cd /d M:\pc\Dokumenter\MSc\Thesis
 del *.aux
 del *.bbl
 del *.bcf

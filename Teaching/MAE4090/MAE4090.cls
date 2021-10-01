@@ -77,7 +77,7 @@
 \DeclareOption{helv}{%
   \@ifundefined{def@man}{}{\def\helv@family{\relax}}
 }
-hypersetup
+
 \DeclareOption{notab}{\def\no@tab{\relax}}
 
 \DeclareOption{nobf}{\def\no@bf@title{\relax}}
@@ -1341,6 +1341,13 @@ hypersetup
 
 \thispagestyle{titlepage}
 
+\newcommand{\makemaetitle}{
+  \begin{titlepage}
+    \centering
+    \thispagestyle{empty}
+    \includegraphics[width=16cm]{toppfelt-english}
+  \end{titlepage}
+}
 
 \setlength{\footnotesep}{16pt}
 

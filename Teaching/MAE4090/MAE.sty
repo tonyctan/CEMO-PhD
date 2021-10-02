@@ -1,5 +1,42 @@
+\usepackage{authoraftertitle}
+\setlength\parindent{0 pt}
+
 % APA7 Rule 2.24: Indent the first line of every paragraph 0.5 in
 \setlength\parindent{0.5in}
 
 % Since this is a quantitative paper, always call in amamath and related packages
 \usepackage{amsmath,amssymb}
+
+
+% Reduce gaps in enumerate and itemize environment
+\usepackage{enumitem}
+\setlist[enumerate]{noitemsep}
+\setlist[enumerate]{nolistsep}
+\setlist[itemize]{noitemsep}
+\setlist[itemize]{nolistsep}
+
+\newenvironment{MAEitemize}{
+        \begin{itemize}[noitemsep,align=left,style=nextline,leftmargin=\parindent,font=\normalfont]
+}{
+        \end{itemize}
+}
+
+% APA7 Rule 2.24 Paragraph Indentation
+% Block quotation should be indented from the left margin 0.5 in.
+\usepackage{changepage}
+\newenvironment{MAEquote}{
+    \begin{adjustwidth*}{0.5in}{0in}
+}{
+    \end{adjustwidth*}
+}
+
+
+% Package biblatex has already been loaded by apa7.
+% Only need to specify the bib library
+\addbibresource{./Bibliography/Main.bib}
+
+% Citation in possesive:
+\newcommand{\poscite}[1]{\citeauthor{#1}'s (\citeyear{#1})}
+
+% Always load cleveref package last.
+\usepackage{cleveref}

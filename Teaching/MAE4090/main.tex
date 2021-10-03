@@ -1,0 +1,67 @@
+\documentclass[
+    % Specify hyperref options
+    colorlinks=true,        % Colour all links
+    linkcolor=red,          % Cross-references in red
+    anchorcolor=black,      % Keep anchors black
+    citecolor=blue,         % In-text-referencs in blue
+    urlcolor=blue,          % DOIs and URLs are in blue
+    bookmarks=true,         % Generate bookmarks for PDF readers
+    bookmarksopen=false,    % Expand all bookmarks as default
+    bookmarksnumbered=true,  % Keep section number in bookmarks
+    % Specify xcolor options
+    dvipsnames
+]{MAE}
+
+\title{Identifying School Climate Variables Associated with Financial Literacy Outcomes in {PISA} 2018 Data}
+\subtitle{A Multilevel Structural Equation Modelling Approach}
+\candidate{Tony C. A. Tan}
+\semester{Spring 2021}
+
+\usepackage{MAE}
+
+\begin{document}
+\makeMAEtitle
+
+% Insert a blank page after the cover page so that Page i starts on the right.
+\cleardoublepage
+
+% Reset page number
+\setcounter{page}{0}
+% Use roman numbers for preamble pages
+\pagenumbering{roman}
+
+\include{./Sections/Acknowledgements.tex}
+
+\include{./Sections/Abstract0.tex}
+
+\include{./Sections/AbstractENG.tex}
+
+\include{./Sections/AbstractNOR.tex}
+
+% Insert a blank page if preambles end on an odd page so Page 1 starts right.
+\cleardoublepage
+
+% Reset page number
+\setcounter{page}{0}
+% Use arabic numbers for main pages
+\pagenumbering{arabic}
+
+\include{./Sections/1.tex}
+
+\include{./Sections/2.tex}
+
+\include{./Sections/3.tex}
+
+\include{./Sections/4.tex}
+
+\include{./Sections/5.tex}
+
+\printbibliography
+
+\appendix
+
+\include{./Appendices/A.tex}
+
+\include{./Appendices/B.tex}
+
+\end{document}

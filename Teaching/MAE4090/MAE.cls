@@ -14,21 +14,13 @@
 \ProcessOptions\relax
 \LoadClass[
     a4paper, % Use A4 paper
-    11pt, % APA7 RTule 2.19 10pt Computer Modern too small. Change to 11pt.
+    11pt, % APA7 Rule 2.19 10pt Computer Modern too small. Change to 11pt.
     stu, % All CEMO thesis must be compiled using student paper mode.
-    donotrepeattitle, % Will do this some other way.
+    donotrepeattitle, % Will generate heading in Section 1 myself.
     noextraspace, % Make section headings and text closer and nicer.
     floatsintext, % Insert tables and figures in the body of the thesis.
     biblatex, % Use BibLaTeX as the engine.
-        % Options for hyperref
-        colorlinks=true,        % Colour all links
-        linkcolor=red,          % Cross-references in red
-        anchorcolor=black,      % Keep anchors black
-        citecolor=blue,         % In-text-referencs in blue
-        urlcolor=blue,          % DOIs and URLs are in blue
-        bookmarks=true,         % Generate bookmarks for PDF readers
-        bookmarksopen=false,    % Expand all bookmarks as default
-        bookmarksnumbered=true  % Keep section number in bookmarks
+    twoside % Prepare LaTeX for open-right
 ]{apa7}
 
 % Turn off fancy header. Student papers should NOT have headers.

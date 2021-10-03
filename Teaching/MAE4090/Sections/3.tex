@@ -1,42 +1,42 @@
-\chapter{Methods}
-\label{chp:3}
+\section{Methods}
+\label{sec:3}
 
-\section{Sample}
+\subsection{Sample}
 
 This study drew its primary data source from OECD's PISA 2018 database. Responses from both student \parencite{FLdata} and school questionnaires \parencite{SCHdata} were captured and merged into a master data file using \CR's \parencite[Version 4.0.5,][]{R} \pk{intsvy} package \parencite[Version 2.5,][]{intsvy} (see \cref{R.reimport} for analysis code) including the following 20 participating countries\footnote{Australia also participated in the 2018 PISA financial literacy test but chose to withhold its data from public release and is therefore not included in the current study.}: Brazil, Bulgaria, Canada, Chile, Estonia, Finland, Georgia, Indonesia, Italy, Latvia, Lithuania, the Netherlands, Peru, Poland, Portugal, Russian Federation\footnote{Moscow Region (\texttt{CNTRYID} = 982) and Tatarstan (983) have been merged into Russian Federation (643).}, Serbia, Slovak Republic, Spain, and the USA. Twelve observations without school weights were dropped, leading to a sample size of 107,162 students nested in 6,631 schools (see \cref{tab:sample} for detailed sample profile). Under PISA 2018 sampling design, all student candidates were born in the year 2002 in international grades 7 or higher (Chapter 4 of \textit{PISA 2018 Technical Report}, \textcite{PISAtech}, p. 29) and will be referred to as ``15-year-old'' in this study.
 
-\section{Measures}
+\subsection{Measures}
 %//mark What exactly I was using to address my research question?
 %//mark Sum score? Averages? One particular question?
 %//mark Motivation for choosing these measures?
 
-\subsection{School Climate Variables}
+\subsubsection{School Climate Variables}
 
 Following \poscite{wang:2016} framework, this study selected variable \texttt{FLSCHOOL} ``financial education in school lessons'' as an indicator for the \textsc{academic} domain of school climate; \texttt{FLFAMILY} ``parental involvement in matters of financial literacy'' for the \textsc{community} engagement dimension (i.e., ``financial socialisation''), \texttt{NOBULLY} (reverse coding of \texttt{BEINGBULLIED} such that larger numbers imply safer schools) as an indicator for school \textsc{safety}, and lastly \texttt{EDUSHORT} ``shortage of educational material'' as an indicator of the resource availability aspect of the \textsc{institutional environment} of schools. All four measures were derived variables based on IRT scaling, with good scale reliabilities for most countries and constructs (see \cref{tab:cronbach} for Cronbach's alphas). In addition, the OECD has applied multi-group concurrent calibrations to all latent constructs using the root mean square deviance below $0.3$ criterion \parencite[for a technical discussion on RMSD, see][p. 244]{buchholz:2019} in order to ensure cross-country measurement invariance (see Chapter 9 of \textit{Technical Report} \parencite[][pp. 14--15]{PISAtech} for analytical details).
 
 \input{./Tables/Variables}
 
-\subsection{Financial Literacy Measures}
+\subsubsection{Financial Literacy Measures}
 
-\subsubsection{Financial Knowledge (FC)}
+\paragraph{Financial Knowledge (FC)}
 
 In order to ascertain candidates' current understanding of finance-related topics, \textsf{FL164} of the financial literacy questionnaire presented 18 terminologies such as exchange rate, budget, and income tax and asked students to rate their familiarity with each term using a three-point scale: ``Never heard of it'', ``Heard of it, but I don't recall the meaning'' and ``Learnt about it, and I know what it means''. Sum scores of \textsf{FL164} were used to construct ``familiarity with concepts of finance'' variable (\texttt{FCFMLRTY}, Chapter 16 of \textit{PISA 2018 Technical Report}, \textcite{PISAtech}, p. 23). This scale had good reliability properties evidenced by its high Cronbach's alphas in \cref{tab:cronbach}.
 
-\subsubsection{Financial Confidence (FA)}
+\paragraph{Financial Confidence (FA)}
 
 PISA 2018 included a set of questions in \textsf{FL162} asking students about their confidence over six financial activities such as making money transfers, understanding bank statements, and plan their spendings using a four-point Likert scale ranging from ``Not at all confident'', ``Not very confident'', ``Confident'' to ``Very confident''. A variable ``confidence about financial matters'' was subsequently constructed using the IRT procedure (\texttt{FLCONFIN}, \textcite{PISAtech}, p. 23). Cronbach's alphas in \cref{tab:cronbach} suggested good reliability.
 
-\subsubsection{Financial Application (FB)}
+\paragraph{Financial Application (FB)}
 
-The financial literacy application problems were drawn from 43 questions distributed across 24 booklets. The actual test bank remained confidential for reuse, but the OECD was %
 \input{./Tables/FLIT}
-\noindent able to provide examples that were comparable in style and difficulty in the \textit{Analytical Framework} \parencite[][pp. 133--148]{PISAframework}. These exemplar questions illustrated the domains and content areas (see summary in \cref{tab:FLIT}) PISA 2018 covered for the purpose of constructing candidates' financial literacy scores. In order to succeed in the bank statement question (Figure 5.1, \textcite{PISAframework}, p. 133), for example, students should recognise that the necessary information was presented in multiple locations of the financial document and must be identified amongst distractions then summed together. This question covered the ``money and transactions'' content area of the ``content'' domain, the ``identifying financial information'' content area of the ``process'' domain, and the ``home and family'' content area of the ``contexts'' domain. Both constructed- and selected-responses were used in question design and 30 out of 43 items were automatically coded by computers. ``Planned missingness'' resultant from rotating booklet design was imputed into ten plausible values \parencite{vondavier:2014} centred at $500$ with standard deviations of $100$ \parencite{PISAframework}. All ten plausible values (\texttt{PV1FLIT} to \texttt{PV10FLIT}, collectively written as \texttt{FLIT} form here on) have been used in subsequent analyses following procedures prescribed by \textcite{rubin:1987}.
 
-\subsection{Control Variables}
+The financial literacy application problems were drawn from 43 questions distributed across 24 booklets. The actual test bank remained confidential for reuse, but the OECD was able to provide examples that were comparable in style and difficulty in the \textit{Analytical Framework} \parencite[][pp. 133--148]{PISAframework}. These exemplar questions illustrated the domains and content areas (see summary in \cref{tab:FLIT}) PISA 2018 covered for the purpose of constructing candidates' financial literacy scores. In order to succeed in the bank statement question (Figure 5.1, \textcite{PISAframework}, p. 133), for example, students should recognise that the necessary information was presented in multiple locations of the financial document and must be identified amongst distractions then summed together. This question covered the ``money and transactions'' content area of the ``content'' domain, the ``identifying financial information'' content area of the ``process'' domain, and the ``home and family'' content area of the ``contexts'' domain. Both constructed- and selected-responses were used in question design and 30 out of 43 items were automatically coded by computers. ``Planned missingness'' resultant from rotating booklet design was imputed into ten plausible values \parencite{vondavier:2014} centred at $500$ with standard deviations of $100$ \parencite{PISAframework}. All ten plausible values (\texttt{PV1FLIT} to \texttt{PV10FLIT}, collectively written as \texttt{FLIT} form here on) have been used in subsequent analyses following procedures prescribed by \textcite{rubin:1987}.
+
+\subsubsection{Control Variables}
 
 In the 2018 PISA cycle, the OECD simplified its computation of the students' economic, social and cultural status (\texttt{ESCS}) index by taking the arithmetic mean of three indicators: \textsf{PARED} (parental education), \textsf{HISEI} (parental occupational status) and \textsf{HOMEPOS} (home possessions). Figure 16.4 of the \textit{Technical Report} \parencite{PISAtech} visualised the \texttt{ESCS} formation procedure while \textcite{avvisati:2020} further examined the validity and reliability of the ESCS construct. Students' immigration status was determined by synthesising responses from student questionnaire items \textsf{ST019} (parents' country of birth) and \textsf{ST021} (students' age of arrival in test country) \parencite[][pp. 212--213]{PISAvol3} into a categorical variable with levels \textsf{1 = Native}, \textsf{2 = Second-Generation} and \textsf{3 = First-Generation}. This information enabled the derivation of two binary variables \texttt{IMMI1GEN} and \texttt{IMMI2GEN} to mark first- and second-generation migrants respectively, with natives being the reference group receiving zero entries for both categories. The variable \textsf{ST004D01T} from the student questionnaire \parencite{FLdata} represented students' gender and was transformed into a binary variable with female being the reference group: \textsf{0 = female}; \textsf{1 = male}.
 
-\section{Multilevel Structural Equation Modelling (MSEM)}
+\subsection{Multilevel Structural Equation Modelling (MSEM)}
 % %//mark ICC2
 %//mark Motivation for choosing this particular model: multilevel SEM, contextual effect
 %//mark Link model to the research question(s)
@@ -174,27 +174,27 @@ Using \poscite{kaplan:2009} notation $\m{y}_{ij} = \m{\alpha}_j + \m{\Beta}_j\m{
 
 \input{./Figures/tikz/model}
 
-\section{Missing Data Treatment}
+\subsection{Missing Data Treatment}
 
 Missing data are the norm rather than the exception in empirical studies and they demand great care from the researchers to ensure analytical validity. While full information maximum likelihood has the benefit of being well understood and readily available in software, the multiple imputation (MI) approach outperforms
-\begin{enumerate*}[label={(\alph*)}]
+\begin{seriate}
     \item when the data set contains mixtures of incomplete categorical and continuous variables,
     \item when dealing with questionnaire data where items usually come in parcels,
     \item when auxiliary variables are required, and
     \item when the missing completely at random assumption cannot be reasonably assumed
-\end{enumerate*}
+\end{seriate}
 \parencite{enders:2018}. These considerations conclusively directed the current study towards the multilevel MI under the assumption that data were missing at random \parencite{little:2019}. In addition, since PISA 2018 financial literacy source files contain missing data at both student- and school-levels and in both continuous and categorical variables, the joint modelling approach is adopted under the advisory of \textcite{grund:2018}. More specifically, ten sets of imputed data were ordered through \CM's (Version 8.5, \textcite{mplus}) unrestricted variance- covariance model \parencite[``JM-AM H1'',][]{asparouhov:2010b}, using the Bayes estimator with uninformative priors and 4-chain Gibbs sampler to verify convergence as per suggestion by \textcite[][p. 230]{little:2019} and \textcite[][p. 314]{lambert:2018}. Finally, the first 50,000 burn-in iterations were discarded and any two draws were separated by 5,000 iterations to avoid autocorrelation (see \cref{sec:MMI} for input file)---a safe setting even for moderate to high percentage missings \parencite{grund:2016}. See \cref{tab:MMI} for imputation results and diagnostic plots.
 
-\section{Sampling Weights}
+\subsection{Sampling Weights}
 
 Due to PISA's two-stage sampling design, schools and students were selected with \emph{unequal} probabilities (Chapter 3, \textcite{PISAspss}, pp. 47--56). A proper incorporation of sampling weights is therefore crucial for establishing unbiased estimations. This study has made use of both student and school weights. Under the advisory of \textcite{asparouhov:2006}, $L1$ weights were scaled such that they sum to the sample size in each cluster while $L2$ weights were adjusted so that the product of the between- and within-weights sums to the total sample size \parencite[][pp. 622--624]{mplus:manual}.
 
-\section{Estimator}\label{sec:mlr}
+\subsection{Estimator}\label{sec:mlr}
 %//mark Motivation why these estimators rather than others?
 
 This study accepted \CM's default setting of pseudo maximum likelihood (MLR) estimator for the hierarchical modelling \parencite[Chapter 16,][pp. 666 \& 668]{mplus:manual}. MLR's robust standard errors are in general Huber-White sandwich estimators \parencite{huber:1967, white:1982} with asymptotic standard error corrections using observed residual variances. Literature has long recognised MLR's robust $\chi^2$ tests and standard errors as being more accurate than the asymptotic tests when data are non-normal and when models are mis-specified \parencite{chou:1991, curran:1996}. In the multilevel modelling context, robust $\chi^2$ and standard errors may also provide protection against unmodelled heterogeneity resultant from mis-specification at the group-level or from omitting a level \parencite{hox:2010}.
 
-\section{Model Evaluation}
+\subsection{Model Evaluation}
 %//mark Model fit indices. Guidlines and cut-offs?
 
 Multiple imputation substantially complicates model fit interpretations. It is important to reflect that \poscite{rubin:1987} rules apply only to \emph{model parameters} under the assumption that over repeated samples, estimates eventually form normal curves peaked at some population values. The distributions of fit indices, on the other hand, are almost always unknown or non-normal, imposing high standards of proof on any proposed aggregation procedures. Early work such as \textcite{meng:1992} on pooled likelihood-ratio statistic, the precursor to many model fit indices, has been substantiated by simulation studies more recently with encouraging results that it is feasible to construct pooled information criteria \parencite{claeskens:2008} as well as pooled model fit indices \parencite{asparouhov:2010a} under MI. \textcite{enders:2018} further suggested that with large samples ($N>100$) and low missing rates ($<$ 30\%--40\%), common cut-off criteria such as \textcite{hu:1999} remain valid. This study took advantage of \CM's capability of automatically pooling model fit information in the presence of MI. Supported by large sample size ($N=107,162$) and low missing rate (maximum 22.08\%), conventional cut-offs of RMSEA $\leq .06$, SRMR $\leq .08$, CFI $\geq .95$ and TLI $\geq .95$ are likely to be suitable for model comparison purposes.

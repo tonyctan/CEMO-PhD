@@ -1,9 +1,13 @@
-\ltableCont{
+\MAEltableCont{
     \begin{tabular}{l @{\hskip -7.9cm} l c rr @{\hskip -0.1mm}l rr @{\hskip -0.1mm}l rr @{\hskip -0.1mm}l rr @{\hskip -0.1mm}l}
 \toprule
     & \ \ \ \ \ \ \ \ \ \ Variable & Model & \multicolumn{3}{c}{Null model} & \multicolumn{3}{c}{Single-level model} & \multicolumn{3}{c}{Two-level saturated} & \multicolumn{3}{c}{Two-level structured} \\
-    &  & parameter & \multicolumn{1}{c}{Coef} & \multicolumn{1}{c}{\textit{SE}} &       & \multicolumn{1}{c}{Coef} & \multicolumn{1}{c}{\textit{SE}} &       & \multicolumn{1}{c}{Coef} & \multicolumn{1}{c}{\textit{SE}} &       & \multicolumn{1}{c}{Coef} & \multicolumn{1}{c}{\textit{SE}} &  \\
+    &  \ \ \ \ \ \ \ \ \ \ \textemdash\ path & parameter & \multicolumn{1}{c}{Coef} & \multicolumn{1}{c}{\textit{SE}} &       & \multicolumn{1}{c}{Coef} & \multicolumn{1}{c}{\textit{SE}} &       & \multicolumn{1}{c}{Coef} & \multicolumn{1}{c}{\textit{SE}} &       & \multicolumn{1}{c}{Coef} & \multicolumn{1}{c}{\textit{SE}} &  \\
 \midrule
+    & \texttt{MALE} (total indirect) & $\gamma_{71}\beta_1+\gamma_{72}\beta_2$ &       &       &       & 0.004 & 0.002 &$^{*}$    & 0.007 & 0.002 &$^{**}$   & 0.007 & 0.002 &$^{**}$\\
+    & \ \ \ \ \textemdash\ via \texttt{FCFMLRTY} & $\gamma_{71}\beta_1$ &       &       &       & 0.003 & 0.002 &$^{*}$    & 0.004 & 0.002 &$^{*}$    & 0.004 & 0.002 &$^{*}$\\
+    & \ \ \ \ \textemdash\ via \texttt{FLCONFIN} & $\gamma_{72}\beta_2$ &       &       &       & 0.001 & 0.001 &       & 0.003 & 0.001 &$^{**}$   & 0.003 & 0.001 &$^{**}$\\
+    &&&&&&&&&&&&&&\\
     \textbf{School-level Predictors} &       &       &       &       &       &       &       &       &       &       &       &       &       &  \\
     & \texttt{FLSCHOOL} & $a_1$    &       &       &       &       &       &       &       &       &       & $-$0.295 & 0.066 & $^{***}$ \\
     & \texttt{FLFAMILY} & $a_2$    &       &       &       &       &       &       &       &       &       & $-$0.225 & 0.057 & $^{***}$ \\
@@ -33,4 +37,4 @@
 \bottomrule
     \end{tabular}
 }{All $p$ values in this table are two-tailed.\\
-$^\dagger p < .10$. $^* p < .05$. $^{**} p < .01$. $^{***} p < .001$.}{3}
+$^\dagger p < .10$. $^* p < .05$. $^{**} p < .01$. $^{***} p < .001$.}

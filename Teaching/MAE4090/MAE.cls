@@ -67,7 +67,7 @@
         % Call in font for the title
         \fontfamily{\MAE@font}\fontencoding{T1}
         % Specify size for the title
-        \fontsize{24}{20pt}\fontseries{sb}\selectfont
+        \fontsize{24}{20pt}\fontseries{b}\selectfont
         \MAE@title\par
 
         % Leave some space between title and subtitle

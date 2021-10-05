@@ -2837,13 +2837,14 @@
   year    = {2018},
   file    = {Bayesian alternatives for common null-hypothesis significance tests in psychiatry\: A non-technical guide using JASP:Quintana & Williams (2018).pdf:PDF}
 }
-@manual{R,
-  title        = {\CR: A language and environment for statistical computing \normalfont{(Version 4.0.5) [Computer software]}},
-  author       = {{\cR Core Team}},
+
+@Manual{R,
+  author       = {{R Core Team}},
+  title        = {R: A language and environment for statistical computing \normalfont{(Version 4.0.5) [Computer software]}},
   organization = {\cR Foundation for Statistical Computing},
-  year         = {2021},
+  url          = {https://www.R-project.org/},
   sortkey      = {R Core Team},
-  url          = {https://www.R-project.org/}
+  year         = {2021},
 }
 @techreport{raappana:2021,
   author      = {Anu Raappana and Timo Pihkala and Pirjo Kuru},
@@ -4720,6 +4721,17 @@
   title     = {Adjusting {GPA} to reflect course difficulty},
   doi       = {10.1184/R1/6470981.V1},
   year      = {1996},
+}
+
+@Article{holman:2005,
+  author  = {Rebecca Holman and Cees A. W. Glas},
+  doi     = {10.1111/j.2044-8317.2005.tb00312.x},
+  journal = {British Journal of Mathematical and Statistical Psychology},
+  pages   = {1--17},
+  title   = {Modelling non-ignorable missing-data mechanisms with item response theory models},
+  volume  = {58},
+  year    = {2005},
+  file    = {Modelling non-ignorable missing-data mechanisms with item response theory models:Holman & Glas (2005).pdf:PDF},
 }
 
 @Comment{jabref-meta: databaseType:biblatex;}

@@ -9,6 +9,13 @@
 %%%%% General formatting %%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+% Enable expanded alphabets for European languages
+\usepackage[utf8]{inputenc}
+
+% Polish letters, such as ``a with a tail'' need this packages
+\usepackage[T2A,T1]{fontenc} %T2A is for Russian
+% Must declare Russian font before calling Russian babel
+
 % Inserts a blank page (so that next part starts on right)
 \usepackage{emptypage}
 

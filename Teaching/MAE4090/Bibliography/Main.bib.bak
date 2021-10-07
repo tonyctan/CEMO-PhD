@@ -804,7 +804,7 @@
   doi     = {10.1177/2158244016668220},
   journal = {{SAGE} Open},
   pages   = {1--17},
-  title   = {Multiple imputation of multilevel missing data: An introduction to the R package pan},
+  title   = {Multiple imputation of multilevel missing data: An introduction to the \cR package \pk{pan}},
   year    = {2016},
   file    = {Multiple imputation of multilevel missing data\: An introduction to the R package pan:Grund, Ludtke & Robitzsch (2016).pdf:PDF}
 }
@@ -937,7 +937,7 @@
   journal = {Journal of Statistical Software},
   number  = {7},
   pages   = {1--44},
-  title   = {intsvy: An R package for analyzing international large-scale assessment data},
+  title   = {\pk{intsvy}: An \cR package for analyzing international large-scale assessment data},
   volume  = {81},
   year    = {2017},
   file    = {intsvy\: An R package for analyzing international large-scale assessment data:Caro & Biecek (2017).pdf:PDF}
@@ -1374,21 +1374,21 @@
   file    = {Does type of financial learning matter for young adults' objective financia knowledge and financia behaviors A longitudinal and mediation analysis:Mountain, Kim, Serido & Shim (2020).pdf:PDF}
 }
 
-@Book{mplus,
+@book{mplus,
   author    = {Muth{\'e}n, L. K. and Muth{\'e}n, B. O.},
   publisher = {{Muth{\'e}n \& Muth{\'e}n}},
-  title     = {\c \normalfont{(Version 8.5) [Computer software]}},
+  title     = {Mplus \normalfont{(Version 8.5) [Computer software]}},
   year      = {1998--2017},
-  url       = {http://www.statmodel.com/},
+  url       = {http://www.statmodel.com/}
 }
 
-@Book{mplus:manual,
+@book{mplus:manual,
   author    = {L. K. Muth{\'e}n and B. O. Muth{\'e}n},
   publisher = {{Muth{\'e}n \& Muth{\'e}n}},
-  title     = {\c {user's guide}},
+  title     = {Mplus {user's guide}},
   year      = {2017},
   url       = {https://www.statmodel.com/download/usersguide/Mplus%20user%20guide%20Ver_7_r6_web.pdf},
-  file      = {Mplus user's guide:Muthen & Muthen (2017).pdf:PDF},
+  file      = {Mplus user's guide:Muthen & Muthen (2017).pdf:PDF}
 }
 
 @article{norvilitis:2010,
@@ -1543,9 +1543,9 @@
 }
 
 @manual{R,
-  title        = {R: A language and environment for statistical computing \normalfont{(Version 4.0.5) [Computer software]}},
-  author       = {{R Core Team}},
-  organization = {R Foundation for Statistical Computing},
+  title        = {\CR: A language and environment for statistical computing \normalfont{(Version 4.0.5) [Computer software]}},
+  author       = {{\cR Core Team}},
+  organization = {\cR Foundation for Statistical Computing},
   year         = {2021},
   sortkey      = {R Core Team},
   url          = {https://www.R-project.org/}

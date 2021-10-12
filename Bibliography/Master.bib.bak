@@ -1689,15 +1689,16 @@
   year    = {2020},
   file    = {Numeracy level, mathematics problem skills, and financial literacy:Indefenso & Yazon (2020).pdf:PDF}
 }
-@article{intsvy,
+
+@Article{intsvy,
   author  = {Daniel H. Caro and Przemys\l{}aw Biecek},
   doi     = {10.18637/jss.v081.i07},
   journal = {Journal of Statistical Software},
   number  = {7},
   pages   = {1--44},
-  title   = {\pk{intsvy}: An \cR package for analyzing international large-scale assessment data},
+  title   = {intsvy: An R package for analyzing international large-scale assessment data},
   volume  = {81},
-  year    = {2017}
+  year    = {2017},
 }
 @article{janssen:2019,
   author  = {Jeroen H. M. Janssen and Saskia {van Laar} and Mark J. {de Rooij} and Jouni Kuha and Zsuzsa Bakk},
@@ -4734,6 +4735,15 @@
   file    = {Modelling non-ignorable missing-data mechanisms with item response theory models:Holman & Glas (2005).pdf:PDF},
 }
 
+@TechReport{davoli:2021,
+  author      = {Maddalena Davoli and N{\'u}ria {Rodr{\'r}guez-Planas}},
+  institution = {IZA Institute of Labor Economics},
+  title       = {Preferences, financial literacy, and economic development},
+  year        = {2021},
+  titleaddon  = {IZA Discussion Paper No. 14759},
+  url         = {https://ftp.iza.org/dp14759.pdf},
+}
+
 @Comment{jabref-meta: databaseType:biblatex;}
 
-@Comment{jabref-entrytype: presentation: req[doi;author;title;titleaddon;eventtitle;venue;eventdate] opt[subtitle;url]}
+@Comment{jabref-entrytype: presentation: req[doi;author;title;titleaddon;eventtitle;venue;eventdate] opt[subtitle]}

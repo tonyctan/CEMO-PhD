@@ -9,13 +9,6 @@
 %%%%% General formatting %%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-% Enable expanded alphabets for European languages
-\usepackage[utf8]{inputenc}
-
-% Polish letters, such as ``a with a tail'' need this packages
-\usepackage[T2A,T1]{fontenc} %T2A is for Russian
-% Must declare Russian font before calling Russian babel
-
 % Inserts a blank page (so that next part starts on right)
 \usepackage{emptypage}
 
@@ -49,6 +42,9 @@
 }{
         \end{itemize}
 }
+
+% Introduce some space between ``Figure 1'' and its caption
+\DeclareCaptionLabelSeparator{apalabelsep}{\\[0.5\baselineskip]} 
 
 %%%%%%%%%%%%%%%%%
 %%%%% Maths %%%%%
@@ -204,9 +200,6 @@
 
 % To enable page rotation (to landscape for wide tables, for example)
 \usepackage{pdflscape}
-
-\usepackage{caption}
-\captionsetup[table]{skip=10pt}
 
 % Automate the table production process
 \newcommand{\MAEptable}[4]{    %%% Portrait table WITH note

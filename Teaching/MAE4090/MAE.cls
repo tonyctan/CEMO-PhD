@@ -1,4 +1,4 @@
-\ProvidesClass{MAE}[2021/10/01 v0.9 CEMO MAE thesis template]
+\ProvidesClass{MAE}[2021/10/15 v1.0 CEMO MAE thesis template]
 \NeedsTeXFormat{LaTeX2e}
 
 % Force master students to use 11pt font
@@ -32,34 +32,49 @@
 % Define \title command
 \def \MAE@title {\@title}
 % Save the content of title
-\def\title#1{\gdef\@title{#1}\gdef\MAEtitle{#1}}
+\def\title#1{\def\@title{#1}\def\MAE@title{#1}}
 
-% Define \subtitle command
-\newcommand{\subtitle}[1]{\def \MAE@subtitle{#1}}
-\subtitle{}
-\def \MAE@subtitle {\@subtitle}
 % Save the content of subtitle
-\def\subtitle#1{\gdef\@subtitle{#1}\gdef\MAEsubtitle{#1}}
+\def\subtitle#1{\def\@subtitle{#1}\def\MAE@subtitle{#1}}
+% Default: no subtitle (empty)
+\def\@subtitle{}\let\MAE@subtitle=\MAE@empty
+
+% Define ``full title''
+\renewcommand{\maketitle}{
+    \begin{center}
+        \bf\MAE@title
+        \ifx \MAE@subtitle \MAE@empty
+        \else
+            : \MAE@subtitle
+        \fi
+    \end{center}
+}
 
 % Define candidate command
-\newcommand{\candidate}[1]{\def \MAE@candidate{#1}}
-\candidate{}
-\def \MAE@candidate {\@author}
+\newcommand{\candidate}[1]{\author{#1}\def\MAE@candidate{#1}}
 
 % Define \semester command
+
+% Capture the current month
+\newcounter{MAE@cur@month}  \setcounter{MAE@cur@month}{\the\month}
+% Determin whether we are in spring or autumn semester
+\ifthenelse{\theMAE@cur@month<7}
+    {\newcommand{\MAE@term}{Spring}}
+    {\newcommand{\MAE@term}{Autumn}}
+% Name the semester
+\newcommand{\MAE@semester}{\MAE@term~\the\year}
+% If user specifies \semester{}, show that. If not, use default.
 \newcommand{\semester}[1]{\def \MAE@semester{#1}}
-\semester{}
-\def \MAE@semester {\@semester}
 
 % Make a cover page similar to UiO's DUO forside design
 \newcommand{\makeMAEtitle}{
     \begin{titlepage}
         \thispagestyle{empty} % Cover page must have no page number.
         \centering % Center everything on the cover page.
-        \includegraphics[width=16cm]{banner} % Insert UiO banner
+        \includegraphics[width=16cm]{./Figures/banner} % Insert UiO banner
 
         % Leave some space between the UiO banner and title
-        \vspace{2\baselineskip}
+        \vspace{1\baselineskip}
         % Define font: Helvetica (phv) is always available...
         \newcommand{\MAE@font}{phv}
         % ...but use Arial (ua1) if possible
@@ -73,29 +88,38 @@
         % Leave some space between title and subtitle
         \vspace{0.75\baselineskip}
         % Detect whether this thesis contains a subtitle. If yes, format it.
-        \ifx \MAE@subtitle = \MAE@empty
+        \ifx \MAE@subtitle \MAE@empty
         \else{
             \fontsize{20}{16pt}\fontseries{m}\fontshape{sl}\selectfont \MAE@subtitle\par
-            \vspace{2\baselineskip}
         }
         \fi
+
+        \vfill
+
         % Print author's name
         \fontsize{16}{12pt}\fontseries{m}\fontshape{n}\selectfont \MAE@candidate\par
 
         \vspace{5\baselineskip}
         % Print degree name
-        \fontsize{16}{12pt}\fontseries{m}\fontshape{n}\selectfont Master of Science in Assessment, Measurement and Evaluation\\
-        \fontsize{16}{12pt}\fontseries{m}\fontshape{n}\selectfont 30 credits
+        \fontsize{16}{16pt}\fontseries{m}\fontshape{n}\selectfont Master of Science in Assessment, Measurement and Evaluation\\
+        \fontsize{16}{16pt}\fontseries{m}\fontshape{n}\selectfont 30 credits
 
-        \vspace{2\baselineskip}
+        \vspace{1.5\baselineskip}
         % Print CEMO's name
         \fontsize{16}{12pt}\fontseries{m}\fontshape{n}\selectfont Centre for Educational Measurement\\
         \fontsize{16}{12pt}\fontseries{m}\fontshape{n}\selectfont Faculty of Educational Sciences
 
-        \vspace{2\baselineskip}
+        \vspace{1.5\baselineskip}
         \fontsize{12}{12pt}\fontseries{m}\fontshape{n}\selectfont \MAE@semester\par
         % Remove blank page
-        \vspace{-2cm}
+        \vspace{-1cm}
         \null
     \end{titlepage}
+% Insert a blank page
+    \begin{titlepage}
+        \thispagestyle{empty} % Remove page number
+        \mbox{} % Insert something but keep visual as blank
+    \end{titlepage}
+% Switch page numbering to roman for preambles
+    \pagenumbering{roman}
 }

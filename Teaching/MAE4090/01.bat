@@ -1,5 +1,4 @@
-pdflatex main.tex
-biber main
-pdflatex main.tex
-pdflatex main.tex
-
+pdflatex Main.tex
+biber Main
+pdflatex Main.tex
+pdflatex Main.tex

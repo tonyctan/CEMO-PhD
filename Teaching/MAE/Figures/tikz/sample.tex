@@ -1,0 +1,28 @@
+\MAEptikz{fig:sample}{Model Diagram}{
+\begin{tikzpicture}[
+    manvar/.style={rectangle,draw=black,minimum width=1cm},
+    ->,>=stealth',semithick,
+    bend angle=-45,
+    decoration={
+        zigzag,
+        amplitude=1pt,
+        segment length=1mm,
+        post=lineto,
+        post length=4pt
+    }
+]
+
+% MODEL DIAGRAM
+
+% Draw variables
+    \node[manvar] (X) at (1,1) {$X$};
+    \node[manvar] (M) at (5,3) {$M$};
+    \node[manvar] (Y) at (9,1) {$Y$};
+
+% Link variables
+    \draw[->] (X.east) to (Y.west);
+    \draw[->] (X.north) to (M.west);
+    \draw[->] (M.east) to (Y.north);
+
+\end{tikzpicture}
+}{A sample diagram.}

@@ -1,6 +1,7 @@
 \MAEptikz{fig:sample}{Model Diagram}{
 \begin{tikzpicture}[
-    manvar/.style={rectangle,draw=black,minimum width=1cm},
+    latvar/.style={ellipse,draw=black,minimum width=1cm,minimum height=1cm},
+    manvar/.style={rectangle,draw=black,minimum width=1cm,minimum height=1cm},
     ->,>=stealth',semithick,
     bend angle=-45,
     decoration={
@@ -14,15 +15,71 @@
 
 % MODEL DIAGRAM
 
-% Draw variables
-    \node[manvar] (X) at (1,1) {$X$};
-    \node[manvar] (M) at (5,3) {$M$};
-    \node[manvar] (Y) at (9,1) {$Y$};
+%%%%% Structural part %%%%%
 
-% Link variables
+% Draw latent variables
+    \node[latvar] (X) at (1,1) {$\xi$};
+    \node[latvar] (M) at (5,3) {$\eta_1$};
+    \node[latvar] (Y) at (9,1) {$\eta_2$};
+
+% Link latent variables
     \draw[->] (X.east) to (Y.west);
-    \draw[->] (X.north) to (M.west);
-    \draw[->] (M.east) to (Y.north);
+    \draw[->] (X.north east) to (M.west);
+    \draw[->] (M.east) to (Y.north west);
+
+%%%%% Measurement part %%%%%
+
+% Draw measurement for X
+    \node[manvar] (X1) at (-2,3) {$x_1$};
+    \node[manvar] (X2) at (-2,1) {$x_2$};
+    \node[manvar] (X3) at (-2,-1) {$x_3$};
+
+% Draw measurement for Y
+    \node[manvar] (Y1) at (12,3) {$y_1$};
+    \node[manvar] (Y2) at (12,1) {$y_2$};
+    \node[manvar] (Y3) at (12,-1) {$y_3$};
+
+% Draw measurement for M
+    \node[manvar] (M1) at (2,5) {$m_1$};
+    \node[manvar] (M2) at (5,5) {$m_2$};
+    \node[manvar] (M3) at (8,5) {$m_3$};
+
+% Link measurement for X
+    \draw[->] (X.west) to (X1.east);
+    \draw[->] (X.west) to (X2.east);
+    \draw[->] (X.west) to (X3.east);
+
+% Link measurement for Y
+    \draw[->] (Y.east) to (Y1.west);
+    \draw[->] (Y.east) to (Y2.west);
+    \draw[->] (Y.east) to (Y3.west);
+
+% Link measurement for M
+    \draw[->] (M.north) to (M1.south);
+    \draw[->] (M.north) to (M2.south);
+    \draw[->] (M.north) to (M3.south);
+
+% Draw residual arrows for X
+    \draw[->] (-3,3)--(-2.5,3);
+    \draw[->] (-3,1)--(-2.5,1);
+    \draw[->] (-3,-1)--(-2.5,-1);
+
+% Draw residual arrows for Y
+    \draw[->] (13,3)--(12.5,3);
+    \draw[->] (13,1)--(12.5,1);
+    \draw[->] (13,-1)--(12.5,-1);
+
+% Draw residual arrows for M
+    \draw[->] (2,6)--(2,5.5);
+    \draw[->] (5,6)--(5,5.5);
+    \draw[->] (8,6)--(8,5.5);
+
+% Draw means for M and Y
+    \draw[->] (5,2)--(5,2.5);
+    \draw[->] (9,0)--(9,0.5);
+
+    \node (M0) at (5,1.75) {$\zeta_1$};
+    \node (Y0) at (9,-0.25) {$\zeta_2$};
 
 \end{tikzpicture}
 }{A sample diagram.}

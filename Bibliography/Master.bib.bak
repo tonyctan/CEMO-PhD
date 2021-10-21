@@ -4788,19 +4788,98 @@
 }
 
 @Article{mislevy:1992,
-  author    = {Robert J. Mislevy and Eugene G. Johnson and Eiji Muraki},
-  doi       = {10.2307/1165166},
-  journal   = {Journal of Educational Statistics},
-  number    = {2},
-  pages     = {131--154},
-  title     = {Scaling procedures in {NAEP}},
-  volume    = {17},
-  year      = {1992},
-  date      = {1992},
-  file      = {Scaling procedures in NAEP:Mislevy, Johnson & Muraki (1992).pdf:PDF},
-  publisher = {{JSTOR}},
+  author  = {Robert J. Mislevy and Eugene G. Johnson and Eiji Muraki},
+  doi     = {10.2307/1165166},
+  journal = {Journal of Educational Statistics},
+  number  = {2},
+  pages   = {131--154},
+  title   = {Scaling procedures in {NAEP}},
+  volume  = {17},
+  year    = {1992},
+  file    = {Scaling procedures in NAEP:Mislevy, Johnson & Muraki (1992).pdf:PDF},
+}
+
+@Article{finch:2008,
+  author  = {Holmes Finch},
+  doi     = {10.1111/j.1745-3984.2008.00062.x},
+  journal = {Journal of Educational Measurement},
+  number  = {3},
+  pages   = {225--245},
+  title   = {Estimation of item response theory parameters in the presence of missing data},
+  volume  = {45},
+  year    = {2008},
+  file    = {Estimation of item response theory parameters in the presence of missing data:Finch (2008).pdf:PDF},
+}
+
+@Article{deayala:2001,
+  author  = {R. J. {de Ayala} and Barbara S. Plake and James C. Impara},
+  doi     = {10.1111/j.1745-3984.2001.tb01124.x},
+  journal = {Journal of Educational Measurement},
+  number  = {3},
+  pages   = {213--234},
+  title   = {The impact of omitted responses on the accuracy of ability estimation in item response theory},
+  volume  = {38},
+  year    = {2001},
+  file    = {The impact of moitted responses on the accuracy of ability estimation in item response theory:de Ayala, Plake & Impara (2001).pdf:PDF},
+  sortkey = {Ayala, R. J. de},
+}
+
+@Article{pohl:2014,
+  author  = {Steffi Pohl and Linda Gr{\"a}fe and Norman Rose},
+  doi     = {10.1177/0013164413504926},
+  journal = {Educational and Psychological Measurement},
+  number  = {3},
+  pages   = {423--452},
+  title   = {Dealing with omitted and not-reached items in competence tests},
+  volume  = {74},
+  year    = {2014},
+  file    = {Dealing with omitted and not-reached items in competence tests:Pohl, Grafe & Rose (2014).pdf:PDF},
+}
+
+@Article{waterbury:2019,
+  author  = {Glenn Thomas Waterbury},
+  journal = {Journal of Applied Measurement},
+  number  = {2},
+  pages   = {154--166},
+  title   = {Missing data and the {Rasch} model: The effects of missing data mechanisms on item parameter estimation},
+  volume  = {20},
+  year    = {2019},
+  url     = {https://www.researchgate.net/profile/Glenn-Waterbury/publication/333520847_Missing_Data_and_the_Rasch_Model_The_Effects_of_Missing_Data_Mechanisms_on_Item_Parameter_Estimation/links/5cf190c8a6fdcc8475fb8036/Missing-Data-and-the-Rasch-Model-The-Effects-of-Missing-Data-Mechanisms-on-Item-Parameter-Estimation.pdf},
+  file    = {Missing data and the Rasch model\: The effects of missing data mechanisms on item parameter estimation:Waterbury (2019).pdf:PDF},
+}
+
+@TechReport{rose:2010,
+  author      = {Norman Rose and Matthias {von Davier} and Xueli Xu},
+  institution = {Educational Testing Service},
+  title       = {Modeling nonignorable missing data with item response theory ({IRT})},
+  year        = {2010},
+  doi         = {10.1002/j.2333-8504.2010.tb02218.x},
+  type        = {Research Report RR-10-11},
+  file        = {Modeling nonignorable missing data with item response theory (IRT):Rose, von Davier & Xu (2010).pdf:PDF},
+}
+
+@Article{fu:2010,
+  author  = {Zhi-Hui Fu and Jian Tao and Ning-Zhong Shi},
+  doi     = {10.1080/00949650903029276},
+  journal = {Journal of Statistical Computation and Simulation},
+  number  = {11},
+  pages   = {1237--1252},
+  title   = {Bayesian estimation of the multidimensional graded response model with nonignorable missing data},
+  volume  = {80},
+  year    = {2010},
+}
+
+@Article{1974,
+  author  = {Frederic M. Lord},
+  doi     = {10.1007/bf02291471},
+  journal = {Psychometrika},
+  number  = {2},
+  pages   = {247--264},
+  title   = {Estimation of latent ability and item parameters when there are omitted responses},
+  volume  = {39},
+  year    = {1974},
 }
 
 @Comment{jabref-meta: databaseType:biblatex;}
 
-@Comment{jabref-entrytype: presentation: req[doi;author;title;titleaddon;eventtitle;venue;eventdate] opt[subtitle;url]}
+@Comment{jabref-entrytype: presentation: req[doi;author;title;titleaddon;eventtitle;venue;eventdate] opt[subtitle]}

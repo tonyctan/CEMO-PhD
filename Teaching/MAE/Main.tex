@@ -16,14 +16,24 @@
 \candidate{Firstname Lastname}
 \semester{Spring 2021}
 
-\usepackage{MAE}
-
 \begin{document}
 \makeMAEtitle
 
-\include{./Sections/Abstract0.tex}
+\section*{Popular Abstract}
 
-\include{./Sections/Acknowledgements.tex}
+\noindent Maximum half a page. One single paragraph. No indentation. Nunc sed risus diam. Nam vel neque mi. Fusce pretium a erat nec placerat. Proin faucibus finibus aliquet. Phasellus ut felis feugiat, tempus enim eget, ornare neque. Ut magna ante, faucibus eget pellentesque dictum, dapibus sed libero. Integer hendrerit lacus id lacus sodales vehicula. Curabitur orci tortor, condimentum quis velit in, tincidunt convallis turpis. Sed eget auctor est, et aliquet ipsum. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Etiam vel risus eget velit consectetur blandit. Fusce vitae nulla sapien. Vestibulum luctus neque quis risus laoreet, ac faucibus turpis tristique. Nunc a nunc eget odio fringilla tempus.
+
+\newpage
+
+\section*{Acknowledgements}
+
+Maecenas vel maximus erat. Vestibulum ac ornare neque. Integer vestibulum elit sem, ac varius turpis dapibus sed. Nulla erat neque, consectetur nec urna pretium, finibus elementum urna. Donec id hendrerit sem. Cras et arcu nunc. Nam dictum lacus vitae lorem luctus ultricies. Suspendisse varius velit quis imperdiet rhoncus. Quisque ut placerat nulla. Cras ut tortor mattis, finibus nisi non, sollicitudin purus. Vestibulum dolor elit, accumsan id ligula eget, lobortis malesuada lorem. Aenean vel maximus justo.
+
+Proin pretium venenatis tortor, id varius turpis semper non. Sed non elit eget purus cursus ultrices et sit amet diam. Morbi vestibulum tortor magna, sed placerat justo condimentum ac. Morbi leo magna, pharetra in neque eget, fringilla aliquam elit. Duis at ultrices ligula. Suspendisse ac ligula in tortor condimentum feugiat. Etiam ut ligula id sapien efficitur malesuada. Sed nec sagittis nisi, nec auctor dolor. Proin viverra feugiat gravida. Quisque venenatis a risus non venenatis.
+
+In hac habitasse platea dictumst. Sed finibus laoreet quam a mollis. Phasellus turpis est, convallis ut enim ut, aliquet sodales metus. Mauris porta lectus et dolor vehicula semper. Proin volutpat feugiat nibh ut blandit. Morbi mollis nunc et leo ultrices, id posuere ipsum semper. Quisque auctor egestas dignissim. Nunc molestie nulla ac enim tincidunt, non scelerisque enim hendrerit. Nulla bibendum dolor eget tellus porttitor, at auctor velit accumsan. Donec at volutpat eros, eu varius turpis. Phasellus a pellentesque enim.
+
+Aenean id tellus eu ex tempor finibus. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Suspendisse gravida volutpat lacinia. Integer imperdiet sagittis suscipit. Aliquam vitae tristique ante. Morbi diam lorem, efficitur sit amet luctus eu, placerat eget neque. Sed quis pretium metus, in bibendum dui. Duis feugiat, justo ut convallis gravida, diam ipsum mattis massa, vitae mollis risus ligula ut quam. Ut feugiat dignissim quam in auctor. Nunc rutrum nec est at iaculis.
 
 % Insert a blank page if preambles end on an odd page so Page 1 starts right.
 \cleardoublepage
@@ -31,24 +41,177 @@
 % Use arabic numbers for main pages
 \pagenumbering{arabic}
 
-\input{./Sections/1.tex}
+% Display thesis title
+\maketitle
 
-%\input{./Sections/2.tex}
+% Insert a line between title and abstract
+\vspace{0.5\baselineskip}
 
-\input{./Sections/3.tex}
+% Indent both sides
+\leftskip0.5in\relax
+\rightskip0.5in\relax
 
-\input{./Sections/4.tex}
+% APA7 Rule 2.9 Abstract
+% Abstracts in paragraph format are written as a single paragraph without indentation of the first line.
 
-\input{./Sections/5.tex}
+% APA7 Rule 2.24 Paragraph indentation
+% Exception dot point 4: The first line of the abstract should be flush left.
+
+\noindent Single paragraph. No indentation. Maximum 250 words. Phasellus egestas purus et sem porta venenatis. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Sed pulvinar leo ut posuere sollicitudin. Integer sem tortor, tristique id nisl sed, aliquam pharetra tortor. Integer tortor purus, facilisis mollis tortor nec, sodales bibendum urna. Nulla quam enim, feugiat semper neque ut, sagittis ullamcorper urna. Donec et iaculis mi. Etiam congue tellus ut felis viverra, ac mollis eros venenatis. Vivamus eget ante at eros pulvinar tempor nec at arcu. Donec et vestibulum nunc. Fusce sed metus nisi. In leo turpis, mattis a tincidunt luctus, pellentesque et velit. Ut tortor mi, rutrum nec fringilla vitae, maximus et ligula. Vestibulum finibus semper ornare.
+
+% APA7 Rule 2.10 Keywords
+% Write the label "Keywords:" (in italic) one line below the abstract, indented 0.5 in. like a regular paragraph, followed by the keywords in lowercase (but capitalize proper nouns), separated by commas. The key words can be listed in any order. Do not use a period or other punctuation after the last keyword. If the keywords run onto a second line, the second line is not indented.
+
+\textit{Keywords:} keyword 1, keyword 2, keyword 3
+
+% Leave an empty line behind
+\vspace{0.75\baselineskip}
+
+% Restore indentation
+\leftskip0in\relax
+\rightskip0in\relax
+% Restore left alignment
+\raggedright
+% Restore paragraph indentation
+\setlength\parindent{0.5in}
+
+% Never start your introduction with a heading "Introduction". Simply start your first paragraph.
+
+Maecenas nec ultricies tellus. Suspendisse tristique a ante non fringilla. Morbi et sem dignissim, aliquet leo vel, scelerisque purus. Sed iaculis, est vel molestie consequat, erat elit venenatis arcu, a tempor libero diam sit amet velit. Sed lectus nunc, viverra a molestie nec, lacinia nec purus. Cras vitae efficitur metus. Nullam ac auctor dolor. Proin quis lacinia urna. Maecenas feugiat congue justo eget iaculis. Pellentesque vehicula nunc sit amet viverra feugiat. Aenean tristique luctus sapien sed feugiat. Donec ut vestibulum lectus, ut fermentum turpis. Etiam rutrum eros a sem commodo consequat \parencite{ludtke:2008}.
+
+\subsection{First Level 2 Heading}
+
+Suspendisse varius iaculis sem, vel congue augue vulputate in. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Nullam vitae purus eget purus eleifend gravida finibus eget erat. Quisque eget tincidunt dolor. In ac lectus at lectus cursus scelerisque non a libero. Donec posuere neque vitae sapien aliquet maximus. Phasellus malesuada, lectus eget molestie facilisis, mauris nunc congue risus, in hendrerit magna dolor sit amet eros. Phasellus nec elit nibh. Sed lacinia, augue ac pretium blandit, quam tortor aliquet massa, aliquet eleifend lectus turpis id sapien. Praesent eget leo id enim blandit elementum \parencite{marsh:2009}.
+
+\subsubsection{One Level 3 Heading}
+
+Marsh and colleagues (\citeyear{marsh:2009}) nulla finibus dignissim ex vitae mattis. Phasellus ligula sapien, auctor vel finibus non, fermentum a diam. Ut commodo leo porttitor libero porta, ac accumsan ante egestas. Vivamus in sem eu felis interdum vulputate. Vivamus ut orci libero. Curabitur nisi odio, pulvinar sed ornare vitae, pellentesque dapibus ligula. Fusce et faucibus dolor. Aliquam erat volutpat. Quisque sagittis justo vitae dui posuere, a aliquet nunc ornare. Praesent tempor a est ac mattis. Interdum et malesuada fames ac ante ipsum primis in faucibus. Proin elementum luctus placerat. Sed rhoncus leo in magna cursus egestas. Aliquam a arcu a urna sodales convallis. Duis a convallis quam, hendrerit commodo tortor.
+
+\paragraph{This Is a Level 4 Heading}
+
+Fusce at sem in est varius consequat. Donec magna arcu, placerat non rhoncus id, ultricies at tortor. Curabitur id sem ac lectus pretium dignissim. Etiam faucibus, dolor ac egestas efficitur, dolor arcu posuere tellus, eget elementum est velit eget risus. Suspendisse potenti. Sed varius tristique est, vel interdum velit fringilla vel. Aenean elementum pretium malesuada. In enim massa, convallis sit amet consectetur sit amet, laoreet sed metus. In hac habitasse platea dictumst. Etiam velit nunc, luctus viverra lorem id, consectetur interdum magna. Nam semper arcu id lorem fermentum convallis.
+
+\paragraph{Another Level 4 Heading}
+
+Praesent eu ornare ipsum. Sed mauris tortor, pretium dignissim pellentesque et, pulvinar in augue. Nunc maximus risus diam, in rhoncus augue placerat vitae. Etiam libero quam, mattis ut nulla sed, pellentesque iaculis neque. Vestibulum consectetur ex ipsum, quis fermentum mauris venenatis sit amet. Praesent sed varius nibh, vel suscipit erat. Maecenas dui nibh, interdum et dolor ac, varius fermentum magna. Sed pretium luctus nulla a egestas. Nam ultricies neque sit amet rhoncus lacinia. Vivamus dignissim dictum faucibus. Suspendisse tristique neque nunc, nec cursus leo posuere vitae. Sed iaculis congue pulvinar. Donec bibendum mauris quis tortor sagittis, in sodales ante pharetra. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Cras cursus varius lacinia.
+
+\subsubsection{Another Level 3 Heading}
+
+Nullam id commodo turpis. Pellentesque sed fermentum quam. Aenean ut massa id quam pretium blandit ac in ex. Morbi ultricies tellus magna. Quisque ornare, ligula at tincidunt finibus, justo mauris tristique lectus, at bibendum odio sapien sed ante. Curabitur ultrices pulvinar magna quis feugiat. Suspendisse vehicula ex a sem vehicula convallis. Aliquam ut lacus porttitor, bibendum ex eu, varius lorem. Vestibulum ultricies elementum neque, ac pharetra libero mollis in. Etiam eu mollis nulla, eget blandit elit.
+
+\subsection{Second Level 2 Heading}
+
+Aenean nec ultrices turpis, vitae vehicula felis. Praesent nec nisl ultrices, facilisis arcu ac, ultrices tellus. Sed eget urna dolor. Proin tortor nibh, consequat ac metus ut, molestie mattis nibh. Nullam sit amet felis vel risus sagittis eleifend ut vel enim. Morbi suscipit vestibulum neque sed porta. Morbi eu sodales elit, sed laoreet justo. Ut in tellus egestas, consequat purus et, mattis urna. Proin pretium, eros et consectetur dapibus, arcu mauris sagittis elit, sit amet volutpat urna leo sollicitudin quam. Aenean nec porttitor ante, sit amet bibendum est. Nulla sagittis mattis gravida. Etiam elementum, augue et volutpat placerat, nibh lectus pretium tortor, vitae posuere dui elit eget libero.
+
+\section{Method}
+\label{sec:3}
+
+Aenean egestas, magna vitae venenatis tincidunt, lacus nunc suscipit mauris, eu tincidunt enim nulla et leo. Ut tincidunt ante at mauris semper hendrerit. Nam consectetur aliquet est sit amet accumsan. Pellentesque porta nisl sapien. Ut vel vulputate est. Ut scelerisque nibh eu augue hendrerit condimentum. Nullam vel dolor consectetur, bibendum ligula nec, faucibus nisi. Sed imperdiet eros ante. Morbi tempor sollicitudin commodo.
+
+\subsection{Sample}
+
+Mauris eu efficitur lectus, id suscipit enim. Phasellus justo nunc, gravida sed pulvinar nec, hendrerit quis orci. Nulla quis interdum augue. Vestibulum augue orci, porta nec erat vitae, bibendum ullamcorper massa. Mauris nec orci eros. Proin neque risus, pellentesque vehicula massa vel, pellentesque iaculis odio. Phasellus ullamcorper, elit vitae convallis eleifend, enim diam euismod ligula, vel fringilla risus tortor pulvinar neque. Sed vel faucibus nibh.
+
+\subsection{Measures}
+
+Suspendisse potenti. Quisque nec interdum nunc. Curabitur tempus nibh non magna porttitor sodales. Donec nec lacus nibh. Phasellus pretium vehicula pretium. In vitae libero tempor, ullamcorper massa nec, ultrices nunc. Etiam aliquet, ante sed ultricies viverra, nunc orci volutpat diam, in vulputate ligula tellus at magna. Quisque dignissim sit amet turpis sit amet fermentum.
+
+\subsection{Statistical Analysis}
+
+Phasellus eget lorem vitae ligula ultrices scelerisque. Curabitur lacinia, magna in interdum faucibus, nibh magna vestibulum risus, eget ornare justo ante in ex. Vivamus ullamcorper commodo erat, a iaculis tortor congue scelerisque. Proin posuere, elit nec ultricies mattis, felis tellus scelerisque dui, sed commodo ex urna eget metus. Integer non dolor vel lacus mollis pharetra. Sed viverra mi in ipsum condimentum fringilla. Suspendisse nec eros vitae ligula faucibus posuere. Pellentesque dolor arcu, vestibulum in purus ut, tincidunt iaculis sapien.
+
+\begin{eqn}\label{eq:mcsquare}
+    E=mc^2
+\end{eqn}
+
+Curabitur viverra velit lacus, sed hendrerit augue dictum egestas. Suspendisse ipsum sem, molestie tempus nulla vitae, faucibus rhoncus massa. Aliquam nisl metus, condimentum sit amet rhoncus quis, vulputate imperdiet metus. Nulla sit amet venenatis augue. Aenean vehicula placerat quam, at vestibulum arcu condimentum nec. Donec rutrum, sem in pulvinar condimentum, ligula orci pulvinar dui, eu interdum quam tellus in orci. Nunc ullamcorper nulla condimentum odio sollicitudin ornare. Phasellus ut congue libero. Suspendisse potenti. Nam sollicitudin tempus sapien vitae facilisis. Nullam pharetra sem eget ullamcorper venenatis. Maecenas tempus, eros vel tempus laoreet, risus tortor ultrices diam, a blandit nisl velit non purus. Etiam id rutrum mi (see Equation~\ref{eq:mcsquare}).
+
+\section{Results}
+\label{sec:4}
+
+Donec vitae efficitur sapien. Sed nisl ante, rutrum ac risus nec, mattis facilisis mauris. Quisque eu faucibus nisi, at viverra tortor. Quisque dignissim bibendum venenatis. Aenean in magna in nisi sagittis congue. In iaculis vulputate iaculis. Proin vel vehicula est. Mauris justo eros, tempor at arcu ac, venenatis semper purus. Cras neque diam, rhoncus sit amet diam vitae, ultricies vulputate mauris. Suspendisse nec tincidunt nibh. Nullam nunc lorem, mollis non augue quis, luctus varius nisl. Vestibulum ac nisl ut enim commodo suscipit non a erat. Nunc hendrerit consectetur odio. Proin semper velit eu mauris vestibulum faucibus. Ut venenatis augue et massa viverra tincidunt. Sed venenatis risus id est pretium pretium (see \cref{tab:descriptive}).
+
+Nulla condimentum nec velit sed mattis. Duis congue ut erat eget malesuada. Proin eget lorem sodales, varius dolor ut, vestibulum arcu. Praesent risus enim, hendrerit ut malesuada ut, vulputate posuere lectus. Nullam imperdiet malesuada tempus. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. In facilisis ligula a facilisis sagittis. Quisque risus ligula, vulputate eu mi quis, dapibus finibus lacus. Phasellus eu lacus non justo facilisis lacinia. Donec imperdiet mi ligula, eget gravida orci aliquam id. Nam tincidunt, nibh in scelerisque pellentesque, felis velit tempor quam, id feugiat augue libero quis diam. Morbi convallis id lorem ut lacinia. Suspendisse potenti. Nunc mattis nulla interdum nisi imperdiet ornare. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos.
+
+% Table generated by Excel2LaTeX from sheet 'Sheet2'
+\MAEltable{tab:descriptive}{Descriptive Statistics}{
+    \begin{tabular}{llrr c@{\hskip 7.5mm} rrr c@{\hskip 7.5mm} rrrr}
+    \toprule
+    \multicolumn{1}{c}{Analysis} & \multicolumn{1}{c}{Variable} & \multicolumn{1}{c}{Non-missing} & \multicolumn{1}{c}{Missing} &   &&&   &  && \multicolumn{1}{c}{Excess} &     &  \\
+    \multicolumn{1}{c}{level} & \multicolumn{1}{c}{label} & \multicolumn{1}{c}{sample size} & \multicolumn{1}{c}{rate (\%)$\, ^\text{a}$} &       & \multicolumn{1}{c}{Median} & \multicolumn{1}{c}{$M$} & \multicolumn{1}{c}{$SD$} &       & \multicolumn{1}{c}{Skewness} & \multicolumn{1}{c}{Kurtosis} & \multicolumn{1}{c}{Minimum} & \multicolumn{1}{c}{Maximum} \\
+    \midrule
+    Student & {FLSCHOOL} & 96435 & 10.01 &       & 0.126 & 0.018 & 1.020 &       & 0.189 & $-$0.343 & $-$1.564 & 2.317 \\
+    (within, $L1$) & {FLFAMILY} & 95133 & 11.23 &       & 0.011 & 0.064 & 1.044 &       & 0.121 & 0.030 & $-$2.042 & 2.452 \\
+    & {NOBULLY} & 83499 & 22.08 &       & 0.782 & $-$0.059 & 1.054 &       & $-$1.078 & 0.664 & $-$3.859 & 0.782 \\
+    & {ESCS}  & 104784 & 2.22  &       & $-$0.158 & $-$0.241 & 1.088 &       & $-$0.533 & 0.184 & $-$7.711 & 4.234 \\
+    & {FCFMLRTY} & 99969 & 6.71  &       & 7.000 & 7.049 & 5.455 &       & 0.223 & $-$1.039 & 0.000 & 18.000 \\
+    & {FLCONFIN} & 90130 & 15.89 &       & $-$0.027 & $-$0.072 & 1.017 &       & $-$0.084 & 0.355 & $-$2.210 & 2.322 \\
+    & {FLIT}$\, ^\text{b}$  & 107162 & 0.00  &       & 481.970 & 478.291 & 97.074 &       & $-$0.089 & $-$0.340 & 114.256 & 827.977 \\
+    &       &       &       &       &       &       &       &       &       &       &       &\\
+    School & {EDUSHORT} & 6346  & 4.30  &       & 0.100 & 0.131 & 1.036 &       & 0.341 & $-$0.188 & $-$1.421 & 2.959 \\
+    (between, $L2$) & {STRATIO} & 5626  & 15.16 &       & 11.886 & 13.873 & 10.171 &       & 4.021 & 25.425 & 1.000 & 100.000 \\
+    \bottomrule
+    \end{tabular}
+}{$^\text{a}$ Missing rates were computed based on $n_{L1} = 107,162$ students and $n_{L2} = 6,631$ schools. $^\text{b}$ {FLIT} was obtained by averaging ten plausible values {PV1FLIT} to {PV10FLIT}.}
+
+\subsection{A Generic Level 2 Heading}
+
+Suspendisse laoreet, tortor nec interdum malesuada, risus tortor malesuada leo, sit amet blandit ligula turpis vitae lectus. Morbi ut mauris dapibus, placerat orci in, ullamcorper erat. Pellentesque lacinia a odio tristique imperdiet. Nullam pulvinar sollicitudin arcu ut sagittis. Vestibulum mattis justo vel nibh ultricies dictum. Ut rhoncus tortor vitae quam viverra congue. Morbi lobortis tortor et lacinia vestibulum (see \cref{fig:simple}).
+
+\MAEptikz{fig:simple}{Model Diagram}{
+\begin{tikzpicture}[
+    latvar/.style={ellipse,draw=black,minimum width=1cm,minimum height=1cm},
+    manvar/.style={rectangle,draw=black,minimum width=2cm,minimum height=2cm},
+    ->,>=stealth',semithick,
+    bend angle=-45,
+    decoration={
+        zigzag,
+        amplitude=1pt,
+        segment length=1mm,
+        post=lineto,
+        post length=4pt
+    }
+]
+
+% MODEL DIAGRAM
+
+%%%%% Structural part %%%%%
+
+% Draw latent variables
+    \node[manvar] (X) at (1,1) {$X$};
+    \node[manvar] (Y) at (8,1) {$Y$};
+    \node[manvar] (Z) at (15,1) {$Z$};
+
+% Link latent variables
+    \draw[->] (X.east) to (Y.west);
+    \draw[->] (Y.east) to (Z.west);
+
+\end{tikzpicture}
+}{A simple diagram.}
+
+Aenean cursus fringilla maximus. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer semper est velit, nec hendrerit nisl convallis ut. Donec ornare leo quis egestas elementum. Curabitur vulputate accumsan odio, et lacinia erat porttitor sit amet. Duis orci sapien, tincidunt sodales malesuada vitae, tempor sed nibh. Praesent sed aliquam libero.
+
+\subsection{Another Generic Level 2 Heading}
+
+Fusce quis erat nec magna porta ornare. Praesent efficitur sapien hendrerit, lobortis nisi et, convallis tellus. Aenean convallis rutrum pretium. Fusce malesuada sapien quis magna dictum, et placerat tellus placerat. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse consectetur non diam non posuere. Aenean erat risus, vestibulum vel eleifend a, vehicula et justo. Cras magna tellus, consequat eu tortor at, euismod maximus dolor.
+
+\section{Discussion}
+\label{sec:5}
+
+Donec sapien tellus, dignissim sit amet dolor et, interdum vulputate justo. Mauris eget pellentesque felis. Suspendisse sollicitudin et augue vel molestie. Praesent pharetra pellentesque urna non ultrices. Etiam diam nulla, efficitur rutrum finibus ut, dapibus ut tellus. Vivamus eget est sit amet risus molestie gravida ut ut odio. In id libero semper, dapibus sem nec, vehicula ante. Morbi hendrerit augue egestas congue vulputate. In non maximus justo. Donec at tortor a dui ultricies convallis condimentum quis tellus. In auctor aliquam rutrum. Quisque vehicula justo sit amet arcu lobortis, consectetur condimentum velit tempor. Aliquam ullamcorper est id eleifend maximus. Curabitur vulputate diam in velit tempus commodo.
+
+\subsection{Conclusion}
+
+Donec venenatis ipsum quis consectetur pellentesque. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris luctus, lacus quis rutrum malesuada, sapien mi semper sem, mattis blandit purus dolor efficitur metus. Aenean scelerisque ipsum sit amet urna volutpat lacinia. Vestibulum sagittis rutrum mattis. Aliquam tortor odio, finibus eget erat ut, vehicula hendrerit est. Cras pharetra volutpat est, maximus viverra elit accumsan sit amet. Donec quis dui id augue dapibus tincidunt ac vitae eros. Sed gravida condimentum ligula, vel semper libero sollicitudin id. Donec ac ipsum vulputate, consectetur massa nec, vehicula risus. Pellentesque vitae ullamcorper nunc, vel elementum tellus. Donec aliquam, turpis nec congue luctus, magna tellus dictum sem, non tempor ipsum felis eu lectus. Curabitur id commodo est, sit amet tempor odio. Vivamus fermentum scelerisque vehicula. Ut viverra gravida nulla, a tempor nunc varius tempor.
 
 \printbibliography
 
 \appendix
 
-\include{./Appendices/A.tex}
+\include{A.tex}
 
-\include{./Appendices/B.tex}
+\include{B.tex}
 
-\include{./Appendices/C.tex}
+\include{C.tex}
 
 \end{document}

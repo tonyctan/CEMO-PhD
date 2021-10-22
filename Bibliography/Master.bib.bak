@@ -4869,7 +4869,7 @@
   year    = {2010},
 }
 
-@Article{1974,
+@Article{lord:1974,
   author  = {Frederic M. Lord},
   doi     = {10.1007/bf02291471},
   journal = {Psychometrika},
@@ -4878,6 +4878,20 @@
   title   = {Estimation of latent ability and item parameters when there are omitted responses},
   volume  = {39},
   year    = {1974},
+  file    = {Estimation of latent ability and item parameters when there are omitted responses:Lord (1974).pdf:PDF},
+}
+
+@Article{enders:2004,
+  author       = {Craig K. Enders},
+  doi          = {10.1177/0013164403261050},
+  journaltitle = {Educational and Psychological Measurement},
+  number       = {3},
+  pages        = {419--436},
+  title        = {The impact of missing data on sample reliability estimates: Implications for reliability reporting practices},
+  volume       = {64},
+  date         = {2004-06},
+  file         = {The impact of missing data on sample reliability estimates\: Implications for reliability reporting practices:M\:/pc/Dokumenter/PhD/Articles/Enders (2004).pdf:PDF},
+  publisher    = {{SAGE} Publications},
 }
 
 @Comment{jabref-meta: databaseType:biblatex;}

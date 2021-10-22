@@ -4895,13 +4895,15 @@
 }
 
 @Article{lord:1983,
-  author = {Frederic M. Lord},
-  doi    = {10.1007/bf02293689},
-  number = {3},
-  pages  = {477--482},
-  title  = {Maximum likelihood estimation of item response parameters when some responses are omitted},
-  volume = {48},
-  year   = {1983},
+  author       = {Frederic M. Lord},
+  doi          = {10.1007/bf02293689},
+  journaltitle = {Psychometrika},
+  number       = {3},
+  pages        = {477--482},
+  title        = {Maximum likelihood estimation of item response parameters when some responses are omitted},
+  volume       = {48},
+  year         = {1983},
+  file         = {Maximum likelihood estimation of item response parameters when some responses are omitted:M\:/pc/Dokumenter/PhD/Articles/Lord (1983).pdf:PDF},
 }
 
 @Comment{jabref-meta: databaseType:biblatex;}

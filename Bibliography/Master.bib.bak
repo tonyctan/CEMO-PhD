@@ -2691,15 +2691,17 @@
   title     = {Applications of item response theory to practical testing problems},
   year      = {1980}
 }
-@article{lord:1983,
+
+@Article{lord:1983,
   author  = {Frederic M. Lord},
   doi     = {10.1007/bf02293689},
-  number  = {3},
   journal = {psychometrika},
+  number  = {3},
   pages   = {477--482},
   title   = {Maximum likelihood estimation of item response parameters when some responses are omitted},
   volume  = {48},
-  year    = {1983}
+  year    = {1983},
+  file    = {Maximum likilihood estimation of item response parameters when some responses are omitted:Lord (1983).pdf:PDF},
 }
 @thesis{loux:2021,
   author     = {Matthew D. Loux},
@@ -4929,6 +4931,52 @@
   year      = {1995},
 }
 
+@Article{gelman:2005,
+  author  = {Andrew Gelman and Iven {van Mechelen} and Geert Verbeke and Daniel F. Heitjan and Michel Meulders},
+  doi     = {10.1111/j.0006-341x.2005.031010.x},
+  journal = {Biometrics},
+  pages   = {74--85},
+  title   = {Multiple Imputation for Model Checking: Completed-Data Plots with Missing and Latent Data},
+  volume  = {61},
+  year    = {2005},
+  file    = {Multiple imputation for model checking\: Completed-data plots with missing and latent data:Gelman, van Mechelen, Verbeke, Heitjan & Meulders (2005).pdf:PDF},
+}
+
+@Article{zhang:2003,
+  author  = {Paul Zhang},
+  issue   = {3},
+  journal = {International Statistical Review},
+  pages   = {581--592},
+  title   = {Multiple imputation: Theory and method},
+  volume  = {71},
+  year    = {2003},
+  url     = {https://www.jstor.org/stable/1403830},
+  file    = {Multiple imputation\: Theory and method:Zhang (2003).pdf:PDF},
+}
+
+@Article{reiter:2006,
+  author  = {Jerome P. Reiter and Trivellore E. Raghunathan and Satkartar K. Kinney},
+  issue   = {2},
+  journal = {Survey Methodology},
+  pages   = {143--149},
+  title   = {The importance of modeling the sampling design in multiple imputation for missing data},
+  volume  = {32},
+  year    = {2006},
+  url     = {https://www.researchgate.net/profile/Marcin-Kozak-2/publication/237012499_Geometric_versus_optimization_approach_to_stratification_A_comparison_of_efficiency/links/02e7e52ce3d377a964000000/Geometric-versus-optimization-approach-to-stratification-A-comparison-of-efficiency.pdf#page=29},
+  file    = {The importance of modeling the sampling design in multiple imputation for missing data:Reiter, Raghunathan & Kinney (2003).pdf:PDF},
+}
+
+@Article{ghoshdastidar:2003,
+  author  = {Bonnie Ghosh-Dastidar and Joseph L Schafer},
+  doi     = {10.1198/016214503000000738},
+  issue   = {464},
+  journal = {Journal of the American Statistical Association},
+  pages   = {807--817},
+  title   = {Multiple Edit/Multiple Imputation for Multivariate Continuous Data},
+  volume  = {98},
+  year    = {2003},
+}
+
 @Comment{jabref-meta: databaseType:biblatex;}
 
-@Comment{jabref-entrytype: presentation: req[doi;author;title;titleaddon;eventtitle;venue;eventdate] opt[subtitle;url]}
+@Comment{jabref-entrytype: presentation: req[doi;author;title;titleaddon;eventtitle;venue;eventdate] opt[subtitle]}

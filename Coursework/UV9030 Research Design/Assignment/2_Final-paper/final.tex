@@ -1,6 +1,6 @@
 \documentclass[
     a4paper,            % Paper size
-    11pt,               % Font size
+    12pt,               % THIS ASSIGNMENT REQUIRES 12PT
     stu,                % Format as assignment
 %   donotrepeattitle,   % Start body text without repeating title
     noextraspace,       % Reduce spaces between section header and text
@@ -16,6 +16,13 @@
     bookmarksnumbered=true  % Keep section number in bookmarks
 ]{apa7}
 
+% THIS ASSIGNMENT REQUIRES 2 CM MARGINS ON ALL FOUR SIDES
+\usepackage[margin=2cm]{geometry}
+
+% THIS ASSIGNMENT REQUIRES 1.5 SPACING
+\usepackage{setspace}
+\setstretch{1.5}
+
 % Avoid breaking a word into two lines
 \usepackage[none]{hyphenat}
 
@@ -29,10 +36,6 @@
 % Insert images
 \usepackage{graphicx}
 
-% Change line spacing
-\usepackage{setspace}
-\setstretch{1.5}
-
 \usepackage[nameinlink,noabbrev,capitalise]{cleveref}
 
 % Package biblatex has already been loaded by apa7.
@@ -40,15 +43,38 @@
 \addbibresource{../../../../Bibliography/Master.bib}
 \newcommand{\poscite}[1]{\citeauthor{#1}'s (\citeyear{#1})}
 
-\title{A Comparison between Qualitative and Quantitative Approaches to Assessment Fairness}
+\title{A Comparison between Qualitative and Quantitative Approaches\\
+to Assessment Fairness}
 \author{Tony C. A. Tan}
-\affiliation{Centre for Educational Measurement, University of Oslo}
+\affiliation{{Centre for Educational Measurement, University of Oslo}}
 \course{UV9030 Research Design}
 \professor{Prof {\O}istein Anmarkrud \& Prof Marte Blikstad-Balas}
 \duedate{30 October 2021}
 
 \begin{document}
 \maketitle
+
+% Formal Requirement
+
+% A 5-pge paper (12 font, 1.5 line spacing, 2 cm margins) in which the candidate compares and contrasts two published studies that use different designs to approach the same topic. Submitted assignment prior to and during the course and participation must be completed (80% attendance is required). Grades are awarded on a pass/fail scale.
+
+% Assessment Criteria
+
+% The two selected studies are deemed to be of high-quality and are published after 2005. Please note that the research designs in the two studies must be different, but that does not mean that choosing one qualitative (or mixed methods) and one quantitative study is the only option.
+
+% A rationale, grounded in issues related to the research designs and own research area, is offered for the selection of studies.
+
+% The two selected studies are described in a short and precise manner, offering sufficient detail on the research design (e.g., purpose statement, methodolody, analytic approach) and findings.
+
+% The candidate should clearly define and articulate the main aspects of the research design that will be addressed int he paper.
+
+% The quality of th research design is evaluated both separately and across the two studies.
+
+% The research designs are discussed in light of world views (their epistemological foundations), the strengths and limitations of different research designs in relation to the area of investigation and how different research designs compliment and challenge the knowledge development within a field.
+
+% Candidates should be able to offer nuanced discussions of the different research designs by demonstrating the ability to navigate both insider and outsider perspectives.
+
+% The candiate should demonstrate an understanding of how to evaluate research designs throughout the argumentation (in the selection of studies, use of definitions and argumentation) in order to pass.
 
 \section{Background and Rationale}
 

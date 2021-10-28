@@ -3149,13 +3149,14 @@
   volume  = {1987},
   year    = {1987},
 }
-@techreport{mislevy:1988,
-  author      = {Robert J. Mislevy and Pao-Kuei Wu},
-  institution = {Educational Testing Service},
-  title       = {Inferring examinee ability when some item responses are missing},
-  year        = {1988},
-  doi         = {10.1002/j.2330-8516.1988.tb00304.x},
-  file        = {Inferring examinee ability when some item responses are missing:Mislevy & Wu (1988).pdf:PDF}
+
+@Book{mislevy:1988,
+  author    = {Robert J. Mislevy and Pao-Kuei Wu},
+  publisher = {Educational Testing Service},
+  title     = {Inferring examinee ability when some item responses are missing},
+  doi       = {10.1002/j.2330-8516.1988.tb00304.x},
+  file      = {Inferring examinee ability when some item responses are missing:Mislevy & Wu (1988).pdf:PDF},
+  year      = {1988},
 }
 @article{mislevy:1992,
   author  = {Robert J. Mislevy and Eugene G. Johnson and Eiji Muraki},

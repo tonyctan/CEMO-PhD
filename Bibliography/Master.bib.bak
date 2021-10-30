@@ -4168,13 +4168,13 @@
   url       = {https://www.ssb.no/en/utdanning/videregaende-utdanning/statistikk/gjennomforing-i-videregaende-opplaering}
 }
 
-@book{standards:2014,
+@Book{standards:2014,
   author    = {{AERA} and {APA} and {NCME}},
-  publisher = {American Educational Research Association},
+  publisher = {{American Educational Research Association} and {American Psychological Association} and {National Council on Measurement in Education}},
   title     = {Standars for educational and psychological testing},
   url       = {https://www.testingstandards.net/uploads/7/6/6/4/76643089/standards_2014edition.pdf},
   file      = {Standards for educational and psychological testing:Standards (2014).pdf:PDF},
-  year      = {2014}
+  year      = {2014},
 }
 
 @inproceedings{stanisavjevic:2018,
@@ -5018,6 +5018,36 @@
   year      = {2021},
   file      = {Reporting proficiency levels for examinees with incomplete data:Sinharay (2021).pdf:PDF},
   publisher = {American Educational Research Association ({AERA})},
+}
+
+@Article{willingham:2002,
+  author  = {Warren W. Willingham and Judith M. Pollack and Charles Lewis},
+  doi     = {10.1111/j.1745-3984.2002.tb01133.x},
+  journal = {Journal of Educational Measurement},
+  number  = {1},
+  pages   = {1--37},
+  title   = {Grades and test scores: Accounting for observed differences},
+  volume  = {39},
+  year    = {2002},
+  file    = {Grades and test scores\: Accounting for observed differences:Willingham, Pollack, & Lewis (2002).pdf:PDF},
+}
+
+@Article{tierney:2014,
+  author  = {Robin D. Tierney},
+  doi     = {10.1016/j.stueduc.2013.12.003},
+  journal = {Studies in Educational Evaluation},
+  pages   = {55--69},
+  title   = {Fairness as a multifaceted quality in classroom assessment},
+  volume  = {43},
+  year    = {2014},
+}
+
+@Book{creswell:2018,
+  author    = {John W. Creswell and J. David Creswell},
+  publisher = {SAGE},
+  title     = {Research design},
+  edition   = {5th ed.},
+  year      = {2018},
 }
 
 @Comment{jabref-meta: databaseType:biblatex;}

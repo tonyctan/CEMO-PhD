@@ -2693,7 +2693,7 @@
 @Article{lord:1983,
   author  = {Frederic M. Lord},
   doi     = {10.1007/bf02293689},
-  journal = {psychometrika},
+  journal = {Psychometrika},
   number  = {3},
   pages   = {477--482},
   title   = {Maximum likelihood estimation of item response parameters when some responses are omitted},

@@ -5095,6 +5095,18 @@
   file    = {Reduce, reuse, recycle\: Issues in the secondary use of research data:Law (2006).pdf:PDF},
 }
 
+@Article{crow:2006,
+  author  = {Graham Crow and Rose Wiles and Sue Heath and Vikki Charles},
+  doi     = {10.1080/13645570600595231},
+  journal = {International Journal of Social Research Methodology},
+  number  = {2},
+  pages   = {83--95},
+  title   = {Research Ethics and Data Quality: The Implications of Informed Consent},
+  volume  = {9},
+  year    = {2006},
+  file    = {Research ethics and data quality\: The implications of informed consent:Crow, Wiles, Heath, & Charles (2006).pdf:PDF},
+}
+
 @Comment{jabref-meta: databaseType:biblatex;}
 
 @Comment{jabref-entrytype: presentation: req[doi;author;title;titleaddon;eventtitle;venue;eventdate] opt[subtitle;url]}

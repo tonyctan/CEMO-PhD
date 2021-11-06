@@ -5107,6 +5107,29 @@
   file    = {Research ethics and data quality\: The implications of informed consent:Crow, Wiles, Heath, & Charles (2006).pdf:PDF},
 }
 
+@Article{phillips:2017,
+  author  = {Amicia Phillips and Pascal Borry and Mahsa Shabani},
+  doi     = {10.1080/08989621.2017.1396896},
+  journal = {Accountability in Research},
+  number  = {8},
+  pages   = {483--496},
+  title   = {Research ethics review for the use of anonymized samples and data: A systematic review of normative documents},
+  volume  = {24},
+  year    = {2017},
+  file    = {Research ethics review for the use of anonymized samples and data\: A systematic review of normative documents:Phillips, Borry, & Shabani (2017).pdf:PDF},
+}
+
+@Article{rothstein:2010,
+  author  = {Mark A. Rothstein},
+  doi     = {10.1080/15265161.2010.494215},
+  journal = {The American Journal of Bioethics},
+  number  = {9},
+  pages   = {3--11},
+  title   = {Is deidentification sufficient to protect health privacy in research?},
+  volume  = {10},
+  year    = {2010},
+}
+
 @Comment{jabref-meta: databaseType:biblatex;}
 
-@Comment{jabref-entrytype: presentation: req[doi;author;title;titleaddon;eventtitle;venue;eventdate] opt[subtitle;url]}
+@Comment{jabref-entrytype: presentation: req[doi;author;title;titleaddon;eventtitle;venue;eventdate] opt[subtitle]}

@@ -14,14 +14,12 @@ jupyter:
     name: ir
 ---
 
-
 # Lab: Introduction to R
 
 In this lab, we will introduce some simple `R` commands. The best way to learn a new language
 is to try out the commands. `R` can be downloaded from
 
 `http://cran.r-project.org/`
-
 
 We recommend that you run `R` within an integrated development environment (IDE) such as `RStudio`, which can be freely downloaded from
 
@@ -59,7 +57,6 @@ length(y)
 x + y
 ```
 
-
 The `ls()` function allows us to look at a list of all of the objects, such as data and functions, that we have saved so far. The `rm()` function can be used to delete any that we don't
 want.
 
@@ -74,7 +71,6 @@ It's also possible to remove all objects at once:
 ```{r chunk5}
 rm(list = ls())
 ```
-
 
 The `matrix()` function can be used to create a matrix of numbers.
 Before we use the `matrix()` function, we can learn more about it:
@@ -107,12 +103,10 @@ Notice that in the above command we did not assign the matrix to a value such as
 The `sqrt()` function returns the square root of each element of a vector or matrix. The command
 `x^2` raises each element of `x` to the power `2`; any powers are possible, including fractional or negative powers.
 
-
 ```{r chunk10}
 sqrt(x)
 x^2
 ```
-
 
 The `rnorm()` function generates a vector of random
 normal variables, with first argument `n` the sample size.  Each
@@ -120,7 +114,6 @@ time we call this function, we will get a different answer. Here we
 create two correlated sets of numbers, `x` and `y`, and use
 the `cor()` function to compute the correlation between
 them.
-
 
 ```{r chunk11}
 x <- rnorm(50)
@@ -149,7 +142,6 @@ var(y)
 sqrt(var(y))
 sd(y)
 ```
-
 
 ## Graphics
 
@@ -190,13 +182,12 @@ x
 x <- seq(-pi, pi, length = 50)
 ```
 
-
 We  will now create some more sophisticated plots. The `contour()` function produces a  in order to represent three-dimensional data; it is  like a topographical map.
  It takes three arguments:
- 
- *  A vector of the `x` values (the first dimension),
- * A vector of the `y` values (the second dimension), and
- * A matrix whose elements correspond
+
+* A vector of the `x` values (the first dimension),
+* A vector of the `y` values (the second dimension), and
+* A matrix whose elements correspond
  to the `z` value (the third dimension) for each pair of (`x`, `y`) coordinates.
 
 As with the  `plot()` function, there are many other inputs that can be used to fine-tune the output of the `contour()` function. To learn more about these, take a look at  the help file by typing `?contour`.
@@ -210,7 +201,6 @@ fa <- (f - t(f)) / 2
 contour(x, y, fa, nlevels = 15)
 ```
 
-
 The `image()` function works the same way as `contour()`, except that it produces a color-coded plot whose colors depend on the `z` value. This is
  known as a , and is sometimes used to plot temperature in weather forecasts. Alternatively, `persp()` can be used to produce a three-dimensional plot.
  The arguments `theta` and `phi` control the angles at which the plot is viewed.
@@ -223,7 +213,6 @@ persp(x, y, fa, theta = 30, phi = 20)
 persp(x, y, fa, theta = 30, phi = 70)
 persp(x, y, fa, theta = 30, phi = 40)
 ```
-
 
 ## Indexing Data
 
@@ -269,10 +258,9 @@ The `dim()` function outputs the number of rows followed by the number of column
 dim(A)
 ```
 
-
 ## Loading Data
 
-For most analyses, the first step involves importing a data set into `R`. 
+For most analyses, the first step involves importing a data set into `R`.
  The `read.table()` function is one of the primary ways to do this. The help file contains details about how to use this function.
 We can use the function `write.table()` to export data.
 
@@ -299,7 +287,7 @@ software such as Excel before loading it into `R`.
 This particular data  set has not been loaded correctly, because `R` has assumed that the variable names are part of the data and so has included them in the first row. The data set also includes a number of missing observations, indicated by
 a question mark `?`. Missing values are a common occurrence in real data sets. Using the option `header = T` (or `header = TRUE`) in the `read.table()` function
 tells `R` that the first line of the file contains the variable names, and using the option `na.strings` tells `R` that any time it sees a particular character or set of characters (such as a question mark), it should
-be treated as a missing element of the data matrix. 
+be treated as a missing element of the data matrix.
 
 ```{r chunk26}
 Auto <- read.table("Auto.data", header = T, na.strings = "?", stringsAsFactors = T)
@@ -324,13 +312,11 @@ Auto <- na.omit(Auto)
 dim(Auto)
 ```
 
-
 Once the data are loaded correctly, we can use `names()` to check the variable names.
 
 ```{r chunk29}
 names(Auto)
 ```
-
 
 ## Additional Graphical and Numerical Summaries
 
@@ -342,7 +328,7 @@ plot(cylinders, mpg)
 ```
 
 To refer to a variable, we must type the data set and the variable name  joined with a \textR{\$} symbol.
- Alternatively, we can use the `attach()`  function in order to tell `R` to make the variables in this data frame available by name. 
+ Alternatively, we can use the `attach()`  function in order to tell `R` to make the variables in this data frame available by name.
 
 ```{r chunk31}
 plot(Auto$cylinders, Auto$mpg)
@@ -388,7 +374,6 @@ pairs(
   )
 ```
 
-
 In conjunction with the `plot()` function,  `identify()` provides a useful interactive method for identifying the value of a particular variable for points on a plot. We pass in three arguments to `identify()`: the $x$-axis variable, the $y$-axis variable, and the variable whose values we would like to see printed for each point. Then clicking one or more  points in the plot and hitting Escape will cause `R` to print the values of the variable of interest. The numbers printed under the `identify()` function correspond to the rows for the selected points.
 
 ```{r chunk36}
@@ -408,14 +393,9 @@ For qualitative variables such as `name`,  `R` will list the number of observati
 summary(mpg)
 ```
 
-
-
-
 Once we have finished using `R`, we type `q()` in order to shut it down, or quit.
 When exiting `R`, we have the option to save the current  so that all
 objects (such as data sets)
 that we have created in this `R` session will be available next time.
  Before exiting `R`, we may want to save a record of all of the commands that we typed in the most recent session; this can be accomplished using the `savehistory()` function. Next time we enter `R`, we can load that history using
-the `loadhistory()` function, if we wish. 
-
-
+the `loadhistory()` function, if we wish.

@@ -5128,6 +5128,18 @@
   title   = {Is deidentification sufficient to protect health privacy in research?},
   volume  = {10},
   year    = {2010},
+  file    = {Is deidentification sufficient to protect health privacy in research?:Rothstein (2010).pdf:PDF},
+}
+
+@Article{mandmaa:2021,
+  author  = {Sirli M{\"a}ndmaa},
+  doi     = {10.15604/ejss.2021.09.03.003},
+  journal = {Eurasian Journal of Social Sciences},
+  number  = {3},
+  pages   = {150--175},
+  title   = {Financial education from the perspective of university students: Comparative Study},
+  volume  = {9},
+  year    = {2021},
 }
 
 @Comment{jabref-meta: databaseType:biblatex;}

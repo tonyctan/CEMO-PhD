@@ -1,13 +1,11 @@
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%%%% Re-generate thesis title %%%%%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-\usepackage{authoraftertitle}
-\setlength\parindent{0 pt}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%% General formatting %%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% Johan wants Times New Roman rather than the default LaTeX font
+\usepackage{mathptmx}
+%\usepackage{newtxtext}
 
 % Inserts a blank page (so that next part starts on right)
 \usepackage{emptypage}
@@ -654,7 +652,7 @@
 
 % Package biblatex has already been loaded by apa7.
 % Only need to specify the bib library
-\addbibresource{./Bibliography/Master.bib}
+\addbibresource{Main.bib}
 
 % Possesive cite:
 \newcommand{\poscite}[1]{\citeauthor{#1}'s (\citeyear{#1})}
@@ -663,6 +661,9 @@
 %%%%%%%%%%%%%%%%%%%%%%
 %%%%% Appendices %%%%%
 %%%%%%%%%%%%%%%%%%%%%%
+
+% Change Appendix A B C to I II III because Johan said so
+\renewcommand{\theappendix}{\Roman{appendix}}
 
 %% Include PDF pages in the current file
 \usepackage{pdfpages} %//tip Must load this package AFTER xcolor

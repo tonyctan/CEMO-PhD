@@ -1,5 +1,3 @@
-
-
 # %%
 # Data import
 import pandas as pd

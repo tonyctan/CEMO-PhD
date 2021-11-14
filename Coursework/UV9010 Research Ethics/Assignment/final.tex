@@ -1,27 +1,27 @@
 \documentclass[
     % Specify apa7 options
-    a4paper, % Use A4 paper
-    12pt, % APA7 Rule 2.19 10pt Computer Modern too small. Change to 11pt.
-    stu, % All CEMO thesis must be compiled using student paper mode.
-%    donotrepeattitle, % Will generate heading in Section 1 myself.
-    noextraspace, % Make section headings and text closer and nicer.
-    floatsintext, % Insert tables and figures in the body of the thesis.
-    biblatex, % Use BibLaTeX as the engine.
-    twoside % Prepare LaTeX for open-right
+        a4paper, % Use A4 paper
+        12pt, % APA7 Rule 2.19 10pt Computer Modern too small. Change to 11pt.
+        stu, % All CEMO thesis must be compiled using student paper mode.
+%        donotrepeattitle, % Will generate heading in Section 1 myself.
+        noextraspace, % Make section headings and text closer and nicer.
+        floatsintext, % Insert tables and figures in the body of the thesis.
+        biblatex, % Use BibLaTeX as the engine.
+        twoside, % Prepare LaTeX for open-right
     % Specify hyperref options
-    colorlinks=true,        % Colour all links
-    linkcolor=black,          % Cross-references in red
-    anchorcolor=black,      % Keep anchors black
-    citecolor=black,         % In-text-referencs in blue
-    urlcolor=black,          % DOIs and URLs are in blue
-    bookmarks=true,         % Generate bookmarks for PDF readers
-    bookmarksopen=false,    % Expand all bookmarks as default
-    bookmarksnumbered=true,  % Keep section number in bookmarks
+        colorlinks=true,        % Colour all links
+        linkcolor=red,          % Cross-references in red
+        anchorcolor=red,      % Keep anchors black
+        citecolor=blue,         % In-text-referencs in blue
+        urlcolor=blue,          % DOIs and URLs are in blue
+        bookmarks=true,         % Generate bookmarks for PDF readers
+        bookmarksopen=false,    % Expand all bookmarks as default
+        bookmarksnumbered=true,  % Keep section number in bookmarks
     % Specify xcolor options
-    dvipsnames
+        dvipsnames
 ]{apa7}
 
-\title{The Ethical Dilemma of Reidentification of Registry Data}
+\title{Ethics Considerations for Conducting Secondary Data Analyses}
 \author{Tony Tan}
 \affiliation{{Centre for Educational Measurement, University of Oslo}}
 \course{UV9010 Research Ethics}
@@ -29,7 +29,6 @@
 \duedate{15 November 2021}
 
 \usepackage{/home/tony/tt}
-%\usepackage{tt}
 
 \begin{document}
 \maketitle
@@ -40,7 +39,7 @@
 
 %//mark The essay must discuss one ethical issue relevant ot the student's PhD project
 %//mark The selected ethical issue must be clearly defined and explained.
-%//mark The essay must identify ethical guidelines and procedures relevant for the selected ethical issue.
+%//mark The essay must identify ethical guidelines andsp procedures relevant for the selected ethical issue.
 %//mark The essay must refer to methodological and theoretical literature where relevant.
 %//mark Strong essays will critically reflect upon the theory and philosophy of ethics.
 %//mark Strong essays will show a clear connection between theory of ethics and ethical conduct in research in the discussion of the selected ethical issue.
@@ -54,18 +53,36 @@ Donec lectus arcu, convallis nec sem bibendum, hendrerit blandit purus. Fusce ni
 
 Donec bibendum ultricies lacinia. Praesent faucibus urna sit amet turpis laoreet, nec congue odio tempus. Quisque interdum, tortor eget bibendum finibus, augue enim faucibus odio, a pharetra mauris est ac libero. Ut efficitur ante sed turpis lacinia ultrices. Sed vulputate, eros non bibendum lacinia, purus ligula tincidunt odio, consequat commodo ex lectus vitae quam. Etiam leo magna, interdum vitae viverra non, pharetra quis ex. In aliquam quam ut enim vestibulum, eu sodales ligula efficitur. In pellentesque suscipit ex ac varius. Praesent in consequat libero. Sed nec molestie ligula. Proin in lectus vehicula, luctus erat id, pretium nunc.
 
-\section{Norway's Registry Data System}
+\section{Ethics Principles and Informed Consent}
 
-Vestibulum at venenatis tortor. Integer maximus nulla nibh. Ut a volutpat dolor, et lacinia nunc. Duis lobortis turpis ut justo egestas condimentum. Mauris tempus maximus enim nec facilisis. Maecenas at leo eu velit gravida porta. Duis euismod at neque eget facilisis. Curabitur fringilla, ante sit amet vestibulum lacinia, eros tellus dapibus turpis, a pulvinar libero lectus sed nisl. Suspendisse et purus ligula. Pellentesque iaculis mollis ex, vel ornare urna. Nunc eleifend velit sapien, nec efficitur est viverra id. Interdum et malesuada fames ac ante ipsum primis in faucibus. Cras tincidunt arcu ac dignissim lobortis. Nam placerat at enim vel dapibus.
+\subsection{Anonymous vs Anonmised Data}
 
-Duis at tortor felis. Donec aliquet odio eros, eget gravida odio pharetra in. Aenean turpis risus, pulvinar in bibendum in, mattis tincidunt quam. In egestas nisl eu orci porttitor, blandit tincidunt leo ullamcorper. Morbi euismod lobortis neque, quis egestas arcu pretium a. Curabitur ac efficitur justo. Maecenas a orci in nunc viverra consequat vel dictum mi. Ut vel mauris quis magna sollicitudin mattis. Vivamus sed dolor nisi. Phasellus auctor, est vel pharetra ornare, risus eros vulputate mi, non porta mauris ipsum ut enim. Nullam laoreet scelerisque est, ut maximus nisl finibus a. Fusce vel felis nisl.
+A review of international policy documentations revealed a lack of consistency over terminology and standards. Phillips and colleagues (\citeyear{phillips:2017}) reviewed 22 policy documents covering both international- (e.g., the European Union) and national-level (e.g., Australia, Canada, the UK and the USA) directives on research ethics.
 
-Donec velit turpis, tempor finibus sem in, ultricies egestas nisi. Cras porta, urna ac aliquet ultricies, enim est sodales elit, ut ultricies metus sem vel leo. Nunc commodo diam sem, sit amet lobortis erat cursus eu. Cras eu egestas risus. Etiam et quam tempor, sagittis nibh sit amet, consequat massa. Nunc porttitor eros sit amet neque gravida accumsan. Nam egestas mollis viverra. In malesuada odio augue, vel iaculis leo viverra et. Vestibulum turpis tortor, facilisis egestas justo in, varius lacinia risus. Etiam ultricies erat non arcu iaculis consectetur. Aliquam bibendum dignissim tellus eu gravida. Etiam ultricies ligula vel ante bibendum congue. Morbi faucibus, mauris ut sollicitudin ultricies, tellus ipsum dignissim tellus, nec luctus ipsum ante eu risus.
+harmonisation of terminology \parencite{phillips:2016}
+
+Technological advancement has made is more difficult to ditinguish between anonymous and anonymized due to the increasing difficulty in achieving anonymity \parencite{tricouncil:2018}.
+
+\section{Secondary Data Analysis}
+
+\subsection{Necessity}
+
+Good science must enable falsifiability by opening its data for scrutiny. Secondary analyses reinforce open science enqiry by replicating, reanalysing and evaluating prior results \parencite{hedrick:1985}.
+
+Advancement in understanding of the {\ae}tiology of diseases, for example, often occurred through secondary analyses of medical records that were not collected with the intention of making such a causal inference \parencite{dale:1988}.
+
+Reuse of data sets promotes positive externality to society through its cost-effectiveness and convenience. Since Norwegian residents collectively finance the compilation of registry data through taxation, such information shall remain public property in principle \parencite{daveysmith:1994}. Secondary analyses using registry data therefore serve to maximise social benefits through additional learning, knowledge and insight for the betterment of social well-being. Additionally, secondary data analyses also serve to reduce harm to society. This is achieved by reducing the impact on the larger population by involving a smaller number of research participants and subjecting them to a smaller number of tests while a significant mutiple of the original test subjects benefit from the resulting scientific inferences at zero additional costs \parencite{law:2005}. Lastly, since an enhanced methodology is one primary mechnism for reducing harm, the reemployment of piror data sets and studies assists subsequent projects with more targeted research questions and more purposeful analysis strategies \parencite{daveysmith:1994}.
+
+\subsection{Special Considerations}
+
+Power imbalance between the researchers and participants dominates many ethical debates. Obtaining informed consent for secondary ressearch is never truely voluntary due to the foot-in-the-door effect \parencite{freedman:1966} such that participants are vulnarable to giving away consent to subsequent projects after agreeing to the original study \parencite{law:2005}. Furthermore, \textcite{law:2005} observed that although it is the \emph{participants'}, not the researchers', interpretation of non-disclosure of personal data that all ethical considerations prioritise, the former is still under the influence of the latter while making such interpretation.
 
 
+\section{Conclusion}
+
+The secondary analyses of existing data sets provides many exciting opportunities for the development of new knowledge. Advancement in technology has so greatly enabled the dissemination and sharing of previously fragmented research data that optisim such as ``we have the means, for the first time in our history, to begin putting together the full picture of human behaviour'' \parencite[][p. 212]{johnson:2001} arose.
 
 
-
-
+\printbibliography
 
 \end{document}

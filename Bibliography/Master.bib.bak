@@ -5236,12 +5236,19 @@
 }
 
 @Book{tricouncil:2018,
-  author    = {{``Tri-council''}},
+  author    = {{Canadian Tri-council}},
   publisher = {{Canadian Institutes of Health Research} and {Natural Sciences and Engineering Research Council of Canada} and {Social Sciences and Humanities Research Council}},
   title     = {Ethical conduct for research involving humans},
   url       = {https://ethics.gc.ca/eng/documents/tcps2-2018-en-interactive-final.pdf},
   file      = {Ethical conduct for research involving humans:Tri-council (2018).pdf:PDF},
-  sortkey   = {Tri-council},
+  year      = {2018},
+}
+
+@Book{nesh:2018,
+  author    = {{NESH}},
+  publisher = {De nasjonale forskningsetiske komiteene},
+  title     = {Forskningsetiske retningslinjer for samfunnsvitenskap, humaniora, juss og teologi},
+  url       = {https://www.forskningsetikk.no/retningslinjer/hum-sam/forskningsetiske-retningslinjer-for-samfunnsvitenskap-humaniora-juss-og-teologi/},
   year      = {2018},
 }
 

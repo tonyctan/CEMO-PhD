@@ -5156,9 +5156,10 @@
   file    = {Broad consent for research with biological samples\: Workshop conclusions:Grady et al. (2015).pdf:PDF},
 }
 
-@Article{montjoye:2015,
+@Article{demontjoye:2015,
   author  = {Yves-Alexandre {de Montjoye} and Laura Radaelli and Vivek Kumar Singh and Alex Sandy Pentland},
   doi     = {10.1126/science.1256297},
+  journal = {Science},
   number  = {6221},
   pages   = {536--539},
   title   = {Unique in the shopping mall: On the reidentifiability of credit card metadata},
@@ -5252,6 +5253,18 @@
   year      = {2018},
 }
 
+@Article{nelson:1977,
+  author  = {Forrest D. Nelson},
+  doi     = {10.1016/0304-4076(77)90003-3},
+  journal = {Journal of Econometrics},
+  number  = {3},
+  pages   = {309--327},
+  title   = {Censored regression models with unobserved, stochastic censoring thresholds},
+  volume  = {6},
+  year    = {1977},
+  file    = {Censored regression models with unobserved, stochastic censoring thresholds:Nelson (1977).pdf:PDF},
+}
+
 @Comment{jabref-meta: databaseType:biblatex;}
 
-@Comment{jabref-entrytype: presentation: req[doi;author;title;titleaddon;eventtitle;venue;eventdate] opt[subtitle;url]}
+@Comment{jabref-entrytype: presentation: req[doi;author;title;titleaddon;eventtitle;venue;eventdate] opt[subtitle]}

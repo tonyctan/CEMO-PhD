@@ -5265,6 +5265,30 @@
   file    = {Censored regression models with unobserved, stochastic censoring thresholds:Nelson (1977).pdf:PDF},
 }
 
+@Article{greenlees:1982,
+  author  = {John S. Greenlees and William S. Reece and Kimberly D. Zieschang},
+  journal = {Journal of the American Statistical Association},
+  number  = {378},
+  pages   = {251--261},
+  title   = {Imputation of missing values when the probability of response depends on the variable being imputed},
+  volume  = {77},
+  year    = {1982},
+  url     = {https://www.jstor.org/stable/2287228},
+  file    = {Imputation of missing values when the probability of response depends on the variable being imputed:Greenlees, Reece, & Zieschang (1982).pdf:PDF},
+}
+
+@Article{little:1982,
+  author    = {Roderick J. A. Little},
+  doi       = {10.2307/2287227},
+  journal   = {Journal of the American Statistical Association},
+  number    = {378},
+  pages     = {237--250},
+  title     = {Models for nonresponse in sample surveys},
+  volume    = {77},
+  year      = {1982},
+  publisher = {Informa {UK} Limited},
+}
+
 @Comment{jabref-meta: databaseType:biblatex;}
 
 @Comment{jabref-entrytype: presentation: req[doi;author;title;titleaddon;eventtitle;venue;eventdate] opt[subtitle]}

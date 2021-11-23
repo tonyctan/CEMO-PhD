@@ -13,7 +13,7 @@ set.seed(1234)
 ##### GPA subject setup #####
 
 n_subj = 6 # Number of GPA subjects I want to simulate
-mat_empty <- matrix(NA, ncol = n_subj, nrow = n_subj) # Create an empty matrix
+mat_empty <- matrix(NA, nrow = n_subj, ncol = n_subj) # Create an empty matrix
 
 # Give GPA subjects names for concreteness
 subj = c(
@@ -63,20 +63,39 @@ ideal[c(1:50), ]
 summary(ideal)
 # Visualise distribution of Y
 par(mfrow = c(2, 3))
-for (i in 1:6) {
+for (i in 1:n_subj) {
     hist(ideal[, i],
         xlim = c(-1, 12), ylim = c(0, 0.3),
-        main = subj[i], xlab = "GPA", ylab = ""
+        main = subj[i], xlab = "GPA", ylab = "Relative Frequency",
         freq = F
     )
 }
 
-# Rescale to [0,5] six categories
-
-ideal_mathematics <- scales::rescale(ideal[, 1],
-    from = c(min(ideal[, 1]), max(ideal[, 1])),
-        to = c(0,5)
+# Rescale ideal matrix to [0,5] six categories
+ideal_scaled <- matrix(NA, nrow = dim(ideal)[1], ncol = dim(ideal)[2])
+for (i in 1:dim(ideal)[2]) {
+    ideal_scaled[, i] <- scales::rescale(ideal[, i],
+        from = c(min(ideal[, i]), max(ideal[, i])),
+        to = c(0, 5)
     )
+}
+ideal_scaled_int <- round(ideal_scaled, digits = 0)
+ideal_scaled_int <- data.frame(ideal_scaled_int)
+names(ideal_scaled_int) <- names(ideal)
+ideal_scaled_int[c(1:50), ]
+for (i in 1:n_subj) {
+    hist(ideal_scaled_int[, i],
+        xlim = c(0, 5), ylim = c(0, 0.6),
+        main = subj[i], xlab = "GPA", ylab = "Relative Frequency",
+        freq = F, breaks=5
+    )
+}
 
-irt_ideal <- mirt::mirt(ideal[,1], 1, verbose = F, itemtype = "graded", SE = T)
-summary(irt_ideal[])
+irt_ideal <- mirt::mirt(
+    data = ideal_scaled_int,
+    model = 1,
+    verbose = F,
+    itemtype = "gpcm",
+    SE = T
+)
+irt_ideal

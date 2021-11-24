@@ -93,9 +93,10 @@ for (i in 1:n_subj) {
 
 irt_ideal <- mirt::mirt(
     data = ideal_scaled_int,
-    model = 1,
-    verbose = F,
+    model = 2,
     itemtype = "gpcm",
+    verbose = F,
     SE = T
 )
 irt_ideal
+irt_ideal_m2 <- mirt::M2(irt_ideal)

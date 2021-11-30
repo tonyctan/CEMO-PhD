@@ -1,0 +1,34 @@
+TITLE:
+    Multiple imputation for MNAR data using the Diggle-Kenward selection model
+
+DATA:
+    file = gpa.dat; ! Pretend the data set is named gpa.dat
+
+VARIABLE:
+    names = t10 t11 t12; ! Subject results for Year 10, 11 and 12
+    usevar = t10 t11 t12;
+    missing = all (-99);
+    categorical = d1-d2;
+
+DATA MISSING:
+    names = t10 t11 t12; ! Only elective subjects contain missing values
+    type = sdropout; ! Survival dropout indicator
+    binary = d1-d2; ! Binary: whether missing or not
+
+ANALYSIS:
+    estimator = ML;
+    link = probit;
+    algorithm = integration;
+    integration = montecarlo;
+    processors = 64; ! Use all 64 cores provided by the HPC facility
+
+MODEL:
+    i s | t10@0 t11@1 t12@2;
+    i with s*0;
+    d1 on t10 (1);
+    t11 (2);
+    d2 on t11 (1);
+    t12 (2);
+
+OUTPUT:
+    tech1;

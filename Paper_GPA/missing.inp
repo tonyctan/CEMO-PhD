@@ -10,7 +10,7 @@ VARIABLE:
     missing = all (-99);
     categorical = d1-d2;
 
-DATA MISSING: 
+DATA MISSING:
     names = t10 t11 t12;
     type = sdropout; ! Survival dropout indicator
     binary = d1-d2;

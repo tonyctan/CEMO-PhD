@@ -112,4 +112,9 @@ mi_init$method
 mi_init$predictorMatrix
 # I am not happy with the bottom 3 rows. They should be 0 because no missings.
 mi_init$predictorMatrix[c(5:7),] <- matrix(0,nrow=3,ncol=7)
-mi_init$predictorMatrix
+mi_init$predictorMatrix # Now I am happy.
+
+mi_test <- mice::mice(crime_mi, m=5, maxit=100, seed=1234)
+plot(mi_test)
+
+plot(data.frame(mi_test$imp[1])[,1],type="l")

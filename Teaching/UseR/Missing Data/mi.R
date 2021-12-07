@@ -117,4 +117,15 @@ mi_init$predictorMatrix # Now I am happy.
 mi_test <- mice::mice(crime_mi, m=5, maxit=100, seed=1234)
 plot(mi_test)
 
-plot(data.frame(mi_test$imp[1])[,1],type="l")
+mi_pmm1 <- mice(
+    crime_mi,
+    m = 100, maxit = 20, donors = 1, print = F, seed = 1234
+)
+mi_pmm5 <- mice(
+    crime_mi,
+    m = 100, maxit = 20, donors=5, print = F, seed = 1234
+)
+mi_pmm20 <- mice(
+    crime_mi,
+    m=100, maxit=20, donors=20, print=F, seed=1234
+)

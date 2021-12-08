@@ -5466,6 +5466,15 @@
   pages   = {1--13},
   title   = {Plausible values and their use in efficiency analyses with educational data},
   year    = {2021},
+  file    = {Plausible values and their use in efficiency analyses with educational data:Aparicio, Cordero, & Ortiz (2021).pdf:PDF},
+}
+
+@Book{miklavcic:2020,
+  author    = {Stanley J. Miklavcic},
+  publisher = {Springer},
+  title     = {An illustrative guide to multivariable and vector calculus},
+  doi       = {10.1007/978-3-030-33459-8},
+  year      = {2020},
 }
 
 @Comment{jabref-meta: databaseType:biblatex;}

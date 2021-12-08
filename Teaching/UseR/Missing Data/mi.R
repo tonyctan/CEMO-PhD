@@ -103,29 +103,57 @@ round(
 # Failing to take this into consideration could shift towards MNAR.
 
 # Multiple imputation using MICE
+library(mice)
 # Drop HA since it is the reference group label. Rearrange the columns.
 crime_mi <- crime[, c("ACRIM", "BCRIM", "CCRIM", "DCRIM", "FEMALE", "RE", "GY")]
 # Do an initial run (maxit := do not run any iterations of Gibbs sampler)
-mi_init <- mice::mice(crime_mi, maxit = 0)
+mi_init <- mice(crime_mi, maxit = 0)
 # Extract method and predictor matrix
-mi_init$method
+mi_init$method # I am happy with the result, so I save it:
+mi_meth <- mi_init$method
 mi_init$predictorMatrix
 # I am not happy with the bottom 3 rows. They should be 0 because no missings.
 mi_init$predictorMatrix[c(5:7),] <- matrix(0,nrow=3,ncol=7)
-mi_init$predictorMatrix # Now I am happy.
+(mi_pred_mat <- mi_init$predictorMatrix) # Now I am happy.
 
-mi_test <- mice::mice(crime_mi, m=5, maxit=100, seed=1234)
-plot(mi_test)
+mi_test <- mice(
+    crime_mi,
+    m = 5, # Default = 5
+    method = mi_meth,
+    predictorMatrix = mi_pred_mat,
+    maxit = 20, # Default = 5
+    seed = 1234
+)
+plot(mi_test, layout = c(2, 4)) # Layout: c(column, row)
 
 mi_pmm1 <- mice(
     crime_mi,
-    m = 100, maxit = 20, donors = 1, print = F, seed = 1234
+    m = 100,
+    predictorMatrix = mi_pred_mat,
+    maxit = 20,
+    donors = 1,
+    print = F,
+    seed = 1234
 )
 mi_pmm5 <- mice(
     crime_mi,
-    m = 100, maxit = 20, donors=5, print = F, seed = 1234
+    m = 100,
+    predictorMatrix = mi_pred_mat,
+    maxit = 20,
+    donors=5, # Default = 5
+    print = F,
+    seed = 1234
 )
 mi_pmm20 <- mice(
     crime_mi,
-    m=100, maxit=20, donors=20, print=F, seed=1234
+    m=100,
+    predictorMatrix = mi_pred_mat,
+    maxit=20,
+    donors=20,
+    print=F,
+    seed=1234
 )
+
+plot(mi_pmm1, layout = c(2,4))
+plot(mi_pmm5, layout = c(2,4))
+plot(mi_pmm20, layout = c(2,4))

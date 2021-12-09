@@ -5474,7 +5474,18 @@
   publisher = {Springer},
   title     = {An illustrative guide to multivariable and vector calculus},
   doi       = {10.1007/978-3-030-33459-8},
+  file      = {An illustrative guide to multivariable and vector calculus:[Book] Miklavcic (2020) An illustrative guide to multivariable and vector calculus.pdf:PDF},
   year      = {2020},
+}
+
+@Book{mccullagh:1989,
+  author    = {P. {McCullagh} and J. A. Nelder},
+  publisher = {{Chapman and Hall}},
+  title     = {Generalized linear models},
+  edition   = {2nd ed.},
+  url       = {http://www.utstat.toronto.edu/~brunner/oldclass/2201s11/readings/glmbook.pdf},
+  file      = {Generalized linear models (2nd ed.):[Book] McCullagh, & Nelder (1989) Generalized linear models (2nd ed.).pdf:PDF},
+  year      = {1989},
 }
 
 @Comment{jabref-meta: databaseType:biblatex;}

@@ -5489,14 +5489,25 @@
   year      = {1989},
 }
 
-@InBook{,
+@InBook{blikstadbalas:2022,
   author    = {Marte {Blikstad-Balas} and Astrid Roe and Cecilie Pedersen Dalland and Kirstin Klette},
   booktitle = {Primary and secondary education during {COVID-19}},
   title     = {Homeschooling in {Norway} during the pandemic---{Digital} learning with unequal access to qualified help at home and unequal learning opportunities provided by the school},
   doi       = {10.1007/978-3-030-81500-4_7},
   editor    = {F. M. Reimers},
   pages     = {177--201},
+  file      = {HOmeschooling in Norway during the pandemic---Digital learning with unequal access to qualified help at home and unequal learning opportunities provided by the school:Blikstad-Balas, Roe, Dalland, & Klette (2022).pdf:PDF},
   year      = {2022},
+}
+
+@Article{faulkner:2021,
+  author  = {Ash Faulkner},
+  doi     = {10.1080/02763877.2021.2009955},
+  journal = {The Reference Librarian},
+  pages   = {1--28},
+  title   = {Financial Literacy around the World: What We Can Learn from the National Strategies and Contexts of the Top Ten Most Financially Literate Nations},
+  volume  = {{AHEAD-OF-PRINT}},
+  year    = {2021},
 }
 
 @Comment{jabref-meta: databaseType:biblatex;}

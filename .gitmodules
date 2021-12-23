@@ -1,0 +1,12 @@
+[submodule "Teaching/BDA3"]
+	path = Teaching/BDA3
+	url = git@github.com:tonyctan/BDA_R_demos.git
+[submodule "Teaching/Applied Multiple Imputation"]
+	path = Teaching/Applied Multiple Imputation
+	url = git@github.com:tonyctan/Applied-Multiple-Imputation.git
+[submodule "Teaching/BibLaTeX APA7"]
+	path = Teaching/BibLaTeX APA7
+	url = git@github.com:tonyctan/biblatex-apa.git
+[submodule "Stat Help/STV4020B"]
+	path = Stat Help/STV4020B
+	url = git@github.com:bendithun/4020b.git

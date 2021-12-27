@@ -1,47 +1,8 @@
-# Frequency of different MI packages
-mi_packages <- c("Amelia", "Hmisc", "jomo", "mi", "mice", "norm", "norm2", "pan")
+###############################
+##### STEP 1 DATA IMPORT ######
+###############################
 
-Amelia <- dlstats::cran_stats("Amelia")
-ts_Amelia <- ts(Amelia[, 3], start = c(2016, 1), end = c(2021, 12), frequency = 12)
-# plot(ts_Amelia)
-
-Hmisc <- dlstats::cran_stats("Hmisc")
-ts_Hmisc <- ts(Hmisc[, 3], start = c(2016, 1), end = c(2021, 12), frequency = 12)
-# plot(ts_Hmisc)
-
-jomo <- dlstats::cran_stats("jomo")
-ts_jomo <- ts(jomo[, 3], start = c(2016, 1), end = c(2021, 12), frequency = 12)
-# plot(ts_jomo)
-
-mi <- dlstats::cran_stats("mi")
-ts_mi <- ts(mi[, 3], start = c(2016, 1), end = c(2021, 12), frequency = 12)
-# plot(ts_mi)
-
-mice <- dlstats::cran_stats("mice")
-ts_mice <- ts(mice[, 3], start = c(2016, 1), end = c(2021, 12), frequency = 12)
-# plot(ts_mice)
-
-norm <- dlstats::cran_stats("norm")
-ts_norm <- ts(norm[, 3], start = c(2016, 1), end = c(2021, 12), frequency = 12)
-# plot(ts_norm)
-
-norm2 <- dlstats::cran_stats("norm2")
-ts_norm2 <- ts(norm2[, 3], start = c(2016, 1), end = c(2021, 12), frequency = 12)
-# plot(ts_norm2)
-
-pan <- dlstats::cran_stats("pan")
-ts_pan <- ts(pan[, 3], start = c(2016, 1), end = c(2021, 12), frequency = 12)
-# plot(ts_pan)
-
-popularity <- cbind(ts_Amelia, ts_Hmisc, ts_jomo, ts_mi, ts_mice, ts_norm, ts_norm2, ts_pan)
-names(popularity) <- mi_packages
-
-# Remove Hmisc (#2 position) because it is a general-purpose package
-ts.plot(popularity[, -2], gpars = list(col = rainbow(ncol(popularity) - 1)), lwd = 4)
-legend("topleft", colnames(popularity)[-2], col = 1:I(ncol(popularity) - 1), lty = 1, lwd = 4)
-
-
-# Import data
+# Import German youth delinquency data
 crime <- read.table(
     "https://raw.githubusercontent.com/tonyctan/Applied-Multiple-Imputation/master/data/crim4.dat",
     #    "~/data/crim4.dat",
@@ -56,18 +17,73 @@ crime <- read.table(
     ),
     na.strings = -999
 )
+# Draw 20 sub-samples
+sub_crime <- crime[sample(row.names(crime), size = 20, replace = F), ]
+# Display sub-sample sorted by ID
+sub_crime[order(as.numeric(row.names(sub_crime))), ]
 
-# Count the missings
-mis_ind <- is.na(crime)
-mis_count <- colSums(mis_ind) # Absolute count
+# Source:
+# This demo is adapted from Chapter 5 of
+# Kleinke, K., Reinecke, J., Salfran, D., & Spiess, M. (2020). Applied multiple imputation: Advantages, pitfalls, new developments and application in R. Springer. pp. 133--217.
+
+# Data set:
+# The main dataset crim4.dat is further adapted from the "Crime in the modern city" (CrimoC) study, reported in detail by Boers, Reinecke, Sedding, & Mariotti (2010), and by Reinecke & Weins (2013).
+# The CrimoC study examined the emergence and development of juvenile delinquency over time in adolescence.
+# Data were collected from schools in the German city of Munster (with 275,000 inhabitants), starting in 2000 (Wave A), with a sample of about 3,400 seventh-graders, interviewed annually, until they reach Grade 10.
+# The average age of participants at Wave 1 was 13 years. Detailed descrition of this data set can be found in Reinecke & Weins (2013).
+# For demo purposes: N = 2,064, T = 4 (three or more missings were excluded)
+
+# The variables:
+#   id          the participant identifier
+#   FEMALE      the gender indicator
+#   GY          school type indicator "Gymnasium" (Grade 12 / 13, -> university)
+#   RE          school type indicator "Realschule" (Grade 10, intermediate)
+#   HA          school type indicator "Hauptschule" (-> vocational education)
+#   ACRIM       delinquency score at Wave A (Grade 7, age 13, year 2000)
+#   BCRIM       delinquency score at Wave B (Grade 8, age 14, 2001)
+#   CCRIM       delinquency score at Wave C (Grade 9, age 15, 2002)
+#   DCRIM       delinquency score at Wave D (Grade 10, age 16, 2003)
+
+# Delinquency scores:
+# Data were collected via self-administered classroom interviews.
+# Delinquency was measured with 16 questions to get the prevalences of various offences like burglary or assault with or without a weapon (see Table 8, Reinecke & Weins (2013) for details).
+# Students indicated for each offence: if they had committed this delinquent behaviour in the 12 months prior to the interview (1 = yes; 0 = no).
+# Variable ACRIM--DCRIM can range between 0 and 16, with higher values indicating a more versatile criminal activity.
+
+# Research questions:
+# Age-crime-curve: a curviliniear development of delinquency over time.
+# More specifically, the means of each wave were expected to increase until around the age of 15, and to decrease thereafter (Moffitt, 1993).
+# Interested in both the curves, but also the effects of gender and school type on the age-crime relationship.
+
+# Findings:
+# Both gender and school type predicted individual differences in the development of delinquent behaviours over time.
+# Higher prevalence of delinquent behaviour: boys and HA attendees
+
+
+
+
+
+###################################
+##### STEP 2 DATA INSPECTION ######
+###################################
+
+# Learn about "missingness"
+mis_ind <- is.na(crime) # Create a missing indicator
+(mis_count <- colSums(mis_ind)) # Absolute count
 round(mis_count / dim(crime)[1] * 100, 2) # Percentage count
+# Complete cases (%)
+round(sum(complete.cases(crime)) / dim(crime)[1] * 100, digits = 2)
+# Gender and school type indicators are completely observed.
+# Only 39.39% of all the cases were fully observed.
+# Complete-case analyses: hugely wasteful and likely biased
 
-# Missing pattern
+
+# Inspect missing patterns
 mis_pat <- mice::md.pattern(crime[, -c(1:4)], plot = F)
 # Sort columns from A to D and rows by number of missings
 mis_pat[order(mis_pat[, 5]), c(4, 2, 1, 3, 5)]
 
-# Useable cases
+# Calculate "useable cases"
 mice::md.pairs(crime)$mr # Absolute count
 round(
     mice::md.pairs(crime[, c(5:8)])$mr / colSums(is.na(crime[, c(5:8)])),

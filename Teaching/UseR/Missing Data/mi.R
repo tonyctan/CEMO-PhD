@@ -67,7 +67,21 @@ sub_crime[order(as.numeric(row.names(sub_crime))), ]
 ##### STEP 2 DATA INSPECTION ######
 ###################################
 
-# Learn about "missingness"
+# Distribution of delinquency scores
+par(mfrow = c(2,2)) # Fit four histograms on one page
+for (i in 5:8) {
+    hist(crime[, i],
+        freq = F,
+        xlab = "Delinquency Score", ylab = "Relative Frequency",
+        xlim = c(0,16), ylim=c(0,0.9),
+        main = names(crime)[i]
+    )
+}
+par(mfrow = c(1, 1)) # Restore canvas
+# Distribution of delinquency scores appeared to be heavily skewed in all four waves with large percentages of zero counts.
+# The non-normal distributions of delinquency scores conditional on predictor variables need to be taken into account when choosing a suitable imputation and data analysis model.
+
+# Inspect number of missings
 mis_ind <- is.na(crime) # Create a missing indicator
 (mis_count <- colSums(mis_ind)) # Absolute count
 round(mis_count / dim(crime)[1] * 100, 2) # Percentage count
@@ -75,13 +89,26 @@ round(mis_count / dim(crime)[1] * 100, 2) # Percentage count
 round(sum(complete.cases(crime)) / dim(crime)[1] * 100, digits = 2)
 # Gender and school type indicators are completely observed.
 # Only 39.39% of all the cases were fully observed.
-# Complete-case analyses: hugely wasteful and likely biased
-
+# Complete-case analyses: hugely wasteful and likely biased if not MCAR (which, the authors argued missings unlikely to be MCAR: missing data are overproportionally male, attending HA)
 
 # Inspect missing patterns
 mis_pat <- mice::md.pattern(crime[, -c(1:4)], plot = F)
 # Sort columns from A to D and rows by number of missings
-mis_pat[order(mis_pat[, 5]), c(4, 2, 1, 3, 5)]
+mis_pat <- mis_pat[order(mis_pat[, 5]), c(4, 2, 1, 3, 5)]
+# Count number of cases with only 1 or 2 missings:
+sum(as.numeric(row.names(mis_pat)[2:11])) #1 full obs; #12 NA placeholder
+# There are 1251 respondents with only one or two panel waves missing.
+# Since these repeated measurements cannot be expected to be independent, it is plausible that missing information at one or two panel waves can be predicted by the observed delinquency at other time points.
+# Cases with three or more missing waves are excluded from this data set.
+
+
+
+
+
+#######################################
+##### STEP 3 Growth Curve Models ######
+#######################################
+
 
 # Calculate "useable cases"
 mice::md.pairs(crime)$mr # Absolute count

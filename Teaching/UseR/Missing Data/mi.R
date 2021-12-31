@@ -1,6 +1,8 @@
-###############################
-##### STEP 1 DATA IMPORT ######
-###############################
+################################
+##### Slide 1 Data Import ######
+################################
+
+setwd("~/uio/pc/Dokumenter/PhD/Teaching/UseR/Missing Data/")
 
 # Import German youth delinquency data
 crime <- read.table(
@@ -63,17 +65,17 @@ sub_crime[order(as.numeric(row.names(sub_crime))), ]
 
 
 
-###################################
-##### STEP 2 DATA INSPECTION ######
-###################################
+####################################
+##### Slide 2 Data Inspection ######
+####################################
 
 # Distribution of delinquency scores
-par(mfrow = c(2,2)) # Fit four histograms on one page
+par(mfrow = c(2, 2)) # Fit four histograms on one page
 for (i in 5:8) {
     hist(crime[, i],
         freq = F,
         xlab = "Delinquency Score", ylab = "Relative Frequency",
-        xlim = c(0,16), ylim=c(0,0.9),
+        xlim = c(0, 16), ylim = c(0, 0.9),
         main = names(crime)[i]
     )
 }
@@ -96,26 +98,44 @@ mis_pat <- mice::md.pattern(crime[, -c(1:4)], plot = F)
 # Sort columns from A to D and rows by number of missings
 mis_pat <- mis_pat[order(mis_pat[, 5]), c(4, 2, 1, 3, 5)]
 # Count number of cases with only 1 or 2 missings:
-sum(as.numeric(row.names(mis_pat)[2:11])) #1 full obs; #12 NA placeholder
+sum(as.numeric(row.names(mis_pat)[2:11])) # 1 full obs; #12 NA placeholder
 # There are 1251 respondents with only one or two panel waves missing.
-# Since these repeated measurements cannot be expected to be independent, it is plausible that missing information at one or two panel waves can be predicted by the observed delinquency at other time points.
+# Since these repeated measurements were not independent, it is plausible that missing information at one or two panel waves can be predicted by the observed delinquency at other time points.
 # Cases with three or more missing waves are excluded from this data set.
 
-
-
-
-
-#######################################
-##### STEP 3 Growth Curve Models ######
-#######################################
-
-
 # Calculate "useable cases"
-mice::md.pairs(crime)$mr # Absolute count
+mice::md.pairs(crime)$mr # Absolute count (mr = 1st missing; 2nd remain)
 round(
     mice::md.pairs(crime[, c(5:8)])$mr / colSums(is.na(crime[, c(5:8)])),
     digits = 2
 ) # Percentage count
+
+# Margin plot
+pdf("margin_plot.pdf", width = 20, height = 20)
+par(mfrow = c(4, 4))
+for (j in 5:8) {
+    for (i in 5:8) {
+        VIM::marginplot(crime[, c(j, i)],
+            xlim = c(0, 16), ylim = c(0, 16),
+            col = c("blue", "red"), # observed = blue; missing = red
+            cex = 1.2, cex.lab = 1.2, cex.numbers = 1.3, pch = 19
+        )
+    }
+}
+par(mfrow = c(1, 1))
+dev.off()
+
+
+########################################
+##### Slide 3 Growth Curve Models ######
+########################################
+
+# Based on criminology theory and prior research, a growth curve model is appropriate for this youth delinquency study.
+# Since the data are counts, it is more plausible to assume a Poisson or negative binomial distribution of the delinquency scores rather than a normal model.
+# As the distribution of the scores is highly skewed, a zero-inflated Poisson (ZIP) growth curve model is used to model the age-crime curve.
+
+
+
 
 # Identify auxiliary variables
 # Generate a correlation table
@@ -124,7 +144,7 @@ round(aux_cor, digits = 2)
 # Visualise correlations
 corrplot::corrplot.mixed(
     aux_cor,
-    lower="number", upper="ellipse",
+    lower = "number", upper = "ellipse",
     order = "original"
 )
 
@@ -146,20 +166,19 @@ round(
 # Failing to take this into consideration could shift towards MNAR.
 
 # Multiple imputation using MICE
-library(mice)
 # Drop HA since it is the reference group label. Rearrange the columns.
 crime_mi <- crime[, c("ACRIM", "BCRIM", "CCRIM", "DCRIM", "FEMALE", "RE", "GY")]
 # Do an initial run (maxit := do not run any iterations of Gibbs sampler)
-mi_init <- mice(crime_mi, maxit = 0)
+mi_init <- mice::mice(crime_mi, maxit = 0)
 # Extract method and predictor matrix
 mi_init$method # I am happy with the result, so I save it:
 mi_meth <- mi_init$method
 mi_init$predictorMatrix
 # I am not happy with the bottom 3 rows. They should be 0 because no missings.
-mi_init$predictorMatrix[c(5:7),] <- matrix(0,nrow=3,ncol=7)
+mi_init$predictorMatrix[c(5:7), ] <- matrix(0, nrow = 3, ncol = 7)
 (mi_pred_mat <- mi_init$predictorMatrix) # Now I am happy.
 
-mi_test <- mice(
+mi_test <- mice::mice(
     crime_mi,
     m = 5, # Default = 5
     method = mi_meth,
@@ -167,7 +186,74 @@ mi_test <- mice(
     maxit = 20, # Default = 5
     seed = 1234
 )
+
+# Check chain convergence
+pdf("spaghetti_test.pdf", width = 20, height = 20)
 plot(mi_test, layout = c(2, 4)) # Layout: c(column, row)
+dev.off()
+
+# Check plausibility of imputed data
+pdf("strip_test.pdf", width = 20, height = 20)
+mice::stripplot(mi_test,
+    ylim = c(0, 16),
+    pch = 20, cex = 1.2
+)
+dev.off()
+# Horizontal: 0 = reference (obs only); 1--5 imputation number
+# Blue = observed; red = imputed
+
+pdf("xyplot_test.pdf", width = 20, height = 20)
+lattice::xyplot(mi_test, ACRIM ~ BCRIM | .imp,
+    xlim=c(-1, 17), ylim=c(-1, 17),
+    pch = 20, cex = 1.4
+)
+lattice::xyplot(mi_test, ACRIM ~ CCRIM | .imp,
+    xlim=c(-1, 17), ylim=c(-1, 17),
+    pch = 20, cex = 1.4
+)
+lattice::xyplot(mi_test, ACRIM ~ DCRIM | .imp,
+    xlim=c(-1, 17), ylim=c(-1, 17),
+    pch = 20, cex = 1.4
+)
+
+lattice::xyplot(mi_test, BCRIM ~ ACRIM | .imp,
+    xlim=c(-1, 17), ylim=c(-1, 17),
+    pch = 20, cex = 1.4
+)
+lattice::xyplot(mi_test, BCRIM ~ CCRIM | .imp,
+    xlim=c(-1, 17), ylim=c(-1, 17),
+    pch = 20, cex = 1.4)
+lattice::xyplot(mi_test, BCRIM ~ DCRIM | .imp,
+    xlim=c(-1, 17), ylim=c(-1, 17),
+    pch = 20, cex = 1.4
+)
+
+lattice::xyplot(mi_test, CCRIM ~ ACRIM | .imp,
+    xlim=c(-1, 17), ylim=c(-1, 17),
+    pch = 20, cex = 1.4
+)
+lattice::xyplot(mi_test, CCRIM ~ BCRIM | .imp,
+    xlim=c(-1, 17), ylim=c(-1, 17),
+    pch = 20, cex = 1.4
+)
+lattice::xyplot(mi_test, CCRIM ~ DCRIM | .imp,
+    xlim=c(-1, 17), ylim=c(-1, 17),
+    pch = 20, cex = 1.4
+)
+
+lattice::xyplot(mi_test, DCRIM ~ ACRIM | .imp,
+    xlim=c(-1, 17), ylim=c(-1, 17),
+    pch = 20, cex = 1.4
+)
+lattice::xyplot(mi_test, DCRIM ~ BCRIM | .imp,
+    xlim=c(-1, 17), ylim=c(-1, 17),
+    pch = 20, cex = 1.4
+)
+lattice::xyplot(mi_test, DCRIM ~ CCRIM | .imp,
+    xlim=c(-1, 17), ylim=c(-1, 17),
+    pch = 20, cex = 1.4
+)
+dev.off()
 
 mi_pmm1 <- mice(
     crime_mi,
@@ -183,20 +269,20 @@ mi_pmm5 <- mice(
     m = 100,
     predictorMatrix = mi_pred_mat,
     maxit = 20,
-    donors=5, # Default = 5
+    donors = 5, # Default = 5
     print = F,
     seed = 1234
 )
 mi_pmm20 <- mice(
     crime_mi,
-    m=100,
+    m = 100,
     predictorMatrix = mi_pred_mat,
-    maxit=20,
-    donors=20,
-    print=F,
-    seed=1234
+    maxit = 20,
+    donors = 20,
+    print = F,
+    seed = 1234
 )
 
-plot(mi_pmm1, layout = c(2,4))
-plot(mi_pmm5, layout = c(2,4))
-plot(mi_pmm20, layout = c(2,4))
+plot(mi_pmm1, layout = c(2, 4))
+plot(mi_pmm5, layout = c(2, 4))
+plot(mi_pmm20, layout = c(2, 4))

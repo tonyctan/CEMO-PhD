@@ -1,3 +1,4 @@
+% Encoding: UTF-8
 @article{abubakar:2020,
   author  = {Mohd Zamri {Abu Bakar} and Saridan {Abu Bakar}},
   doi     = {10.6007/IJARBSS/v10-i6/7260},
@@ -5924,9 +5925,22 @@
   publisher = {Oxford University Press},
   title     = {{Bayesian} philosophy of science},
   url       = {http://www.laeuferpaar.de/Papers/BookFrame_v1.pdf},
+  file      = {Bayesian philosophy of science:[Book] Sprenger & Hartmann (2019) Bayesian philosophy of science.pdf:PDF},
   year      = {2019},
+}
+
+@Article{vanbuuren:2011,
+  author  = {Stef {van Buuren} and Karin {Groothuis-Oudshoorn}},
+  doi     = {10.18637/jss.v045.i03},
+  journal = {Journal of Statistical Software},
+  number  = {3},
+  pages   = {1--67},
+  title   = {mice: Multivariate imputation by chained equations in {R}},
+  volume  = {45},
+  year    = {2011},
+  file    = {mice\: Multivariate imputation by chained equations in R:van Buuren & Groothuis-Oudshorn (2011).pdf:PDF;R code:van Buuren & Groothuis-Oudshorn (2011).R:TXT},
 }
 
 @Comment{jabref-meta: databaseType:biblatex;}
 
-@Comment{jabref-entrytype: presentation: req[doi;author;title;titleaddon;eventtitle;venue;eventdate] opt[subtitle]}
+@Comment{jabref-entrytype: presentation: req[doi;author;title;titleaddon;eventtitle;venue;eventdate] opt[subtitle;url]}

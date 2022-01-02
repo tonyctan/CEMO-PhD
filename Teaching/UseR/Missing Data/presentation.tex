@@ -32,6 +32,10 @@
 \usepackage{csquotes}
 \usepackage[style=apa]{biblatex}
 \addbibresource{~/uio/pc/Dokumenter/PhD/Bibliography/Master.bib}
+% Reduce bib entries' font size
+\AtBeginBibliography{\tiny}
+% Eliminate gaps between bib entries
+\setlength\bibitemsep{-1\itemsep}
 
 \newcommand{\cR}{\includegraphics[width=1.1em]{Figures/R.png}\ }
 \newcommand{\CR}{\includegraphics[width=1.1em]{Figures/R.png}}
@@ -100,7 +104,7 @@
 \subsection{Data Missing Mechanism}
 %%%%%%%%%%%%%%%%%%%%%%%%%% Begin Slide %%%%%%%%%%%%%%%%%%%%%%%%%%
 %%                                                             %%
-\begin{frame}\frametitle{Data Missing Mechanism \normalsize\parencite{rubin:1976}}
+\begin{frame}\frametitle{Data Missing Mechanism \small\parencite{rubin:1976}}
 
 \begin{itemize}
   \item Missing completely at random (\textbf{MCAR})
@@ -131,10 +135,10 @@
 
 \section{The \pk{mice} Package}
 
-\subsection{\pk{mice} Process}
+\subsection{\pk{mice} Workflow}
 %%%%%%%%%%%%%%%%%%%%%%%%%% Begin Slide %%%%%%%%%%%%%%%%%%%%%%%%%%
 %%                                                             %%
-\begin{frame}\frametitle{\pk{mice} Process \normalsize\parencite{vanbuuren:2011}}
+\begin{frame}\frametitle{\pk{mice} Workflow \small\parencite{vanbuuren:2011}}
 
 \begin{figure}
   \centering
@@ -145,10 +149,10 @@
 %%                                                             %%
 %%%%%%%%%%%%%%%%%%%%%%%%%%% End Slide %%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\section*{Reference}
+\section{References}
 %%%%%%%%%%%%%%%%%%%%%%%% Begin Reference %%%%%%%%%%%%%%%%%%%%%%%%
 %%                                                             %%
-\begin{frame}[allowframebreaks]
+\begin{frame}%[allowframebreaks]
 \frametitle{References}
 
 \printbibliography

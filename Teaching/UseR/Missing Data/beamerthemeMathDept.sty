@@ -14,9 +14,9 @@
 \RequirePackage{tikz}
 \hypersetup{colorlinks= true,
             urlcolor  = uiolink,
-            linkcolor =,
-            citecolor =
-          }
+            linkcolor = ,
+            citecolor = uioblue
+}
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -119,7 +119,7 @@
     \renewcommand{\rmdefault}{lmr} % Latin Modern Roman
 }
 {
-   \renewcommand{\rmdefault}{pbk}  % Bookman
+    \renewcommand{\rmdefault}{pbk}  % Bookman
 }
 
 \renewcommand{\sfdefault}{phv} % Helvetica
@@ -165,59 +165,49 @@
 \setbeamertemplate{qed symbol}{\(\blacksquare\)}
 \setbeamertemplate{navigation symbols}{}
 \setbeamertemplate{caption label separator}{: }
-\setbeamersize{text margin left  = 3.845mm,
-               text margin right = 3.845mm}
+\setbeamersize{
+    text margin left  = 3.845mm,
+    text margin right = 3.845mm
+}
 
 
 %% Standard colours:
 \setbeamercolor{structure}{fg = colortheme}
-\setbeamercolor{block title}{fg = white,
-                             bg = structure}
-\setbeamercolor{block body} {bg = blockbody}
-\setbeamercolor{block title example}{fg = white,
-                                     bg = black}
-\setbeamercolor{block body example} {bg = blockbody}
-\setbeamercolor{block title alerted}{fg = white,
-                                     bg = alertblock}
-\setbeamercolor{block body alerted} {bg = blockbody}
-\setbeamercolor{alerted text} {fg = uiored}
+\setbeamercolor{block title}{fg = white,bg = structure}
+\setbeamercolor{block body}{bg = blockbody}
+\setbeamercolor{block title example}{fg = white,bg = black}
+\setbeamercolor{block body example}{bg = blockbody}
+\setbeamercolor{block title alerted}{fg = white,bg = alertblock}
+\setbeamercolor{block body alerted}{bg = blockbody}
+\setbeamercolor{alerted text}{fg = uiored}
 \setbeamercolor{footnote mark}{fg = uiored}
-\setbeamercolor{section in head/foot}{fg = white,
-                                      bg = black}
+\setbeamercolor{section in head/foot}{fg = white,bg = black}
 \setbeamercolor{section in toc}{fg = black}
 \setbeamercolor{bibliography entry location}{fg = structure}
 
 
 %% Custom colours:
-\setbeamercolor{author in final frame}  {fg = white}
-\setbeamercolor{title in final frame}   {fg = white}
+\setbeamercolor{author in final frame}{fg = white}
+\setbeamercolor{title in final frame}{fg = white}
 \setbeamercolor{subtitle in final frame}{fg = white}
 
 
 %% Standard fonts:
-\setbeamerfont{author}    {size   = \large,
-                           series = \normalfont\bfseries}
-\setbeamerfont{title}     {size   = \LARGE,
-                           series = \bfseries}
-\setbeamerfont{subtitle}  {size   = \large,
-                           series = \normalfont\rmfamily}
-\setbeamerfont{date}      {size   = \large,
-                           series = \bfseries}
-\setbeamerfont{frametitle}{size = \LARGE,
-                           series = \bfseries}
-\setbeamerfont{title in head/foot} {series = \bfseries}
+\setbeamerfont{author}{size = \large,series = \normalfont\bfseries}
+\setbeamerfont{title}{size = \LARGE,series = \bfseries}
+\setbeamerfont{subtitle}{size = \large,series = \normalfont\rmfamily}
+\setbeamerfont{date}{size = \large,series = \bfseries}
+\setbeamerfont{frametitle}{size = \LARGE,series = \bfseries}
+\setbeamerfont{title in head/foot}{series = \bfseries}
 \setbeamerfont{author in head/foot}{series = \bfseries}
-\setbeamerfont{date in head/foot}  {series = \bfseries}
-\setbeamerfont{section in toc}     {series = \bfseries}
+\setbeamerfont{date in head/foot}{series = \bfseries}
+\setbeamerfont{section in toc}{series = \bfseries}
 
 
 %% Custom fonts:
-\setbeamerfont{author in final frame}  {size   = \LARGE,
-                                        series = \bfseries}
-\setbeamerfont{title in final frame}   {size   = \LARGE,
-                                        series = \bfseries}
-\setbeamerfont{subtitle in final frame}{  size = \Large,
-                                        series = \normalfont\rmfamily}
+\setbeamerfont{author in final frame}{size = \LARGE,series = \bfseries}
+\setbeamerfont{title in final frame}{size   = \LARGE,series = \bfseries}
+\setbeamerfont{subtitle in final frame}{size = \Large,series = \normalfont\rmfamily}
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%

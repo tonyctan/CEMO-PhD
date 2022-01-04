@@ -3,6 +3,7 @@ Deregistration
 Student
 Nicole St{\"o}rzel      17/03/1998      15787092598     n.stoerzel@arcor.de
 Malin Johansen Trondsen 23/04/2001      97835131        malint26@gmail.com
+Marcello Herzog         31/03/1998      4917647240190   marcellh@student.matnat.uio.no
 
 Non-student
 Erin Emily Thomas       23/03/1990      41282783        erinthomas323@gmail.com

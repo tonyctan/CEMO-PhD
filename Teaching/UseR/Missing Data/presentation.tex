@@ -68,10 +68,10 @@
 
 \section{Background}
 
-\subsection{Summary}
+\subsection{Overview}
 %%%%%%%%%%%%%%%%%%%%%%%%%% Begin Slide %%%%%%%%%%%%%%%%%%%%%%%%%%
 %%                                                             %%
-\begin{frame}\frametitle{Summary}
+\begin{frame}\frametitle{Overview}
 
 \begin{itemize}
 
@@ -83,16 +83,18 @@
 
   \item Two approaches:
   \begin{itemize}
-    \item[\ding{192}] Joint modelling \parencite[JM,][]{schafer:1997}
+    \item[\ding{192}] Joint modelling \parencite[JM,][, \cR package \pk{jomo}]{schafer:1997}
     \item[\ding{193}] Fully conditional specification (FCS)
-    \item[\ding{43}] FCS aka multivariate imputation by chained equations \parencite[MICE,][]{vanbuuren:2011}
+    \begin{itemize}
+      \item[\ding{43}] \textcolor{uiogrey5}{FCS aka \textbf{m}ultivariate \textbf{i}mputation by \textbf{c}hained \textbf{e}quations \parencite[MICE,][]{vanbuuren:2011}}
+    \end{itemize}
   \end{itemize}
 
   \item Existing \cR packages:
   \begin{itemize}
     \item[\ding{228}] \pk{Amelia}, \pk{Hmisc}, \pk{jomo}, \pk{mi}, \pk{mice}, \pk{norm}, \pk{norm2}, \pk{pan}
-    \item[\ding{45}] See Table 5.1, \textcite{kleinke:2020} (p. 134) for popularity contest across various MI packages
-    \item[\ding{45}] See Table 6, \textcite{grund:2018} (pp. 134--135) for missing data treatment for multilevel models
+    \item[\ding{45}] \textcolor{uiogrey5}{See Table 5.1, \textcite{kleinke:2020} (p. 134) for popularity contest across various MI packages}
+    \item[\ding{45}] \textcolor{uiogrey5}{See Table 6, \textcite{grund:2018} (pp. 134--135) for missing data treatment for multilevel models}
   \end{itemize}
 
 \end{itemize}
@@ -109,21 +111,21 @@
 \begin{itemize}
   \item Missing completely at random (\textbf{MCAR})
     \begin{itemize}
-      \item[\ding{46}] missingness of variables is independent of the variables considered in the study
-      \item[\tmark] no treatment required, complete-case analyses valid and unbiased
+      \item[\ding{46}] \textcolor{uiogrey5}{missingness of variables is independent of the variables considered in the study}
+      \item[\tmark] \textcolor{uiogrey5}{no treatment required, complete-case analyses valid and unbiased}
     \end{itemize}
 
     \item Missing at random (\textbf{MAR})
   \begin{itemize}
-    \item[\ding{46}] missingness depends exclusively on observable variables
-    \item[\tmark] the assumption behind most MI procedures, including \pk{mice}
+    \item[\ding{46}] \textcolor{uiogrey5}{missingness depends exclusively on observable variables}
+    \item[\tmark] \textcolor{uiogrey5}{the assumption behind most MI procedures, including \pk{mice}}
   \end{itemize}
 
   \item Missing not at random (\textbf{MNAR})
   \begin{itemize}
-    \item[\ding{46}] missingness depends on unobservable but important variables of interest in the study
-    \item[\tmark] exact treatment rather complicated \parencite{rose:2013}
-    \item[\tmark] in practice: introduce lots of covariates and hope MNAR $\approxeq$ MAR
+    \item[\ding{46}] \textcolor{uiogrey5}{missingness depends on unobservable but important variables of interest in the study}
+    \textcolor{uiogrey5}{\item[\tmark] exact treatment rather complicated \parencite{rose:2013}}
+    \item[\tmark] \textcolor{uiogrey5}{in practice: introduce lots of covariates and hope MNAR $\approxeq$ MAR}
   \end{itemize}
 
   \item[\ding{108}] Ignorable = \{ MCAR, MAR \}; Nonignorable = \{ MNAR \}

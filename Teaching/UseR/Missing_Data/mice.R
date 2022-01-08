@@ -1,5 +1,8 @@
+# Install some packages
+#install.packages(c("mice","VIM"),dependencies = T)
+
 # Set working directory
-setwd("~/uio/pc/Dokumenter/PhD/Teaching/UseR/Missing Data/")
+setwd("~/uio/pc/Dokumenter/PhD/Teaching/UseR/Missing_Data/")
 
 # Load the mice package
 library(mice)
@@ -7,6 +10,7 @@ library(mice)
 # Use the example dataset nhanes (came with the package)
 nhanes
 
+# observations = 25, variables = 4
 # Variable names
 #    age     age group               ordered categorical
 #    bmi     body mass index         numerical
@@ -68,7 +72,7 @@ VIM::marginplot(nhanes[, c("chl", "bmi")],
 
 
 
-# Create imputations
+# Impute missing data
 imp <- mice(nhanes, printFlag = F, seed = 23109)
 # The multiply imputed dataset, imp, is of class mids (MI data set)
 print(imp)
@@ -81,7 +85,7 @@ print(imp)
 imp$imp$bmi
 # The 1st complete dataset combines the observed and imputed values:
 complete(imp)
-# You can print out the 2nd set of the complete dataset
+# We can print out the 2nd set of the complete dataset
 complete(imp, 2)
 # If complete to start with => identical in all five sets
 # If missing to start with => differ in each set
@@ -103,7 +107,7 @@ xyplot(imp, bmi ~ chl | .imp, pch = 20, cex = 1.4)
 
 
 # Analysing imputed datasets
-# Original regression: lm (chl ~ age + bmi)
+# Original regression: lm(chl ~ age + bmi)
 # Repeat this analysis to each version of MI
 fit <- with(data = imp, exp = lm(chl ~ age + bmi))
 # Pool the multiple versions of the analyses together

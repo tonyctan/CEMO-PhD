@@ -127,8 +127,8 @@ summary(pool(with(
 # Default number of multiple imputations (often denoted by m) = 5
 # If not happy, feel free to change the defaults
 imp <- mice(nhanes,
-    method = c("", "norm", "pmm", "mean"), m = 50,
-    printFlag = F, seed = 23109
+    method = c("", "norm", "pmm", "mean"), # Change MI methods
+    m = 10, printFlag = F, seed = 23109
 )
 
 # In order to show case different imputation methods, use nhanes2 dataset
@@ -140,3 +140,27 @@ imp <- mice(nhanes2,
     printFlag = F, seed = 23109
 )
 print(imp)
+
+# Inspect original data
+head(popmis)
+# Extract predictor matrix
+suppressWarnings(suppressMessages(
+    ini <- mice(popmis, maxit = 0)
+))
+pred <- ini$pred
+# Turn every entry in the predictor matrix to zero
+pred <- matrix(0,
+    nrow = nrow(pred), ncol = ncol(pred),
+    dimnames = list(rownames(pred), colnames(pred))
+)
+# Assign info to the "popular" row
+pred["popular", ] <- c(0, -2, 0, 2, 1, 2, 0)
+# MI
+suppressWarnings(suppressMessages(
+    imp <- mice(popmis,
+        meth = c("", "", "2l.norm", "", "", "", ""),
+        pred = pred, pri = F, maxit = 1, seed = 71152
+    )
+))
+# Inspect imputed data
+head(complete(imp))

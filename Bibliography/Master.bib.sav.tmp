@@ -5370,6 +5370,7 @@
   author    = {James R. Carpenter and Michael G. Kenward},
   publisher = {Wiley},
   title     = {Multiple imputation and its application},
+  doi       = {10.1002/9781119942283},
   year      = {2013},
 }
 
@@ -5881,4 +5882,4 @@
   title     = {Generalized linear models},
   doi       = {10.1201/9780203753736},
   edition   = {2nd ed.},
-  url       = {http://www.utstat.toronto.edu/~
+  url  

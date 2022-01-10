@@ -5370,6 +5370,7 @@
   author    = {James R. Carpenter and Michael G. Kenward},
   publisher = {Wiley},
   title     = {Multiple imputation and its application},
+  doi       = {10.1002/9781119942283},
   year      = {2013},
 }
 
@@ -5938,6 +5939,7 @@
   volume  = {45},
   year    = {2011},
   file    = {mice\: Multivariate imputation by chained equations in R:van Buuren & Groothuis-Oudshorn (2011).pdf:PDF;R code:van Buuren & Groothuis-Oudshorn (2011).R:TXT},
+  sortkey = {Buuren, van Stef},
 }
 
 @Book{schafer:1997,
@@ -5953,6 +5955,22 @@
   title     = {Applied multiple imputation: Advantages, pitfalls, new developments and applications in {R}},
   doi       = {10.1007/978-3-030-38164-6},
   year      = {2020},
+}
+
+@Book{enders:2010,
+  author    = {Craig K. Enders},
+  publisher = {Guilford},
+  title     = {Applied missing data analysis},
+  url       = {http://hsta559s12.pbworks.com/w/file/fetch/52112520/enders.applied},
+  year      = {2010},
+}
+
+@Book{hox:2018,
+  author    = {Joop J. Hox and Mirjam Moerbeek and Rens {van de Schoot}},
+  date      = {2018},
+  publisher = {Routledge},
+  title     = {Multilevel analysis: Techniques and applications},
+  edition   = {3rd ed.},
 }
 
 @Comment{jabref-meta: databaseType:biblatex;}

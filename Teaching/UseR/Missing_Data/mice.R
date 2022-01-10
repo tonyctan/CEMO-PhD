@@ -1,11 +1,15 @@
-# Install some packages
+## 3.2 First Look at mice
+
+# Install some packages if not yet done so
 #install.packages(c("mice","VIM"),dependencies = T)
 
 # Set working directory
 setwd("~/uio/pc/Dokumenter/PhD/Teaching/UseR/Missing_Data/")
 
-# Load the mice package
-library(mice)
+# Load the mice package (suppress both warnings and messages)
+suppressWarnings(suppressMessages(
+    library(mice)
+))
 
 # Use the example dataset nhanes (came with the package)
 nhanes
@@ -18,6 +22,8 @@ nhanes
 #    chl     cholesterol level       numerical
 
 
+
+## 3.3 Missing Pattern Inspection
 
 # Inspect missing pattern (Method 1)
 md.pattern(nhanes)
@@ -34,6 +40,7 @@ md.pattern(nhanes)
 #   Total number of missing values = 3x1 + 1x1 + 1x2 + 7x3 = 27
 #   Most missing values (10) occur in chl
 
+
 # Inspection by variable pairs (Method 2)
 md.pairs(nhanes)
 
@@ -47,11 +54,15 @@ md.pairs(nhanes)
 #   2 pairs: bmi is missing but chl is observed
 #   7 pairs: both bmi and chl are missing
 
+
+
+## 3.4 Margin Plot
+
 # Margin plot
 par(mar = c(7, 7, 3, 3)) # In order to show the axes labels
 # Inspect data range
-c(min(nhanes$chl, na.rm = T), max(nhanes$chl, na.rm = T))
-c(min(nhanes$bmi, na.rm = T), max(nhanes$bmi, na.rm = T))
+c(min(nhanes$chl, na.rm = T), max(nhanes$chl, na.rm = T)) # (113, 284)
+c(min(nhanes$bmi, na.rm = T), max(nhanes$bmi, na.rm = T)) # (20.4, 35.3)
 # Generate margin plot
 VIM::marginplot(nhanes[, c("chl", "bmi")],
     xlim = c(110, 290), ylim=c(20, 36),
@@ -72,24 +83,34 @@ VIM::marginplot(nhanes[, c("chl", "bmi")],
 
 
 
-# Impute missing data
+## 3.5 Inpute missing data
+
 imp <- mice(nhanes, printFlag = F, seed = 23109)
 # The multiply imputed dataset, imp, is of class mids (MI data set)
 print(imp)
 
 
 
+## 3.6 Diagnostic Checking
+
 # Diagnostic checking
 # Recall that bmi contains 9 missings
 # The MI procedure produced five guesses for each missing:
 imp$imp$bmi
+
 # The 1st complete dataset combines the observed and imputed values:
 complete(imp)
+
 # We can print out the 2nd set of the complete dataset
 complete(imp, 2)
+
 # If complete to start with => identical in all five sets
 # If missing to start with => differ in each set
 # Degree of difference reflects degree of uncertainty
+
+
+
+## 3.7 MI Visual Inspection
 
 # Visual inspection (big picture)
 stripplot(imp, pch = 20, cex = 1.2)
@@ -99,6 +120,7 @@ stripplot(imp, pch = 20, cex = 1.2)
 # Each x-axis marker is one version of MI. 0 = original set
 # Red points follow the blue points reasonably well, including the gaps in the distribution.
 
+
 # Visual inspection (fine details)
 xyplot(imp, bmi ~ chl | .imp, pch = 20, cex = 1.4)
 # Red points have more or less the same shape as blue data => imputed data could have been plausible measurements if they had not been missing
@@ -106,13 +128,18 @@ xyplot(imp, bmi ~ chl | .imp, pch = 20, cex = 1.4)
 
 
 
-# Analysing imputed datasets
+## 3.8 Analysing Imputed Datasets
+
 # Original regression: lm(chl ~ age + bmi)
+
 # Repeat this analysis to each version of MI
 fit <- with(data = imp, exp = lm(chl ~ age + bmi))
+
 # Pool the multiple versions of the analyses together
 summary(pool(fit))
+
 # Both age and bmi are significant at .05 level
+
 
 # If we increase m, the number of imputations, significant levels may change
 summary(pool(with(
@@ -122,24 +149,42 @@ summary(pool(with(
 
 
 
-# Imputation methods
-# Default imputation method = pmm (predictive mean matching)
-# Default number of multiple imputations (often denoted by m) = 5
-# If not happy, feel free to change the defaults
-imp <- mice(nhanes,
-    method = c("", "norm", "pmm", "mean"), # Change MI methods
-    m = 10, printFlag = F, seed = 23109
-)
+## 4.1  Specifying Imputation Methods
+
+summary(pool(with(
+    mice(nhanes,
+        method = c("", "norm", "pmm", "mean"), # Specify MI method for each var
+        m = 10, print = F, seed = 23109 # printFlag = print = pri
+    ),
+    lm(chl ~ age + bmi)
+)))
+
+summary(pool(with(
+    mice(nhanes,
+        method = "norm", # Use norm MI method for all variables
+        m = 10, pri = F, seed = 23109
+    ),
+    lm(chl ~ age + bmi)
+)))
 
 # In order to show case different imputation methods, use nhanes2 dataset
 str(nhanes2)
 
-# Impute
-imp <- mice(nhanes2,
-    me = c("polyreg", "pmm", "logreg", "norm"), # me = method
-    printFlag = F, seed = 23109
-)
-print(imp)
+# Data type
+#   age     factor, 3 levels
+#   bmi     numeric
+#   hyp     factor, 2 levels
+#   chl     numeric
+
+summary(pool(with(
+    mice(nhanes2,
+        me = c("polyreg", "pmm", "logreg", "norm"), # me = method
+        m = 10, pri = F, seed = 23109
+    ),
+    lm(chl ~ age + bmi)
+)))
+
+
 
 # Inspect original data
 head(popmis)

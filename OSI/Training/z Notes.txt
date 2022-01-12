@@ -1,3 +1,9 @@
+OSI Svomming Info:
+Address: Trimveien 4, 0372 Oslo
+Postal Address: PO Box 2 Blindern 0313 Oslo
+Organisation ID: 877252892
+VAT ID:
+
 0. Vocabulary
 avgifter        fees, charge, tax, duty, levy, toll
 opprett         generate, establish, set up, create

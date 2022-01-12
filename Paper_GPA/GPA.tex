@@ -2,7 +2,7 @@
     a4paper,            % Paper size
     11pt,               % Font size
     stu,                % Format as assignment
-%   donotrepeattitle,   % Start body text without repeating title
+    donotrepeattitle,   % Start body text without repeating title
     noextraspace,       % Reduce spaces between section header and text
     floatsintext,       % Insert tables and figures with texts
     biblatex,           % Use BibLaTeX for references
@@ -16,7 +16,13 @@
     bookmarksnumbered=true  % Keep section number in bookmarks
 ]{apa7}
 
-\usepackage{/home/tony/tt} % Must not use ~ for home directory but spell in full
+% Specify absolute path to the tt.sty file, depending on the operating system
+\usepackage{ifplatform}
+\ifwindows
+    \usepackage{M:/pc/Dokumenter/tt}
+\else
+    \usepackage{/home/tony/uio/pc/Dokumenter/tt} % Must not use ~ for home directory. Spell in full.
+\fi
 
 \title{Identifying Inter-subject Difficulties in Norwegian\\
 GPA Data Using Item Response Theory}
@@ -41,6 +47,6 @@ GPA Data Using Item Response Theory}
 
 % \include{5_Discussions.tex}
 
-\printbibliography
+%\printbibliography
 
 \end{document}

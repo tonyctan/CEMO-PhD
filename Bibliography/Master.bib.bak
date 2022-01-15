@@ -5973,6 +5973,17 @@
   edition   = {3rd ed.},
 }
 
+@Article{kalkan:2018,
+  author  = {{\"O}m{\"u}r Kaya Kalkan and Yusuf Kara and H{\"u}lya Kelecio{\u{g}}lu},
+  doi     = {10.21449/ijate.430720},
+  journal = {International Journal of Assessment Tools in Education},
+  number  = {3},
+  pages   = {403--416},
+  title   = {Evaluating performance of missing data imputation methods in {IRT} analyses},
+  volume  = {5},
+  year    = {2018},
+}
+
 @Comment{jabref-meta: databaseType:biblatex;}
 
 @Comment{jabref-entrytype: presentation: req[doi;author;title;titleaddon;eventtitle;venue;eventdate] opt[subtitle;url]}

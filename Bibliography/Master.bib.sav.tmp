@@ -5930,4 +5930,137 @@
 }
 
 @Article{vanbuuren:2011,
-  author  = {Stef {van Buuren} and Karin {Grooth
+  author  = {Stef {van Buuren} and Karin {Groothuis-Oudshoorn}},
+  doi     = {10.18637/jss.v045.i03},
+  journal = {Journal of Statistical Software},
+  number  = {3},
+  pages   = {1--67},
+  title   = {{mice}: Multivariate imputation by chained equations in {R}},
+  volume  = {45},
+  year    = {2011},
+  file    = {mice\: Multivariate imputation by chained equations in R:van Buuren & Groothuis-Oudshorn (2011).pdf:PDF;R code:van Buuren & Groothuis-Oudshorn (2011).R:TXT},
+  sortkey = {Buuren, van Stef},
+}
+
+@Book{schafer:1997,
+  author    = {J. L. Schafer},
+  publisher = {{Chapman \& Hall} and CRC},
+  title     = {Analysis of incomplete multivariate data},
+  year      = {1997},
+}
+
+@Book{kleinke:2020,
+  author    = {Kristian Kleinke and Jost Reinecke and Daniel Salfr{\'a}n and Martin Spiess},
+  publisher = {Springer},
+  title     = {Applied multiple imputation: Advantages, pitfalls, new developments and applications in {R}},
+  doi       = {10.1007/978-3-030-38164-6},
+  year      = {2020},
+}
+
+@Book{enders:2010,
+  author    = {Craig K. Enders},
+  publisher = {Guilford},
+  title     = {Applied missing data analysis},
+  url       = {http://hsta559s12.pbworks.com/w/file/fetch/52112520/enders.applied},
+  year      = {2010},
+}
+
+@Book{hox:2018,
+  author    = {Joop J. Hox and Mirjam Moerbeek and Rens {van de Schoot}},
+  date      = {2018},
+  publisher = {Routledge},
+  title     = {Multilevel analysis: Techniques and applications},
+  edition   = {3rd ed.},
+}
+
+@Article{kalkan:2018,
+  author  = {{\"O}m{\"u}r Kaya Kalkan and Yusuf Kara and H{\"u}lya Kelecio{\u{g}}lu},
+  doi     = {10.21449/ijate.430720},
+  journal = {International Journal of Assessment Tools in Education},
+  number  = {3},
+  pages   = {403--416},
+  title   = {Evaluating performance of missing data imputation methods in {IRT} analyses},
+  volume  = {5},
+  year    = {2018},
+  file    = {Evaluating performance of missing data imputation methods in IRT analyses:Kalkan, Kara, & Kelecioglu (2018).pdf:PDF},
+}
+
+@Book{udir:2022,
+  author    = {{Norwegian Ministry of Education}},
+  publisher = {Utdanningsdirektoratet},
+  title     = {Karakterstatistikk for videreg{\aa}ende skole \normalfont{[Grade statistics for upper secondary school]}},
+  url       = {https://www.udir.no/tall-og-forskning/statistikk/statistikk-videregaende-skole/karakterer-vgs/},
+  year      = {2022},
+}
+
+@Book{lovdata:2006,
+  author    = {{Education Act Regulation}},
+  publisher = {Lovdata},
+  title     = {Forskrift til oppl{\ae}ringslova \normalfont{[FOR-2006-06-23-724]}},
+  url       = {https://lovdata.no/forskrift/2006-06-23-724/§3-5},
+  year      = {2006},
+}
+
+@Article{agyeman:2021,
+  author  = {Fredrick Oteng Agyeman and Agyemang Kwasi Sampene and Zhiqiang Ma and Cai Li and Mingxing Li and Brenya Robert and John Wiredu},
+  journal = {Interntaional Journal of Development Research},
+  number  = {11},
+  pages   = {52124--52134},
+  title   = {From theory to practice of promoting student interest in econometrics: Application of structural equation model},
+  volume  = {11},
+  year    = {2021},
+  url     = {https://www.researchgate.net/profile/Fredrick_Oteng_Agyeman2/publication/357698245_FROM_THEORY_TO_PRACTICE_OF_PROMOTING_STUDENT_INTEREST_IN_ECONOMETRICS_APPLICATION_OF_STRUCTURAL_EQUATION_MODEL/links/61db90b8da5d105e552eea2b/FROM-THEORY-TO-PRACTICE-OF-PROMOTING-STUDENT-INTEREST-IN-ECONOMETRICS-APPLICATION-OF-STRUCTURAL-EQUATION-MODEL.pdf},
+  file    = {From theory to practice of promoting student interest in econometrics\: Application of structural equation model:Agyeman, Sampene, Ma, Li, Li, Robert, & Wiredu (2021).pdf:PDF},
+}
+
+@InBook{gipps:2009,
+  author    = {Caroline Gipps and Gordon Stobart},
+  booktitle = {Educational assessment in the {21st Century}: Connecting theory and practice},
+  doi       = {10.1007/978-1-4020-9964-9_6},
+  editor    = {Claire {Wyatt-Smith} and Joy Cumming},
+  pages     = {105--118},
+  publisher = {Springer},
+  title     = {Fairness in assessment},
+  year      = {2009},
+  file      = {Fairness in assessment:Gipps & Stobart (2009).pdf:PDF},
+}
+
+@Article{mislevy:2013,
+  author  = {Robert J. Mislevy and Geneva Haertel and Britte H. Cheng and Liliana Ructtinger and Angela {DeBarger} and Elizabeth Murray and David Rose and Jenna Gravel and Alexis M. Colker and Daisy Rutstein and Terry Vendlinski},
+  doi     = {10.1080/13803611.2013.767614},
+  journal = {Educational Research and Evaluation},
+  number  = {2-3},
+  pages   = {121--140},
+  title   = {A ``conditional'' sense of fairness in assessment},
+  volume  = {19},
+  year    = {2013},
+  file    = {A "conditional" sense of fairness in assessment:Mislevy, Haertel, Cheng, Ructtinger, DeBarger, Murray, Rose, Gravel, Colker, Rutstein, & Vendlinski (2013).pdf:PDF},
+}
+
+@Book{wyattsmith:2009,
+  publisher = {Springer},
+  title     = {Educational assessment in the {21st Century}: Connecting theory and practice},
+  doi       = {10.1007/978-1-4020-9964-9},
+  editor    = {Claire {Wyatt-Smith} and Jyo Cumming},
+  file      = {Educational assessment in the 21st Century\: Connecting theory and practice:[Book] Wyatt-Smith & Cumming (2009) Educational assessment in the 21st Century Connecting theory and practice.pdf:PDF},
+  year      = {2009},
+}
+
+@InCollection{gunderman:2012,
+  author    = {Richard B. Gunderman},
+  booktitle = {Radiology education: The evaluation and assessment of clinical competence},
+  title     = {Philosophical considerations in educational assessment},
+  doi       = {10.1007/978-3-642-27600-2_5},
+  editor    = {Kathryn M. Hibbert and Rethy K. Chhem and Teresa {van Deven} and Shih-chang Wang},
+  pages     = {49--54},
+  file      = {Philosophical considerations in educational assessment:Gunderman (2012).pdf:PDF},
+  year      = {2012},
+}
+
+@InBook{tierney:2017,
+  author    = {Robin D. Tierny},
+  booktitle = {Encyclopedia of educational philosophy and theory},
+  doi       = {10.1007/978-981-287-588-4_400},
+  editor    = {Michael A. Peters},
+  pages     = {793--798},
+  publisher = {Springer},

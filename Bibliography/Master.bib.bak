@@ -5987,7 +5987,7 @@
 
 @Book{udir:2022,
   author    = {Utdanningsdirektoratet},
-  publisher = {Norwegian DIectorate for Education and Training},
+  publisher = {{Norwegian Directorate for Education and Training}},
   title     = {Karakterstatistikk for videreg{\aa}ende skole \normalfont{[Grade statistics for upper secondary school]}},
   url       = {https://www.udir.no/tall-og-forskning/statistikk/statistikk-videregaende-skole/karakterer-vgs/},
   year      = {2022},
@@ -6151,9 +6151,33 @@
   year      = {1973},
 }
 
+@Article{johnson:1997,
+  author  = {Valen E. Johnson},
+  doi     = {10.1214/ss/1030037959},
+  journal = {Statistical Science},
+  number  = {4},
+  pages   = {251--278},
+  title   = {An alternative to traditional {GPA} for evaluating student preformance},
+  volume  = {12},
+  year    = {1997},
+  file    = {An alternative to traditional GPA for evaluating student performance:Johnson (1997).pdf:PDF},
+}
+
+@Article{felton:2005,
+  author  = {James Felton and Peter T. Koper},
+  doi     = {10.1080/02602930500260571},
+  journal = {Assessment \& Evaluation in Higher Education},
+  number  = {6},
+  pages   = {561--569},
+  title   = {Nominal {GPA} and real {GPA}: A simple adjustment that compensates for grade inflation},
+  volume  = {30},
+  year    = {2005},
+  file    = {Norminal GPA and real GPA\: A simple adjustment that compensates for grade inflation:Felton & Koper (2005).pdf:PDF},
+}
+
 @Comment{jabref-meta: databaseType:biblatex;}
 
-@Comment{jabref-entrytype: presentation: req[doi;author;title;titleaddon;eventtitle;venue;eventdate] opt[subtitle;url]}
+@Comment{jabref-entrytype: presentation: req[doi;author;title;titleaddon;eventtitle;venue;eventdate] opt[subtitle]}
 
 �]��ԝ�]���Z�r���(�j̺�Q�8V���Ҧ��*<r������h�h�H��c'��N^�F̠
 �G2��s��Z���Q��o��M�8��5>�1�Ñ���&��Pd����8�bq��-�*E�*�N�4�,����D����l.�v�w7Zg�H�� �T}����}0Ī+���!J��� r}�w#P�W����WMW.��X��÷J߄����F�DK���ut��k��c�2�|��Xm]&�,�=��׉����&Q�0c�ƞ�BTN�6�/~n�:E����s=�S{�R�/眫�(\�V�bp��R�#	<4��n"�.4��(`��E���g���䇗d�)��)�e�\J��>T��??A]ͤ1�yc��2�7�}�s42	i�L{���x���a^�^����e��e��0�>�

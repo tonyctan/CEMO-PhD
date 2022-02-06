@@ -13,3 +13,6 @@
 [submodule "Teaching/mice"]
 	path = Teaching/mice
 	url = git@github.com:tonyctan/mice.git
+[submodule "Stat Help/Tim/klug_pd"]
+	path = Stat Help/Tim/klug_pd
+	url = git@github.com:tillfuetterer/klug_pd.git

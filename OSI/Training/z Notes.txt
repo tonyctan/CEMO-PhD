@@ -20,11 +20,11 @@ At the right top corner, click the setting icon
 Go to page named "Medlemsadministrasjon" (Membership management)
 At the beginning of each new semester, we need to send invoices to each member. There should be two invoices: one from OSI (membership fee) and one from OSI Svomming (training fee).
 
-On the left-hand-side black menu, under "Medlemsadmin" (Memberhsip management), click "Avgifter" (Fees). Click the blue button "Opprett ny avgift" (Create new fees):
+On the left-hand-side black menu, under "Medlemsadmin" (Memberhsip management), click "Avgifter" (Fees). Go to the bottom of the screen, click the blue button "Opprett ny avgift" (Create new fees):
 Navn på avgift: OSI Svømming treningsavgift (ikke-)student H21
-Period: 2021-06-11 til 2021-12-31
+Period: 2022-01-01 til 2022-06-30
 Type: Treningsavgift
-Kalenderår: 2021
+Kalenderår: 2022
 Produkt type: Treningsavgift
 Medlemskort: Ikke generer Medlemskort
 Kontonummer: 15035202312
@@ -37,10 +37,10 @@ Press [+] for drop-down menu. Choose either "Studenter" for student membership f
 
 Now create dollar amount. Press blue button [Legg til].
 Tittel: "Standard medlem (ikke-)student"
-Pris: 90=student; 590=ikke-student
+Pris: 90 = student; 590 = ikke-student
 Fakturabeløp: (This field is not editable)
-Fra årskull: 1921
-Til årskull: 2021
+Fra årskull: 1922
+Til årskull: 2022
 Press blue button [Opprett] (Apply)
 Press blue button [Lagre] (Save)
 

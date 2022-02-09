@@ -45,16 +45,17 @@
     \end{table}
     \ifx  l#5 \end{landscape}\fi
 }
+
 \newcommand{\MAEfig}[5]{
     \ifx  l#5 \begin{landscape}\fi
     \begin{figure}[htbp]
         \caption{#2}
         \label{#1}
             \includegraphics[width=\linewidth]{#3}
-        \begin{tablenotes}
+%        \begin{tablenotes}
             \linespread{1.75}\selectfont
             \textit{Note.} #4
-        \end{tablenotes}
+%        \end{tablenotes}
     \end{figure}
     \ifx  l#5 \end{landscape}\fi
 }

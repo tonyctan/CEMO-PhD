@@ -7,12 +7,9 @@
 [submodule "Teaching/BibLaTeX APA7"]
 	path = Teaching/BibLaTeX APA7
 	url = git@github.com:tonyctan/biblatex-apa.git
-[submodule "Stat Help/STV4020B"]
-	path = Stat Help/STV4020B
-	url = git@github.com:bendithun/4020b.git
 [submodule "Teaching/mice"]
 	path = Teaching/mice
 	url = git@github.com:tonyctan/mice.git
-[submodule "Stat Help/Tim/klug_pd"]
-	path = Stat Help/Tim/klug_pd
+[submodule "Stat_Help/Tim/klug_pd"]
+	path = Stat_Help/Tim/klug_pd
 	url = git@github.com:tillfuetterer/klug_pd.git

@@ -4,6 +4,11 @@ Student
 Nicole St{\"o}rzel      17/03/1998      15787092598     n.stoerzel@arcor.de
 Malin Johansen Trondsen 23/04/2001      97835131        malint26@gmail.com
 Marcello Herzog         31/03/1998      4917647240190   marcellh@student.matnat.uio.no
+Andrea Arstad Helmersen 22/04/2001      46792692        andrea.helmersen@gmail.com
+Fritz Herre             30/03/1998      15118987822     fritz.herre@t-online.de
+Ronja Simon             15/02/2000      +49-15755924599 ronja.simon@fau.de
+Cesar Wagner            27/09/2001      643144023       cesarwagner0@gmail.com
+Nina-Therese Storstein  16/04/1998      90778580        n-tstorse@hotmail.com
 
 Non-student
 Erin Emily Thomas       23/03/1990      41282783        erinthomas323@gmail.com

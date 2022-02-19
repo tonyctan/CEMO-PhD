@@ -14,7 +14,7 @@ PRIVATE/
 *.lot
 *.nav
 *.out
-!/Mplus/**/*.out
+!/Stat_Help/**/*.out
 *.run.xml
 *.snm
 *.synctex.gz

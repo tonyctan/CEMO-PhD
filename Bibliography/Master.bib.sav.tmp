@@ -6124,81 +6124,4 @@
   title   = {Validating the interpretations and uses of test scores},
   volume  = {50},
   year    = {2013},
-  file    = {Validating the interpretations and uses of test scores:/home/tony/uio/pc/Dokumenter/PhD/Articles/Kane (2013).pdf:PDF},
-}
-
-@Article{kalthoff:2013,
-  author  = {Herbert Kalthoff},
-  doi     = {10.1080/17457823.2013.766436},
-  journal = {Ethnography and Education},
-  number  = {1},
-  pages   = {89--104},
-  title   = {Practices of grading: An ethnographic study of educational assessment},
-  volume  = {8},
-  year    = {2013},
-  file    = {Practices of grading\: An ethnographic study of educational assessment:/home/tony/uio/pc/Dokumenter/PhD/Articles/Kalthoff (2013).pdf:PDF},
-}
-
-@InBook{bourdieu:1973,
-  author    = {Pierre Bourdieu},
-  booktitle = {Knowledge, education, and cultural change: Papers in the sociology of education},
-  title     = {Cultural reproduction and social reproduction},
-  doi       = {10.4324/9781351018142-3},
-  editor    = {Richard Brown},
-  pages     = {71--112},
-  publisher = {Tavistock Publications},
-  file      = {Cultural reproduction and social reproduction:/home/tony/uio/pc/Dokumenter/PhD/Articles/Bourdieu (1973).pdf:PDF},
-  year      = {1973},
-}
-
-@Article{johnson:1997,
-  author  = {Valen E. Johnson},
-  doi     = {10.1214/ss/1030037959},
-  journal = {Statistical Science},
-  number  = {4},
-  pages   = {251--278},
-  title   = {An alternative to traditional {GPA} for evaluating student preformance},
-  volume  = {12},
-  year    = {1997},
-  file    = {An alternative to traditional GPA for evaluating student performance:Johnson (1997).pdf:PDF},
-}
-
-@Article{felton:2005,
-  author  = {James Felton and Peter T. Koper},
-  doi     = {10.1080/02602930500260571},
-  journal = {Assessment \& Evaluation in Higher Education},
-  number  = {6},
-  pages   = {561--569},
-  title   = {Nominal {GPA} and real {GPA}: A simple adjustment that compensates for grade inflation},
-  volume  = {30},
-  year    = {2005},
-  file    = {Norminal GPA and real GPA\: A simple adjustment that compensates for grade inflation:Felton & Koper (2005).pdf:PDF},
-}
-
-@TechReport{lei:2001,
-  author      = {Pui-Wa Lei and Dina Bassiri and E. Matthew Schultz},
-  institution = {{ACT}},
-  title       = {Alternatives to the grade point average as a measure of academic achievement in college},
-  year        = {2001},
-  type        = {{ACT} Research Report Series 2001-4},
-  url         = {https://eric.ed.gov/?id=ED462407},
-}
-
-@Article{muthen:2012,
-  author  = {Bengt Muth{\'e}n and Tihomir Asparouhov},
-  doi     = {10.1037/a0026802},
-  journal = {Psychological Methods},
-  number  = {3},
-  pages   = {313--335},
-  title   = {Bayesian structural equation modeling: A more flexible representation of substantive theory},
-  volume  = {17},
-  year    = {2012},
-  file    = {Bayesian structural equation modeling\: A more flexible representation of substantive theory:Muthen & Asparouhvo (2012).pdf:PDF},
-}
-
-@Comment{jabref-meta: databaseType:biblatex;}
-
-@Comment{jabref-entrytype: presentation: req[doi;author;title;titleaddon;eventtitle;venue;eventdate] opt[subtitle]}
-
-�]��ԝ�]���Z�r���(�j̺�Q�8V���Ҧ��*<r������h�h�H��c'��N^�F̠
-�G2��s��Z���Q��o��M�8��5>�1�Ñ���&��Pd����8�bq��-�*E�*�N�4�,����D����l.�v�w7Zg�H�� �T}����}0Ī+���!J��� r}�w#P�W����WMW.��X��÷J߄����F�DK���ut��k��c�2�|��Xm]&�,�=��׉����&Q�0c�ƞ�BTN�6�/~n�:E����s=�S{�R�/眫�(\�V�bp��R�#	<4��n"�.4��(`��E���g���䇗d�)��)�e�\J��>T��??A]ͤ1�yc��2�7�}�s42	i�L{���x���a^�^����e��e��0�>�
+  file 

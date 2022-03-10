@@ -60,10 +60,9 @@
     \ifx  l#5 \end{landscape}\fi
 }
 
-\newcommand{\titlet}{Your Thesis Title May Span for a Maximum of Three Lines on the Cover Page}
+
 \title{\titlet}
 \shorttitle{}
-\newcommand{\authort}{Firstname Lastname}
 \author{\authort}
 % Determine whether we are in spring or autumn semester
 \ifthenelse{\the\month<7}
@@ -77,10 +76,10 @@
 % Name the file Main.bib (or another name)
 % This will keep your bib-file that stores the references in sync with Zotero.
 \usepackage[backend=biber,style=apa]{biblatex}
-\addbibresource{Main.bib}
+\addbibresource{./Bibliography/Main.bib}
 
 % Subdirectory to store the figures
-\graphicspath{{fig/}}
+\graphicspath{{Figures/}}
 
 %%%%%%%%%%CUSTOMIZATION OPTIONS
 % I have been typing ``with respect to'' too many times so here is a shortcut:

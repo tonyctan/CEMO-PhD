@@ -6190,9 +6190,18 @@
   journal = {Psychological Methods},
   number  = {3},
   pages   = {313--335},
-  title   = {Bayesian structural equation modeling: A more flexible representation of substantive theory.},
+  title   = {Bayesian structural equation modeling: A more flexible representation of substantive theory},
   volume  = {17},
   year    = {2012},
+  file    = {Bayesian structural equation modeling\: A more flexible representation of substantive theory:Muthen & Asparouhvo (2012).pdf:PDF},
+}
+
+@Book{dezwaan:2022,
+  author    = {Laura {de Zwaan} and Tracy West},
+  publisher = {{Fiancial Basics Foundation} and {Suncorp}},
+  title     = {Financial literacy of young {Australians}: What they know, what they don't know, and what we can do to help},
+  sortkey   = {Zwaan, de Laura},
+  year      = {2022},
 }
 
 @Comment{jabref-meta: databaseType:biblatex;}

@@ -1,0 +1,18 @@
+Data cleaning protocol
+
+Tab 1. Duplicate Removal
+
+0. Remove ID = 9999999 test entry
+1. Remove whole row missings
+1R. Remove entries with "jumps" ("jumps" = preceding entry missing)
+2. Remove entries with largest amount of missings (invalid = missing)
+3. [If 2 is a tie] Remove later entries
+4. Remove entries with invalid logs (datetime = 0)
+
+Tab 2. Row Removal
+
+[Same as Tab 1]
+
+Column removal
+
+[Removed unnecessary columns]

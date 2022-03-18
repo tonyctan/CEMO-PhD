@@ -10,7 +10,7 @@
   file    = {The multilevel latent covariance model\: A new, more reliable approach to group-level effects in contextual studies:Ludtke, Marsh, Robitzsch, Trautwein, Asparouhov & Buthen (2008).pdf:PDF},
 }
 
-@Article{marshetal2009,
+@Article{Marshetal2009,
   author  = {Herbert W. Marsh and Oliver Lüdtke and Alexander Robitzsch and Ulrich Trautwein and Tihomir Asparouhov and Bengt Muth{\'{e}}n and Benjamin Nagengast},
   doi     = {10.1080/00273170903333665},
   journal = {Multivariate Behavioral Research},

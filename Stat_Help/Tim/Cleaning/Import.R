@@ -9,12 +9,11 @@ switch(Sys.info()[["sysname"]],
 )
 
 # # Import Excel file into R
-# raw <- xlsx::read.xlsx("raw.xlsx", sheetName = "6_Text", encoding="UTF-8",as.data.frame = T)
+# raw <- xlsx::read.xlsx("raw.xlsx", sheetName = "9_RID_Text", encoding="UTF-8",as.data.frame = T)
 # names(raw)
 # dim(raw)
 # head(raw)
 # write.csv(raw, "raw.csv", row.names = F)
-# # Remove \u0098 etc by hand
 
 # Import CSV data file
 raw <- read.csv("raw.csv", header = T, sep = ",")

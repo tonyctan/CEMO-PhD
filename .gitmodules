@@ -20,3 +20,9 @@
 [submodule "Stat_Help/Tim/infer_code"]
 	path = Stat_Help/Tim/infer_code
 	url = git@github.com:tillfuetterer/infer_coding.git
+[submodule "Stat_Help/Ronny/OSF_PIAAC_2022"]
+	path = Stat_Help/Ronny/OSF_PIAAC_2022
+	url = git@github.com:tonyctan/OSF_PIAAC_2022.git
+[submodule "Teaching/MplusAutomation"]
+	path = Teaching/MplusAutomation
+	url = git@github.com:michaelhallquist/MplusAutomation.git

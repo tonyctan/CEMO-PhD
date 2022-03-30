@@ -19,8 +19,8 @@
         a4paper, % Use A4 paper
         12pt, % APA7 Rule 2.19 10pt Computer Modern too small. Change to 11pt.
         stu, % All CEMO thesis must be compiled using student paper mode.
-%        donotrepeattitle, % Will generate heading in Section 1 myself.
-        noextraspace, % Make section headings and text closer and nicer.
+        donotrepeattitle, % Will generate heading in Section 1 myself.
+%        noextraspace, % Make section headings and text closer and nicer.
         floatsintext, % Insert tables and figures in the body of the thesis.
         biblatex, % Use BibLaTeX as the engine.
         twoside, % Prepare LaTeX for open-right
@@ -37,36 +37,39 @@
         dvipsnames
 ]{apa7}
 
-\title{}
+\title{Main title goes here}
 \author{Tony Tan}
-\affiliation{{Centre for Educational Measurement, University of Oslo}}
+\affiliation{Centre for Educational Measurement, University of Oslo}
 \course{UV9102A General Course in Qualitative Research Methodology}
 \professor{Prof Marte {Blikstad-Balas} and Prof Monika B{\ae}r{\o}e Nerland}
 \duedate{31 March 2022}
 
-\usepackage{~/tt}
+\usepackage{/home/tony/uio/pc/Dokumenter/tt}
+% Must not use ~ as a shorthand for home directory. Spell the path in full.
 
 \begin{document}
 \maketitle
 
 %//mark Select one of the empirical papers for a critical analysis
 
-\section{Paper Summary}
+\section{Paper Summary} %//mark 250 words
 %//mark Give a descriptive summary of the study
 
-\section{Credibility Examination}
+\textcite{hennessy:2021} presented a qualitative research project aimed at supporting practitioner-led inquiry into classroom dialogue. Using a design-based approach involving 74 participants raging from early education to the tertiary levels, the authors examined the effectiveness of the Teacher Scheme for Educational Dialogue Analysis (T-SEDA) resource pack for promoting teachers' implementation of classroom dialogue. By examining data derived from surveys, inquiry reports and interviews, Hennessy and colleagues reported significant effect sizes attributable to T-SEDA in participating classrooms in terms of classroom dialogue effectiveness.
+
+\section{Credibility Examination} %//mark 200 words
 %//mark Discuss the credibility of the study, by assessing:
 
-\subsection{Internal Coherence}
+\subsection{Internal Coherence} %//mark 200 words
 %//mark Internal coherence (relations between research questions and design)
 
-\subsection{Transparency of Research Process}
+\subsection{Transparency of Research Process} %//mark 200 words
 %//mark Transparency of the research process: How data was collected description of the analytical strategy, empirical grounding of claims
 
-\subsection{Validation Strategies}
+\subsection{Validation Strategies} %//mark 200 words
 %//mark Reported validation strategies, scope and form of conclusions
 
-\section{Discussion}
+\section{Discussion} %//mark 1000 words
 %//mark Include both strengths and limitations in your discussion
 
 \printbibliography

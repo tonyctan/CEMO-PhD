@@ -1,0 +1,1367 @@
+Mplus VERSION 8.5 (Linux)
+MUTHEN & MUTHEN
+04/06/2022  11:12 PM
+
+INPUT INSTRUCTIONS
+
+  TITLE:
+      M4: Path analysis for gender pay gap (M3 + AGE as moderator)
+
+  DATA:
+      file = implist.dat;
+      type = imputation;
+
+  VARIABLE:
+      ! Data table header
+      names =
+          log_EARN
+          LIT NUM PSL
+          MALE cAGE cAGEsq IM1 IM2 cEDU cEDUsq cross
+          VARSTRAT VARUNIT SPFWT0
+          ;
+
+      usevar =
+          log_EARN
+          LIT NUM PSL
+          MALE cAGE cAGEsq IM1 IM2 cEDU cEDUsq cross
+          VARSTRAT VARUNIT SPFWT0
+          ;
+
+      ! Missing data indicator
+      missing = all(-99);
+
+      ! Final participant weight
+  weight = SPFWT0;
+
+      ! Clustering in sampling units
+      cluster = VARUNIT;
+
+      ! Stratification
+      stratification = VARSTRAT;
+
+  ANALYSIS:
+      type = complex;
+      estimator = MLR;
+      h1iterations = 10000;
+
+  MODEL:
+      log_EARN on
+          LIT NUM PSL     ! Skills
+          MALE            ! Gender difference (Main interest of current study)
+          cAGE cAGEsq     ! Age effect (with age discrimination parabola)
+          IM1 IM2         ! Migration penalty/premium?
+          cEDU cEDUsq     ! Return on education (with diminishing marginal return)
+          cross           ! Interaction between cAGE and MALE
+          ;
+
+      cEDU with
+          LIT NUM PSL
+          ;
+
+      cAGE with
+          MALE cross
+          ;
+
+  OUTPUT:
+  !    stdy;       ! Standardised parameter estimates
+  !    stdyx;      ! Fully standardised parameters
+      sampstat;   ! Sample statistics
+      cinterval;  ! Confidence intervals
+
+
+
+INPUT READING TERMINATED NORMALLY
+
+
+
+
+M4: Path analysis for gender pay gap (M3 + AGE as moderator)
+
+SUMMARY OF ANALYSIS
+
+Number of groups                                                 1
+Average number of observations                                4951
+
+Number of replications
+    Requested                                                   10
+    Completed                                                    2
+
+Number of dependent variables                                    1
+Number of independent variables                                 11
+Number of continuous latent variables                            0
+
+Observed dependent variables
+
+  Continuous
+   LOG_EARN
+
+Observed independent variables
+   LIT         NUM         PSL         MALE        CAGE        CAGESQ
+   IM1         IM2         CEDU        CEDUSQ      CROSS
+
+Variables with special functions
+
+  Stratification        VARSTRAT
+  Cluster variable      VARUNIT
+  Weight variable       SPFWT0
+
+Estimator                                                      MLR
+Information matrix                                        OBSERVED
+Maximum number of iterations                                  1000
+Convergence criterion                                    0.500D-04
+Maximum number of steepest descent iterations                   20
+Maximum number of iterations for H1                          10000
+Convergence criterion for H1                             0.100D-03
+
+Input data file(s)
+  Multiple data files from
+    implist.dat
+
+Input data format  FREE
+
+
+SUMMARY OF DATA FOR THE FIRST DATA SET
+
+     Number of missing data patterns             5
+     Number of strata                           80
+     Number of clusters                        163
+
+
+SUMMARY OF MISSING DATA PATTERNS FOR THE FIRST DATA SET
+
+
+     MISSING DATA PATTERNS (x = not missing)
+
+           1  2  3  4  5
+ LOG_EARN  x  x
+ LIT       x  x  x  x
+ NUM       x  x  x  x
+ PSL       x     x
+ MALE      x  x  x  x  x
+ CAGE      x  x  x  x  x
+ CEDU      x  x  x  x  x
+ CROSS     x  x  x  x  x
+ CAGESQ    x  x  x  x  x
+ IM1       x  x  x  x  x
+ IM2       x  x  x  x  x
+ CEDUSQ    x  x  x  x  x
+
+
+     MISSING DATA PATTERN FREQUENCIES
+
+    Pattern   Frequency     Pattern   Frequency     Pattern   Frequency
+          1        3311           3        1030           5           5
+          2         314           4         291
+
+
+COVARIANCE COVERAGE OF DATA FOR THE FIRST DATA SET
+
+Minimum covariance coverage value   0.100
+
+
+     PROPORTION OF DATA PRESENT
+
+
+           Covariance Coverage
+              LOG_EARN      LIT           NUM           PSL           MALE
+              ________      ________      ________      ________      ________
+ LOG_EARN       0.732
+ LIT            0.732         0.999
+ NUM            0.732         0.999         0.999
+ PSL            0.669         0.877         0.877         0.877
+ MALE           0.732         0.999         0.999         0.877         1.000
+ CAGE           0.732         0.999         0.999         0.877         1.000
+ CEDU           0.732         0.999         0.999         0.877         1.000
+ CROSS          0.732         0.999         0.999         0.877         1.000
+ CAGESQ         0.732         0.999         0.999         0.877         1.000
+ IM1            0.732         0.999         0.999         0.877         1.000
+ IM2            0.732         0.999         0.999         0.877         1.000
+ CEDUSQ         0.732         0.999         0.999         0.877         1.000
+
+
+           Covariance Coverage
+              CAGE          CEDU          CROSS         CAGESQ        IM1
+              ________      ________      ________      ________      ________
+ CAGE           1.000
+ CEDU           1.000         1.000
+ CROSS          1.000         1.000         1.000
+ CAGESQ         1.000         1.000         1.000         1.000
+ IM1            1.000         1.000         1.000         1.000         1.000
+ IM2            1.000         1.000         1.000         1.000         1.000
+ CEDUSQ         1.000         1.000         1.000         1.000         1.000
+
+
+           Covariance Coverage
+              IM2           CEDUSQ
+              ________      ________
+ IM2            1.000
+ CEDUSQ         1.000         1.000
+
+
+SAMPLE STATISTICS
+
+NOTE:  These are average results over 10 data sets.
+
+
+     ESTIMATED SAMPLE STATISTICS
+
+
+           Means
+              LOG_EARN      LIT           NUM           PSL           MALE
+              ________      ________      ________      ________      ________
+               10.138       278.415       278.288       280.342         0.511
+
+
+           Means
+              CAGE          CEDU          CROSS         CAGESQ        IM1
+              ________      ________      ________      ________      ________
+                0.212        -0.199         0.090       202.783         0.126
+
+
+           Means
+              IM2           CEDUSQ
+              ________      ________
+                0.011         6.874
+
+
+           Covariances
+              LOG_EARN      LIT           NUM           PSL           MALE
+              ________      ________      ________      ________      ________
+ LOG_EARN       0.629
+ LIT            8.835      2210.615
+ NUM           12.561      2280.845      2938.724
+ PSL            5.375      1746.110      1952.618      1979.458
+ MALE           0.095         0.980         3.713         1.633         0.250
+ CAGE           4.370       -78.346       -36.424      -205.273        -0.018
+ CEDU           0.978        48.344        59.388        39.410         0.002
+ CROSS          2.227       -29.483        -5.278       -94.738         0.044
+ CAGESQ       -65.534     -1726.746     -1902.536     -1366.721        -0.528
+ IM1           -0.016        -4.507        -5.457        -3.811         0.003
+ IM2           -0.003        -0.201        -0.341        -0.024         0.000
+ CEDUSQ        -1.139       -61.702       -87.577       -55.189        -0.009
+
+
+           Covariances
+              CAGE          CEDU          CROSS         CAGESQ        IM1
+              ________      ________      ________      ________      ________
+ CAGE         202.738
+ CEDU           6.735         6.834
+ CROSS        103.110         4.240       103.121
+ CAGESQ       111.812      -170.866        66.885     36121.960
+ IM1           -0.336         0.009        -0.205        -7.662         0.110
+ IM2           -0.136        -0.016        -0.062         0.651        -0.001
+ CEDUSQ       -10.927        -5.831        -4.497       227.426         0.487
+
+
+           Covariances
+              IM2           CEDUSQ
+              ________      ________
+ IM2            0.011
+ CEDUSQ         0.043        85.919
+
+
+           Correlations
+              LOG_EARN      LIT           NUM           PSL           MALE
+              ________      ________      ________      ________      ________
+ LOG_EARN       1.000
+ LIT            0.237         1.000
+ NUM            0.292         0.895         1.000
+ PSL            0.152         0.835         0.810         1.000
+ MALE           0.240         0.042         0.137         0.073         1.000
+ CAGE           0.387        -0.117        -0.047        -0.324        -0.003
+ CEDU           0.472         0.393         0.419         0.339         0.001
+ CROSS          0.276        -0.062        -0.010        -0.210         0.009
+ CAGESQ        -0.435        -0.193        -0.185        -0.162        -0.006
+ IM1           -0.060        -0.289        -0.303        -0.258         0.017
+ IM2           -0.038        -0.041        -0.060        -0.005        -0.001
+ CEDUSQ        -0.155        -0.142        -0.174        -0.134        -0.002
+
+
+           Correlations
+              CAGE          CEDU          CROSS         CAGESQ        IM1
+              ________      ________      ________      ________      ________
+ CAGE           1.000
+ CEDU           0.181         1.000
+ CROSS          0.713         0.160         1.000
+ CAGESQ         0.041        -0.344         0.035         1.000
+ IM1           -0.071         0.010        -0.061        -0.121         1.000
+ IM2           -0.091        -0.057        -0.058         0.033        -0.040
+ CEDUSQ        -0.083        -0.241        -0.048         0.129         0.158
+
+
+           Correlations
+              IM2           CEDUSQ
+              ________      ________
+ IM2            1.000
+ CEDUSQ         0.044         1.000
+
+
+MODEL FIT INFORMATION
+
+Number of Free Parameters                       48
+
+Loglikelihood
+
+    H0 Value
+
+        Mean                           -122396.850
+        Std Dev                             61.639
+        Number of successful computations        2
+
+             Proportions                   Percentiles
+        Expected    Observed         Expected       Observed
+           0.990       1.000      -122540.242    -122458.490
+           0.980       1.000      -122523.439    -122458.490
+           0.950       1.000      -122498.241    -122458.490
+           0.900       1.000      -122475.847    -122458.490
+           0.800       0.500      -122448.726    -122458.490
+           0.700       0.500      -122429.174    -122458.490
+           0.500       0.500      -122396.850    -122458.490
+           0.300       0.500      -122364.527    -122458.490
+           0.200       0.500      -122344.975    -122458.490
+           0.100       0.000      -122317.853    -122458.490
+           0.050       0.000      -122295.460    -122458.490
+           0.020       0.000      -122270.261    -122458.490
+           0.010       0.000      -122253.459    -122458.490
+
+    H1 Value
+
+        Mean                           -121486.815
+        Std Dev                             58.693
+        Number of successful computations        2
+
+             Proportions                   Percentiles
+        Expected    Observed         Expected       Observed
+           0.990       1.000      -121623.352    -121545.508
+           0.980       1.000      -121607.352    -121545.508
+           0.950       1.000      -121583.359    -121545.508
+           0.900       1.000      -121562.036    -121545.508
+           0.800       0.500      -121536.211    -121545.508
+           0.700       0.500      -121517.594    -121545.508
+           0.500       0.500      -121486.815    -121545.508
+           0.300       0.500      -121456.037    -121545.508
+           0.200       0.500      -121437.420    -121545.508
+           0.100       0.000      -121411.595    -121545.508
+           0.050       0.000      -121390.272    -121545.508
+           0.020       0.000      -121366.278    -121545.508
+           0.010       0.000      -121350.279    -121545.508
+
+Information Criteria
+
+    Akaike (AIC)
+
+        Mean                            244889.701
+        Std Dev                            123.279
+        Number of successful computations        2
+
+             Proportions                   Percentiles
+        Expected    Observed         Expected       Observed
+           0.990       1.000       244602.917     244766.422
+           0.980       1.000       244636.523     244766.422
+           0.950       1.000       244686.919     244766.422
+           0.900       1.000       244731.707     244766.422
+           0.800       0.500       244785.949     244766.422
+           0.700       0.500       244825.053     244766.422
+           0.500       0.500       244889.701     244766.422
+           0.300       0.500       244954.348     244766.422
+           0.200       0.500       244993.452     244766.422
+           0.100       0.000       245047.695     244766.422
+           0.050       0.000       245092.482     244766.422
+           0.020       0.000       245142.878     244766.422
+           0.010       0.000       245176.484     244766.422
+
+    Bayesian (BIC)
+
+        Mean                            245202.053
+        Std Dev                            123.279
+        Number of successful computations        2
+
+             Proportions                   Percentiles
+        Expected    Observed         Expected       Observed
+           0.990       1.000       244915.270     245078.774
+           0.980       1.000       244948.875     245078.774
+           0.950       1.000       244999.272     245078.774
+           0.900       1.000       245044.059     245078.774
+           0.800       0.500       245098.302     245078.774
+           0.700       0.500       245137.406     245078.774
+           0.500       0.500       245202.053     245078.774
+           0.300       0.500       245266.701     245078.774
+           0.200       0.500       245305.805     245078.774
+           0.100       0.000       245360.047     245078.774
+           0.050       0.000       245404.835     245078.774
+           0.020       0.000       245455.231     245078.774
+           0.010       0.000       245488.837     245078.774
+
+    Sample-Size Adjusted BIC (n* = (n + 2) / 24)
+
+        Mean                            245049.526
+        Std Dev                            123.279
+        Number of successful computations        2
+
+             Proportions                   Percentiles
+        Expected    Observed         Expected       Observed
+           0.990       1.000       244762.742     244926.247
+           0.980       1.000       244796.348     244926.247
+           0.950       1.000       244846.745     244926.247
+           0.900       1.000       244891.532     244926.247
+           0.800       0.500       244945.775     244926.247
+           0.700       0.500       244984.879     244926.247
+           0.500       0.500       245049.526     244926.247
+           0.300       0.500       245114.173     244926.247
+           0.200       0.500       245153.278     244926.247
+           0.100       0.000       245207.520     244926.247
+           0.050       0.000       245252.307     244926.247
+           0.020       0.000       245302.704     244926.247
+           0.010       0.000       245336.310     244926.247
+
+Chi-Square Test of Model Fit
+
+        Degrees of freedom                      28
+
+        Mean                              1318.764
+        Std Dev                             23.507
+        Number of successful computations        2
+
+             Proportions                   Percentiles
+        Expected    Observed         Expected       Observed
+           0.990       1.000           13.565       1295.257
+           0.980       1.000           14.847       1295.257
+           0.950       1.000           16.928       1295.257
+           0.900       1.000           18.939       1295.257
+           0.800       1.000           21.588       1295.257
+           0.700       1.000           23.647       1295.257
+           0.500       1.000           27.336       1295.257
+           0.300       1.000           31.391       1295.257
+           0.200       1.000           34.027       1295.257
+           0.100       1.000           37.916       1295.257
+           0.050       1.000           41.337       1295.257
+           0.020       1.000           45.419       1295.257
+           0.010       1.000           48.278       1295.257
+
+RMSEA (Root Mean Square Error Of Approximation)
+
+        Mean                                 0.096
+        Std Dev                              0.001
+        Number of successful computations        2
+
+        Cumulative Distribution Function
+           Value    Function Value
+           0.990       1.000
+           0.980       1.000
+           0.950       1.000
+           0.900       1.000
+           0.800       1.000
+           0.700       1.000
+           0.500       1.000
+           0.300       1.000
+           0.200       1.000
+           0.100       1.000
+           0.050       0.000
+           0.020       0.000
+           0.010       0.000
+
+CFI/TLI
+
+    CFI
+
+        Mean                                 0.008
+        Std Dev                              0.008
+        Number of successful computations        2
+
+        Cumulative Distribution Function
+           Value    Function Value
+           0.990       1.000
+           0.980       1.000
+           0.950       1.000
+           0.900       1.000
+           0.800       1.000
+           0.700       1.000
+           0.500       1.000
+           0.300       1.000
+           0.200       1.000
+           0.100       1.000
+           0.050       1.000
+           0.020       1.000
+           0.010       0.500
+
+    TLI
+
+        Mean                                 0.603
+        Std Dev                              0.010
+        Number of successful computations        2
+
+        Cumulative Distribution Function
+           Value    Function Value
+           0.990       1.000
+           0.980       1.000
+           0.950       1.000
+           0.900       1.000
+           0.800       1.000
+           0.700       1.000
+           0.500       0.000
+           0.300       0.000
+           0.200       0.000
+           0.100       0.000
+           0.050       0.000
+           0.020       0.000
+           0.010       0.000
+
+SRMR (Standardized Root Mean Square Residual)
+
+        Mean                                 0.107
+        Std Dev                              0.000
+        Number of successful computations        2
+
+        Cumulative Distribution Function
+           Value    Function Value
+           0.990       1.000
+           0.980       1.000
+           0.950       1.000
+           0.900       1.000
+           0.800       1.000
+           0.700       1.000
+           0.500       1.000
+           0.300       1.000
+           0.200       1.000
+           0.100       0.000
+           0.050       0.000
+           0.020       0.000
+           0.010       0.000
+
+
+MODEL RESULTS
+
+                                                    Two-Tailed   Rate of
+                    Estimate       S.E.  Est./S.E.    P-Value    Missing
+
+ LOG_EARN ON
+    LIT                0.000      0.001     -0.461      0.645      0.575
+    NUM                0.001      0.000      1.475      0.140      0.481
+    PSL                0.001      0.001      1.340      0.180      0.851
+    MALE               0.360      0.019     19.272      0.000      0.002
+    CAGE               0.022      0.001     15.744      0.000      0.306
+    CAGESQ            -0.001      0.000    -18.317      0.000      0.000
+    IM1               -0.125      0.032     -3.946      0.000      0.004
+    IM2                0.171      0.100      1.713      0.087      0.040
+    CEDU               0.074      0.005     15.313      0.000      0.002
+    CEDUSQ             0.001      0.001      0.436      0.663      0.061
+    CROSS             -0.002      0.002     -0.869      0.385      0.003
+
+ CEDU     WITH
+    LIT               48.403      2.229     21.713      0.000      0.271
+    NUM               58.492      2.389     24.489      0.000      0.027
+    PSL               39.097      2.054     19.032      0.000      0.022
+    MALE               0.002      0.019      0.089      0.929      0.000
+    CAGE               6.735      0.455     14.805      0.000      0.000
+
+ CAGE     WITH
+    MALE              -0.018      0.101     -0.178      0.859      0.000
+    CROSS            103.110      1.942     53.103      0.000      0.000
+    LIT              -78.631     11.684     -6.730      0.000      0.568
+    NUM              -44.419     10.613     -4.185      0.000      0.080
+    PSL             -212.253      7.986    -26.579      0.000      0.012
+
+ NUM      WITH
+    LIT             2280.857     62.577     36.449      0.000      0.077
+
+ PSL      WITH
+    LIT             1740.188     48.920     35.572      0.000      0.019
+    NUM             1964.874     61.388     32.007      0.000      0.196
+
+ MALE     WITH
+    LIT                0.827      0.339      2.437      0.015      0.027
+    NUM                3.766      0.420      8.969      0.000      0.299
+    PSL                1.700      0.367      4.638      0.000      0.387
+
+ CROSS    WITH
+    LIT              -32.580      9.456     -3.445      0.001      0.632
+    NUM              -10.687      7.810     -1.368      0.171      0.000
+    PSL              -99.500      6.252    -15.916      0.000      0.036
+    MALE               0.044      0.057      0.770      0.441      0.000
+    CEDU               4.240      0.353     12.004      0.000      0.000
+
+ Means
+    LIT              278.102      0.674    412.434      0.000      0.340
+    NUM              278.476      1.036    268.798      0.000      0.606
+    PSL              280.269      0.636    440.916      0.000      0.090
+    MALE               0.511      0.007     69.723      0.000      0.000
+    CAGE               0.212      0.148      1.432      0.152      0.000
+    CEDU              -0.199      0.036     -5.593      0.000      0.000
+    CROSS              0.090      0.117      0.772      0.440      0.000
+
+ Intercepts
+    LOG_EARN           9.754      0.112     87.410      0.000      0.233
+
+ Variances
+    LIT             2218.466     56.536     39.240      0.000      0.046
+    NUM             2953.226     77.354     38.178      0.000      0.162
+    PSL             1979.757     52.902     37.423      0.000      0.042
+    MALE               0.250      0.000   1587.622      0.000      0.000
+    CAGE             202.738      2.121     95.582      0.000      0.000
+    CEDU               6.834      0.122     56.088      0.000      0.000
+    CROSS            103.121      1.944     53.052      0.000      0.000
+
+ Residual Variances
+    LOG_EARN           0.318      0.021     15.190      0.000      0.002
+
+
+QUALITY OF NUMERICAL RESULTS
+
+     Average Condition Number for the Information Matrix      0.226E-10
+       (ratio of smallest to largest eigenvalue)
+
+
+CONFIDENCE INTERVALS OF MODEL RESULTS
+
+                  Lower .5%  Lower 2.5%    Lower 5%    Estimate    Upper 5%  Upper 2.5%   Upper .5%
+
+ LOG_EARN ON
+    LIT             -0.002      -0.002      -0.002       0.000       0.001       0.001       0.002
+    NUM             -0.001       0.000       0.000       0.001       0.002       0.002       0.002
+    PSL             -0.001      -0.001       0.000       0.001       0.003       0.004       0.004
+    MALE             0.312       0.324       0.330       0.360       0.391       0.397       0.409
+    CAGE             0.019       0.019       0.020       0.022       0.025       0.025       0.026
+    CAGESQ          -0.002      -0.002      -0.002      -0.001      -0.001      -0.001      -0.001
+    IM1             -0.206      -0.186      -0.176      -0.125      -0.073      -0.063      -0.043
+    IM2             -0.086      -0.025       0.007       0.171       0.335       0.366       0.428
+    CEDU             0.061       0.064       0.066       0.074       0.082       0.083       0.086
+    CEDUSQ          -0.003      -0.002      -0.002       0.001       0.003       0.003       0.004
+    CROSS           -0.007      -0.005      -0.005      -0.002       0.001       0.002       0.003
+
+ CEDU     WITH
+    LIT             42.661      44.033      44.736      48.403      52.070      52.772      54.145
+    NUM             52.339      53.810      54.563      58.492      62.421      63.173      64.644
+    PSL             33.806      35.071      35.718      39.097      42.477      43.124      44.389
+    MALE            -0.047      -0.035      -0.029       0.002       0.032       0.038       0.050
+    CAGE             5.564       5.844       5.987       6.735       7.484       7.627       7.907
+
+ CAGE     WITH
+    MALE            -0.279      -0.216      -0.184      -0.018       0.148       0.180       0.243
+    CROSS           98.109      99.305      99.916     103.110     106.304     106.916     108.112
+    LIT           -108.727    -101.532     -97.851     -78.631     -59.411     -55.730     -48.535
+    NUM            -71.756     -65.220     -61.877     -44.419     -26.961     -23.618     -17.083
+    PSL           -232.822    -227.905    -225.389    -212.253    -199.116    -196.601    -191.683
+
+ NUM      WITH
+    LIT           2119.670    2158.205    2177.917    2280.857    2383.797    2403.509    2442.044
+
+ PSL      WITH
+    LIT           1614.179    1644.304    1659.714    1740.188    1820.661    1836.071    1866.197
+    NUM           1806.750    1844.553    1863.890    1964.874    2065.858    2085.195    2122.998
+
+ MALE     WITH
+    LIT             -0.047       0.162       0.269       0.827       1.386       1.493       1.702
+    NUM              2.684       2.943       3.075       3.766       4.457       4.589       4.848
+    PSL              0.756       0.982       1.097       1.700       2.303       2.418       2.644
+
+ CROSS    WITH
+    LIT            -56.936     -51.113     -48.135     -32.580     -17.025     -14.046      -8.223
+    NUM            -30.803     -25.994     -23.534     -10.687       2.160       4.620       9.430
+    PSL           -115.603    -111.753    -109.784     -99.500     -89.217     -87.247     -83.398
+    MALE            -0.103      -0.068      -0.050       0.044       0.138       0.156       0.192
+    CEDU             3.330       3.548       3.659       4.240       4.821       4.932       5.150
+
+ Means
+    LIT            276.365     276.780     276.993     278.102     279.211     279.424     279.839
+    NUM            275.808     276.445     276.772     278.476     280.180     280.507     281.145
+    PSL            278.632     279.024     279.224     280.269     281.315     281.515     281.907
+    MALE             0.492       0.497       0.499       0.511       0.523       0.526       0.530
+    CAGE            -0.169      -0.078      -0.032       0.212       0.455       0.502       0.593
+    CEDU            -0.291      -0.269      -0.258      -0.199      -0.141      -0.129      -0.107
+    CROSS           -0.211      -0.139      -0.102       0.090       0.283       0.320       0.392
+
+ Intercepts
+    LOG_EARN         9.467       9.536       9.571       9.754       9.938       9.973      10.042
+
+ Variances
+    LIT           2072.841    2107.656    2125.465    2218.466    2311.468    2329.277    2364.092
+    NUM           2753.979    2801.613    2825.979    2953.226    3080.473    3104.839    3152.473
+    PSL           1843.493    1876.070    1892.734    1979.757    2066.781    2083.445    2116.021
+    MALE             0.249       0.250       0.250       0.250       0.250       0.250       0.250
+    CAGE           197.275     198.581     199.249     202.738     206.227     206.895     208.201
+    CEDU             6.520       6.595       6.634       6.834       7.035       7.073       7.148
+    CROSS           98.115      99.312      99.924     103.121     106.319     106.931     108.128
+
+ Residual Variances
+    LOG_EARN         0.264       0.277       0.283       0.318       0.352       0.358       0.371
+
+
+TECHNICAL 1 OUTPUT
+
+
+     PARAMETER SPECIFICATION
+
+
+           NU
+              LOG_EARN      LIT           NUM           PSL           MALE
+              ________      ________      ________      ________      ________
+                  0             0             0             0             0
+
+
+           NU
+              CAGE          CEDU          CROSS         CAGESQ        IM1
+              ________      ________      ________      ________      ________
+                  0             0             0             0             0
+
+
+           NU
+              IM2           CEDUSQ
+              ________      ________
+                  0             0
+
+
+           LAMBDA
+              LOG_EARN      LIT           NUM           PSL           MALE
+              ________      ________      ________      ________      ________
+ LOG_EARN           0             0             0             0             0
+ LIT                0             0             0             0             0
+ NUM                0             0             0             0             0
+ PSL                0             0             0             0             0
+ MALE               0             0             0             0             0
+ CAGE               0             0             0             0             0
+ CEDU               0             0             0             0             0
+ CROSS              0             0             0             0             0
+ CAGESQ             0             0             0             0             0
+ IM1                0             0             0             0             0
+ IM2                0             0             0             0             0
+ CEDUSQ             0             0             0             0             0
+
+
+           LAMBDA
+              CAGE          CEDU          CROSS         CAGESQ        IM1
+              ________      ________      ________      ________      ________
+ LOG_EARN           0             0             0             0             0
+ LIT                0             0             0             0             0
+ NUM                0             0             0             0             0
+ PSL                0             0             0             0             0
+ MALE               0             0             0             0             0
+ CAGE               0             0             0             0             0
+ CEDU               0             0             0             0             0
+ CROSS              0             0             0             0             0
+ CAGESQ             0             0             0             0             0
+ IM1                0             0             0             0             0
+ IM2                0             0             0             0             0
+ CEDUSQ             0             0             0             0             0
+
+
+           LAMBDA
+              IM2           CEDUSQ
+              ________      ________
+ LOG_EARN           0             0
+ LIT                0             0
+ NUM                0             0
+ PSL                0             0
+ MALE               0             0
+ CAGE               0             0
+ CEDU               0             0
+ CROSS              0             0
+ CAGESQ             0             0
+ IM1                0             0
+ IM2                0             0
+ CEDUSQ             0             0
+
+
+           THETA
+              LOG_EARN      LIT           NUM           PSL           MALE
+              ________      ________      ________      ________      ________
+ LOG_EARN           0
+ LIT                0             0
+ NUM                0             0             0
+ PSL                0             0             0             0
+ MALE               0             0             0             0             0
+ CAGE               0             0             0             0             0
+ CEDU               0             0             0             0             0
+ CROSS              0             0             0             0             0
+ CAGESQ             0             0             0             0             0
+ IM1                0             0             0             0             0
+ IM2                0             0             0             0             0
+ CEDUSQ             0             0             0             0             0
+
+
+           THETA
+              CAGE          CEDU          CROSS         CAGESQ        IM1
+              ________      ________      ________      ________      ________
+ CAGE               0
+ CEDU               0             0
+ CROSS              0             0             0
+ CAGESQ             0             0             0             0
+ IM1                0             0             0             0             0
+ IM2                0             0             0             0             0
+ CEDUSQ             0             0             0             0             0
+
+
+           THETA
+              IM2           CEDUSQ
+              ________      ________
+ IM2                0
+ CEDUSQ             0             0
+
+
+           ALPHA
+              LOG_EARN      LIT           NUM           PSL           MALE
+              ________      ________      ________      ________      ________
+                  1             2             3             4             5
+
+
+           ALPHA
+              CAGE          CEDU          CROSS         CAGESQ        IM1
+              ________      ________      ________      ________      ________
+                  6             7             8             0             0
+
+
+           ALPHA
+              IM2           CEDUSQ
+              ________      ________
+                  0             0
+
+
+           BETA
+              LOG_EARN      LIT           NUM           PSL           MALE
+              ________      ________      ________      ________      ________
+ LOG_EARN           0             9            10            11            12
+ LIT                0             0             0             0             0
+ NUM                0             0             0             0             0
+ PSL                0             0             0             0             0
+ MALE               0             0             0             0             0
+ CAGE               0             0             0             0             0
+ CEDU               0             0             0             0             0
+ CROSS              0             0             0             0             0
+ CAGESQ             0             0             0             0             0
+ IM1                0             0             0             0             0
+ IM2                0             0             0             0             0
+ CEDUSQ             0             0             0             0             0
+
+
+           BETA
+              CAGE          CEDU          CROSS         CAGESQ        IM1
+              ________      ________      ________      ________      ________
+ LOG_EARN          13            14            15            16            17
+ LIT                0             0             0             0             0
+ NUM                0             0             0             0             0
+ PSL                0             0             0             0             0
+ MALE               0             0             0             0             0
+ CAGE               0             0             0             0             0
+ CEDU               0             0             0             0             0
+ CROSS              0             0             0             0             0
+ CAGESQ             0             0             0             0             0
+ IM1                0             0             0             0             0
+ IM2                0             0             0             0             0
+ CEDUSQ             0             0             0             0             0
+
+
+           BETA
+              IM2           CEDUSQ
+              ________      ________
+ LOG_EARN          18            19
+ LIT                0             0
+ NUM                0             0
+ PSL                0             0
+ MALE               0             0
+ CAGE               0             0
+ CEDU               0             0
+ CROSS              0             0
+ CAGESQ             0             0
+ IM1                0             0
+ IM2                0             0
+ CEDUSQ             0             0
+
+
+           PSI
+              LOG_EARN      LIT           NUM           PSL           MALE
+              ________      ________      ________      ________      ________
+ LOG_EARN          20
+ LIT                0            21
+ NUM                0            22            23
+ PSL                0            24            25            26
+ MALE               0            27            28            29            30
+ CAGE               0            31            32            33            34
+ CEDU               0            36            37            38            39
+ CROSS              0            42            43            44            45
+ CAGESQ             0             0             0             0             0
+ IM1                0             0             0             0             0
+ IM2                0             0             0             0             0
+ CEDUSQ             0             0             0             0             0
+
+
+           PSI
+              CAGE          CEDU          CROSS         CAGESQ        IM1
+              ________      ________      ________      ________      ________
+ CAGE              35
+ CEDU              40            41
+ CROSS             46            47            48
+ CAGESQ             0             0             0             0
+ IM1                0             0             0             0             0
+ IM2                0             0             0             0             0
+ CEDUSQ             0             0             0             0             0
+
+
+           PSI
+              IM2           CEDUSQ
+              ________      ________
+ IM2                0
+ CEDUSQ             0             0
+
+
+     STARTING VALUES
+
+
+           NU
+              LOG_EARN      LIT           NUM           PSL           MALE
+              ________      ________      ________      ________      ________
+                0.000         0.000         0.000         0.000         0.000
+
+
+           NU
+              CAGE          CEDU          CROSS         CAGESQ        IM1
+              ________      ________      ________      ________      ________
+                0.000         0.000         0.000         0.000         0.000
+
+
+           NU
+              IM2           CEDUSQ
+              ________      ________
+                0.000         0.000
+
+
+           LAMBDA
+              LOG_EARN      LIT           NUM           PSL           MALE
+              ________      ________      ________      ________      ________
+ LOG_EARN       1.000         0.000         0.000         0.000         0.000
+ LIT            0.000         1.000         0.000         0.000         0.000
+ NUM            0.000         0.000         1.000         0.000         0.000
+ PSL            0.000         0.000         0.000         1.000         0.000
+ MALE           0.000         0.000         0.000         0.000         1.000
+ CAGE           0.000         0.000         0.000         0.000         0.000
+ CEDU           0.000         0.000         0.000         0.000         0.000
+ CROSS          0.000         0.000         0.000         0.000         0.000
+ CAGESQ         0.000         0.000         0.000         0.000         0.000
+ IM1            0.000         0.000         0.000         0.000         0.000
+ IM2            0.000         0.000         0.000         0.000         0.000
+ CEDUSQ         0.000         0.000         0.000         0.000         0.000
+
+
+           LAMBDA
+              CAGE          CEDU          CROSS         CAGESQ        IM1
+              ________      ________      ________      ________      ________
+ LOG_EARN       0.000         0.000         0.000         0.000         0.000
+ LIT            0.000         0.000         0.000         0.000         0.000
+ NUM            0.000         0.000         0.000         0.000         0.000
+ PSL            0.000         0.000         0.000         0.000         0.000
+ MALE           0.000         0.000         0.000         0.000         0.000
+ CAGE           1.000         0.000         0.000         0.000         0.000
+ CEDU           0.000         1.000         0.000         0.000         0.000
+ CROSS          0.000         0.000         1.000         0.000         0.000
+ CAGESQ         0.000         0.000         0.000         1.000         0.000
+ IM1            0.000         0.000         0.000         0.000         1.000
+ IM2            0.000         0.000         0.000         0.000         0.000
+ CEDUSQ         0.000         0.000         0.000         0.000         0.000
+
+
+           LAMBDA
+              IM2           CEDUSQ
+              ________      ________
+ LOG_EARN       0.000         0.000
+ LIT            0.000         0.000
+ NUM            0.000         0.000
+ PSL            0.000         0.000
+ MALE           0.000         0.000
+ CAGE           0.000         0.000
+ CEDU           0.000         0.000
+ CROSS          0.000         0.000
+ CAGESQ         0.000         0.000
+ IM1            0.000         0.000
+ IM2            1.000         0.000
+ CEDUSQ         0.000         1.000
+
+
+           THETA
+              LOG_EARN      LIT           NUM           PSL           MALE
+              ________      ________      ________      ________      ________
+ LOG_EARN       0.000
+ LIT            0.000         0.000
+ NUM            0.000         0.000         0.000
+ PSL            0.000         0.000         0.000         0.000
+ MALE           0.000         0.000         0.000         0.000         0.000
+ CAGE           0.000         0.000         0.000         0.000         0.000
+ CEDU           0.000         0.000         0.000         0.000         0.000
+ CROSS          0.000         0.000         0.000         0.000         0.000
+ CAGESQ         0.000         0.000         0.000         0.000         0.000
+ IM1            0.000         0.000         0.000         0.000         0.000
+ IM2            0.000         0.000         0.000         0.000         0.000
+ CEDUSQ         0.000         0.000         0.000         0.000         0.000
+
+
+           THETA
+              CAGE          CEDU          CROSS         CAGESQ        IM1
+              ________      ________      ________      ________      ________
+ CAGE           0.000
+ CEDU           0.000         0.000
+ CROSS          0.000         0.000         0.000
+ CAGESQ         0.000         0.000         0.000         0.000
+ IM1            0.000         0.000         0.000         0.000         0.000
+ IM2            0.000         0.000         0.000         0.000         0.000
+ CEDUSQ         0.000         0.000         0.000         0.000         0.000
+
+
+           THETA
+              IM2           CEDUSQ
+              ________      ________
+ IM2            0.000
+ CEDUSQ         0.000         0.000
+
+
+           ALPHA
+              LOG_EARN      LIT           NUM           PSL           MALE
+              ________      ________      ________      ________      ________
+               10.231       278.886       278.593       286.393         0.511
+
+
+           ALPHA
+              CAGE          CEDU          CROSS         CAGESQ        IM1
+              ________      ________      ________      ________      ________
+                0.212        -0.199         0.090       202.783         0.126
+
+
+           ALPHA
+              IM2           CEDUSQ
+              ________      ________
+                0.011         6.874
+
+
+           BETA
+              LOG_EARN      LIT           NUM           PSL           MALE
+              ________      ________      ________      ________      ________
+ LOG_EARN       0.000         0.000         0.000         0.000         0.000
+ LIT            0.000         0.000         0.000         0.000         0.000
+ NUM            0.000         0.000         0.000         0.000         0.000
+ PSL            0.000         0.000         0.000         0.000         0.000
+ MALE           0.000         0.000         0.000         0.000         0.000
+ CAGE           0.000         0.000         0.000         0.000         0.000
+ CEDU           0.000         0.000         0.000         0.000         0.000
+ CROSS          0.000         0.000         0.000         0.000         0.000
+ CAGESQ         0.000         0.000         0.000         0.000         0.000
+ IM1            0.000         0.000         0.000         0.000         0.000
+ IM2            0.000         0.000         0.000         0.000         0.000
+ CEDUSQ         0.000         0.000         0.000         0.000         0.000
+
+
+           BETA
+              CAGE          CEDU          CROSS         CAGESQ        IM1
+              ________      ________      ________      ________      ________
+ LOG_EARN       0.000         0.000         0.000         0.000         0.000
+ LIT            0.000         0.000         0.000         0.000         0.000
+ NUM            0.000         0.000         0.000         0.000         0.000
+ PSL            0.000         0.000         0.000         0.000         0.000
+ MALE           0.000         0.000         0.000         0.000         0.000
+ CAGE           0.000         0.000         0.000         0.000         0.000
+ CEDU           0.000         0.000         0.000         0.000         0.000
+ CROSS          0.000         0.000         0.000         0.000         0.000
+ CAGESQ         0.000         0.000         0.000         0.000         0.000
+ IM1            0.000         0.000         0.000         0.000         0.000
+ IM2            0.000         0.000         0.000         0.000         0.000
+ CEDUSQ         0.000         0.000         0.000         0.000         0.000
+
+
+           BETA
+              IM2           CEDUSQ
+              ________      ________
+ LOG_EARN       0.000         0.000
+ LIT            0.000         0.000
+ NUM            0.000         0.000
+ PSL            0.000         0.000
+ MALE           0.000         0.000
+ CAGE           0.000         0.000
+ CEDU           0.000         0.000
+ CROSS          0.000         0.000
+ CAGESQ         0.000         0.000
+ IM1            0.000         0.000
+ IM2            0.000         0.000
+ CEDUSQ         0.000         0.000
+
+
+           PSI
+              LOG_EARN      LIT           NUM           PSL           MALE
+              ________      ________      ________      ________      ________
+ LOG_EARN       0.286
+ LIT            0.000      1115.363
+ NUM            0.000         0.000      1517.303
+ PSL            0.000         0.000         0.000       827.205
+ MALE           0.000         0.000         0.000         0.000         0.125
+ CAGE           0.000         0.000         0.000         0.000         0.000
+ CEDU           0.000         0.000         0.000         0.000         0.000
+ CROSS          0.000         0.000         0.000         0.000         0.000
+ CAGESQ         0.000         0.000         0.000         0.000         0.000
+ IM1            0.000         0.000         0.000         0.000         0.000
+ IM2            0.000         0.000         0.000         0.000         0.000
+ CEDUSQ         0.000         0.000         0.000         0.000         0.000
+
+
+           PSI
+              CAGE          CEDU          CROSS         CAGESQ        IM1
+              ________      ________      ________      ________      ________
+ CAGE         101.369
+ CEDU           0.000         3.417
+ CROSS          0.000         0.000        51.561
+ CAGESQ         0.000         0.000         0.000     36121.960
+ IM1            0.000         0.000         0.000        -7.662         0.110
+ IM2            0.000         0.000         0.000         0.651        -0.001
+ CEDUSQ         0.000         0.000         0.000       227.426         0.487
+
+
+           PSI
+              IM2           CEDUSQ
+              ________      ________
+ IM2            0.011
+ CEDUSQ         0.043        85.919
+
+
+THE FOLLOWING DATA SET(S) DID NOT RESULT IN A COMPLETED REPLICATION:
+
+  piaac1.dat
+  piaac2.dat
+  piaac3.dat
+  piaac4.dat
+  piaac5.dat
+  piaac7.dat
+  piaac8.dat
+  piaac10.dat
+
+
+TECHNICAL 9 OUTPUT
+
+
+Errors for replication with data file piaac1.dat:
+
+*** WARNING
+  Clusters with the same IDs have been found in different strata.  These
+  clusters are assumed to be different because clusters are not allowed
+  to appear in more than one stratum.
+*** WARNING
+  Data set contains cases with missing on x-variables.
+  These cases were not included in the analysis.
+  Number of cases with missing on x-variables:  177
+
+THE MODEL ESTIMATION TERMINATED NORMALLY
+
+     THE STANDARD ERRORS OF THE MODEL PARAMETER ESTIMATES COULD NOT BE
+     COMPUTED.  THE MODEL MAY NOT BE IDENTIFIED.  CHECK YOUR MODEL.
+     PROBLEM INVOLVING THE FOLLOWING PARAMETER:
+     Parameter 26, PSL
+
+     THE CONDITION NUMBER IS       0.860D-10.
+
+     THE ROBUST CHI-SQUARE COULD NOT BE COMPUTED.
+
+Errors for replication with data file piaac2.dat:
+
+*** WARNING
+  Clusters with the same IDs have been found in different strata.  These
+  clusters are assumed to be different because clusters are not allowed
+  to appear in more than one stratum.
+*** WARNING
+  Data set contains cases with missing on x-variables.
+  These cases were not included in the analysis.
+  Number of cases with missing on x-variables:  177
+
+THE MODEL ESTIMATION TERMINATED NORMALLY
+
+     THE STANDARD ERRORS OF THE MODEL PARAMETER ESTIMATES COULD NOT BE
+     COMPUTED.  THE MODEL MAY NOT BE IDENTIFIED.  CHECK YOUR MODEL.
+     PROBLEM INVOLVING THE FOLLOWING PARAMETER:
+     Parameter 26, PSL
+
+     THE CONDITION NUMBER IS       0.303D-10.
+
+     THE ROBUST CHI-SQUARE COULD NOT BE COMPUTED.
+
+Errors for replication with data file piaac3.dat:
+
+*** WARNING
+  Clusters with the same IDs have been found in different strata.  These
+  clusters are assumed to be different because clusters are not allowed
+  to appear in more than one stratum.
+*** WARNING
+  Data set contains cases with missing on x-variables.
+  These cases were not included in the analysis.
+  Number of cases with missing on x-variables:  177
+
+THE MODEL ESTIMATION TERMINATED NORMALLY
+
+     THE STANDARD ERRORS OF THE MODEL PARAMETER ESTIMATES COULD NOT BE
+     COMPUTED.  THE MODEL MAY NOT BE IDENTIFIED.  CHECK YOUR MODEL.
+     PROBLEM INVOLVING THE FOLLOWING PARAMETER:
+     Parameter 26, PSL
+
+     THE CONDITION NUMBER IS       0.116D-10.
+
+     THE ROBUST CHI-SQUARE COULD NOT BE COMPUTED.
+
+Errors for replication with data file piaac4.dat:
+
+*** WARNING
+  Clusters with the same IDs have been found in different strata.  These
+  clusters are assumed to be different because clusters are not allowed
+  to appear in more than one stratum.
+*** WARNING
+  Data set contains cases with missing on x-variables.
+  These cases were not included in the analysis.
+  Number of cases with missing on x-variables:  177
+
+THE MODEL ESTIMATION TERMINATED NORMALLY
+
+     THE STANDARD ERRORS OF THE MODEL PARAMETER ESTIMATES COULD NOT BE
+     COMPUTED.  THE MODEL MAY NOT BE IDENTIFIED.  CHECK YOUR MODEL.
+     PROBLEM INVOLVING THE FOLLOWING PARAMETER:
+     Parameter 26, PSL
+
+     THE CONDITION NUMBER IS       0.118D-10.
+
+     THE ROBUST CHI-SQUARE COULD NOT BE COMPUTED.
+
+Errors for replication with data file piaac5.dat:
+
+*** WARNING
+  Clusters with the same IDs have been found in different strata.  These
+  clusters are assumed to be different because clusters are not allowed
+  to appear in more than one stratum.
+*** WARNING
+  Data set contains cases with missing on x-variables.
+  These cases were not included in the analysis.
+  Number of cases with missing on x-variables:  177
+
+THE MODEL ESTIMATION TERMINATED NORMALLY
+
+     THE STANDARD ERRORS OF THE MODEL PARAMETER ESTIMATES COULD NOT BE
+     COMPUTED.  THE MODEL MAY NOT BE IDENTIFIED.  CHECK YOUR MODEL.
+     PROBLEM INVOLVING THE FOLLOWING PARAMETER:
+     Parameter 26, PSL
+
+     THE CONDITION NUMBER IS       0.590D-10.
+
+     THE ROBUST CHI-SQUARE COULD NOT BE COMPUTED.
+
+Errors for replication with data file piaac6.dat:
+
+*** WARNING
+  Clusters with the same IDs have been found in different strata.  These
+  clusters are assumed to be different because clusters are not allowed
+  to appear in more than one stratum.
+*** WARNING
+  Data set contains cases with missing on x-variables.
+  These cases were not included in the analysis.
+  Number of cases with missing on x-variables:  177
+
+THE MODEL ESTIMATION TERMINATED NORMALLY
+
+     THE STANDARD ERRORS OF THE MODEL PARAMETER ESTIMATES MAY NOT BE
+     TRUSTWORTHY FOR SOME PARAMETERS DUE TO A NON-POSITIVE DEFINITE
+     FIRST-ORDER DERIVATIVE PRODUCT MATRIX.  THIS MAY BE DUE TO THE STARTING
+     VALUES BUT MAY ALSO BE AN INDICATION OF MODEL NONIDENTIFICATION.  THE
+     CONDITION NUMBER IS      -0.805D-20.  PROBLEM INVOLVING THE FOLLOWING PARAMETER:
+     Parameter 46, CROSS WITH CAGE
+
+
+Errors for replication with data file piaac7.dat:
+
+*** WARNING
+  Clusters with the same IDs have been found in different strata.  These
+  clusters are assumed to be different because clusters are not allowed
+  to appear in more than one stratum.
+*** WARNING
+  Data set contains cases with missing on x-variables.
+  These cases were not included in the analysis.
+  Number of cases with missing on x-variables:  177
+
+THE MODEL ESTIMATION TERMINATED NORMALLY
+
+     THE STANDARD ERRORS OF THE MODEL PARAMETER ESTIMATES COULD NOT BE
+     COMPUTED.  THE MODEL MAY NOT BE IDENTIFIED.  CHECK YOUR MODEL.
+     PROBLEM INVOLVING THE FOLLOWING PARAMETER:
+     Parameter 26, PSL
+
+     THE CONDITION NUMBER IS       0.517D-11.
+
+     THE ROBUST CHI-SQUARE COULD NOT BE COMPUTED.
+
+Errors for replication with data file piaac8.dat:
+
+*** WARNING
+  Clusters with the same IDs have been found in different strata.  These
+  clusters are assumed to be different because clusters are not allowed
+  to appear in more than one stratum.
+*** WARNING
+  Data set contains cases with missing on x-variables.
+  These cases were not included in the analysis.
+  Number of cases with missing on x-variables:  177
+
+THE MODEL ESTIMATION TERMINATED NORMALLY
+
+     THE STANDARD ERRORS OF THE MODEL PARAMETER ESTIMATES COULD NOT BE
+     COMPUTED.  THE MODEL MAY NOT BE IDENTIFIED.  CHECK YOUR MODEL.
+     PROBLEM INVOLVING THE FOLLOWING PARAMETER:
+     Parameter 26, PSL
+
+     THE CONDITION NUMBER IS       0.521D-11.
+
+     THE ROBUST CHI-SQUARE COULD NOT BE COMPUTED.
+
+Errors for replication with data file piaac9.dat:
+
+*** WARNING
+  Clusters with the same IDs have been found in different strata.  These
+  clusters are assumed to be different because clusters are not allowed
+  to appear in more than one stratum.
+*** WARNING
+  Data set contains cases with missing on x-variables.
+  These cases were not included in the analysis.
+  Number of cases with missing on x-variables:  177
+
+THE MODEL ESTIMATION TERMINATED NORMALLY
+
+     THE STANDARD ERRORS OF THE MODEL PARAMETER ESTIMATES MAY NOT BE
+     TRUSTWORTHY FOR SOME PARAMETERS DUE TO A NON-POSITIVE DEFINITE
+     FIRST-ORDER DERIVATIVE PRODUCT MATRIX.  THIS MAY BE DUE TO THE STARTING
+     VALUES BUT MAY ALSO BE AN INDICATION OF MODEL NONIDENTIFICATION.  THE
+     CONDITION NUMBER IS      -0.159D-19.  PROBLEM INVOLVING THE FOLLOWING PARAMETER:
+     Parameter 41, CEDU
+
+
+Errors for replication with data file piaac10.dat:
+
+*** WARNING
+  Clusters with the same IDs have been found in different strata.  These
+  clusters are assumed to be different because clusters are not allowed
+  to appear in more than one stratum.
+*** WARNING
+  Data set contains cases with missing on x-variables.
+  These cases were not included in the analysis.
+  Number of cases with missing on x-variables:  177
+
+THE MODEL ESTIMATION TERMINATED NORMALLY
+
+     THE STANDARD ERRORS OF THE MODEL PARAMETER ESTIMATES COULD NOT BE
+     COMPUTED.  THE MODEL MAY NOT BE IDENTIFIED.  CHECK YOUR MODEL.
+     PROBLEM INVOLVING THE FOLLOWING PARAMETER:
+     Parameter 26, PSL
+
+     THE CONDITION NUMBER IS       0.226D-10.
+
+     THE ROBUST CHI-SQUARE COULD NOT BE COMPUTED.
+
+
+     Beginning Time:  23:12:05
+        Ending Time:  23:12:08
+       Elapsed Time:  00:00:03
+
+
+
+MUTHEN & MUTHEN
+3463 Stoner Ave.
+Los Angeles, CA  90066
+
+Tel: (310) 391-9971
+Fax: (310) 391-8971
+Web: www.StatModel.com
+Support: Support@StatModel.com
+
+Copyright (c) 1998-2020 Muthen & Muthen

@@ -1,16 +1,16 @@
-"names"
-"1" "w21_4952_lopenr_person"
-"2" "lopenr_virksomhet"
-"3" "lopenr_foretak"
-"4" "ARB_ARBKOMM"
-"5" "ARB_ARBMARK_STATUS"
-"6" "ARB_TYPE"
-"7" "ARB_YRKE"
-"8" "VIRK_NACE1_SN07"
-"9" "PERS_TILTAK"
-"10" "karbtim"
-"11" "FRTK_ORG_FORM"
-"12" "FRTK_SEKTOR_2014"
-"13" "pers_spgrad"
-"14" "ARB_ARBEIDSTID"
-"15" "PERS_PERSONTYPE"
+names
+1 w21_4952_lopenr_person
+2 lopenr_virksomhet
+3 lopenr_foretak
+4 ARB_ARBKOMM
+5 ARB_ARBMARK_STATUS
+6 ARB_TYPE
+7 ARB_YRKE
+8 VIRK_NACE1_SN07
+9 PERS_TILTAK
+10 karbtim
+11 FRTK_ORG_FORM
+12 FRTK_SEKTOR_2014
+13 pers_spgrad
+14 ARB_ARBEIDSTID
+15 PERS_PERSONTYPE

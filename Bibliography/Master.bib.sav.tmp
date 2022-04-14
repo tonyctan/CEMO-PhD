@@ -6063,4 +6063,65 @@
   doi       = {10.1007/978-981-287-588-4_400},
   editor    = {Michael A. Peters},
   pages     = {793--798},
-  publis
+  publisher = {Springer},
+  title     = {Fairness in educational assessment},
+  year      = {2017},
+  file      = {Fairness in educational assessment:Tierney (2017).pdf:PDF},
+}
+
+@Article{glaser:1963,
+  author  = {Robert Glaser},
+  doi     = {10.1037/h0049294},
+  journal = {American Psychologist},
+  number  = {8},
+  pages   = {519--521},
+  title   = {Instructional technology and the measurement of learing outcomes: Some questions},
+  volume  = {18},
+  year    = {1963},
+  file    = {Instructional technology and the measurement of learing outcomes\: Some questions:/home/tony/uio/pc/Dokumenter/PhD/Articles/Glaser (1963).pdf:PDF},
+}
+
+@Article{messick:1995,
+  author  = {Samuel Messick},
+  doi     = {10.1111/j.1745-3992.1995.tb00881.x},
+  journal = {Educational measurement: Issues and practice},
+  number  = {4},
+  pages   = {5--8},
+  title   = {Standards of validity and the validity of standards in performance assessment},
+  volume  = {14},
+  year    = {1995},
+  file    = {Standards of validity and the validity of standards in performance assessment:/home/tony/uio/pc/Dokumenter/PhD/Articles/Messick (1995).pdf:PDF},
+}
+
+@Article{messick:1998,
+  author  = {Samuel Messick},
+  doi     = {10.1023/a:1006964925094},
+  journal = {Social Indicators Research},
+  pages   = {35--44},
+  title   = {Test validity: A matter of consequence},
+  volume  = {45},
+  year    = {1998},
+  file    = {Test validity\: A matter of consequence:/home/tony/uio/pc/Dokumenter/PhD/Articles/Messick (1998).pdf:PDF},
+}
+
+@InBook{messick:1989,
+  author    = {S. Messick},
+  booktitle = {Educational measurement},
+  title     = {Validity},
+  edition   = {3rd ed.},
+  editor    = {R. L. Linn},
+  pages     = {10--103},
+  publisher = {{American Councile on Education} and {Macmillan}},
+  year      = {1989},
+}
+
+@Article{kane:2013,
+  author  = {Michael T. Kane},
+  doi     = {10.1111/jedm.12000},
+  journal = {Journal of Educational Measurement},
+  number  = {1},
+  pages   = {1--73},
+  title   = {Validating the interpretations and uses of test scores},
+  volume  = {50},
+  year    = {2013},
+  file 

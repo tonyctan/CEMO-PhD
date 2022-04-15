@@ -1,121 +1,120 @@
-names
-1 Alder
-2 Alder Freg
-3 Alder Opptak
-4 Antall Kvalifikasjoner Hpr
-5 Arstall
-6 Arstall Gyldig Til
-7 Arstall Siste Tilbud
-8 Arstall Start
-9 Artermin
-10 Artermin Inkr
-11 Artermin Kull
-12 Artermin Start
-13 Best Spoeng
-14 Bynavn Innr
-15 Bynavn Utr
-16 Campuskode
-17 Campusnavn
-18 Faknr
-19 Fakultet
-20 Fak Akronym
-21 Fylkesnavn
-22 Fylkesnavn Forstegang Reg
-23 Fylkesnavn Hjemsted
-24 Hovedprogram
-25 Institusjonsnavn Bokmal Innr
-26 Institusjonsnavn Bokmal Utr
-27 Institusjonsnr Eier
-28 Instituttnr
-29 Institutt
-30 Int Akronym
-31 Kjonn
-32 Klassekode
-33 Kommunenavn
-34 Kommunenavn Forstegang Reg
-35 Konkurransepoeng
-36 Kvalgrunnlagkode Genstudkomp
-37 Kvalgrunnlagkode Teknisk Fagsk
-38 Kvotetilhkode Tilbud
-39 Landnavn Engelsk Hjemland
-40 Landnavn Engelsk Innr
-41 Landnavn Engelsk Utr
-42 Landnavn Engelsk Vdg Opplaring
-43 Landnavn Norsk Hjemland
-44 Landnr Hjemland
-45 Landnr Vdg Opplaring
-46 Nsdnivakode
-47 Nsdniva
-48 Nsd Gruppe Bsk
-49 Nsd Kode Bsk
-50 Number of Records
-51 Opptaksramme
-52 Opptakstypekode
-53 Personlopenr
-54 Person Lopenr Dv
-55 Postnr Hjemsted
-56 Prioritetsnr
-57 Prosenttall Egenfinans
-58 Prosenttall Heltidandel
-59 Resultatkode Bio12
-60 Resultatkode Bio1
-61 Resultatkode Fys12
-62 Resultatkode Fys1
-63 Resultatkode Geo12
-64 Resultatkode Gsk
-65 Resultatkode Iko
-66 Resultatkode Info12
-67 Resultatkode Kje12
-68 Resultatkode Kje1
-69 Resultatkode Kok
-70 Resultatkode Ntk
-71 Resultatkode Pfmat
-72 Resultatkode R1M
-73 Resultatkode R1R2M
-74 Resultatkode R1R2
-75 Resultatkode R2
-76 Resultatkode S1S2
-77 Resultatkode Sa1
-78 Resultatkode Tek12
-79 Resultattall Ffmat
-80 Resultattall Kar
-81 Resultattall Norh
-82 Resultattall Norsk
-83 Resultattall R24
-84 Resultattall Rea
-85 Resultattall Spr
-86 Semester Normert
-87 Semnr Kalender Hpr
-88 Semnr Netto Hpr
-89 Sem Id
-90 Sem Id Kull
-91 Sem Id Start
-92 Skolepoeng
-93 Snittkarakter Fs
-94 Snittkarakter Nvb
-95 Ssbalder
-96 Ssbalder Freg
-97 Ssbalder Opptak
-98 Studentgrunnlagkode
-99 Studentkategori
-100 Studentstatkode Hpr
-101 Studienivakode
-102 Studienivanavn
-103 Studieniva
-104 Studieprognavn
-105 Studieprogramkode
-106 Studieprogram
-107 Studieretningkode
-108 Studieretningnavn Bokmal
-109 Studieretning
-110 Studierettstatkode Hpr
-111 Studiumkode
-112 Studiumnavn
-113 Terminkode
-114 Terminkode Gyldig Til
-115 Terminkode Start
-116 Tilbudstatkode
-117 Undorganiseringkode
-118 Utvekslingsfaktor Hpr
-119 Xstatuskode Utenlandsk Utd
-120 w21_4952_lopenr_person
+1 Alder 0 0 NA NA NA 25 79.76 8.93 NA NA
+2 Alder Freg 884 0.01 -1 215 25.7 22 82.46 9.08 1.39 2.84
+3 Alder Opptak 884 0.01 -1 99 23.84 22 134.2 11.58 0.14 1.29
+4 Antall Kvalifikasjoner Hpr 891 0.01 0 1 0.14 0 0.12 0.34 2.11 2.46
+5 Arstall 891 0.01 2003 2021 2013.07 2014 28.53 5.34 -0.26 -1.06
+6 Arstall Gyldig Til 891 0.01 -1 2028 1832.73 2015 334382.37 578.26 -2.86 6.15
+7 Arstall Siste Tilbud 4725407 71.73 1990 2030 2014.78 2016 30.42 5.52 -0.47 -0.9
+8 Arstall Start 891 0.01 -1 2021 1787.72 2012 401777.28 633.86 -2.47 4.09
+9 Artermin 0 0 NA NA NA NA NA NA NA NA
+10 Artermin Inkr 884 0.01 44 2021.5 2013.32 2014 32.75 5.72 -43.51 14898.65
+11 Artermin Kull 0 0 NA NA NA NA NA NA NA NA
+12 Artermin Start 0 0 NA NA NA NA 0.16 0.4 NA NA
+13 Best Spoeng 524 0.01 0 318 19.73 20 275.44 16.6 0.77 2.36
+14 Bynavn Innr 0 0 NA NA NA NA NA NA NA NA
+15 Bynavn Utr 0 0 NA NA NA NA NA NA NA NA
+16 Campuskode 0 0 NA NA NA NA NA NA NA NA
+17 Campusnavn 0 0 NA NA NA NA NA NA NA NA
+18 Faknr 891 0.01 0 95 32.94 18 535.76 23.15 0.4 -1.33
+19 Fakultet 0 0 NA NA NA NA 12.5 3.54 NA NA
+20 Fak Akronym 0 0 NA NA NA NA NA NA NA NA
+21 Fylkesnavn 0 0 NA NA NA NA NA NA NA NA
+22 Fylkesnavn Forstegang Reg 0 0 NA NA NA NA NA NA NA NA
+23 Fylkesnavn Hjemsted 0 0 NA NA NA NA NA NA NA NA
+24 Hovedprogram 0 0 NA NA NA NA NA NA NA NA
+25 Institusjonsnavn Bokmal Innr 0 0 NA NA NA NA 0 0 NA NA
+26 Institusjonsnavn Bokmal Utr 0 0 NA NA NA NA NA NA NA NA
+27 Institusjonsnr Eier 898 0.01 150 251 198.58 194 216.46 14.71 0.79 1.11
+28 Instituttnr 891 0.01 0 299902 12.13 3 95946.45 309.75 964.35 933640.09
+29 Institutt 0 0 NA NA NA NA 4916564.52 2217.33 NA NA
+30 Int Akronym 0 0 NA NA NA NA 0 0 NA NA
+31 Kjonn 0 0 NA NA NA NA 0 0 NA NA
+32 Klassekode 0 0 NA NA NA NA NaN NaN NA NA
+33 Kommunenavn 0 0 NA NA NA NA 0 0 NA NA
+34 Kommunenavn Forstegang Reg 0 0 NA NA NA NA NA NA NA NA
+35 Konkurransepoeng 2576449 39.11 0 1004.67 33.41 44.7 678.71 26.05 1.43 61.69
+36 Kvalgrunnlagkode Genstudkomp 0 0 NA NA NA NA NA NA NA NA
+37 Kvalgrunnlagkode Teknisk Fagsk 0 0 NA NA NA NA NA NA NA NA
+38 Kvotetilhkode Tilbud 0 0 NA NA NA NA NA NA NA NA
+39 Landnavn Engelsk Hjemland 0 0 NA NA NA NA NA NA NA NA
+40 Landnavn Engelsk Innr 0 0 NA NA NA NA NA NA NA NA
+41 Landnavn Engelsk Utr 0 0 NA NA NA NA NA NA NA NA
+42 Landnavn Engelsk Vdg Opplaring 0 0 NA NA NA NA NA NA NA NA
+43 Landnavn Norsk Hjemland 0 0 NA NA NA NA NA NA NA NA
+44 Landnr Hjemland 257531 3.91 0 990 31.19 0 17123.62 130.86 5.38 31.22
+45 Landnr Vdg Opplaring 6469607 98.2 0 990 470.55 428 132648.95 364.21 0.37 -1.43
+46 Nsdnivakode 0 0 NA NA NA NA NA NA NA NA
+47 Nsdniva 0 0 NA NA NA NA NA NA NA NA
+48 Nsd Gruppe Bsk 0 0 NA NA NA NA NA NA NA NA
+49 Nsd Kode Bsk 0 0 NA NA NA NA NA NA NA NA
+50 Number of Records 898 0.01 1 1 1 1 0 0 NaN NaN
+51 Opptaksramme 6208881 94.24 0 600 155.72 110 18465.49 135.89 1.4 1.33
+52 Opptakstypekode 0 0 NA NA NA NA NA NA NA NA
+53 Personlopenr 898 0.01 1 1496662 461447.71 441992 107569536461.53 327977.95 0.54 -0.5
+54 Person Lopenr Dv 891 0.01 4 6402286 899463.77 580643 798518184639.2 893598.45 1.85 4.27
+55 Postnr Hjemsted 354477 5.38 1 9999 3836.66 3610 7541292.67 2746.14 0.42 -0.96
+56 Prioritetsnr 891 0.01 -1 52 0.73 1 7.91 2.81 5.53 37.89
+57 Prosenttall Egenfinans 891 0.01 0 100 94.09 100 516.42 22.72 -3.74 12.31
+58 Prosenttall Heltidandel 891 0.01 0 100 89.84 100 468.89 21.65 -1.86 1.95
+59 Resultatkode Bio12 0 0 NA NA NA NA 0 0 NA NA
+60 Resultatkode Bio1 0 0 NA NA NA NA 0 0 NA NA
+61 Resultatkode Fys12 0 0 NA NA NA NA 0 0 NA NA
+62 Resultatkode Fys1 0 0 NA NA NA NA 7.9 2.81 NA NA
+63 Resultatkode Geo12 0 0 NA NA NA NA 3.24 1.8 NA NA
+64 Resultatkode Gsk 0 0 NA NA NA NA 0.14 0.38 NA NA
+65 Resultatkode Iko 0 0 NA NA NA NA 0 0 NA NA
+66 Resultatkode Info12 0 0 NA NA NA NA 0 0 NA NA
+67 Resultatkode Kje12 0 0 NA NA NA NA NA NA NA NA
+68 Resultatkode Kje1 0 0 NA NA NA NA 0 0 NA NA
+69 Resultatkode Kok 0 0 NA NA NA NA 0 0 NA NA
+70 Resultatkode Ntk 0 0 NA NA NA NA 0 0 NA NA
+71 Resultatkode Pfmat 0 0 NA NA NA NA 0.29 0.53 NA NA
+72 Resultatkode R1M 0 0 NA NA NA NA 0 0 NA NA
+73 Resultatkode R1R2M 0 0 NA NA NA NA 0 0 NA NA
+74 Resultatkode R1R2 0 0 NA NA NA NA NA NA NA NA
+75 Resultatkode R2 0 0 NA NA NA NA NA NA NA NA
+76 Resultatkode S1S2 0 0 NA NA NA NA NA NA NA NA
+77 Resultatkode Sa1 0 0 NA NA NA NA 0 0 NA NA
+78 Resultatkode Tek12 0 0 NA NA NA NA NA NA NA NA
+79 Resultattall Ffmat 2523827 38.31 0 6 2.74 3 3.92 1.98 -0.27 -1.3
+80 Resultattall Kar 2523827 38.31 0 60 43.11 43.3 45.33 6.73 -0.16 -0.21
+81 Resultattall Norh 2523827 38.31 0 6 3.79 4 1.12 1.06 -1.05 2.61
+82 Resultattall Norsk 2523827 38.31 0 6 3.87 4 1.02 1.01 -1.34 3.72
+83 Resultattall R24 2523827 38.31 0 6 1.05 0 3.57 1.89 1.43 0.4
+84 Resultattall Rea 2523827 38.31 0 4 1.35 0.5 2.26 1.5 0.66 -1.15
+85 Resultattall Spr 2523827 38.31 0 4 0.11 0 0.11 0.34 3.39 12.47
+86 Semester Normert 898 0.01 0 16 5.5 6 8.57 2.93 0.07 -0.31
+87 Semnr Kalender Hpr 898 0.01 0 38 3.13 2 8.47 2.91 1.98 7.58
+88 Semnr Netto Hpr 898 0.01 0 38 2.99 2 5.56 2.36 1.63 4.44
+89 Sem Id 898 0.01 28 65 48.65 50 114.52 10.7 -0.26 -1.06
+90 Sem Id Kull 898 0.01 -1 69 42.35 47 324.12 18 -1.32 1.04
+91 Sem Id Start 898 0.01 -1 65 42.15 47 322.52 17.96 -1.3 1.01
+92 Skolepoeng 2576442 39.11 0 181.2 12.98 0 465.81 21.58 1.23 0.3
+93 Snittkarakter Fs 515342 7.82 0 5 3.25 3.27 0.57 0.76 -0.21 -0.1
+94 Snittkarakter Nvb 2524591 38.32 2 6 4.31 4.33 0.45 0.67 -0.12 -0.48
+95 Ssbalder 0 0 NA NA NA NA NA NA NA NA
+96 Ssbalder Freg 0 0 NA NA NA NA NA NA NA NA
+97 Ssbalder Opptak 0 0 NA NA NA NA NA NA NA NA
+98 Studentgrunnlagkode 0 0 NA NA NA NA NA NA NA NA
+99 Studentkategori 0 0 NA NA NA NA NA NA NA NA
+100 Studentstatkode Hpr 0 0 NA NA NA NA NA NA NA NA
+101 Studienivakode 898 0.01 0 990 463.03 390 33785.39 183.81 0.29 -0.2
+102 Studienivanavn 0 0 NA NA NA NA NA NA NA NA
+103 Studieniva 0 0 NA NA NA NA NA NA NA NA
+104 Studieprognavn 0 0 NA NA NA NA NA NA NA NA
+105 Studieprogramkode 0 0 NA NA NA NA NaN NaN NA NA
+106 Studieprogram 0 0 NA NA NA NA NA NA NA NA
+107 Studieretningkode 0 0 NA NA NA NA NaN NaN NA NA
+108 Studieretningnavn Bokmal 0 0 NA NA NA NA NA NA NA NA
+109 Studieretning 0 0 NA NA NA NA NA NA NA NA
+110 Studierettstatkode Hpr 0 0 NA NA NA NA NA NA NA NA
+111 Studiumkode 0 0 NA NA NA NA NA NA NA NA
+112 Studiumnavn 0 0 NA NA NA NA NA NA NA NA
+113 Terminkode 0 0 NA NA NA NA NA NA NA NA
+114 Terminkode Gyldig Til 0 0 NA NA NA NA NA NA NA NA
+115 Terminkode Start 0 0 NA NA NA NA NA NA NA NA
+116 Tilbudstatkode 0 0 NA NA NA NA NA NA NA NA
+117 Undorganiseringkode 0 0 NA NA NA 1 0.17 0.41 NA NA
+118 Utvekslingsfaktor Hpr 1265 0.02 0 1 0.01 0 0.01 0.09 9.48 91.06
+119 Xstatuskode Utenlandsk Utd 0 0 NA NA NA NA NA NA NA NA
+120 w21_4952_lopenr_person 0 0 NA NA NA NA NA NA NA NA

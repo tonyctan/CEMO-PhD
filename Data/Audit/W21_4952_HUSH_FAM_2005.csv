@@ -1,27 +1,26 @@
-names
-1 w21_4952_lopenr_person
-2 lopenr_familie
-3 lopenr_hush
-4 famtype
-5 regstat_personkode
-6 regstat_famtyp
-7 parstatus
-8 antpers_i_regstat_famnr
-9 barn3_i_fam
-10 barn_i_regstat_famnr
-11 regstat_hushtyp
-12 antregstat_famnr_i_hushnr
-13 pers_i_hushnr
-14 barn
-15 pers17min_i_hushnr
-16 pers18plus_i_hushnr
-17 barn3_i_hush
-18 barn_i_hush
-19 ant_sosken
-20 soskenkode
-21 foreldrekode
-22 vekt_person
-23 vekt_familie
-24 vekt_hush
-25 kommnr
-26 bydel
+1 w21_4952_lopenr_person 0 0 NA NA NA NA NA NA NA NA
+2 lopenr_familie 0 0 NA NA NA NA NA NA NA NA
+3 lopenr_hush 0 0 NA NA NA NA NA NA NA NA
+4 famtype 0 0 1 7 2.8 3 2.04 1.43 0.7 0.11
+5 regstat_personkode 0 0 1 3 1.86 2 0.75 0.87 0.28 -1.61
+6 regstat_famtyp 0 0 111 341 229.93 221 5151.76 71.78 -0.26 -0.92
+7 parstatus 0 0 0 8 2.82 1 10.81 3.29 0.8 -1.18
+8 antpers_i_regstat_famnr 0 0 1 16 2.99 3 2.23 1.49 0.47 0.13
+9 barn3_i_fam 0 0 0 14 1.28 1 1.61 1.27 0.84 1.09
+10 barn_i_regstat_famnr 0 0 0 13 0.98 0 1.42 1.19 1.08 1.04
+11 regstat_hushtyp 0 0 0 212 133.49 131 905.31 30.09 -1.31 6.11
+12 antregstat_famnr_i_hushnr 0 0 1 56 1.08 1 0.67 0.82 33.37 1489.37
+13 pers_i_hushnr 0 0 1 56 3.1 3 2.83 1.68 3.69 71.63
+14 barn 0 0 0 1 0.32 0 0.22 0.47 0.79 -1.38
+15 pers17min_i_hushnr 0 0 0 13 1 1 1.43 1.2 1.08 1.14
+16 pers18plus_i_hushnr 0 0 0 56 2.1 2 1.31 1.14 11.83 363.09
+17 barn3_i_hush 0 0 0 14 1.3 1 1.62 1.27 0.84 1.22
+18 barn_i_hush 0 0 0 13 0.99 1 1.43 1.2 1.08 1.13
+19 ant_sosken 3147454 68.33 0 13 1.26 1 1.08 1.04 1.39 5.6
+20 soskenkode 3147454 68.33 0 7 1 1 0.83 0.91 2.25 7.51
+21 foreldrekode 3147454 68.33 1 7 1.85 1 1.54 1.24 1.36 0.96
+22 vekt_person 0 0 0 7 1 1 0.05 0.22 -1.97 14.49
+23 vekt_familie 0 0 0 7 1 1 0.05 0.22 -2.03 14.5
+24 vekt_hush 0 0 0 7 1 1 0.05 0.22 -2.04 14.52
+25 kommnr 0 0 101 2030 915.79 904 336014.81 579.67 0.24 -1.25
+26 bydel 3567048 77.44 30101 160199 79158.32 30115 2703593446.3 51996.09 0.27 -1.61

@@ -1,94 +1,93 @@
-names
-1 w21_4952_lopenr_person
-2 sivilstand_1975
-3 sivilstand_1976
-4 sivilstand_1977
-5 sivilstand_1978
-6 sivilstand_1979
-7 sivilstand_1980
-8 sivilstand_1981
-9 sivilstand_1982
-10 sivilstand_1983
-11 sivilstand_1984
-12 sivilstand_1985
-13 sivilstand_1986
-14 sivilstand_1987
-15 sivilstand_1988
-16 sivilstand_1989
-17 sivilstand_1990
-18 sivilstand_1991
-19 sivilstand_1992
-20 sivilstand_1993
-21 sivilstand_1994
-22 sivilstand_1995
-23 sivilstand_1996
-24 sivilstand_1997
-25 sivilstand_1998
-26 sivilstand_1999
-27 sivilstand_2000
-28 sivilstand_2001
-29 sivilstand_2002
-30 sivilstand_2003
-31 sivilstand_2004
-32 sivilstand_2005
-33 sivilstand_2006
-34 sivilstand_2007
-35 sivilstand_2008
-36 sivilstand_2009
-37 sivilstand_2010
-38 sivilstand_2011
-39 sivilstand_2012
-40 sivilstand_2013
-41 sivilstand_2014
-42 sivilstand_2015
-43 sivilstand_2016
-44 sivilstand_2017
-45 sivilstand_2018
-46 sivilstand_2019
-47 sivilstand_2020
-48 lopenr_familienr_1975
-49 lopenr_familienr_1976
-50 lopenr_familienr_1977
-51 lopenr_familienr_1978
-52 lopenr_familienr_1979
-53 lopenr_familienr_1980
-54 lopenr_familienr_1981
-55 lopenr_familienr_1982
-56 lopenr_familienr_1983
-57 lopenr_familienr_1984
-58 lopenr_familienr_1985
-59 lopenr_familienr_1986
-60 lopenr_familienr_1987
-61 lopenr_familienr_1988
-62 lopenr_familienr_1989
-63 lopenr_familienr_1990
-64 lopenr_familienr_1991
-65 lopenr_familienr_1992
-66 lopenr_familienr_1993
-67 lopenr_familienr_1994
-68 lopenr_familienr_1995
-69 lopenr_familienr_1996
-70 lopenr_familienr_1997
-71 lopenr_familienr_1998
-72 lopenr_familienr_1999
-73 lopenr_familienr_2000
-74 lopenr_familienr_2001
-75 lopenr_familienr_2002
-76 lopenr_familienr_2003
-77 lopenr_familienr_2004
-78 lopenr_familienr_2005
-79 lopenr_familienr_2006
-80 lopenr_familienr_2007
-81 lopenr_familienr_2008
-82 lopenr_familienr_2009
-83 lopenr_familienr_2010
-84 lopenr_familienr_2011
-85 lopenr_familienr_2012
-86 lopenr_familienr_2013
-87 lopenr_familienr_2014
-88 lopenr_familienr_2015
-89 lopenr_familienr_2016
-90 lopenr_familienr_2017
-91 lopenr_familienr_2018
-92 lopenr_familienr_2019
-93 lopenr_familienr_2020
+1 w21_4952_lopenr_person 0 0 NA NA NA NA NA NA NA NA
+2 sivilstand_1975 3862565 49.15 1 5 1.67 2 0.53 0.73 1.31 2.99
+3 sivilstand_1976 3827746 48.7 1 5 1.68 2 0.54 0.74 1.33 3.01
+4 sivilstand_1977 3810033 48.48 1 5 1.68 2 0.55 0.74 1.35 3
+5 sivilstand_1978 3795896 48.3 1 5 1.69 2 0.57 0.75 1.36 2.99
+6 sivilstand_1979 3779208 48.09 1 5 1.7 2 0.58 0.76 1.37 2.95
+7 sivilstand_1980 3767423 47.94 1 5 1.7 2 0.59 0.77 1.38 2.91
+8 sivilstand_1981 3754453 47.77 1 5 1.71 2 0.61 0.78 1.39 2.87
+9 sivilstand_1982 3743356 47.63 1 5 1.71 2 0.62 0.79 1.4 2.82
+10 sivilstand_1983 3728333 47.44 1 5 1.72 2 0.64 0.8 1.41 2.78
+11 sivilstand_1984 3717322 47.3 1 5 1.72 2 0.66 0.81 1.42 2.71
+12 sivilstand_1985 3702077 47.1 1 5 1.73 2 0.67 0.82 1.42 2.64
+13 sivilstand_1986 3701007 47.09 1 5 1.73 2 0.68 0.83 1.41 2.54
+14 sivilstand_1987 3684335 46.88 1 5 1.73 2 0.7 0.84 1.42 2.48
+15 sivilstand_1988 3661484 46.59 1 5 1.74 2 0.71 0.85 1.42 2.42
+16 sivilstand_1989 3639137 46.3 1 5 1.74 2 0.73 0.85 1.43 2.37
+17 sivilstand_1990 3626677 46.14 1 5 1.74 2 0.75 0.87 1.43 2.32
+18 sivilstand_1991 3609960 45.93 1 5 1.75 2 0.77 0.88 1.43 2.24
+19 sivilstand_1992 3586144 45.63 1 5 1.75 2 0.78 0.89 1.43 2.16
+20 sivilstand_1993 3560617 45.3 1 5 1.75 2 0.8 0.89 1.43 2.07
+21 sivilstand_1994 3534943 44.98 1 9 1.75 2 0.81 0.9 1.42 2
+22 sivilstand_1995 3511307 44.68 1 9 1.75 2 0.82 0.91 1.42 1.94
+23 sivilstand_1996 3489719 44.4 1 9 1.75 2 0.83 0.91 1.42 1.88
+24 sivilstand_1997 3466944 44.11 1 9 1.75 2 0.84 0.91 1.42 1.85
+25 sivilstand_1998 3442066 43.8 1 9 1.75 2 0.84 0.92 1.42 1.84
+26 sivilstand_1999 3414322 43.44 1 9 1.75 2 0.85 0.92 1.42 1.84
+27 sivilstand_2000 3381167 43.02 1 9 1.75 2 0.86 0.93 1.43 1.86
+28 sivilstand_2001 3356259 42.7 1 9 1.75 2 0.87 0.93 1.44 1.87
+29 sivilstand_2002 3335638 42.44 1 9 1.75 2 0.88 0.94 1.45 1.88
+30 sivilstand_2003 3307461 42.08 1 9 1.75 2 0.89 0.95 1.45 1.89
+31 sivilstand_2004 3282254 41.76 1 9 1.75 2 0.9 0.95 1.46 1.89
+32 sivilstand_2005 3253367 41.39 1 9 1.75 2 0.91 0.96 1.46 1.9
+33 sivilstand_2006 3219539 40.96 1 9 1.75 2 0.92 0.96 1.47 1.9
+34 sivilstand_2007 3178653 40.44 1 9 1.75 2 0.93 0.96 1.47 1.92
+35 sivilstand_2008 3122646 39.73 1 9 1.75 2 0.93 0.96 1.48 1.96
+36 sivilstand_2009 3060619 38.94 1 9 1.75 1 0.93 0.96 1.49 2.01
+37 sivilstand_2010 3001618 38.19 1 9 1.74 1 0.93 0.96 1.49 1.99
+38 sivilstand_2011 2939525 37.4 1 9 1.74 1 0.93 0.96 1.5 2.01
+39 sivilstand_2012 2873946 36.57 0 9 1.73 1 0.92 0.96 1.5 2.02
+40 sivilstand_2013 2808541 35.73 0 9 1.73 1 0.92 0.96 1.51 2.04
+41 sivilstand_2014 2750737 35 0 9 1.73 1 0.92 0.96 1.52 2.05
+42 sivilstand_2015 2694006 34.28 0 9 1.72 1 0.92 0.96 1.52 2.05
+43 sivilstand_2016 2645835 33.66 1 9 1.72 1 0.92 0.96 1.52 2.06
+44 sivilstand_2017 2601497 33.1 1 9 1.72 1 0.92 0.96 1.53 2.06
+45 sivilstand_2018 2564196 32.63 1 9 1.72 1 0.92 0.96 1.53 2.05
+46 sivilstand_2019 2531620 32.21 1 9 1.71 1 0.92 0.96 1.53 2.03
+47 sivilstand_2020 2492319 31.71 0 9 1.71 1 0.93 0.96 1.53 2.02
+48 lopenr_familienr_1975 0 0 NA NA NA NA NA NA NA NA
+49 lopenr_familienr_1976 0 0 NA NA NA NA NA NA NA NA
+50 lopenr_familienr_1977 0 0 NA NA NA NA NA NA NA NA
+51 lopenr_familienr_1978 0 0 NA NA NA NA NA NA NA NA
+52 lopenr_familienr_1979 0 0 NA NA NA NA NA NA NA NA
+53 lopenr_familienr_1980 0 0 NA NA NA NA NA NA NA NA
+54 lopenr_familienr_1981 0 0 NA NA NA NA NA NA NA NA
+55 lopenr_familienr_1982 0 0 NA NA NA NA NA NA NA NA
+56 lopenr_familienr_1983 0 0 NA NA NA NA NA NA NA NA
+57 lopenr_familienr_1984 0 0 NA NA NA NA NA NA NA NA
+58 lopenr_familienr_1985 0 0 NA NA NA NA NA NA NA NA
+59 lopenr_familienr_1986 0 0 NA NA NA NA NA NA NA NA
+60 lopenr_familienr_1987 0 0 NA NA NA NA NA NA NA NA
+61 lopenr_familienr_1988 0 0 NA NA NA NA NA NA NA NA
+62 lopenr_familienr_1989 0 0 NA NA NA NA NA NA NA NA
+63 lopenr_familienr_1990 0 0 NA NA NA NA NA NA NA NA
+64 lopenr_familienr_1991 0 0 NA NA NA NA NA NA NA NA
+65 lopenr_familienr_1992 0 0 NA NA NA NA NA NA NA NA
+66 lopenr_familienr_1993 0 0 NA NA NA NA NA NA NA NA
+67 lopenr_familienr_1994 0 0 NA NA NA NA NA NA NA NA
+68 lopenr_familienr_1995 0 0 NA NA NA NA NA NA NA NA
+69 lopenr_familienr_1996 0 0 NA NA NA NA NA NA NA NA
+70 lopenr_familienr_1997 0 0 NA NA NA NA NA NA NA NA
+71 lopenr_familienr_1998 0 0 NA NA NA NA NA NA NA NA
+72 lopenr_familienr_1999 0 0 NA NA NA NA NA NA NA NA
+73 lopenr_familienr_2000 0 0 NA NA NA NA NA NA NA NA
+74 lopenr_familienr_2001 0 0 NA NA NA NA NA NA NA NA
+75 lopenr_familienr_2002 0 0 NA NA NA NA NA NA NA NA
+76 lopenr_familienr_2003 0 0 NA NA NA NA NA NA NA NA
+77 lopenr_familienr_2004 0 0 NA NA NA NA NA NA NA NA
+78 lopenr_familienr_2005 0 0 NA NA NA NA NA NA NA NA
+79 lopenr_familienr_2006 0 0 NA NA NA NA NA NA NA NA
+80 lopenr_familienr_2007 0 0 NA NA NA NA NA NA NA NA
+81 lopenr_familienr_2008 0 0 NA NA NA NA NA NA NA NA
+82 lopenr_familienr_2009 0 0 NA NA NA NA NA NA NA NA
+83 lopenr_familienr_2010 0 0 NA NA NA NA NA NA NA NA
+84 lopenr_familienr_2011 0 0 NA NA NA NA NA NA NA NA
+85 lopenr_familienr_2012 0 0 NA NA NA NA NA NA NA NA
+86 lopenr_familienr_2013 0 0 NA NA NA NA NA NA NA NA
+87 lopenr_familienr_2014 0 0 NA NA NA NA NA NA NA NA
+88 lopenr_familienr_2015 0 0 NA NA NA NA NA NA NA NA
+89 lopenr_familienr_2016 0 0 NA NA NA NA NA NA NA NA
+90 lopenr_familienr_2017 0 0 NA NA NA NA NA NA NA NA
+91 lopenr_familienr_2018 0 0 NA NA NA NA NA NA NA NA
+92 lopenr_familienr_2019 0 0 NA NA NA NA NA NA NA NA
+93 lopenr_familienr_2020 0 0 NA NA NA NA NA NA NA NA

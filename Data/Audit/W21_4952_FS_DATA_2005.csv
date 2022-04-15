@@ -1,200 +1,199 @@
-names
-1 Alder1
-2 Alder
-3 Ansattnr
-4 Antall Bestatt
-5 Antall Tellende
-6 Arstall1
-7 Arstall
-8 Arstall Nsdrapportert
-9 Artermin1
-10 Artermin
-11 Campuskode1
-12 Campuskode
-13 Campusnavn
-14 Dsp Id
-15 Emnekode
-16 Emnenavn Bokmal
-17 Emnetypekode
-18 Emne
-19 Erasmusnivakode1
-20 Erasmusnivakode
-21 Fagkode
-22 Fagnavn Norsk
-23 FAG
-24 Faknr1
-25 Faknr
-26 Fakultet1
-27 Fakultet
-28 Fak Akronym1
-29 Fak Akronym
-30 Fak Navn1
-31 Fak Navn
-32 Finansiering
-33 Finanskatkode
-34 Finanstypekode
-35 Fodselsar
-36 Fylkesnavn
-37 Fylkesnavn Hjemsted
-38 Gsk Beregnet
-39 Institusjonsnavn Samarbeid
-40 Institusjonsnr
-41 Institusjonsnr Eier
-42 Institusjonsnr Samarbeid
-43 Institusjonsnr Undervisning
-44 Institutt1
-45 Instituttnr1
-46 Instituttnr
-47 Institutt
-48 Int Akronym1
-49 Int Akronym
-50 Kandidatlopenr
-51 Karakternavn
-52 Karaktertall
-53 Karaktertall Del1
-54 Karaktertall Del2
-55 Karaktertall Del3
-56 Karaktertall Dv
-57 Karaktertall Original
-58 Karregelkode
-59 Kjonn
-60 Kommislopenr
-61 Kommunenavn
-62 Kommunenavn Hjemsted
-63 Kvalgrunnlagkode Genstudkomp
-64 Kvalgrunnlagkode Teknisk Fagsk
-65 Landnavn Engelsk1
-66 Landnavn Engelsk
-67 Landnavn Engelsk Hjemland
-68 Landnavn Norsk Hjemland
-69 Landnr1
-70 Landnr
-71 Landnr Hjemland
-72 Landnr Vdg Opplaring
-73 Nsdniva1
-74 Nsdnivakode1
-75 Nsdnivakode
-76 Nsdniva
-77 Nsd Gruppe Bsk1
-78 Nsd Gruppe Bsk
-79 Nsd Kode Bsk1
-80 Nsd Kode Bsk
-81 Nuskode1
-82 Nuskode
-83 Ny Gjentak
-84 Number of Records
-85 Oblig
-86 Parti
-87 Personlopenr
-88 Person Lopenr Dv
-89 Poeng Tilbakemelding
-90 Postnr Hjemsted
-91 Prosenttall Egenfinans
-92 Prosenttall Heltidandel
-93 Resultatkode Bio12
-94 Resultatkode Bio1
-95 Resultatkode Fys12
-96 Resultatkode Fys1
-97 Resultatkode Geo12
-98 Resultatkode Gsk
-99 Resultatkode Iko
-100 Resultatkode Info12
-101 Resultatkode Kje12
-102 Resultatkode Kje1
-103 Resultatkode Kok
-104 Resultatkode Ntk
-105 Resultatkode Pfeng
-106 Resultatkode Pfmat
-107 Resultatkode R1M
-108 Resultatkode R1R2M
-109 Resultatkode R1R2
-110 Resultatkode R2
-111 Resultatkode S1S2
-112 Resultatkode Sa1
-113 Resultatkode Tek12
-114 Resultattall Ffeng
-115 Resultattall Ffmat
-116 Resultattall Kar
-117 Resultattall Norh
-118 Resultattall Norsk
-119 Resultattall R24
-120 Resultattall Rea
-121 Resultattall Spr
-122 Sem Id1
-123 Sem Id
-124 Snittkarakter Fs
-125 Snittkarakter Nvb
-126 Spoeng Individuell
-127 Spoeng Redusert
-128 Spoeng Red Tid
-129 Spr Emn Id
-130 Ssbalder1
-131 Ssbalder
-132 Status Er Hovedoppgave
-133 Status Gyldig
-134 Status Manuelt Ugyldig
-135 Sted1
-136 Sted
-137 Sted Kategori1
-138 Sted Kategori
-139 Ste Kode1
-140 Ste Kode
-141 Studentgrunnlagkode
-142 Studentkategori
-143 Studentnr Tildelt
-144 Studiearnavn1
-145 Studiearnavn
-146 Studieniva1
-147 Studienivakode1
-148 Studienivakode
-149 Studienivanavn1
-150 Studienivanavn
-151 Studieniva
-152 Studiepoeng
-153 Studieprognavn
-154 Studieprogramkode
-155 Studieprogramkode Rapportering
-156 Studieprogram
-157 Studieretningkode
-158 Studieretningnavn Bokmal
-159 Studieretning
-160 Studiumkode
-161 Studiumnavn
-162 Studium
-163 Terminkode1
-164 Terminkode
-165 Undpraksistypekode
-166 Utvinn Institusjonsnavn Ekst
-167 Utvinn Institusjonsnr Ekst
-168 Utvinn Landnavn Engelsk Ekst
-169 Utvut Arstall Nsdrapportert
-170 Utvut Oppholdtypekode
-171 Utvut Terminkode Nsdrapportert
-172 Utvut Utvekslingstatuskode
-173 Utvut Utvpersonkatkode
-174 Utvut Utvprogramkode
-175 Utvut Varighet I Dager
-176 Vektingstall
-177 Vektingstall Individuell
-178 Vektingstall Redusert
-179 Vektingstall Timesort
-180 Vekttypekode Individuell
-181 Vekttypekode Redusert
-182 Vekttypekode Timesort
-183 Versjonskode
-184 Vurderingsordning
-185 Vurdkombkode
-186 Vurdkombkode Del1
-187 Vurdkombkode Del2
-188 Vurdkombkode Del3
-189 Vurdkomb
-190 Vurdordningkode
-191 Vurdordningnavn Bokmal
-192 Vurdresstatkode
-193 Vurdresstatkode Del1
-194 Vurdresstatkode Del2
-195 Vurdresstatkode Del3
-196 Vurdresstatnavn Bokmal
-197 Vurdresstatus
-198 Vurdtidkode
-199 w21_4952_lopenr_person
+1 Alder1 916 0.12 -1 90 27.14 24 61.94 7.87 1.72 2.79
+2 Alder 916 0.12 -1 81 21.11 22 154.26 12.42 -0.18 0.46
+3 Ansattnr 773454 98.34 1266 31035401 9551207.76 10132043 5096325592750.34 2257504.28 -1.96 14.99
+4 Antall Bestatt 916 0.12 0 4 0.82 1 0.18 0.42 -1 1.18
+5 Antall Tellende 916 0.12 0 11 1.08 1 0.19 0.44 2.82 16.6
+6 Arstall1 916 0.12 -1 2006 1970.16 2005 68634.58 261.98 -7.39 52.63
+7 Arstall 519 0.07 1 2005 2003.99 2005 2009.85 44.83 -44.46 1974.87
+8 Arstall Nsdrapportert 14155 1.8 0 2006 2003.95 2005 2045.29 45.22 -44.07 1940.1
+9 Artermin1 0 0 NA NA NA NA NA NA NA NA
+10 Artermin 0 0 NA NA NA NA NA NA NA NA
+11 Campuskode1 0 0 NA NA NA NA NA NA NA NA
+12 Campuskode 0 0 NA NA NA NA NA NA NA NA
+13 Campusnavn 0 0 NA NA NA NA NA NA NA NA
+14 Dsp Id 916 0.12 -1 1475026 619080.68 -1 486952827527.94 697820.05 0.24 -1.94
+15 Emnekode 0 0 NA NA NA NA 122036421.26 11047.01 NA NA
+16 Emnenavn Bokmal 0 0 NA NA NA NA NA NA NA NA
+17 Emnetypekode 0 0 NA NA NA NA 0 0 NA NA
+18 Emne 0 0 NA NA NA NA 95.46 9.77 NA NA
+19 Erasmusnivakode1 0 0 NA NA NA NA NA NA NA NA
+20 Erasmusnivakode 0 0 NA NA NA NA NA NA NA NA
+21 Fagkode 0 0 NA NA NA NA 4.93 2.22 NA NA
+22 Fagnavn Norsk 0 0 NA NA NA NA NA NA NA NA
+23 FAG 0 0 NA NA NA NA 1772.44 42.1 NA NA
+24 Faknr1 894 0.11 0 215 33.32 20 547.76 23.4 0.48 -0.43
+25 Faknr 1313 0.17 -1 95 33.72 25 565.14 23.77 0.31 -1.45
+26 Fakultet1 0 0 NA NA NA NA 9 3 NA NA
+27 Fakultet 0 0 NA NA NA NA 0 0 NA NA
+28 Fak Akronym1 0 0 NA NA NA NA 236.52 15.38 NA NA
+29 Fak Akronym 0 0 NA NA NA NA 150.7 12.28 NA NA
+30 Fak Navn1 0 0 NA NA NA NA NA NA NA NA
+31 Fak Navn 0 0 NA NA NA NA NA NA NA NA
+32 Finansiering 0 0 NA NA NA NA NA NA NA NA
+33 Finanskatkode 0 0 NA NA NA NA 2.76 1.66 NA NA
+34 Finanstypekode 158240 20.12 1 99 1.68 1 37.47 6.12 15.25 239.09
+35 Fodselsar 958 0.12 0.8 2004 1976.99 1981 1723.1 41.51 -44.51 2052.06
+36 Fylkesnavn 0 0 NA NA NA NA 0 0 NA NA
+37 Fylkesnavn Hjemsted 0 0 NA NA NA NA NA NA NA NA
+38 Gsk Beregnet 0 0 NA NA NA NA NA NA NA NA
+39 Institusjonsnavn Samarbeid 0 0 NA NA NA NA 1.29 1.14 NA NA
+40 Institusjonsnr 1313 0.17 150 251 198.85 194 217.08 14.73 0.68 1.36
+41 Institusjonsnr Eier 916 0.12 4 251 198.77 194 231.54 15.22 -0.07 8.73
+42 Institusjonsnr Samarbeid 0 0 NA NA NA NA 0.28 0.53 NA NA
+43 Institusjonsnr Undervisning 783487 99.62 0 9 3.17 1 12.4 3.52 1.04 -0.9
+44 Institutt1 0 0 NA NA NA NA 143.49 11.98 NA NA
+45 Instituttnr1 1313 0.17 0 94 14.92 6 385.89 19.64 1.85 3.28
+46 Instituttnr 1313 0.17 -1 94 11.96 3 393.76 19.84 2.35 5.35
+47 Institutt 0 0 NA NA NA NA 204.89 14.31 NA NA
+48 Int Akronym1 0 0 NA NA NA NA NA NA NA NA
+49 Int Akronym 0 0 NA NA NA NA NA NA NA NA
+50 Kandidatlopenr 114806 14.6 1 999980 146201.28 2965 59204765426.55 243320.29 1.53 0.7
+51 Karakternavn 0 0 NA NA NA NA NA NA NA NA
+52 Karaktertall 116883 14.86 0 67 56.54 63 376.43 19.4 -2.49 4.26
+53 Karaktertall Del1 559735 71.17 0 67 17.19 0.8 758.33 27.54 1.09 -0.81
+54 Karaktertall Del2 707371 89.94 0 990 45.96 63 987.08 31.42 4.56 147.26
+55 Karaktertall Del3 758343 96.42 0 6 3.39 6 8.84 2.97 -0.27 -1.93
+56 Karaktertall Dv 302710 38.49 1 5 3.18 3 1.3 1.14 -0.22 -0.69
+57 Karaktertall Original 0 0 NA NA NA NA NA NA NA NA
+58 Karregelkode 1313 0.17 1 38 28.32 30 74.89 8.65 -2.16 3.63
+59 Kjonn 0 0 NA NA NA NA NA NA NA NA
+60 Kommislopenr 696707 88.58 0 118 10.74 2 451.37 21.25 3.18 9.82
+61 Kommunenavn 0 0 NA NA NA NA NA NA NA NA
+62 Kommunenavn Hjemsted 0 0 NA NA NA NA NA NA NA NA
+63 Kvalgrunnlagkode Genstudkomp 0 0 NA NA NA NA NA NA NA NA
+64 Kvalgrunnlagkode Teknisk Fagsk 0 0 NA NA NA NA 0.19 0.44 NA NA
+65 Landnavn Engelsk1 0 0 NA NA NA NA 2769627183.02 52627.25 NA NA
+66 Landnavn Engelsk 0 0 NA NA NA NA NA NA NA NA
+67 Landnavn Engelsk Hjemland 0 0 NA NA NA NA 0 0 NA NA
+68 Landnavn Norsk Hjemland 0 0 NA NA NA NA NA NA NA NA
+69 Landnr1 1365 0.17 0 0 0 0 0 0 NaN NaN
+70 Landnr 916 0.12 0 711576 135.05 0 67982518.29 8245.15 69.41 5022.45
+71 Landnr Hjemland 66204 8.42 0 2981693 624.84 0 1102499975.47 33203.92 65.85 4792.74
+72 Landnr Vdg Opplaring 784576 99.76 0 9 4.54 4 12.24 3.5 0.19 -1.63
+73 Nsdniva1 0 0 NA NA NA NA 4470107.33 2114.26 NA NA
+74 Nsdnivakode1 0 0 NA NA NA NA 0 0 NA NA
+75 Nsdnivakode 0 0 NA NA NA NA 493.63 22.22 NA NA
+76 Nsdniva 0 0 NA NA NA NA NA NA NA NA
+77 Nsd Gruppe Bsk1 0 0 NA NA NA NA NA NA NA NA
+78 Nsd Gruppe Bsk 0 0 NA NA NA NA NA NA NA NA
+79 Nsd Kode Bsk1 0 0 NA NA NA NA NA NA NA NA
+80 Nsd Kode Bsk 0 0 NA NA NA NA NA NA NA NA
+81 Nuskode1 16746 2.13 61999 999999 658590.23 651901 2347787327.93 48453.97 0.5 7.06
+82 Nuskode 1315 0.17 -1 882901 665010.62 654101 2800958848.55 52924.09 0.49 3.31
+83 Ny Gjentak 0 0 NA NA NA NA NA NA NA NA
+84 Number of Records 1313 0.17 1 1 1 1 0 0 NaN NaN
+85 Oblig 0 0 NA NA NA NA NA NA NA NA
+86 Parti 0 0 NA NA NA NA NA NA NA NA
+87 Personlopenr 1313 0.17 2 1336039 231245.39 145718 48958218087.81 221265.04 1.08 -0.17
+88 Person Lopenr Dv 1313 0.17 43 6388295 760706.66 669634 553977520910.99 744296.66 0.82 0.79
+89 Poeng Tilbakemelding 0 0 NA NA NA NA 0.67 0.82 NA NA
+90 Postnr Hjemsted 43484 5.53 21 9999 4005.91 3850 7193398.89 2682.05 0.35 -1
+91 Prosenttall Egenfinans 1316 0.17 0 100 96.41 100 315.23 17.75 -4.99 23.48
+92 Prosenttall Heltidandel 1385 0.18 0 100 93.72 100 320.3 17.9 -2.77 6.43
+93 Resultatkode Bio12 0 0 NA NA NA NA NA NA NA NA
+94 Resultatkode Bio1 0 0 NA NA NA NA NA NA NA NA
+95 Resultatkode Fys12 0 0 NA NA NA NA NA NA NA NA
+96 Resultatkode Fys1 0 0 NA NA NA NA NA NA NA NA
+97 Resultatkode Geo12 0 0 NA NA NA NA 0.82 0.9 NA NA
+98 Resultatkode Gsk 0 0 NA NA NA NA 1.79 1.34 NA NA
+99 Resultatkode Iko 0 0 NA NA NA NA 0.42 0.64 NA NA
+100 Resultatkode Info12 0 0 NA NA NA NA 0.71 0.84 NA NA
+101 Resultatkode Kje12 0 0 NA NA NA NA 0.65 0.8 NA NA
+102 Resultatkode Kje1 0 0 NA NA NA NA 1.75 1.32 NA NA
+103 Resultatkode Kok 0 0 NA NA NA NA 1.28 1.13 NA NA
+104 Resultatkode Ntk 0 0 NA NA NA NA 0.2 0.45 NA NA
+105 Resultatkode Pfeng 0 0 NA NA NA NA 0 0 NA NA
+106 Resultatkode Pfmat 0 0 NA NA NA NA 0 0 NA NA
+107 Resultatkode R1M 0 0 NA NA NA NA 0.75 0.87 NA NA
+108 Resultatkode R1R2M 0 0 NA NA NA NA 0.42 0.64 NA NA
+109 Resultatkode R1R2 0 0 NA NA NA NA 4.16 2.04 NA NA
+110 Resultatkode R2 0 0 NA NA NA NA 0.2 0.45 NA NA
+111 Resultatkode S1S2 0 0 NA NA NA NA 3.94 1.99 NA NA
+112 Resultatkode Sa1 0 0 NA NA NA NA 7.04 2.65 NA NA
+113 Resultatkode Tek12 0 0 NA NA NA NA 1.56 1.25 NA NA
+114 Resultattall Ffeng 398539 50.67 0 6 4.22 4 0.88 0.94 -0.86 2.29
+115 Resultattall Ffmat 398539 50.67 0 6 3.93 4 1.6 1.27 -0.67 0.57
+116 Resultattall Kar 398539 50.67 0 60 42.25 42.4 41.64 6.45 -0.18 0.01
+117 Resultattall Norh 398539 50.67 0 6 3.87 4 0.91 0.95 -0.89 2.68
+118 Resultattall Norsk 398539 50.67 0 6 3.86 4 0.79 0.89 -1.14 3.77
+119 Resultattall R24 398539 50.67 0 6 1.33 0 3.98 2 1.03 -0.61
+120 Resultattall Rea 398539 50.67 0 4 1.57 1 2.23 1.49 0.45 -1.3
+121 Resultattall Spr 398539 50.67 0 4 0.15 0 0.15 0.39 2.71 7.58
+122 Sem Id1 916 0.12 -1 160370 81.87 32 6828570.14 2613.15 54.02 2935.27
+123 Sem Id 916 0.12 0 180100 82.49 32 6687662.56 2586.05 53.81 2932.8
+124 Snittkarakter Fs 39946 5.08 1 5 3.17 3.17 0.58 0.76 -0.14 -0.19
+125 Snittkarakter Nvb 398654 50.69 2 6 4.23 4.24 0.41 0.64 -0.1 -0.47
+126 Spoeng Individuell 916 0.12 0 959659 125.15 7.5 41847469.77 6468.96 66.26 4797.98
+127 Spoeng Redusert 1313 0.17 0 180 0.18 0 6.63 2.57 25.99 1000.44
+128 Spoeng Red Tid 1313 0.17 0 240 8.95 7.5 115.51 10.75 4.16 32.95
+129 Spr Emn Id 1313 0.17 -1 27037 11353.58 10285 46754675.02 6837.74 0.38 -0.99
+130 Ssbalder1 0 0 NA NA NA NA 18796.22 137.1 NA NA
+131 Ssbalder 0 0 NA NA NA NA 36630.64 191.39 NA NA
+132 Status Er Hovedoppgave 0 0 NA NA NA NA NA NA NA NA
+133 Status Gyldig 0 0 NA NA NA NA NA NA NA NA
+134 Status Manuelt Ugyldig 0 0 NA NA NA NA 2.04 1.43 NA NA
+135 Sted1 0 0 NA 7.5 NA NA 28.01 5.29 NA NA
+136 Sted 0 0 NA NA NA NA NA NA NA NA
+137 Sted Kategori1 0 0 NA NA NA NA NA NA NA NA
+138 Sted Kategori 0 0 NA NA NA NA NA NA NA NA
+139 Ste Kode1 1313 0.17 0 950000 333873.42 205000 53822222826.76 231996.17 0.35 -1.46
+140 Ste Kode 1361 0.17 0 950000 338389.08 252500 56726288300.55 238172.81 0.3 -1.45
+141 Studentgrunnlagkode 0 0 NA NA NA NA NA NA NA NA
+142 Studentkategori 0 0 NA NA NA NA NA NA NA NA
+143 Studentnr Tildelt 1313 0.17 1 999980 339636.14 214975 84170243747.3 290121.08 0.78 -0.63
+144 Studiearnavn1 0 0 NA NA NA NA NA NA NA NA
+145 Studiearnavn 0 0 NA NA NA NA NA NA NA NA
+146 Studieniva1 0 0 NA NA NA NA NA NA NA NA
+147 Studienivakode1 1313 0.17 -1 990 439.31 390 29119.19 170.64 0.59 0.57
+148 Studienivakode 1313 0.17 0 990 212.75 100 36402.3 190.79 1.75 2.32
+149 Studienivanavn1 0 0 NA NA NA NA NA NA NA NA
+150 Studienivanavn 0 0 NA NA NA NA NA NA NA NA
+151 Studieniva 0 0 NA NA NA NA NA NA NA NA
+152 Studiepoeng 1313 0.17 0 240 11.37 10 112.96 10.63 4.74 38.01
+153 Studieprognavn 0 0 NA NA NA NA NA NA NA NA
+154 Studieprogramkode 0 0 NA NA NA NA NaN NaN NA NA
+155 Studieprogramkode Rapportering 0 0 NA NA NA NA NaN NaN NA NA
+156 Studieprogram 0 0 NA NA NA NA NA NA NA NA
+157 Studieretningkode 0 0 NA NA NA NA 0.03 0.17 NA NA
+158 Studieretningnavn Bokmal 0 0 NA NA NA NA NA NA NA NA
+159 Studieretning 0 0 NA NA NA NA 28.01 5.29 NA NA
+160 Studiumkode 0 0 NA NA NA NA 18.18 4.26 NA NA
+161 Studiumnavn 0 0 NA NA NA NA 33 5.74 NA NA
+162 Studium 0 0 NA NA NA NA 32.82 5.73 NA NA
+163 Terminkode1 0 0 NA NA NA NA NA NA NA NA
+164 Terminkode 0 0 NA NA NA NA NA NA NA NA
+165 Undpraksistypekode 0 0 NA NA NA NA NA NA NA NA
+166 Utvinn Institusjonsnavn Ekst 0 0 NA NA NA NA 0.44 0.66 NA NA
+167 Utvinn Institusjonsnr Ekst 0 0 NA NA NA NA 4.25 2.06 NA NA
+168 Utvinn Landnavn Engelsk Ekst 0 0 NA NA NA NA NA NA NA NA
+169 Utvut Arstall Nsdrapportert 0 0 NA NA NA NA 0 0 NA NA
+170 Utvut Oppholdtypekode 0 0 NA NA NA NA NA NA NA NA
+171 Utvut Terminkode Nsdrapportert 0 0 NA NA NA NA NA NA NA NA
+172 Utvut Utvekslingstatuskode 0 0 NA NA NA NA NA NA NA NA
+173 Utvut Utvpersonkatkode 0 0 NA NA NA NA NA NA NA NA
+174 Utvut Utvprogramkode 0 0 NA NA NA NA NA NA NA NA
+175 Utvut Varighet I Dager 776902 98.78 4 1758 163.99 151 7004.31 83.69 1.74 14.97
+176 Vektingstall 1343 0.17 0 240 11.46 10 112.91 10.63 4.73 37.9
+177 Vektingstall Individuell 777501 98.86 0 9 3.04 3 5.73 2.39 0.67 -0.48
+178 Vektingstall Redusert 171830 21.85 0 240 11.5 10 119.06 10.91 4.53 35.54
+179 Vektingstall Timesort 170012 21.62 0 240 11.5 10 118.71 10.9 4.52 35.43
+180 Vekttypekode Individuell 0 0 NA NA NA NA NA NA NA NA
+181 Vekttypekode Redusert 0 0 NA NA NA NA 10.66 3.27 NA NA
+182 Vekttypekode Timesort 0 0 NA NA NA NA NA NA NA NA
+183 Versjonskode 78673 10 0 17 0.98 1 0.27 0.52 8.33 225.57
+184 Vurderingsordning 0 0 NA NA NA NA NA NA NA NA
+185 Vurdkombkode 0 0 NA NA NA NA NA NA NA NA
+186 Vurdkombkode Del1 0 0 NA NA NA NA 2344726.83 1531.25 NA NA
+187 Vurdkombkode Del2 0 0 NA NA NA NA NA NA NA NA
+188 Vurdkombkode Del3 0 0 NA NA NA NA 4.59 2.14 NA NA
+189 Vurdkomb 0 0 NA NA NA NA NA NA NA NA
+190 Vurdordningkode 786502 100 Inf -Inf NaN NA NA NA NaN NaN
+191 Vurdordningnavn Bokmal 0 0 NA NA NA NA NA NA NA NA
+192 Vurdresstatkode 0 0 NA NA NA NA NA NA NA NA
+193 Vurdresstatkode Del1 0 0 NA NA NA NA NA NA NA NA
+194 Vurdresstatkode Del2 0 0 NA NA NA NA NA NA NA NA
+195 Vurdresstatkode Del3 0 0 NA NA NA NA NA NA NA NA
+196 Vurdresstatnavn Bokmal 0 0 NA NA NA NA NA NA NA NA
+197 Vurdresstatus 0 0 NA NA NA NA NA NA NA NA
+198 Vurdtidkode 0 0 NA NA NA NA 10.5 3.24 NA NA
+199 w21_4952_lopenr_person 0 0 NA NA NA NA NA NA NA NA

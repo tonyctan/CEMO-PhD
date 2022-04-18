@@ -15,13 +15,14 @@
  ###                          ### 
   #                            #  
 
-# Read in dim_list.csv
-library(Orcs) # Set working directory depending on the operating system
-setwdOS(lin = "~/uio/", win = "M:/", ext = "pc/Dokumenter/PhD/Data/")
+# Set working directory depending on the operating system
+Orcs::setwdOS(lin = "~/uio/", win = "M:/", ext = "pc/Dokumenter/PhD/Data/")
 dim_list <- read.csv("dim_list.csv", header = F, sep = " ")
 
-# Obtain a list of file names from "Desc_stat" folder
-file_names <- list.files("./Desc_stat/", pattern = "*.csv", full.names = F)
+# Obtain a "standard file name" list from dim_list.csv
+# Windows and Linux differ in how they sort file names.
+# Do NOT rely on operating systems to sort files but follow dim_list.csv's order
+file_names <- dim_list[,2]
 
 # Calculate total number of CSV files
 total_files <- length(file_names) # Should be 183

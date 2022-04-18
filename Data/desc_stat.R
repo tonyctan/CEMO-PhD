@@ -34,7 +34,7 @@ for (i in 1:total_files) {
     temp <- data.table::fread(file_names[i]) # Read in dataset one at a time
     temp <- janitor::clean_names(temp) # Replace " " in var names with "_"
 
-#    dim_list[i, ] <- dim(temp) # Save dimension info to dim_list
+    dim_list[i, ] <- dim(temp) # Save dimension info to dim_list
 
     # Variable name
     var_names <- data.frame(attributes(temp)[1])[,1] # Extract variable names

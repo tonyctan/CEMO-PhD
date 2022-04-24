@@ -7,22 +7,21 @@
 # Script purpose: Repeat file names enough times to match the size of variable descriptive statistics
 
 ###### DATA PROTECTION ######
-# Nature: An R script lenthening dim_list.csv
-# Security level (input-script-output): yellow-yellow-yellow
+# Nature: An R script lengthening dim_list.csv
+# Security level (input-script-output): green-green-green
 # Computer environment (store-view-edit-execute): any-any-any-any
 
 #####      Begin script      #####
  ###                          ### 
   #                            #  
 
-# Set working directory depending on the operating system
-Orcs::setwdOS(lin = "~/uio/", win = "M:/", ext = "pc/Dokumenter/PhD/Data/")
+# Read in dim_list.csv
+library(Orcs) # Set working directory depending on the operating system
+setwdOS(lin = "~/uio/", win = "M:/", ext = "pc/Dokumenter/PhD/Data/")
 dim_list <- read.csv("dim_list.csv", header = F, sep = " ")
 
-# Obtain a "standard file name" list from dim_list.csv
-# Windows and Linux differ in how they sort file names.
-# Do NOT rely on operating systems to sort files but follow dim_list.csv's order
-file_names <- dim_list[,2]
+# Obtain a list of file names from "Desc_stat" folder
+file_names <- list.files("./Desc_stat/", pattern = "*.csv", full.names = F)
 
 # Calculate total number of CSV files
 total_files <- length(file_names) # Should be 183

@@ -8,26 +8,36 @@
 
 ###### DATA PROTECTION ######
 # Nature: An R script scraping Norwegian registry data leading to files containing no personal info
-# Security level (input-script-output): black-yellow-yellow
+# Security level (input-script-output): black-green-yellow
 # Computer environment (store-view-edit-execute): any-any-any-TSD
 
 #####      Begin script      #####
  ###                          ### 
   #                            #  
 
-# Point working directory to the location of all registry datasets
-setwd("N:/durable/data/registers/")
+# Point working directory to the location of all registry datasets, depending on OS
+if (Sys.info()["sysname"] == "Linux") {
+    setwd("/tsd/p1708/data/durable/data/registers")
+} else {
+    setwd("N:/durable/data/registers")
+}
 
 # Create an empty list that contains all CSV file names
 file_names <- list.files(getwd(), pattern = "*.csv", full.names = F)
+
 # Remember how many files there are in total
 total_files <- length(file_names) # Should be 183
 
 # Create a placeholder matrix to receive dimension info of each dataset
 dim_list <- matrix(nrow = total_files, ncol = 2)
 
-# Read in each data file
-data.table::setDTthreads(16) # Use all 16 CPU cores---not interesting in Windows but will be much more efficient in Linux
+# Prepare multi-core processing
+if (Sys.info()["sysname"] == "Linux") {
+    num_cores <- parallel::detectCores()
+    num_cores <- num_cores - 1 # Reserve one core for Linux admin
+} else {
+    num_cores <- 1 # Windows cannot take advantage of multicore
+}
 
 # Save descriptive statistics of each variable
 for (i in 1:total_files) {
@@ -44,16 +54,23 @@ for (i in 1:total_files) {
     na_percent <- na_count / dim(temp)[1] * 100 # Turn to missing percentages
 
     # Descriptive statistics
-    # parallel::mclapply() not interesting for Windows but super quick for Linux
-    min <- as.numeric(parallel::mclapply(temp, function(x) min(x, na.rm=T)))
-    max <- as.numeric(parallel::mclapply(temp, function(x) max(x, na.rm=T)))
-    mean <- as.numeric(parallel::mclapply(temp, function(x) mean(x, na.rm=T)))
-    median <- as.numeric(parallel::mclapply(temp, function(x) median(x, na.rm=T)))
-    variance <- as.numeric(parallel::mclapply(temp, function(x) var(x, na.rm=T)))
-    sd <- as.numeric(parallel::mclapply(temp, function(x) sd(x, na.rm=T)))
+    min <- as.numeric(parallel::mclapply(temp,
+        function(x) min(x, na.rm=T), mc.cores = num_cores))
+    max <- as.numeric(parallel::mclapply(temp,
+        function(x) max(x, na.rm=T), mc.cores = num_cores))
+    mean <- as.numeric(parallel::mclapply(temp,
+        function(x) mean(x, na.rm=T), mc.cores = num_cores))
+    median <- as.numeric(parallel::mclapply(temp,
+        function(x) median(x, na.rm=T), mc.cores = num_cores))
+    variance <- as.numeric(parallel::mclapply(temp,
+        function(x) var(x, na.rm=T), mc.cores = num_cores))
+    sd <- as.numeric(parallel::mclapply(temp,
+        function(x) sd(x, na.rm=T), mc.cores = num_cores))
     # Skewness and kurtosis need extra packages
-    skewness <- as.numeric(parallel::mclapply(temp, function(x) DescTools::Skew(x, na.rm=T)))
-    kurtosis <- as.numeric(parallel::mclapply(temp, function(x) DescTools::Kurt(x, na.rm=T)))
+    skewness <- as.numeric(parallel::mclapply(temp,
+        function(x) DescTools::Skew(x, na.rm=T), mc.cores = num_cores))
+    kurtosis <- as.numeric(parallel::mclapply(temp,
+        function(x) DescTools::Kurt(x, na.rm=T), mc.cores = num_cores))
 
     write.table(
         cbind(var_names, # This column is text.

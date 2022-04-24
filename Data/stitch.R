@@ -8,15 +8,16 @@
 
 ###### DATA PROTECTION ######
 # Nature: An R script linking dim_list.csv with other descriptive statistics *.csv files
-# Security level (input-script-output): yellow-yellow-yellow
+# Security level (input-script-output): green-green-green
 # Computer environment (store-view-edit-execute): any-any-any-any
 
 #####      Begin script      #####
  ###                          ### 
   #                            #  
 
-# Set working directory depending on the operating system
-Orcs::setwdOS(lin = "~/uio/", win = "M:/", ext = "pc/Dokumenter/PhD/Data/")
+# Set working directory
+library(Orcs) # Set working directory depending on the operating system
+setwdOS(lin = "~/uio/", win = "M:/", ext = "pc/Dokumenter/PhD/Data/")
 
 # Obtain a list of file names from "Desc_stat" folder
 file_names <- list.files("./Desc_stat/", pattern = "*.csv", full.names = F)

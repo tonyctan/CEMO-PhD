@@ -31,18 +31,18 @@ gpa <- data.table::fread("W21_4952_F_UTD_KURS.csv")
 
 # Only keep 2019 data
 gpa2019 <- gpa[which( # Pick and choose which months to include:
-    gpa$AVGDATO == 201901 |
-    gpa$AVGDATO == 201902 |
+    # gpa$AVGDATO == 201901 |
+    # gpa$AVGDATO == 201902 |
     gpa$AVGDATO == 201903 |
-    gpa$AVGDATO == 201904 |
-    gpa$AVGDATO == 201905 |
+    # gpa$AVGDATO == 201904 |
+    # gpa$AVGDATO == 201905 |
     gpa$AVGDATO == 201906 |
-    gpa$AVGDATO == 201907 |
-    gpa$AVGDATO == 201908 |
-    gpa$AVGDATO == 201909 |
-    gpa$AVGDATO == 2019010 |
-    gpa$AVGDATO == 2019011 |
-    gpa$AVGDATO == 2019012
+    # gpa$AVGDATO == 201907 |
+    # gpa$AVGDATO == 201908 |
+    gpa$AVGDATO == 201909 #|
+    # gpa$AVGDATO == 2019010 |
+    # gpa$AVGDATO == 2019011 |
+    # gpa$AVGDATO == 2019012
 ), c(1:4, 32, 8)]
 # Column 1: w21_4952_lopenr_person
 # Column 2: lopenr_orgnr
@@ -96,5 +96,10 @@ for (i in 1:length(student_id)) { # Go through the Student ID list:
             gpa2019[which(gpa2019$w21_4952_lopenr_person == student_id[i]), ]
         )
     }
-    print(temp[i,])
 }
+
+write.table(temp, "M:/p1708-tctan/Documents/student_id_match.csv", row.names = F)
+
+  #                            #  
+ ###                          ### 
+#####       End script       #####

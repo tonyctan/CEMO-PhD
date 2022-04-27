@@ -1,10 +1,10 @@
 ###### ADMIN INFO ######
-# Date: 23 April 2022
+# Date: 26 April 2022
 # Author: Tony Tan
 # Email: tctan@uio.no
 # Position: PhD candidate
 # Organisation: CEMO, UV, UiO
-# Script purpose: Re-format GPA data into student-by-subject shape
+# Script purpose: Re-format teacher-assigned marks into student-by-subject shape
 
 ###### DATA PROTECTION ######
 # Nature: An R script sourcing Norwegian registry data leading to files containing equally sensitive personal info
@@ -16,10 +16,10 @@
   #                            #  
 
 # Point working directory to the location of all registry datasets, depending on OS
-if (Sys.info()["sysname"] == "Linux") {
-    setwd("/tsd/p1708/data/durable/data/registers")
-} else {
+if (Sys.info()["sysname"] == "Windows") {
     setwd("N:/durable/data/registers")
+} else {
+    setwd("/tsd/p1708/data/durable/data/registers")
 }
 
 # Read in W21_4952_TAB_KAR_GRS.csv
@@ -57,7 +57,7 @@ teacher_mk$STP <- car::recode(teacher_mk$STP, "
 # Save subject list
 subject_list <- as.character(data.frame(subject_frequency)[, 1])
 # Save total number of subjects
-n_subject <- length(subject_list)
+(n_subject <- length(subject_list)) # Should be 200 subjects in total
 
 # Create a placeholder spreadsheet
 stp_spreadsheet <- data.frame(matrix(NA, nrow = n_student, ncol = n_subject))
@@ -93,14 +93,14 @@ teacher_reshaped <- teacher_reshape[, -c(4,5)]
 # Inspect the newly shaped data set
 head(teacher_reshaped, 20)
 # Save to external file.
-if (Sys.info()["sysname"] == "Linux") {
-    write.table(teacher_reshaped,
-        "/tsd/p1708/home/p1708-tctan/Documents/teacher0.csv",
+if (Sys.info()["sysname"] == "Windows") {
+    data.table::fwrite(teacher_reshaped,
+        "M:/p1708-tctan/Documents/teacher0.csv",
         row.names = F
     )
 } else {
-    write.table(teacher_reshaped,
-        "M:/p1708-tctan/Documents/teacher0.csv",
+    data.table::fwrite(teacher_reshaped,
+        "/tsd/p1708/home/p1708-tctan/Documents/teacher0.csv",
         row.names = F
     )
 }
@@ -133,11 +133,11 @@ colnames(teacher_reshaped_final) <- names(teacher_reshaped)
 teacher_reshaped_final <- data.frame(teacher_reshaped_final)
 
 # Prepare multi-core processing
-if (Sys.info()["sysname"] == "Linux") {
-    n_cores <- parallel::detectCores()
-    n_cores <- num_cores - 1 # Reserve one core for Linux admin
-} else {
-    n_cores <- 1 # Windows cannot take advantage of multicore
+if (Sys.info()["sysname"] == "Windows") { # Windows can only use single core
+    n_cores <- 1
+} else { # Both Linux and Mac can implement multicore
+    n_cores <- parallel::detectCores() # Count the total number of CPU cores
+    n_cores <- n_cores - 1 # Reserve one core for system admin
 }
 
 for(i in 1:n_unique_student) {
@@ -145,9 +145,10 @@ for(i in 1:n_unique_student) {
     student_temp <- teacher_reshaped[which(teacher_reshaped[, 1] == student_list[i]), ]
     # Collapse multiple lines into one line
     student_temp_teacher <- parallel::mclapply(student_temp[, -c(1:3)],
-    function(x) max(x, na.rm = T), mc.cores = n_cores) # In cases where, same person, same subject, but multiple scores, take the maximum, because I do not know which score was given first.
+    function(x) max(x, na.rm = T), mc.cores = n_cores)
+    # In cases where, same person, same subject, but multiple marks, take the maximum, because I do not know which score was given first.
     # When I asked R to compute max from a column containing NA only, R produced -Inf and a warning. Safe to ignore these warnings and turn -Inf to NA.
-    # Recode 0 to NA
+    # Recode 0 and -Inf to NA
     student_temp_teacher <- car::recode(student_temp_teacher, "
         c('0', '-Inf') = NA
     ")
@@ -157,18 +158,33 @@ for(i in 1:n_unique_student) {
     ))
 }
 
-if (Sys.info()["sysname"] == "Linux") {
-    write.table(teacher_reshaped_final,
-        "/tsd/p1708/home/p1708-tctan/Documents/teacher1.csv",
-        row.names = F
+# Save the standard Student ID list for subsequent work
+if (Sys.info()["sysname"] == "Windowsss") {
+    write.table(teacher_reshaped_final[, 1],
+        "M:/p1708-tctan/Documents/student_id.csv",
+        row.names = F, col.names = c("student_id")
     )
 } else {
-    write.table(teacher_reshaped_final,
+    write.table(teacher_reshaped_final[, 1],
+        "/tsd/p1708/home/p1708-tctan/Documents/student_id.csv",
+        row.names = F, col.names = "student_id"
+    )
+}
+# Should be 888 KB in size
+
+# Save teacher-assigned marks
+if (Sys.info()["sysname"] == "Windows") {
+    data.table::fwrite(teacher_reshaped_final,
         "M:/p1708-tctan/Documents/teacher1.csv",
         row.names = F
     )
+} else {
+    data.table::fwrite(teacher_reshaped_final,
+        "/tsd/p1708/home/p1708-tctan/Documents/teacher1.csv",
+        row.names = F
+    )
 }
-# Should be 93,112 KB in size
+# Should be 15,364 KB in size
 
   #                            #  
  ###                          ### 

@@ -1,10 +1,10 @@
 ###### ADMIN INFO ######
-# Date: 23 April 2022
+# Date: 26 April 2022
 # Author: Tony Tan
 # Email: tctan@uio.no
 # Position: PhD candidate
 # Organisation: CEMO, UV, UiO
-# Script purpose: Re-format GPA data into student-by-subject shape
+# Script purpose: Re-format written exam marks into student-by-subject shape
 
 ###### DATA PROTECTION ######
 # Nature: An R script sourcing Norwegian registry data leading to files containing equally sensitive personal info
@@ -16,10 +16,10 @@
   #                            #  
 
 # Point working directory to the location of all registry datasets, depending on OS
-if (Sys.info()["sysname"] == "Linux") {
-    setwd("/tsd/p1708/data/durable/data/registers")
-} else {
+if (Sys.info()["sysname"] == "Windows") {
     setwd("N:/durable/data/registers")
+} else {
+    setwd("/tsd/p1708/data/durable/data/registers")
 }
 
 # Read in W21_4952_TAB_KAR_GRS.csv
@@ -43,20 +43,6 @@ table(unlist(written_mk$SKR))
 # Recode un-usable SKR into NA
 written_mk$SKR <- car::recode(written_mk$SKR, "
     c('', 'D', 'F', 'IM', 'IV') = NA
-")
-
-# Inspect unusual marks in the "MUN" column
-table(unlist(oral_mk$MUN))
-# These marks are not usable:
-#   '' empty [n = 1,011,693],
-#   F [n = 451],
-#   IM [n = 1804],
-#   IV [n = 7],
-#   Z [n = 1].
-
-# Recode un-usable MUN into NA
-oral_mk$MUN <- car::recode(oral_mk$MUN, "
-    c('', 'F', 'IM', 'IV', 'Z') = NA
 ")
 
 
@@ -93,6 +79,8 @@ for (j in 6:dim(written_reshape)[2]) { # 200 cycles
     temp_subject <- as.numeric(unlist(temp_subject))
     # Recode 0 to NA
     written_reshape[, j] <- car::recode(temp_subject, "0 = NA")
+    # Display message
+    cat(paste0("Iterating Subject ", j-5, "/200..."))
 
     # Clear the deck for the next iteration
     rm(temp)
@@ -105,14 +93,14 @@ written_reshaped <- written_reshape[, -c(4,5)]
 # Inspect the newly shaped data set
 head(written_reshaped, 20)
 # Save to external file.
-if (Sys.info()["sysname"] == "Linux") {
-    write.table(written_reshaped,
-        "/tsd/p1708/home/p1708-tctan/Documents/written0.csv",
+if (Sys.info()["sysname"] == "Windows") {
+    data.table::fwrite(written_reshaped,
+        "M:/p1708-tctan/Documents/written0.csv",
         row.names = F
     )
 } else {
-    write.table(written_reshaped,
-        "M:/p1708-tctan/Documents/written0.csv",
+    data.table::fwrite(written_reshaped,
+        "/tsd/p1708/home/p1708-tctan/Documents/written0.csv",
         row.names = F
     )
 }
@@ -122,9 +110,16 @@ if (Sys.info()["sysname"] == "Linux") {
 
 # Part 2: Re-shape rows: one student per row
 
-# In order to maintain consistency, re-use Student ID list from teacher-assigned marks file (teacher1.csv)
-student_list <- data.table::fread("M:/p1708-tctan/Documents/teacher1.csv", select=c(1))
-student_list <- data.table::fread("M:/p1708-tctan/Documents/student_id_match.csv", select=c(1))
+# In order to maintain consistency, use the standard Student ID list
+if (Sys.info()["sysname"] == "Windows") {
+    student_list <- data.table::fread(
+        "M:/p1708-tctan/Documents/student_id.csv"
+    )
+} else {
+    student_list <- data.table::fread(
+        "/tsd/p1708/home/p1708-tctan/Documents/student_id.csv"
+    )
+}
 # Save total number of unique students
 (n_unique_student <- dim(student_list)[1]) # 64,918 unique students
 
@@ -135,22 +130,25 @@ written_reshaped_final <- matrix(
 colnames(written_reshaped_final) <- names(written_reshaped)
 written_reshaped_final <- data.frame(written_reshaped_final)
 
-# Prepare multi-core processing
-if (Sys.info()["sysname"] == "Linux") {
-    n_cores <- parallel::detectCores()
-    n_cores <- num_cores - 1 # Reserve one core for Linux admin
-} else {
-    n_cores <- 1 # Windows cannot take advantage of multicore
-}
+### Multi-core always breaks RAM. For the time being just use single core.
+# # Prepare multi-core processing
+# if (Sys.info()["sysname"] == "Windows") { # Windows can only use single core
+#     n_cores <- 1
+# } else { # Both Linux and Mac can implement multicore
+#     n_cores <- parallel::detectCores() # Count the total number of CPU cores
+#     n_cores <- n_cores - 1 # Reserve one core for system admin
+# }
+n_cores <- 1
 
 for(i in 1:n_unique_student) {
     # Pull out lines that share the same Student ID
-    student_temp <- written_reshaped[which(written_reshaped[, 1] == as.character(student_list[i,1])), ]
+    student_temp <- written_reshaped[which(written_reshaped[, 1] == as.character(student_list[i, 1])), ]
     # Collapse multiple lines into one line
     student_temp_written <- parallel::mclapply(student_temp[, -c(1:3)],
-    function(x) max(x, na.rm = T), mc.cores = n_cores) # In cases where, same person, same subject, but multiple scores, take the maximum, because I do not know which score was given first.
+    function(x) max(x, na.rm = T), mc.cores = n_cores)
+    # In cases where, same person, same subject, but multiple marks, take the maximum, because I do not know which score was given first.
     # When I asked R to compute max from a column containing NA only, R produced -Inf and a warning. Safe to ignore these warnings and turn -Inf to NA.
-    # Recode 0 to NA
+    # Recode 0 and -inf to NA
     student_temp_written <- car::recode(student_temp_written, "
         c('0', '-Inf') = NA
     ")
@@ -158,20 +156,22 @@ for(i in 1:n_unique_student) {
     written_reshaped_final[i, ] <- data.frame(cbind(
         student_temp[1, c(1:3)], t(student_temp_written)
     ))
+    # Display message
+    cat(paste0("Iterating Student ", i, "/64918... "))
 }
 
-if (Sys.info()["sysname"] == "Linux") {
-    write.table(written_reshaped_final,
-        "/tsd/p1708/home/p1708-tctan/Documents/written1.csv",
-        row.names = F
-    )
-} else {
-    write.table(written_reshaped_final,
+if (Sys.info()["sysname"] == "Windows") {
+    data.table::fwrite(written_reshaped_final,
         "M:/p1708-tctan/Documents/written1.csv",
         row.names = F
     )
+} else {
+    data.table::fwrite(written_reshaped_final,
+        "/tsd/p1708/home/p1708-tctan/Documents/written1.csv",
+        row.names = F
+    )
 }
-# Should be 93,112 KB in size
+# Should be 14,496 KB in size
 
   #                            #  
  ###                          ### 

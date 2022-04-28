@@ -36,6 +36,7 @@ teacher_mk <- gpa[which(gpa$AVGDATO == 201906), c(1:4, 7)]
 table(unlist(teacher_mk$STP))
 # These marks are not usable:
 #   '' empty [n = 20,042],
+#   7 [n = 33],
 #   D [n = 58,182],
 #   F [n = 37,273],
 #   GK [n = 55],
@@ -89,7 +90,7 @@ for (j in 6:dim(teacher_reshape)[2]) { # 200 cycles
 }
 
 # Remove subject name and STP columns
-teacher_reshaped <- teacher_reshape[, -c(4,5)]
+teacher_reshaped <- teacher_reshape[, -c(4, 5)]
 # Inspect the newly shaped data set
 head(teacher_reshaped, 20)
 # Save to external file.

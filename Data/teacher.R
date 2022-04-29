@@ -7,7 +7,8 @@
 # Script purpose: Re-format teacher-assigned marks into student-by-subject shape
 
 ###### DATA PROTECTION ######
-# Nature: An R script sourcing Norwegian registry data leading to files containing equally sensitive personal info
+# Nature: An R script sourcing Norwegian registry data leading to files
+# containing equally sensitive personal info
 # Security level (input-script-output): black-green-black
 # Computer environment (store-view-edit-execute): any-any-any-TSD
 
@@ -15,7 +16,8 @@
  ###                          ### 
   #                            #  
 
-# Point working directory to the location of all registry datasets, depending on OS
+# Point working directory to the location of all registry datasets,
+# depending on OS
 if (Sys.info()["sysname"] == "Windows") {
     setwd("N:/durable/data/registers")
 } else {
@@ -29,7 +31,7 @@ names(gpa)
 # Only keep 2019 data
 # STP (Teacher assigned marks)
 teacher_mk <- gpa[which(gpa$AVGDATO == 201906), c(1:4, 7)]
-# Verify the correct N obs have been imported
+# Save the total number of students
 (n_student <- dim(teacher_mk)[1]) # Should be 1,073,204 obs
 
 # Inspect unusual marks in the "STP" column
@@ -76,7 +78,8 @@ for (j in 6:dim(teacher_reshape)[2]) { # 200 cycles
     # Turn FALSE/TRUE to 0/1
     equal_test <- equal_test + 0
 
-    # If subject name matches, copy-paste teacher-assign marks into the temp_subject column
+    # If subject name matches, copy-paste teacher-assign marks
+    # into the temp_subject column
     temp_subject <- equal_test * teacher_reshape[, 5]
     # Turn off list property (in order to recode)
     temp_subject <- as.numeric(unlist(temp_subject))
@@ -143,12 +146,17 @@ if (Sys.info()["sysname"] == "Windows") { # Windows can only use single core
 
 for(i in 1:n_unique_student) {
     # Pull out lines that share the same Student ID
-    student_temp <- teacher_reshaped[which(teacher_reshaped[, 1] == student_list[i]), ]
+    student_temp <- teacher_reshaped[which(
+        teacher_reshaped[, 1] == student_list[i]
+    ), ]
     # Collapse multiple lines into one line
     student_temp_teacher <- parallel::mclapply(student_temp[, -c(1:3)],
     function(x) max(x, na.rm = T), mc.cores = n_cores)
-    # In cases where, same person, same subject, but multiple marks, take the maximum, because I do not know which score was given first.
-    # When I asked R to compute max from a column containing NA only, R produced -Inf and a warning. Safe to ignore these warnings and turn -Inf to NA.
+    # In cases where, same person, same subject, but multiple marks,
+    # take the maximum, because I do not know which score was given first.
+    # When I asked R to compute max from a column containing NA only,
+    # R produced -Inf and a warning.
+    # Safe to ignore these warnings and turn -Inf to NA.
     # Recode 0 and -Inf to NA
     student_temp_teacher <- car::recode(student_temp_teacher, "
         c('0', '-Inf') = NA
@@ -160,7 +168,7 @@ for(i in 1:n_unique_student) {
 }
 
 # Save the standard Student ID list for subsequent work
-if (Sys.info()["sysname"] == "Windowsss") {
+if (Sys.info()["sysname"] == "Windows") {
     write.table(teacher_reshaped_final[, 1],
         "M:/p1708-tctan/Documents/student_id.csv",
         row.names = F, col.names = c("student_id")

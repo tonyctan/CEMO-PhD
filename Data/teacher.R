@@ -16,6 +16,8 @@
  ###                          ### 
   #                            #  
 
+library(progress)
+
 # Point working directory to the location of all registry datasets,
 # depending on OS
 if (Sys.info()["sysname"] == "Windows") {
@@ -23,19 +25,26 @@ if (Sys.info()["sysname"] == "Windows") {
 } else {
     setwd("/tsd/p1708/data/durable/data/registers")
 }
+if (interactive()) {getwd()} else {cat(paste0(
+    "Working directory is now set to ", getwd(), "\n"
+))}
 
 # Read in W21_4952_TAB_KAR_GRS.csv
+if (!interactive()) {print("Start data loading...")}
 gpa <- data.table::fread("W21_4952_TAB_KAR_GRS.csv")
-names(gpa)
+if (interactive()) {names(gpa)} else {print("Data loading complete.")}
 
 # Only keep 2019 data
 # STP (Teacher assigned marks)
 teacher_mk <- gpa[which(gpa$AVGDATO == 201906), c(1:4, 7)]
 # Save the total number of students
-(n_student <- dim(teacher_mk)[1]) # Should be 1,073,204 obs
+n_student <- dim(teacher_mk)[1] # Should be 1,073,204 obs
+if (interactive()) {n_student}
 
 # Inspect unusual marks in the "STP" column
-table(unlist(teacher_mk$STP))
+if (interactive()) {
+    table(unlist(teacher_mk$STP))
+}
 # These marks are not usable:
 #   '' empty [n = 20,042],
 #   7 [n = 33],
@@ -47,7 +56,7 @@ table(unlist(teacher_mk$STP))
 
 # Recode un-usable STP into NA
 teacher_mk$STP <- car::recode(teacher_mk$STP, "
-    c('', 'D', 'F', 'GK', 'IM', 'IV') = NA
+    c('', '7', 'D', 'F', 'GK', 'IM', 'IV') = NA
 ")
 
 
@@ -56,11 +65,13 @@ teacher_mk$STP <- car::recode(teacher_mk$STP, "
 
 # How many subjects there are? (Answer: 200 different subjects in total)
 # How many times each subject name appeared (with or without valid score)?
-(subject_frequency <- sort(table(unlist(teacher_mk$FAGKODE)), decreasing = T))
+subject_frequency <- sort(table(unlist(teacher_mk$FAGKODE)), decreasing = T)
+if (interactive()) {subject_frequency}
 # Save subject list
 subject_list <- as.character(data.frame(subject_frequency)[, 1])
 # Save total number of subjects
-(n_subject <- length(subject_list)) # Should be 200 subjects in total
+n_subject <- length(subject_list)
+if (interactive()) {n_subject} # Should be 200 subjects in total
 
 # Create a placeholder spreadsheet
 stp_spreadsheet <- data.frame(matrix(NA, nrow = n_student, ncol = n_subject))
@@ -68,9 +79,25 @@ colnames(stp_spreadsheet) <- subject_list
 
 # Stitch STP and this empty placeholder spreadsheet together
 teacher_reshape <- cbind(teacher_mk, stp_spreadsheet)
-names(teacher_reshape)
+if (interactive()) {names(teacher_reshape)}
 
-for (j in 6:dim(teacher_reshape)[2]) { # 200 cycles
+# Set up a progress bar
+n_iter <- dim(teacher_reshape)[2] # Set the progress bar's end point
+pb <- progress_bar$new( # Refresh progress bar's internal definition
+    format = "(:spin) [:bar] :percent [Elapsed time: :elapsedfull || Estimated time remaining: :eta]",
+    total = n_iter,
+    complete = "=",
+    incomplete = "-",
+    current = ">",
+    clear = F,
+    width = 100
+)
+
+for (j in 6:n_iter) { # 200 cycles
+    # Insert progress bar here
+    pb$tick() # Update progress bar
+    cat("\n") # Create a curtain effect
+
     # Create a placeholder list
     temp <- rep(names(teacher_reshape)[j], n_student)
     # Test whether subject names match
@@ -86,16 +113,14 @@ for (j in 6:dim(teacher_reshape)[2]) { # 200 cycles
     # Recode 0 to NA
     teacher_reshape[, j] <- car::recode(temp_subject, "0 = NA")
 
-    # Clear the deck for the next iteration
-    rm(temp)
-    rm(equal_test)
-    rm(temp_subject)
+#    Sys.sleep(0.1)
 }
 
 # Remove subject name and STP columns
 teacher_reshaped <- teacher_reshape[, -c(4, 5)]
 # Inspect the newly shaped data set
-head(teacher_reshaped, 20)
+if (interactive()) {head(teacher_reshaped, 20)}
+
 # Save to external file.
 if (Sys.info()["sysname"] == "Windows") {
     data.table::fwrite(teacher_reshaped,
@@ -108,7 +133,7 @@ if (Sys.info()["sysname"] == "Windows") {
         row.names = F
     )
 }
-# Should be 660,894 KB in size
+# Should be 239,329 KB in size
 
 
 
@@ -144,7 +169,23 @@ if (Sys.info()["sysname"] == "Windows") { # Windows can only use single core
     n_cores <- n_cores - 1 # Reserve one core for system admin
 }
 
-for(i in 1:n_unique_student) {
+# Set up a progress bar
+n_iter <- n_unique_student  # Set the progress bar's end point
+pb <- progress_bar$new( # Refresh progress bar's internal definition
+    format = "(:spin) [:bar] :percent [Elapsed time: :elapsedfull || Estimated time remaining: :eta]",
+    total = n_iter,
+    complete = "=",
+    incomplete = "-",
+    current = ">",
+    clear = F,
+    width = 100
+)
+
+for(i in 1:n_iter) {
+    # Insert progress bar here
+    pb$tick() # Update progress bar
+    cat("\n") # Create a curtain effect
+
     # Pull out lines that share the same Student ID
     student_temp <- teacher_reshaped[which(
         teacher_reshaped[, 1] == student_list[i]

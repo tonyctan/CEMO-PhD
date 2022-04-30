@@ -23,8 +23,8 @@ if (Sys.info()["sysname"] == "Windows") {
 } else {
     setwd("/tsd/p1708/data/durable/data/registers")
 }
-if (interactive()) {} else {print(paste0(
-    "Working directory is now set to ", getwd()
+if (interactive()) {} else {cat(paste0(
+    "Working directory is now set to ", getwd(), "\n"
 ))}
 
 # Read in W21_4952_TAB_KAR_GRS.csv
@@ -92,11 +92,11 @@ for (j in 6:dim(oral_reshape)[2]) { # 200 cycles
     temp_subject <- as.numeric(unlist(temp_subject))
     # Recode 0 to NA
     oral_reshape[, j] <- car::recode(temp_subject, "0 = NA")
-    if (interactive()) {} else {
-        print(paste0(
-            "Iterating Subject ", j - 5, "/200"
-        ))
-    }
+    # Display a progress bar
+    cat(paste0(
+        "Iterating Subject ", j - 5, "/", n_subject, " (",
+        round((j - 5)/n_subject * 100, digits = 2), "% completed)...", "\n"
+    ))
 
     # Clear the deck for the next iteration
     rm(temp)
@@ -108,7 +108,8 @@ for (j in 6:dim(oral_reshape)[2]) { # 200 cycles
 oral_reshaped <- oral_reshape[, -c(4, 5)]
 
 # # Inspect the newly shaped data set
-# head(oral_reshaped, 20)
+if (interactive()) {head(oral_reshaped, 20)}
+
 # # Save to external file.
 # if (Sys.info()["sysname"] == "Windows") {
 #     data.table::fwrite(oral_reshaped,

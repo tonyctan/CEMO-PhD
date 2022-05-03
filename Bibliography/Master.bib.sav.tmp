@@ -6279,11 +6279,20 @@
   journal = {Psychological Methods},
   title   = {A structural equation modeling approach for modeling variability as a latent variable.},
   year    = {2022},
+  file    = {A structural equation modeling approach for modeling variability as a latent variable:Feng & Hancock (2022).pdf:PDF},
 }
 
-@Comment{jabref-meta: databaseType:biblatex;}
+@Article{clark:2021,
+  author  = {Andrew E. Clark and Huifu Nong and Hongjia Zhu and Rong Zhu},
+  doi     = {10.1016/j.chieco.2021.101629},
+  journal = {China Economic Review},
+  pages   = {{Article 101629}},
+  title   = {Compensating for academic loss: Online learning and student performance during the {COVID-19} pandemic},
+  volume  = {68},
+  year    = {2021},
+  file    = {Compensating for academic loss\: Online learning and student performance during the COVID-19 pandemic:Clark, Nong, Zhu & Zhu (2021).pdf:PDF},
+}
 
-@Comment{jabref-entrytype: presentation: req[doi;author;title;titleaddon;eventtitle;venue;eventdate] opt[subtitle]}
-
-�]��ԝ�]���Z�r���(�j̺�Q�8V���Ҧ��*<r������h�h�H��c'��N^�F̠
-�G2��s��Z���Q��o��M�8��5>�1�Ñ���&��Pd����8�bq��-�*E�*�N�4�,����D����l.�v�w7Zg�H�� �T}����}0Ī+���!J��� r}�w#P�W����WMW.��X��÷J߄����F�DK���ut��k��c�2�|��Xm]&�,�=��׉����&Q�0c�ƞ�BTN�6�/~n�:E����s=�S{�R�/眫�(\�V�bp��R�#	<4��n"�.4��(`��E���g���䇗d�)��)�e�\J�
+@Article{vandervelde:2021,
+  author  = {Maarten {van der Velde} and Florian Sense and Rinske Spijkers and Martijn Meeter and Hedderik van Rijn},
+  doi     = {10.3389/feduc.2021.71298

@@ -16,8 +16,6 @@
  ###                          ### 
   #                            #  
 
-library(progress)
-
 # Point working directory to the location of all registry datasets,
 # depending on OS
 if (Sys.info()["sysname"] == "Windows") {
@@ -83,7 +81,7 @@ if (interactive()) {names(teacher_reshape)}
 
 # Set up a progress bar
 n_iter <- dim(teacher_reshape)[2] # Set the progress bar's end point
-pb <- progress_bar$new( # Refresh progress bar's internal definition
+pb <- progress::progress_bar$new( # Refresh progress bar's internal definition
     format = "(:spin) [:bar] :percent [Elapsed time: :elapsedfull || Estimated time remaining: :eta]",
     total = n_iter,
     complete = "=",
@@ -95,8 +93,7 @@ pb <- progress_bar$new( # Refresh progress bar's internal definition
 
 for (j in 6:n_iter) { # 200 cycles
     # Insert progress bar here
-    pb$tick() # Update progress bar
-    cat("\n") # Create a curtain effect
+    progress::pb$tick() # Update progress bar
 
     # Create a placeholder list
     temp <- rep(names(teacher_reshape)[j], n_student)
@@ -112,9 +109,8 @@ for (j in 6:n_iter) { # 200 cycles
     temp_subject <- as.numeric(unlist(temp_subject))
     # Recode 0 to NA
     teacher_reshape[, j] <- car::recode(temp_subject, "0 = NA")
-
-#    Sys.sleep(0.1)
 }
+cat("\n") # Start a new line once progress bar is full
 
 # Remove subject name and STP columns
 teacher_reshaped <- teacher_reshape[, -c(4, 5)]
@@ -171,7 +167,7 @@ if (Sys.info()["sysname"] == "Windows") { # Windows can only use single core
 
 # Set up a progress bar
 n_iter <- n_unique_student  # Set the progress bar's end point
-pb <- progress_bar$new( # Refresh progress bar's internal definition
+pb <- progress::progress_bar$new( # Refresh progress bar's internal definition
     format = "(:spin) [:bar] :percent [Elapsed time: :elapsedfull || Estimated time remaining: :eta]",
     total = n_iter,
     complete = "=",
@@ -183,8 +179,7 @@ pb <- progress_bar$new( # Refresh progress bar's internal definition
 
 for(i in 1:n_iter) {
     # Insert progress bar here
-    pb$tick() # Update progress bar
-    cat("\n") # Create a curtain effect
+    progress::pb$tick()
 
     # Pull out lines that share the same Student ID
     student_temp <- teacher_reshaped[which(
@@ -207,6 +202,7 @@ for(i in 1:n_iter) {
         student_temp[1, c(1:3)], t(student_temp_teacher)
     ))
 }
+cat("\n") # Start a new line once progress bar is full
 
 # Save the standard Student ID list for subsequent work
 if (Sys.info()["sysname"] == "Windows") {
@@ -234,7 +230,7 @@ if (Sys.info()["sysname"] == "Windows") {
         row.names = F
     )
 }
-# Should be 15,364 KB in size
+# Should be 15,345 KB in size
 
   #                            #  
  ###                          ### 

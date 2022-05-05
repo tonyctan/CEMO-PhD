@@ -1,0 +1,62 @@
+\documentclass[a4paper,12pt,stu,donotrepeattitle,floatsintext,twoside]{apa7}
+
+\usepackage{MAE}
+
+\newcommand{\titlet}{Your Thesis Title May Span for a Maximum of Three Lines on the Cover Page}
+\newcommand{\authort}{Firstname Lastname}
+
+\begin{document}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% PREAMBLES %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% Include thesis titlepage
+\include{./Preambles/0_titlepage.tex}
+
+% Switch page numbering to roman for preambles
+\pagenumbering{roman}
+
+\include{./Preambles/1_popular.tex}
+
+\include{./Preambles/2_acknowledgements.tex}
+
+% Insert a blank page if preamble ends on an odd page so Page 1 starts right.
+\cleardoublepage
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% THESIS BODY %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% Arabic page numbers for main text
+\pagenumbering{arabic}
+
+\input{./Sections/1_introduction.tex}
+
+%\input{./Sections/2_framework.tex}
+
+\input{./Sections/3_methods.tex}
+
+\input{./Sections/4_results.tex}
+
+\input{./Sections/5_discussions.tex}
+
+% Insert a blank page if body ends on an odd page so reference list starts right.
+\cleardoublepage
+
+% Print the reference list
+\printbibliography
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% APPENDICES %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\appendix
+
+\include{./Appendices/A.tex}
+
+\include{./Appendices/B.tex}
+
+\include{./Appendices/C.tex}
+
+\end{document}

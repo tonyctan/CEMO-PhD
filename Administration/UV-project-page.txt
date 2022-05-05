@@ -1,0 +1,20 @@
+1a Er GPA rettferdig? En undersøkelse av vanskeligheter mellom fag
+bruker norske registerdata (ph.d.-prosjekt)
+
+1b Is GPA fair? An investigation into inter-subject difficulty using Norwegian registry data (PhD-project)
+
+2a Å sikre konsistens i vanskeligheter på tvers av GPA -emner er viktig for å opprettholde tilliten til Norges universitetsopptaksprosess. Studier i utlandet rapporterte imidlertid betydelige forskjeller mellom vanskelighetsgrader, og effektivt straffet kandidater i fag med strengere karaktersystemer. Ved å oppdage vanskeligheter mellom fagene, utforsker dette prosjektet mulige statistiske prosedyrer for å justere karakterene til en felles skala.
+
+2b Ensuring consistency in difficulties across GPA subjects is important for upholding public confidence in Norway's university entry process. Studies overseas, however, reported sizeable differences between difficulty levels, effectively penalising candidates in subjects with more stringent grading systems. By detecting inter-subject difficulties, this project explores possible statistical procedures for re-aligning grades to a common scale.
+
+3 Prof Rolf V. Olsen, CEMO, PO Box 1161, Blindern 0318 OSLO Norway
+
+4 Prof Rolf V. Olsen, Dr Astrid M. J. Sandsør, Tony C. A. Tan
+
+5. Unlike their counterpart in the USA who assign considerable weights to extra-curriculum activities and reference letters in addition to academic performance, universities in Norway use applicants' grade point averages (GPA) as the sole selection criterion. Multiple studies overseas, however, have demonstrated that GPA in their unadjusted form can be highly variable in difficulties across subjects, causing considerable fairness concerns.
+
+6a Dette prosjektet bruker item response theory for å fastslå vanskelighetsparameteren for hvert GPA -emne og sammenligne dem for inkonsekvens. Deretter undersøker den mulige statistiske teknikker for å kalibrere emnevansker til en felles skala for å sikre ingen straff eller fordeler i fagvalg utover personlig kompetanse.
+
+6b This project uses item response theory to ascertain the difficulty parameter of each GPA subject and compare them for inconsistency. It then investigates possible statistical techniques to re-calibrate subject difficulties to a common scale to ensure no penalty or advantages in subject choice beyond personal competency.
+
+7 The overarching purpose of this project is to enhance the fairness of Norway's GPA system. Differences in subject difficulties create winners and losers. Youth then react to such distorted incentives by hopping from hard subjects into easier ones, particularly at final stages of secondary schooling, causing significant misallocation of social resources. This project attempts to provide a remedial measure to restore incentives such that personal interests and competence are the only guiding factors when choosing subjects.

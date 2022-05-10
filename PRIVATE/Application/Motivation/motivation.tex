@@ -1,0 +1,113 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Thin Formal Letter
+% LaTeX Template
+% Version 2.0 (7/2/17)
+%
+% This template has been downloaded from:
+% http://www.LaTeXTemplates.com
+%
+% Author:
+% Vel (vel@LaTeXTemplates.com)
+%
+% Originally based on an example on WikiBooks
+% (http://en.wikibooks.org/wiki/LaTeX/Letters) but rewritten as of v2.0
+%
+% License:
+% CC BY-NC-SA 3.0 (http://creativecommons.org/licenses/by-nc-sa/3.0/)
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%----------------------------------------------------------------------------------------
+%	DOCUMENT CONFIGURATIONS
+%----------------------------------------------------------------------------------------
+
+\documentclass[a4paper,11pt]{letter} % 10pt font size default, 11pt and 12pt are also possible
+
+\usepackage{geometry} % Required for adjusting page dimensions
+\geometry{margin=1in}
+\longindentation=0pt % Un-commenting this line will push the closing "Sincerely," to the left of the page
+
+\usepackage[long]{datetime}
+
+\usepackage[T1]{fontenc} % Output font encoding for international characters
+\usepackage[utf8]{inputenc} % Required for inputting international characters
+
+\usepackage{stix} % Use the Stix font by default
+
+\usepackage{microtype} % Improve justification
+
+\usepackage{graphicx}
+
+\usepackage{csquotes} % APA7
+\usepackage{biblatex}
+
+\usepackage[colorlinks=true,urlcolor=blue]{hyperref}
+
+\usepackage[nameinlink,noabbrev,capitalise]{cleveref}
+
+%----------------------------------------------------------------------------------------
+%	SENDER'S NAME & ADDRESS
+%----------------------------------------------------------------------------------------
+
+\signature{Tony C. A. Tan} % Your name for the signature at the bottom
+
+\address{Olav M. Troviks vei 46 \\ 0864 Oslo \\ \href{tctan@student.uv.uio.no}{tctan@student.uv.uio.no}} % Your address and phone number
+
+\date{Friday 28 May 2021}
+%----------------------------------------------------------------------------------------
+
+\begin{document}
+
+%----------------------------------------------------------------------------------------
+%	RECEIVER'S NAME & ADDRESS
+%----------------------------------------------------------------------------------------
+
+\begin{letter}{Centre for Educational Measurement \\ University of Oslo \\ PO Box 1161 Blindern \\ 0373 Oslo} % Name/title of the addressee
+
+%----------------------------------------------------------------------------------------
+%	LETTER CONTENT SECTION
+%----------------------------------------------------------------------------------------
+
+\opening{
+    Dear Tara and PhD Selection Committee,\\
+    \\
+    \textbf{Application for PhD Research Fellow in Educational Measurement}
+    \smallskip
+}
+
+I wish to present myself for your consideration for CEMO 2021's PhD research fellow position examining the cross-national trends in educational equality and equity. The project's mission in social equality attracts my interest and passion in particular and I believe my experience and training in quantitative analyses would lend itself well to the methodological demand of this research.
+
+Both my prior training in economics and CEMO's master program have prepared me for the pathway towards quantitative research. I received A grades for both the item response theory (sample writing in Appendix C) and multilevel modelling courses (Appendix D), two key analysis skills applicable to the PhD research project. Under the guidance of Prof Scherer and Dr Chen, I further studied and applied more recent advancement in the methodology literature to my master thesis (Appendix B) working with large-scale international assessment data. My thesis also examined gender differences and cross-country comparisons, two main research aims proposed by the PhD project.
+
+I have been continuously active with UV's research projects in addition to my master degree candidacy. I had the privilege of working under experienced scholars across numerous groups and developed research project management skills such as literature screening, bibliography management, corresponding with authors for supplemental material, as well as coding publications into literature review databases. My own master thesis became the immediate beneficiary of my research assistant experience and I believe I can readily apply and further perfect these research skills in the PhD project.
+
+I believe my pedagogy training and teaching experience would also serve a PhD candidate's duty well. I grew up with CEMO's master program since its inception in 2018 and was honoured to further contribute to this degree through both the Admission Committee and Student Board in 2020. I believe this unique experience would prepare me well should I be given the privilege of guiding new CEMO master students to their success.
+
+I actively initiated and expanded professional network during my master degree candidacy. I thank EngageLab for inviting me to their Student Innovation project in late 2020, leading to the subsequent scholarship and prototype development. Terje our IT specialist also involved me in the trail and set-up of high performance computing infrastructure recently. At extra-curriculum activities, I was elected as the treasurer for the Oslostudentenes Idrettsklubb Svømming, charged with finance and administration responsibilities.
+
+Research success also requires maintaining connections at a personal level. During my master candidacy, I have developed healthy and productive rapport with CEMO and neighbouring IPED staff while studying in the student room. I trust my team player spirit will bring pleasant interactions to the office floor should I be invited to continue my successful learning story into a PhD.
+
+Should you desire any additional information, please do not hesitate to contact me by phone 41 22 39 75 or by email \href{tctan@student.uv.uio.no}{tctan@student.uv.uio.no}.
+
+Thank you for your kind consideration and I look forward to hearing from you.
+
+\vspace{2\parskip} % Extra whitespace for aesthetics
+
+Sincerely,
+
+\includegraphics[scale=0.15]{signature.jpg}
+
+\vspace{-7\parskip} % Extra whitespace for aesthetics
+
+\closing{\ }
+%\vspace{2\parskip} % Extra whitespace for aesthetics
+
+%\ps{P.S. You can find additional information attached to this letter.} % Postscript text, comment this line to remove it
+
+%\encl{Copyright permission form} % Enclosures with the letter, comment this line to remove it
+
+%----------------------------------------------------------------------------------------
+
+\end{letter}
+
+\end{document}

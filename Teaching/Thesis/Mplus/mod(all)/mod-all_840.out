@@ -1,0 +1,1317 @@
+Mplus VERSION 8.3
+MUTHEN & MUTHEN
+02/22/2021  10:31 PM
+
+INPUT INSTRUCTIONS
+
+
+  TITLE:
+      Investigate sources of model misfit for 840
+
+  DATA:
+      file = "C:\Users\tctan\finlit1_840.dat";
+
+
+  VARIABLE:
+      names =
+          FKI CNTRYID CNTSCHID W_STU
+          MATH READ FLIT                      ! PISA achievement variables
+          MALE IMMI1GEN IMMI2GEN ESCS         ! Demographic info
+          FCFMLRTY FLCONFIN                   ! Affect
+          FLSCHOOL                            !   Lat var "Academic"
+          NOBULLY                             !   Lat var "Safety"
+          FLFAMILY                            !   Lat var "Community"
+          W_SCH STRATIO                       ! School character
+          EDUSHORT                            !   Lat var "inst. env."
+          ;
+
+      usevar =
+          FLIT                                ! PISA achievement variables
+          FLSCHOOL                            !   Lat var "Academic"
+          NOBULLY                             !   Lat var "Safety"
+          FLFAMILY                            !   Lat var "Community"
+          EDUSHORT STRATIO                    !   Lat var "Inst env"
+          FCFMLRTY FLCONFIN                   ! Affect
+          MALE IMMI1GEN IMMI2GEN ESCS         ! Demographic info
+          ;
+
+      ! Vars that ONLY appear in L1
+      within =
+          FCFMLRTY FLCONFIN                   ! Affective vars
+          MALE IMMI1GEN IMMI2GEN ESCS         ! L1 control vars
+          ;
+
+      ! Vars that ONLY appear in L2
+      between =
+          EDUSHORT STRATIO                    ! L2: school
+          ;
+
+      weight = W_STU;                         ! Student weight
+      wtscale = cluster;                      ! Scale L1 weight to cluster size
+      bweight = W_SCH;                        ! School weight
+      bwtscale = sample;                      ! Scale L2 weight to sample
+
+      cluster = CNTSCHID;                     ! Cluster by school ID
+
+
+  ANALYSIS:
+      processors = 4;
+
+      type = twolevel;
+
+
+  MODEL:
+
+  %Within%                                    ! === L1: Student-level ===
+
+      ! Indirect pathways (1st half): school climate vars onto mediators
+          ! Onto mediator FAMILIARITY
+      FCFMLRTY on FLSCHOOL NOBULLY FLFAMILY MALE;
+          ! Onto mediator CONFIDENCE
+      FLCONFIN on FLSCHOOL NOBULLY FLFAMILY MALE;
+
+      ! Total effect
+      FLIT on
+          ! Direct pathways: school climate vars onto financial literacy
+          FLSCHOOL NOBULLY FLFAMILY
+          ! Indirect pathways (2nd half): affective vars onto financial literacy
+          FCFMLRTY FLCONFIN
+          ! Control vars (demographic info)
+          MALE IMMI1GEN IMMI2GEN ESCS
+          ;
+
+      ! Covariances
+          ! Between school climate vars
+      FLSCHOOL with NOBULLY;
+      FLSCHOOL with FLFAMILY;
+      NOBULLY with FLFAMILY;
+          ! Between mediators
+      FCFMLRTY with FLCONFIN;
+          ! ESCS with FLFAMILY
+      ESCS with FLFAMILY;
+          ! ESCS with IMMI1GEN and IMMI2GEN
+      ESCS with IMMI1GEN IMMI2GEN;
+
+  %Between%                                   ! === L2: School-level ===
+
+      FLIT on
+          FLSCHOOL NOBULLY FLFAMILY EDUSHORT  ! School climate variables
+          STRATIO                             ! Control: Student-teacher ratio
+          ;
+
+      FLSCHOOL with NOBULLY;
+      NOBULLY with FLFAMILY;
+      FLFAMILY with EDUSHORT;
+
+      FLSCHOOL with FLFAMILY;
+      NOBULLY with EDUSHORT;
+
+      FLSCHOOL with EDUSHORT;
+
+
+  MODEL INDIRECT:
+
+      ! Indirect effects
+      FLIT ind FLSCHOOL;
+      FLIT ind NOBULLY;
+      FLIT ind FLFAMILY;
+
+
+  OUTPUT:
+      stdyx                                   ! Fully standardised solution
+      mod(all)                                ! Mod indices (all)
+      ;
+
+
+
+*** WARNING
+  One or more individual-level variables have no variation within a
+  cluster for the following clusters.
+
+     Variable   Cluster IDs with no within-cluster variation
+
+      IMMI1GEN    84000118 84000172 84000072 84000166 84000031 84000126 84000016 84000014 84000025
+                  84000013 84000157 84000088 84000173 84000041 84000053 84000036 84000087 84000107
+                  84000129 84000136 84000019 84000029 84000077 84000080 84000135 84000089 84000124
+                  84000151 84000005 84000028 84000035 84000046 84000049 84000057 84000101 84000114
+                  84000146 84000047 84000059 84000075 84000079 84000085 84000125 84000175 84000001
+                  84000010 84000054 84000064 84000070 84000076 84000082 84000155 84000159 84000027
+                  84000060 84000066 84000084 84000096 84000142 84000161 84000011 84000171 84000021
+                  84000120 84000050 84000131 84000061 84000063 84000160 84000167 84000017 84000138
+                  84000130 84000062 84000069
+      IMMI2GEN    84000118 84000172 84000072 84000166 84000099 84000126 84000016 84000065 84000014
+                  84000025 84000173 84000107 84000136 84000150 84000089 84000124 84000151 84000101
+                  84000139 84000002 84000047 84000085 84000175 84000001 84000076 84000082 84000110
+                  84000155 84000159 84000162 84000060 84000066 84000096 84000140 84000161 84000021
+                  84000120 84000167 84000017 84000078 84000130
+      MALE        84000172 84000065 84000029 84000146 84000061
+
+   1 WARNING(S) FOUND IN THE INPUT INSTRUCTIONS
+
+
+
+
+Investigate sources of model misfit for 840
+
+SUMMARY OF ANALYSIS
+
+Number of groups                                                 1
+Number of observations                                        3738
+
+Number of dependent variables                                    3
+Number of independent variables                                  9
+Number of continuous latent variables                            0
+
+Observed dependent variables
+
+  Continuous
+   FLIT        FCFMLRTY    FLCONFIN
+
+Observed independent variables
+   FLSCHOOL    NOBULLY     FLFAMILY    EDUSHORT    STRATIO     MALE
+   IMMI1GEN    IMMI2GEN    ESCS
+
+Variables with special functions
+
+  Cluster variable      CNTSCHID
+  Weight variable (cluster-size scaling)
+    W_STU
+  Between weight variable (sample-size scaling)
+    W_SCH
+
+  Within variables
+   FCFMLRTY    FLCONFIN    MALE        IMMI1GEN    IMMI2GEN    ESCS
+
+  Between variables
+   EDUSHORT    STRATIO
+
+
+Estimator                                                      MLR
+Information matrix                                        OBSERVED
+Maximum number of iterations                                   100
+Convergence criterion                                    0.100D-05
+Maximum number of EM iterations                                500
+Convergence criteria for the EM algorithm
+  Loglikelihood change                                   0.100D-02
+  Relative loglikelihood change                          0.100D-05
+  Derivative                                             0.100D-03
+Minimum variance                                         0.100D-03
+Maximum number of steepest descent iterations                   20
+Maximum number of iterations for H1                           2000
+Convergence criterion for H1                             0.100D-03
+Optimization algorithm                                         EMA
+
+Input data file(s)
+  C:\Users\tctan\finlit1_840.dat
+Input data format  FREE
+
+
+SUMMARY OF DATA
+
+     Number of clusters                        163
+
+     Average cluster size       22.933
+
+     Estimated Intraclass Correlations for the Y Variables
+
+                Intraclass              Intraclass              Intraclass
+     Variable  Correlation   Variable  Correlation   Variable  Correlation
+
+     FLIT         0.090      FCFMLRTY     0.000      FLCONFIN     0.000
+     FLSCHOOL     0.055      NOBULLY      0.031      FLFAMILY     0.009
+     IMMI1GEN     0.000      IMMI2GEN     0.000      ESCS         0.000
+
+
+
+
+UNIVARIATE SAMPLE STATISTICS
+
+
+     UNIVARIATE HIGHER-ORDER MOMENT DESCRIPTIVE STATISTICS
+
+         Variable/         Mean/     Skewness/   Minimum/ % with                Percentiles
+        Sample Size      Variance    Kurtosis    Maximum  Min/Max      20%/60%    40%/80%    Median
+
+     EDUSHORT             -0.456       0.576      -1.996    0.61%      -1.421     -0.943     -0.312
+             163.000       0.848      -0.332       2.461    0.61%      -0.067      0.399
+     FLIT                503.435      -0.058     173.064    0.03%     407.822    474.088    499.981
+            3738.000   10442.365      -0.244     821.019    0.03%     526.240    590.124
+     FCFMLRTY              6.908       0.285      -6.052    0.03%       2.000      6.000      7.000
+            3738.000      24.592      -0.574      23.125    0.03%       8.000     11.000
+     FLCONFIN             -0.180       0.015      -4.007    0.03%      -0.946     -0.363     -0.175
+            3738.000       1.064       0.237       2.522    0.03%       0.081      0.658
+     FLSCHOOL             -0.096       0.357      -3.486    0.03%      -1.070     -0.424     -0.043
+            3738.000       1.172      -0.456       2.358    0.03%       0.402      0.708
+     NOBULLY              -0.149      -0.812      -3.859    0.94%      -1.163     -0.291     -0.146
+            3738.000       1.086       0.230       3.438    0.03%       0.782      0.782
+     FLFAMILY              0.117       0.095      -3.361    0.03%      -0.656     -0.219      0.011
+            3738.000       1.118      -0.021       2.522    0.03%       0.367      0.832
+     IMMI1GEN              0.058       3.800       0.000   94.62%       0.000      0.000      0.000
+            3738.000       0.054      12.440       1.000    5.38%       0.000      0.000
+     IMMI2GEN              0.174       1.719       0.000   83.84%       0.000      0.000      0.000
+            3738.000       0.144       0.956       1.000   16.16%       0.000      0.000
+     ESCS                  0.069      -0.509      -6.451    0.03%      -0.847     -0.180      0.130
+            3738.000       1.078       0.363       3.255    0.03%       0.448      0.968
+     MALE                  0.499       0.003       0.000   49.95%       0.000      0.000      1.000
+            3738.000       0.250      -2.000       1.000   50.05%       1.000      1.000
+     STRATIO              16.913       3.927      -6.024    0.61%      10.993     14.379     15.385
+             163.000      89.643      28.586     100.000    0.61%      16.872     20.361
+
+     THE STANDARD ERRORS OF THE MODEL PARAMETER ESTIMATES MAY NOT BE
+     TRUSTWORTHY FOR SOME PARAMETERS DUE TO A NON-POSITIVE DEFINITE
+     FIRST-ORDER DERIVATIVE PRODUCT MATRIX.  THIS MAY BE DUE TO THE STARTING
+     VALUES BUT MAY ALSO BE AN INDICATION OF MODEL NONIDENTIFICATION.  THE
+     CONDITION NUMBER IS      -0.173D-16.  PROBLEM INVOLVING THE FOLLOWING PARAMETER:
+     Parameter 37, %WITHIN%: ESCS WITH IMMI2GEN
+
+
+THE MODEL ESTIMATION TERMINATED NORMALLY
+
+
+
+MODEL FIT INFORMATION
+
+Number of Free Parameters                       59
+
+Loglikelihood
+
+          H0 Value                      -61813.252
+          H0 Scaling Correction Factor      1.8584
+            for MLR
+          H1 Value                      -61667.899
+          H1 Scaling Correction Factor      1.6169
+            for MLR
+
+Information Criteria
+
+          Akaike (AIC)                  123744.504
+          Bayesian (BIC)                124111.856
+          Sample-Size Adjusted BIC      123924.382
+            (n* = (n + 2) / 24)
+
+Chi-Square Test of Model Fit
+
+          Value                            277.665*
+          Degrees of Freedom                    25
+          P-Value                           0.0000
+          Scaling Correction Factor         1.0470
+            for MLR
+
+*   The chi-square value for MLM, MLMV, MLR, ULSMV, WLSM and WLSMV cannot be used
+    for chi-square difference testing in the regular way.  MLM, MLR and WLSM
+    chi-square difference testing is described on the Mplus website.  MLMV, WLSMV,
+    and ULSMV difference testing is done using the DIFFTEST option.
+
+RMSEA (Root Mean Square Error Of Approximation)
+
+          Estimate                           0.052
+
+CFI/TLI
+
+          CFI                                0.866
+          TLI                                0.678
+
+Chi-Square Test of Model Fit for the Baseline Model
+
+          Value                           1943.975
+          Degrees of Freedom                    60
+          P-Value                           0.0000
+
+SRMR (Standardized Root Mean Square Residual)
+
+          Value for Within                   0.036
+          Value for Between                  0.095
+
+
+
+MODEL RESULTS
+
+                                                    Two-Tailed
+                    Estimate       S.E.  Est./S.E.    P-Value
+
+Within Level
+
+ FCFMLRTY   ON
+    FLSCHOOL           1.446      0.092     15.694      0.000
+    NOBULLY            0.208      0.089      2.326      0.020
+    FLFAMILY           0.348      0.086      4.032      0.000
+    MALE               0.549      0.162      3.390      0.001
+
+ FLCONFIN   ON
+    FLSCHOOL           0.186      0.018     10.538      0.000
+    NOBULLY            0.035      0.017      2.031      0.042
+    FLFAMILY           0.202      0.018     11.283      0.000
+    MALE               0.356      0.031     11.427      0.000
+
+ FLIT       ON
+    FLSCHOOL         -10.545      1.540     -6.849      0.000
+    NOBULLY            5.452      1.568      3.478      0.001
+    FLFAMILY          -2.516      1.556     -1.616      0.106
+    FCFMLRTY           3.629      0.357     10.172      0.000
+    FLCONFIN          -0.235      1.697     -0.138      0.890
+    MALE               8.134      2.991      2.720      0.007
+    IMMI1GEN         -18.740      8.074     -2.321      0.020
+    IMMI2GEN          16.343      4.629      3.531      0.000
+    ESCS              25.998      2.010     12.936      0.000
+
+ FLSCHOOL WITH
+    NOBULLY           -0.026      0.019     -1.343      0.179
+    FLFAMILY           0.215      0.021     10.296      0.000
+
+ NOBULLY  WITH
+    FLFAMILY          -0.052      0.017     -3.102      0.002
+
+ FCFMLRTY WITH
+    FLCONFIN           0.873      0.091      9.584      0.000
+
+ ESCS     WITH
+    FLFAMILY           0.063      0.019      3.333      0.001
+    IMMI1GEN          -0.025      0.007     -3.831      0.000
+    IMMI2GEN          -0.088      0.014     -6.413      0.000
+
+ Means
+    IMMI1GEN           0.058      0.006      9.680      0.000
+    IMMI2GEN           0.174      0.015     11.316      0.000
+    ESCS               0.069      0.043      1.584      0.113
+
+ Intercepts
+    FCFMLRTY           6.634      0.136     48.928      0.000
+    FLCONFIN          -0.358      0.027    -13.480      0.000
+
+ Variances
+    FLSCHOOL           1.099      0.029     37.917      0.000
+    NOBULLY            1.050      0.031     33.828      0.000
+    FLFAMILY           1.109      0.027     40.599      0.000
+    IMMI1GEN           0.054      0.005     10.309      0.000
+    IMMI2GEN           0.144      0.010     14.337      0.000
+    ESCS               1.083      0.041     26.305      0.000
+
+ Residual Variances
+    FLIT            7830.016    205.496     38.103      0.000
+    FCFMLRTY          21.801      0.571     38.170      0.000
+    FLCONFIN           0.933      0.027     34.779      0.000
+
+Between Level
+
+ FLIT       ON
+    FLSCHOOL         -31.101     48.394     -0.643      0.520
+    NOBULLY           15.909     55.084      0.289      0.773
+    FLFAMILY        -224.950    204.546     -1.100      0.271
+    EDUSHORT          -0.782      4.936     -0.158      0.874
+    STRATIO            0.087      0.173      0.504      0.614
+
+ FLSCHOOL WITH
+    NOBULLY           -0.010      0.007     -1.414      0.157
+    FLFAMILY           0.014      0.006      2.111      0.035
+    EDUSHORT           0.033      0.027      1.222      0.222
+
+ NOBULLY  WITH
+    FLFAMILY           0.004      0.005      0.788      0.431
+    EDUSHORT           0.012      0.020      0.596      0.551
+
+ FLFAMILY WITH
+    EDUSHORT           0.012      0.018      0.656      0.512
+
+ Means
+    EDUSHORT          -0.456      0.075     -6.099      0.000
+    FLSCHOOL          -0.099      0.030     -3.299      0.001
+    NOBULLY           -0.148      0.023     -6.332      0.000
+    FLFAMILY           0.116      0.019      5.997      0.000
+
+ Intercepts
+    FLIT             494.504     36.319     13.616      0.000
+
+ Variances
+    EDUSHORT           0.848      0.085     10.030      0.000
+    FLSCHOOL           0.068      0.011      6.016      0.000
+    NOBULLY            0.037      0.011      3.315      0.001
+    FLFAMILY           0.010      0.007      1.521      0.128
+
+ Residual Variances
+    FLIT             154.597    305.937      0.505      0.613
+
+
+STANDARDIZED MODEL RESULTS
+
+
+STDYX Standardization
+
+                                                    Two-Tailed
+                    Estimate       S.E.  Est./S.E.    P-Value
+
+Within Level
+
+ FCFMLRTY   ON
+    FLSCHOOL           0.306      0.019     16.120      0.000
+    NOBULLY            0.043      0.019      2.319      0.020
+    FLFAMILY           0.074      0.018      4.017      0.000
+    MALE               0.055      0.016      3.383      0.001
+
+ FLCONFIN   ON
+    FLSCHOOL           0.188      0.018     10.724      0.000
+    NOBULLY            0.035      0.017      2.029      0.042
+    FLFAMILY           0.206      0.018     11.683      0.000
+    MALE               0.172      0.015     11.471      0.000
+
+ FLIT       ON
+    FLSCHOOL          -0.117      0.017     -6.823      0.000
+    NOBULLY            0.059      0.017      3.472      0.001
+    FLFAMILY          -0.028      0.017     -1.614      0.106
+    FCFMLRTY           0.190      0.018     10.581      0.000
+    FLCONFIN          -0.003      0.019     -0.138      0.890
+    MALE               0.043      0.016      2.737      0.006
+    IMMI1GEN          -0.046      0.020     -2.283      0.022
+    IMMI2GEN           0.065      0.019      3.538      0.000
+    ESCS               0.286      0.021     13.510      0.000
+
+ FLSCHOOL WITH
+    NOBULLY           -0.024      0.018     -1.342      0.180
+    FLFAMILY           0.195      0.018     10.840      0.000
+
+ NOBULLY  WITH
+    FLFAMILY          -0.048      0.015     -3.121      0.002
+
+ FCFMLRTY WITH
+    FLCONFIN           0.194      0.018     10.550      0.000
+
+ ESCS     WITH
+    FLFAMILY           0.058      0.017      3.365      0.001
+    IMMI1GEN          -0.105      0.026     -4.047      0.000
+    IMMI2GEN          -0.223      0.030     -7.458      0.000
+
+ Means
+    IMMI1GEN           0.247      0.014     18.246      0.000
+    IMMI2GEN           0.459      0.025     18.694      0.000
+    ESCS               0.066      0.042      1.563      0.118
+
+ Intercepts
+    FCFMLRTY           1.339      0.028     48.113      0.000
+    FLCONFIN          -0.347      0.026    -13.580      0.000
+
+ Variances
+    FLSCHOOL           1.000      0.000    999.000    999.000
+    NOBULLY            1.000      0.000    999.000    999.000
+    FLFAMILY           1.000      0.000    999.000    999.000
+    IMMI1GEN           1.000      0.000    999.000    999.000
+    IMMI2GEN           1.000      0.000    999.000    999.000
+    ESCS               1.000      0.000    999.000    999.000
+
+ Residual Variances
+    FLIT               0.874      0.013     65.145      0.000
+    FCFMLRTY           0.888      0.012     73.920      0.000
+    FLCONFIN           0.877      0.011     77.512      0.000
+
+Between Level
+
+ FLIT       ON
+    FLSCHOOL          -0.267      0.416     -0.642      0.521
+    NOBULLY            0.101      0.348      0.290      0.772
+    FLFAMILY          -0.747      0.480     -1.556      0.120
+    EDUSHORT          -0.024      0.150     -0.158      0.874
+    STRATIO            0.027      0.055      0.501      0.617
+
+ FLSCHOOL WITH
+    NOBULLY           -0.205      0.137     -1.499      0.134
+    FLFAMILY           0.517      0.205      2.518      0.012
+    EDUSHORT           0.137      0.111      1.229      0.219
+
+ NOBULLY  WITH
+    FLFAMILY           0.224      0.292      0.766      0.444
+    EDUSHORT           0.066      0.113      0.586      0.558
+
+ FLFAMILY WITH
+    EDUSHORT           0.125      0.200      0.627      0.531
+
+ Means
+    EDUSHORT          -0.495      0.094     -5.269      0.000
+    FLSCHOOL          -0.381      0.118     -3.221      0.001
+    NOBULLY           -0.771      0.141     -5.451      0.000
+    FLFAMILY           1.152      0.407      2.830      0.005
+
+ Intercepts
+    FLIT              16.342      1.721      9.498      0.000
+
+ Variances
+    EDUSHORT           1.000      0.000    999.000    999.000
+    FLSCHOOL           1.000      0.000    999.000    999.000
+    NOBULLY            1.000      0.000    999.000    999.000
+    FLFAMILY           1.000      0.000    999.000    999.000
+
+ Residual Variances
+    FLIT               0.169      0.336      0.503      0.615
+
+
+R-SQUARE
+
+Within Level
+
+    Observed                                        Two-Tailed
+    Variable        Estimate       S.E.  Est./S.E.    P-Value
+
+    FLIT               0.126      0.013      9.362      0.000
+    FCFMLRTY           0.112      0.012      9.312      0.000
+    FLCONFIN           0.123      0.011     10.876      0.000
+
+Between Level
+
+    Observed                                        Two-Tailed
+    Variable        Estimate       S.E.  Est./S.E.    P-Value
+
+    FLIT               0.831      0.336      2.476      0.013
+
+
+QUALITY OF NUMERICAL RESULTS
+
+     Condition Number for the Information Matrix             -0.173E-16
+       (ratio of smallest to largest eigenvalue)
+
+
+TOTAL, TOTAL INDIRECT, SPECIFIC INDIRECT, AND DIRECT EFFECTS
+
+
+                                                    Two-Tailed
+                    Estimate       S.E.  Est./S.E.    P-Value
+
+WITHIN
+
+Effects from FLSCHOOL to FLIT
+
+  Total               -5.341      1.598     -3.342      0.001
+  Total indirect       5.204      0.622      8.362      0.000
+
+  Specific indirect 1
+    FLIT
+    FCFMLRTY
+    FLSCHOOL           5.248      0.579      9.071      0.000
+
+  Specific indirect 2
+    FLIT
+    FLCONFIN
+    FLSCHOOL          -0.044      0.316     -0.138      0.890
+
+  Direct
+    FLIT
+    FLSCHOOL         -10.545      1.540     -6.849      0.000
+
+
+Effects from NOBULLY to FLIT
+
+  Total                6.197      1.584      3.913      0.000
+  Total indirect       0.745      0.333      2.238      0.025
+
+  Specific indirect 1
+    FLIT
+    FCFMLRTY
+    NOBULLY            0.754      0.330      2.281      0.023
+
+  Specific indirect 2
+    FLIT
+    FLCONFIN
+    NOBULLY           -0.008      0.060     -0.138      0.891
+
+  Direct
+    FLIT
+    NOBULLY            5.452      1.568      3.478      0.001
+
+
+Effects from FLFAMILY to FLIT
+
+  Total               -1.299      1.567     -0.829      0.407
+  Total indirect       1.217      0.439      2.771      0.006
+
+  Specific indirect 1
+    FLIT
+    FCFMLRTY
+    FLFAMILY           1.264      0.341      3.708      0.000
+
+  Specific indirect 2
+    FLIT
+    FLCONFIN
+    FLFAMILY          -0.047      0.343     -0.138      0.890
+
+  Direct
+    FLIT
+    FLFAMILY          -2.516      1.556     -1.616      0.106
+
+
+BETWEEN
+
+Effects from FLSCHOOL to FLIT
+
+  Total              -31.101     48.394     -0.643      0.520
+  Total indirect       0.000      0.000    999.000      0.000
+
+  Direct
+    FLIT
+    FLSCHOOL         -31.101     48.394     -0.643      0.520
+
+
+Effects from NOBULLY to FLIT
+
+  Total               15.909     55.084      0.289      0.773
+  Total indirect       0.000      0.000    999.000      0.000
+
+  Direct
+    FLIT
+    NOBULLY           15.909     55.084      0.289      0.773
+
+
+Effects from FLFAMILY to FLIT
+
+  Total             -224.950    204.545     -1.100      0.271
+  Total indirect       0.000      0.000    999.000      0.000
+
+  Direct
+    FLIT
+    FLFAMILY        -224.950    204.545     -1.100      0.271
+
+
+
+STANDARDIZED TOTAL, TOTAL INDIRECT, SPECIFIC INDIRECT, AND DIRECT EFFECTS
+
+
+STDYX Standardization
+
+                                                    Two-Tailed
+                    Estimate       S.E.  Est./S.E.    P-Value
+
+WITHIN
+
+Effects from FLSCHOOL to FLIT
+
+  Total               -0.059      0.018     -3.337      0.001
+  Total indirect       0.058      0.007      8.334      0.000
+
+  Specific indirect 1
+    FLIT
+    FCFMLRTY
+    FLSCHOOL           0.058      0.006      9.138      0.000
+
+  Specific indirect 2
+    FLIT
+    FLCONFIN
+    FLSCHOOL           0.000      0.003     -0.138      0.890
+
+  Direct
+    FLIT
+    FLSCHOOL          -0.117      0.017     -6.823      0.000
+
+
+Effects from NOBULLY to FLIT
+
+  Total                0.067      0.017      3.902      0.000
+  Total indirect       0.008      0.004      2.232      0.026
+
+  Specific indirect 1
+    FLIT
+    FCFMLRTY
+    NOBULLY            0.008      0.004      2.275      0.023
+
+  Specific indirect 2
+    FLIT
+    FLCONFIN
+    NOBULLY            0.000      0.001     -0.138      0.891
+
+  Direct
+    FLIT
+    NOBULLY            0.059      0.017      3.472      0.001
+
+
+Effects from FLFAMILY to FLIT
+
+  Total               -0.014      0.017     -0.828      0.407
+  Total indirect       0.014      0.005      2.773      0.006
+
+  Specific indirect 1
+    FLIT
+    FCFMLRTY
+    FLFAMILY           0.014      0.004      3.706      0.000
+
+  Specific indirect 2
+    FLIT
+    FLCONFIN
+    FLFAMILY          -0.001      0.004     -0.138      0.890
+
+  Direct
+    FLIT
+    FLFAMILY          -0.028      0.017     -1.614      0.106
+
+
+BETWEEN
+
+Effects from FLSCHOOL to FLIT
+
+  Total               -0.267      0.416     -0.642      0.521
+  Total indirect       0.000      0.000      0.000      1.000
+
+  Direct
+    FLIT
+    FLSCHOOL          -0.267      0.416     -0.642      0.521
+
+
+Effects from NOBULLY to FLIT
+
+  Total                0.101      0.348      0.290      0.772
+  Total indirect       0.000      0.000      0.000      1.000
+
+  Direct
+    FLIT
+    NOBULLY            0.101      0.348      0.290      0.772
+
+
+Effects from FLFAMILY to FLIT
+
+  Total               -0.747      0.480     -1.556      0.120
+  Total indirect       0.000      0.000      0.000      1.000
+
+  Direct
+    FLIT
+    FLFAMILY          -0.747      0.480     -1.556      0.120
+
+
+
+
+MODEL MODIFICATION INDICES
+
+Minimum M.I. value for printing the modification index    10.000
+
+                                   M.I.     E.P.C.  Std E.P.C.  StdYX E.P.C.
+
+Within Level
+
+ON Statements
+
+FCFMLRTY ON FLIT                 112.595     0.030      0.030        0.573
+FCFMLRTY ON IMMI2GEN              17.253    -0.841     -0.841       -0.064
+FCFMLRTY ON ESCS                 124.077     0.823      0.823        0.173
+FLSCHOOL ON FCFMLRTY              54.575     0.457      0.457        2.160
+FLSCHOOL ON FLCONFIN              30.037     0.533      0.533        0.525
+FLSCHOOL ON MALE                  29.827     0.190      0.190        0.091
+FLFAMILY ON FLIT                  11.529    -0.007     -0.007       -0.597
+FLFAMILY ON FCFMLRTY             116.290    -0.471     -0.471       -2.215
+FLFAMILY ON FLCONFIN              23.353    -0.446     -0.446       -0.437
+FLFAMILY ON MALE                  27.180    -0.180     -0.180       -0.086
+IMMI1GEN ON IMMI2GEN              45.931    -0.070     -0.070       -0.113
+IMMI1GEN ON ESCS                  39.976     0.103      0.103        0.459
+IMMI2GEN ON FLCONFIN              10.210    -0.019     -0.019       -0.052
+IMMI2GEN ON IMMI1GEN              45.931    -0.185     -0.185       -0.113
+IMMI2GEN ON ESCS                  36.764     0.308      0.308        0.845
+ESCS     ON FLIT                  73.674     0.007      0.007        0.671
+ESCS     ON FCFMLRTY              94.089     0.033      0.033        0.157
+
+WITH Statements
+
+FLSCHOOL WITH FCFMLRTY           104.395    67.953     67.953       13.885
+NOBULLY  WITH FCFMLRTY           104.369  -295.513   -295.513      -61.772
+FLFAMILY WITH FCFMLRTY           104.381   -13.249    -13.249       -2.694
+IMMI2GEN WITH IMMI1GEN            45.931    -0.010     -0.010       -0.113
+ESCS     WITH FCFMLRTY           104.381     0.789      0.789        0.162
+MALE     WITH FLSCHOOL            29.828     0.047      0.047        0.091
+MALE     WITH FLFAMILY            27.181    -0.045     -0.045       -0.086
+
+Between Level
+
+
+TECHNICAL 1 OUTPUT
+
+
+     PARAMETER SPECIFICATION FOR WITHIN
+
+
+           NU
+              FLIT          FCFMLRTY      FLCONFIN      FLSCHOOL      NOBULLY
+              ________      ________      ________      ________      ________
+                    0             0             0             0             0
+
+
+           NU
+              FLFAMILY      IMMI1GEN      IMMI2GEN      ESCS          MALE
+              ________      ________      ________      ________      ________
+                    0             0             0             0             0
+
+
+           LAMBDA
+              FLIT          FCFMLRTY      FLCONFIN      FLSCHOOL      NOBULLY
+              ________      ________      ________      ________      ________
+ FLIT               0             0             0             0             0
+ FCFMLRTY           0             0             0             0             0
+ FLCONFIN           0             0             0             0             0
+ FLSCHOOL           0             0             0             0             0
+ NOBULLY            0             0             0             0             0
+ FLFAMILY           0             0             0             0             0
+ IMMI1GEN           0             0             0             0             0
+ IMMI2GEN           0             0             0             0             0
+ ESCS               0             0             0             0             0
+ MALE               0             0             0             0             0
+
+
+           LAMBDA
+              FLFAMILY      IMMI1GEN      IMMI2GEN      ESCS          MALE
+              ________      ________      ________      ________      ________
+ FLIT               0             0             0             0             0
+ FCFMLRTY           0             0             0             0             0
+ FLCONFIN           0             0             0             0             0
+ FLSCHOOL           0             0             0             0             0
+ NOBULLY            0             0             0             0             0
+ FLFAMILY           0             0             0             0             0
+ IMMI1GEN           0             0             0             0             0
+ IMMI2GEN           0             0             0             0             0
+ ESCS               0             0             0             0             0
+ MALE               0             0             0             0             0
+
+
+           THETA
+              FLIT          FCFMLRTY      FLCONFIN      FLSCHOOL      NOBULLY
+              ________      ________      ________      ________      ________
+ FLIT               0
+ FCFMLRTY           0             0
+ FLCONFIN           0             0             0
+ FLSCHOOL           0             0             0             0
+ NOBULLY            0             0             0             0             0
+ FLFAMILY           0             0             0             0             0
+ IMMI1GEN           0             0             0             0             0
+ IMMI2GEN           0             0             0             0             0
+ ESCS               0             0             0             0             0
+ MALE               0             0             0             0             0
+
+
+           THETA
+              FLFAMILY      IMMI1GEN      IMMI2GEN      ESCS          MALE
+              ________      ________      ________      ________      ________
+ FLFAMILY           0
+ IMMI1GEN           0             0
+ IMMI2GEN           0             0             0
+ ESCS               0             0             0             0
+ MALE               0             0             0             0             0
+
+
+           ALPHA
+              FLIT          FCFMLRTY      FLCONFIN      FLSCHOOL      NOBULLY
+              ________      ________      ________      ________      ________
+                    0             1             2             0             0
+
+
+           ALPHA
+              FLFAMILY      IMMI1GEN      IMMI2GEN      ESCS          MALE
+              ________      ________      ________      ________      ________
+                    0             3             4             5             0
+
+
+           BETA
+              FLIT          FCFMLRTY      FLCONFIN      FLSCHOOL      NOBULLY
+              ________      ________      ________      ________      ________
+ FLIT               0             6             7             8             9
+ FCFMLRTY           0             0             0            15            16
+ FLCONFIN           0             0             0            19            20
+ FLSCHOOL           0             0             0             0             0
+ NOBULLY            0             0             0             0             0
+ FLFAMILY           0             0             0             0             0
+ IMMI1GEN           0             0             0             0             0
+ IMMI2GEN           0             0             0             0             0
+ ESCS               0             0             0             0             0
+ MALE               0             0             0             0             0
+
+
+           BETA
+              FLFAMILY      IMMI1GEN      IMMI2GEN      ESCS          MALE
+              ________      ________      ________      ________      ________
+ FLIT              10            11            12            13            14
+ FCFMLRTY          17             0             0             0            18
+ FLCONFIN          21             0             0             0            22
+ FLSCHOOL           0             0             0             0             0
+ NOBULLY            0             0             0             0             0
+ FLFAMILY           0             0             0             0             0
+ IMMI1GEN           0             0             0             0             0
+ IMMI2GEN           0             0             0             0             0
+ ESCS               0             0             0             0             0
+ MALE               0             0             0             0             0
+
+
+           PSI
+              FLIT          FCFMLRTY      FLCONFIN      FLSCHOOL      NOBULLY
+              ________      ________      ________      ________      ________
+ FLIT              23
+ FCFMLRTY           0            24
+ FLCONFIN           0            25            26
+ FLSCHOOL           0             0             0            27
+ NOBULLY            0             0             0            28            29
+ FLFAMILY           0             0             0            30            31
+ IMMI1GEN           0             0             0             0             0
+ IMMI2GEN           0             0             0             0             0
+ ESCS               0             0             0             0             0
+ MALE               0             0             0             0             0
+
+
+           PSI
+              FLFAMILY      IMMI1GEN      IMMI2GEN      ESCS          MALE
+              ________      ________      ________      ________      ________
+ FLFAMILY          32
+ IMMI1GEN           0            33
+ IMMI2GEN           0             0            34
+ ESCS              35            36            37            38
+ MALE               0             0             0             0             0
+
+
+     PARAMETER SPECIFICATION FOR BETWEEN
+
+
+           NU
+              EDUSHORT      FLIT          FLSCHOOL      NOBULLY       FLFAMILY
+              ________      ________      ________      ________      ________
+                    0             0             0             0             0
+
+
+           NU
+              STRATIO
+              ________
+                    0
+
+
+           LAMBDA
+              EDUSHORT      FLIT          FLSCHOOL      NOBULLY       FLFAMILY
+              ________      ________      ________      ________      ________
+ EDUSHORT           0             0             0             0             0
+ FLIT               0             0             0             0             0
+ FLSCHOOL           0             0             0             0             0
+ NOBULLY            0             0             0             0             0
+ FLFAMILY           0             0             0             0             0
+ STRATIO            0             0             0             0             0
+
+
+           LAMBDA
+              STRATIO
+              ________
+ EDUSHORT           0
+ FLIT               0
+ FLSCHOOL           0
+ NOBULLY            0
+ FLFAMILY           0
+ STRATIO            0
+
+
+           THETA
+              EDUSHORT      FLIT          FLSCHOOL      NOBULLY       FLFAMILY
+              ________      ________      ________      ________      ________
+ EDUSHORT           0
+ FLIT               0             0
+ FLSCHOOL           0             0             0
+ NOBULLY            0             0             0             0
+ FLFAMILY           0             0             0             0             0
+ STRATIO            0             0             0             0             0
+
+
+           THETA
+              STRATIO
+              ________
+ STRATIO            0
+
+
+           ALPHA
+              EDUSHORT      FLIT          FLSCHOOL      NOBULLY       FLFAMILY
+              ________      ________      ________      ________      ________
+                   39            40            41            42            43
+
+
+           ALPHA
+              STRATIO
+              ________
+                    0
+
+
+           BETA
+              EDUSHORT      FLIT          FLSCHOOL      NOBULLY       FLFAMILY
+              ________      ________      ________      ________      ________
+ EDUSHORT           0             0             0             0             0
+ FLIT              44             0            45            46            47
+ FLSCHOOL           0             0             0             0             0
+ NOBULLY            0             0             0             0             0
+ FLFAMILY           0             0             0             0             0
+ STRATIO            0             0             0             0             0
+
+
+           BETA
+              STRATIO
+              ________
+ EDUSHORT           0
+ FLIT              48
+ FLSCHOOL           0
+ NOBULLY            0
+ FLFAMILY           0
+ STRATIO            0
+
+
+           PSI
+              EDUSHORT      FLIT          FLSCHOOL      NOBULLY       FLFAMILY
+              ________      ________      ________      ________      ________
+ EDUSHORT          49
+ FLIT               0            50
+ FLSCHOOL          51             0            52
+ NOBULLY           53             0            54            55
+ FLFAMILY          56             0            57            58            59
+ STRATIO            0             0             0             0             0
+
+
+           PSI
+              STRATIO
+              ________
+ STRATIO            0
+
+
+     STARTING VALUES FOR WITHIN
+
+
+           NU
+              FLIT          FCFMLRTY      FLCONFIN      FLSCHOOL      NOBULLY
+              ________      ________      ________      ________      ________
+                0.000         0.000         0.000         0.000         0.000
+
+
+           NU
+              FLFAMILY      IMMI1GEN      IMMI2GEN      ESCS          MALE
+              ________      ________      ________      ________      ________
+                0.000         0.000         0.000         0.000         0.000
+
+
+           LAMBDA
+              FLIT          FCFMLRTY      FLCONFIN      FLSCHOOL      NOBULLY
+              ________      ________      ________      ________      ________
+ FLIT           1.000         0.000         0.000         0.000         0.000
+ FCFMLRTY       0.000         1.000         0.000         0.000         0.000
+ FLCONFIN       0.000         0.000         1.000         0.000         0.000
+ FLSCHOOL       0.000         0.000         0.000         1.000         0.000
+ NOBULLY        0.000         0.000         0.000         0.000         1.000
+ FLFAMILY       0.000         0.000         0.000         0.000         0.000
+ IMMI1GEN       0.000         0.000         0.000         0.000         0.000
+ IMMI2GEN       0.000         0.000         0.000         0.000         0.000
+ ESCS           0.000         0.000         0.000         0.000         0.000
+ MALE           0.000         0.000         0.000         0.000         0.000
+
+
+           LAMBDA
+              FLFAMILY      IMMI1GEN      IMMI2GEN      ESCS          MALE
+              ________      ________      ________      ________      ________
+ FLIT           0.000         0.000         0.000         0.000         0.000
+ FCFMLRTY       0.000         0.000         0.000         0.000         0.000
+ FLCONFIN       0.000         0.000         0.000         0.000         0.000
+ FLSCHOOL       0.000         0.000         0.000         0.000         0.000
+ NOBULLY        0.000         0.000         0.000         0.000         0.000
+ FLFAMILY       1.000         0.000         0.000         0.000         0.000
+ IMMI1GEN       0.000         1.000         0.000         0.000         0.000
+ IMMI2GEN       0.000         0.000         1.000         0.000         0.000
+ ESCS           0.000         0.000         0.000         1.000         0.000
+ MALE           0.000         0.000         0.000         0.000         1.000
+
+
+           THETA
+              FLIT          FCFMLRTY      FLCONFIN      FLSCHOOL      NOBULLY
+              ________      ________      ________      ________      ________
+ FLIT           0.000
+ FCFMLRTY       0.000         0.000
+ FLCONFIN       0.000         0.000         0.000
+ FLSCHOOL       0.000         0.000         0.000         0.000
+ NOBULLY        0.000         0.000         0.000         0.000         0.000
+ FLFAMILY       0.000         0.000         0.000         0.000         0.000
+ IMMI1GEN       0.000         0.000         0.000         0.000         0.000
+ IMMI2GEN       0.000         0.000         0.000         0.000         0.000
+ ESCS           0.000         0.000         0.000         0.000         0.000
+ MALE           0.000         0.000         0.000         0.000         0.000
+
+
+           THETA
+              FLFAMILY      IMMI1GEN      IMMI2GEN      ESCS          MALE
+              ________      ________      ________      ________      ________
+ FLFAMILY       0.000
+ IMMI1GEN       0.000         0.000
+ IMMI2GEN       0.000         0.000         0.000
+ ESCS           0.000         0.000         0.000         0.000
+ MALE           0.000         0.000         0.000         0.000         0.000
+
+
+           ALPHA
+              FLIT          FCFMLRTY      FLCONFIN      FLSCHOOL      NOBULLY
+              ________      ________      ________      ________      ________
+                0.000         6.964        -0.168         0.000         0.000
+
+
+           ALPHA
+              FLFAMILY      IMMI1GEN      IMMI2GEN      ESCS          MALE
+              ________      ________      ________      ________      ________
+                0.000         0.054         0.162         0.043         0.000
+
+
+           BETA
+              FLIT          FCFMLRTY      FLCONFIN      FLSCHOOL      NOBULLY
+              ________      ________      ________      ________      ________
+ FLIT           0.000         0.000         0.000         0.000         0.000
+ FCFMLRTY       0.000         0.000         0.000         0.000         0.000
+ FLCONFIN       0.000         0.000         0.000         0.000         0.000
+ FLSCHOOL       0.000         0.000         0.000         0.000         0.000
+ NOBULLY        0.000         0.000         0.000         0.000         0.000
+ FLFAMILY       0.000         0.000         0.000         0.000         0.000
+ IMMI1GEN       0.000         0.000         0.000         0.000         0.000
+ IMMI2GEN       0.000         0.000         0.000         0.000         0.000
+ ESCS           0.000         0.000         0.000         0.000         0.000
+ MALE           0.000         0.000         0.000         0.000         0.000
+
+
+           BETA
+              FLFAMILY      IMMI1GEN      IMMI2GEN      ESCS          MALE
+              ________      ________      ________      ________      ________
+ FLIT           0.000         0.000         0.000         0.000         0.000
+ FCFMLRTY       0.000         0.000         0.000         0.000         0.000
+ FLCONFIN       0.000         0.000         0.000         0.000         0.000
+ FLSCHOOL       0.000         0.000         0.000         0.000         0.000
+ NOBULLY        0.000         0.000         0.000         0.000         0.000
+ FLFAMILY       0.000         0.000         0.000         0.000         0.000
+ IMMI1GEN       0.000         0.000         0.000         0.000         0.000
+ IMMI2GEN       0.000         0.000         0.000         0.000         0.000
+ ESCS           0.000         0.000         0.000         0.000         0.000
+ MALE           0.000         0.000         0.000         0.000         0.000
+
+
+           PSI
+              FLIT          FCFMLRTY      FLCONFIN      FLSCHOOL      NOBULLY
+              ________      ________      ________      ________      ________
+ FLIT        5232.568
+ FCFMLRTY       0.000        12.486
+ FLCONFIN       0.000         0.000         0.533
+ FLSCHOOL       0.000         0.000         0.000         0.592
+ NOBULLY        0.000         0.000         0.000         0.000         0.551
+ FLFAMILY       0.000         0.000         0.000         0.000         0.000
+ IMMI1GEN       0.000         0.000         0.000         0.000         0.000
+ IMMI2GEN       0.000         0.000         0.000         0.000         0.000
+ ESCS           0.000         0.000         0.000         0.000         0.000
+ MALE           0.000         0.000         0.000         0.000         0.000
+
+
+           PSI
+              FLFAMILY      IMMI1GEN      IMMI2GEN      ESCS          MALE
+              ________      ________      ________      ________      ________
+ FLFAMILY       0.566
+ IMMI1GEN       0.000         0.026
+ IMMI2GEN       0.000         0.000         0.068
+ ESCS           0.000         0.000         0.000         0.530
+ MALE           0.000         0.000         0.000         0.000         0.125
+
+
+     STARTING VALUES FOR BETWEEN
+
+
+           NU
+              EDUSHORT      FLIT          FLSCHOOL      NOBULLY       FLFAMILY
+              ________      ________      ________      ________      ________
+                0.000         0.000         0.000         0.000         0.000
+
+
+           NU
+              STRATIO
+              ________
+                0.000
+
+
+           LAMBDA
+              EDUSHORT      FLIT          FLSCHOOL      NOBULLY       FLFAMILY
+              ________      ________      ________      ________      ________
+ EDUSHORT       1.000         0.000         0.000         0.000         0.000
+ FLIT           0.000         1.000         0.000         0.000         0.000
+ FLSCHOOL       0.000         0.000         1.000         0.000         0.000
+ NOBULLY        0.000         0.000         0.000         1.000         0.000
+ FLFAMILY       0.000         0.000         0.000         0.000         1.000
+ STRATIO        0.000         0.000         0.000         0.000         0.000
+
+
+           LAMBDA
+              STRATIO
+              ________
+ EDUSHORT       0.000
+ FLIT           0.000
+ FLSCHOOL       0.000
+ NOBULLY        0.000
+ FLFAMILY       0.000
+ STRATIO        1.000
+
+
+           THETA
+              EDUSHORT      FLIT          FLSCHOOL      NOBULLY       FLFAMILY
+              ________      ________      ________      ________      ________
+ EDUSHORT       0.000
+ FLIT           0.000         0.000
+ FLSCHOOL       0.000         0.000         0.000
+ NOBULLY        0.000         0.000         0.000         0.000
+ FLFAMILY       0.000         0.000         0.000         0.000         0.000
+ STRATIO        0.000         0.000         0.000         0.000         0.000
+
+
+           THETA
+              STRATIO
+              ________
+ STRATIO        0.000
+
+
+           ALPHA
+              EDUSHORT      FLIT          FLSCHOOL      NOBULLY       FLFAMILY
+              ________      ________      ________      ________      ________
+               -0.435       499.497        -0.077        -0.153         0.128
+
+
+           ALPHA
+              STRATIO
+              ________
+                0.000
+
+
+           BETA
+              EDUSHORT      FLIT          FLSCHOOL      NOBULLY       FLFAMILY
+              ________      ________      ________      ________      ________
+ EDUSHORT       0.000         0.000         0.000         0.000         0.000
+ FLIT           0.000         0.000         0.000         0.000         0.000
+ FLSCHOOL       0.000         0.000         0.000         0.000         0.000
+ NOBULLY        0.000         0.000         0.000         0.000         0.000
+ FLFAMILY       0.000         0.000         0.000         0.000         0.000
+ STRATIO        0.000         0.000         0.000         0.000         0.000
+
+
+           BETA
+              STRATIO
+              ________
+ EDUSHORT       0.000
+ FLIT           0.000
+ FLSCHOOL       0.000
+ NOBULLY        0.000
+ FLFAMILY       0.000
+ STRATIO        0.000
+
+
+           PSI
+              EDUSHORT      FLIT          FLSCHOOL      NOBULLY       FLFAMILY
+              ________      ________      ________      ________      ________
+ EDUSHORT       0.425
+ FLIT           0.000      5232.568
+ FLSCHOOL       0.000         0.000         0.592
+ NOBULLY        0.000         0.000         0.000         0.551
+ FLFAMILY       0.000         0.000         0.000         0.000         0.566
+ STRATIO        0.000         0.000         0.000         0.000         0.000
+
+
+           PSI
+              STRATIO
+              ________
+ STRATIO       54.363
+
+
+     Beginning Time:  22:31:37
+        Ending Time:  22:32:11
+       Elapsed Time:  00:00:34
+
+
+
+MUTHEN & MUTHEN
+3463 Stoner Ave.
+Los Angeles, CA  90066
+
+Tel: (310) 391-9971
+Fax: (310) 391-8971
+Web: www.StatModel.com
+Support: Support@StatModel.com
+
+Copyright (c) 1998-2019 Muthen & Muthen

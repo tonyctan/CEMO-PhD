@@ -1,0 +1,163 @@
+% $ biblatex auxiliary file $
+% $ biblatex bbl format version 3.2 $
+% Do not modify the above lines!
+%
+% This is an auxiliary file used by the 'biblatex' package.
+% This file may safely be deleted. It will be recreated by
+% biber as required.
+%
+\begingroup
+\makeatletter
+\@ifundefined{ver@biblatex.sty}
+  {\@latex@error
+     {Missing 'biblatex' package}
+     {The bibliography requires the 'biblatex' package.}
+      \aftergroup\endinput}
+  {}
+\endgroup
+
+
+\refsection{0}
+  \datalist[entry]{apa/global//global/global}
+    \entry{Ludtkeetal2008}{article}{}
+      \name{author}{6}{}{%
+        {{un=0,uniquepart=base,hash=451fdd31d41dbd1c9886d066e85feef5}{%
+           family={Lüdtke},
+           familyi={L\bibinitperiod},
+           given={Oliver},
+           giveni={O\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=a8d875ab57190cb146d16eb895dc7c14}{%
+           family={Marsh},
+           familyi={M\bibinitperiod},
+           given={Herbert\bibnamedelima W.},
+           giveni={H\bibinitperiod\bibinitdelim W\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=528bc76f8c90e99a225806fbced9ca6e}{%
+           family={Robitzsch},
+           familyi={R\bibinitperiod},
+           given={Alexander},
+           giveni={A\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=44036fb4432600da59b50d2e27e4df33}{%
+           family={Trautwein},
+           familyi={T\bibinitperiod},
+           given={Ulrich},
+           giveni={U\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=ad1e5668a6a4f83a6133c359f579c441}{%
+           family={Asparouhov},
+           familyi={A\bibinitperiod},
+           given={Tihomir},
+           giveni={T\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=fa213ffcf8a716b9b4b861af0fcfabc6}{%
+           family={Muthén},
+           familyi={M\bibinitperiod},
+           given={Bengt},
+           giveni={B\bibinitperiod},
+           givenun=0}}%
+      }
+      \strng{namehash}{20bf9f3e6601d90b44c217cb91ed4ac0}
+      \strng{fullhash}{6cf685ea42073482c7a66c32343e404a}
+      \strng{bibnamehash}{6cf685ea42073482c7a66c32343e404a}
+      \strng{authorbibnamehash}{6cf685ea42073482c7a66c32343e404a}
+      \strng{authornamehash}{20bf9f3e6601d90b44c217cb91ed4ac0}
+      \strng{authorfullhash}{6cf685ea42073482c7a66c32343e404a}
+      \field{sortinit}{L}
+      \field{sortinithash}{7c47d417cecb1f4bd38d1825c427a61a}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{year}
+      \true{uniqueprimaryauthor}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Psychological Methods}
+      \field{number}{3}
+      \field{title}{The multilevel latent covariate model: A new, more reliable approach to group-level effects in contextual studies}
+      \field{volume}{13}
+      \field{year}{2008}
+      \field{pages}{203\bibrangedash 229}
+      \range{pages}{27}
+      \verb{doi}
+      \verb 10.1037/a0012869
+      \endverb
+      \verb{file}
+      \verb The multilevel latent covariance model\: A new, more reliable approach to group-level effects in contextual studies:Ludtke, Marsh, Robitzsch, Trautwein, Asparouhov & Buthen (2008).pdf:PDF
+      \endverb
+    \endentry
+    \entry{Marshetal2009}{article}{}
+      \name{author}{7}{}{%
+        {{un=0,uniquepart=base,hash=a8d875ab57190cb146d16eb895dc7c14}{%
+           family={Marsh},
+           familyi={M\bibinitperiod},
+           given={Herbert\bibnamedelima W.},
+           giveni={H\bibinitperiod\bibinitdelim W\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=451fdd31d41dbd1c9886d066e85feef5}{%
+           family={Lüdtke},
+           familyi={L\bibinitperiod},
+           given={Oliver},
+           giveni={O\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=528bc76f8c90e99a225806fbced9ca6e}{%
+           family={Robitzsch},
+           familyi={R\bibinitperiod},
+           given={Alexander},
+           giveni={A\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=44036fb4432600da59b50d2e27e4df33}{%
+           family={Trautwein},
+           familyi={T\bibinitperiod},
+           given={Ulrich},
+           giveni={U\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=ad1e5668a6a4f83a6133c359f579c441}{%
+           family={Asparouhov},
+           familyi={A\bibinitperiod},
+           given={Tihomir},
+           giveni={T\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=fa213ffcf8a716b9b4b861af0fcfabc6}{%
+           family={Muthén},
+           familyi={M\bibinitperiod},
+           given={Bengt},
+           giveni={B\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=8c89baa92d54fa4cf5dda235d52846b1}{%
+           family={Nagengast},
+           familyi={N\bibinitperiod},
+           given={Benjamin},
+           giveni={B\bibinitperiod},
+           givenun=0}}%
+      }
+      \strng{namehash}{5ff5eae4fe06cc289007b344c932cb2b}
+      \strng{fullhash}{3bdb7ac572d59f19fe47748c117b07af}
+      \strng{bibnamehash}{3bdb7ac572d59f19fe47748c117b07af}
+      \strng{authorbibnamehash}{3bdb7ac572d59f19fe47748c117b07af}
+      \strng{authornamehash}{5ff5eae4fe06cc289007b344c932cb2b}
+      \strng{authorfullhash}{3bdb7ac572d59f19fe47748c117b07af}
+      \field{sortinit}{M}
+      \field{sortinithash}{4625c616857f13d17ce56f7d4f97d451}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{year}
+      \true{uniqueprimaryauthor}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Multivariate Behavioral Research}
+      \field{number}{6}
+      \field{title}{Doubly-latent models of school contextual effects: Integrating multilevel and structural equation approaches to control measurement and sampling error}
+      \field{volume}{44}
+      \field{year}{2009}
+      \field{pages}{764\bibrangedash 802}
+      \range{pages}{39}
+      \verb{doi}
+      \verb 10.1080/00273170903333665
+      \endverb
+      \verb{file}
+      \verb Doubly-latent models of school contextual effects\: Integrating multilevel and structural equation approaches to control measurement and sampling error:Marsh, Ludtke, Robintzsch, Trautwein, Asparouhov, Muthen & Nagengast (2009).pdf:PDF
+      \endverb
+    \endentry
+  \enddatalist
+\endrefsection
+\endinput
+

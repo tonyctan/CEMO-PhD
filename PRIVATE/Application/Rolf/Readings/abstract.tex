@@ -1,0 +1,104 @@
+\documentclass[
+    a4paper,            % Paper size
+    12pt,               % Font size
+    stu,                % Format as assignment
+    donotrepeattitle,   % Start body text without repeating title
+    noextraspace,       % Reduce spaces between section header and text
+    floatsintext,       % Insert tables and figures with texts
+    biblatex,           % Use BibLaTeX for references
+    colorlinks=true,        % Colour all links
+    linkcolor=red,          % Cross-references in red
+    anchorcolor=black,      % Keep anchors black
+    citecolor=blue,         % In-text-referencs in blue
+    urlcolor=blue,          % DOIs and URLs are in blue
+    bookmarks=true,         % Generate bookmarks for PDF readers
+    bookmarksopen=false,    % Expand all bookmarks as default
+    bookmarksnumbered=true  % Keep section number in bookmarks
+]{apa7}
+
+% Avoid breaking a word into two lines
+\usepackage[none]{hyphenat}
+
+% Change line spacing
+\usepackage{setspace}
+\setstretch{1.15}       % As per specification outlined in the advertisement
+
+% Package biblatex has already been loaded by apa7.
+% Only need to specify the bib library
+\addbibresource{fairness.bib}
+
+\title{An extended abstract on grading fairness in Norwegian school system}
+\author{Tony C. A. Tan}
+\affiliation{Centre for Educational Measurement, University of Oslo}
+\course{CEMO PhD Application (205778)}
+\professor{Prof Rolf V. Olsen}
+\duedate{14 June 2021}
+
+\begin{document}
+\maketitle
+\setcounter{page}{1}
+\section{Overview of Research Topic}
+
+Grading fairness plays a key role in upholding public's confidence in any assessment process. Although consensus remains high for the ideal of test fairness, empirical evidence suggested substantial variations in grading practices in Norwegian secondary schools \parencite{tveit:2014}. Attempts to standardise assessments were received by intense politics; decision makers, in response, demanded urgent research on theory- and evidence-based assessment framework.
+
+Educational assessment has a unique history in Norway. Formal marking in primary schools was brought to an end by an act of Parliament in 1973 driven by, among others, concerns about the negative impact on low achievers (NOU (Green Paper) (1974), as cited in \textcite{tveit:2014}). It was not until the ``PISA shock'' in the early 2000s that social debate resumed over the applicability and best practice of measuring the quantity and quality of educational outcomes (Lie et al. (2001) as cited in \textcite{tveit:2014}). Curriculum reforms soon followed amidst the 2005 election cycle, with the new government admitting problems ranging from poor understanding of regulations to inadequate assessment literacy shared by teachers and teacher educators (Stortingsmelding nr. 16, 2006--2007, as cited in \textcite{tveit:2014}). Despite the intervening decade, a recent study found that the clarification of the purposes of exams remained insufficient, with adverse consequences of inappropriate use of examination data by various stakeholders \parencite{tveit:2018}. It is therefore imperative to continue educational research into the art and science of assessments, with fairness among the chief concerns.
+
+\section{Key Concepts}
+
+Grading fairness can be understood along three axes: fairness across modes of administration, fairness across subjects, and fairness across schools.
+
+\subsection{Is \textit{trekkordningen} a truly randomised process?}
+
+Since Norway's high schools remain the responsibility of local municipalities, national tests are conducted using a \textit{trekkordningen} system whose participants were drawn from a random process. External examiners then mark the national samples while teachers evaluate the remaining students' educational outcomes. If \textit{trekkordningen} were truly random, one should expect no systematic differences between the national and local performance. In practice, there were sufficient concerns over the logistics and even incentives behind such random sampling procedure \parencite{olson:2021} and empirical study by \textcite{hovdhaugen:2018} reported sustained gaps between external-marked exams (\textit{eksamen}) and teacher-marked scores (\textit{standpunkt}) over the period between 2007 and 2011. Such differences present potential treats to fairness because achievement measures were shown to be dependent not only on learners' input but also on the modes of test administration.
+
+\subsection{Uneven practice of grading cross subjects}
+
+A second line of research addresses grading fairness between subjects. There appeared to be silent acceptance by teachers and education administrators that some subjects (e.g., mathematics) naturally produce lower average scores than others (e.g., English) \parencite{olson:2021}. Such differences create distortion in students' study choices such that learners self-select away from hard subjects (\textit{realfag}), weakening Norway's long-run competitiveness in science and technological innovation. It is also insightful to investigate the shared mentality amongst teachers and school leaders that sustained the grade differences across subjects and to enquire the possible ramification to professional practices should grading across subjects be better calibrated.
+
+Additionally, the policy of awarding top-up scores to hard sciences (\textit{realfagspoeng}) remains under-researched. It is unclear, for example, whether such policy was introduced to counter-balance the grading penalties or as an incentive to attract more youth into STEM subjects. An archival study into Parliamentary debates may shed light on the policy intent and would help evaluate \textit{realfagspoeng}'s contribution to promoting assessment fairness \parencite{olson:2021}.
+
+\subsection{Unequal grading practices across schools}
+
+A third key concept relates to teacher practices. Norwegian teachers have long been crediting students' effort when awarding overall achievement marks (Dale \& W{\ae}rness (2006), as cited in \textcite{tveit:2014}). Despite the explicit policy declaration in the 2006 reform requiring teachers to only consider students' achievement, later study observed that such policy was better implemented for high achieving students while low achievers' marks remained entangled with their effort and attitude (Pr{\o}itz \& Spord Borgen (2010), as cited in \textcite{tveit:2014}). Mixing effort and academic achievement in \textit{standpunkt} may partially explain its divergence from \textit{eksamen}, undermining assessment fairness due to lack of construct agreement \parencite{olson:2021}. As the migration from criterion- to norm-based assessment remains incomplete, students from schools with lower average grades would be expected to receive upward biases in \textit{standpunkt}. A multilevel modelling approach would be most suited for verifying such effect.
+
+\section{Potential Research Questions}
+
+\subsection{\textit{Trekkordningen}}
+\begin{APAenumerate}
+    \item[RQ1.1] Whether there exists statistically significant differences between external-marked exams and teacher-marked assessments.
+    \item[RQ1.2] Whether such differences, if any, remained stable over time.
+    \item[RQ1.3] Whether the sizes of examiner-teacher differences remain comparable between subjects such as mathematics and Norwegian language.
+    \item[RQ1.4] Which school characters covary with examiner-teacher differences?
+\end{APAenumerate}
+
+\subsection{Grading practices between subjects}
+\begin{APAenumerate}
+    \item[RQ2.1] Do grading differences (e.g., between mathematics and English) also exist in other countries?
+    \item[RQ2.2] Do all subjects share the same difficulties and powers to discriminate learners' capabilities?
+    \item[RQ2.3] How would IRT calibrations modify grade distributions?
+    \item[RQ2.4] Do the IRT calibrations experience differential item functioning (DIF) for boys and girls?
+\end{APAenumerate}
+
+\subsection{Grading practices between schools}
+\begin{APAenumerate}
+    \item[RQ3.1] Do students from disadvantaged schools receive upward biases in \textit{standpunkt}?
+    \item[RQ3.2] Which school characters covary most strongly with \textit{standpunkt} biases?
+\end{APAenumerate}
+
+\section{Methodological Approaches}
+
+\subsection{ANOVA}
+
+Analysis of variance (ANOVA) remains an effective statistical method for investigating RQ1.1 to RQ1.3. Specifically, repeated measures ANOVA (RM-ANOVA) shall be applied to RQ1.2 since the phenomena under investigation are related in time. Analysis of covariance (ANCOVA) is particularly suitable for studying RQ1.4 where covariate such as school sizes can be controlled for while examining \textit{eksamen}-\textit{standpunkt} differences.
+
+\subsection{IRT and DIF}
+
+A two-parameter logistic model (2PL) may be applied for item calibration purposes (RQ2.3), where all students' grades in all subjects can be placed into one scale representing their general ability. This approach would work particularly well in the presence of missing data \parencite{olson:2021} leading to two potential outcomes: (a) school subjects can be assigned to a continuum from easy to hard with approximate interval properties, and (b) the resulting IRT model would produce an alternative grade point average (GPA) estimate under a unidimensional general ability scale. DIF can be subsequently investigated to detect any gender differences in grading.
+
+\subsection{Multilevel modelling}
+
+A multilevel model may be proposed for detecting and verifying the upward biases in \textit{standpunkt} (RQ3.2). If students from disadvantaged schools were more likely to receive lenient marking, one would expect a negative contextual effect. Recent development in multilevel modelling literature made enhanced corrections for both measurement errors and sampling errors as lower-level constructed being aggregated to higher-levels (e.g., the multilevel latent covariate approach by \textcite{ludtke:2008} and doubly-latent models by \textcite{marsh:2009}).
+
+\printbibliography
+
+\end{document}

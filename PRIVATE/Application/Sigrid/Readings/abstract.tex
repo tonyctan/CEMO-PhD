@@ -1,0 +1,120 @@
+\documentclass[
+    a4paper,            % Paper size
+    12pt,               % Font size
+    stu,                % Format as assignment
+    donotrepeattitle,   % Start body text without repeating title
+    noextraspace,       % Reduce spaces between section header and text
+    floatsintext,       % Insert tables and figures with texts
+    biblatex,           % Use BibLaTeX for references
+    colorlinks=true,        % Colour all links
+    linkcolor=red,          % Cross-references in red
+    anchorcolor=black,      % Keep anchors black
+    citecolor=blue,         % In-text-referencs in blue
+    urlcolor=blue,          % DOIs and URLs are in blue
+    bookmarks=true,         % Generate bookmarks for PDF readers
+    bookmarksopen=false,    % Expand all bookmarks as default
+    bookmarksnumbered=true  % Keep section number in bookmarks
+]{apa7}
+
+% Avoid breaking a word into two lines
+\usepackage[none]{hyphenat}
+
+% Change line spacing
+\usepackage{setspace}
+\setstretch{1.15}       % As per specification outlined in the advertisement
+
+% Package biblatex has already been loaded by apa7.
+% Only need to specify the bib library
+\addbibresource{ilsa.bib}
+
+\title{An extended abstract on SES achievement gaps using archival ILSA data}
+\author{Tony C. A. Tan}
+\affiliation{Centre for Educational Measurement, University of Oslo}
+\course{CEMO PhD Application}
+\professor{Prof Dr Sigrid Bl{\"o}meke}
+\duedate{31 May 2021}
+
+\begin{document}
+\maketitle
+\setcounter{page}{1}
+\section{Overview of Research Topic}
+
+%//mark Benefits
+Close examinations of cross-national trends in equality and equity in educational outcomes provide vital insight for policy making and pedagogy design. Archival data from the international large-scale assessments (ILSA) since the 1960s have empowered researchers with rich information across both countries and time. Quasi-longitudinal studies taking advantage of the rich accumulation of ILSA data \parencite{chmielewski:2019, majoros:2021} have not only facilitated countries with weak national evaluation or monitoring systems to make comparisons over time, but also enabled comparative studies for all participating states \parencite{salmelaaro:2019,strietholt:2016} to analyse the impact of specific policy decisions on educational outcomes such as academic de-tracking and expanding education assess. The dual benefits of providing equitable access to policy insight and methodological advancement made systematic studies using historic ILSA data particularly attractive for both policy-makers and educational researchers.
+
+%//mark Challenges
+Comparing studies administered decades apart, however, is logistically challenging for four reasons. Concerns about possible coding errors, for example, is impossible to verify (e.g., FIMS 1964 US sample, Table 1 in \textcite{majoros:2021}) due to limitation on early bookkeeping. Secondly, since it is not possible to define a target population balancing both age and grade due to differences in school entry ages across countries, switching target populations from age-based sampling (First International Mathematics Study (FIMS) 1964) to grade-based sampling (Second International Mathematics Study (SIMS) 1980, and subsequent Trends in International Mathematics and Science Study (TIMSS) from 1995 onward) introduced another layer of complexity for comparing different test waves and between ILSAs (Programme for International Student Assessment (PISA) uses age-based sampling). Thirdly, it is questionable whether the measured constructs carried the same meaning over several decades. This problem was particularly acute in early ILSA attempts with some critiquing FIMS for not being a study of mathematics education, but a study of schools and schooling with mathematics serving as a proxy for achievement (Hus{\'e}n (1967), as cited in \textcite{majoros:2021}). Lastly, the inherent and stable differences between nation states questioned whether comparisons involving multiple countries is to ``compar[e] the incomparable'' (Hus{\'e}n (1983), as cited by Kaiser (1999), p.3, then by \textcite{majoros:2021}, p. 74). All these concerns highlighted the consensus that meaningful comparisons require comparable data.
+
+% \subsection{Insight}
+
+% \subsubsection{Common Trends}
+
+% With widespread access to digital devices, owning physical books increasingly captures not only economic but also cultural capital.
+
+% \subsubsection{Expanding Access}
+
+% Expanding access to school may not directly increase inequality but rather reveal inequality that was previously hidden outside the school system. This explanation ran into difficulty, however, with countries such as Norway and Sweden whose enrolment levels has been consistently high.
+
+\section{Key Concepts}
+
+\subsection{SES Achievement Gaps}
+
+One fruitful line of enquiry using archival ILSA data linked students' socio-economic status (SES) with their achievement gaps.
+%//mark SES measures
+Using a single-country study design and parental education as the SES measure, \textcite{salmelaaro:2019} observed a gradual reduction in SES achievement gaps in Finland between 1950s and 1980s but a clear reversal afterwards (Fig 9.2, p. 160). \textcite{chmielewski:2019} extended the SES measures using three different variables
+\begin{seriate}
+    \item parental education,
+    \item parental occupation, and
+    \item number of books in the household
+\end{seriate}%     % PDF will contain two spaces if no % after \end{seriate}
+and reported comparable magnitudes of achievement gaps (50, 55 and 40 percent, respectively) across most participating countries.
+%//mark Achievement gap measure
+For the purposes of quantifying achievement gaps, existing literature widely adopted the percentile-based approach (Reardon's (2011) method, as cited in \textcite{salmelaaro:2019}) in which \emph{calibrated} score difference between the 90th and the 10th percentiles of the student cohort were used as an operationalisation for achievement gaps.
+
+\subsection{Calibration Criteria}
+
+In their respective studies, \textcite{strietholt:2016} and \textcite{majoros:2021} both followed Kolen and Brennan (2004, 2014) criteria for evaluating the degree of similarity between tests: inferences, populations, constructs, and measurement characteristics/conditions---referring to low- vs high-stakes tests, age- vs grade-based sampling, terminology shifting, and identical vs complex matrix test designs, respectively.
+
+\subsection{Causes for Missing Data}
+
+When dealing with missing data, \textcite{majoros:2021} and \textcite{strietholt:2016} distinguished three types of missing mechanisms in their studies: not-administrated, omitted, and not-reached items. Not-administrated items were treated as true missing data in estimating item and student parameters while omitted items were treated as incorrect responses in order not to award students for skipping an item. Not-reached items involved more professional judgement with consensus leaning towards recoding them as missing.
+
+\subsection{Document-type Reading Tasks}
+
+Some cycles of reading ILSAs (e.g., RLS-1991/2001) contained unique tasks involving locating information from structured document such as non-continuous tables, chars, graphs, maps or bus timetables. These tasks were later demonstrated to have introduced additional sources of variances into the tests (Gustafsson and Ros{\'e}n (2006), as cited in \textcite{strietholt:2016}). Resultantly, all document-type reading tasks were excluded during calibration for the interest of preserving maximum comparability.
+
+% \subsection{Linking Method}
+
+% Common-item nonequivalent group design: no text passage appeared in all studies but a set of common texts appeared in multiple studies
+
+\section{Potential Research Questions}
+
+\textcite{chmielewski:2019} proposed the following research questions:
+\begin{APAenumerate}
+    \item whether increasing SES achievement gaps are a global phenomenon,
+    \item whether some countries have avoided the trend, and
+    \item whether increasing SES achievement gaps can be explained by changing educational and social policies and conditions.
+\end{APAenumerate}
+
+\textcite{salmelaaro:2019} explored the possible drivers behind the initial decline between 1950s and 1980s, following by subsequent increases in SES achievement gaps in Finland. \textcite{strietholt:2016} and \textcite{majoros:2021} both studied in-depth the calibration procedure linking old and recent ILSA data sets.
+
+Although existing research efforts have investigated the temporal variations over the past decades of the SES achievement gaps, how such gaps covaried with learner characteristics such as gender as well as with teacher practices or school quality remain under-explored. It is therefore informative to look into
+\begin{APAenumerate}
+    \item how SES achievement gaps differed systematically between boys and girls,
+    \item which classroom/teacher practices, such as inquiry-based learning, mitigated or exacerbated SES achievement gaps, and
+    \item whether achievement gaps differed by school-level characters such as public-private funding type or student-teacher ratios.
+\end{APAenumerate}
+
+\section{Methodological Approaches}
+
+\subsection{IRT Approach to Calibration}
+
+\textcite{majoros:2021} and \textcite{strietholt:2016} applied similar item response theory (IRT) calibration procedures for linking different waves and types of ILSA data sets. Multiple-choice items and dichotomous constructed responses (i.e., 1 mark only with no partial credit given) were subject to 3- and 2-parameter logistic (3PL, 2PL respectively) IRT models to ascertain their difficulty levels. Polytomous items worth 2 or more marks underwent IRT modelling using (generalised) partial credit models (PCM or GPCM) for the same purpose. Standardised marks were then re-scaled to have means 500 and standard deviations 100. Table 3 in \textcite{strietholt:2016} (p. 11) illustrated the effects of this calibration process by comparing the original and IRT scores.
+
+\subsection{Other Methodological Considerations}
+
+Missing data are the norm rather than the exception in empirical studies, particularly during syntheses of ILSA data sets. Existing publications applied multiple imputation (MI) by iterative chained equations and pulled the five plausible values together following Rubin (1987)'s rules. Recent advancement in both MI theories and software power opened up more options for missing data treatment such as Mplus's unrestricted variance-covariance model using Bayes estimators. The Bayesian procedure may also complement the bootstrap approach to standard error computation employed by existing literature. Mplus's recent upgrade (Version 8.5 and 8.6) combining with hardware infrastructure up to 64-core parallel processing reduced hierarchical growth curve model computation time from days to hours, the multilevel model used in \textcite{chmielewski:2019}, greatly accelerating incremental model building.
+
+\printbibliography
+
+\end{document}

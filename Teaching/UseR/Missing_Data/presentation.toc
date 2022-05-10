@@ -1,0 +1,18 @@
+\boolfalse {citerequest}\boolfalse {citetracker}\boolfalse {pagetracker}\boolfalse {backtracker}\relax 
+\babel@toc {british}{}\relax 
+\defcounter {refsection}{0}\relax 
+\beamer@sectionintoc {2}{Background}{3}{0}{1}
+\defcounter {refsection}{0}\relax 
+\beamer@subsectionintoc {2}{1}{Overview}{3}{0}{1}
+\defcounter {refsection}{0}\relax 
+\beamer@subsectionintoc {2}{2}{Data Missing Mechanism}{4}{0}{1}
+\defcounter {refsection}{0}\relax 
+\beamer@sectionintoc {3}{The \leavevmode {\color {Rblue}\textsf {mice}} Package}{5}{0}{2}
+\defcounter {refsection}{0}\relax 
+\beamer@subsectionintoc {3}{1}{\leavevmode {\color {Rblue}\textsf {mice}} Workflow}{5}{0}{2}
+\defcounter {refsection}{0}\relax 
+\beamer@subsectionintoc {3}{2}{\leavevmode {\color {Rblue}\textsf {mice}} Imputation Methods}{6}{0}{2}
+\defcounter {refsection}{0}\relax 
+\beamer@subsectionintoc {3}{3}{Further Readings}{7}{0}{2}
+\defcounter {refsection}{0}\relax 
+\beamer@sectionintoc {4}{References}{8}{0}{3}

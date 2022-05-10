@@ -1,0 +1,149 @@
+\MAEptikz{fig:model}{Path Diagram Illustrating the Two-level SEM Predicting Youth's Financial Literacy Outcomes}{
+\begin{tikzpicture}[
+    latvar/.style={ellipse,draw=black,minimum width=3.5cm,minimum height=1cm},
+    exolat/.style={ellipse,draw=red,minimum width=3.5cm,minimum height=1cm},
+    endlat/.style={ellipse,draw=blue,minimum width=3.5cm,minimum height=1cm},
+    manvar/.style={rectangle,draw=black,minimum width=2.5cm},
+    exovar/.style={rectangle,draw=red,minimum width=2.5cm},
+    endvar/.style={rectangle,draw=blue,minimum width=2.5cm},
+    demo/.style={rectangle,fill=black!10!white,minimum width=2.5cm},
+    mean/.style={fill=black!10!white,regular polygon,regular polygon sides=3},
+    ->,>=stealth',semithick,
+    bend angle=-45,
+    decoration={
+        zigzag,
+        amplitude=1pt,
+        segment length=1mm,
+        post=lineto,
+        post length=4pt
+    }
+]
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%% Level 1
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% Draw a dashed line to mark Level 1
+%\draw[black,dashed,-,line width=2pt] (1.5,5)--(14.85,5);
+% Insert level labels
+\node at (0,4) {\textbf{$\m{L1}$: Student}};
+
+% Set school climate vars (X)
+    \node[manvar] (A1) at (2,3) {$\texttt{FLSCHOOL}_W$};
+    \node[manvar] (C1) at (2,2) {$\texttt{FLFAMILY}_W$};
+    \node[manvar] (S1) at (2,1) {$\texttt{NOBULLY}_W$};
+
+% Set demographic vars
+    \node[demo] (escs) at (2,0) {$\texttt{ESCS}$};
+    \node[demo] (immi1) at (2,-1) {$\texttt{IMMI1GEN}$};
+    \node[demo] (immi2) at (2,-2) {$\texttt{IMMI2GEN}$};
+    \node[demo] (male) at (2,-3) {$\texttt{MALE}$};
+
+% Set affective vars (M)
+    \node[manvar] (fami1) at (7.5,3) {$\texttt{FCFMLRTY}$};
+    \node[manvar] (conf1) at (7.5,-3) {$\texttt{FLCONFIN}$};
+
+% Set outcome var (Y)
+    \node[manvar] (flit1) at (13,0) {$\texttt{FLIT}_W$};
+
+% Link X to M
+    \draw[blue,->] (A1.east) to node[above,sloped] {$\gamma_{11}$} (fami1.west);
+    \draw[blue,->] (A1.east) to node[above,sloped,pos=0.75] {$\gamma_{12}$} (conf1.west);
+
+    \draw[blue,->] (C1.east) to node[above,sloped] {$\gamma_{21}$} (fami1.west);
+    \draw[blue,->] (C1.east) to node[sloped,pos=0.7] {$\gamma_{22}$} (conf1.west);
+
+    \draw[blue,->] (S1.east) to node[above,sloped] {$\gamma_{31}$} (fami1.west);
+    \draw[blue,->] (S1.east) to node[below,sloped,pos=0.6] {$\gamma_{32}$} (conf1.west);
+
+% Link demo to M
+    \draw[black!25!white,->] (escs.east)--(fami1.west);
+    \draw[black!25!white,->] (escs.east)--(conf1.west);
+
+    \draw[black!25!white,->] (immi2.east)--(fami1.west);
+    \draw[black!25!white,->] (immi2.east)--(conf1.west);
+
+    \draw[black!25!white,->] (male.east)--(fami1.west);
+    \draw[black!25!white,->] (male.east)--(conf1.west);
+
+% Link M to Y
+    \draw[blue,->] (fami1.east) to node[above,sloped,pos=0.7] {$\beta_1$} (flit1.west);
+    \draw[blue,->] (conf1.east) to node[below,sloped,pos=0.7] {$\beta_2$} (flit1.west);
+
+% Link X to Y
+    \draw[red,->] (A1.east) to node[above,sloped] {$\gamma_1$} (flit1.west);
+    \draw[red,->] (C1.east) to node[above,sloped] {$\gamma_2$} (flit1.west);
+    \draw[red,->] (S1.east) to node[above,sloped] {$\gamma_3$} (flit1.west);
+
+% Link demo to Y
+    \draw[black!25!white,->] (escs.east)--(flit1.west);
+
+    \draw[black!25!white,->] (immi1.east)--(flit1.west);
+
+% Draw residual arrows for M
+    \draw[blue,<-] (8.75,3)--(9.25,3);
+    \draw[blue,<-] (8.75,-3)--(9.25,-3);
+
+% Draw residual arrow for Y
+    \draw[<-] (14.25,0)--(14.75,0);
+
+% Draw a black dot on output var
+\filldraw[black] (11.75,0) circle (3pt);
+
+% Arc covariances
+    \draw[<->] (A1.south) to [bend right] (C1.north);
+    \draw[<->] (C1.south) to [bend right] (S1.north);
+    \draw[<->] (A1.south) to [bend left] (S1.north);
+
+    \draw[<->] (9.25,3) to [bend right] (9.25,-3);
+
+    \draw[black!25!white,<->] (escs.west) to [bend right] (A1.west);
+    \draw[black!25!white,<->] (escs.west) to [bend right] (C1.west);
+    \draw[black!25!white,<->] (escs.west) to [bend left] (immi1.west);
+    \draw[black!25!white,<->] (escs.west) to [bend left] (immi2.west);
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%% Level 2
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% Draw a dashed line to mark Level 2
+%\draw[black,dashed,-,line width=2pt] (1.5,13)--(14.85,13);
+% Insert level labels
+\node at (0,13) {\textbf{$\m{L2}$: School}};
+
+% Input vars (school climate)
+    \node[latvar] (A2) at (3,12) {$\texttt{FLSCHOOL}_B$};
+    \node[latvar] (C2) at (3,10) {$\texttt{FLFAMILY}_B$};
+    \node[latvar] (S2) at (3,8) {$\texttt{NOBULLY}_B$};
+    \node[manvar] (R2) at (3,6) {$\texttt{EDUSHORT}$};
+
+    \node[demo] (st2) at (3,5) {$\texttt{STRATIO}$};
+
+% Outcome var (financial literacy)
+    \node[latvar] (flit2) at (9.5,8) {$\texttt{FLIT}_{B}$};
+
+% Link input vars with output var
+    \draw[->] (A2.east) to node[above,sloped] {$a_1$} (flit2.west);
+    \draw[->] (C2.east) to node[above,sloped,pos=0.4] {$a_2$} (flit2.west);
+    \draw[->] (S2.east) to node[above,sloped,pos=0.4] {$a_3$} (flit2.west);
+    \draw[->] (R2.east) to node[above,sloped] {$a_4$} (flit2.west);
+
+    \draw[black!25!white,->] (st2.east)--(flit2.west);
+
+% Draw residual arrow on output var
+    \draw[<-] (11.25,8)--(11.75,8);
+
+% Arc covariances
+    \draw[<->] (A2.south) to [bend right] (C2.north);
+    \draw[<->] (C2.south) to [bend right] (S2.north);
+    \draw[<->] (S2.south) to [bend right] (R2.north);
+    \draw[<->] (A2.south) to [bend left] (S2.north);
+    \draw[<->] (C2.south) to [bend left] (R2.north);
+    \draw[<->] (A2.south west) to [bend left] (R2.west);
+
+    \draw[black!25!white,<->] (st2.west) to [bend right] (A2.west);
+    \draw[black!25!white,<->] (st2.west) to [bend right] (R2.west);
+
+\end{tikzpicture}
+}{School climate variables \texttt{FLSCHOOL}, \texttt{FLFAMILY}, and \texttt{NOBULLY}, as well as cognitive outcome \texttt{FLIT} are decomposed into the within- and between-components (subscript $_W$ and $_B$ respectively) using the multilevel latent covariate (MLC) approach. Direct pathways are coloured in red while indirect in blue. Control variables are shaded in grey.}

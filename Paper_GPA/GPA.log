@@ -1,4 +1,4 @@
-This is LuaHBTeX, Version 1.15.0 (MiKTeX 22.3) (format=lualatex 2022.5.10)  10 MAY 2022 01:52
+This is LuaHBTeX, Version 1.15.0 (MiKTeX 22.3) (format=lualatex 2022.5.10)  10 MAY 2022 17:02
  restricted system commands enabled.
  file:line:error style messages enabled.
 **m:/pc/Dokumenter/PhD/Paper_GPA/GPA
@@ -1626,14 +1626,14 @@ Package logreq Info: Writing requests to 'GPA.run.xml'.
 )
 
 Here is how much of LuaTeX's memory you used:
- 40298 strings out of 477686
+ 40297 strings out of 477686
  125044,1648299 words of node,token memory allocated
  682 words of node memory still in use:
    6 hlist, 2 vlist, 2 rule, 2 glue, 4 kern, 1 glyph, 9 attribute, 88 glue_spec,
  9 attribute_list, 3 write nodes
-   avail lists: 2:1433,3:56,4:208,5:926,6:39,7:5122,8:17,9:1336,10:13,11:126,12:
+   avail lists: 2:1421,3:55,4:208,5:926,6:39,7:5144,8:17,9:1312,10:13,11:126,12:
 1
- 59542 multiletter control sequences out of 65536+600000
+ 59543 multiletter control sequences out of 65536+600000
  60 fonts using 3808847 bytes
  99i,15n,98p,762b,5031s stack positions out of 10000i,1000n,20000p,200000b,80000s
 {C:/Program Files/MiKTeX 2.9/fonts/enc/dvips/lm/lm-rm.enc}{C:/Program Files/MiKT
@@ -1647,7 +1647,7 @@ iles/MiKTeX 2.9/fonts/type1/public/lm/lmr6.pfb><C:/Program Files/MiKTeX 2.9/font
 s/type1/public/lm/lmr8.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/lm/lm
 r9.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/lm/lmri10.pfb><C:/Program
  Files/MiKTeX 2.9/fonts/type1/public/lm/lmsy9.pfb>
-Output written on GPA.pdf (2 pages, 166468 bytes).
+Output written on GPA.pdf (2 pages, 166481 bytes).
 
 PDF statistics: 66 PDF objects out of 1000 (max. 8388607)
  5 named destinations out of 1000 (max. 131072)

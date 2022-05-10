@@ -1,0 +1,2 @@
+pdflatex Bayes.tex
+

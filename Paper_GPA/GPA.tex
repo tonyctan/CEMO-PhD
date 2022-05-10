@@ -1,0 +1,53 @@
+\documentclass[
+    a4paper,            % Paper size
+    11pt,               % Font size
+    stu,                % Format as assignment
+    donotrepeattitle,   % Start body text without repeating title
+    floatsintext,       % Insert tables and figures with texts
+    biblatex,           % Use BibLaTeX for references
+    colorlinks=true,        % Colour all links
+    linkcolor=red,          % Cross-references in red
+    anchorcolor=black,      % Keep anchors black
+    citecolor=blue,         % In-text-referencs in blue
+    urlcolor=blue,          % DOIs and URLs are in blue
+    bookmarks=true,         % Generate bookmarks for PDF readers
+    bookmarksopen=false,    % Expand all bookmarks as default
+    bookmarksnumbered=true  % Keep section number in bookmarks
+]{apa7}
+
+% Specify absolute path to the tt.sty file, depending on the operating system
+\usepackage{ifplatform}
+\ifwindows
+    \usepackage{M:/pc/Dokumenter/tt}
+\else
+    \usepackage{/home/tony/uio/pc/Dokumenter/tt} % Must not use ~ for home directory. Spell in full.
+\fi
+
+\title{Identifying Inter-subject Difficulties in Norwegian\\
+GPA Data Using Item Response Theory}
+\author{Tony C. A. Tan}
+\affiliation{{Centre for Educational Measurement, University of Oslo}}
+\course{Continuous Draft}
+\professor{Prof Rolf V. Olsen \& Dr Astrid M. J. Sands{\o}r}
+\duedate{V{\aa}r 2022}
+
+\begin{document}
+\maketitle
+
+% \input{0_Abstract.tex}
+
+% \input{1_Introduction.tex}  % Use \input{} for Intro.tex so that the title and the first paragraph stay on the same page.
+
+% \include{2_Framework.tex}   % Use \include{} from the second chapter on, such that new chapter, new page.
+
+% \include{3_Methods.tex}
+
+% \include{4_Results.tex}
+
+% \include{5_Discussions.tex}
+
+%\printbibliography
+
+\input{./Tables/irt_par}
+
+\end{document}

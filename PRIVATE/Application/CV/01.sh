@@ -1,2 +1,0 @@
-pdflatex CV.tex
-

@@ -29,3 +29,9 @@
 [submodule "Collaboration/CEMO_COVID"]
 	path = Collaboration/CEMO_COVID
 	url = git@github.com:tonyctan/CEMO_COVID.git
+[submodule "Teaching/fimdbook"]
+	path = Teaching/fimdbook
+	url = git@github.com:stefvanbuuren/fimdbook.git
+[submodule "Teaching/UseR"]
+	path = Teaching/UseR
+	url = git@github.com:tonyctan/UseR.git

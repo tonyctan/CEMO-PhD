@@ -2,27 +2,11 @@
 
 \subsection{Sample}
 
-For this study, students' GPA records will be extracted from the Norwegian registry covering the period between 2009 (first year post-2006 reform data became available) and 2019 (last ``normal'' year before COVID). GDPR registration is lodged through the NSD Portal and the UiO ethics approval is also obtained. All data import, storage, and analyses are to be conducted within the secured infrastructure TSD provided by the UiO Central IT Division. TSD logs all activities and no data or results can be copied out of the restricted system without prior approval from project leaders.
+Year 10 students' GPA (\textit{grunnskolepoeng}) and teacher-assigned grades (\textit{standpunktkarakter}) were extracted from the Norwegian register for the administrative year ending in June 2019 (\textit{avgangdato} = 201906). Attainment records were subsequently re-formatted with each row representing one candidate and each column being one subject. This process yielded 64,918 students and 200 subjects.
 
-Under the advisory of \textcite{he:2018}, subjects with fewer than 1,000 candidates and students taking fewer than two GPA subjects will be excluded from subsequent analyses. Each year's record (score matrix) will contain $N$ rows representing the number of valid candidates and $L$ columns reflecting the usable number of GPA subjects in that year. Since no student took all the GPA subjects, a large proportion of the score matrices will remain missing by design. The existence of missing data does not pose any problems for using the Rasch model as the model functions at the individual subject and as long as there is sufficient overlap across subjects in the score matrix. The ability to deal with incomplete data is one major advantage of using the Rasch model for studying inter-subject comparability.
+Under the Norwegian education system, students shall complete 13 compulsory subjects as well as electives. This study focuses on these compulsory subjects but excludes one course ``Norwegian as a Second Language'' due to large number of missings and its sensitivity to factors such as candidates' native languages. We apply equal treatment to courses instructed in Norwegian and in Sami language by merging these records. Twelve subjects are retained for our analysis: Written Norwegian (NORW), Oral Norwegian (NORO), Written English (ENGW), Oral English (ENGO), Mathematics (MATH), Natural Sciences (NATS), Social Sciences (SOCS), Religion (RELI), Music (MUSI), Arts and Handcraft (HAND), Food and Health (FOOD), and Physical Education (PHED). After dropping students without valid GPA records (data loss $n^-= 4,300$ cases, loss rate $r^- = 6.62\%$), we impose the selection criteria a) four or more records among NORW, NORO, ENGW, ENGO, MATH, NATS, SOCS ($n^- = 1,101$, $r^- = 1.82\%$), and b) three or more among RELI, MUSI, HAND, FOOD and PHED ($n^-= 1,787$, $r^- = 3\%$) in order to retain only cases with more observed information than missings. The final data set contains $n = 57,730$ students and $i = 12$ subjects. At this stage, the existence of missing data no longer poses any problems for our analyses thanks to sufficient overlap across subjects in the score matrix. The ability to deal with incomplete data is one major advantage of using the Rasch model for studying inter-subject comparability \parencite{he:2018}.
 
-\subsection{Missing Value Treatment}
 
-Missing patterns are not missing at random. If a candidate chose to do physics, he was also highly likely to have chosen advanced maths. So the presence and absence of data tend to group in clusters.
-
-\subsubsection{Subject Choice}
-
-This study explicitly models candidates' subject choice decisions by introducing an indicator variable $d_{ni}$ such that
-\begin{equation}\label{eqn:indicator}
-    d_{ni}=
-    \left\{
-        \begin{aligned}
-            &1\ \text{if Candidate $n$ chose Subject $i$}\\
-            &0\ \text{if Candidate $n$ did not choose Subject $i$},
-        \end{aligned}
-    \right.
-\end{equation}
-for Candidate $n = 1, \dots, N$ and GPA Subject $i = 1, \dots, L$.
 
 \subsubsection{Generalised Partial Credit Model (GPCM)}
 

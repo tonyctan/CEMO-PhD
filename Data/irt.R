@@ -16,8 +16,7 @@
  ###                          ### 
   #                            #  
 
-# Point working directory to the location of all registry datasets,
-# depending on OS
+# Point working directory to ~/Documents, depending on OS
 if (Sys.info()["sysname"] == "Windows") {
     setwd("M:/p1708-tctan/Documents")
 } else {
@@ -27,22 +26,78 @@ if (interactive()) {getwd()} else {cat(paste0(
     "Working directory is now set to ", getwd(), "\n"
 ))}
 
-# Read in ./Rolf/most_three_missing.csv
+# Read in minor_3_plus (N = 57730, the most restrictive dataset)
 if (!interactive()) {print("Start data loading...")}
-difficulty <- data.table::fread("./Rolf/most_three_missing.csv")
+difficulty <- data.table::fread("./Rolf/57730.csv")
 if (interactive()) {names(difficulty)} else {print("Data loading complete.")}
-if (interactive()) {dim(difficulty)} # N = 59,462
+if (interactive()) {dim(difficulty)}
 
+# Load R package `mirt`
+suppressWarnings(suppressMessages(library(mirt)))
 
+# Generalised partial credit model
+gpcm <- mirt(difficulty[,c(9:20)], itemtype = "gpcm", SE = T)
+coef(gpcm, printSE = T, IRTpars = T)
+data.table::fwrite(coef(gpcm, printSE = T, IRTpars = T, as.data.frame = T),
+    "./Rolf/parameter.csv",
+    now.names = T
+)
 
+# Save subjects' codes and names
+subj_code <- names(difficulty)[-c(1:8)]
+subj_name <- c(
+    "Written Norwegian",
+    "Oral Norwegian",
+    "Written English",
+    "Oral English",
+    "Mathematics",
+    "Natural Sciences",
+    "Social Sciences",
+    "Physical Education",
+    "Music",
+    "Food and Health",
+    "Arts and Handcraft",
+    "Religion"
+)
 
+# Item characteristic curves
+# Auto-print is off in loops, causing corrupted PDFs. Insert print().
+for (i in 1:12) {
+    pdf(file = paste0("./Rolf/trace/trace_", subj_code[i], ".pdf"))
+    print(directlabels::direct.label(
+        itemplot(gpcm, item = i, type = 'trace',
+            xlim = c(-6.5,6.5),
+            main = paste0(
+                "Trace Plot for ", subj_code[i], " (", subj_name[i], ")"
+            )
+        ), 'top.points'
+    ))
+    dev.off()
+}
 
+# Expected scores
+for (i in 1:12) {
+    pdf(file = paste0("./Rolf/score/score_", subj_code[i], ".pdf"))
+    print(itemplot(gpcm, item = i, type = 'score', CE = T,
+            xlim = c(-6.5,6.5),
+            main = paste0(
+                "Expected Score for ", subj_code[i], " (", subj_name[i], ")"
+            )
+    ))
+    dev.off()
+}
 
-
-
-
-
-
+# Information and standard errors
+for (i in 1:12) {
+    pdf(file = paste0("./Rolf/info/infoSE_", subj_code[i], ".pdf"))
+    print(itemplot(gpcm, item = i, type = 'infoSE', CE = T,
+            xlim = c(-6.5,6.5),
+            main = paste0(
+                "Information and SE for ", subj_code[i], " (", subj_name[i], ")"
+            )
+    ))
+    dev.off()
+}
 
 
   #                            #  

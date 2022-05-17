@@ -16,7 +16,6 @@
 [submodule "Stat_Help/Tim/klug_pd"]
 	path = Stat_Help/Tim/klug_pd
 	url = git@github.com:tillfuetterer/klug_pd.git
-
 [submodule "Stat_Help/Tim/infer_code"]
 	path = Stat_Help/Tim/infer_code
 	url = git@github.com:tillfuetterer/infer_coding.git

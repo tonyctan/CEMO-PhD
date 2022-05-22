@@ -1,0 +1,30 @@
+\MAEptikz{fig:simple}{Model Diagram}{
+\begin{tikzpicture}[
+    latvar/.style={ellipse,draw=black,minimum width=1cm,minimum height=1cm},
+    manvar/.style={rectangle,draw=black,minimum width=2cm,minimum height=2cm},
+    ->,>=stealth',semithick,
+    bend angle=-45,
+    decoration={
+        zigzag,
+        amplitude=1pt,
+        segment length=1mm,
+        post=lineto,
+        post length=4pt
+    }
+]
+
+% MODEL DIAGRAM
+
+%%%%% Structural part %%%%%
+
+% Draw latent variables
+    \node[manvar] (X) at (1,1) {$X$};
+    \node[manvar] (Y) at (8,1) {$Y$};
+    \node[manvar] (Z) at (15,1) {$Z$};
+
+% Link latent variables
+    \draw[->] (X.east) to (Y.west);
+    \draw[->] (Y.east) to (Z.west);
+
+\end{tikzpicture}
+}{A simple diagram.}

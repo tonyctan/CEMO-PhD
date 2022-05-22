@@ -1,0 +1,35 @@
+Table	2																			
+Model	Parameters	and	Fit	Indices	Investigating	Gender	Pay	Gap												
+		M1			M2			M3			M4									
+		Coef	SE		Coef	SE		Coef	SE		Coef	SE								
+FIXED	EFFECTS																			
+Intercept		10.045	0.017	***	9.249	0.103	***	9.752	0.108	***	9.754	0.112	***							
+																				
+MALE		0.367	0.025	***	0.303	0.028	***	0.362	0.019	***	0.36	0.019	***							
+																				
+LIT					0.002	0.001	*	0	0.001		0	0.001								
+NUM					0.006	0.001	***	0.001	0.001		0.001	0								
+PSL					-0.005	0.001	***	0.001	0.001		0.001	0.001								
+																				
+cAGE								0.021	0.001	***	0.022	0.001	***							
+cAGEsq								-0.001	0	***	-0.001	0	***							
+																				
+IM1								-0.122	0.032	***	-0.125	0.032	***							
+IM2								0.17	0.099	†	0.171	0.1	†							
+																				
+cEDU								0.074	0.005	***	0.074	0.005	***							
+cEDUsq								0	0.001		0.001	0.001								
+																				
+cAGE	x	MALE											-0.002	0.002						
+																				
+RANDOM	EFFECTS																			
+Residual	variances		0.539	0.027	***	0.497	0.026	***	0.318	0.021	***	0.318	0.021	***						
+		Est	SD		Est	SD		Est	SD		Est	SD								
+AIC		8052.893	0		7093.236	25.701		165371.096	218.69		244889.701	123.279								
+BIC		8071.48	0		7129.868	25.701		165540.287	218.69		245202.053	123.279								
+RMSEA		0	0		0	0		0.142	0.002		0.096	0.001								
+CFI		1	0		1	0		0	0		0.008	0.008								
+TLI		1	0		1	0		0.212	0.027		0.603	0.01								
+SRMR		0	0		0	0		0.159	0.003		0.107	0								
+Note.	Standard	deviations	of	model	fit	indices	are	resulted	from	ten	plausible	values.	All	p	values	in	this	table	are	two-tailed.
+†p	<	.10.	*p	<	.05.	**p	<	.01.	***p	<	.001.									

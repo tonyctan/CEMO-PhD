@@ -1,0 +1,1038 @@
+Mplus VERSION 8.5 (Linux)
+MUTHEN & MUTHEN
+04/06/2022  11:11 PM
+
+INPUT INSTRUCTIONS
+
+  TITLE:
+      M3: Path analysis for gender pay gap (M2 + demographic variables)
+
+  DATA:
+      file = implist.dat;
+      type = imputation;
+
+  VARIABLE:
+      ! Data table header
+      names =
+          log_EARN
+          LIT NUM PSL
+          MALE cAGE cAGEsq IM1 IM2 cEDU cEDUsq cross
+          VARSTRAT VARUNIT SPFWT0
+          ;
+
+      usevar =
+          log_EARN
+          LIT NUM PSL
+          MALE cAGE cAGEsq IM1 IM2 cEDU cEDUsq
+          VARSTRAT VARUNIT SPFWT0
+          ;
+
+      ! Missing data indicator
+      missing = all(-99);
+
+      ! Final participant weight
+  weight = SPFWT0;
+
+      ! Clustering in sampling units
+      cluster = VARUNIT;
+
+      ! Stratification
+      stratification = VARSTRAT;
+
+  ANALYSIS:
+      type = complex;
+      estimator = MLR;
+      h1iterations = 10000;
+
+  MODEL:
+      log_EARN on
+          LIT NUM PSL     ! Skills
+          MALE            ! Gender difference (Main interest of current study)
+          cAGE cAGEsq     ! Age effect (with age discrimination parabola)
+          IM1 IM2         ! Migration penalty/premium?
+          cEDU cEDUsq     ! Return on education (with diminishing marginal return)
+          ;
+
+      cEDU with
+          LIT NUM PSL
+          ;
+
+  OUTPUT:
+  !    stdy;       ! Standardised parameter estimates
+  !    stdyx;      ! Fully standardised parameters
+      sampstat;   ! Sample statistics
+      cinterval;  ! Confidence intervals
+
+
+
+INPUT READING TERMINATED NORMALLY
+
+
+
+
+M3: Path analysis for gender pay gap (M2 + demographic variables)
+
+SUMMARY OF ANALYSIS
+
+Number of groups                                                 1
+Average number of observations                                4951
+
+Number of replications
+    Requested                                                   10
+    Completed                                                   10
+
+Number of dependent variables                                    1
+Number of independent variables                                 10
+Number of continuous latent variables                            0
+
+Observed dependent variables
+
+  Continuous
+   LOG_EARN
+
+Observed independent variables
+   LIT         NUM         PSL         MALE        CAGE        CAGESQ
+   IM1         IM2         CEDU        CEDUSQ
+
+Variables with special functions
+
+  Stratification        VARSTRAT
+  Cluster variable      VARUNIT
+  Weight variable       SPFWT0
+
+Estimator                                                      MLR
+Information matrix                                        OBSERVED
+Maximum number of iterations                                  1000
+Convergence criterion                                    0.500D-04
+Maximum number of steepest descent iterations                   20
+Maximum number of iterations for H1                          10000
+Convergence criterion for H1                             0.100D-03
+
+Input data file(s)
+  Multiple data files from
+    implist.dat
+
+Input data format  FREE
+
+
+SUMMARY OF DATA FOR THE FIRST DATA SET
+
+     Number of missing data patterns             5
+     Number of strata                           80
+     Number of clusters                        163
+
+
+SUMMARY OF MISSING DATA PATTERNS FOR THE FIRST DATA SET
+
+
+     MISSING DATA PATTERNS (x = not missing)
+
+           1  2  3  4  5
+ LOG_EARN  x  x
+ LIT       x  x  x  x
+ NUM       x  x  x  x
+ PSL       x     x
+ CEDU      x  x  x  x  x
+ MALE      x  x  x  x  x
+ CAGE      x  x  x  x  x
+ CAGESQ    x  x  x  x  x
+ IM1       x  x  x  x  x
+ IM2       x  x  x  x  x
+ CEDUSQ    x  x  x  x  x
+
+
+     MISSING DATA PATTERN FREQUENCIES
+
+    Pattern   Frequency     Pattern   Frequency     Pattern   Frequency
+          1        3311           3        1030           5           5
+          2         314           4         291
+
+
+COVARIANCE COVERAGE OF DATA FOR THE FIRST DATA SET
+
+Minimum covariance coverage value   0.100
+
+
+     PROPORTION OF DATA PRESENT
+
+
+           Covariance Coverage
+              LOG_EARN      LIT           NUM           PSL           CEDU
+              ________      ________      ________      ________      ________
+ LOG_EARN       0.732
+ LIT            0.732         0.999
+ NUM            0.732         0.999         0.999
+ PSL            0.669         0.877         0.877         0.877
+ CEDU           0.732         0.999         0.999         0.877         1.000
+ MALE           0.732         0.999         0.999         0.877         1.000
+ CAGE           0.732         0.999         0.999         0.877         1.000
+ CAGESQ         0.732         0.999         0.999         0.877         1.000
+ IM1            0.732         0.999         0.999         0.877         1.000
+ IM2            0.732         0.999         0.999         0.877         1.000
+ CEDUSQ         0.732         0.999         0.999         0.877         1.000
+
+
+           Covariance Coverage
+              MALE          CAGE          CAGESQ        IM1           IM2
+              ________      ________      ________      ________      ________
+ MALE           1.000
+ CAGE           1.000         1.000
+ CAGESQ         1.000         1.000         1.000
+ IM1            1.000         1.000         1.000         1.000
+ IM2            1.000         1.000         1.000         1.000         1.000
+ CEDUSQ         1.000         1.000         1.000         1.000         1.000
+
+
+           Covariance Coverage
+              CEDUSQ
+              ________
+ CEDUSQ         1.000
+
+
+SAMPLE STATISTICS
+
+NOTE:  These are average results over 10 data sets.
+
+
+     ESTIMATED SAMPLE STATISTICS
+
+
+           Means
+              LOG_EARN      LIT           NUM           PSL           CEDU
+              ________      ________      ________      ________      ________
+               10.138       278.415       278.288       280.342        -0.199
+
+
+           Means
+              MALE          CAGE          CAGESQ        IM1           IM2
+              ________      ________      ________      ________      ________
+                0.511         0.212       202.783         0.126         0.011
+
+
+           Means
+              CEDUSQ
+              ________
+                6.874
+
+
+           Covariances
+              LOG_EARN      LIT           NUM           PSL           CEDU
+              ________      ________      ________      ________      ________
+ LOG_EARN       0.630
+ LIT            8.837      2210.622
+ NUM           12.566      2280.853      2938.733
+ PSL            5.376      1746.098      1952.588      1979.423
+ CEDU           0.979        48.344        59.388        39.408         6.834
+ MALE           0.095         0.980         3.713         1.631         0.002
+ CAGE           4.372       -78.348       -36.426      -205.276         6.735
+ CAGESQ       -65.579     -1726.737     -1902.523     -1366.617      -170.866
+ IM1           -0.016        -4.507        -5.457        -3.811         0.009
+ IM2           -0.003        -0.201        -0.341        -0.024        -0.016
+ CEDUSQ        -1.140       -61.703       -87.578       -55.181        -5.831
+
+
+           Covariances
+              MALE          CAGE          CAGESQ        IM1           IM2
+              ________      ________      ________      ________      ________
+ MALE           0.250
+ CAGE          -0.018       202.738
+ CAGESQ        -0.528       111.812     36121.960
+ IM1            0.003        -0.336        -7.662         0.110
+ IM2            0.000        -0.136         0.651        -0.001         0.011
+ CEDUSQ        -0.009       -10.927       227.426         0.487         0.043
+
+
+           Covariances
+              CEDUSQ
+              ________
+ CEDUSQ        85.919
+
+
+           Correlations
+              LOG_EARN      LIT           NUM           PSL           CEDU
+              ________      ________      ________      ________      ________
+ LOG_EARN       1.000
+ LIT            0.237         1.000
+ NUM            0.292         0.895         1.000
+ PSL            0.152         0.835         0.810         1.000
+ CEDU           0.472         0.393         0.419         0.339         1.000
+ MALE           0.240         0.042         0.137         0.073         0.001
+ CAGE           0.387        -0.117        -0.047        -0.324         0.181
+ CAGESQ        -0.435        -0.193        -0.185        -0.162        -0.344
+ IM1           -0.060        -0.289        -0.303        -0.258         0.010
+ IM2           -0.039        -0.041        -0.060        -0.005        -0.057
+ CEDUSQ        -0.155        -0.142        -0.174        -0.134        -0.241
+
+
+           Correlations
+              MALE          CAGE          CAGESQ        IM1           IM2
+              ________      ________      ________      ________      ________
+ MALE           1.000
+ CAGE          -0.003         1.000
+ CAGESQ        -0.006         0.041         1.000
+ IM1            0.017        -0.071        -0.121         1.000
+ IM2           -0.001        -0.091         0.033        -0.040         1.000
+ CEDUSQ        -0.002        -0.083         0.129         0.158         0.044
+
+
+           Correlations
+              CEDUSQ
+              ________
+ CEDUSQ         1.000
+
+
+MODEL FIT INFORMATION
+
+Number of Free Parameters                       26
+
+Loglikelihood
+
+    H0 Value
+
+        Mean                            -82659.548
+        Std Dev                            109.345
+        Number of successful computations       10
+
+             Proportions                   Percentiles
+        Expected    Observed         Expected       Observed
+           0.990       1.000       -82913.917     -82836.706
+           0.980       1.000       -82884.109     -82836.706
+           0.950       1.000       -82839.409     -82836.706
+           0.900       0.900       -82799.684     -82836.706
+           0.800       0.700       -82751.573     -82836.706
+           0.700       0.600       -82716.889     -82757.883
+           0.500       0.500       -82659.548     -82699.268
+           0.300       0.400       -82602.208     -82574.092
+           0.200       0.300       -82567.524     -82558.429
+           0.100       0.200       -82519.412     -82519.090
+           0.050       0.000       -82479.687     -82519.090
+           0.020       0.000       -82434.987     -82519.090
+           0.010       0.000       -82405.179     -82519.090
+
+    H1 Value
+
+        Mean                            -80948.837
+        Std Dev                            101.758
+        Number of successful computations       10
+
+             Proportions                   Percentiles
+        Expected    Observed         Expected       Observed
+           0.990       1.000       -81185.556     -81098.562
+           0.980       1.000       -81157.817     -81098.562
+           0.950       1.000       -81116.218     -81098.562
+           0.900       0.900       -81079.250     -81098.562
+           0.800       0.800       -81034.476     -81098.562
+           0.700       0.700       -81002.199     -81023.096
+           0.500       0.400       -80948.837     -80984.826
+           0.300       0.300       -80895.476     -80906.989
+           0.200       0.300       -80863.198     -80835.914
+           0.100       0.200       -80818.425     -80814.636
+           0.050       0.000       -80781.456     -80814.636
+           0.020       0.000       -80739.858     -80814.636
+           0.010       0.000       -80712.119     -80814.636
+
+Information Criteria
+
+    Akaike (AIC)
+
+        Mean                            165371.096
+        Std Dev                            218.690
+        Number of successful computations       10
+
+             Proportions                   Percentiles
+        Expected    Observed         Expected       Observed
+           0.990       1.000       164862.359     165079.214
+           0.980       1.000       164921.974     165079.214
+           0.950       1.000       165011.374     165079.214
+           0.900       0.800       165090.824     165079.214
+           0.800       0.700       165187.047     165079.214
+           0.700       0.600       165256.415     165168.857
+           0.500       0.500       165371.096     165321.038
+           0.300       0.400       165485.777     165508.225
+           0.200       0.300       165555.145     165567.766
+           0.100       0.100       165651.369     165599.549
+           0.050       0.000       165730.819     165599.549
+           0.020       0.000       165820.219     165599.549
+           0.010       0.000       165879.834     165599.549
+
+    Bayesian (BIC)
+
+        Mean                            165540.287
+        Std Dev                            218.690
+        Number of successful computations       10
+
+             Proportions                   Percentiles
+        Expected    Observed         Expected       Observed
+           0.990       1.000       165031.550     165248.405
+           0.980       1.000       165091.165     165248.405
+           0.950       1.000       165180.565     165248.405
+           0.900       0.800       165260.015     165248.405
+           0.800       0.700       165356.238     165248.405
+           0.700       0.600       165425.606     165338.048
+           0.500       0.500       165540.287     165490.229
+           0.300       0.400       165654.968     165677.416
+           0.200       0.300       165724.336     165736.957
+           0.100       0.100       165820.560     165768.740
+           0.050       0.000       165900.010     165768.740
+           0.020       0.000       165989.410     165768.740
+           0.010       0.000       166049.025     165768.740
+
+    Sample-Size Adjusted BIC (n* = (n + 2) / 24)
+
+        Mean                            165457.668
+        Std Dev                            218.690
+        Number of successful computations       10
+
+             Proportions                   Percentiles
+        Expected    Observed         Expected       Observed
+           0.990       1.000       164948.931     165165.786
+           0.980       1.000       165008.546     165165.786
+           0.950       1.000       165097.946     165165.786
+           0.900       0.800       165177.396     165165.786
+           0.800       0.700       165273.619     165165.786
+           0.700       0.600       165342.988     165255.429
+           0.500       0.500       165457.668     165407.610
+           0.300       0.400       165572.349     165594.797
+           0.200       0.300       165641.717     165654.338
+           0.100       0.100       165737.941     165686.121
+           0.050       0.000       165817.391     165686.121
+           0.020       0.000       165906.791     165686.121
+           0.010       0.000       165966.406     165686.121
+
+Chi-Square Test of Model Fit
+
+        Degrees of freedom                      24
+
+        Mean                              2417.106
+        Std Dev                             66.903
+        Number of successful computations       10
+
+             Proportions                   Percentiles
+        Expected    Observed         Expected       Observed
+           0.990       1.000           10.856       2322.607
+           0.980       1.000           11.992       2322.607
+           0.950       1.000           13.848       2322.607
+           0.900       1.000           15.659       2322.607
+           0.800       1.000           18.062       2322.607
+           0.700       1.000           19.943       2364.614
+           0.500       1.000           23.337       2393.362
+           0.300       1.000           27.096       2478.381
+           0.200       1.000           29.553       2480.801
+           0.100       1.000           33.196       2493.803
+           0.050       1.000           36.415       2493.803
+           0.020       1.000           40.270       2493.803
+           0.010       1.000           42.980       2493.803
+
+RMSEA (Root Mean Square Error Of Approximation)
+
+        Mean                                 0.142
+        Std Dev                              0.002
+        Number of successful computations       10
+
+        Cumulative Distribution Function
+           Value    Function Value
+           0.990       1.000
+           0.980       1.000
+           0.950       1.000
+           0.900       1.000
+           0.800       1.000
+           0.700       1.000
+           0.500       1.000
+           0.300       1.000
+           0.200       1.000
+           0.100       0.000
+           0.050       0.000
+           0.020       0.000
+           0.010       0.000
+
+CFI/TLI
+
+    CFI
+
+        Mean                                 0.000
+        Std Dev                              0.000
+        Number of successful computations       10
+
+        Cumulative Distribution Function
+           Value    Function Value
+           0.990       1.000
+           0.980       1.000
+           0.950       1.000
+           0.900       1.000
+           0.800       1.000
+           0.700       1.000
+           0.500       1.000
+           0.300       1.000
+           0.200       1.000
+           0.100       1.000
+           0.050       1.000
+           0.020       1.000
+           0.010       1.000
+
+    TLI
+
+        Mean                                 0.212
+        Std Dev                              0.027
+        Number of successful computations       10
+
+        Cumulative Distribution Function
+           Value    Function Value
+           0.990       1.000
+           0.980       1.000
+           0.950       1.000
+           0.900       1.000
+           0.800       1.000
+           0.700       1.000
+           0.500       1.000
+           0.300       1.000
+           0.200       0.300
+           0.100       0.000
+           0.050       0.000
+           0.020       0.000
+           0.010       0.000
+
+SRMR (Standardized Root Mean Square Residual)
+
+        Mean                                 0.159
+        Std Dev                              0.003
+        Number of successful computations       10
+
+        Cumulative Distribution Function
+           Value    Function Value
+           0.990       1.000
+           0.980       1.000
+           0.950       1.000
+           0.900       1.000
+           0.800       1.000
+           0.700       1.000
+           0.500       1.000
+           0.300       1.000
+           0.200       1.000
+           0.100       0.000
+           0.050       0.000
+           0.020       0.000
+           0.010       0.000
+
+
+MODEL RESULTS
+
+                                                    Two-Tailed   Rate of
+                    Estimate       S.E.  Est./S.E.    P-Value    Missing
+
+ LOG_EARN ON
+    LIT                0.000      0.001     -0.192      0.847      0.684
+    NUM                0.001      0.001      1.123      0.261      0.486
+    PSL                0.001      0.001      1.763      0.078      0.571
+    MALE               0.362      0.019     18.798      0.000      0.050
+    CAGE               0.021      0.001     18.906      0.000      0.087
+    CAGESQ            -0.001      0.000    -18.356      0.000      0.000
+    IM1               -0.122      0.032     -3.770      0.000      0.021
+    IM2                0.170      0.099      1.719      0.086      0.010
+    CEDU               0.074      0.005     14.778      0.000      0.024
+    CEDUSQ             0.000      0.001      0.290      0.772      0.009
+
+ CEDU     WITH
+    LIT               48.347      2.028     23.840      0.000      0.061
+    NUM               59.392      2.619     22.682      0.000      0.203
+    PSL               35.765      2.191     16.321      0.000      0.190
+
+ NUM      WITH
+    LIT             2281.034     70.833     32.203      0.000      0.229
+
+ PSL      WITH
+    LIT             1729.870     59.872     28.893      0.000      0.242
+    NUM             1919.977     72.491     26.486      0.000      0.346
+
+ Means
+    LIT              278.410      0.650    428.114      0.000      0.199
+    NUM              278.281      0.846    329.048      0.000      0.221
+    PSL              281.605      0.674    417.835      0.000      0.157
+    CEDU              -0.199      0.036     -5.593      0.000      0.000
+
+ Intercepts
+    LOG_EARN           9.752      0.108     90.665      0.000      0.118
+
+ Variances
+    LIT             2210.782     60.906     36.298      0.000      0.121
+    NUM             2938.940     88.703     33.132      0.000      0.320
+    PSL             1936.095     71.012     27.264      0.000      0.411
+    CEDU               6.834      0.122     56.095      0.000      0.000
+
+ Residual Variances
+    LOG_EARN           0.318      0.021     15.116      0.000      0.001
+
+
+QUALITY OF NUMERICAL RESULTS
+
+     Average Condition Number for the Information Matrix      0.138E-07
+       (ratio of smallest to largest eigenvalue)
+
+
+CONFIDENCE INTERVALS OF MODEL RESULTS
+
+                  Lower .5%  Lower 2.5%    Lower 5%    Estimate    Upper 5%  Upper 2.5%   Upper .5%
+
+ LOG_EARN ON
+    LIT             -0.003      -0.002      -0.002       0.000       0.001       0.002       0.002
+    NUM             -0.001       0.000       0.000       0.001       0.002       0.002       0.002
+    PSL             -0.001       0.000       0.000       0.001       0.003       0.003       0.003
+    MALE             0.313       0.325       0.331       0.362       0.394       0.400       0.412
+    CAGE             0.018       0.019       0.019       0.021       0.023       0.023       0.024
+    CAGESQ          -0.002      -0.002      -0.002      -0.001      -0.001      -0.001      -0.001
+    IM1             -0.205      -0.185      -0.175      -0.122      -0.069      -0.058      -0.039
+    IM2             -0.085      -0.024       0.007       0.170       0.333       0.364       0.425
+    CEDU             0.061       0.064       0.066       0.074       0.082       0.084       0.087
+    CEDUSQ          -0.003      -0.002      -0.002       0.000       0.002       0.003       0.004
+
+ CEDU     WITH
+    LIT             43.123      44.372      45.011      48.347      51.683      52.322      53.571
+    NUM             52.648      54.260      55.085      59.392      63.700      64.525      66.137
+    PSL             30.121      31.470      32.161      35.765      39.370      40.060      41.410
+
+ NUM      WITH
+    LIT           2098.582    2142.201    2164.514    2281.034    2397.555    2419.867    2463.486
+
+ PSL      WITH
+    LIT           1575.650    1612.520    1631.379    1729.870    1828.360    1847.219    1884.089
+    NUM           1733.255    1777.895    1800.729    1919.977    2039.225    2062.060    2106.700
+
+ Means
+    LIT            276.735     277.135     277.340     278.410     279.480     279.685     280.085
+    NUM            276.102     276.623     276.889     278.281     279.672     279.938     280.459
+    PSL            279.869     280.284     280.496     281.605     282.713     282.926     283.341
+    CEDU            -0.291      -0.269      -0.258      -0.199      -0.141      -0.129      -0.107
+
+ Intercepts
+    LOG_EARN         9.475       9.541       9.575       9.752       9.929       9.963      10.029
+
+ Variances
+    LIT           2053.900    2091.406    2110.592    2210.782    2310.972    2330.157    2367.663
+    NUM           2710.458    2765.082    2793.023    2938.940    3084.857    3112.799    3167.422
+    PSL           1753.182    1796.912    1819.281    1936.095    2052.910    2075.279    2119.008
+    CEDU             6.520       6.595       6.634       6.834       7.035       7.073       7.148
+
+ Residual Variances
+    LOG_EARN         0.263       0.276       0.283       0.318       0.352       0.359       0.372
+
+
+TECHNICAL 1 OUTPUT
+
+
+     PARAMETER SPECIFICATION
+
+
+           NU
+              LOG_EARN      LIT           NUM           PSL           CEDU
+              ________      ________      ________      ________      ________
+                  0             0             0             0             0
+
+
+           NU
+              MALE          CAGE          CAGESQ        IM1           IM2
+              ________      ________      ________      ________      ________
+                  0             0             0             0             0
+
+
+           NU
+              CEDUSQ
+              ________
+                  0
+
+
+           LAMBDA
+              LOG_EARN      LIT           NUM           PSL           CEDU
+              ________      ________      ________      ________      ________
+ LOG_EARN           0             0             0             0             0
+ LIT                0             0             0             0             0
+ NUM                0             0             0             0             0
+ PSL                0             0             0             0             0
+ CEDU               0             0             0             0             0
+ MALE               0             0             0             0             0
+ CAGE               0             0             0             0             0
+ CAGESQ             0             0             0             0             0
+ IM1                0             0             0             0             0
+ IM2                0             0             0             0             0
+ CEDUSQ             0             0             0             0             0
+
+
+           LAMBDA
+              MALE          CAGE          CAGESQ        IM1           IM2
+              ________      ________      ________      ________      ________
+ LOG_EARN           0             0             0             0             0
+ LIT                0             0             0             0             0
+ NUM                0             0             0             0             0
+ PSL                0             0             0             0             0
+ CEDU               0             0             0             0             0
+ MALE               0             0             0             0             0
+ CAGE               0             0             0             0             0
+ CAGESQ             0             0             0             0             0
+ IM1                0             0             0             0             0
+ IM2                0             0             0             0             0
+ CEDUSQ             0             0             0             0             0
+
+
+           LAMBDA
+              CEDUSQ
+              ________
+ LOG_EARN           0
+ LIT                0
+ NUM                0
+ PSL                0
+ CEDU               0
+ MALE               0
+ CAGE               0
+ CAGESQ             0
+ IM1                0
+ IM2                0
+ CEDUSQ             0
+
+
+           THETA
+              LOG_EARN      LIT           NUM           PSL           CEDU
+              ________      ________      ________      ________      ________
+ LOG_EARN           0
+ LIT                0             0
+ NUM                0             0             0
+ PSL                0             0             0             0
+ CEDU               0             0             0             0             0
+ MALE               0             0             0             0             0
+ CAGE               0             0             0             0             0
+ CAGESQ             0             0             0             0             0
+ IM1                0             0             0             0             0
+ IM2                0             0             0             0             0
+ CEDUSQ             0             0             0             0             0
+
+
+           THETA
+              MALE          CAGE          CAGESQ        IM1           IM2
+              ________      ________      ________      ________      ________
+ MALE               0
+ CAGE               0             0
+ CAGESQ             0             0             0
+ IM1                0             0             0             0
+ IM2                0             0             0             0             0
+ CEDUSQ             0             0             0             0             0
+
+
+           THETA
+              CEDUSQ
+              ________
+ CEDUSQ             0
+
+
+           ALPHA
+              LOG_EARN      LIT           NUM           PSL           CEDU
+              ________      ________      ________      ________      ________
+                  1             2             3             4             5
+
+
+           ALPHA
+              MALE          CAGE          CAGESQ        IM1           IM2
+              ________      ________      ________      ________      ________
+                  0             0             0             0             0
+
+
+           ALPHA
+              CEDUSQ
+              ________
+                  0
+
+
+           BETA
+              LOG_EARN      LIT           NUM           PSL           CEDU
+              ________      ________      ________      ________      ________
+ LOG_EARN           0             6             7             8             9
+ LIT                0             0             0             0             0
+ NUM                0             0             0             0             0
+ PSL                0             0             0             0             0
+ CEDU               0             0             0             0             0
+ MALE               0             0             0             0             0
+ CAGE               0             0             0             0             0
+ CAGESQ             0             0             0             0             0
+ IM1                0             0             0             0             0
+ IM2                0             0             0             0             0
+ CEDUSQ             0             0             0             0             0
+
+
+           BETA
+              MALE          CAGE          CAGESQ        IM1           IM2
+              ________      ________      ________      ________      ________
+ LOG_EARN          10            11            12            13            14
+ LIT                0             0             0             0             0
+ NUM                0             0             0             0             0
+ PSL                0             0             0             0             0
+ CEDU               0             0             0             0             0
+ MALE               0             0             0             0             0
+ CAGE               0             0             0             0             0
+ CAGESQ             0             0             0             0             0
+ IM1                0             0             0             0             0
+ IM2                0             0             0             0             0
+ CEDUSQ             0             0             0             0             0
+
+
+           BETA
+              CEDUSQ
+              ________
+ LOG_EARN          15
+ LIT                0
+ NUM                0
+ PSL                0
+ CEDU               0
+ MALE               0
+ CAGE               0
+ CAGESQ             0
+ IM1                0
+ IM2                0
+ CEDUSQ             0
+
+
+           PSI
+              LOG_EARN      LIT           NUM           PSL           CEDU
+              ________      ________      ________      ________      ________
+ LOG_EARN          16
+ LIT                0            17
+ NUM                0            18            19
+ PSL                0            20            21            22
+ CEDU               0            23            24            25            26
+ MALE               0             0             0             0             0
+ CAGE               0             0             0             0             0
+ CAGESQ             0             0             0             0             0
+ IM1                0             0             0             0             0
+ IM2                0             0             0             0             0
+ CEDUSQ             0             0             0             0             0
+
+
+           PSI
+              MALE          CAGE          CAGESQ        IM1           IM2
+              ________      ________      ________      ________      ________
+ MALE               0
+ CAGE               0             0
+ CAGESQ             0             0             0
+ IM1                0             0             0             0
+ IM2                0             0             0             0             0
+ CEDUSQ             0             0             0             0             0
+
+
+           PSI
+              CEDUSQ
+              ________
+ CEDUSQ             0
+
+
+     STARTING VALUES
+
+
+           NU
+              LOG_EARN      LIT           NUM           PSL           CEDU
+              ________      ________      ________      ________      ________
+                0.000         0.000         0.000         0.000         0.000
+
+
+           NU
+              MALE          CAGE          CAGESQ        IM1           IM2
+              ________      ________      ________      ________      ________
+                0.000         0.000         0.000         0.000         0.000
+
+
+           NU
+              CEDUSQ
+              ________
+                0.000
+
+
+           LAMBDA
+              LOG_EARN      LIT           NUM           PSL           CEDU
+              ________      ________      ________      ________      ________
+ LOG_EARN       1.000         0.000         0.000         0.000         0.000
+ LIT            0.000         1.000         0.000         0.000         0.000
+ NUM            0.000         0.000         1.000         0.000         0.000
+ PSL            0.000         0.000         0.000         1.000         0.000
+ CEDU           0.000         0.000         0.000         0.000         1.000
+ MALE           0.000         0.000         0.000         0.000         0.000
+ CAGE           0.000         0.000         0.000         0.000         0.000
+ CAGESQ         0.000         0.000         0.000         0.000         0.000
+ IM1            0.000         0.000         0.000         0.000         0.000
+ IM2            0.000         0.000         0.000         0.000         0.000
+ CEDUSQ         0.000         0.000         0.000         0.000         0.000
+
+
+           LAMBDA
+              MALE          CAGE          CAGESQ        IM1           IM2
+              ________      ________      ________      ________      ________
+ LOG_EARN       0.000         0.000         0.000         0.000         0.000
+ LIT            0.000         0.000         0.000         0.000         0.000
+ NUM            0.000         0.000         0.000         0.000         0.000
+ PSL            0.000         0.000         0.000         0.000         0.000
+ CEDU           0.000         0.000         0.000         0.000         0.000
+ MALE           1.000         0.000         0.000         0.000         0.000
+ CAGE           0.000         1.000         0.000         0.000         0.000
+ CAGESQ         0.000         0.000         1.000         0.000         0.000
+ IM1            0.000         0.000         0.000         1.000         0.000
+ IM2            0.000         0.000         0.000         0.000         1.000
+ CEDUSQ         0.000         0.000         0.000         0.000         0.000
+
+
+           LAMBDA
+              CEDUSQ
+              ________
+ LOG_EARN       0.000
+ LIT            0.000
+ NUM            0.000
+ PSL            0.000
+ CEDU           0.000
+ MALE           0.000
+ CAGE           0.000
+ CAGESQ         0.000
+ IM1            0.000
+ IM2            0.000
+ CEDUSQ         1.000
+
+
+           THETA
+              LOG_EARN      LIT           NUM           PSL           CEDU
+              ________      ________      ________      ________      ________
+ LOG_EARN       0.000
+ LIT            0.000         0.000
+ NUM            0.000         0.000         0.000
+ PSL            0.000         0.000         0.000         0.000
+ CEDU           0.000         0.000         0.000         0.000         0.000
+ MALE           0.000         0.000         0.000         0.000         0.000
+ CAGE           0.000         0.000         0.000         0.000         0.000
+ CAGESQ         0.000         0.000         0.000         0.000         0.000
+ IM1            0.000         0.000         0.000         0.000         0.000
+ IM2            0.000         0.000         0.000         0.000         0.000
+ CEDUSQ         0.000         0.000         0.000         0.000         0.000
+
+
+           THETA
+              MALE          CAGE          CAGESQ        IM1           IM2
+              ________      ________      ________      ________      ________
+ MALE           0.000
+ CAGE           0.000         0.000
+ CAGESQ         0.000         0.000         0.000
+ IM1            0.000         0.000         0.000         0.000
+ IM2            0.000         0.000         0.000         0.000         0.000
+ CEDUSQ         0.000         0.000         0.000         0.000         0.000
+
+
+           THETA
+              CEDUSQ
+              ________
+ CEDUSQ         0.000
+
+
+           ALPHA
+              LOG_EARN      LIT           NUM           PSL           CEDU
+              ________      ________      ________      ________      ________
+               10.231       278.886       278.593       286.393        -0.199
+
+
+           ALPHA
+              MALE          CAGE          CAGESQ        IM1           IM2
+              ________      ________      ________      ________      ________
+                0.511         0.212       202.783         0.126         0.011
+
+
+           ALPHA
+              CEDUSQ
+              ________
+                6.874
+
+
+           BETA
+              LOG_EARN      LIT           NUM           PSL           CEDU
+              ________      ________      ________      ________      ________
+ LOG_EARN       0.000         0.000         0.000         0.000         0.000
+ LIT            0.000         0.000         0.000         0.000         0.000
+ NUM            0.000         0.000         0.000         0.000         0.000
+ PSL            0.000         0.000         0.000         0.000         0.000
+ CEDU           0.000         0.000         0.000         0.000         0.000
+ MALE           0.000         0.000         0.000         0.000         0.000
+ CAGE           0.000         0.000         0.000         0.000         0.000
+ CAGESQ         0.000         0.000         0.000         0.000         0.000
+ IM1            0.000         0.000         0.000         0.000         0.000
+ IM2            0.000         0.000         0.000         0.000         0.000
+ CEDUSQ         0.000         0.000         0.000         0.000         0.000
+
+
+           BETA
+              MALE          CAGE          CAGESQ        IM1           IM2
+              ________      ________      ________      ________      ________
+ LOG_EARN       0.000         0.000         0.000         0.000         0.000
+ LIT            0.000         0.000         0.000         0.000         0.000
+ NUM            0.000         0.000         0.000         0.000         0.000
+ PSL            0.000         0.000         0.000         0.000         0.000
+ CEDU           0.000         0.000         0.000         0.000         0.000
+ MALE           0.000         0.000         0.000         0.000         0.000
+ CAGE           0.000         0.000         0.000         0.000         0.000
+ CAGESQ         0.000         0.000         0.000         0.000         0.000
+ IM1            0.000         0.000         0.000         0.000         0.000
+ IM2            0.000         0.000         0.000         0.000         0.000
+ CEDUSQ         0.000         0.000         0.000         0.000         0.000
+
+
+           BETA
+              CEDUSQ
+              ________
+ LOG_EARN       0.000
+ LIT            0.000
+ NUM            0.000
+ PSL            0.000
+ CEDU           0.000
+ MALE           0.000
+ CAGE           0.000
+ CAGESQ         0.000
+ IM1            0.000
+ IM2            0.000
+ CEDUSQ         0.000
+
+
+           PSI
+              LOG_EARN      LIT           NUM           PSL           CEDU
+              ________      ________      ________      ________      ________
+ LOG_EARN       0.286
+ LIT            0.000      1115.363
+ NUM            0.000         0.000      1517.303
+ PSL            0.000         0.000         0.000       827.205
+ CEDU           0.000         0.000         0.000         0.000         3.417
+ MALE           0.000         0.000         0.000         0.000         0.000
+ CAGE           0.000         0.000         0.000         0.000         0.000
+ CAGESQ         0.000         0.000         0.000         0.000         0.000
+ IM1            0.000         0.000         0.000         0.000         0.000
+ IM2            0.000         0.000         0.000         0.000         0.000
+ CEDUSQ         0.000         0.000         0.000         0.000         0.000
+
+
+           PSI
+              MALE          CAGE          CAGESQ        IM1           IM2
+              ________      ________      ________      ________      ________
+ MALE           0.250
+ CAGE          -0.018       202.738
+ CAGESQ        -0.528       111.812     36121.960
+ IM1            0.003        -0.336        -7.662         0.110
+ IM2            0.000        -0.136         0.651        -0.001         0.011
+ CEDUSQ        -0.009       -10.927       227.426         0.487         0.043
+
+
+           PSI
+              CEDUSQ
+              ________
+ CEDUSQ        85.919
+
+
+     Beginning Time:  23:11:54
+        Ending Time:  23:11:56
+       Elapsed Time:  00:00:02
+
+
+
+MUTHEN & MUTHEN
+3463 Stoner Ave.
+Los Angeles, CA  90066
+
+Tel: (310) 391-9971
+Fax: (310) 391-8971
+Web: www.StatModel.com
+Support: Support@StatModel.com
+
+Copyright (c) 1998-2020 Muthen & Muthen

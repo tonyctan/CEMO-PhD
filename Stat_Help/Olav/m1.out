@@ -1,0 +1,546 @@
+Mplus VERSION 8.5 (Linux)
+MUTHEN & MUTHEN
+04/06/2022  11:11 PM
+
+INPUT INSTRUCTIONS
+
+  TITLE:
+      M1: Path analysis for gender pay gap (MALE only)
+
+  DATA:
+      file = implist.dat;
+      type = imputation;
+
+  VARIABLE:
+      ! Data table header
+      names =
+          log_EARN
+          LIT NUM PSL
+          MALE cAGE cAGEsq IM1 IM2 cEDU cEDUsq cross
+          VARSTRAT VARUNIT SPFWT0
+          ;
+
+      usevar =
+          log_EARN
+          MALE
+          VARSTRAT VARUNIT SPFWT0
+          ;
+
+      ! Missing data indicator
+      missing = all(-99);
+
+      ! Final participant weight
+      weight = SPFWT0;
+
+      ! Clustering in sampling units
+      cluster = VARUNIT;
+
+      ! Stratification
+      stratification = VARSTRAT;
+
+  ANALYSIS:
+      type = complex;
+      estimator = MLR;
+      h1iterations = 10000;
+
+  MODEL:
+      log_EARN on
+          MALE            ! Gender difference (Main interest of current study)
+          ;
+
+  OUTPUT:
+  !    stdy;       ! Standardised parameter estimates
+  !    stdyx;      ! Fully standardised parameters
+      sampstat;   ! Sample statistics
+      cinterval;  ! Confidence intervals
+
+
+
+INPUT READING TERMINATED NORMALLY
+
+
+
+
+M1: Path analysis for gender pay gap (MALE only)
+
+SUMMARY OF ANALYSIS
+
+Number of groups                                                 1
+Average number of observations                                3626
+
+Number of replications
+    Requested                                                   10
+    Completed                                                   10
+
+Number of dependent variables                                    1
+Number of independent variables                                  1
+Number of continuous latent variables                            0
+
+Observed dependent variables
+
+  Continuous
+   LOG_EARN
+
+Observed independent variables
+   MALE
+
+Variables with special functions
+
+  Stratification        VARSTRAT
+  Cluster variable      VARUNIT
+  Weight variable       SPFWT0
+
+Estimator                                                      MLR
+Information matrix                                        OBSERVED
+Maximum number of iterations                                  1000
+Convergence criterion                                    0.500D-04
+Maximum number of steepest descent iterations                   20
+Maximum number of iterations for H1                          10000
+Convergence criterion for H1                             0.100D-03
+
+Input data file(s)
+  Multiple data files from
+    implist.dat
+
+Input data format  FREE
+
+
+SUMMARY OF DATA FOR THE FIRST DATA SET
+
+     Number of missing data patterns             1
+     Number of strata                           80
+     Number of clusters                        163
+
+
+SUMMARY OF MISSING DATA PATTERNS FOR THE FIRST DATA SET
+
+
+     MISSING DATA PATTERNS (x = not missing)
+
+           1
+ LOG_EARN  x
+ MALE      x
+
+
+     MISSING DATA PATTERN FREQUENCIES
+
+    Pattern   Frequency
+          1        3626
+
+
+COVARIANCE COVERAGE OF DATA FOR THE FIRST DATA SET
+
+Minimum covariance coverage value   0.100
+
+
+     PROPORTION OF DATA PRESENT
+
+
+           Covariance Coverage
+              LOG_EARN      MALE
+              ________      ________
+ LOG_EARN       1.000
+ MALE           1.000         1.000
+
+
+SAMPLE STATISTICS
+
+NOTE:  These are average results over 10 data sets.
+
+
+     ESTIMATED SAMPLE STATISTICS
+
+
+           Means
+              LOG_EARN      MALE
+              ________      ________
+               10.232         0.508
+
+
+           Covariances
+              LOG_EARN      MALE
+              ________      ________
+ LOG_EARN       0.572
+ MALE           0.092         0.250
+
+
+           Correlations
+              LOG_EARN      MALE
+              ________      ________
+ LOG_EARN       1.000
+ MALE           0.242         1.000
+
+
+MODEL FIT INFORMATION
+
+Number of Free Parameters                        3
+
+Loglikelihood
+
+    H0 Value
+
+        Mean                             -4023.446
+        Std Dev                              0.000
+        Number of successful computations       10
+
+             Proportions                   Percentiles
+        Expected    Observed         Expected       Observed
+           0.990       1.000        -4023.446      -4023.446
+           0.980       1.000        -4023.446      -4023.446
+           0.950       1.000        -4023.446      -4023.446
+           0.900       1.000        -4023.446      -4023.446
+           0.800       1.000        -4023.446      -4023.446
+           0.700       0.100        -4023.446      -4023.446
+           0.500       0.100        -4023.446      -4023.446
+           0.300       0.100        -4023.446      -4023.446
+           0.200       0.100        -4023.446      -4023.446
+           0.100       0.100        -4023.446      -4023.446
+           0.050       0.100        -4023.446      -4023.446
+           0.020       0.100        -4023.446      -4023.446
+           0.010       0.100        -4023.446      -4023.446
+
+    H1 Value
+
+        Mean                             -4023.446
+        Std Dev                              0.000
+        Number of successful computations       10
+
+             Proportions                   Percentiles
+        Expected    Observed         Expected       Observed
+           0.990       1.000        -4023.446      -4023.446
+           0.980       1.000        -4023.446      -4023.446
+           0.950       1.000        -4023.446      -4023.446
+           0.900       1.000        -4023.446      -4023.446
+           0.800       0.000        -4023.446      -4023.446
+           0.700       0.000        -4023.446      -4023.446
+           0.500       0.000        -4023.446      -4023.446
+           0.300       0.000        -4023.446      -4023.446
+           0.200       0.000        -4023.446      -4023.446
+           0.100       0.000        -4023.446      -4023.446
+           0.050       0.000        -4023.446      -4023.446
+           0.020       0.000        -4023.446      -4023.446
+           0.010       0.000        -4023.446      -4023.446
+
+Information Criteria
+
+    Akaike (AIC)
+
+        Mean                              8052.893
+        Std Dev                              0.000
+        Number of successful computations       10
+
+             Proportions                   Percentiles
+        Expected    Observed         Expected       Observed
+           0.990       0.900         8052.893       8052.893
+           0.980       0.900         8052.893       8052.893
+           0.950       0.900         8052.893       8052.893
+           0.900       0.900         8052.893       8052.893
+           0.800       0.900         8052.893       8052.893
+           0.700       0.900         8052.893       8052.893
+           0.500       0.900         8052.893       8052.893
+           0.300       0.000         8052.893       8052.893
+           0.200       0.000         8052.893       8052.893
+           0.100       0.000         8052.893       8052.893
+           0.050       0.000         8052.893       8052.893
+           0.020       0.000         8052.893       8052.893
+           0.010       0.000         8052.893       8052.893
+
+    Bayesian (BIC)
+
+        Mean                              8071.480
+        Std Dev                              0.000
+        Number of successful computations       10
+
+             Proportions                   Percentiles
+        Expected    Observed         Expected       Observed
+           0.990       0.900         8071.480       8071.480
+           0.980       0.900         8071.480       8071.480
+           0.950       0.900         8071.480       8071.480
+           0.900       0.900         8071.480       8071.480
+           0.800       0.900         8071.480       8071.480
+           0.700       0.900         8071.480       8071.480
+           0.500       0.900         8071.480       8071.480
+           0.300       0.000         8071.480       8071.480
+           0.200       0.000         8071.480       8071.480
+           0.100       0.000         8071.480       8071.480
+           0.050       0.000         8071.480       8071.480
+           0.020       0.000         8071.480       8071.480
+           0.010       0.000         8071.480       8071.480
+
+    Sample-Size Adjusted BIC (n* = (n + 2) / 24)
+
+        Mean                              8061.948
+        Std Dev                              0.000
+        Number of successful computations       10
+
+             Proportions                   Percentiles
+        Expected    Observed         Expected       Observed
+           0.990       1.000         8061.948       8061.948
+           0.980       1.000         8061.948       8061.948
+           0.950       0.900         8061.948       8061.948
+           0.900       0.900         8061.948       8061.948
+           0.800       0.900         8061.948       8061.948
+           0.700       0.900         8061.948       8061.948
+           0.500       0.900         8061.948       8061.948
+           0.300       0.900         8061.948       8061.948
+           0.200       0.000         8061.948       8061.948
+           0.100       0.000         8061.948       8061.948
+           0.050       0.000         8061.948       8061.948
+           0.020       0.000         8061.948       8061.948
+           0.010       0.000         8061.948       8061.948
+
+Chi-Square Test of Model Fit
+
+        Degrees of freedom                       0
+
+        Mean                                 0.000
+        Std Dev                              0.000
+        Number of successful computations       10
+
+             Proportions                   Percentiles
+        Expected    Observed         Expected       Observed
+           0.990       1.000            0.000          0.000
+           0.980       1.000            0.000          0.000
+           0.950       1.000            0.000          0.000
+           0.900       1.000            0.000          0.000
+           0.800       1.000            0.000          0.000
+           0.700       1.000            0.000          0.000
+           0.500       1.000            0.000          0.000
+           0.300       1.000            0.000          0.000
+           0.200       1.000            0.000          0.000
+           0.100       1.000            0.000          0.000
+           0.050       1.000            0.000          0.000
+           0.020       1.000            0.000          0.000
+           0.010       1.000            0.000          0.000
+
+RMSEA (Root Mean Square Error Of Approximation)
+
+        Mean                                 0.000
+        Std Dev                              0.000
+        Number of successful computations       10
+
+        Cumulative Distribution Function
+           Value    Function Value
+           0.990       1.000
+           0.980       1.000
+           0.950       1.000
+           0.900       1.000
+           0.800       1.000
+           0.700       1.000
+           0.500       1.000
+           0.300       1.000
+           0.200       1.000
+           0.100       1.000
+           0.050       1.000
+           0.020       1.000
+           0.010       1.000
+
+CFI/TLI
+
+    CFI
+
+        Mean                                 1.000
+        Std Dev                              0.000
+        Number of successful computations       10
+
+        Cumulative Distribution Function
+           Value    Function Value
+           0.990       0.000
+           0.980       0.000
+           0.950       0.000
+           0.900       0.000
+           0.800       0.000
+           0.700       0.000
+           0.500       0.000
+           0.300       0.000
+           0.200       0.000
+           0.100       0.000
+           0.050       0.000
+           0.020       0.000
+           0.010       0.000
+
+    TLI
+
+        Mean                                 1.000
+        Std Dev                              0.000
+        Number of successful computations       10
+
+        Cumulative Distribution Function
+           Value    Function Value
+           0.990       0.000
+           0.980       0.000
+           0.950       0.000
+           0.900       0.000
+           0.800       0.000
+           0.700       0.000
+           0.500       0.000
+           0.300       0.000
+           0.200       0.000
+           0.100       0.000
+           0.050       0.000
+           0.020       0.000
+           0.010       0.000
+
+SRMR (Standardized Root Mean Square Residual)
+
+        Mean                                 0.000
+        Std Dev                              0.000
+        Number of successful computations       10
+
+        Cumulative Distribution Function
+           Value    Function Value
+           0.990       1.000
+           0.980       1.000
+           0.950       1.000
+           0.900       1.000
+           0.800       1.000
+           0.700       1.000
+           0.500       1.000
+           0.300       1.000
+           0.200       1.000
+           0.100       1.000
+           0.050       1.000
+           0.020       1.000
+           0.010       1.000
+
+
+MODEL RESULTS
+
+                                                    Two-Tailed   Rate of
+                    Estimate       S.E.  Est./S.E.    P-Value    Missing
+
+ LOG_EARN ON
+    MALE               0.367      0.025     14.698      0.000      0.000
+
+ Intercepts
+    LOG_EARN          10.045      0.017    587.007      0.000      0.000
+
+ Residual Variances
+    LOG_EARN           0.539      0.027     20.324      0.000      0.000
+
+
+QUALITY OF NUMERICAL RESULTS
+
+     Average Condition Number for the Information Matrix      0.971E-02
+       (ratio of smallest to largest eigenvalue)
+
+
+CONFIDENCE INTERVALS OF MODEL RESULTS
+
+                  Lower .5%  Lower 2.5%    Lower 5%    Estimate    Upper 5%  Upper 2.5%   Upper .5%
+
+ LOG_EARN ON
+    MALE             0.302       0.318       0.326       0.367       0.408       0.416       0.431
+
+ Intercepts
+    LOG_EARN        10.001      10.012      10.017      10.045      10.073      10.079      10.089
+
+ Residual Variances
+    LOG_EARN         0.470       0.487       0.495       0.539       0.582       0.591       0.607
+
+
+TECHNICAL 1 OUTPUT
+
+
+     PARAMETER SPECIFICATION
+
+
+           NU
+              LOG_EARN      MALE
+              ________      ________
+                  0             0
+
+
+           LAMBDA
+              LOG_EARN      MALE
+              ________      ________
+ LOG_EARN           0             0
+ MALE               0             0
+
+
+           THETA
+              LOG_EARN      MALE
+              ________      ________
+ LOG_EARN           0
+ MALE               0             0
+
+
+           ALPHA
+              LOG_EARN      MALE
+              ________      ________
+                  1             0
+
+
+           BETA
+              LOG_EARN      MALE
+              ________      ________
+ LOG_EARN           0             2
+ MALE               0             0
+
+
+           PSI
+              LOG_EARN      MALE
+              ________      ________
+ LOG_EARN           3
+ MALE               0             0
+
+
+     STARTING VALUES
+
+
+           NU
+              LOG_EARN      MALE
+              ________      ________
+                0.000         0.000
+
+
+           LAMBDA
+              LOG_EARN      MALE
+              ________      ________
+ LOG_EARN       1.000         0.000
+ MALE           0.000         1.000
+
+
+           THETA
+              LOG_EARN      MALE
+              ________      ________
+ LOG_EARN       0.000
+ MALE           0.000         0.000
+
+
+           ALPHA
+              LOG_EARN      MALE
+              ________      ________
+               10.232         0.508
+
+
+           BETA
+              LOG_EARN      MALE
+              ________      ________
+ LOG_EARN       0.000         0.000
+ MALE           0.000         0.000
+
+
+           PSI
+              LOG_EARN      MALE
+              ________      ________
+ LOG_EARN       0.286
+ MALE           0.000         0.250
+
+
+     Beginning Time:  23:11:33
+        Ending Time:  23:11:34
+       Elapsed Time:  00:00:01
+
+
+
+MUTHEN & MUTHEN
+3463 Stoner Ave.
+Los Angeles, CA  90066
+
+Tel: (310) 391-9971
+Fax: (310) 391-8971
+Web: www.StatModel.com
+Support: Support@StatModel.com
+
+Copyright (c) 1998-2020 Muthen & Muthen

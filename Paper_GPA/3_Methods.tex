@@ -2,23 +2,21 @@
 
 \subsection{Sample}
 
-Year 10 students' GPA (\textit{grunnskolepoeng}) and teacher-assigned grades (\textit{standpunktkarakter}) were extracted from the Norwegian register for the administrative year ending in June 2019 (\textit{avgangdato} = 201906). Attainment records were subsequently re-formatted with each row representing one candidate and each column being one subject. This process yielded 64,918 students and 200 subjects.
+Year 10 students' GPA (\textit{grunnskolepoeng}) and teacher-assigned grades (\textit{standpunktkarakter}) were extracted from the Norwegian register for the administrative year ending in June 2019 (\textit{avgangdato} = 201906). Attainment records were subsequently re-formatted with each row representing one candidate and each column being one subject, leading to 64,918 students and 200 subjects.
 
-Under the Norwegian education system, students shall complete 13 compulsory subjects as well as electives. This study focuses on these compulsory subjects but excludes one course ``Norwegian as a Second Language'' due to large number of missings and its sensitivity to factors such as candidates' native languages. We apply equal treatment to courses instructed in Norwegian and in Sami language by merging these records. Twelve subjects are retained for our analysis: Written Norwegian (NORW), Oral Norwegian (NORO), Written English (ENGW), Oral English (ENGO), Mathematics (MATH), Natural Sciences (NATS), Social Sciences (SOCS), Religion (RELI), Music (MUSI), Arts and Handcraft (HAND), Food and Health (FOOD), and Physical Education (PHED). After dropping students without valid GPA records (data loss $n^-= 4,300$ cases, loss rate $r^- = 6.62\%$), we impose the selection criteria a) four or more records among NORW, NORO, ENGW, ENGO, MATH, NATS, SOCS ($n^- = 1,101$, $r^- = 1.82\%$), and b) three or more among RELI, MUSI, HAND, FOOD and PHED ($n^-= 1,787$, $r^- = 3\%$) in order to retain only cases with more observed information than missings. The final data set contains $n = 57,730$ students and $i = 12$ subjects. At this stage, the existence of missing data no longer poses any problems for our analyses thanks to sufficient overlap across subjects in the score matrix. The ability to deal with incomplete data is one major advantage of using the Rasch model for studying inter-subject comparability \parencite{he:2018}.
-
-
+Under the Norwegian education system, students shall complete 13 compulsory subjects as well as electives. This study focuses on these compulsory subjects but excludes one course ``Norwegian as a Second Language'' due to large number of missings and its sensitivity to factors such as candidates' native languages. We apply equal treatment to courses instructed in Norwegian and in Sami language by merging these records, with highest grades prevailing in cases where results from both instruction languages were available. Twelve subjects are retained for our analysis: Written Norwegian (NORW), Oral Norwegian (NORO), Written English (ENGW), Oral English (ENGO), Mathematics (MATH), Natural Sciences (NATS), Social Sciences (SOCS), Religion (RELI), Music (MUSI), Arts and Handcraft (HAND), Food and Health (FOOD), and Physical Education (PHED). After dropping students without valid GPA records (data loss $n^-= 4,300$ cases, loss rate $r^- = 6.62\%$), we impose the selection criteria a) four or more records among NORW, NORO, ENGW, ENGO, MATH, NATS, SOCS ($n^- = 1,101$, $r^- = 1.82\%$), and b) three or more among RELI, MUSI, HAND, FOOD and PHED ($n^-= 1,787$, $r^- = 3\%$) in order to retain only cases with more observed information than missings. The final data set contains $n = 57,730$ students and $i = 12$ subjects. At this stage, the existence of missing data no longer poses any problems for our analyses thanks to sufficient overlap across subjects in the score matrix. %The ability to deal with incomplete data is one major advantage of using the Rasch model for studying inter-subject comparability \parencite{he:2018}.
 
 \subsubsection{Generalised Partial Credit Model (GPCM)}
 
-A unidemensional generalised partial credit model \parencite{muraki:1992} with the probability that Candidate $n$'s score in Subject $i$ ($x_{ni}$) being Grade $j$ ($j=0, \dots, m$) is given by
+A unidimensional generalised partial credit model \parencite{muraki:1992} with the probability that Candidate $n$'s score in Subject $i$ ($x_{ni}$) being Grade $j$ ($j=0, \dots, m$) is given by
 \begin{equation}\label{eqn:gpcm}
     p \left( x_{ni}=j | d_{ni} = 1; \theta_n \right) = \frac{\exp{j \alpha_i \theta_n - \sum_{h=1}^j \beta_{ih}} }{ 1 + \sum_{h=1}^m \exp{h \alpha_i \theta_n - \sum_{k=1}^h \beta_{ik}} },
 \end{equation}
-where $\theta_n$ is the unidemensional proficiency parameter that represents the overall proficiency of Candidate $n$.
+where $\theta_n$ is the unidimensional proficiency parameter that represents the overall proficiency of Candidate $n$.
 
 \subsubsection{Log-likelihood}
 
-In MML, a likelihood function ($\ell$) is maximised where the candidates' proficiency parameters ($\theta$) are integrated out of the likelihood. The marginal log-likelihood for a unidemensional GPCM is given by
+In MML, a likelihood function ($\ell$) is maximised where the candidates' proficiency parameters ($\theta$) are integrated out of the likelihood. The marginal log-likelihood for a unidimensional GPCM is given by
 \begin{equation}\label{eqn:ll}
     \ell_\text{unidimensional} = \sum_p \sum_{n | p} \log \int \prod_i p( x_{ni} | d_{ni}; \theta ) g(\theta; \mu_p, \sigma^2) \dd \theta,
 \end{equation}
@@ -31,11 +29,11 @@ There exists strong believes among educational scientists that learners' profici
     p \left( x_{ni} = j | d_{ni} = 1; \m{\theta}_n \right) =
     \frac{ \exp{ j \left( \sum_{f=1}^F \alpha_{if} \theta_{nf} \right) - \sum_{h=1}^j \beta_{ih} } }{ 1 + \sum_{h=1}^m \exp{ h \left( \sum_{f=1}^F \alpha_{if} \theta_{nf} \right) - \sum_{k=1}^h \beta_{ik} } }.
 \end{equation}
-with $\m{\theta}_n$ following a multivariate normal distribution with mean $\m{\mu}_p$ and variance-covariance matrix $\m{\Sigma}$. Similar to the unidemensional case, \cref{eqn:mgpcm} is identified by setting $\m{\mu}_p=\m{0}$ and $\m{\Sigma} = \m{I}$ the identity matrix. The log-likelihood of a multidimensional GPCM then becomes:
+with $\m{\theta}_n$ following a multivariate normal distribution with mean $\m{\mu}_p$ and variance-covariance matrix $\m{\Sigma}$. Similar to the unidimensional case, \cref{eqn:mgpcm} is identified by setting $\m{\mu}_p=\m{0}$ and $\m{\Sigma} = \m{I}$ the identity matrix. The log-likelihood of a multidimensional GPCM then becomes:
 \begin{equation}\label{eqn:mll}
     \ell_\text{multidimensional} = \sum_{p} \sum_{n | p} \log \int \cdots \int \prod_i p( x_{ni} | d_{ni}; \m{\theta} ) g( \m{\theta}; \m{\mu}_p, \m{\Sigma} ) \dd \m{\theta},
 \end{equation}
-with each component sharing similar interpretations to the unidemensional counterpart in \cref{eqn:ll}.
+with each component sharing similar interpretations to the unidimensional counterpart in \cref{eqn:ll}.
 
 \subsection{Interaction between Subject Choice and Proficiency}
 

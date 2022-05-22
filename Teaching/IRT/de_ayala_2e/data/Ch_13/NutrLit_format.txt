@@ -1,6 +1,0 @@
-Format: I4,1X,I4,1X, I2,1X,I2,1X, 10I1
-person, person_id,  unitID,  Predictor, item_responses (10 items)
-
-For 2-level person is the case number (1-1000)
-For 3-level person_id is the case number w/i educator (i.e., 1-50)
-

@@ -2,47 +2,16 @@
 
 \subsection{Population}
 
-This study selects the entire cohort of Norwegian Year 10 students graduating in 2019 as its targeted population. Students' GPA (\textit{grunnskolepoeng}), teacher-assigned grades (\textit{standpunktkarakter}), as well as written (\textit{SKR}) and oral (\textit{MUN}) exam grades were extracted from the Norwegian register. This data source is unique because it is the \emph{population}, not a sample, that is the subject of our study.
+This study retains the entire cohort of Norway's Year 10 students graduating in 2019 as its targeted population. Students' GPA (\textit{grunnskolepoeng}), teacher-assigned grades (\textit{standpunktkarakter}), as well as written (\textit{SKR}) and oral (\textit{MUN}) exam grades were extracted from the national register. This data source is unique because it is the \emph{population}, rather than samples, that forms our unit of analysis. Attainment records were then re-shaped into the format that each candidate occupies one row and each subject is represented by one column. This process led to a preliminary data set of 64,918 students and 200 subjects. Next, $4,300$ students without valid GPA records were excluded from subsequent analyses, representing a loss rate of $6.62\%$. Seventeen subjects were retained based on these inclusion criteria:
 
-Attainment records were subsequently re-formatted with each row representing one candidate and each column being one subject, leading to 64,918 students and 200 subjects. Students without valid GPA records were removed from the data set (data loss $n^-= 4,300$ cases, loss rate $r^- = 6.62\%$).
+\subsubsection{Teacher-assigned Grades (12 subjects)}
 
-Under the Norwegian education system, students shall complete 13 compulsory subjects as well as electives. For teacher-assigned grades, this study focuses on these compulsory subjects with one exclusion ``Sidem{\aa}l''.\footnote{Norway has two official written language forms: Bokm{\aa}l and Nynorsk, with the former being the dominant form in national media. Students growing up in one written form must enroll the other as their Sidem{\aa}l, unless Norwegian is not their native language. Nynorsk users tend to have easier time in Sidem{\aa}l due to existing exposure to Bokm{\aa}l. Bokm{\aa}l users, on the other hand, find Nynorsk more challenging while fulfilling Sidem{\aa}l. Since this subject contains two sub-cohorts with very different difficulty profiles, we opt not to include Sidem{\aa}l in our analyses.} We applied equal treatment to courses instructed in Norwegian and in Sami language by merging these records.\footnote{If academic results from both instruction languages were available, we retain the higher grades during merging.} Twelve teacher-assigned grades were retained for our analysis: Written Norwegian (NORW), Oral Norwegian (NORO), Written English (ENGW), Oral English (ENGO), Mathematics (MATH), Natural Sciences (NATS), Social Sciences (SOCS), Religion (RELI), Music (MUSI), Arts and Handcraft (HAND), Food and Health (FOOD), and Physical Education (PHED).
+Under the Norwegian education system, Year 10 students shall complete 13 compulsory subjects as well as electives. This study included all compulsory subjects except for Sidem{\aa}l.\footnote{The Norwegian language has two official written forms: Bokm{\aa}l and Nynorsk, with the former being more prevalent in the media. Students growing up in one written form must enroll the other as their Sidem{\aa}l, unless Norwegian is not their native language. Nynorsk users tend to have easier time in Sidem{\aa}l due to existing exposure to Bokm{\aa}l. Bokm{\aa}l users, on the other hand, find Nynorsk more challenging while fulfilling Sidem{\aa}l. Since Sidem{\aa}l contains two sub-cohorts with distinct difficulty profiles, we opt not to include this subject in our analyses.} We applied equal treatment to courses instructed in Norwegian and in Sami language by merging these records.\footnote{For example, \href{https://www.udir.no/kl06/nat0010}{NAT0010 Naturfag 10. {\aa}rstrinn} and \href{https://www.udir.no/kl06/nat0020}{NAT0020 Naturfag, samisk plan, 10. {\aa}rstrinn} were merged into one subject Natural Sciences. If academic results were available from both instruction languages, we retained the higher grades during merging.} Twelve teacher-assigned grades were included for our analysis: Written Norwegian (NORW), Oral Norwegian (NORO), Written English (ENGW), Oral English (ENGO), Mathematics (MATH), Natural Sciences (NATS), Social Sciences (SOCS), Religion (RELI), Music (MUSI), Arts and Handcraft (HAND), Food and Health (FOOD), and Physical Education (PHED).
 
-At this stage, the existence of missing data no longer poses any problems for our analyses thanks to sufficient overlap across subjects in the score matrix. The ability to deal with incomplete data is one major advantage of using the Rasch model for studying inter-subject comparability \parencite{he:2018}.
+\subsubsection{Written Exam Grades (3 subjects)}
 
-\subsubsection{Generalised Partial Credit Model (GPCM)}
+Norway uses a lottery draw to randomly assign Year 10 students to participate in \emph{one} of the following three written exams: Norwegian (E-NORW), English (E-ENGW) and mathematics (E-MATH). This ``planned missingness'' implies that although numeral in quantity, the unobserved exam grades can be safely modelled under the missing completely at random (MCAR) assumption \parencite{little:2019}.\footnote{Even if the lottery is less than perfectly random, Rasch models are still valid under the weaker assumption of missing at random (MAR), as long as one is satisfied that missing propensities are unrelated to item or person parameters \parencite{molenaar:1995}.} Rasch models have a major advantage for handling missing values thanks to the sufficient overlap across subjects in the score matrix \parencite{he:2018}.
 
-A unidimensional generalised partial credit model \parencite{muraki:1992} with the probability that Candidate $n$'s score in Subject $i$ ($x_{ni}$) being Grade $j$ ($j=0, \dots, m$) is given by
-\begin{equation}\label{eqn:gpcm}
-    p \left( x_{ni}=j | d_{ni} = 1; \theta_n \right) = \frac{\exp{j \alpha_i \theta_n - \sum_{h=1}^j \beta_{ih}} }{ 1 + \sum_{h=1}^m \exp{h \alpha_i \theta_n - \sum_{k=1}^h \beta_{ik}} },
-\end{equation}
-where $\theta_n$ is the unidimensional proficiency parameter that represents the overall proficiency of Candidate $n$.
+\subsubsection{Oral Exam Grades (2 subjects)}
 
-\subsubsection{Log-likelihood}
-
-In MML, a likelihood function ($\ell$) is maximised where the candidates' proficiency parameters ($\theta$) are integrated out of the likelihood. The marginal log-likelihood for a unidimensional GPCM is given by
-\begin{equation}\label{eqn:ll}
-    \ell_\text{unidimensional} = \sum_p \sum_{n | p} \log \int \prod_i p( x_{ni} | d_{ni}; \theta ) g(\theta; \mu_p, \sigma^2) \dd \theta,
-\end{equation}
-where $x_{ni}$ is the observed grade, $p( \cdot )$ is equal to \cref{eqn:gpcm} evaluated at $x_{ni}$ if $d_{ni}=1$, and $p( \cdot ) = 1$ if $d_{ni} = 0$. In addition, $g(\theta; \mu_p, \sigma^2)$ is the normal pdf with mean $\mu_p$ and variance $\sigma^2$. The model can be identified by choosing a standard normal $\mathcal{N}(0,1)$ \parencite{korobko:2008}.
-
-\subsubsection{Multidimensionality}
-
-There exists strong believes among educational scientists that learners' proficiency is multidimensional, such as one proficiency factor for STEM subjects, for example, and another one for languages. If $F$ proficiency dimensions are required to model the grades, the proficiency can be represented by a vector of proficiency parameters $\m{\theta}_n=\left(\theta_{n1}, \cdots, \theta_{nF}\right)\Ts$ with the corresponding GPCM:
-\begin{equation}\label{eqn:mgpcm}
-    p \left( x_{ni} = j | d_{ni} = 1; \m{\theta}_n \right) =
-    \frac{ \exp{ j \left( \sum_{f=1}^F \alpha_{if} \theta_{nf} \right) - \sum_{h=1}^j \beta_{ih} } }{ 1 + \sum_{h=1}^m \exp{ h \left( \sum_{f=1}^F \alpha_{if} \theta_{nf} \right) - \sum_{k=1}^h \beta_{ik} } }.
-\end{equation}
-with $\m{\theta}_n$ following a multivariate normal distribution with mean $\m{\mu}_p$ and variance-covariance matrix $\m{\Sigma}$. Similar to the unidimensional case, \cref{eqn:mgpcm} is identified by setting $\m{\mu}_p=\m{0}$ and $\m{\Sigma} = \m{I}$ the identity matrix. The log-likelihood of a multidimensional GPCM then becomes:
-\begin{equation}\label{eqn:mll}
-    \ell_\text{multidimensional} = \sum_{p} \sum_{n | p} \log \int \cdots \int \prod_i p( x_{ni} | d_{ni}; \m{\theta} ) g( \m{\theta}; \m{\mu}_p, \m{\Sigma} ) \dd \m{\theta},
-\end{equation}
-with each component sharing similar interpretations to the unidimensional counterpart in \cref{eqn:ll}.
-
-\subsection{Interaction between Subject Choice and Proficiency}
-
-Under the advisory of \textcite{korobko:2008}, a latent variable $\theta^+$ is introduced to reflect student's propensity of choosing a particular subject. Augmenting $\theta^+$ to $\m{\theta}=\left(\theta_1, \cdots, \theta_F\right)\Ts$ yields $\m{\theta}^+=\left(\theta_1, \cdots, \theta_F, \theta^+\right)\Ts$, with a corresponding marginal likelihood:
-\begin{equation}\label{eqn:lli}
-    \ell_\text{interaction} = \sum_p \sum_{ n | p} \log \int \cdots \int \prod_i \left[ p \left( x_{ni} | d_{ni}; \m{\theta} \right) p \left( d_{ni}; \theta^+ \right) \right] g(\m{\theta}^+; \m{\mu}_p, \m{\Sigma}) \dd \m{\theta}^+ .
-\end{equation}
-
+Year 10's oral exams consist of the same three subjects as in written exams, plus a wide selection such as natural and social sciences, with students being randomly assigned into \emph{one} oral exam by lottery. In order to better match teacher-assigned grades, only Oral Norwegian (E-NORO) and Oral English (E-ENGO) were included in this study. Since students are spread thinly across many oral exam subjects, E-NORO and E-ENGO appeared more sparse than their teacher-assigned counterparts, leading to larger confidence intervals in subsequent analyses.

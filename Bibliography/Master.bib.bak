@@ -6334,9 +6334,41 @@
   doi     = {10.1186/s40536-021-00118-0},
   journal = {Large-scale Assessments in Education},
   number  = {1},
-  title   = {Financial literacy among Finnish adolescents in {PISA} 2018: the role of financial learning and dispositional factors},
+  title   = {Financial literacy among Finnish adolescents in {PISA} 2018: The role of financial learning and dispositional factors},
   volume  = {9},
   year    = {2021},
+}
+
+@InProceedings{niss:2003,
+  author    = {Mogens Niss},
+  booktitle = {{3rd} {Mediterranean} conference on mathematical education},
+  date      = {2003},
+  title     = {Mathematical competencies and the learning of mathematics: The {Danish} {KOM} project},
+  url       = {http://www.math.chalmers.se/Math/Grundutb/CTH/mve375/1213/docs/KOMkompetenser.pdf},
+  file      = {Mathematical competencies and the learning of mathematics\: The Danish KOM project:Niss (2003).pdf:PDF},
+}
+
+@Article{niss:2019,
+  author  = {Mogens Niss and Tomas H{\o}jgaard},
+  doi     = {10.1007/s10649-019-09903-9},
+  journal = {Educational Studies in Mathematics},
+  number  = {1},
+  pages   = {9--28},
+  title   = {Mathematical competencies revisited},
+  volume  = {102},
+  year    = {2019},
+  file    = {Mathematical competencies revisited:Niss & Hojgaard (2019).pdf:PDF},
+}
+
+@InBook{niss:2014,
+  author    = {Mogens Niss},
+  booktitle = {Assessing mathematical literacy: The {PISA} experience},
+  doi       = {10.1007/978-3-319-10121-7_2},
+  editor    = {Kaye Stacey and Ross Turner},
+  pages     = {35--55},
+  publisher = {Springer},
+  title     = {Mathematical competencies and {PISA}},
+  year      = {2014},
 }
 
 @Comment{jabref-meta: databaseType:biblatex;}

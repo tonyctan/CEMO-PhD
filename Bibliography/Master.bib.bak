@@ -6369,6 +6369,16 @@
   publisher = {Springer},
   title     = {Mathematical competencies and {PISA}},
   year      = {2014},
+  file      = {Mathematical competencies and PISA:Niss (2014).pdf:PDF},
+}
+
+@Article{chen:2022,
+  author  = {Yi Chen and Jingru Zhang and Yi Yang and Young-Sun Lee},
+  doi     = {10.1111/jedm.12337},
+  journal = {Journal of Educational Measurement},
+  pages   = {1--19},
+  title   = {Latent Space Model for Process Data},
+  year    = {2022},
 }
 
 @Comment{jabref-meta: databaseType:biblatex;}

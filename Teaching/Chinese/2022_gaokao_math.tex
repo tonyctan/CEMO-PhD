@@ -1,0 +1,62 @@
+% !TEX encoding = UTF-8
+% !TEX program = lualatex
+\documentclass[a4paper,12pt]{article}
+
+\usepackage{luatexja-fontspec}
+\setmainjfont{FandolSong}
+
+\usepackage{xcolor}
+
+\title{《2022年高考数学》}
+
+\begin{document}
+\maketitle
+
+%在 Lua\TeX{} 中正常地使用中文。获得自动的\textbf{字体选择}，标点“压缩”，以及正确的断行处理等特性。
+\setcounter{section}{19}
+
+\textbf{20. （12分）}
+
+一医疗团队为研究某地的一种地方性疾病与当地居民的卫生习惯（卫生习惯分为良好和不够良好两类）的关系，在已患该病的病例中随机调查了100例（成为病例组），同时在未患该疾病的人群中随机调查了100人（称为对照组），得到如下数据：
+\begin{center}
+    \begin{tabular}{c c c}
+    \hline
+                & 不够良好 & 良好 \\
+    \hline
+        病例组  & 40    & 60 \\
+        对照组  & 10    & 90 \\
+    \hline
+    \end{tabular}
+\end{center}
+
+（1）能否有99\%的把握认为患该疾病群体与未患该疾病群体的卫生习惯有差异？
+
+\color{blue}
+解：
+
+本题的统计学问题是：“病例组”和“对照组”（横行）是否与“良好”和“不够良好”的卫生习惯（纵列）相互独立。
+
+为简便起见，按第（2）小题的标记，将事件“选到的人卫生习惯不够良好”简记为$A$，该事件的互补事件$\overline{A}$则为“选到的人卫生习惯良好”。相应地，将事件“选到的人患有该疾病”简记为$B$，“选到的人未患有该疾病”为$\overline{B}$。
+
+分布表因此可简记为：
+
+\begin{tabular}{c c c}
+    \hline
+                & $A$ & $\overline{A}$ \\
+    \hline
+        $B$  & 40    & 60 \\
+        $\overline{B}$  & 10    & 90 \\
+    \hline
+\end{tabular}
+$\Rightarrow$
+\begin{tabular}{c c c c}
+    \hline
+                & $A$ & $\overline{A}$ & \\
+    \hline
+        $B$  & 40    & 60 & \textcolor{red}{100}\\
+        $\overline{B}$  & 10    & 90 & \textcolor{red}{100}\\
+    \hline
+        & \textcolor{red}{50} & \textcolor{red}{150} & \textcolor{red}{200}
+\end{tabular}
+
+\end{document}

@@ -6,7 +6,6 @@
 \usepackage{luatexja-fontspec}
 \setmainjfont{FandolSong}
 
-
 % Adjust space before and after tables
 \usepackage{verbatimbox}
 % Enable text colours
@@ -26,12 +25,12 @@
 \renewcommand{\bar}[1]{\overline{#1}}
 
 \title{《2022年高考数学》}
+\author{}
 \date{}
 
 \begin{document}
 \maketitle
 
-%在 Lua\TeX{} 中正常地使用中文。获得自动的\textbf{字体选择}，标点“压缩”，以及正确的断行处理等特性。
 \setcounter{section}{19}
 
 \textbf{20. （12分）}
@@ -55,7 +54,7 @@
 
 \begin{center}
     \begin{tabular}{c | c c c}
-        $\p{\chi^2_1 \geq k}$ & 0.050 & 0.010 & 0.001\\
+        $\p{\chi^2_1 \geq k}$ & .05 & .01 & .001\\
     \hline
         $k$  & 3.841 & 6.635 & 10.828\\
     \end{tabular}
@@ -88,7 +87,7 @@ $\chi^2$独立性假设检验可以回答这个问题。
     \right.
 \end{equation*}
 
-\textbf{第二步：计算统计量$\chi^2$（套公式）}
+\textbf{第二步：计算检验统计量$\chi^2$（套公式）}
 
 \begin{equation*}
     \begin{aligned}
@@ -102,11 +101,11 @@ $\chi^2$独立性假设检验可以回答这个问题。
 
 自由度$\nu = (\text{行数} - 1) \times (\text{列数} - 1) = (2-1)\times(2-1) = 1$。
 
-查表得$\chi^2_\text{临界}(\nu=1,\alpha=0.010) = 6.635$，即拒绝域为$(6.635,+\infty)$。
+查表得$\chi^2_\text{临界}(\nu=1,\alpha=.01) = 6.635$，即拒绝域为$(6.635,+\infty)$。
 
 \textbf{第四步：判断假设}
 
-由于统计量$\chi^2 = 24$落入拒绝域$(6.635,+\infty)$，故拒绝原假设，继而下结论：在99\%显著水平，有把握认定患该疾病群体与未患该疾病群体的卫生习惯有差异。
+由于检验统计量$\chi^2 = 24$落入拒绝域$(6.635,+\infty)$，故拒绝原假设，继而下结论：在99\%显著水平，有把握认定患该疾病群体与未患该疾病群体的卫生习惯有差异。
 
 \newpage
 

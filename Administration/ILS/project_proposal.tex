@@ -1,0 +1,121 @@
+\documentclass[
+    % Options for apa7
+    a4paper,                % Paper size
+    11pt,                   % Font size
+    stu,                    % Format as assignment
+    donotrepeattitle,       % Start body text without repeating title
+    floatsintext,           % Insert tables and figures with texts
+    biblatex,               % Use BibLaTeX for references
+    % Options for hyperref
+    colorlinks=true,        % Colour all links
+    linkcolor=red,          % Cross-references in red
+    anchorcolor=black,      % Keep anchors black
+    citecolor=blue,         % In-text-referencs in blue
+    urlcolor=blue,          % DOIs and URLs are in blue
+    bookmarks=true,         % Generate bookmarks for PDF readers
+    bookmarksopen=false,    % Expand all bookmarks as default
+    bookmarksnumbered=true, % Keep section number in bookmarks
+    % Options for xcolor
+    dvipsnames              % Use colour BrickRed and PineGreen
+]{apa7}
+
+% Specify absolute path to the tt.sty file, depending on the operating system
+\usepackage{ifplatform}
+\ifwindows
+    \usepackage{M:/pc/Dokumenter/tt}
+\else
+    \usepackage{/home/tony/uio/pc/Dokumenter/tt} % Must not use ~ for home directory. Spell in full.
+\fi
+
+\usepackage{amssymb} % Check mark
+\usepackage{rotating} % Rotate page to landscape
+
+\title{Evalutaion of Norway's 2020 Curriculum Reform using PISA Data}
+\authorsnames{Tony C. A. Tan}
+\authorsaffiliations{{Department of Teacher Education and School Research, University of Oslo}}
+\course{Project Proposal}
+\professor{Dr Andreas Pettersen \& Prof Lovisa Sumpter}
+\duedate{6 July 2022}
+
+\begin{document}
+\maketitle
+
+% Restart page number at 1. Delete coverpage.
+\setcounter{page}{1}
+
+\section{Introduction and Rationale}
+
+The curriculum revision (\textit{fagfornyelsen}) in 2020 (\textit{kunnskapsl{\o}ftet} 2020, K20) marks a major change in how students are taught in Norway \parencite{udir:2020}. It was the first time a substantial reformation of curricula was implemented since the 2006 reform (\textit{kunnskapsl{\o}ftet} 2006, K06). In mathematics, one major change was the establishment of core elements (\textit{kjerneelementer}) across all curricula spanning from Year 1 to 10. These core elements, namely, inquiry and problem solving, modelling and applications, reasoning and argumentation, representation and communication, abstraction and generalisations, and mathematical domains, to a large degree resemble the PISA mathematics framework \parencite{oecd:2018}---both share genesis with the eight competencies firstly proposed by Danish mathematician and educator Mogens Niss \parencite{niss:2003,niss:2011,niss:2019}.
+
+The implementation of the core elements in K20 and their close alignment with the PISA framework provides a golden opportunity to study Norwegian students' learning outcomes using one cycle of PISA \emph{before}, and one \emph{after}, the introduction of K20. Since mathematics was the major domain in PISA 2012 and once again in 2022, these two time points may serve as the pre-test and post-test in an ``experiment'' with K20 being the ``treatment'' \parencite{shadish:2002}. Two factors, however, complicate this quasi-experimental interpretation. First, K20 was implemented \emph{concurrently} with the COVID-19 school closures and the resultant home schooling. Separating effects attributable to the pandemic from those of K20 is therefore a chief task in this project. Second, PISA employs a cross-sectional rather than longitudinal design, limiting any causal inferences. Yet, PISA data sets, and especially combined with Norwegian register data (e.g., national test results, as well as teacher-assigned and exam grades), are the best data sources available in Norway to study the effect of K20.
+
+Mapping students' knowledge, understanding and skills within these core elements, in particular, \emph{problem solving}, \emph{modelling} and \emph{reasoning}, is important for three reasons. First of all, an in-depth understanding of students' mastery of these key capabilities would provide insight into their command of 21st Century skills \parencite{rizki:2019}. Secondly, \parencite{pettersen:2018,pettersen:2019} \emph{overall} mathematics
+
+\section{Overall Aims and Research Questions}
+
+In this PhD, I wish to address this gap in research and the need to
+
+\section{Theoretical Framework}
+
+%//mark This section starts by providing an overview of the Norwegian education system, and curricular changes.
+%//mark It then provides a brief overview of K20.
+%//mark A theoretical framework for mathematics competencies in general, with specific overviews of previous research on:
+%//mark - Problem solving
+%//mark - Modelling, and
+%//mark - Reasoning
+%//mark constitutes the last and main part of the theoretical framework.
+
+\subsection{The Norwegian Education System}
+
+\subsection{Norway's Recent Curricular Changes}
+
+\subsection{Mathematical Competencies}
+
+\subsubsection{Mathematical Modelling}
+
+\subsubsection{Mathematical Reasoning and Argumentation}
+
+\subsubsection{Problem Solving}
+
+\section{Methodology}
+
+\subsection{Data and Sample}
+
+\subsection{Methods of Analyses}
+
+\section{Articles}
+
+\subsection{Article 1}
+
+\subsection{Article 2}
+
+\subsection{Article 3}
+
+\subsection{Article 4}
+
+\section{Progress Plan}
+
+\begin{table}[htbp]
+    \begin{threeparttable}
+    \caption{PhD Candidacy Timeframe}
+    \label{tab:timeframe}
+    \begin{tabular}{lcccccccc}
+        \toprule
+        \multicolumn{1}{c}{Milestone} & 2022H & 2023V & 2023H & 2024V & 2024H & 2025V & 2025H & 2026V \\
+        \midrule
+        Coursework & $\checkmark$     & $\checkmark$     & $\checkmark$     & $\checkmark$      & $\checkmark$      &       &       &  \\
+        Align K20 and PISA & $\checkmark$     &       &       &       &       &       &       &  \\
+        Merge with register data & $\checkmark$     & $\checkmark$     &       &       &       &       &       &  \\
+        Article 1 &       & $\checkmark$     & $\checkmark$     &       &       &       &       &  \\
+        Article 2 &       &       & $\checkmark$     & $\checkmark$     & $\checkmark$     &       &       &  \\
+        Article 3 &       &       &       &       & $\checkmark$     & $\checkmark$     & $\checkmark$     &  \\
+        Article 4 &       &       &       &       &       & $\checkmark$     & $\checkmark$     &  \\
+        Kappe &       &       &       &       &       &       &       & $\checkmark$ \\
+        \bottomrule
+        \end{tabular}
+    \end{threeparttable}
+\end{table}
+
+\printbibliography
+
+\end{document}

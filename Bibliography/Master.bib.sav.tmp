@@ -6444,4 +6444,180 @@
   doi     = {10.1006/jmps.1999.1283},
   journal = {Journal of Mathematical Psychology},
   number  = {1},
-  pages  
+  pages   = {190--204},
+  title   = {The importance of complexity in model selection},
+  volume  = {44},
+  year    = {2000},
+  file    = {The importance of complexity in model selection:Myung (2000).pdf:PDF},
+}
+
+@Article{laar:2022,
+  author  = {Saskia {van Laar} and Johan Braeken},
+  doi     = {10.1080/10705511.2022.2050730},
+  journal = {Structural Equation Modeling: A Multidisciplinary Journal},
+  pages   = {1--9},
+  title   = {Caught off base: A note on the interpretation of incremental fit indices},
+  volume  = {{Ahead-of-print}},
+  year    = {2022},
+  file    = {Caught off base\: A note on the interpretation of incremental fit indices:van Laar & Braeken (2022).pdf:PDF},
+  sortkey = {laar, van Saskia},
+}
+
+@Article{maydeuolivares:2005,
+  author  = {Albert {Maydeu-Olivares} and Harry Joe},
+  doi     = {10.1198/016214504000002069},
+  journal = {Journal of the American Statistical Association},
+  number  = {471},
+  pages   = {1009--1020},
+  title   = {Limited- and full-information estimation and goodness-of-fit testing in $2^n$ contingency tables: A unified framework},
+  volume  = {100},
+  year    = {2005},
+  file    = {limited- and full-information estimation and goodness-of-fit testing in 2n contingency tables\: A unified framework:Maydeu-Olivares & Joe (2005).pdf:PDF},
+}
+
+@Article{maydeuolivares:2013,
+  author  = {Alberto {Maydeu-Olivares}},
+  doi     = {10.1080/15366367.2013.831680},
+  journal = {Measurement: Interdisciplinary Research \& Perspective},
+  number  = {3},
+  pages   = {71--101},
+  title   = {Goodness-of-fit assessment of item response theory models},
+  volume  = {11},
+  year    = {2013},
+  file    = {Goodness-of-fit assessment of item response theory models:Maydeu-Olivares (2013).pdf:PDF},
+}
+
+@Article{bryant:2000,
+  author  = {Peter G. Bryant and Olga I. {Cordero-Bra{\~n}a}},
+  doi     = {10.2307/2685777},
+  journal = {The American Statistician},
+  number  = {4},
+  pages   = {257},
+  title   = {Model selection using the minimum description length principle},
+  volume  = {54},
+  year    = {2000},
+  file    = {Model selection using the minimum description length principle:Bryant & Cordero-Brana (2000).pdf:PDF},
+}
+
+@Article{myung:2006,
+  author  = {Jay I. Myung and Daniel J. Navarro and Mark A. Pitt},
+  doi     = {10.1016/j.jmp.2005.06.008},
+  journal = {Journal of Mathematical Psychology},
+  number  = {2},
+  pages   = {167--179},
+  title   = {Model selection by normalized maximum likelihood},
+  volume  = {50},
+  year    = {2006},
+  file    = {Model selection by normalized maximum likelihood:Myung, Navarro, & Pitt (2006).pdf:PDF},
+}
+
+@Book{niss:2011,
+  author    = {Mogens Niss and Tomas H{\o}jgaard},
+  publisher = {Roskilde Universitet},
+  title     = {Competencies and mathematical learning: Ideas and inspiration for the development of mathematics teaching and learning in {Denmark} \emph{[IMFUFA-tekst: i, om og med matematik og fysik nr. 485]}},
+  url       = {https://rucforsk.ruc.dk/ws/portalfiles/portal/35932281/IMFUFA_485.pdf},
+  file      = {Competencies and mathematical learning\: Ideas and inspiration for the development of mathematics teaching and learning in Denmark:Niss & Hojgaard (2011).pdf:PDF},
+  year      = {2011},
+}
+
+@Book{udir:2020,
+  author    = {{UDIR}},
+  publisher = {Utdanningsdirektoratet},
+  title     = {Fagfornyelsen},
+  url       = {https://www.udir.no/laring-og-trivsel/lareplanverket/fagfornyelsen/},
+  year      = {2020},
+}
+
+@Book{oecd:2018,
+  author    = {{OECD}},
+  publisher = {{OECD Publishing}},
+  title     = {{PISA} 2022 mathematics framework ({Draft})},
+  url       = {https://pisa2022-maths.oecd.org/files/PISA 2022 Mathematics Framework Draft.pdf},
+  file      = {PISA 2022 mathematics framework (Draft):OECD (2018).pdf:PDF},
+  year      = {2018},
+}
+
+@Article{rizki:2019,
+  author  = {L. M. Rizki and N. Priatna},
+  doi     = {10.1088/1742-6596/1157/4/042088},
+  journal = {Journal of Physics: Conference Series},
+  number  = {4},
+  pages   = {Article 042088},
+  title   = {Mathematical literacy as the 21st century skill},
+  volume  = {1157},
+  year    = {2019},
+  file    = {Mathematical literacy as the 21st century skill:/home/tony/uio/pc/Dokumenter/PhD/Articles/Rizki & Priatna (2018).pdf:PDF},
+}
+
+@Article{pettersen:2018,
+  author  = {Andreas Pettersen and Guri A. Nortvedt},
+  doi     = {10.1007/s10763-017-9807-5},
+  journal = {International Journal of Science and Mathematics Education},
+  number  = {5},
+  pages   = {949--965},
+  title   = {Identifying competency demands in mathematical tasks: Recognising what matters},
+  volume  = {16},
+  year    = {2018},
+  file    = {Identifying competency demands in mathematical tasks\: Recognising what matters:/home/tony/uio/pc/Dokumenter/PhD/Articles/Pettersen & Nortvedt (2018).pdf:PDF},
+}
+
+@Article{pettersen:2019,
+  author  = {Andreas Pettersen and Johan Braeken},
+  doi     = {10.1007/s10763-017-9870-y},
+  journal = {International Journal of Science and Mathematics Education},
+  number  = {2},
+  pages   = {405--425},
+  title   = {Mathematical competency demands of assessment items: A search for empirical evidence},
+  volume  = {17},
+  year    = {2019},
+  file    = {Mathematical competency demands of assessment items\: A search for empirical evidence:/home/tony/uio/pc/Dokumenter/PhD/Articles/Pettersen & Braeken (2019).pdf:PDF},
+}
+
+@Article{nortvedt:2018,
+  author  = {Guri A. Nortvedt},
+  doi     = {10.1007/s10212-018-0378-9},
+  journal = {European Journal of Psychology of Education},
+  number  = {3},
+  pages   = {427--444},
+  title   = {Policy impact of {PISA} on mathematics education: The case of {Norway}},
+  volume  = {33},
+  year    = {2018},
+  file    = {Policy impact of PISA on mathematics education\: The case of Norway:/home/tony/uio/pc/Dokumenter/PhD/Articles/Nortvedt (2018).pdf:PDF},
+}
+
+@Book{oecd:2013,
+  author    = {{OECD}},
+  publisher = {{OECD} Publishing},
+  title     = {{PISA} 2012 assessment and analytical framework: Mathematics, reading, science, problem solving and financial literacy},
+  doi       = {10.1787/9789264190511-en},
+  file      = {PISA 2012 assessment and analytical framework\: Mathematics, reading, science, problem solving and financial literacy:OECD (2013).pdf:PDF},
+  year      = {2013},
+}
+
+@Book{oecd:2030,
+  author    = {{OECD}},
+  publisher = {{OECD Publishing}},
+  title     = {The future of education and skills: Education 2030},
+  url       = {https://www.oecd.org/education/2030/E2030 Position Paper (05.04.2018).pdf},
+  file      = {The future of education and skills\: Education 2030:OECD (2018) 2030.pdf:PDF},
+  year      = {2018},
+}
+
+@Article{imsen:2017,
+  author  = {Gunn Imsen and Ulf Blossing and Lejf Moos},
+  doi     = {10.1080/00313831.2016.1172502},
+  journal = {Scandinavian Journal of Educational Research},
+  number  = {5},
+  pages   = {568--583},
+  title   = {Reshaping the {Nordic} education model in an era of efficiency. {Changes} in the comprehensive school project in {Denmark}, {Norway}, and {Sweden} since the millennium},
+  volume  = {61},
+  year    = {2017},
+  file    = {Reshaping the Nordic education model in an era of efficiency. Changes in the comprehensive school project in Denmark, Norway, and Sweden since the millennium:/home/tony/uio/pc/Dokumenter/PhD/Articles/Imsen, Blossing, & Moos (2017).pdf:PDF},
+}
+
+@Comment{jabref-meta: databaseType:biblatex;}
+
+@Comment{jabref-entrytype: presentation: req[doi;author;title;titleaddon;eventtitle;venue;eventdate] opt[subtitle;url]}
+
+�]��ԝ�]���Z�r���(�j̺�Q�8V���Ҧ��*<r������h�h�H��c'��N^�F̠
+�G2��s��Z���Q��o��M�8��5>�1�Ñ���&��Pd����8�bq��-�*E�*�N�4�,����D����l.�v�w7Zg�H�� �T}����}0Ī+���!J��� r}�w#P�W����WMW.��X��÷J߄����F�DK���ut��k��c�2�|��Xm]&�,�=��׉����&Q�0c�ƞ�BTN�6�/~n�:E����s=�S{�R�/眫�(\�V�bp��R�#	<4��n"�.4��(`��E���g���䇗d�)��)�e�\J��>T��??A]ͤ1�yc��2�7�}�s42	i�L{���x���a^�^�

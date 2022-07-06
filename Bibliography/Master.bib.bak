@@ -6633,6 +6633,15 @@
   file      = {Test equating, scaling, and linking\: Methods and practices (3rd ed.):[Book] Kolen & Brennan (2014) Test equating scaling and linking.pdf:PDF},
 }
 
+@Book{deayala:2022,
+  author    = {R. J. {de Ayala}},
+  publisher = {Guilford},
+  title     = {The theory and practice of item response theory},
+  edition   = {2nd ed.},
+  sortkey   = {{Ayala, R. J. de}},
+  year      = {2020},
+}
+
 @Comment{jabref-meta: databaseType:biblatex;}
 
 @Comment{jabref-entrytype: presentation: req[doi;author;title;titleaddon;eventtitle;venue;eventdate] opt[subtitle]}

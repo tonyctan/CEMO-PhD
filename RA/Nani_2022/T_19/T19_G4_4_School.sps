@@ -22,6 +22,25 @@ GET FILE =
     "C:\Users\Tony\Dropbox (UiO)\Nani\2022\T_19\T19_G4_0_Merge_school.sav".
 
 **************************
+** Admin variables **
+**************************
+*1: Country ID - Numeric ISO Code.
+RECODE
+    IDCNTRY
+        (9999999999=-99) (SYSMIS=-99) (MISSING=-99).
+MISSING VALUES
+    IDCNTRY
+        (-99).
+
+*2: School ID.
+RECODE
+    IDSCHOOL
+        (9999=-99) (SYSMIS=-99) (MISSING=-99).
+MISSING VALUES
+    IDSCHOOL
+        (-99).
+
+**************************
 ** School variables **
 **************************
 
@@ -371,6 +390,30 @@ RENAME VARIABLES (
 ** Compound Variables **
 **************************
 
+* Population ID.
+RECODE
+    IDPOP
+        (9=-99) (SYSMIS=-99) (MISSING=-99).
+MISSING VALUES
+    IDPOP
+        (-99).
+
+* Standardized Grade ID.
+RECODE
+    IDGRADER
+        (9=-99) (SYSMIS=-99) (MISSING=-99).
+MISSING VALUES
+    IDGRADER
+        (-99).
+
+* Grade ID.
+RECODE
+    IDGRADE
+        (99=-99) (SYSMIS=-99) (MISSING=-99).
+MISSING VALUES
+    IDGRADE
+        (-99).
+
 * Language of school questionnaire.
 RECODE
     ITLANG_C
@@ -385,6 +428,30 @@ RECODE
         (9999999999=-99) (SYSMIS=-99) (MISSING=-99).
 MISSING VALUES
     LCID_C
+        (-99).
+
+* Weights, adjustments and factors.
+RECODE
+    SCHWGT STOTWGTU WGTADJ1 WGTFAC1
+        (999999=-99) (SYSMIS=-99) (MISSING=-99).
+MISSING VALUES
+    SCHWGT STOTWGTU WGTADJ1 WGTFAC1
+        (-99).
+
+* School-level Jackknife replicate.
+RECODE
+    JKCREP
+        (9=-99) (SYSMIS=-99) (MISSING=-99).
+MISSING VALUES
+    JKCREP
+        (-99).
+
+* School-level Jackknife zone.
+RECODE
+    JKCZONE
+        (99=-99) (SYSMIS=-99) (MISSING=-99).
+MISSING VALUES
+    JKCZONE
         (-99).
 
 * TIMSS construct: Instruction affected by math resource shortage.
@@ -560,17 +627,6 @@ EXECUTE.
 
 * Remove unwanted variable(s).
 DELETE VARIABLES
-    IDCNTRY
-    IDSCHOOL
-    IDPOP
-    IDGRADER
-    IDGRADE
-    SCHWGT
-    STOTWGTU
-    WGTADJ1
-    WGTFAC1
-    JKCREP
-    JKCZONE
     VERSION
     SCOPE
     idbid

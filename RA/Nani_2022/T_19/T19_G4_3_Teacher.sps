@@ -22,6 +22,185 @@ GET FILE =
     "C:\Users\Tony\Dropbox (UiO)\Nani\2022\T_19\T19_G4_0_Merge_teacher.sav".
 
 **************************
+** Admin variables **
+**************************
+*1: Country ID - Numeric ISO Code.
+RECODE
+    IDCNTRY
+        (9999999999=-99) (SYSMIS=-99) (MISSING=-99).
+MISSING VALUES
+    IDCNTRY
+        (-99).
+
+*2: Student Test Booklet.
+RECODE
+    IDBOOK
+        (99=-99) (SYSMIS=-99) (MISSING=-99).
+MISSING VALUES
+    IDBOOK
+        (-99).
+
+*3: School ID.
+RECODE
+    IDSCHOOL
+        (9999=-99) (SYSMIS=-99) (MISSING=-99).
+MISSING VALUES
+    IDSCHOOL
+        (-99).
+
+*4: Class ID.
+RECODE
+    IDCLASS
+        (999999=-99) (SYSMIS=-99) (MISSING=-99).
+MISSING VALUES
+    IDCLASS
+        (-99).
+
+*5: Student ID.
+RECODE
+    IDSTUD
+        (99999999=-99) (SYSMIS=-99) (MISSING=-99).
+MISSING VALUES
+    IDSTUD
+        (-99).
+
+*6: Teacher ID and Link.
+RECODE
+    IDTEALIN
+        (99999999=-99) (SYSMIS=-99) (MISSING=-99).
+MISSING VALUES
+    IDTEALIN
+        (-99).
+
+*7: Teacher ID.
+RECODE
+    IDTEACH
+        (999999=-99) (SYSMIS=-99) (MISSING=-99).
+MISSING VALUES
+    IDTEACH
+        (-99).
+
+*8: Teacher Link Number.
+RECODE
+    IDLINK
+        (99=-99) (SYSMIS=-99) (MISSING=-99).
+MISSING VALUES
+    IDLINK
+        (-99).
+
+*9: Population ID.
+RECODE
+    IDPOP
+        (9=-99) (SYSMIS=-99) (MISSING=-99).
+MISSING VALUES
+    IDPOP
+        (-99).
+
+*10: Standardized Grade ID.
+RECODE
+    IDGRADER
+        (9=-99) (SYSMIS=-99) (MISSING=-99).
+MISSING VALUES
+    IDGRADER
+        (-99).
+
+*11: Grade ID.
+RECODE
+    IDGRADE
+        (99=-99) (SYSMIS=-99) (MISSING=-99).
+MISSING VALUES
+    IDGRADE
+        (-99).
+
+*12: Subject ID.
+RECODE
+    IDSUBJ
+        (9=-99) (SYSMIS=-99) (MISSING=-99).
+MISSING VALUES
+    IDSUBJ
+        (-99).
+
+*13: Subject Code in instrument.
+RECODE
+    ITCOURSE
+        (99=-99) (SYSMIS=-99) (MISSING=-99).
+MISSING VALUES
+    ITCOURSE
+        (-99).
+
+*14: Mathematics Teacher Link.
+RECODE
+    MATSUBJ
+        (99=-99) (SYSMIS=-99) (MISSING=-99).
+MISSING VALUES
+    MATSUBJ
+        (-99).
+
+*15: Science Teacher Link.
+RECODE
+    SCISUBJ
+        (9=-99) (SYSMIS=-99) (MISSING=-99).
+MISSING VALUES
+    SCISUBJ
+        (-99).
+
+*16: Number of Math Teachers for Student.
+RECODE
+    NMTEACH
+        (9=-99) (SYSMIS=-99) (MISSING=-99).
+MISSING VALUES
+    NMTEACH
+        (-99).
+
+*17: Number of Science Teachers for Student.
+RECODE
+    NSTEACH
+        (9=-99) (SYSMIS=-99) (MISSING=-99).
+MISSING VALUES
+    NSTEACH
+        (-99).
+
+*18: Number of Teachers.
+RECODE
+    NTEACH
+        (99=-99) (SYSMIS=-99) (MISSING=-99).
+MISSING VALUES
+    NTEACH
+        (-99).
+
+*19: WEIGHT FOR MATHEMATICS TEACHER DATA.
+RECODE
+    MATWGT
+        (999999=-99) (SYSMIS=-99) (MISSING=-99).
+MISSING VALUES
+    MATWGT
+        (-99).
+
+*20: WEIGHT FOR SCIENCE TEACHER DATA.
+RECODE
+    SCIWGT
+        (999999=-99) (SYSMIS=-99) (MISSING=-99).
+MISSING VALUES
+    SCIWGT
+        (-99).
+
+*20: JACKKNIFE REPLICATE CODE.
+RECODE
+    JKREP
+        (9=-99) (SYSMIS=-99) (MISSING=-99).
+MISSING VALUES
+    JKREP
+        (-99).
+
+*21: JACKKNIFE ZONE.
+RECODE
+    JKZONE
+        (99=-99) (SYSMIS=-99) (MISSING=-99).
+MISSING VALUES
+    JKZONE
+        (-99).
+
+**************************
 ** Teacher variables **
 **************************
 
@@ -1037,28 +1216,6 @@ EXECUTE.
 
 * Remove unwanted variable(s).
 DELETE VARIABLES
-    IDCNTRY
-    IDBOOK
-    IDSCHOOL
-    IDCLASS
-    IDSTUD
-    IDTEALIN
-    IDTEACH
-    IDLINK
-    IDPOP
-    IDGRADER
-    IDGRADE
-    IDSUBJ
-    ITCOURSE
-    MATSUBJ
-    SCISUBJ
-    NMTEACH
-    NSTEACH
-    NTEACH
-    MATWGT
-    SCIWGT
-    JKREP
-    JKZONE
     ASMMAT01
     ASMMAT02
     ASMMAT03

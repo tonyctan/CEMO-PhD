@@ -331,7 +331,7 @@ RENAME VARIABLES (
     ATBG06G ATBG06H ATBG06I ATBG06J ATBG06K ATBG06L
     =
     STchUndT STchSucT STchExpT STchAbiT SParInvT SParComT
-    SparExpT SParSupT SStudDesT SRchGoalT SResPeerT ScollabT
+    SparExpT SParSupT SStudDesT SRchGoalT SResPeerT SCollabT
     ).
 
 * G7: Safety and orderly school.
@@ -971,7 +971,7 @@ RENAME VARIABLES (
     ATBS08AE ATBS08BE ATBS08AF ATBS08BF ATBS08AG ATBS08BG ATBS08AH ATBS08BH
     =
     SPDPCont SPDFCont SPDPPed SPDFPed SPDPCur SPDFCur SPDPTech SPDFTech
-    SPDPProb SPDFProb SPDPAss SPDFAss SPDPNeed SPDFNeed SPDPIntg SPDFIntg
+    SPDPCrit SPDFCrit SPDPAss SPDFAss SPDPNeed SPDFNeed SPDPIntg SPDFIntg
     ).
 
 * S9: Number of PD hours in science.

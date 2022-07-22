@@ -948,121 +948,97 @@ RENAME VARIABLES (
     STopLand STopWate STopWeat STopFosl STopSolr STopMotn STopReas
     ).
 
-* S5A: Time for science homework.
+* S6A: Time for science homework.
 RECODE
-    ATBS05A
+    ATBS06A
         (1=0) (2=1) (3=2) (4=3) (5=4)
         (9=-99) (SYSMIS=-99) (MISSING=-99).
 VALUE LABELS
-    ATBS05A
+    ATBS06A
         0 'I do not assign science homework'
         1 'Less than one a week'
         2 '1 or 2 times a week'
         3 '3 or 4 times a week'
         4 'Every day'.
 MISSING VALUES
-    ATBS05A
+    ATBS06A
         (-99).
 RENAME VARIABLES (
-    ATBS05A = SHomeW
+    ATBS06A = SHomeW
     ).
 
-* S5B: Time for science homework.
+* S6B: Time for science homework.
 RECODE
-    ATBS05B
+    ATBS06B
         (1=0) (2=1) (3=2) (4=3)
         (6=-99) (9=-99) (SYSMIS=-99) (MISSING=-99).
 VALUE LABELS
-    ATBS05B
+    ATBS06B
         0 '15 minutes or less'
         1 '16--30 minutes'
         2 '31--60 minutes'
         3 'More than 60 minutes'.
 MISSING VALUES
-    ATBS05B
+    ATBS06B
         (-99).
 RENAME VARIABLES (
-    ATBS05B = STimeHW
+    ATBS06B = STimeHW
     ).
 
 * S5C: Assessing science homework.
 RECODE
-    ATBS05CA ATBS05CB ATBS05CC
+    ATBS06CA ATBS06CB ATBS06CC
         (1=2) (2=1) (3=0)
         (6=-99) (9=-99) (SYSMIS=-99) (MISSING=-99).
 VALUE LABELS
-    ATBS05CA ATBS05CB ATBS05CC
+    ATBS06CA ATBS06CB ATBS06CC
         0 'Never or almost never'
         1 'Sometimes'
         2 'Always or almost always'.
 MISSING VALUES
-    ATBS05CA ATBS05CB ATBS05CC
+    ATBS06CA ATBS06CB ATBS06CC
         (-99).
 RENAME VARIABLES (
-    ATBS05CA ATBS05CB ATBS05CC
+    ATBS06CA ATBS06CB ATBS06CC
     =
     SHWCor SHWDis SHWMntr
     ).
 
-* S6: Science assessment strategies.
+* S7: Science assessment of the TIMSS class.
 RECODE
-    ATBS06A ATBS06B ATBS06C ATBS06D ATBS06E
+    ATBS07A ATBS07B ATBS07C
         (1=2) (2=1) (3=0)
         (9=-99) (SYSMIS=-99) (MISSING=-99).
 VALUE LABELS
-    ATBS06A ATBS06B ATBS06C ATBS06D ATBS06E
+    ATBS07A ATBS07B ATBS07C
         0 'None'
         1 'Some'
         2 'A lot'.
 MISSING VALUES
-    ATBS06A ATBS06B ATBS06C ATBS06D ATBS06E
+    ATBS07A ATBS07B ATBS07C
         (-99).
 RENAME VARIABLES (
-    ATBS06A ATBS06B ATBS06C ATBS06D ATBS06E
+    ATBS07A ATBS07B ATBS07C
     =
-    SAsObs SAsAsk SAsShort SAsLgTest SAsLgPro
-    ).
-
-* S7: Science assessment strategies.
-RECODE
-    ATBS07
-        (1=4) (2=3) (3=2) (4=1) (5=0)
-        (9=-99) (SYSMIS=-99) (MISSING=-99).
-VALUE LABELS
-    ATBS07
-        0 'Never'
-        1 'Once a year'
-        2 'Twice a year'
-        3 'Once a month'
-        4 'More than once a month'.
-MISSING VALUES
-    ATBS07
-        (-99).
-RENAME VARIABLES (
-    ATBS07 = STestPC
+    SAsOngo SAsTest SAsNati
     ).
 
 * S8: PD to teach science: Past experience (A) and future needs (B).
 RECODE
-    ATBS08AA ATBS08BA ATBS08AB ATBS08BB ATBS08AC ATBS08BC ATBS08AD ATBS08BD
-    ATBS08AE ATBS08BE ATBS08AF ATBS08BF ATBS08AG ATBS08BG ATBS08AH ATBS08BH
+    ATBS08A ATBS08B ATBS08C ATBS08D ATBS08E ATBS08F ATBS08G ATBS08H
         (1=1) (2=0)
         (9=-99) (SYSMIS=-99) (MISSING=-99).
 VALUE LABELS
-    ATBS08AA ATBS08BA ATBS08AB ATBS08BB ATBS08AC ATBS08BC ATBS08AD ATBS08BD
-    ATBS08AE ATBS08BE ATBS08AF ATBS08BF ATBS08AG ATBS08BG ATBS08AH ATBS08BH
+    ATBS08A ATBS08B ATBS08C ATBS08D ATBS08E ATBS08F ATBS08G ATBS08H
         0 'No'
         1 'Yes'.
 MISSING VALUES
-    ATBS08AA ATBS08BA ATBS08AB ATBS08BB ATBS08AC ATBS08BC ATBS08AD ATBS08BD
-    ATBS08AE ATBS08BE ATBS08AF ATBS08BF ATBS08AG ATBS08BG ATBS08AH ATBS08BH
+    ATBS08A ATBS08B ATBS08C ATBS08D ATBS08E ATBS08F ATBS08G ATBS08H
         (-99).
 RENAME VARIABLES (
-    ATBS08AA ATBS08BA ATBS08AB ATBS08BB ATBS08AC ATBS08BC ATBS08AD ATBS08BD
-    ATBS08AE ATBS08BE ATBS08AF ATBS08BF ATBS08AG ATBS08BG ATBS08AH ATBS08BH
+    ATBS08A ATBS08B ATBS08C ATBS08D ATBS08E ATBS08F ATBS08G ATBS08H
     =
-    SPDPCont SPDFCont SPDPPed SPDFPed SPDPCur SPDFCur SPDPTech SPDFTech
-    SPDPProb SPDFProb SPDPAss SPDFAss SPDPNeed SPDFNeed SPDPIntg SPDFIntg
+    SPDCont SPDPed SPDCur SPDTech SPDCrit SPDAss SPDNeed SPDIntg
     ).
 
 * S9: Number of PD hours in science.
@@ -1084,25 +1060,39 @@ RENAME VARIABLES (
     ATBS09 = SPDHour
     ).
 
+* S10: Preparation to teach science.
+RECODE
+    ATBS10AA ATBS10AB ATBS10AC ATBS10AD ATBS10AE ATBS10AF ATBS10AG
+    ATBS10BA ATBS10BB ATBS10BC ATBS10BD ATBS10BE ATBS10BF ATBS10BG ATBS10BH ATBS10BI
+    ATBS10CA ATBS10CB ATBS10CC ATBS10CD ATBS10CE ATBS10CF ATBS10CG
+        (1=0) (2=3) (3=2) (4=1)
+        (9=-99) (SYSMIS=-99) (MISSING=-99).
+VALUE LABELS
+    ATBS10AA ATBS10AB ATBS10AC ATBS10AD ATBS10AE ATBS10AF ATBS10AG
+    ATBS10BA ATBS10BB ATBS10BC ATBS10BD ATBS10BE ATBS10BF ATBS10BG ATBS10BH ATBS10BI
+    ATBS10CA ATBS10CB ATBS10CC ATBS10CD ATBS10CE ATBS10CF ATBS10CG
+        0 'Not applicable'
+        1 'Not well prepared'
+        2 'Somewhat prepared'
+        3 'Very well prepared'.
+MISSING VALUES
+    ATBS10AA ATBS10AB ATBS10AC ATBS10AD ATBS10AE ATBS10AF ATBS10AG
+    ATBS10BA ATBS10BB ATBS10BC ATBS10BD ATBS10BE ATBS10BF ATBS10BG ATBS10BH ATBS10BI
+    ATBS10CA ATBS10CB ATBS10CC ATBS10CD ATBS10CE ATBS10CF ATBS10CG
+        (-99).
+RENAME VARIABLES (
+    ATBS10AA ATBS10AB ATBS10AC ATBS10AD ATBS10AE ATBS10AF ATBS10AG
+    ATBS10BA ATBS10BB ATBS10BC ATBS10BD ATBS10BE ATBS10BF ATBS10BG ATBS10BH ATBS10BI
+    ATBS10CA ATBS10CB ATBS10CC ATBS10CD ATBS10CE ATBS10CF ATBS10CG
+    =
+    SPrpLiv SPrpBody SPrpLife SPrpPlan SPrpFeat SPrpComm SPrpHum
+    SPrpMat SPrpClas SPrpMix SPrpChg SPrpEne SPrpLigt SPrpElec SPrpMag SPrpForc
+    SPrpLand SPrpWate SPrpWeat SPrpFosl SPrpSolr SPrpMotn SPrpReas
+    ).
+
 **************************
 ** Compound variables **
 **************************
-
-* Language of teacher questionnaire.
-RECODE
-    ITLANG_T
-        (99=-99) (SYSMIS=-99) (MISSING=-99).
-MISSING VALUES
-    ITLANG_T
-        (-99).
-
-* Locale ID of teacher questionnaire.
-RECODE
-    LCID_T
-        (9999999999=-99) (SYSMIS=-99) (MISSING=-99).
-MISSING VALUES
-    LCID_T
-        (-99).
 
 * TIMSS compound variables: SEAS.
 RECODE
@@ -1158,6 +1148,33 @@ RENAME VARIABLES (
     ATDGSOS = IDXSafe
     ).
 
+* TIMSS compound variables: School conditions and resources.
+RECODE
+    ATBGSCR
+        (999999=-99) (SYSMIS=-99) (MISSING=-99).
+MISSING VALUES
+     ATBGSCR
+        (-99).
+RENAME VARIABLES (
+     ATBGSCR = SCLRes
+    ).
+
+RECODE
+    ATDGSCR
+        (1=2) (2=1) (3=0)
+        (9=-99) (SYSMIS=-99) (MISSING=-99).
+VALUE LABELS
+    ATDGSCR
+        0 'Moderate to severe problems'
+        1 'Minor problems'
+        2 'Hardly any problems'.
+MISSING VALUES
+    ATDGSCR
+        (-99).
+RENAME VARIABLES (
+    ATDGSCR = IDXRes
+    ).
+
 * TIMSS compound variables: Teacher job satisfaction.
 RECODE
     ATBGTJS
@@ -1185,7 +1202,34 @@ RENAME VARIABLES (
     ATDGTJS = IDXJob
     ).
 
-* TIMSS compound variables: Teaching limited by students not ready.
+* TIMSS compound variables: Challenges facing teachers.
+RECODE
+    ATBGCFT
+        (999999=-99) (SYSMIS=-99) (MISSING=-99).
+MISSING VALUES
+    ATBGCFT
+        (-99).
+RENAME VARIABLES (
+    ATBGCFT = SCLChal
+    ).
+
+RECODE
+    ATDGCFT
+        (1=2) (2=1) (3=0)
+        (9=-99) (SYSMIS=-99) (MISSING=-99).
+VALUE LABELS
+    ATDGCFT
+        0 'Many challenges'
+        1 'Some challenges'
+        2 'Few challenges'.
+MISSING VALUES
+    ATDGCFT
+        (-99).
+RENAME VARIABLES (
+    ATDGCFT = IDXChal
+    ).
+
+* TIMSS compound variables: Teaching limited by student needs.
 RECODE
     ATBGLSN
         (999999=-99) (SYSMIS=-99) (MISSING=-99).
@@ -1202,9 +1246,9 @@ RECODE
         (9=-99) (SYSMIS=-99) (MISSING=-99).
 VALUE LABELS
     ATDGLSN
-        0 'A lot'
-        1 'Some'
-        2 'Very little'.
+        0 'Very limited'
+        1 'Somewhat limited'
+        2 'Very limited'.
 MISSING VALUES
     ATDGLSN
         (-99).
@@ -1238,68 +1282,68 @@ RENAME VARIABLES (
     ATDSESI = IDXExprm
     ).
 
-* Percent of students taught math topics.
-RECODE
-    ATDMNUM ATDMGEO ATDMDAT
-        (999=-99) (SYSMIS=-99) (MISSING=-99).
-MISSING VALUES
-    ATDMNUM ATDMGEO ATDMDAT
-        (-99).
-RENAME VARIABLES (
-    ATDMNUM ATDMGEO ATDMDAT
-    =
-    PTpNumb PTpGeo PTpData
-    ).
-
 * Percent of teachers majored in education and math.
 RECODE
-    ATDMMEM
+    ATDM05
         (1=4) (2=3) (3=2) (4=1) (5=0)
         (9=-99) (SYSMIS=-99) (MISSING=-99).
 VALUE LABELS
-    ATDMMEM
+    ATDM05
         0 'No formal education beyond upper secondary'
         1 'All other majors'
         2 'Major in mathematics but not education'
         3 'Major in education but not mathematics'
         4 'Major in education and mathematics'.
 MISSING VALUES
-    ATDMMEM
+    ATDM05
         (-99).
 RENAME VARIABLES (
-    ATDMMEM = MTchMjr
-    ).
-
-* Percent of students taught science topics.
-RECODE
-    ATDSLIF ATDSPHY ATDSEAR
-        (999=-99) (SYSMIS=-99) (MISSING=-99).
-MISSING VALUES
-    ATDSLIF ATDSPHY ATDSEAR
-        (-99).
-RENAME VARIABLES (
-    ATDSLIF ATDSPHY ATDSEAR
-    =
-    PTpLife PTpPhys PTpEarth
+    ATDM05 = MTchMjr
     ).
 
 * Percent of teachers majored in education and science.
 RECODE
-    ATDSMES
+    ATDS05
         (1=4) (2=3) (3=2) (4=1) (5=0)
         (9=-99) (SYSMIS=-99) (MISSING=-99).
 VALUE LABELS
-    ATDSMES
+    ATDS05
         0 'No formal education beyond upper secondary'
         1 'All other majors'
-        2 'Major in science but not education'
-        3 'Major in education but not science'
-        4 'Major in education and science'.
+        2 'Major in math but not in primary education'
+        3 'Major in primary education but not in math'
+        4 'Major in primary education and math'.
 MISSING VALUES
-    ATDSMES
+    ATDS05
         (-99).
 RENAME VARIABLES (
-    ATDSMES = STchMjr
+    ATDS05 = STchMjr
+    ).
+
+* Percent of students taught math topics.
+RECODE
+    ATDM06NU ATDM06GE ATDM06DT
+        (999=-99) (SYSMIS=-99) (MISSING=-99).
+MISSING VALUES
+    ATDM06NU ATDM06GE ATDM06DT
+        (-99).
+RENAME VARIABLES (
+    ATDM06NU ATDM06GE ATDM06DT
+    =
+    PTpNumb PTpGeo PTpData
+    ).
+
+* Percent of students taught science topics.
+RECODE
+    ATDS05LI ATDS05PH ATDS05ES
+        (999=-99) (SYSMIS=-99) (MISSING=-99).
+MISSING VALUES
+    ATDS05LI ATDS05PH ATDS05ES
+        (-99).
+RENAME VARIABLES (
+    ATDS05LI ATDS05PH ATDS05ES
+    =
+    PTpLife PTpPhys PTpEarth
     ).
 
 * Run script.

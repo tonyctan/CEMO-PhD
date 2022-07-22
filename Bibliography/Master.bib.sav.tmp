@@ -4218,15 +4218,15 @@
   url         = {https://www.wsbi-esbg.org/SiteCollectionDocuments/1196_ESBG_BRO_RESEARCH PAPER.pdf}
 }
 
-@inbook{rust:2014,
+@InBook{rust:2014,
   author    = {Keith Rust},
-  booktitle = {Handbook of international large-sclae assessment: Background, technical issues, and methods of data analysis},
+  booktitle = {Handbook of international large-scale assessment: Background, technical issues, and methods of data analysis},
+  doi       = {10.1201/b16061-11},
   editor    = {Leslie Rutkowski and Matthias {von Davier} and David Rutkowski},
   pages     = {117--153},
   publisher = {CRC Press},
   title     = {Samping, weighting, and variance estimation in international large-scale assessments},
   year      = {2014},
-  doi       = {10.1201/b16061-11}
 }
 
 @article{rustomfram:2015,
@@ -6484,4 +6484,4 @@
   title   = {Goodness-of-fit assessment of item response theory models},
   volume  = {11},
   year    = {2013},
-  file    = {Goodness-of-fit assessment of item response theory models:Maydeu-Oliva
+  file    = {Goodness-of-fit assessment of item response theory models:Maydeu-Oliv

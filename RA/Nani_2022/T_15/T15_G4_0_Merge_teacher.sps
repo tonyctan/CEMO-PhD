@@ -1,3 +1,4 @@
+* Encoding: windows-1252.
 * Script created using the IEA IDB Analyzer (Version 5.0.12).
 * Created on 13/07/2022 at 23:44.
 * Press Ctrl+A followed by Ctrl+R to submit this merge. 

@@ -24,6 +24,7 @@ GET FILE =
 **************************
 ** Admin variables **
 **************************
+
 *1: Country ID - Numeric ISO Code.
 RECODE
     IDCNTRY
@@ -462,7 +463,7 @@ RENAME VARIABLES (
 * G14: Teaching practices.
 RECODE
     ATBG14A ATBG14B ATBG14C ATBG14D ATBG14E ATBG14F ATBG14G ATBG14H
-        (1=2) (2=1) (3=0)
+        (1=3) (2=2) (3=1) (4=0)
         (9=-99) (SYSMIS=-99) (MISSING=-99).
 VALUE LABELS
     ATBG14A ATBG14B ATBG14C ATBG14D ATBG14E ATBG14F ATBG14G ATBG14H

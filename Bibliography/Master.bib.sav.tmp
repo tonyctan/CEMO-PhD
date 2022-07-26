@@ -6484,4 +6484,187 @@
   title   = {Goodness-of-fit assessment of item response theory models},
   volume  = {11},
   year    = {2013},
-  file    = {Goodness-of-fit assessment of item response theory models:Maydeu-Oliv
+  file    = {Goodness-of-fit assessment of item response theory models:Maydeu-Olivares (2013).pdf:PDF},
+}
+
+@Article{bryant:2000,
+  author  = {Peter G. Bryant and Olga I. {Cordero-Bra{\~n}a}},
+  doi     = {10.2307/2685777},
+  journal = {The American Statistician},
+  number  = {4},
+  pages   = {257},
+  title   = {Model selection using the minimum description length principle},
+  volume  = {54},
+  year    = {2000},
+  file    = {Model selection using the minimum description length principle:Bryant & Cordero-Brana (2000).pdf:PDF},
+}
+
+@Article{myung:2006,
+  author  = {Jay I. Myung and Daniel J. Navarro and Mark A. Pitt},
+  doi     = {10.1016/j.jmp.2005.06.008},
+  journal = {Journal of Mathematical Psychology},
+  number  = {2},
+  pages   = {167--179},
+  title   = {Model selection by normalized maximum likelihood},
+  volume  = {50},
+  year    = {2006},
+  file    = {Model selection by normalized maximum likelihood:Myung, Navarro, & Pitt (2006).pdf:PDF},
+}
+
+@Book{niss:2011,
+  author    = {Mogens Niss and Tomas H{\o}jgaard},
+  publisher = {Roskilde Universitet},
+  title     = {Competencies and mathematical learning: Ideas and inspiration for the development of mathematics teaching and learning in {Denmark} \emph{[IMFUFA-tekst: i, om og med matematik og fysik nr. 485]}},
+  url       = {https://rucforsk.ruc.dk/ws/portalfiles/portal/35932281/IMFUFA_485.pdf},
+  file      = {Competencies and mathematical learning\: Ideas and inspiration for the development of mathematics teaching and learning in Denmark:Niss & Hojgaard (2011).pdf:PDF},
+  year      = {2011},
+}
+
+@Book{udir:2020,
+  author    = {{UDIR}},
+  publisher = {Utdanningsdirektoratet},
+  title     = {Fagfornyelsen},
+  url       = {https://www.udir.no/laring-og-trivsel/lareplanverket/fagfornyelsen/},
+  year      = {2020},
+}
+
+@Book{oecd:2018,
+  author    = {{OECD}},
+  publisher = {{OECD Publishing}},
+  title     = {{PISA} 2022 mathematics framework ({Draft})},
+  url       = {https://pisa2022-maths.oecd.org/files/PISA 2022 Mathematics Framework Draft.pdf},
+  file      = {PISA 2022 mathematics framework (Draft):OECD (2018).pdf:PDF},
+  year      = {2018},
+}
+
+@Article{rizki:2019,
+  author  = {L. M. Rizki and N. Priatna},
+  doi     = {10.1088/1742-6596/1157/4/042088},
+  journal = {Journal of Physics: Conference Series},
+  number  = {4},
+  pages   = {Article 042088},
+  title   = {Mathematical literacy as the 21st century skill},
+  volume  = {1157},
+  year    = {2019},
+  file    = {Mathematical literacy as the 21st century skill:/home/tony/uio/pc/Dokumenter/PhD/Articles/Rizki & Priatna (2018).pdf:PDF},
+}
+
+@Article{pettersen:2018,
+  author  = {Andreas Pettersen and Guri A. Nortvedt},
+  doi     = {10.1007/s10763-017-9807-5},
+  journal = {International Journal of Science and Mathematics Education},
+  number  = {5},
+  pages   = {949--965},
+  title   = {Identifying competency demands in mathematical tasks: Recognising what matters},
+  volume  = {16},
+  year    = {2018},
+  file    = {Identifying competency demands in mathematical tasks\: Recognising what matters:/home/tony/uio/pc/Dokumenter/PhD/Articles/Pettersen & Nortvedt (2018).pdf:PDF},
+}
+
+@Article{pettersen:2019,
+  author  = {Andreas Pettersen and Johan Braeken},
+  doi     = {10.1007/s10763-017-9870-y},
+  journal = {International Journal of Science and Mathematics Education},
+  number  = {2},
+  pages   = {405--425},
+  title   = {Mathematical competency demands of assessment items: A search for empirical evidence},
+  volume  = {17},
+  year    = {2019},
+  file    = {Mathematical competency demands of assessment items\: A search for empirical evidence:/home/tony/uio/pc/Dokumenter/PhD/Articles/Pettersen & Braeken (2019).pdf:PDF},
+}
+
+@Article{nortvedt:2018,
+  author  = {Guri A. Nortvedt},
+  doi     = {10.1007/s10212-018-0378-9},
+  journal = {European Journal of Psychology of Education},
+  number  = {3},
+  pages   = {427--444},
+  title   = {Policy impact of {PISA} on mathematics education: The case of {Norway}},
+  volume  = {33},
+  year    = {2018},
+  file    = {Policy impact of PISA on mathematics education\: The case of Norway:/home/tony/uio/pc/Dokumenter/PhD/Articles/Nortvedt (2018).pdf:PDF},
+}
+
+@Book{oecd:2013,
+  author    = {{OECD}},
+  publisher = {{OECD} Publishing},
+  title     = {{PISA} 2012 assessment and analytical framework: Mathematics, reading, science, problem solving and financial literacy},
+  doi       = {10.1787/9789264190511-en},
+  file      = {PISA 2012 assessment and analytical framework\: Mathematics, reading, science, problem solving and financial literacy:OECD (2013).pdf:PDF},
+  year      = {2013},
+}
+
+@Book{oecd:2030,
+  author    = {{OECD}},
+  publisher = {{OECD Publishing}},
+  title     = {The future of education and skills: Education 2030},
+  url       = {https://www.oecd.org/education/2030/E2030 Position Paper (05.04.2018).pdf},
+  file      = {The future of education and skills\: Education 2030:OECD (2018) 2030.pdf:PDF},
+  year      = {2018},
+}
+
+@Article{imsen:2017,
+  author  = {Gunn Imsen and Ulf Blossing and Lejf Moos},
+  doi     = {10.1080/00313831.2016.1172502},
+  journal = {Scandinavian Journal of Educational Research},
+  number  = {5},
+  pages   = {568--583},
+  title   = {Reshaping the {Nordic} education model in an era of efficiency. {Changes} in the comprehensive school project in {Denmark}, {Norway}, and {Sweden} since the millennium},
+  volume  = {61},
+  year    = {2017},
+  file    = {Reshaping the Nordic education model in an era of efficiency. Changes in the comprehensive school project in Denmark, Norway, and Sweden since the millennium:/home/tony/uio/pc/Dokumenter/PhD/Articles/Imsen, Blossing, & Moos (2017).pdf:PDF},
+}
+
+@Book{oecd:2014,
+  author    = {{OECD}},
+  publisher = {{OECD Publishing}},
+  title     = {{PISA} 2012 technical report},
+  url       = {https://www.oecd.org/pisa/pisaproducts/PISA-2012-technical-report-final.pdf},
+  year      = {2014},
+}
+
+@Book{kolen:2014,
+  author    = {Michael J. Kolen and Robert L. Brennan},
+  date      = {2014},
+  publisher = {Springer},
+  title     = {Test equating, scaling, and linking: Methods and practices},
+  doi       = {10.1007/978-1-4939-0317-7},
+  edition   = {3rd ed.},
+  file      = {Test equating, scaling, and linking\: Methods and practices (3rd ed.):[Book] Kolen & Brennan (2014) Test equating scaling and linking.pdf:PDF},
+}
+
+@Book{deayala:2022,
+  author    = {R. J. {de Ayala}},
+  publisher = {Guilford},
+  title     = {The theory and practice of item response theory},
+  edition   = {2nd ed.},
+  sortkey   = {{Ayala, R. J. de}},
+  year      = {2020},
+}
+
+@Book{betthaeuser:2022,
+  author    = {Bastian Andreas Betth{\"a}user and Anders Bach-Mortensen and Per Engzell},
+  publisher = {{SocArXiv}},
+  title     = {A systematic review and meta-analysis of the impact of the {COVID}-19 pandemic on learning \emph{[Preprint]}},
+  doi       = {10.31235/osf.io/g2wuy},
+  file      = {A systematic review and meta-analysis of the impact of the COVID-19 pandemic on learning:Betthauser, Bach-Mortensen, & Engzell (2022).pdf:PDF},
+  year      = {2022},
+}
+
+@Article{rauschenberg:2014,
+  author  = {Samuel Rauschenberg},
+  journal = {Education Policy Analysis Archives},
+  number  = {92},
+  pages   = {1--41},
+  title   = {How consistent are course grades? {An} examination of differential grading},
+  volume  = {22},
+  year    = {2014},
+  url     = {https://epaa.asu.edu/index.php/epaa/article/view/1265/1365},
+}
+
+@Comment{jabref-meta: databaseType:biblatex;}
+
+@Comment{jabref-entrytype: presentation: req[doi;author;title;titleaddon;eventtitle;venue;eventdate] opt[subtitle]}
+
+�]��ԝ�]���Z�r���(�j̺�Q�8V���Ҧ��*<r������h�h�H��c'��N^�F̠
+�G2��s��Z���Q��o��M�8��5>�1�Ñ���&��Pd����8�bq��-�*E�*�N�4�,����D����l.�v�w7Zg�H�� �T}����}0Ī+���!J��� r}�w#P�W����WMW.��X��÷J߄����F�DK���ut��k��c�2�|��Xm]&�,�=��׉����&Q�0c�ƞ�BTN�6�/~n�:E

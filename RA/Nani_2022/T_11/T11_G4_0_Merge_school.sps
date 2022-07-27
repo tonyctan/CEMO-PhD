@@ -1,0 +1,165 @@
+* Script created using the IEA IDB Analyzer (Version 5.0.12).
+* Created on 27/07/2022 at 20:16.
+* Press Ctrl+A followed by Ctrl+R to submit this merge. 
+
+include file = "C:\Users\Tony\AppData\Roaming\IEA\IDBAnalyzerV5\bin\Data\Templates\SPSS_Macros\IDBAnalyzer.ieasps".
+include file = "C:\Users\Tony\Dropbox (UiO)\Nani\2022\T_11\IDBAnalyzerCountries.ieasps".
+
+mcrComb 
+	 indir="C:\Users\Tony\Dropbox (UiO)\Nani\2022\T_11\3_International_database\1_SPSS_data"/
+	 infile=ACGDNKM5 ACGFINM5 ACGNORM5 ACGSWEM5/
+	 outdir="C:\Users\Tony\Dropbox (UiO)\Nani\2022\T_11"/
+	 outfile=tmpACG/
+	 keepVar=
+       IDCNTRY 
+       IDSCHOOL 
+       ACBG01 
+       ACBG02 
+       ACBG03A 
+       ACBG03B 
+       ACBG04 
+       ACBG05A 
+       ACBG05B 
+       ACBG05C 
+       ACBG06A 
+       ACBG06BA 
+       ACBG06BB 
+       ACBG06C 
+       ACBG07 
+       ACBG08 
+       ACBG09 
+       ACBG09A 
+       ACBG09B 
+       ACBG10AA 
+       ACBG10AB 
+       ACBG10AC 
+       ACBG10AD 
+       ACBG10AE 
+       ACBG10AF 
+       ACBG10AG 
+       ACBG10BA 
+       ACBG10BB 
+       ACBG10BC 
+       ACBG10BD 
+       ACBG10CA 
+       ACBG10CB 
+       ACBG10CC 
+       ACBG10CD 
+       ACBG10CE 
+       ACBG10DA 
+       ACBG10DB 
+       ACBG10DC 
+       ACBG10DD 
+       ACBG10DE 
+       ACBG11AA 
+       ACBG11AB 
+       ACBG11AC 
+       ACBG11AD 
+       ACBG11BA 
+       ACBG11BB 
+       ACBG11CA 
+       ACBG11CB 
+       ACBG11CC 
+       ACBG11CD 
+       ACBG11CE 
+       ACBG11CF 
+       ACBG11CG 
+       ACBG12A 
+       ACBG12B 
+       ACBG12C 
+       ACBG12D 
+       ACBG12E 
+       ACBG12F 
+       ACBG12G 
+       ACBG12H 
+       ACBG13AA 
+       ACBG13AB 
+       ACBG13AC 
+       ACBG13AD 
+       ACBG13AE 
+       ACBG13AF 
+       ACBG13AG 
+       ACBG13AH 
+       ACBG13AI 
+       ACBG13AJ 
+       ACBG13BA 
+       ACBG13BB 
+       ACBG14A 
+       ACBG14B 
+       ACBG14C 
+       ACBG14D 
+       ACBG15A 
+       ACBG15B 
+       ACBG15C 
+       ACBG15D 
+       ACBG15E 
+       ACBG15F 
+       ACBG15G 
+       ACBG15H 
+       ACBG15I 
+       ACBG15J 
+       ACBG15K 
+       ACBG15L 
+       ACBG15M 
+       ACBG16A 
+       ACBG16B 
+       ACBG16C 
+       ACBG16D 
+       ACBG16E 
+       ACBG16F 
+       ACBG16G 
+       ACBG16H 
+       ACBG17A 
+       ACBG17B 
+       ACBG17C 
+       ACBG17D 
+       ACBG17E 
+       ACBG17F 
+       ACBG17G 
+       ACBG17H 
+       ACBG17I 
+       ACBG17J 
+       ACBG17K 
+       ACBG17L 
+       ACBG17M 
+       ACBG17N 
+       ACBG18A 
+       ACBG18B 
+       ACBG18C 
+       ACBG19 
+       CSYSTEM 
+       IDPOP 
+       IDGRADE 
+       IDGRADER 
+       IDSTRATE 
+       IDSTRATI 
+       SCHWGT 
+       STOTWGTU 
+       WGTADJ1 
+       WGTFAC1 
+       JKCREP 
+       JKCZONE 
+       ACBGSRS 
+       ACDGSRS 
+       ACBGMRS 
+       ACDGMRS 
+       ACBGEAS 
+       ACDGEAS 
+       ACBGDAS 
+       ACDGDAS 
+       ACDG03 
+       ACDGENS 
+       ACDG09 
+       ACDGCMP 
+       ACDG06HY 
+       ACDG06 
+       DPCDATE/
+	 idbID='MM5'.
+EXECUTE.
+
+
+ctylabls.
+SAVE OUTFILE='C:\Users\Tony\Dropbox (UiO)\Nani\2022\T_11\T11_G4_0_Merge_school.sav'.
+EXECUTE.
+NEW FILE.
+

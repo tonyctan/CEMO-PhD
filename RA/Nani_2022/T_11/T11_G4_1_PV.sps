@@ -1,7 +1,7 @@
 ﻿* Encoding: UTF-8.
 
 **** ADMIN INFO *****
-* Date: 17 July 2021
+* Date: 27 July 2021
 * Author: Tony Tan
 * Email: tctan@uio.no
 * Position: PhD Candidate
@@ -10,7 +10,7 @@
 
 ***** DATA ATTRIBUTES *****
 * ILSA: TIMSS
-* Cycle: 2015
+* Cycle: 2011
 * Questionnaire: (Plausible values)
 * Grade: Grade 4
 * Subject: Math and Science

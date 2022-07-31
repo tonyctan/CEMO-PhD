@@ -26,12 +26,6 @@ GET FILE =
 **************************
 
 *1: Country ID - Numeric ISO Code.
-RECODE
-    IDCNTRY
-        (999999=-99) (SYSMIS=-99) (MISSING=-99).
-MISSING VALUES
-    IDCNTRY
-        (-99).
 
 *2: Student Test Booklet.
 RECODE
@@ -42,28 +36,8 @@ MISSING VALUES
         (-99).
 
 *3: School ID.
-RECODE
-    IDSCHOOL
-        (9999=-99) (SYSMIS=-99) (MISSING=-99).
-MISSING VALUES
-    IDSCHOOL
-        (-99).
-
 *4: Class ID.
-RECODE
-    IDCLASS
-        (999999=-99) (SYSMIS=-99) (MISSING=-99).
-MISSING VALUES
-    IDCLASS
-        (-99).
-
 *5: Student ID.
-RECODE
-    IDSTUD
-        (99999999=-99) (SYSMIS=-99) (MISSING=-99).
-MISSING VALUES
-    IDSTUD
-        (-99).
 
 *6: Teacher ID.
 RECODE
@@ -82,14 +56,9 @@ MISSING VALUES
         (-99).
 
 *8: Teacher ID and Link.
-RECODE
-    IDTEALIN
-        (99999999=-99) (SYSMIS=-99) (MISSING=-99).
-MISSING VALUES
-    IDTEALIN
-        (-99).
+*9: System ID linkage file.
 
-*9: Population ID.
+*10: Population ID.
 RECODE
     IDPOP
         (9=-99) (SYSMIS=-99) (MISSING=-99).
@@ -97,7 +66,7 @@ MISSING VALUES
     IDPOP
         (-99).
 
-*10: Standardized Grade ID.
+*11: Standardized Grade ID.
 RECODE
     IDGRADER
         (9=-99) (SYSMIS=-99) (MISSING=-99).
@@ -105,7 +74,7 @@ MISSING VALUES
     IDGRADER
         (-99).
 
-*11: Grade ID.
+*12: Grade ID.
 RECODE
     IDGRADE
         (99=-99) (SYSMIS=-99) (MISSING=-99).
@@ -113,7 +82,7 @@ MISSING VALUES
     IDGRADE
         (-99).
 
-*12: Subject ID.
+*13: Subject ID.
 RECODE
     IDSUBJ
         (9=-99) (SYSMIS=-99) (MISSING=-99).
@@ -121,7 +90,7 @@ MISSING VALUES
     IDSUBJ
         (-99).
 
-*13: Subject Code in instrument.
+*14: Name of course.
 RECODE
     ITCOURSE
         (9=-99) (SYSMIS=-99) (MISSING=-99).
@@ -129,7 +98,7 @@ MISSING VALUES
     ITCOURSE
         (-99).
 
-*14: Mathematics Teacher Link.
+*15: Mathematics Teacher Link.
 RECODE
     MATSUBJ
         (9=-99) (SYSMIS=-99) (MISSING=-99).
@@ -137,7 +106,7 @@ MISSING VALUES
     MATSUBJ
         (-99).
 
-*15: Science Teacher Link.
+*16: Science Teacher Link.
 RECODE
     SCISUBJ
         (9=-99) (SYSMIS=-99) (MISSING=-99).
@@ -145,20 +114,12 @@ MISSING VALUES
     SCISUBJ
         (-99).
 
-*16: Number of Math Teachers for Student.
+*17: Number of Math Teachers for Student.
 RECODE
     NMTEACH
         (9=-99) (SYSMIS=-99) (MISSING=-99).
 MISSING VALUES
     NMTEACH
-        (-99).
-
-*17: Number of Science Teachers for Student.
-RECODE
-    NSTEACH
-        (9=-99) (SYSMIS=-99) (MISSING=-99).
-MISSING VALUES
-    NSTEACH
         (-99).
 
 *18: Number of Teachers.
@@ -169,7 +130,23 @@ MISSING VALUES
     NTEACH
         (-99).
 
-*19: JACKKNIFE REPLICATE CODE.
+*19: Number of Science Teachers for Student.
+RECODE
+    NSTEACH
+        (9=-99) (SYSMIS=-99) (MISSING=-99).
+MISSING VALUES
+    NSTEACH
+        (-99).
+
+*20 & 21: Stratification.
+RECODE
+    IDSTRATE IDSTRATI
+        (999=-99) (SYSMIS=-99) (MISSING=-99).
+MISSING VALUES
+    IDSTRATE IDSTRATI
+        (-99).
+
+*22: JACKKNIFE REPLICATE CODE.
 RECODE
     JKREP
         (9=-99) (SYSMIS=-99) (MISSING=-99).
@@ -177,7 +154,7 @@ MISSING VALUES
     JKREP
         (-99).
 
-*20: JACKKNIFE ZONE.
+*23: JACKKNIFE ZONE.
 RECODE
     JKZONE
         (99=-99) (SYSMIS=-99) (MISSING=-99).
@@ -185,20 +162,12 @@ MISSING VALUES
     JKZONE
         (-99).
 
-*21: WEIGHT FOR MATHEMATICS TEACHER DATA.
+*24 & 25: WEIGHT FOR TEACHER DATA.
 RECODE
-    MATWGT
+    MATWGT SCIWGT
         (999999=-99) (SYSMIS=-99) (MISSING=-99).
 MISSING VALUES
-    MATWGT
-        (-99).
-
-*22: WEIGHT FOR SCIENCE TEACHER DATA.
-RECODE
-    SCIWGT
-        (999999=-99) (SYSMIS=-99) (MISSING=-99).
-MISSING VALUES
-    SCIWGT
+    MATWGT SCIWGT
         (-99).
 
 **************************
@@ -255,17 +224,16 @@ RENAME VARIABLES (
 * G4: Teacher level of education.
 RECODE
     ATBG04
-        (1=0)  (2=1) (3=2) (4=3) (5=4) (6=5) (7=6)
-        (99=-99) (SYSMIS=-99) (MISSING=-99).
+        (1=0)  (2=1) (3=2) (4=3) (5=4) (6=5)
+        (9=-99) (SYSMIS=-99) (MISSING=-99).
 VALUE LABELS
    ATBG04
-       0 'Did not completed upper secondary'
-       1 'Upper secondary'
-       2 'Post-secondary or non-tertiary'
-       3 'Short-cycle tertiary'
-       4 'Bachelor'
-       5 'Master'
-       6 'Doctor'.
+       0 'Did not completed <ISCED Level 3>'
+       1 'Finished <ISCED Level 3>'
+       2 'Finished <ISCED Level 4>'
+       3 'Finished <ISCED Level 5B>'
+       4 'Finished <ISCED Level 5A, first degree>'
+       5 'Finished <ISCED Level 5A, second degree> or higher'.
 MISSING VALUES
     ATBG04
         (-99).
@@ -277,7 +245,7 @@ RENAME VARIABLES (
 RECODE
     ATBG05AA ATBG05AB ATBG05AC ATBG05AD ATBG05AE ATBG05AF
         (1=1) (2=0)
-        (6=-99) (9=-99) (SYSMIS=-99) (MISSING=-99).
+        (9=-99) (SYSMIS=-99) (MISSING=-99).
 VALUE LABELS
     ATBG05AA ATBG05AB ATBG05AC ATBG05AD ATBG05AE ATBG05AF
         0 'No'
@@ -311,138 +279,159 @@ RENAME VARIABLES (
 
 * G6: School emphasis on academic success.
 RECODE
-    ATBG06A ATBG06B ATBG06C ATBG06D ATBG06E
-    ATBG06F ATBG06G ATBG06H ATBG06I ATBG06J
-    ATBG06K ATBG06L ATBG06M ATBG06N ATBG06O
-    ATBG06P ATBG06Q
+    ATBG06A ATBG06B ATBG06C ATBG06D ATBG06E ATBG06F ATBG06G ATBG06H
         (1=4)  (2=3) (3=2) (4=1) (5=0)
         (9=-99) (SYSMIS=-99) (MISSING=-99).
 VALUE LABELS
-    ATBG06A ATBG06B ATBG06C ATBG06D ATBG06E
-    ATBG06F ATBG06G ATBG06H ATBG06I ATBG06J
-    ATBG06K ATBG06L ATBG06M ATBG06N ATBG06O
-    ATBG06P ATBG06Q
+    ATBG06A ATBG06B ATBG06C ATBG06D ATBG06E ATBG06F ATBG06G ATBG06H
         0 'Very low'
         1 'Low'
         2 'Medium'
         3 'High'
         4 'Very high'.
 MISSING VALUES
-    ATBG06A ATBG06B ATBG06C ATBG06D ATBG06E
-    ATBG06F ATBG06G ATBG06H ATBG06I ATBG06J
-    ATBG06K ATBG06L ATBG06M ATBG06N ATBG06O
-    ATBG06P ATBG06Q
+    ATBG06A ATBG06B ATBG06C ATBG06D ATBG06E ATBG06F ATBG06G ATBG06H
         (-99).
 RENAME VARIABLES (
-    ATBG06A ATBG06B ATBG06C ATBG06D ATBG06E
-    ATBG06F ATBG06G ATBG06H ATBG06I ATBG06J
-    ATBG06K ATBG06L ATBG06M ATBG06N ATBG06O
-    ATBG06P ATBG06Q
+    ATBG06A ATBG06B ATBG06C ATBG06D ATBG06E ATBG06F ATBG06G ATBG06H
     =
-    STchUndT STchSucT STchExpT STchAbiT STchInsT
-    SParInvT SParComT SparExpT SParSupT SParPreT
-    SStudDesT SRchGoalT SResPeerT SClaObjT SCollabT
-    SInstSupT SLeadSupT
+    STchJobS STchUndT STchSucT STchExpT SParSupT SParInvT SResPropT SStudDesT
     ).
 
 * G7: Safety and orderly school.
 RECODE
-    ATBG07A ATBG07B ATBG07C ATBG07D ATBG07E ATBG07F ATBG07G ATBG07H
+    ATBG07A ATBG07B ATBG07C ATBG07D ATBG07E
     (1=3) (2=2) (3=1) (4=0)
     (9=-99) (SYSMIS=-99) (MISSING=-99).
 VALUE LABELS
-    ATBG07A ATBG07B ATBG07C ATBG07D ATBG07E ATBG07F ATBG07G ATBG07H
+    ATBG07A ATBG07B ATBG07C ATBG07D ATBG07E
         0 'Disagree a lot'
         1 'Disagree a little'
         2 'Agree a little'
         3 'Agree a lot'.
 MISSING VALUES
-    ATBG07A ATBG07B ATBG07C ATBG07D ATBG07E ATBG07F ATBG07G ATBG07H
+    ATBG07A ATBG07B ATBG07C ATBG07D ATBG07E
         (-99).
 RENAME VARIABLES (
-    ATBG07A ATBG07B ATBG07C ATBG07D ATBG07E ATBG07F ATBG07G ATBG07H
+    ATBG07A ATBG07B ATBG07C ATBG07D ATBG07E
     =
-    OSafeNgh OFeelSaf OSecPol OStdBhv OStdRes OResPro OClrRul ORulEnf
+    OSafeNgh OFeelSaf OSecPol OStdBhv OStdRes
     ).
 
 * G8: Teaching constraint.
 RECODE
-    ATBG08A ATBG08B ATBG08C ATBG08D ATBG08E ATBG08F ATBG08G
+    ATBG08A ATBG08B ATBG08C ATBG08D ATBG08E
         (1=3) (2=2) (3=1) (4=0)
         (9=-99) (SYSMIS=-99) (MISSING=-99).
 VALUE LABELS
-    ATBG08A ATBG08B ATBG08C ATBG08D ATBG08E ATBG08F ATBG08G
+    ATBG08A ATBG08B ATBG08C ATBG08D ATBG08E
         0 'Serious problem'
         1 'Modrate problem'
         2 'Minor problem'
         3 'Not a problem'.
 MISSING VALUES
-    ATBG08A ATBG08B ATBG08C ATBG08D ATBG08E ATBG08F ATBG08G
+    ATBG08A ATBG08B ATBG08C ATBG08D ATBG08E
         (-99).
 RENAME VARIABLES (
-    ATBG08A ATBG08B ATBG08C ATBG08D ATBG08E ATBG08F ATBG08G
+    ATBG08A ATBG08B ATBG08C ATBG08D ATBG08E
     =
-    ConBuil ConSpac ConMate ConHyge ConMain ConReso ConSupp
+    ConBuil ConClas ConHour ConHyge ConMain
     ).
 
-* G9: Teacher interaction.
+*G9A: Teacher computer use.
 RECODE
-    ATBG09A ATBG09B ATBG09C ATBG09D ATBG09E ATBG09F ATBG09G
+    ATBG09AA ATBG09AB ATBG09AC
+        (1=1) (2=0)
+        (9=-99) (SYSMIS=-99) (MISSING=-99).
+VALUE LABELS
+    ATBG09AA ATBG09AB ATBG09AC
+        0 'No'
+        1 'Yes'.
+MISSING VALUES
+    ATBG09AA ATBG09AB ATBG09AC
+        (-99).
+RENAME VARIABLES (
+    ATBG09AA ATBG09AB ATBG09AC
+    =
+    ComPrep ComAdmi ComInst
+    ).
+
+*G9B: Teacher computer use.
+RECODE
+    ATBG09BA ATBG09BB ATBG09BC
+        (1=1) (2=0)
+        (6=-99) (9=-99) (SYSMIS=-99) (MISSING=-99).
+VALUE LABELS
+    ATBG09BA ATBG09BB ATBG09BC
+        0 'Disagree a lot'
+        1 'Disagree a little'
+        2 'Agree a little'
+        3 'Agree a lot'.
+MISSING VALUES
+    ATBG09BA ATBG09BB ATBG09BC
+        (-99).
+RENAME VARIABLES (
+    ATBG09BA ATBG09BB ATBG09BC
+    =
+    ComComf ComProb ComSupp
+    ).
+
+* G10: Teacher interaction.
+RECODE
+    ATBG10A ATBG10B ATBG10C ATBG10D ATBG10E
+        (1=0) (2=1) (3=2) (4=3)
+        (9=-99) (SYSMIS=-99) (MISSING=-99).
+VALUE LABELS
+    ATBG10A ATBG10B ATBG10C ATBG10D ATBG10E
+        0 'Never or almost never'
+        1 '2 or 3 times per month'
+        2 '1--3 times per week'
+        3 'Daily or almost daily'.
+MISSING VALUES
+    ATBG10A ATBG10B ATBG10C ATBG10D ATBG10E
+        (-99).
+RENAME VARIABLES (
+    ATBG10A ATBG10B ATBG10C ATBG10D ATBG10E
+    =
+    IntDisc IntColl IntLear IntVisi IntToge
+    ).
+
+* G11A--E: Teacher job satisfaction.
+RECODE
+    ATBG11A ATBG11B ATBG11C ATBG11D ATBG11E
         (1=3) (2=2) (3=1) (4=0)
         (9=-99) (SYSMIS=-99) (MISSING=-99).
 VALUE LABELS
-    ATBG09A ATBG09B ATBG09C ATBG09D ATBG09E ATBG09F ATBG09G
-        0 'Never or almost never'
-        1 'Sometimes'
-        2 'Often'
-        3 'Very often'.
+    ATBG11A ATBG11B ATBG11C ATBG11D ATBG11E
+        0 'Disagree a lot'
+        1 'Disagree a little'
+        2 'Agree a little'
+        3 'Agree a lot'.
 MISSING VALUES
-    ATBG09A ATBG09B ATBG09C ATBG09D ATBG09E ATBG09F ATBG09G
+    ATBG11A ATBG11B ATBG11C ATBG11D ATBG11E
         (-99).
 RENAME VARIABLES (
-    ATBG09A ATBG09B ATBG09C ATBG09D ATBG09E ATBG09F ATBG09G
+    ATBG11A ATBG11B ATBG11C ATBG11D ATBG11E
     =
-    IntDisc IntColl IntLear IntVisi IntToge IntGpCu IntCont
+    JContent JSatisfi JEnthus JImport JContinu
     ).
 
-* G10: Teacher job satisfaction.
+* G11F:  Teacher job satisfaction (Frastration: reverse coding).
 RECODE
-    ATBG10A ATBG10B ATBG10C ATBG10D ATBG10E ATBG10F ATBG10G
+    ATBG11F
         (1=3) (2=2) (3=1) (4=0)
         (9=-99) (SYSMIS=-99) (MISSING=-99).
 VALUE LABELS
-    ATBG10A ATBG10B ATBG10C ATBG10D ATBG10E ATBG10F ATBG10G
-        0 'Never or almost never'
-        1 'Sometimes'
-        2 'Often'
-        3 'Very often'.
+    ATBG11F
+        0 'Agree a lot'
+        1 'Agree a little'
+        2 'Disagree a little'
+        3 'Disagree a lot'.
 MISSING VALUES
-    ATBG10A ATBG10B ATBG10C ATBG10D ATBG10E ATBG10F ATBG10G
+    ATBG11F
         (-99).
 RENAME VARIABLES (
-    ATBG10A ATBG10B ATBG10C ATBG10D ATBG10E ATBG10F ATBG10G
-    =
-    JContent Jsatisfi JPurpose JEnthus JInspire JProud Jcontinu
-    ).
-
-* G11: Teaching limitation.
-RECODE
-    ATBG11A ATBG11B ATBG11C ATBG11D ATBG11E ATBG11F ATBG11G ATBG11H
-        (1=0) (2=1) (3=2) (4=3) 
-        (9=-99) (SYSMIS=-99) (MISSING=-99).
-VALUE LABELS
-    ATBG11A ATBG11B ATBG11C ATBG11D ATBG11E ATBG11F ATBG11G ATBG11H
-        0 'Never or almost never'
-        1 'Sometimes'
-        2 'Often'
-        3 'Very often'.
-MISSING VALUES
-    ATBG11A ATBG11B ATBG11C ATBG11D ATBG11E ATBG11F ATBG11G ATBG11H
-        (-99).
-RENAME VARIABLES (
-    ATBG11A ATBG11B ATBG11C ATBG11D ATBG11E ATBG11F ATBG11G ATBG11H
-    =
-    LManyStd LManyMat LManyHr LTimePrep LTimeAss LMchPres LChgCur LManyAdm
+    ATBG11F = JFrustra
     ).
 
 * G12A: Number of students in class.
@@ -450,7 +439,7 @@ RENAME VARIABLES (
 * G13: Number of students with language difficulties.
 RECODE
     ATBG12A ATBG12B ATBG13
-        (99=-99) (SYSMIS=-99) (MISSING=-99).
+        (999=-99) (SYSMIS=-99) (MISSING=-99).
 MISSING VALUES
     ATBG12A ATBG12B ATBG13
         (-99).
@@ -460,338 +449,383 @@ RENAME VARIABLES (
     NStdCl NStdG4 NStdLang
     ).
 
-* G14: Teaching practices.
+* G14: Teaching subject.
 RECODE
-    ATBG14A ATBG14B ATBG14C ATBG14D ATBG14E ATBG14F ATBG14G ATBG14H
+    ATBG14A ATBG14B ATBG14C
+        (1=1) (2=0)
+        (9=-99) (SYSMIS=-99) (MISSING=-99).
+VALUE LABELS
+    ATBG14A ATBG14B ATBG14C
+        0 'No'
+        1 'Yes'.
+MISSING VALUES
+    ATBG14A ATBG14B ATBG14C
+        (-99).
+RENAME VARIABLES (
+    ATBG14A ATBG14B ATBG14C
+    =
+    SubjRead SubjMath SubjScie
+    ).
+
+* G15: Teaching practices.
+RECODE
+    ATBG15A ATBG15B ATBG15C ATBG15D ATBG15E ATBG15F
         (1=3) (2=2) (3=1) (4=0)
         (9=-99) (SYSMIS=-99) (MISSING=-99).
 VALUE LABELS
-    ATBG14A ATBG14B ATBG14C ATBG14D ATBG14E ATBG14F ATBG14G ATBG14H
+    ATBG15A ATBG15B ATBG15C ATBG15D ATBG15E ATBG15F
         0 'Never'
         1 'Some lessons'
         2 'About half the lessons'
         3 'Every or almost every lesson'.
 MISSING VALUES
-    ATBG14A ATBG14B ATBG14C ATBG14D ATBG14E ATBG14F ATBG14G ATBG14H
+    ATBG15A ATBG15B ATBG15C ATBG15D ATBG15E ATBG15F
         (-99).
 RENAME VARIABLES (
-    ATBG14A ATBG14B ATBG14C ATBG14D ATBG14E ATBG14F ATBG14G ATBG14H
+    ATBG15A ATBG15B ATBG15C ATBG15D ATBG15E ATBG15F
     =
-    PDalyLiv PExpAns PInsMat PBeyIns PClasDis PLnkKnow PPrbSolv PExpsIde
+    PSummary PDalyLiv PReason PEncoura PPraise PInsMat
     ).
 
-* G15: Students limitation.
+* G16: Students limitation.
 RECODE
-    ATBG15A ATBG15B ATBG15C ATBG15D ATBG15E ATBG15F ATBG15G
-        (1=2) (2=1) (3=0)
+    ATBG16A ATBG16B ATBG16C ATBG16D ATBG16E ATBG16F
+        (1=0) (2=3) (3=2) (4=1)
         (9=-99) (SYSMIS=-99) (MISSING=-99).
 VALUE LABELS
-    ATBG15A ATBG15B ATBG15C ATBG15D ATBG15E ATBG15F ATBG15G
-        0 'A lot'
-        1 'Some'
-        2 'Not at all'.
+    ATBG16A ATBG16B ATBG16C ATBG16D ATBG16E ATBG16F
+        0 'Not applicable'
+        1 'A lot'
+        2 'Some'
+        3 'Not at all'.
 MISSING VALUES
-    ATBG15A ATBG15B ATBG15C ATBG15D ATBG15E ATBG15F ATBG15G
+    ATBG16A ATBG16B ATBG16C ATBG16D ATBG16E ATBG16F
         (-99).
 RENAME VARIABLES (
-    ATBG15A ATBG15B ATBG15C ATBG15D ATBG15E ATBG15F ATBG15G
+    ATBG16A ATBG16B ATBG16C ATBG16D ATBG16E ATBG16F
     =
-    LLckKng LLckNut LLckSlep LDistStd LUninStd LPhysImp LMentImp
+    LLckKng LLckNut LLckSlep LSpeNeed LDistStd LUninStd
+    ).
+
+* G17: Liaison with parents.
+RECODE
+    ATBG17A ATBG17B
+        (1=4) (2=3) (3=2) (4=1) (5=0)
+        (9=-99) (SYSMIS=-99) (MISSING=-99).
+VALUE LABELS
+    ATBG17A ATBG17B
+        0 'Never'
+        1 '1--3 times a year'
+        2 '4--6 times a year'
+        3 'Once or twice a month'
+        4 'At least once a week'.
+MISSING VALUES
+    ATBG17A ATBG17B
+        (-99).
+RENAME VARIABLES (
+    ATBG17A ATBG17B
+    =
+    LiaiMeet LiaiRepo
     ).
 
 * M1: Time spent on math instruction.
 RECODE
-    ATBM01
-        (9999=-99) (SYSMIS=-99) (MISSING=-99).
+    ATBM01A ATBM01B
+        (99=-99) (SYSMIS=-99) (MISSING=-99).
 MISSING VALUES
-    ATBM01
+    ATBM01A ATBM01B
         (-99).
 RENAME VARIABLES (
-    ATBM01 = MathTime
+        ATBM01A ATBM01B
+        =
+        MathHour MathMinu
     ).
 
 * M2: Math teaching confidence.
 RECODE
-    ATBM02A ATBM02B ATBM02C ATBM02D ATBM02E ATBM02F ATBM02G ATBM02H ATBM02I
-        (1=3) (2=2) (3=1) (4=0)
+    ATBM02A ATBM02B ATBM02C ATBM02D ATBM02E
+        (1=2) (2=1) (3=0)
         (9=-99) (SYSMIS=-99) (MISSING=-99).
 VALUE LABELS
-    ATBM02A ATBM02B ATBM02C ATBM02D ATBM02E ATBM02F ATBM02G ATBM02H ATBM02I
-        0 'Low'
-        1 'Medium'
-        2 'High'
-        3 'Very high'.
+    ATBM02A ATBM02B ATBM02C ATBM02D ATBM02E
+        0 'Not confident'
+        1 'Somewhat confident'
+        2 'Very confident'.
 MISSING VALUES
-    ATBM02A ATBM02B ATBM02C ATBM02D ATBM02E ATBM02F ATBM02G ATBM02H ATBM02I
+    ATBM02A ATBM02B ATBM02C ATBM02D ATBM02E
         (-99).
 RENAME VARIABLES (
-    ATBM02A ATBM02B ATBM02C ATBM02D ATBM02E ATBM02F ATBM02G ATBM02H ATBM02I
+    ATBM02A ATBM02B ATBM02C ATBM02D ATBM02E
     =
-    MCfInsp MCfProb MCfChal MCfEnga MCfAppr MCfAss MCfImpr MCfRele MCfHgTh
+    MCfAnsw MCfProb MCfChal MCfEnga MCfAppr
     ).
 
 * M3: Math teaching practices.
 RECODE
-    ATBM03A ATBM03B ATBM03C ATBM03D ATBM03E ATBM03F ATBM03G ATBM03H ATBM03I
+    ATBM03A ATBM03B ATBM03C ATBM03D ATBM03E ATBM03F ATBM03G ATBM03H
         (1=3) (2=2) (3=1) (4=0)
         (9=-99) (SYSMIS=-99) (MISSING=-99).
 VALUE LABELS
-    ATBM03A ATBM03B ATBM03C ATBM03D ATBM03E ATBM03F ATBM03G ATBM03H ATBM03I
+    ATBM03A ATBM03B ATBM03C ATBM03D ATBM03E ATBM03F ATBM03G ATBM03H
         0 'Never'
         1 'Some lessons'
         2 'About half the lessons'
         3 'Every or almost every lesson'.
 MISSING VALUES
-     ATBM03A ATBM03B ATBM03C ATBM03D ATBM03E ATBM03F ATBM03G ATBM03H ATBM03I
+    ATBM03A ATBM03B ATBM03C ATBM03D ATBM03E ATBM03F ATBM03G ATBM03H
         (-99).
 RENAME VARIABLES (
-     ATBM03A ATBM03B ATBM03C ATBM03D ATBM03E ATBM03F ATBM03G ATBM03H ATBM03I
+    ATBM03A ATBM03B ATBM03C ATBM03D ATBM03E ATBM03F ATBM03G ATBM03H
     =
-    MTExpln MTSolve MTMemrz MTGuid MTWork MTOccup MTTest MTMixAb MTSameAb
+    MTExpln MTMemrz MTGuid MTWork MTOccup MTExpAn MTDalyLi MTTest
     ).
 
-* M4: Math teaching and access to calculator.
+* M4: Math teaching resources.
 RECODE
-    ATBM04
+    ATBM04A ATBM04B ATBM04C ATBM04D
         (1=2) (2=1) (3=0)
         (9=-99) (SYSMIS=-99) (MISSING=-99).
 VALUE LABELS
-    ATBM04
+    ATBM04A ATBM04B ATBM04C ATBM04D
+        0 'Not used'
+        1 'Supplement'
+        2 'Basis for instruction'.
+MISSING VALUES
+    ATBM04A ATBM04B ATBM04C ATBM04D
+        (-99).
+RENAME VARIABLES (
+        ATBM04A ATBM04B ATBM04C ATBM04D
+        =
+        MResTxbk MResWkbk MResObje MResSoft
+    ).
+
+* M5: Math teaching and access to calculator.
+RECODE
+    ATBM05
+        (1=2) (2=1) (3=0)
+        (9=-99) (SYSMIS=-99) (MISSING=-99).
+VALUE LABELS
+    ATBM05
         0 'No, calculators are not permitted'
         1 'Yes, with restricted use'
         2 'Yes, with unrestricted use'.
 MISSING VALUES
-    ATBM04
+    ATBM05
         (-99).
 RENAME VARIABLES (
-    ATBM04 = MUseCal
+    ATBM05 = MUseCal
     ).
 
-* M5A: Mathteaching and access to computer.
+* M6A: Mathteaching and access to computer.
 RECODE
-    ATBM05A
+    ATBM06A
         (1=1) (2=0)
         (9=-99) (SYSMIS=-99) (MISSING=-99).
 VALUE LABELS
-    ATBM05A
+    ATBM06A
         0 'No'
         1 'Yes'.
 MISSING VALUES
-    ATBM05A
+    ATBM06A
         (-99).
 RENAME VARIABLES (
-    ATBM05A = MPCAva
+    ATBM06A = MPCAva
     ).
 
-* M5B: Mathteaching and access to computer.
+* M6B: Mathteaching and access to computer.
 RECODE
-    ATBM05BA ATBM05BB ATBM05BC
+    ATBM06B
         (1=1) (2=0)
-        (6=-99) (9=-99) (SYSMIS=-99) (MISSING=-99).
+        (9=-99) (SYSMIS=-99) (MISSING=-99).
 VALUE LABELS
-    ATBM05BA ATBM05BB ATBM05BC
+    ATBM06B
         0 'No'
         1 'Yes'.
 MISSING VALUES
-    ATBM05BA ATBM05BB ATBM05BC
+    ATBM06B
         (-99).
 RENAME VARIABLES (
-    ATBM05BA ATBM05BB ATBM05BC
-    =
-    MPCStd MPCClas MPCSch
+    ATBM06B = MPCIntNt
     ).
 
-* M5C: Math teaching using computer.
+* M6C: Math teaching using computer.
 RECODE
-    ATBM05CA ATBM05CB ATBM05CC
+    ATBM06CA ATBM06CB ATBM06CC
         (1=3) (2=2) (3=1) (4=0)
         (6=-99) (9=-99) (SYSMIS=-99) (MISSING=-99).
 VALUE LABELS
-    ATBM05CA ATBM05CB ATBM05CC
+    ATBM06CA ATBM06CB ATBM06CC
         0 'Never or almost never'
         1 'Once or twice a month'
         2 'Once or twice a week'
         3 'Every or almost every day'.
 MISSING VALUES
-    ATBM05CA ATBM05CB ATBM05CC
+    ATBM06CA ATBM06CB ATBM06CC
         (-99).
 RENAME VARIABLES (
-    ATBM05CA ATBM05CB ATBM05CC
+    ATBM06CA ATBM06CB ATBM06CC
     =
     MPCConc MPCPrac MPCSear
     ).
 
-* M6A: Mathematics topics taught to use the TIMSS class: Number.
-* M6B: Mathematics topics taught to use the TIMSS class: Geometric shapes and measures.
-* M6C: Mathematics topics taught to use the TIMSS class: Data display.
+* M7: Mathematics topics taught.
 RECODE
-    ATBM06AA ATBM06AB ATBM06AC ATBM06AD ATBM06AE ATBM06AF ATBM06AG ATBM06AH
-    ATBM06BA ATBM06BB ATBM06BC ATBM06BD ATBM06BE ATBM06BF ATBM06BG
-    ATBM06CA ATBM06CB
+    ATBM07AA ATBM07AB ATBM07AC ATBM07AD ATBM07AE ATBM07AF ATBM07AG ATBM07AH
+    ATBM07BA ATBM07BB ATBM07BC ATBM07BD ATBM07BE ATBM07BF ATBM07BG
+    ATBM07CA ATBM07CB ATBM07CC
         (1=1) (2=2) (3=0)
         (9=-99) (SYSMIS=-99) (MISSING=-99).
 VALUE LABELS
-    ATBM06AA ATBM06AB ATBM06AC ATBM06AD ATBM06AE ATBM06AF ATBM06AG ATBM06AH
-    ATBM06BA ATBM06BB ATBM06BC ATBM06BD ATBM06BE ATBM06BF ATBM06BG
-    ATBM06CA ATBM06CB
+    ATBM07AA ATBM07AB ATBM07AC ATBM07AD ATBM07AE ATBM07AF ATBM07AG ATBM07AH
+    ATBM07BA ATBM07BB ATBM07BC ATBM07BD ATBM07BE ATBM07BF ATBM07BG
+    ATBM07CA ATBM07CB ATBM07CC
         0 'Not yet taught or just introduced'
         1 'Mostly taught before this year'
         2 'Mostly taught this year'.
 MISSING VALUES
-    ATBM06AA ATBM06AB ATBM06AC ATBM06AD ATBM06AE ATBM06AF ATBM06AG ATBM06AH
-    ATBM06BA ATBM06BB ATBM06BC ATBM06BD ATBM06BE ATBM06BF ATBM06BG
-    ATBM06CA ATBM06CB
+    ATBM07AA ATBM07AB ATBM07AC ATBM07AD ATBM07AE ATBM07AF ATBM07AG ATBM07AH
+    ATBM07BA ATBM07BB ATBM07BC ATBM07BD ATBM07BE ATBM07BF ATBM07BG
+    ATBM07CA ATBM07CB ATBM07CC
         (-99).
 RENAME VARIABLES (
-    ATBM06AA ATBM06AB ATBM06AC ATBM06AD ATBM06AE ATBM06AF ATBM06AG ATBM06AH
-    ATBM06BA ATBM06BB ATBM06BC ATBM06BD ATBM06BE ATBM06BF ATBM06BG
-    ATBM06CA ATBM06CB
+    ATBM07AA ATBM07AB ATBM07AC ATBM07AD ATBM07AE ATBM07AF ATBM07AG ATBM07AH
+    ATBM07BA ATBM07BB ATBM07BC ATBM07BD ATBM07BE ATBM07BF ATBM07BG
+    ATBM07CA ATBM07CB ATBM07CC
     =
-    MTopNum MTopSim MTopFac MTopFraC MTopFraU MTopDec MTopSent MTopPat
+    MTopNum MTopSim MTopFraC MTopFraU MTopDecC MTopDecU MTopSent MTopPat
     MTopLine MTopAngl MTopCood MTopShap MTopRota MTopDim MTopArea
-    MTopData MTopConc
+    MTopTabl MTopConc MTopData
     ).
 
-* M7A: Mathematics homework for the TIMSS class.
+* M8: Mathematics content coverage.
 RECODE
-    ATBM07A
+    ATBM08A ATBM08B ATBM08C ATBM08D
+        (999=-99) (SYSMIS=-99) (MISSING=-99).
+MISSING VALUES
+    ATBM08A ATBM08B ATBM08C ATBM08D
+        (-99).
+
+* M9A: Mathematics homework.
+RECODE
+    ATBM09A
         (1=0) (2=1) (3=2) (4=3) (5=4)
         (9=-99) (SYSMIS=-99) (MISSING=-99).
 VALUE LABELS
-    ATBM07A
+    ATBM09A
         0 'I do not assign mathematics homework'
         1 'Less than once a week'
         2 '1 or 2 times a week'
         3 '3 or 4 times a week'
         4 'Every day'.
 MISSING VALUES
-    ATBM07A
+    ATBM09A
         (-99).
 RENAME VARIABLES (
-    ATBM07A = MHomeW
+    ATBM09A = MHomeW
     ).
 
-* M7B: Mathematics homework for the TIMSS class.
+* M9B: Mathematics homework.
 RECODE
-    ATBM07B
-        (1=0) (2=1) (3=2) (4=3) (5=4)
+    ATBM09B
+        (1=0) (2=1) (3=2) (4=3)
         (6=-99) (9=-99) (SYSMIS=-99) (MISSING=-99).
 VALUE LABELS
-    ATBM07B
+    ATBM09B
         0 '15 minutes or less'
         1 '16--30 minutes'
         2 '31--60 minutes'
         3 'More than 60 minutes'.
 MISSING VALUES
-    ATBM07B
+    ATBM09B
         (-99).
 RENAME VARIABLES (
-    ATBM07B = MTimeHW
+    ATBM09B = MTimeHW
     ).
 
-* M7C: Mathematics homework for the TIMSS class.
+* M9C: Mathematics homework.
 RECODE
-    ATBM07CA ATBM07CB ATBM07CC
+    ATBM09CA ATBM09CB ATBM09CC
         (1=2) (2=1) (3=0)
         (6=-99) (9=-99) (SYSMIS=-99) (MISSING=-99).
 VALUE LABELS
-    ATBM07CA ATBM07CB ATBM07CC
+    ATBM09CA ATBM09CB ATBM09CC
         0 'Never or almost never'
         1 'Sometimes'
         2 'Always or almost always'.
 MISSING VALUES
-    ATBM07CA ATBM07CB ATBM07CC
+    ATBM09CA ATBM09CB ATBM09CC
         (-99).
 RENAME VARIABLES (
-    ATBM07CA ATBM07CB ATBM07CC
+    ATBM09CA ATBM09CB ATBM09CC
     =
     MHWCor MHWDis MHWMntr
     ).
 
-* M8: Math assessment of the TIMSS class.
+* M10: Math assessment.
 RECODE
-    ATBM08A ATBM08B ATBM08C
+    ATBM10A ATBM10B ATBM10C
         (1=2) (2=1) (3=0)
         (9=-99) (SYSMIS=-99) (MISSING=-99).
 VALUE LABELS
-    ATBM08A ATBM08B ATBM08C
-        0 'None'
-        1 'Some'
-        2 'A lot'.
+    ATBM10A ATBM10B ATBM10C
+        0 'Little or no emphasis'
+        1 'Some emphasis'
+        2 'Major emphasis'.
 MISSING VALUES
-    ATBM08A ATBM08B ATBM08C
+    ATBM10A ATBM10B ATBM10C
         (-99).
 RENAME VARIABLES (
-    ATBM08A ATBM08B ATBM08C
+    ATBM10A ATBM10B ATBM10C
     =
     MAsOngo MAsTest MAsNati
     ).
 
-* M9: PD to teach mathematics.
+* M11: PD to teach mathematics.
 RECODE
-    ATBM09A ATBM09B ATBM09C ATBM09D ATBM09E ATBM09F ATBM09G
+    ATBM11A ATBM11B ATBM11C ATBM11D ATBM11E ATBM11F
         (1=1) (2=0)
         (9=-99) (SYSMIS=-99) (MISSING=-99).
 VALUE LABELS
-    ATBM09A ATBM09B ATBM09C ATBM09D ATBM09E ATBM09F ATBM09G
+    ATBM11A ATBM11B ATBM11C ATBM11D ATBM11E ATBM11F
         0 'No'
         1 'Yes'.
 MISSING VALUES
-    ATBM09A ATBM09B ATBM09C ATBM09D ATBM09E ATBM09F ATBM09G
+    ATBM11A ATBM11B ATBM11C ATBM11D ATBM11E ATBM11F
         (-99).
 RENAME VARIABLES (
-    ATBM09A ATBM09B ATBM09C ATBM09D ATBM09E ATBM09F ATBM09G
+    ATBM11A ATBM11B ATBM11C ATBM11D ATBM11E ATBM11F
     =
-    MPDCont MPDPed MPDCur MPDTech MPDProb MPDAss MPDNeed
+    MPDCont MPDPed MPDCur MPDTech MPDAss MPDNeed
     ).
 
-* M10: Number of PD hours in mathematics.
+* M12: Preparation to teach mathematics.
 RECODE
-    ATBM10
-        (1=0) (2=1) (3=2) (4=3) (5=4)
-        (9=-99) (SYSMIS=-99) (MISSING=-99).
-VALUE LABELS
-    ATBM10
-        0 'None'
-        1 'Less than 6 hours'
-        2 '6--15 hours'
-        3 '16--35 hours'
-        4 'More than 35 hours'.
-MISSING VALUES
-    ATBM10
-        (-99).
-RENAME VARIABLES (
-    ATBM10 = MPDHour
-    ).
-
-* M11: Preparation to teach mathematics.
-RECODE
-    ATBM11AA ATBM11AB ATBM11AC ATBM11AD ATBM11AE ATBM11AF ATBM11AG ATBM11AH
-    ATBM11BA ATBM11BB ATBM11BC ATBM11BD ATBM11BE ATBM11BF ATBM11BG
-    ATBM11CA ATBM11CB
+    ATBM12AA ATBM12AB ATBM12AC ATBM12AD ATBM12AE ATBM12AF ATBM12AG ATBM12AH
+    ATBM12BA ATBM12BB ATBM12BC ATBM12BD ATBM12BE ATBM12BF ATBM12BG
+    ATBM12CA ATBM12CB ATBM12CC
         (1=0) (2=3) (3=2) (4=1)
         (9=-99) (SYSMIS=-99) (MISSING=-99).
 VALUE LABELS
-    ATBM11AA ATBM11AB ATBM11AC ATBM11AD ATBM11AE ATBM11AF ATBM11AG ATBM11AH
-    ATBM11BA ATBM11BB ATBM11BC ATBM11BD ATBM11BE ATBM11BF ATBM11BG
-    ATBM11CA ATBM11CB
+    ATBM12AA ATBM12AB ATBM12AC ATBM12AD ATBM12AE ATBM12AF ATBM12AG ATBM12AH
+    ATBM12BA ATBM12BB ATBM12BC ATBM12BD ATBM12BE ATBM12BF ATBM12BG
+    ATBM12CA ATBM12CB ATBM12CC
         0 'Not applicable'
         1 'Not well prepared'
         2 'Somewhat prepared'
         3 'Very well prepared'.
 MISSING VALUES
-    ATBM11AA ATBM11AB ATBM11AC ATBM11AD ATBM11AE ATBM11AF ATBM11AG ATBM11AH
-    ATBM11BA ATBM11BB ATBM11BC ATBM11BD ATBM11BE ATBM11BF ATBM11BG
-    ATBM11CA ATBM11CB
+    ATBM12AA ATBM12AB ATBM12AC ATBM12AD ATBM12AE ATBM12AF ATBM12AG ATBM12AH
+    ATBM12BA ATBM12BB ATBM12BC ATBM12BD ATBM12BE ATBM12BF ATBM12BG
+    ATBM12CA ATBM12CB ATBM12CC
         (-99).
 RENAME VARIABLES (
-    ATBM11AA ATBM11AB ATBM11AC ATBM11AD ATBM11AE ATBM11AF ATBM11AG ATBM11AH
-    ATBM11BA ATBM11BB ATBM11BC ATBM11BD ATBM11BE ATBM11BF ATBM11BG
-    ATBM11CA ATBM11CB
+    ATBM12AA ATBM12AB ATBM12AC ATBM12AD ATBM12AE ATBM12AF ATBM12AG ATBM12AH
+    ATBM12BA ATBM12BB ATBM12BC ATBM12BD ATBM12BE ATBM12BF ATBM12BG
+    ATBM12CA ATBM12CB ATBM12CC
     =
-    MPrpNum MPrpSim MPrpFac MPrpFraC MPrpFraU MPrpDec MPrpSent MPrpPat
+    MPrpNum MPrpSim MPrpFraC MPrpFraU MPrpDecC MPrpDecU MPrpSent MPrpPat
     MPrpLine MPrpAngl MPrpCood MPrpShap MPrpRota MPrpDim MPrpArea
-    MPrpData MPrpConc
+    MPrpTabl MPrpData MPrpConc
     ).
 
 * S1A: Separate or integrated science teaching.
@@ -812,293 +846,324 @@ RENAME VARIABLES (
 
 * S1B: Time spent on science instruction.
 RECODE
-    ATBS01B
-        (9999=-99) (SYSMIS=-99) (MISSING=-99).
+    ATBS01BA ATBS01BB
+        (99=-99) (SYSMIS=-99) (MISSING=-99).
 MISSING VALUES
-    ATBS01B
+    ATBS01BA ATBS01BB
         (-99).
 RENAME VARIABLES (
-    ATBS01B = STime
+    ATBS01BA ATBS01BB
+    =
+    SciHour SciMinu
     ).
 
 * S2: Science teaching confidence.
 RECODE
-    ATBS02A ATBS02B ATBS02C ATBS02D ATBS02E ATBS02F ATBS02G ATBS02H ATBS02I ATBS02J
-        (1=3) (2=2) (3=1) (4=0)
+    ATBS02A ATBS02B ATBS02C ATBS02D ATBS02E
+        (1=2) (2=1) (3=0)
         (9=-99) (SYSMIS=-99) (MISSING=-99).
 VALUE LABELS
-    ATBS02A ATBS02B ATBS02C ATBS02D ATBS02E ATBS02F ATBS02G ATBS02H ATBS02I ATBS02J
-        0 'Low'
-        1 'Medium'
-        2 'High'
-        3 'Very high'.
+    ATBS02A ATBS02B ATBS02C ATBS02D ATBS02E
+        0 'Not confident'
+        1 'Somewhat confident'
+        2 'Very confident'.
 MISSING VALUES
-    ATBS02A ATBS02B ATBS02C ATBS02D ATBS02E ATBS02F ATBS02G ATBS02H ATBS02I ATBS02J
+    ATBS02A ATBS02B ATBS02C ATBS02D ATBS02E
         (-99).
 RENAME VARIABLES (
-    ATBS02A ATBS02B ATBS02C ATBS02D ATBS02E ATBS02F ATBS02G ATBS02H ATBS02I ATBS02J
+    ATBS02A ATBS02B ATBS02C ATBS02D ATBS02E
     =
-    SCfInsp SCfExpl SCfChal SCfEnga SCfAppr SCfAss SCfImpr SCfRele SCfHgTh SCfInqu
+    SCfAnsw SCfExpl SCfChal SCfEnga SCfAppr
     ).
 
 * S3: Science teaching practices.
 RECODE
-    ATBS03A ATBS03B ATBS03C ATBS03D ATBS03E ATBS03F ATBS03G
-    ATBS03H ATBS03I ATBS03J ATBS03K ATBS03L ATBS03M ATBS03N
+    ATBS03A ATBS03B ATBS03C ATBS03D ATBS03E ATBS03F ATBS03G ATBS03H ATBS03I ATBS03J
         (1=3) (2=2) (3=1) (4=0)
         (9=-99) (SYSMIS=-99) (MISSING=-99).
 VALUE LABELS
-    ATBS03A ATBS03B ATBS03C ATBS03D ATBS03E ATBS03F ATBS03G
-    ATBS03H ATBS03I ATBS03J ATBS03K ATBS03L ATBS03M ATBS03N
+    ATBS03A ATBS03B ATBS03C ATBS03D ATBS03E ATBS03F ATBS03G ATBS03H ATBS03I ATBS03J
         0 'Never'
         1 'Some lessons'
         2 'About half the lessons'
         3 'Every or almost every lesson'.
 MISSING VALUES
-    ATBS03A ATBS03B ATBS03C ATBS03D ATBS03E ATBS03F ATBS03G
-    ATBS03H ATBS03I ATBS03J ATBS03K ATBS03L ATBS03M ATBS03N
+    ATBS03A ATBS03B ATBS03C ATBS03D ATBS03E ATBS03F ATBS03G ATBS03H ATBS03I ATBS03J
         (-99).
 RENAME VARIABLES (
-    ATBS03A ATBS03B ATBS03C ATBS03D ATBS03E ATBS03F ATBS03G
-    ATBS03H ATBS03I ATBS03J ATBS03K ATBS03L ATBS03M ATBS03N
+    ATBS03A ATBS03B ATBS03C ATBS03D ATBS03E ATBS03F ATBS03G ATBS03H ATBS03I ATBS03J
     =
-    STExp STObs STDem STPlanEx STConEx STPreDat STIntDat
-    STUseEvi STReadTx STFact STFieldW STTest STMixAb STSamAb
+    STObs STDem STPlanEx STConEx STReadTx STFact STExpl STRelLif STFieldW STTest
     ).
 
-* S4A: Science teaching and computer availability.
+* S4: Science teaching resources.
 RECODE
-    ATBS04A
+    ATBS04A ATBS04B ATBS04C ATBS04D ATBS04E
+        (1=2) (2=1) (3=0)
+        (9=-99) (SYSMIS=-99) (MISSING=-99).
+VALUE LABELS
+    ATBS04A ATBS04B ATBS04C ATBS04D ATBS04E
+        0 'Not used'
+        1 'Supplement'
+        2 'Basis for instruction'.
+MISSING VALUES
+    ATBS04A ATBS04B ATBS04C ATBS04D ATBS04E
+        (-99).
+RENAME VARIABLES (
+    ATBS04A ATBS04B ATBS04C ATBS04D ATBS04E
+    =
+    SResTxbk SResWkbk SResEqip SResSoft SResRef
+    ).
+
+* S5A: Science teaching and computer availability.
+RECODE
+    ATBS05A
         (1=1) (2=0)
         (9=-99) (SYSMIS=-99) (MISSING=-99).
 VALUE LABELS
-    ATBS04A
+    ATBS05A
         0 'No'
         1 'Yes'.
 MISSING VALUES
-    ATBS04A
+    ATBS05A
         (-99).
 RENAME VARIABLES (
-    ATBS04A = SPCAva
+    ATBS05A = SPCAva
     ).
 
-* S4B: Science teaching and access to computer.
+* S5B: Science teaching and access to computer.
 RECODE
-    ATBS04BA ATBS04BB ATBS04BC
+    ATBS05B
         (1=1) (2=0)
         (6=-99) (9=-99) (SYSMIS=-99) (MISSING=-99).
 VALUE LABELS
-    ATBS04BA ATBS04BB ATBS04BC
+    ATBS05B
         0 'No'
         1 'Yes'.
 MISSING VALUES
-    ATBS04BA ATBS04BB ATBS04BC
+    ATBS05B
         (-99).
 RENAME VARIABLES (
-    ATBS04BA ATBS04BB ATBS04BC
-    =
-    SPCStd SPCClas SPCSch
+    ATBS05B = SPCIntNt
     ).
 
-* S4C: Science teaching using computer.
+* S5C: Science teaching using computer.
 RECODE
-    ATBS04CA ATBS04CB ATBS04CC ATBS04CD
+    ATBS05CA ATBS05CB ATBS05CC ATBS05CD
         (1=3) (2=2) (3=1) (4=0)
         (6=-99) (9=-99) (SYSMIS=-99) (MISSING=-99).
 VALUE LABELS
-    ATBS04CA ATBS04CB ATBS04CC ATBS04CD
+    ATBS05CA ATBS05CB ATBS05CC ATBS05CD
         0 'Never or almost never'
         1 'Once or twice a month'
         2 'Once or twice a week'
         3 'Every or almost every day'.
 MISSING VALUES
-    ATBS04CA ATBS04CB ATBS04CC ATBS04CD
+    ATBS05CA ATBS05CB ATBS05CC ATBS05CD
         (-99).
 RENAME VARIABLES (
-    ATBS04CA ATBS04CB ATBS04CC ATBS04CD
+    ATBS05CA ATBS05CB ATBS05CC ATBS05CD
     =
     SPCSkil SPCSear SPCProc SPCSimu
     ).
 
-* S5: Science topics taught to the TIMSS class.
+* S6: Science topics taught.
 RECODE
-    ATBS05AA ATBS05AB ATBS05AC ATBS05AD ATBS05AE ATBS05AF ATBS05AG
-    ATBS05BA ATBS05BB ATBS05BC ATBS05BD ATBS05BE ATBS05BF ATBS05BG ATBS05BH ATBS05BI
-    ATBS05CA ATBS05CB ATBS05CC ATBS05CD ATBS05CE ATBS05CF ATBS05CG
+    ATBS06AA ATBS06AB ATBS06AC ATBS06AD ATBS06AE ATBS06AF
+    ATBS06BA ATBS06BB ATBS06BC ATBS06BD ATBS06BE ATBS06BF ATBS06BG ATBS06BH
+    ATBS06CA ATBS06CB ATBS06CC ATBS06CD ATBS06CE ATBS06CF
         (1=1) (2=2) (3=0)
         (9=-99) (SYSMIS=-99) (MISSING=-99).
 VALUE LABELS
-    ATBS05AA ATBS05AB ATBS05AC ATBS05AD ATBS05AE ATBS05AF ATBS05AG
-    ATBS05BA ATBS05BB ATBS05BC ATBS05BD ATBS05BE ATBS05BF ATBS05BG ATBS05BH ATBS05BI
-    ATBS05CA ATBS05CB ATBS05CC ATBS05CD ATBS05CE ATBS05CF ATBS05CG
+    ATBS06AA ATBS06AB ATBS06AC ATBS06AD ATBS06AE ATBS06AF
+    ATBS06BA ATBS06BB ATBS06BC ATBS06BD ATBS06BE ATBS06BF ATBS06BG ATBS06BH
+    ATBS06CA ATBS06CB ATBS06CC ATBS06CD ATBS06CE ATBS06CF
         0 'Not yet taught or just introduced'
         1 'Mostly taught before this year'
         2 'Mostly taught this year'.
 MISSING VALUES
-    ATBS05AA ATBS05AB ATBS05AC ATBS05AD ATBS05AE ATBS05AF ATBS05AG
-    ATBS05BA ATBS05BB ATBS05BC ATBS05BD ATBS05BE ATBS05BF ATBS05BG ATBS05BH ATBS05BI
-    ATBS05CA ATBS05CB ATBS05CC ATBS05CD ATBS05CE ATBS05CF ATBS05CG
+    ATBS06AA ATBS06AB ATBS06AC ATBS06AD ATBS06AE ATBS06AF
+    ATBS06BA ATBS06BB ATBS06BC ATBS06BD ATBS06BE ATBS06BF ATBS06BG ATBS06BH
+    ATBS06CA ATBS06CB ATBS06CC ATBS06CD ATBS06CE ATBS06CF
         (-99).
 RENAME VARIABLES (
-    ATBS05AA ATBS05AB ATBS05AC ATBS05AD ATBS05AE ATBS05AF ATBS05AG
-    ATBS05BA ATBS05BB ATBS05BC ATBS05BD ATBS05BE ATBS05BF ATBS05BG ATBS05BH ATBS05BI
-    ATBS05CA ATBS05CB ATBS05CC ATBS05CD ATBS05CE ATBS05CF ATBS05CG
+    ATBS06AA ATBS06AB ATBS06AC ATBS06AD ATBS06AE ATBS06AF
+    ATBS06BA ATBS06BB ATBS06BC ATBS06BD ATBS06BE ATBS06BF ATBS06BG ATBS06BH
+    ATBS06CA ATBS06CB ATBS06CC ATBS06CD ATBS06CE ATBS06CF
     =
-    STopLiv STopBody STopLife STopPlan STopFeat STopComm STopHum
-    STopMat STopClas STopMix STopChg STopEne STopLigt STopElec STopMag STopForc
-    STopLand STopWate STopWeat STopFosl STopSolr STopMotn STopReas
+    STopBody STopLife STopFeat STopComm STopEnvi STopHum
+    STopMat STopClas STopMix STopChg STopEne STopLigt STopElec STopForc
+    STopWate STopLand STopWeat STopFosl STopSolr STopMotn
     ).
 
-* S6A: Time for science homework.
+* S7: Science content coverage.
 RECODE
-    ATBS06A
+    ATBS07A ATBS07B ATBS07C ATBS07D
+        (999=-99) (SYSMIS=-99) (MISSING=-99).
+MISSING VALUES
+    ATBS07A ATBS07B ATBS07C ATBS07D
+        (-99).
+
+* S8A: Time for science homework.
+RECODE
+    ATBS08A
         (1=0) (2=1) (3=2) (4=3) (5=4)
         (9=-99) (SYSMIS=-99) (MISSING=-99).
 VALUE LABELS
-    ATBS06A
+    ATBS08A
         0 'I do not assign science homework'
         1 'Less than one a week'
         2 '1 or 2 times a week'
         3 '3 or 4 times a week'
         4 'Every day'.
 MISSING VALUES
-    ATBS06A
+    ATBS08A
         (-99).
 RENAME VARIABLES (
-    ATBS06A = SHomeW
+    ATBS08A = SHomeW
     ).
 
-* S6B: Time for science homework.
+* S8B: Time for science homework.
 RECODE
-    ATBS06B
+    ATBS08B
         (1=0) (2=1) (3=2) (4=3)
         (6=-99) (9=-99) (SYSMIS=-99) (MISSING=-99).
 VALUE LABELS
-    ATBS06B
+    ATBS08B
         0 '15 minutes or less'
         1 '16--30 minutes'
         2 '31--60 minutes'
         3 'More than 60 minutes'.
 MISSING VALUES
-    ATBS06B
+    ATBS08B
         (-99).
 RENAME VARIABLES (
-    ATBS06B = STimeHW
+    ATBS08B = STimeHW
     ).
 
-* S5C: Assessing science homework.
+* S8C: Assessing science homework.
 RECODE
-    ATBS06CA ATBS06CB ATBS06CC
+    ATBS08CA ATBS08CB ATBS08CC
         (1=2) (2=1) (3=0)
         (6=-99) (9=-99) (SYSMIS=-99) (MISSING=-99).
 VALUE LABELS
-    ATBS06CA ATBS06CB ATBS06CC
+    ATBS08CA ATBS08CB ATBS08CC
         0 'Never or almost never'
         1 'Sometimes'
         2 'Always or almost always'.
 MISSING VALUES
-    ATBS06CA ATBS06CB ATBS06CC
+    ATBS08CA ATBS08CB ATBS08CC
         (-99).
 RENAME VARIABLES (
-    ATBS06CA ATBS06CB ATBS06CC
+    ATBS08CA ATBS08CB ATBS08CC
     =
     SHWCor SHWDis SHWMntr
     ).
 
-* S7: Science assessment of the TIMSS class.
+* S9: Science assessment.
 RECODE
-    ATBS07A ATBS07B ATBS07C
+    ATBS09A ATBS09B ATBS09C
         (1=2) (2=1) (3=0)
         (9=-99) (SYSMIS=-99) (MISSING=-99).
 VALUE LABELS
-    ATBS07A ATBS07B ATBS07C
-        0 'None'
-        1 'Some'
-        2 'A lot'.
+    ATBS09A ATBS09B ATBS09C
+        0 'Little or no emphasis'
+        1 'Some emphasis'
+        2 'Major emphasis'.
 MISSING VALUES
-    ATBS07A ATBS07B ATBS07C
+    ATBS09A ATBS09B ATBS09C
         (-99).
 RENAME VARIABLES (
-    ATBS07A ATBS07B ATBS07C
+    ATBS09A ATBS09B ATBS09C
     =
     SAsOngo SAsTest SAsNati
     ).
 
-* S8: PD to teach science: Past experience (A) and future needs (B).
+* S10: PD to teach science.
 RECODE
-    ATBS08A ATBS08B ATBS08C ATBS08D ATBS08E ATBS08F ATBS08G ATBS08H
+    ATBS10A ATBS10B ATBS10C ATBS10D ATBS10E ATBS10F
         (1=1) (2=0)
         (9=-99) (SYSMIS=-99) (MISSING=-99).
 VALUE LABELS
-    ATBS08A ATBS08B ATBS08C ATBS08D ATBS08E ATBS08F ATBS08G ATBS08H
+    ATBS10A ATBS10B ATBS10C ATBS10D ATBS10E ATBS10F
         0 'No'
         1 'Yes'.
 MISSING VALUES
-    ATBS08A ATBS08B ATBS08C ATBS08D ATBS08E ATBS08F ATBS08G ATBS08H
+    ATBS10A ATBS10B ATBS10C ATBS10D ATBS10E ATBS10F
         (-99).
 RENAME VARIABLES (
-    ATBS08A ATBS08B ATBS08C ATBS08D ATBS08E ATBS08F ATBS08G ATBS08H
+    ATBS10A ATBS10B ATBS10C ATBS10D ATBS10E ATBS10F
     =
-    SPDCont SPDPed SPDCur SPDTech SPDCrit SPDAss SPDNeed SPDIntg
+    SPDCont SPDPed SPDCur SPDTech SPDAss SPDNeed
     ).
 
-* S9: Number of PD hours in science.
+* S11: Preparation to teach science.
 RECODE
-    ATBS09
-        (1=0) (2=1) (3=2) (4=3) (5=4)
-        (9=-99) (SYSMIS=-99) (MISSING=-99).
-VALUE LABELS
-    ATBS09
-        0 'None'
-        1 'Less than 6 hours'
-        2 '6--15 hours'
-        3 '16--35 hours'
-        4 'More than 35 hours'.
-MISSING VALUES
-    ATBS09
-        (-99).
-RENAME VARIABLES (
-    ATBS09 = SPDHour
-    ).
-
-* S10: Preparation to teach science.
-RECODE
-    ATBS10AA ATBS10AB ATBS10AC ATBS10AD ATBS10AE ATBS10AF ATBS10AG
-    ATBS10BA ATBS10BB ATBS10BC ATBS10BD ATBS10BE ATBS10BF ATBS10BG ATBS10BH ATBS10BI
-    ATBS10CA ATBS10CB ATBS10CC ATBS10CD ATBS10CE ATBS10CF ATBS10CG
+    ATBS11AA ATBS11AB ATBS11AC ATBS11AD ATBS11AE ATBS11AF
+    ATBS11BA ATBS11BB ATBS11BC ATBS11BD ATBS11BE ATBS11BF ATBS11BG ATBS11BH
+    ATBS11CA ATBS11CB ATBS11CC ATBS11CD ATBS11CE ATBS11CF
         (1=0) (2=3) (3=2) (4=1)
         (9=-99) (SYSMIS=-99) (MISSING=-99).
 VALUE LABELS
-    ATBS10AA ATBS10AB ATBS10AC ATBS10AD ATBS10AE ATBS10AF ATBS10AG
-    ATBS10BA ATBS10BB ATBS10BC ATBS10BD ATBS10BE ATBS10BF ATBS10BG ATBS10BH ATBS10BI
-    ATBS10CA ATBS10CB ATBS10CC ATBS10CD ATBS10CE ATBS10CF ATBS10CG
+    ATBS11AA ATBS11AB ATBS11AC ATBS11AD ATBS11AE ATBS11AF
+    ATBS11BA ATBS11BB ATBS11BC ATBS11BD ATBS11BE ATBS11BF ATBS11BG ATBS11BH
+    ATBS11CA ATBS11CB ATBS11CC ATBS11CD ATBS11CE ATBS11CF
         0 'Not applicable'
         1 'Not well prepared'
         2 'Somewhat prepared'
         3 'Very well prepared'.
 MISSING VALUES
-    ATBS10AA ATBS10AB ATBS10AC ATBS10AD ATBS10AE ATBS10AF ATBS10AG
-    ATBS10BA ATBS10BB ATBS10BC ATBS10BD ATBS10BE ATBS10BF ATBS10BG ATBS10BH ATBS10BI
-    ATBS10CA ATBS10CB ATBS10CC ATBS10CD ATBS10CE ATBS10CF ATBS10CG
+    ATBS11AA ATBS11AB ATBS11AC ATBS11AD ATBS11AE ATBS11AF
+    ATBS11BA ATBS11BB ATBS11BC ATBS11BD ATBS11BE ATBS11BF ATBS11BG ATBS11BH
+    ATBS11CA ATBS11CB ATBS11CC ATBS11CD ATBS11CE ATBS11CF
         (-99).
 RENAME VARIABLES (
-    ATBS10AA ATBS10AB ATBS10AC ATBS10AD ATBS10AE ATBS10AF ATBS10AG
-    ATBS10BA ATBS10BB ATBS10BC ATBS10BD ATBS10BE ATBS10BF ATBS10BG ATBS10BH ATBS10BI
-    ATBS10CA ATBS10CB ATBS10CC ATBS10CD ATBS10CE ATBS10CF ATBS10CG
+    ATBS11AA ATBS11AB ATBS11AC ATBS11AD ATBS11AE ATBS11AF
+    ATBS11BA ATBS11BB ATBS11BC ATBS11BD ATBS11BE ATBS11BF ATBS11BG ATBS11BH
+    ATBS11CA ATBS11CB ATBS11CC ATBS11CD ATBS11CE ATBS11CF
     =
-    SPrpLiv SPrpBody SPrpLife SPrpPlan SPrpFeat SPrpComm SPrpHum
-    SPrpMat SPrpClas SPrpMix SPrpChg SPrpEne SPrpLigt SPrpElec SPrpMag SPrpForc
-    SPrpLand SPrpWate SPrpWeat SPrpFosl SPrpSolr SPrpMotn SPrpReas
+    SPrpBody SPrpLife SPrpFeat SPrpComm SPrpEnvi SPrpHum
+    SPrpMat SPrpClas SPrpMix SPrpChg SPrpEne SPrpLigt SPrpElec SPrpForc
+    SPrpWate SPrpLand SPrpWeat SPrpFosl SPrpSolr SPrpMotn
     ).
 
 **************************
 ** Compound variables **
 **************************
 
+* System ID teacher file.
+
+* TIMSS compound variables: Working condition problem.
+RECODE
+    ATBGTWC
+        (999996=-99) (999999=-99) (SYSMIS=-99) (MISSING=-99).
+MISSING VALUES
+    ATBGTWC
+        (-99).
+RENAME VARIABLES (
+     ATBGTWC = SCLWCond
+    ).
+
+RECODE
+    ATDGTWC
+        (1=0) (2=1) (3=2)
+        (6=-99) (9=-99) (SYSMIS=-99) (MISSING=-99).
+VALUE LABELS
+    ATDGTWC
+        0 'Hardly any problems'
+        1 'Minor problems'
+        2 'Moderate problems'.
+MISSING VALUES
+    ATDGTWC
+        (-99).
+RENAME VARIABLES (
+    ATDGTWC = IDXWCond
+    ).
+
 * TIMSS compound variables: SEAS.
 RECODE
     ATBGEAS
-        (999999=-99) (SYSMIS=-99) (MISSING=-99).
+        (999996=-99) (999999=-99) (SYSMIS=-99) (MISSING=-99).
 MISSING VALUES
     ATBGEAS
         (-99).
@@ -1109,7 +1174,7 @@ RENAME VARIABLES (
 RECODE
     ATDGEAS
         (1=2) (2=1) (3=0)
-        (9=-99) (SYSMIS=-99) (MISSING=-99).
+        (6=-99) (9=-99) (SYSMIS=-99) (MISSING=-99).
 VALUE LABELS
     ATDGEAS
         0 'Medium emphasis'
@@ -1125,7 +1190,7 @@ RENAME VARIABLES (
 * TIMSS compound variables: Safe and orderly school.
 RECODE
     ATBGSOS
-        (999999=-99) (SYSMIS=-99) (MISSING=-99).
+        (999996=-99) (999999=-99) (SYSMIS=-99) (MISSING=-99).
 MISSING VALUES
     ATBGSOS
         (-99).
@@ -1136,12 +1201,12 @@ RENAME VARIABLES (
 RECODE
     ATDGSOS
         (1=2) (2=1) (3=0)
-        (9=-99) (SYSMIS=-99) (MISSING=-99).
+        (6=-99) (9=-99) (SYSMIS=-99) (MISSING=-99).
 VALUE LABELS
     ATDGSOS
-        0 'Less than safe and orderly'
+        0 'Not safe and orderly'
         1 'Somewhat safe and orderly'
-        2 'Very safe and orderly'.
+        2 'Safe and orderly'.
 MISSING VALUES
     ATDGSOS
         (-99).
@@ -1149,118 +1214,143 @@ RENAME VARIABLES (
     ATDGSOS = IDXSafe
     ).
 
-* TIMSS compound variables: School conditions and resources.
+* TIMSS compound variables: Math confidence.
 RECODE
-    ATBGSCR
-        (999999=-99) (SYSMIS=-99) (MISSING=-99).
+    ATBMCTM
+        (999996=-99) (999999=-99) (SYSMIS=-99) (MISSING=-99).
 MISSING VALUES
-     ATBGSCR
+    ATBMCTM
         (-99).
 RENAME VARIABLES (
-     ATBGSCR = SCLRes
+    ATBMCTM = SCLMConf
     ).
 
 RECODE
-    ATDGSCR
-        (1=2) (2=1) (3=0)
-        (9=-99) (SYSMIS=-99) (MISSING=-99).
+    ATDMCTM
+        (1=1) (2=0)
+        (6=-99) (9=-99) (SYSMIS=-99) (MISSING=-99).
 VALUE LABELS
-    ATDGSCR
-        0 'Moderate to severe problems'
-        1 'Minor problems'
-        2 'Hardly any problems'.
+    ATDMCTM
+        0 'Somewhat confident'
+        1 'Confident'.
 MISSING VALUES
-    ATDGSCR
+    ATDMCTM
         (-99).
 RENAME VARIABLES (
-    ATDGSCR = IDXRes
+    ATDMCTM = IDXMConf
     ).
 
-* TIMSS compound variables: Teacher job satisfaction.
+* TIMSS compound variables: Science confidence.
 RECODE
-    ATBGTJS
-        (999999=-99) (SYSMIS=-99) (MISSING=-99).
+    ATBSCTS
+        (999996=-99) (999999=-99) (SYSMIS=-99) (MISSING=-99).
 MISSING VALUES
-    ATBGTJS
+    ATBSCTS
         (-99).
 RENAME VARIABLES (
-    ATBGTJS = SCLJob
+    ATBSCTS = SCLSConf
     ).
 
 RECODE
-    ATDGTJS
-        (1=2) (2=1) (3=0)
-        (9=-99) (SYSMIS=-99) (MISSING=-99).
+    ATDSCTS
+        (1=1) (2=0)
+        (6=-99) (9=-99) (SYSMIS=-99) (MISSING=-99).
 VALUE LABELS
-    ATDGTJS
+    ATDSCTS
+        0 'Somewhat confident'
+        1 'Confident'.
+MISSING VALUES
+    ATDSCTS
+        (-99).
+RENAME VARIABLES (
+    ATDSCTS = IDXSConf
+    ).
+
+* TIMSS compound variables: Career satisfaction.
+RECODE
+    ATBGTCS
+        (999996=-99) (999999=-99) (SYSMIS=-99) (MISSING=-99).
+MISSING VALUES
+    ATBGTCS
+        (-99).
+RENAME VARIABLES (
+    ATBGTCS = SCLCaree
+    ).
+
+RECODE
+    ATDGTCS
+        (1=2) (2=1) (3=0)
+        (6=-99) (9=-99) (SYSMIS=-99) (MISSING=-99).
+VALUE LABELS
+    ATDGTCS
         0 'Less than satisfied'
         1 'Somewhat satisfied'
-        2 'Very satisfied'.
+        2 'Satisfied'.
 MISSING VALUES
-    ATDGTJS
+    ATDGTCS
         (-99).
 RENAME VARIABLES (
-    ATDGTJS = IDXJob
+    ATDGTCS = IDXCaree
     ).
 
-* TIMSS compound variables: Challenges facing teachers.
+* TIMSS compound variables: Collaborate to improve teaching.
 RECODE
-    ATBGCFT
-        (999999=-99) (SYSMIS=-99) (MISSING=-99).
+    ATBGCIT
+        (999996=-99) (999999=-99) (SYSMIS=-99) (MISSING=-99).
 MISSING VALUES
-    ATBGCFT
+    ATBGCIT
         (-99).
 RENAME VARIABLES (
-    ATBGCFT = SCLChal
+    ATBGCIT = SCLColl
     ).
 
 RECODE
-    ATDGCFT
+    ATDGCIT
+        (1=2) (2=1) (3=0)
+        (6=-99) (9=-99) (SYSMIS=-99) (MISSING=-99).
+VALUE LABELS
+    ATDGCIT
+        0 'Sometimes collaborative'
+        1 'Collaborative'
+        2 'Very collaborative'.
+MISSING VALUES
+    ATDGCIT
+        (-99).
+RENAME VARIABLES (
+    ATDGCIT = IDXColl
+    ).
+
+* TIMSS compound variables: Instruction to engage students in learning.
+RECODE
+    ATBGIES
+        (999996=-99) (999999=-99) (SYSMIS=-99) (MISSING=-99).
+MISSING VALUES
+    ATBGIES
+        (-99).
+RENAME VARIABLES (
+    ATBGIES = SCLEnga
+    ).
+
+RECODE
+    ATDGIES
         (1=2) (2=1) (3=0)
         (9=-99) (SYSMIS=-99) (MISSING=-99).
 VALUE LABELS
-    ATDGCFT
-        0 'Many challenges'
-        1 'Some challenges'
-        2 'Few challenges'.
+    ATDGIES
+        0 'Some lessons'
+        1 'About half the lessons'
+        2 'Most lessons'.
 MISSING VALUES
-    ATDGCFT
+    ATDGIES
         (-99).
 RENAME VARIABLES (
-    ATDGCFT = IDXChal
-    ).
-
-* TIMSS compound variables: Teaching limited by student needs.
-RECODE
-    ATBGLSN
-        (999999=-99) (SYSMIS=-99) (MISSING=-99).
-MISSING VALUES
-    ATBGLSN
-        (-99).
-RENAME VARIABLES (
-    ATBGLSN = SCLLimit
-    ).
-
-RECODE
-    ATDGLSN
-        (1=2) (2=1) (3=0)
-        (9=-99) (SYSMIS=-99) (MISSING=-99).
-VALUE LABELS
-    ATDGLSN
-        0 'Very limited'
-        1 'Somewhat limited'
-        2 'Very limited'.
-MISSING VALUES
-    ATDGLSN
-        (-99).
-RENAME VARIABLES (
-    ATDGLSN = IDXLimit
+    ATDGIES = IDXEnga
     ).
 
 * TIMSS compound variables: Teacher emphasis on science investigation.
 RECODE
     ATBSESI
-        (999999=-99) (SYSMIS=-99) (MISSING=-99).
+        (999996=-99) (999999=-99) (SYSMIS=-99) (MISSING=-99).
 MISSING VALUES
     ATBSESI
         (-99).
@@ -1271,7 +1361,7 @@ RENAME VARIABLES (
 RECODE
     ATDSESI
         (1=1) (2=0)
-        (9=-99) (SYSMIS=-99) (MISSING=-99).
+        (6=-99) (9=-99) (SYSMIS=-99) (MISSING=-99).
 VALUE LABELS
     ATDSESI
         0 'Less than half the lessons'
@@ -1287,14 +1377,14 @@ RENAME VARIABLES (
 RECODE
     ATDM05
         (1=4) (2=3) (3=2) (4=1) (5=0)
-        (9=-99) (SYSMIS=-99) (MISSING=-99).
+        (6=-99) (9=-99) (SYSMIS=-99) (MISSING=-99).
 VALUE LABELS
     ATDM05
-        0 'No formal education beyond upper secondary'
+        0 'No post-secondary education'
         1 'All other majors'
-        2 'Major in mathematics but not education'
-        3 'Major in education but not mathematics'
-        4 'Major in education and mathematics'.
+        2 'Major in mathematics but no major in primary education'
+        3 'Major in primary education but no major in mathematics'
+        4 'Major in primary education and major in mathematics'.
 MISSING VALUES
     ATDM05
         (-99).
@@ -1306,14 +1396,14 @@ RENAME VARIABLES (
 RECODE
     ATDS05
         (1=4) (2=3) (3=2) (4=1) (5=0)
-        (9=-99) (SYSMIS=-99) (MISSING=-99).
+        (6=-99) (9=-99) (SYSMIS=-99) (MISSING=-99).
 VALUE LABELS
     ATDS05
-        0 'No formal education beyond upper secondary'
+        0 'No post-secondary education'
         1 'All other majors'
-        2 'Major in math but not in primary education'
-        3 'Major in primary education but not in math'
-        4 'Major in primary education and math'.
+        2 'Major in science but no major in primary education'
+        3 'Major in primary education but no major in science'
+        4 'Major in primary education and major in science'.
 MISSING VALUES
     ATDS05
         (-99).
@@ -1321,28 +1411,81 @@ RENAME VARIABLES (
     ATDS05 = STchMjr
     ).
 
-* Percent of students taught math topics.
+* Teachers' year of experience.
 RECODE
-    ATDM06NU ATDM06GE ATDM06DT
-        (999=-99) (SYSMIS=-99) (MISSING=-99).
+    ATDG01
+        (1=3) (2=2) (3=1) (4=0)
+        (6=-99) (9=-99) (SYSMIS=-99) (MISSING=-99).
+VALUE LABELS
+    ATDG01
+        0 'Less than 5 years'
+        1 'At least 5 but less than 10 years'
+        2 'At least 10 but less than 20 years'
+        3 '20 years or more'.
 MISSING VALUES
-    ATDM06NU ATDM06GE ATDM06DT
+    ATDG01
         (-99).
 RENAME VARIABLES (
-    ATDM06NU ATDM06GE ATDM06DT
+    ATDG01 = YearExpe
+    ).
+
+* Math instruction hours.
+RECODE
+    ATDMHW
+        (9996=-99) (9999=-99) (SYSMIS=-99) (MISSING=-99).
+MISSING VALUES
+    ATDMHW
+        (-99).
+RENAME VARIABLES (
+    ATDMHW = HourMat
+    ).
+
+* Science instruction hours.
+RECODE
+    ATDSHW
+        (9996=-99) (9999=-99) (SYSMIS=-99) (MISSING=-99).
+MISSING VALUES
+    ATDSHW
+        (-99).
+RENAME VARIABLES (
+    ATDSHW = HourSci
+    ).
+
+* Teacher preparedness.
+RECODE
+    ATDM12NU ATDM12GE ATDM12DT ATDS11LI ATDS11PH ATDS11ES
+        (9996=-99) (9999=-99) (SYSMIS=-99) (MISSING=-99).
+MISSING VALUES
+    ATDM12NU ATDM12GE ATDM12DT ATDS11LI ATDS11PH ATDS11ES
+        (-99).
+RENAME VARIABLES (
+    ATDM12NU ATDM12GE ATDM12DT ATDS11LI ATDS11PH ATDS11ES
+    =
+    PrepNum PrepGeo PrepDat PrepLif PrepPhy PrepEar
+    ).
+
+* Percent of students taught math topics.
+RECODE
+    ATDM07NU ATDM07GE ATDM07DT
+        (9996=-99) (9999=-99) (SYSMIS=-99) (MISSING=-99).
+MISSING VALUES
+    ATDM07NU ATDM07GE ATDM07DT
+        (-99).
+RENAME VARIABLES (
+    ATDM07NU ATDM07GE ATDM07DT
     =
     PTpNumb PTpGeo PTpData
     ).
 
 * Percent of students taught science topics.
 RECODE
-    ATDS05LI ATDS05PH ATDS05ES
+    ATDS06LI ATDS06PH ATDS06ES
         (999=-99) (SYSMIS=-99) (MISSING=-99).
 MISSING VALUES
-    ATDS05LI ATDS05PH ATDS05ES
+    ATDS06LI ATDS06PH ATDS06ES
         (-99).
 RENAME VARIABLES (
-    ATDS05LI ATDS05PH ATDS05ES
+    ATDS06LI ATDS06PH ATDS06ES
     =
     PTpLife PTpPhys PTpEarth
     ).
@@ -1432,7 +1575,7 @@ DELETE VARIABLES
     ASSIBM03
     ASSIBM04
     ASSIBM05
-    VERSION
+    DPCDATE
     idbid
     .
 

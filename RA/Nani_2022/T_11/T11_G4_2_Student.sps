@@ -26,12 +26,6 @@ GET FILE =
 **************************
 
 *1: Country ID - Numeric ISO Code.
-RECODE
-    IDCNTRY
-        (999999=-99) (SYSMIS=-99) (MISSING=-99).
-MISSING VALUES
-    IDCNTRY
-        (-99).
 
 *2: Student Test Booklet.
 RECODE
@@ -42,28 +36,8 @@ MISSING VALUES
         (-99).
 
 *3: School ID.
-RECODE
-    IDSCHOOL
-        (9999=-99) (SYSMIS=-99) (MISSING=-99).
-MISSING VALUES
-    IDSCHOOL
-        (-99).
-
 *4: Class ID.
-RECODE
-    IDCLASS
-        (999999=-99) (SYSMIS=-99) (MISSING=-99).
-MISSING VALUES
-    IDCLASS
-        (-99).
-
 *5: Student ID.
-RECODE
-    IDSTUD
-        (99999999=-99) (SYSMIS=-99) (MISSING=-99).
-MISSING VALUES
-    IDSTUD
-        (-99).
 
 *6: Grade ID.
 RECODE
@@ -71,47 +45,6 @@ RECODE
         (99=-99) (SYSMIS=-99) (MISSING=-99).
 MISSING VALUES
     IDGRADE
-        (-99).
-
-* 7: Student gender.
-RECODE
-    ITSEX
-        (1=0) (2=1)
-        (9=-99) (SYSMIS=-99) (MISSING=-99).
-VALUE LABELS
-    ITSEX
-        0 'Girl'
-        1 'Boy'.
-MISSING VALUES
-    ITSEX
-        (-99).
-RENAME VARIABLES (
-    ITSEX = SexBoy
-    ).
-
-* 8: Test administrator position.
-RECODE
-    ITADMINI
-        (1=0) (2=1) (3=2)
-        (9=-99) (SYSMIS=-99) (MISSING=-99).
-VALUE LABELS
-    ITADMINI
-        0 'National center staff'
-        1 'Teacher from school'
-        2 'Other'.
-MISSING VALUES
-    ITADMINI
-        (-99).
-RENAME VARIABLES (
-    ITADMINI = TestAdm
-    ).
-
-*9: Language of student questionnaire.
-RECODE
-    ITLANG
-        (99=-99) (SYSMIS=-99) (MISSING=-99).
-MISSING VALUES
-    ITLANG
         (-99).
 
 **************************
@@ -134,19 +67,24 @@ RENAME VARIABLES (
     ASBG01 = GendBoy
     ).
 
-* G2: Studen birth year and month. No action required.
+* G2: Studen birth year and month.
+RECODE
+    ASBG02A ASBG02B
+        (99=-99) (SYSMIS=-99) (MISSING=-99).
+MISSING VALUES
+    ASBG02A ASBG02B
+        (-99).
 
 * G3: Student language at home.
 RECODE
     ASBG03
-        (1=3) (2=2) (3=1) (4=0)
+        (1=2) (2=1) (3=0)
         (9=-99) (SYSMIS=-99) (MISSING=-99).
 VALUE LABELS
     ASBG03
-        0 'I never speak <language of test> at home'
-        1 'I sometimes speak <language of test> and sometimes speak another language at home'
-        2 'I almost always speak <language of test> at home'
-        3 'I always speak <language of test> at home'.
+        0 'Never'
+        1 'Sometimes'
+        2 'Always or almost always'.
 MISSING VALUES
     ASBG03
         (-99).
@@ -161,11 +99,11 @@ RECODE
          (9=-99) (SYSMIS=-99) (MISSING=-99).
 VALUE LABELS
     ASBG04
-       0 'None or very few (0--10 books)'
-       1 'Enough to fill one shelf (11--25 books)'
-       2 'Enough to fill one bookcase (26--100 books)'
-       3 'Enough to fill two bookcases (101--200 books)'
-       4 'Enough to fill three or more bookcases (more than 200)'.
+       0 'None or few (0--10)'
+       1 'One shelf (11--25)'
+       2 'One bookcase (26--100)'
+       3 'Two bookcases (101--200)'
+       4 'Three or more bookcases (200+)'.
 MISSING VALUES
     ASBG04
         (-99).
@@ -175,286 +113,232 @@ RENAME VARIABLES (
 
 * G5: SES: Home possession.
 RECODE
-    ASBG05A ASBG05B ASBG05C ASBG05D ASBG05E ASBG05F ASBG05G ASBG05H ASBG05I ASBG05J ASBG05K
+    ASBG05A ASBG05B ASBG05C ASBG05D ASBG05E
+    ASBG05F ASBG05G ASBG05H ASBG05I ASBG05J ASBG05K
         (1=1) (2=0)
         (9=-99) (SYSMIS=-99) (MISSING=-99).
 VALUE LABELS
-    ASBG05A ASBG05B ASBG05C ASBG05D ASBG05E ASBG05F ASBG05G ASBG05H ASBG05I ASBG05J ASBG05K
+    ASBG05A ASBG05B ASBG05C ASBG05D ASBG05E
+    ASBG05F ASBG05G ASBG05H ASBG05I ASBG05J ASBG05K
         0 'No'
         1 'Yes'.
 MISSING VALUES
-    ASBG05A ASBG05B ASBG05C ASBG05D ASBG05E ASBG05F ASBG05G ASBG05H ASBG05I ASBG05J ASBG05K
+    ASBG05A ASBG05B ASBG05C ASBG05D ASBG05E
+    ASBG05F ASBG05G ASBG05H ASBG05I ASBG05J ASBG05K
         (-99).
 RENAME VARIABLES (
-    ASBG05A ASBG05B ASBG05C ASBG05D ASBG05E ASBG05F ASBG05G ASBG05H ASBG05I ASBG05J ASBG05K
+    ASBG05A ASBG05B ASBG05C ASBG05D ASBG05E
+    ASBG05F ASBG05G ASBG05H ASBG05I ASBG05J ASBG05K
     =
-    SESComO SESComS SESDesk SESRoom SESInter SESPhone SESGame SESCnt1 SESCnt2 SESCnt3 SESCnt4
+    SESCom SESDesk SESOwnBk SESRoom SESInter
+    SESCnt1 SESCnt2 SESCnt3 SESCnt4 SESCnt5 SESCnt6
     ).
 
-* G6: Parents' country of birth.
+* G6: Computer use.
 RECODE
-    ASBG06A ASBG06B
-        (1=0) (2=1) (3=2) (4=3)
-        (9=-99) (SYSMIS=-99) (MISSING=-99).
-VALUE LABELS
-    ASBG06A ASBG06B
-        0 'Yes'
-        1 'No'
-        2 'I do not know'.
-MISSING VALUES
-    ASBG06A ASBG06B
-        (-99).
-RENAME VARIABLES (
-    ASBG06A ASBG06B
-    =
-    MoBorn FaBorn
-    ).
-
-* G7: Student's country of birth.
-RECODE
-    ASBG07
-    (1=0) (2=1)
-    (9=-99) (SYSMIS=-99) (MISSING=-99).
-VALUE LABELS
-    ASBG07
-        0 'Yes'
-        1 'No'.
-MISSING VALUES
-    ASBG07
-        (-99).
-RENAME VARIABLES (
-    ASBG07 = StdBorn
-    ).
-
-* G8: Student absenteism.
-RECODE
-    ASBG08
+    ASBG06A ASBG06B ASBG06C
         (1=3) (2=2) (3=1) (4=0)
         (9=-99) (SYSMIS=-99) (MISSING=-99).
 VALUE LABELS
-    ASBG08
-        0 'Never or almost never'
-        1 'Once a month'
-        2 'Once every two weeks'
-        3 'Once a week or more'.
-MISSING VALUES
-    ASBG08
-        (-99).
-RENAME VARIABLES (
-    ASBG08 = Absent
-    ).
-
-* G9: Student eat breakfast.
-RECODE
-    ASBG09
-        (1=3) (2=2) (3=1) (4=0)
-        (9=-99) (SYSMIS=-99) (MISSING=-99).
-VALUE LABELS
-    ASBG09
-        0 'Never or almost never'
-        1 'Sometimes'
-        2 'Most days'
-        3 'Every day'.
-MISSING VALUES
-    ASBG09
-        (-99).
-RENAME VARIABLES (
-    ASBG09 = Breakf
-    ).
-
-* G10: Using computer or tablet for school work.
-RECODE
-    ASBG10A ASBG10B ASBG10C
-        (1=3) (2=2) (3=1) (4=0)
-        (9=-99) (SYSMIS=-99) (MISSING=-99).
-VALUE LABELS
-    ASBG10A ASBG10B ASBG10C
+    ASBG06A ASBG06B ASBG06C
         0 'Never or almost never'
         1 'Once or twice a month'
         2 'Once or twice a week'
         3 'Every day or almost every day'.
 MISSING VALUES
-    ASBG10A ASBG10B ASBG10C
+    ASBG06A ASBG06B ASBG06C
         (-99).
 RENAME VARIABLES (
-    ASBG10A ASBG10B ASBG10C
+    ASBG06A ASBG06B ASBG06C
     =
-    PCWkHome PCWkSch PCWkOth
+    CompHom CompSch CompOth
     ).
 
-* G11: Student sense of belonging.
+* G7: Parental interaction.
 RECODE
-    ASBG11A ASBG11B ASBG11C ASBG11D ASBG11E ASBG11F ASBG11G
+    ASBG07A ASBG07B ASBG07C ASBG07D
+        (1=3) (2=2) (3=1) (4=0)
+    (9=-99) (SYSMIS=-99) (MISSING=-99).
+VALUE LABELS
+    ASBG07A ASBG07B ASBG07C ASBG07D
+        0 'Never or almost never'
+        1 'Once or twice a month'
+        2 'Once or twice a week'
+        3 'Every day or almost every day'.
+MISSING VALUES
+    ASBG07A ASBG07B ASBG07C ASBG07D
+        (-99).
+RENAME VARIABLES (
+    ASBG07A ASBG07B ASBG07C ASBG07D
+    =
+    ParLearn ParSchWk ParTime ParCheck
+    ).
+
+* G8: Student sense of belonging.
+RECODE
+    ASBG08A ASBG08B ASBG08C
         (1=3) (2=2) (3=1) (4=0)
         (9=-99) (SYSMIS=-99) (MISSING=-99).
 VALUE LABELS
-    ASBG11A ASBG11B ASBG11C ASBG11D ASBG11E ASBG11F ASBG11G
+    ASBG08A ASBG08B ASBG08C
         0 'Disagree a lot'
         1 'Disagree a little'
         2 'Agree a little'
         3 'Agree a lot'.
 MISSING VALUES
-    ASBG11A ASBG11B ASBG11C ASBG11D ASBG11E ASBG11F ASBG11G
+    ASBG08A ASBG08B ASBG08C
         (-99).
 RENAME VARIABLES (
-    ASBG11A ASBG11B ASBG11C ASBG11D ASBG11E ASBG11F ASBG11G
+    ASBG08A ASBG08B ASBG08C
     =
-    BlgLike BlgSafe BlgSch BlgMate BlgFair BlgProud BlgLearn
+    BlgLike BlgSafe BlgSch
     ).
 
-* G12: Bullying.
+* G9: Bullying.
 RECODE
-    ASBG12A ASBG12B ASBG12C ASBG12D ASBG12E ASBG12F ASBG12G ASBG12H
+        ASBG09A ASBG09B ASBG09C ASBG09D ASBG09E ASBG09F
         (1=3) (2=2) (3=1) (4=0)
         (9=-99) (SYSMIS=-99) (MISSING=-99).
 VALUE LABELS
-    ASBG12A ASBG12B ASBG12C ASBG12D ASBG12E ASBG12F ASBG12G ASBG12H
+        ASBG09A ASBG09B ASBG09C ASBG09D ASBG09E ASBG09F
         0 'Never'
         1 'A few times a year'
         2 'Once or twice a month'
         3 'At least once a week'.
 MISSING VALUES
-    ASBG12A ASBG12B ASBG12C ASBG12D ASBG12E ASBG12F ASBG12G ASBG12H
+        ASBG09A ASBG09B ASBG09C ASBG09D ASBG09E ASBG09F
         (-99).
 RENAME VARIABLES (
-    ASBG12A ASBG12B ASBG12C ASBG12D ASBG12E ASBG12F ASBG12G ASBG12H
+        ASBG09A ASBG09B ASBG09C ASBG09D ASBG09E ASBG09F
     =
-    BlyFun BlyLeft BlyLies BlySteal BlyHit BlyForce BlyEmba BlyThrt
+    BlyFun BlyLeft BlyLies BlySteal BlyHit BlyForce
     ).
 
 * MS1: Intrinsic motivation for learning math.
 RECODE
-    ASBM01A ASBM01B ASBM01C ASBM01D ASBM01E ASBM01F ASBM01G ASBM01H ASBM01I
+    ASBM01A ASBM01B ASBM01C ASBM01D ASBM01E ASBM01F
         (1=3) (2=2) (3=1) (4=0)
         (9=-99) (SYSMIS=-99) (MISSING=-99).
 VALUE LABELS
-    ASBM01A ASBM01B ASBM01C ASBM01D ASBM01E ASBM01F ASBM01G ASBM01H ASBM01I
+    ASBM01A ASBM01B ASBM01C ASBM01D ASBM01E ASBM01F
         0 'Disagree a lot'
         1 'Disagree a little'
         2 'Agree a little'
         3 'Agree a lot'.
 MISSING VALUES
-    ASBM01A ASBM01B ASBM01C ASBM01D ASBM01E ASBM01F ASBM01G ASBM01H ASBM01I
+    ASBM01A ASBM01B ASBM01C ASBM01D ASBM01E ASBM01F
         (-99).
 RENAME VARIABLES (
-    ASBM01A ASBM01B ASBM01C ASBM01D ASBM01E ASBM01F ASBM01G ASBM01H ASBM01I
+    ASBM01A ASBM01B ASBM01C ASBM01D ASBM01E ASBM01F
     =
-    MEnjoy MNotStdy MBorng MIntrst MLike MWrkNum MProblem MLokFrwd MFavSub
+    MEnjoy MNotStdy MBorng MIntrst MLike MImport
     ).
 
 * MS2: Math teaching: Teacher support.
 RECODE
     ASBM02A ASBM02B ASBM02C ASBM02D ASBM02E
-    ASBM02F ASBM02G ASBM02H ASBM02I ASBM02J
         (1=3) (2=2) (3=1) (4=0)
         (9=-99) (SYSMIS=-99) (MISSING=-99).
 VALUE LABELS
     ASBM02A ASBM02B ASBM02C ASBM02D ASBM02E
-    ASBM02F ASBM02G ASBM02H ASBM02I ASBM02J
         0 'Disagree a lot'
         1 'Disagree a little'
         2 'Agree a little'
         3 'Agree a lot'.
 MISSING VALUES
     ASBM02A ASBM02B ASBM02C ASBM02D ASBM02E
-    ASBM02F ASBM02G ASBM02H ASBM02I ASBM02J
         (-99).
 RENAME VARIABLES (
     ASBM02A ASBM02B ASBM02C ASBM02D ASBM02E
-    ASBM02F ASBM02G ASBM02H ASBM02I ASBM02J
     =
-    MTcExp MTcEasy MTcInte MTcThig MTcClear
-    MTcGood MTcShow MTcVary MTcImpr MTcLisn
+    MTcExp MTcUnrel MTcEasy MTcInte MTcThig
     ).
 
 * MS3: Self concept for math.
 RECODE
-    ASBM03A ASBM03B ASBM03C ASBM03D ASBM03E ASBM03F ASBM03G ASBM03H ASBM03I
+    ASBM03A ASBM03B ASBM03C ASBM03D ASBM03E ASBM03F ASBM03G
         (1=3) (2=2) (3=1) (4=0)
         (9=-99) (SYSMIS=-99) (MISSING=-99).
 VALUE LABELS
-    ASBM03A ASBM03B ASBM03C ASBM03D ASBM03E ASBM03F ASBM03G ASBM03H ASBM03I
+    ASBM03A ASBM03B ASBM03C ASBM03D ASBM03E ASBM03F ASBM03G
         0 'Disagree a lot'
         1 'Disagree a little'
         2 'Agree a little'
         3 'Agree a lot'.
 MISSING VALUES
-    ASBM03A ASBM03B ASBM03C ASBM03D ASBM03E ASBM03F ASBM03G ASBM03H ASBM03I
+    ASBM03A ASBM03B ASBM03C ASBM03D ASBM03E ASBM03F ASBM03G
         (-99).
 RENAME VARIABLES (
-    ASBM03A ASBM03B ASBM03C ASBM03D ASBM03E ASBM03F ASBM03G ASBM03H ASBM03I
+    ASBM03A ASBM03B ASBM03C ASBM03D ASBM03E ASBM03F ASBM03G
     =
-    MSCWell MSCHMate MSCNoGod MSCLearn MSCNervs MSCWork MSCGood MSCHSubj MSCConfs
+    MSCWell MSCHMate MSCNoGod MSCLearn MSCWork MSCGood MSCHSubj
     ).
 
 * MS4: Intrinsic motivation for learning science.
 RECODE
-    ASBS04A ASBS04B ASBS04C ASBS04D ASBS04E ASBS04F ASBS04G ASBS04H ASBS04I
+    ASBS04A ASBS04B ASBS04C ASBS04D ASBS04E ASBS04F ASBS04G
         (1=3) (2=2) (3=1) (4=0)
         (6=-99) (9=-99) (SYSMIS=-99) (MISSING=-99).
 VALUE LABELS
-    ASBS04A ASBS04B ASBS04C ASBS04D ASBS04E ASBS04F ASBS04G ASBS04H ASBS04I
+    ASBS04A ASBS04B ASBS04C ASBS04D ASBS04E ASBS04F ASBS04G
         0 'Disagree a lot'
         1 'Disagree a little'
         2 'Agree a little'
         3 'Agree a lot'.
 MISSING VALUES
-    ASBS04A ASBS04B ASBS04C ASBS04D ASBS04E ASBS04F ASBS04G ASBS04H ASBS04I
+    ASBS04A ASBS04B ASBS04C ASBS04D ASBS04E ASBS04F ASBS04G
         (-99).
 RENAME VARIABLES (
-    ASBS04A ASBS04B ASBS04C ASBS04D ASBS04E ASBS04F ASBS04G ASBS04H ASBS04I
+    ASBS04A ASBS04B ASBS04C ASBS04D ASBS04E ASBS04F ASBS04G
     =
-    SEnjoy SNotStdy SBorng SIntrst SLike SLokFrwd STeach SSciEx SFavSub
+    SEnjoy SNotStdy SSpareTm SBorng SIntrst SLike SImport
     ).
 
 * MS5: Science teaching: Teacher support.
 RECODE
-     ASBS05A ASBS05B ASBS05C ASBS05D ASBS05E
-     ASBS05F ASBS05G ASBS05H ASBS05I ASBS05J
+    ASBS05A ASBS05B ASBS05C ASBS05D ASBS05E
         (1=3) (2=2) (3=1) (4=0)
         (9=-99) (SYSMIS=-99) (MISSING=-99).
 VALUE LABELS
-     ASBS05A ASBS05B ASBS05C ASBS05D ASBS05E
-     ASBS05F ASBS05G ASBS05H ASBS05I ASBS05J
+    ASBS05A ASBS05B ASBS05C ASBS05D ASBS05E
         0 'Disagree a lot'
         1 'Disagree a little'
         2 'Agree a little'
         3 'Agree a lot'.
 MISSING VALUES
-     ASBS05A ASBS05B ASBS05C ASBS05D ASBS05E
-     ASBS05F ASBS05G ASBS05H ASBS05I ASBS05J
+    ASBS05A ASBS05B ASBS05C ASBS05D ASBS05E
         (-99).
 RENAME VARIABLES (
-     ASBS05A ASBS05B ASBS05C ASBS05D ASBS05E
-     ASBS05F ASBS05G ASBS05H ASBS05I ASBS05J
+    ASBS05A ASBS05B ASBS05C ASBS05D ASBS05E
     =
-    STcExp STcEasy STcInte STcThig STcClear
-    STcGood STcShow STcVary STcImpr STcLisn
+    STcExp STcUnrel STcEasy STcInte STcThig
     ).
 
 * MS6: Self concept for science.
 RECODE
-    ASBS06A ASBS06B ASBS06C ASBS06D ASBS06E ASBS06F ASBS06G
+    ASBS06A ASBS06B ASBS06C ASBS06D ASBS06E ASBS06F
         (1=3) (2=2) (3=1) (4=0)
         (9=-99) (SYSMIS=-99) (MISSING=-99).
 VALUE LABELS
-    ASBS06A ASBS06B ASBS06C ASBS06D ASBS06E ASBS06F ASBS06G
+    ASBS06A ASBS06B ASBS06C ASBS06D ASBS06E ASBS06F
         0 'Disagree a lot'
         1 'Disagree a little'
         2 'Agree a little'
         3 'Agree a lot'.
 MISSING VALUES
-    ASBS06A ASBS06B ASBS06C ASBS06D ASBS06E ASBS06F ASBS06G
+    ASBS06A ASBS06B ASBS06C ASBS06D ASBS06E ASBS06F
         (-99).
 RENAME VARIABLES (
-    ASBS06A ASBS06B ASBS06C ASBS06D ASBS06E ASBS06F ASBS06G
+    ASBS06A ASBS06B ASBS06C ASBS06D ASBS06E ASBS06F
     =
-    SSCWell SSCHard SSCNoGod SSCLearn SSCGood SSCHardMe SSCConfs
+    SSCWell SSCHard SSCNoGod SSCLearn SSCGood SSCHardMe
     ).
 
 **************************
 ** Compound variables **
 **************************
+
+* System ID student background file.
 
 * Special accommodation\achievement session.
 RECODE
@@ -480,6 +364,14 @@ MISSING VALUES
     IDGRADER
         (-99).
 
+* Conditioning variable.
+RECODE
+    CONDVAR1
+        (9=-99) (SYSMIS=-99) (MISSING=-99).
+MISSING VALUES
+    CONDVAR1
+        (-99).
+
 * Student age.
 RECODE
     ASDAGE
@@ -487,9 +379,14 @@ RECODE
 MISSING VALUES
     ASDAGE
         (-99).
-RENAME VARIABLES (
-    ASDAGE = StdAge
-    ).
+
+* Stratification.
+RECODE
+    IDSTRATE IDSTRATI
+        (999=-99) (SYSMIS=-99) (MISSING=-99).
+MISSING VALUES
+    IDSTRATE IDSTRATI
+        (-99).
 
 * Weights, adjustments and factors.
 RECODE
@@ -519,66 +416,38 @@ MISSING VALUES
     JKREP
         (-99).
 
-* TIMSS construct: Student sense of school belonging.
+* TIMSS construct: Bullying.
 RECODE
-    ASBGSSB
-        (999999=-99) (SYSMIS=-99) (MISSING=-99).
+    ASBGSBS
+        (999996=-99) (999999=-99) (SYSMIS=-99) (MISSING=-99).
 MISSING VALUES
-    ASBGSSB
+    ASBGSBS
         (-99).
 RENAME VARIABLES (
-    ASBGSSB = SCLBlong
-    ).
-
-* TIMSS construct: Student sense of school belonging.
-RECODE
-    ASDGSSB
-        (1=2) (2=1) (3=0)
-        (9=-99) (SYSMIS=-99) (MISSING=-99).
-VALUE LABELS
-    ASDGSSB
-        0 'Little sense of school belonging'
-        1 'Sense of school belonging'
-        2 'High sense of school belonging'.
-MISSING VALUES
-    ASDGSSB
-        (-99).
-RENAME VARIABLES (
-    ASDGSSB = IDXBlong
+    ASBGSBS = SCLBully
     ).
 
 * TIMSS construct: Bullying.
 RECODE
-    ASBGSB
-        (999999=-99) (SYSMIS=-99) (MISSING=-99).
-MISSING VALUES
-    ASBGSB
-        (-99).
-RENAME VARIABLES (
-    ASBGSB = SCLBully
-    ).
-
-* TIMSS construct: Bullying.
-RECODE
-    ASDGSB
+    ASDGSBS
         (1=0) (2=1) (3=2)
-        (9=-99) (SYSMIS=-99) (MISSING=-99).
+        (6=-99) (9=-99) (SYSMIS=-99) (MISSING=-99).
 VALUE LABELS
-    ASDGSB
+    ASDGSBS
         0 'Almost never'
         1 'About monthly'
         2 'About weekly'.
 MISSING VALUES
-    ASDGSB
+    ASDGSBS
         (-99).
 RENAME VARIABLES (
-    ASDGSB = IDXBully
+    ASDGSBS = IDXBully
     ).
 
 * TIMSS construct: Students like learning mathematics.
 RECODE
     ASBGSLM
-        (999999=-99) (SYSMIS=-99) (MISSING=-99).
+        (999996=-99) (999999=-99) (SYSMIS=-99) (MISSING=-99).
 MISSING VALUES
     ASBGSLM
         (-99).
@@ -590,7 +459,7 @@ RENAME VARIABLES (
 RECODE
     ASDGSLM
         (1=2) (2=1) (3=0)
-        (9=-99) (SYSMIS=-99) (MISSING=-99).
+        (6=-99) (9=-99) (SYSMIS=-99) (MISSING=-99).
 VALUE LABELS
     ASDGSLM
         0 'Do not like learning mathematics'
@@ -603,66 +472,10 @@ RENAME VARIABLES (
     ASDGSLM = IDXLikeM
     ).
 
-* TIMSS construct: Engaging teaching in math lessons.
-RECODE
-    ASBGEML
-        (999999=-99) (SYSMIS=-99) (MISSING=-99).
-MISSING VALUES
-    ASBGEML
-        (-99).
-RENAME VARIABLES (
-    ASBGEML = SCLEngM
-    ).
-
-* TIMSS construct: Instructional clarity in science lessons.
-RECODE
-    ASDGEML
-        (1=2) (2=1) (3=0)
-        (9=-99) (SYSMIS=-99) (MISSING=-99).
-VALUE LABELS
-    ASDGEML
-        0 'Less than engaging teaching'
-        1 'Engaging teaching'
-        2 'Very engagin teaching'.
-MISSING VALUES
-    ASDGEML
-        (-99).
-RENAME VARIABLES (
-    ASDGEML = IDXEngM
-    ).
-
-* TIMSS construct: Students confident in mathematics.
-RECODE
-    ASBGSCM
-        (999999=-99) (SYSMIS=-99) (MISSING=-99).
-MISSING VALUES
-    ASBGSCM
-        (-99).
-RENAME VARIABLES (
-    ASBGSCM = SCLConfM
-    ).
-
-* TIMSS construct: Students confident in mathematics.
-RECODE
-    ASDGSCM
-        (1=2) (2=1) (3=0)
-        (9=-99) (SYSMIS=-99) (MISSING=-99).
-VALUE LABELS
-    ASDGSCM
-        0 'Not confident in mathematics'
-        1 'Confident in mathematics'
-        2 'Very confident in mathematics'.
-MISSING VALUES
-    ASDGSCM
-        (-99).
-RENAME VARIABLES (
-    ASDGSCM = IDXConfM
-    ).
-
 * TIMSS construct: Students like learning science.
 RECODE
     ASBGSLS
-        (999999=-99) (SYSMIS=-99) (MISSING=-99).
+        (999996=-99) (999999=-99) (SYSMIS=-99) (MISSING=-99).
 MISSING VALUES
     ASBGSLS
         (-99).
@@ -674,7 +487,7 @@ RENAME VARIABLES (
 RECODE
     ASDGSLS
         (1=2) (2=1) (3=0)
-        (9=-99) (SYSMIS=-99) (MISSING=-99).
+        (6=-99) (9=-99) (SYSMIS=-99) (MISSING=-99).
 VALUE LABELS
     ASDGSLS
         0 'Do not like learning science'
@@ -687,38 +500,39 @@ RENAME VARIABLES (
     ASDGSLS = IDXLikeS
     ).
 
-* TIMSS construct: Engaging teaching in science lessons.
+* TIMSS construct: Students confident in mathematics.
 RECODE
-    ASBGESL
-        (999999=-99) (SYSMIS=-99) (MISSING=-99).
+    ASBGSCM
+        (999996=-99) (999999=-99) (SYSMIS=-99) (MISSING=-99).
 MISSING VALUES
-    ASBGESL
+    ASBGSCM
         (-99).
 RENAME VARIABLES (
-    ASBGESL = SCLEngS
+    ASBGSCM = SCLConfM
     ).
 
-* TIMSS construct: Instructional clarity in science lessons.
+* TIMSS construct: Students confident in mathematics.
 RECODE
-    ASDGESL
+    ASDGSCM
         (1=2) (2=1) (3=0)
-        (9=-99) (SYSMIS=-99) (MISSING=-99).
+        (6=-99) (9=-99) (SYSMIS=-99) (MISSING=-99).
 VALUE LABELS
-    ASDGESL
-        0 'Less than engaging teaching'
-        1 'Engaging teaching'
-        2 'Very engagin teaching'.
+    ASDGSCM
+        0 'Not confident in mathematics'
+        1 'Confident in mathematics'
+        2 'Very confident in mathematics'.
 MISSING VALUES
-    ASDGESL
+    ASDGSCM
         (-99).
 RENAME VARIABLES (
-    ASDGESL = IDXEngS
+    ASDGSCM = IDXConfM
     ).
+
 
 * TIMSS construct: Students confident in science.
 RECODE
     ASBGSCS
-        (999999=-99) (SYSMIS=-99) (MISSING=-99).
+        (999996=-99) (999999=-99) (SYSMIS=-99) (MISSING=-99).
 MISSING VALUES
     ASBGSCS
         (-99).
@@ -730,7 +544,7 @@ RENAME VARIABLES (
 RECODE
     ASDGSCS
         (1=2) (2=1) (3=0)
-        (9=-99) (SYSMIS=-99) (MISSING=-99).
+        (6=-99) (9=-99) (SYSMIS=-99) (MISSING=-99).
 VALUE LABELS
     ASDGSCS
         0 'Not confident in science'
@@ -743,38 +557,66 @@ RENAME VARIABLES (
     ASDGSCS = IDXConfS
     ).
 
-* TIMSS construct: Home resources for learning.
+* TIMSS construct: Student engaged in math lessons.
 RECODE
-    ASBGHRL
-        (999999=-99) (SYSMIS=-99) (MISSING=-99).
+    ASBGEML
+        (999996=-99) (999999=-99) (SYSMIS=-99) (MISSING=-99).
 MISSING VALUES
-    ASBGHRL
+    ASBGEML
         (-99).
 RENAME VARIABLES (
-    ASBGHRL = SCLHmSES
+    ASBGEML = SCLEngM
     ).
 
-* TIMSS construct: Home resources for learning.
+* TIMSS construct: Student engaged in math lessons.
 RECODE
-    ASDGHRL
+    ASDGEML
         (1=2) (2=1) (3=0)
-        (9=-99) (SYSMIS=-99) (MISSING=-99).
+        (6=-99) (9=-99) (SYSMIS=-99) (MISSING=-99).
 VALUE LABELS
-    ASDGHRL
-        0 'Few resources'
-        1 'Some resources'
-        2 'Many resources'.
+    ASDGEML
+        0 'Less than engaging teaching'
+        1 'Engaging teaching'
+        2 'Very engagin teaching'.
 MISSING VALUES
-    ASDGHRL
+    ASDGEML
         (-99).
 RENAME VARIABLES (
-    ASDGHRL = IDXHmSES
+    ASDGEML = IDXEngM
+    ).
+
+* TIMSS construct: Student engaged in science lessons.
+RECODE
+    ASBGESL
+        (999996=-99) (999999=-99) (SYSMIS=-99) (MISSING=-99).
+MISSING VALUES
+    ASBGESL
+        (-99).
+RENAME VARIABLES (
+    ASBGESL = SCLEngS
+    ).
+
+* TIMSS construct: Student engaged in science lessons.
+RECODE
+    ASDGESL
+        (1=2) (2=1) (3=0)
+        (6=-99) (9=-99) (SYSMIS=-99) (MISSING=-99).
+VALUE LABELS
+    ASDGESL
+        0 'Less than engaging teaching'
+        1 'Engaging teaching'
+        2 'Very engagin teaching'.
+MISSING VALUES
+    ASDGESL
+        (-99).
+RENAME VARIABLES (
+    ASDGESL = IDXEngS
     ).
 
 * Number of home study supports.
 RECODE
     ASDG05S
-        (9=-99) (SYSMIS=-99) (MISSING=-99).
+        (6=-99) (9=-99) (SYSMIS=-99) (MISSING=-99).
 MISSING VALUES
     ASDG05S
         (-99).
@@ -786,7 +628,7 @@ RENAME VARIABLES (
 RECODE
     ASDMLOWP
         (1=1) (2=0)
-        (9=-99) (SYSMIS=-99) (MISSING=-99).
+        (6=-99) (9=-99) (SYSMIS=-99) (MISSING=-99).
 VALUE LABELS
     ASDMLOWP
         0 'No'
@@ -802,7 +644,7 @@ RENAME VARIABLES (
 RECODE
     ASDSLOWP
         (1=1) (2=0)
-        (9=-99) (SYSMIS=-99) (MISSING=-99).
+        (6=-99) (9=-99) (SYSMIS=-99) (MISSING=-99).
 VALUE LABELS
     ASDSLOWP
         0 'No'
@@ -819,6 +661,15 @@ EXECUTE.
 
 * Remove unwanted variable(s).
 DELETE VARIABLES
+    ITBIRTHD
+    ITBIRTHM
+    ITBIRTHY
+    ITSEX
+    ITADMINI
+    ITDATE
+    ITLANG
+    SSYSTEM
+    ITACCOMM1
     ASMMAT01
     ASMMAT02
     ASMMAT03
@@ -899,7 +750,7 @@ DELETE VARIABLES
     ASSIBM03
     ASSIBM04
     ASSIBM05
-    VERSION
+    DPCDATE
     idbid
     .
 

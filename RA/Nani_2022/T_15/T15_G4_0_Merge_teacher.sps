@@ -1,6 +1,5 @@
-* Encoding: windows-1252.
 * Script created using the IEA IDB Analyzer (Version 5.0.12).
-* Created on 13/07/2022 at 23:44.
+* Created on 02/08/2022 at 22:39.
 * Press Ctrl+A followed by Ctrl+R to submit this merge. 
 
 include file = "C:\Users\Tony\AppData\Roaming\IEA\IDBAnalyzerV5\bin\Data\Templates\SPSS_Macros\IDBAnalyzer.ieasps".

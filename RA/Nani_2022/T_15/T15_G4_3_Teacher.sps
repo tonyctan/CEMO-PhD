@@ -10,7 +10,7 @@
 
 ***** DATA ATTRIBUTES *****
 * ILSA: TIMSS
-* Cycle: 2019
+* Cycle: 2015
 * Questionnaire: Teacher
 * Grade: Grade 4
 * Subject: Math and Science
@@ -422,7 +422,7 @@ MISSING VALUES
 RENAME VARIABLES (
     ATBG10A ATBG10B ATBG10C ATBG10D ATBG10E ATBG10F ATBG10G
     =
-    JContent Jsatisfi JPurpose JEnthus JInspire JProud Jcontinu
+    JContent JSatisfi JPurpose JEnthus JInspire JProud JContinu
     ).
 
 * G11: Teaching limitation.
@@ -432,10 +432,10 @@ RECODE
         (9=-99) (SYSMIS=-99) (MISSING=-99).
 VALUE LABELS
     ATBG11A ATBG11B ATBG11C ATBG11D ATBG11E ATBG11F ATBG11G ATBG11H
-        0 'Never or almost never'
-        1 'Sometimes'
-        2 'Often'
-        3 'Very often'.
+        0 'Agree a lot'
+        1 'Agree a little'
+        2 'Disagree a little'
+        3 'Disagree a lot'.
 MISSING VALUES
     ATBG11A ATBG11B ATBG11C ATBG11D ATBG11E ATBG11F ATBG11G ATBG11H
         (-99).
@@ -674,7 +674,7 @@ RENAME VARIABLES (
 * M7B: Mathematics homework for the TIMSS class.
 RECODE
     ATBM07B
-        (1=0) (2=1) (3=2) (4=3) (5=4)
+        (1=0) (2=1) (3=2) (4=3)
         (6=-99) (9=-99) (SYSMIS=-99) (MISSING=-99).
 VALUE LABELS
     ATBM07B
@@ -715,9 +715,9 @@ RECODE
         (9=-99) (SYSMIS=-99) (MISSING=-99).
 VALUE LABELS
     ATBM08A ATBM08B ATBM08C
-        0 'None'
-        1 'Some'
-        2 'A lot'.
+        0 'Little or no emphasis'
+        1 'Some emphasis'
+        2 'Major emphasis'.
 MISSING VALUES
     ATBM08A ATBM08B ATBM08C
         (-99).
@@ -1012,9 +1012,9 @@ RECODE
         (9=-99) (SYSMIS=-99) (MISSING=-99).
 VALUE LABELS
     ATBS07A ATBS07B ATBS07C
-        0 'None'
-        1 'Some'
-        2 'A lot'.
+        0 'Little or no emphasis'
+        1 'Some emphasis'
+        2 'Major emphasis'.
 MISSING VALUES
     ATBS07A ATBS07B ATBS07C
         (-99).
@@ -1024,7 +1024,7 @@ RENAME VARIABLES (
     SAsOngo SAsTest SAsNati
     ).
 
-* S8: PD to teach science: Past experience (A) and future needs (B).
+* S8: PD to teach science.
 RECODE
     ATBS08A ATBS08B ATBS08C ATBS08D ATBS08E ATBS08F ATBS08G ATBS08H
         (1=1) (2=0)

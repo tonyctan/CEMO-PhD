@@ -46,22 +46,38 @@ MISSING VALUES
 
 * 03: Percentage of disadvantaged students attending the school.
 RECODE
-    ACBG03A ACBG03B
+    ACBG03A
+        (1=3) (2=2) (3=1) (4=0)
+        (9=-99) (SYSMIS=-99) (MISSING=-99).
+VALUE LABELS
+    ACBG03A
+        0 'More than 50%'
+        1 '26 to 50%'
+        2 '11 to 25%'
+        3 '0 to 10%'.
+MISSING VALUES
+    ACBG03A
+        (-99).
+RENAME VARIABLES (
+    ACBG03A = SchDisad
+    ).
+
+* 03: Percentage of affluent students attending the school.
+RECODE
+    ACBG03B
         (1=0) (2=1) (3=2) (4=3)
         (9=-99) (SYSMIS=-99) (MISSING=-99).
 VALUE LABELS
-    ACBG03A ACBG03B
+    ACBG03B
         0 '0 to 10%'
         1 '11 to 25%'
         2 '26 to 50%'
         3 'More than 50%'.
 MISSING VALUES
-    ACBG03A ACBG03B
+    ACBG03B
         (-99).
 RENAME VARIABLES (
-    ACBG03A ACBG03B
-    =
-    SchDisad SchEco
+    ACBG03B = SchEco
     ).
 
 * 04: Percentage of students having the language of test as their native language.
@@ -107,7 +123,15 @@ RENAME VARIABLES (
 * 05B: School location.
 RECODE
     ACBG05B
+        (1=4) (2=3) (3=2) (4=1) (5=0)
         (9=-99) (SYSMIS=-99) (MISSING=-99).
+VALUE LABELS
+    ACBG05B
+        0 'Remote rural'
+        1 'Small town or village'
+        2 'Medium size city or large town'
+        3 'Suburban--On fridge or outskirts of urban area'
+        4 'Urban--Densely populated'.
 MISSING VALUES
     ACBG05B
         (-99).
@@ -180,7 +204,12 @@ RENAME VARIABLES (
 * 10B: The number of books in the library.
 RECODE
     ACBG10B
+        (1=0) (2=1)
         (6=-99) (9=-99) (SYSMIS=-99) (MISSING=-99).
+VALUE LABELS
+    ACBG10B
+        0 '2,000 books or fewer'
+        1 'More than 2,000 books'.
 MISSING VALUES
     ACBG10B
         (-99).
@@ -211,16 +240,16 @@ RECODE
     ACBG13AA ACBG13AB ACBG13AC ACBG13AD ACBG13AE ACBG13AF
     ACBG13AG ACBG13AH ACBG13AI ACBG13BA ACBG13BB ACBG13BC
     ACBG13BD ACBG13BE ACBG13CA ACBG13CB ACBG13CC ACBG13CD
-        (1=0) (2=1) (3=2) (4=3)
+        (1=3) (2=2) (3=1) (4=0)
         (9=-99) (SYSMIS=-99) (MISSING=-99).
 VALUE LABELS
     ACBG13AA ACBG13AB ACBG13AC ACBG13AD ACBG13AE ACBG13AF
     ACBG13AG ACBG13AH ACBG13AI ACBG13BA ACBG13BB ACBG13BC
     ACBG13BD ACBG13BE ACBG13CA ACBG13CB ACBG13CC ACBG13CD
-        0 'Not at all'
-        1 'A little'
-        2 'Some'
-        3 'A lot'.
+        0 'A lot'
+        1 'Some'
+        2 'A little'
+        3 'Not at all'.
 MISSING VALUES
     ACBG13AA ACBG13AB ACBG13AC ACBG13AD ACBG13AE ACBG13AF
     ACBG13AG ACBG13AH ACBG13AI ACBG13BA ACBG13BB ACBG13BC
@@ -271,15 +300,15 @@ RENAME VARIABLES (
 RECODE
     ACBG15A ACBG15B ACBG15C ACBG15D ACBG15E
     ACBG15F ACBG15G ACBG15H ACBG15I ACBG15J
-        (1=0) (2=1) (3=2) (4=3)
+        (1=3) (2=2) (3=1) (4=0)
         (9=-99) (SYSMIS=-99) (MISSING=-99).
 VALUE LABELS
     ACBG15A ACBG15B ACBG15C ACBG15D ACBG15E
     ACBG15F ACBG15G ACBG15H ACBG15I ACBG15J
-        0 'Not a problem'
-        1 'Minor problem'
-        2 'Moderate problem'
-        3 'Serious problem'.
+        0 'Serious problem'
+        1 'Moderate problem'
+        2 'Minor problem'
+        3 'Not a problem'.
 MISSING VALUES
     ACBG15A ACBG15B ACBG15C ACBG15D ACBG15E
     ACBG15F ACBG15G ACBG15H ACBG15I ACBG15J
@@ -321,7 +350,7 @@ RECODE
 VALUE LABELS
     ACBG17A ACBG17B ACBG17C ACBG17D ACBG17E ACBG17F
     ACBG17G ACBG17H ACBG17I ACBG17J ACBG17K ACBG17L
-        0 'less than 25%'
+        0 'Less than 25%'
         1 '25 - 50%'
         2 '51 - 75%'
         3 'More than 75%'.
@@ -468,13 +497,13 @@ RENAME VARIABLES (
 * TIMSS construct: Instruction affected by math resource shortage.
 RECODE
     ACDGMRS
-        (1=0) (2=1) (3=2)
+        (1=2) (2=1) (3=0)
         (9=-99) (SYSMIS=-99) (MISSING=-99).
 VALUE LABELS
     ACDGMRS
-        0 'Not affected'
+        0 'Affected a lot'
         1 'Somewhat affected'
-        2 'Affected a lot'.
+        2 'Not affected'.
 MISSING VALUES
     ACDGMRS
         (-99).
@@ -496,13 +525,13 @@ RENAME VARIABLES (
 * TIMSS construct: Instruction affected by science resource shortage.
 RECODE
     ACDGSRS
-        (1=0) (2=1) (3=2)
+        (1=2) (2=1) (3=0)
         (9=-99) (SYSMIS=-99) (MISSING=-99).
 VALUE LABELS
     ACDGSRS
-        0 'Not affected'
+        0 'Affected a lot'
         1 'Somewhat affected'
-        2 'Affected a lot'.
+        2 'Not affected'.
 MISSING VALUES
     ACDGSRS
         (-99).
@@ -552,13 +581,13 @@ RENAME VARIABLES (
 * TIMSS construct: School discipline--principal.
 RECODE
     ACDGDAS
-        (1=0) (2=1) (3=2)
+        (1=2) (2=1) (3=0)
         (9=-99) (SYSMIS=-99) (MISSING=-99).
 VALUE LABELS
     ACDGDAS
-        0 'Hardly any problems'
+        0 'Moderate to severe problems'
         1 'Minor problems'
-        2 'Moderate to severe problems'.
+        2 'Hardly any problems'.
 MISSING VALUES
     ACDGDAS
         (-99).

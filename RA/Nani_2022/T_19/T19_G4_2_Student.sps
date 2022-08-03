@@ -144,12 +144,12 @@ RENAME VARIABLES (
 * G6: Parents' country of birth.
 RECODE
     ASBG06A ASBG06B
-        (1=0) (2=1) (3=2) (4=3)
+        (1=1) (2=0) (3=2) (4=3)
         (9=-99) (SYSMIS=-99) (MISSING=-99).
 VALUE LABELS
     ASBG06A ASBG06B
-        0 'Yes'
-        1 'No'
+        0 'No'
+        1 'Yes'
         2 'I do not know'
         3 'Not applicable'.
 MISSING VALUES
@@ -164,12 +164,12 @@ RENAME VARIABLES (
 * G7: Student's country of birth.
 RECODE
     ASBG07
-    (1=0) (2=1)
+    (1=1) (2=0)
     (9=-99) (SYSMIS=-99) (MISSING=-99).
 VALUE LABELS
     ASBG07
-        0 'Yes'
-        1 'No'.
+        0 'No'
+        1 'Yes'.
 MISSING VALUES
     ASBG07
         (-99).
@@ -199,14 +199,14 @@ RENAME VARIABLES (
 * G9: Student tired and hungry.
 RECODE
     ASBG09A ASBG09B
-        (1=3) (2=2) (3=1) (4=0)
+        (1=0) (2=2) (3=3) (4=3)
         (9=-99) (SYSMIS=-99) (MISSING=-99).
 VALUE LABELS
     ASBG09A ASBG09B
-        0 'Never'
-        1 'Sometimes'
-        2 'Almost every day'
-        3 'Every day'.
+        0 'Every day'
+        1 'Almost every day'
+        2 'Sometimes'
+        3 'Never'.
 MISSING VALUES
     ASBG09A ASBG09B
         (-99).
@@ -234,15 +234,15 @@ RENAME VARIABLES (
 RECODE
     ASBG11A ASBG11B ASBG11C ASBG11D ASBG11E ASBG11F
     ASBG11G ASBG11H ASBG11I ASBG11J ASBG11K
-        (1=3) (2=2) (3=1) (4=0)
+        (1=0) (2=1) (3=2) (4=3)
         (9=-99) (SYSMIS=-99) (MISSING=-99).
 VALUE LABELS
     ASBG11A ASBG11B ASBG11C ASBG11D ASBG11E ASBG11F
     ASBG11G ASBG11H ASBG11I ASBG11J ASBG11K
-        0 'Never'
-        1 'A few times a year'
-        2 'Once or twice a month'
-        3 'At least once a week'.
+        0 'At least once a week'
+        1 'Once or twice a month'
+        2 'A few times a year'
+        3 'Never'.
 MISSING VALUES
     ASBG11A ASBG11B ASBG11C ASBG11D ASBG11E ASBG11F
     ASBG11G ASBG11H ASBG11I ASBG11J ASBG11K
@@ -273,24 +273,44 @@ RENAME VARIABLES (
     ASBM01 = WorkProb
     ).
 
-* MS2: Intrinsic motivation for learning math.
+* MS2: Intrinsic motivation for learning math (except B and C).
 RECODE
-    ASBM02A ASBM02B ASBM02C ASBM02D ASBM02E ASBM02F ASBM02G ASBM02H ASBM02I
+    ASBM02A ASBM02D ASBM02E ASBM02F ASBM02G ASBM02H ASBM02I
         (1=3) (2=2) (3=1) (4=0)
         (9=-99) (SYSMIS=-99) (MISSING=-99).
 VALUE LABELS
-    ASBM02A ASBM02B ASBM02C ASBM02D ASBM02E ASBM02F ASBM02G ASBM02H ASBM02I
+    ASBM02A ASBM02D ASBM02E ASBM02F ASBM02G ASBM02H ASBM02I
         0 'Disagree a lot'
         1 'Disagree a little'
         2 'Agree a little'
         3 'Agree a lot'.
 MISSING VALUES
-    ASBM02A ASBM02B ASBM02C ASBM02D ASBM02E ASBM02F ASBM02G ASBM02H ASBM02I
+    ASBM02A ASBM02D ASBM02E ASBM02F ASBM02G ASBM02H ASBM02I
         (-99).
 RENAME VARIABLES (
-    ASBM02A ASBM02B ASBM02C ASBM02D ASBM02E ASBM02F ASBM02G ASBM02H ASBM02I
+    ASBM02A ASBM02D ASBM02E ASBM02F ASBM02G ASBM02H ASBM02I
     =
-    MEnjoy MNotStdy MBorng MIntrst MLike MWrkNum MProblem MLokFrwd MFavSub
+    MEnjoy MIntrst MLike MWrkNum MProblem MLokFrwd MFavSub
+    ).
+
+* MS2: Intrinsic motivation for learning math (B and C: REVERSE CODING).
+RECODE
+    ASBM02B ASBM02C
+        (1=3) (2=2) (3=1) (4=0)
+        (9=-99) (SYSMIS=-99) (MISSING=-99).
+VALUE LABELS
+    ASBM02B ASBM02C
+        0 'Agree a lot'
+        1 'Agree a little'
+        2 'Disagree a little'
+        3 'Disagree a lot'.
+MISSING VALUES
+    ASBM02B ASBM02C
+        (-99).
+RENAME VARIABLES (
+    ASBM02B ASBM02C
+    =
+    MNotStdy MBorng
     ).
 
 * MS3: Math teaching: Teacher support.
@@ -316,14 +336,14 @@ RENAME VARIABLES (
 * MS4: Math teaching: Classroom management.
 RECODE
     ASBM04A ASBM04B ASBM04C ASBM04D ASBM04E ASBM04F
-        (1=3) (2=2) (3=1) (4=0)
+        (1=0) (2=1) (3=2) (4=3)
         (9=-99) (SYSMIS=-99) (MISSING=-99).
 VALUE LABELS
     ASBM04A ASBM04B ASBM04C ASBM04D ASBM04E ASBM04F
-        0 'Never'
-        1 'Some lessons'
-        2 'About half the lessons'
-        3 'Every or almost every lesson'.
+        0 'Every or almost every lesson'
+        1 'About half the lessons'
+        2 'Some lessons'
+        3 'Never'.
 MISSING VALUES
     ASBM04A ASBM04B ASBM04C ASBM04D ASBM04E ASBM04F
         (-99).
@@ -333,24 +353,44 @@ RENAME VARIABLES (
     MTcListen MTcNoise MTcDisor MTcQuiet MTcIntrpt MTcRule
     ).
 
-* MS5: Self concept for math.
+* MS5: Self concept for math (except B, C, E, H, and I).
 RECODE
-    ASBM05A ASBM05B ASBM05C ASBM05D ASBM05E ASBM05F ASBM05G ASBM05H ASBM05I
+    ASBM05A ASBM05D ASBM05F ASBM05G
         (1=3) (2=2) (3=1) (4=0)
         (9=-99) (SYSMIS=-99) (MISSING=-99).
 VALUE LABELS
-    ASBM05A ASBM05B ASBM05C ASBM05D ASBM05E ASBM05F ASBM05G ASBM05H ASBM05I
+    ASBM05A ASBM05D ASBM05F ASBM05G
         0 'Disagree a lot'
         1 'Disagree a little'
         2 'Agree a little'
         3 'Agree a lot'.
 MISSING VALUES
-    ASBM05A ASBM05B ASBM05C ASBM05D ASBM05E ASBM05F ASBM05G ASBM05H ASBM05I
+    ASBM05A ASBM05D ASBM05F ASBM05G
         (-99).
 RENAME VARIABLES (
-    ASBM05A ASBM05B ASBM05C ASBM05D ASBM05E ASBM05F ASBM05G ASBM05H ASBM05I
+    ASBM05A ASBM05D ASBM05F ASBM05G
     =
-    MSCWell MSCHMate MSCNoGod MSCLearn MSCNervs MSCWork MSCGood MSCHSubj MSCConfs
+    MSCWell MSCLearn MSCWork MSCGood
+    ).
+
+* MS5: Self concept for math (B, C, E, H, and I: REVERSE CODING).
+RECODE
+    ASBM05B ASBM05C ASBM05E ASBM05H ASBM05I
+        (1=3) (2=2) (3=1) (4=0)
+        (9=-99) (SYSMIS=-99) (MISSING=-99).
+VALUE LABELS
+    ASBM05B ASBM05C ASBM05E ASBM05H ASBM05I
+        0 'Agree a lot'
+        1 'Agree a little'
+        2 'Disagree a little'
+        3 'Disagree a lot'.
+MISSING VALUES
+    ASBM05B ASBM05C ASBM05E ASBM05H ASBM05I
+        (-99).
+RENAME VARIABLES (
+    ASBM05B ASBM05C ASBM05E ASBM05H ASBM05I
+    =
+    MSCHMate MSCNoGod MSCNervs MSCHSubj MSCConfs
     ).
 
 * MS6: Science experiment.
@@ -371,24 +411,45 @@ RENAME VARIABLES (
     ASBS06 = SconExpr
     ).
 
-* MS7: Intrinsic motivation for learning science.
+* MS7: Intrinsic motivation for learning science (except B and C).
 RECODE
-    ASBS07A ASBS07B ASBS07C ASBS07D ASBS07E ASBS07F ASBS07G ASBS07H ASBS07I
+    ASBS07A ASBS07D ASBS07E ASBS07F ASBS07G ASBS07H ASBS07I
         (1=3) (2=2) (3=1) (4=0)
         (6=-99) (9=-99) (SYSMIS=-99) (MISSING=-99).
 VALUE LABELS
-    ASBS07A ASBS07B ASBS07C ASBS07D ASBS07E ASBS07F ASBS07G ASBS07H ASBS07I
+    ASBS07A ASBS07D ASBS07E ASBS07F ASBS07G ASBS07H ASBS07I
         0 'Disagree a lot'
         1 'Disagree a little'
         2 'Agree a little'
         3 'Agree a lot'.
 MISSING VALUES
-    ASBS07A ASBS07B ASBS07C ASBS07D ASBS07E ASBS07F ASBS07G ASBS07H ASBS07I
+    ASBS07A ASBS07D ASBS07E ASBS07F ASBS07G ASBS07H ASBS07I
         (-99).
 RENAME VARIABLES (
-    ASBS07A ASBS07B ASBS07C ASBS07D ASBS07E ASBS07F ASBS07G ASBS07H ASBS07I
+    ASBS07A ASBS07D ASBS07E ASBS07F ASBS07G ASBS07H ASBS07I
     =
-    SEnjoy SNotStdy SBorng SIntrst SLike SLokFrwd STeach SSciEx SFavSub
+    SEnjoy SIntrst SLike SLokFrwd STeach SSciEx SFavSub
+    ).
+
+
+* MS7: Intrinsic motivation for learning science (B and C: REVERSE CODING).
+RECODE
+    ASBS07B ASBS07C
+        (1=3) (2=2) (3=1) (4=0)
+        (6=-99) (9=-99) (SYSMIS=-99) (MISSING=-99).
+VALUE LABELS
+    ASBS07B ASBS07C
+        0 'Agree a lot'
+        1 'Agree a little'
+        2 'Disagree a little'
+        3 'Disagree a lot'.
+MISSING VALUES
+    ASBS07B ASBS07C
+        (-99).
+RENAME VARIABLES (
+    ASBS07B ASBS07C
+    =
+    SNotStdy SBorng
     ).
 
 * MS8: Science teaching: Teacher support.
@@ -411,24 +472,44 @@ RENAME VARIABLES (
     STcExp STcEasy STcClear STcGood STcVary STcExpA
     ).
 
-* MS9: Self concept for science.
+* MS9: Self concept for science (except B, C, F, and G).
 RECODE
-    ASBS09A ASBS09B ASBS09C ASBS09D ASBS09E ASBS09F ASBS09G
+    ASBS09A ASBS09D ASBS09E
         (1=3) (2=2) (3=1) (4=0)
         (9=-99) (SYSMIS=-99) (MISSING=-99).
 VALUE LABELS
-    ASBS09A ASBS09B ASBS09C ASBS09D ASBS09E ASBS09F ASBS09G
+    ASBS09A ASBS09D ASBS09E
         0 'Disagree a lot'
         1 'Disagree a little'
         2 'Agree a little'
         3 'Agree a lot'.
 MISSING VALUES
-    ASBS09A ASBS09B ASBS09C ASBS09D ASBS09E ASBS09F ASBS09G
+    ASBS09A ASBS09D ASBS09E
         (-99).
 RENAME VARIABLES (
-    ASBS09A ASBS09B ASBS09C ASBS09D ASBS09E ASBS09F ASBS09G
+    ASBS09A ASBS09D ASBS09E
     =
-    SSCWell SSCHard SSCNoGod SSCLearn SSCGood SSCHardMe SSCConfs
+    SSCWell SSCLearn SSCGood
+    ).
+
+* MS9: Self concept for science (B, C, F, and G: REVERSE CODING).
+RECODE
+    ASBS09B ASBS09C ASBS09F ASBS09G
+        (1=0) (2=1) (3=2) (4=3)
+        (9=-99) (SYSMIS=-99) (MISSING=-99).
+VALUE LABELS
+    ASBS09B ASBS09C ASBS09F ASBS09G
+        0 'Agree a lot'
+        1 'Agree a little'
+        2 'Disagree a little'
+        3 'Disagree a lot'.
+MISSING VALUES
+    ASBS09B ASBS09C ASBS09F ASBS09G
+        (-99).
+RENAME VARIABLES (
+    ASBS09B ASBS09C ASBS09F ASBS09G
+    =
+    SSCHard SSCNoGod SSCHardMe SSCConfs
     ).
 
 * e1A: Like test on computer or tablet.
@@ -652,13 +733,13 @@ RENAME VARIABLES (
 * TIMSS construct: Disorderly behavior during math lesson.
 RECODE
     ASDGDML
-        (1=0) (2=1) (3=2)
+        (1=2) (2=1) (3=0)
         (9=-99) (SYSMIS=-99) (MISSING=-99).
 VALUE LABELS
     ASDGDML
-        0 'Few or no lessons'
+        0 'Most lessons'
         1 'Some lessons'
-        2 'Most lessons'.
+        2 'Few or no lessons'.
 MISSING VALUES
     ASDGDML
         (-99).
@@ -736,13 +817,13 @@ RENAME VARIABLES (
 * TIMSS construct: Bullying.
 RECODE
     ASDGSB
-        (1=0) (2=1) (3=2)
+        (1=2) (2=1) (3=0)
         (9=-99) (SYSMIS=-99) (MISSING=-99).
 VALUE LABELS
     ASDGSB
-        0 'Never or almost never'
+        0 'About weekly'
         1 'About monthly'
-        2 'About weekly'.
+        2 'Never or almost never'.
 MISSING VALUES
     ASDGSB
         (-99).

@@ -62,10 +62,10 @@ RECODE
         (9=-99) (SYSMIS=-99) (MISSING=-99).
 VALUE LABELS
     ACBG03A
-        0 '0 to 10%'
-        1 '11 to 25%'
-        2 '26 to 50%'
-        3 'More than 50%'.
+        0 'More than 50%'
+        1 '26 to 50%'
+        2 '11 to 25%'
+        3 '0 to 10%'.
 MISSING VALUES
     ACBG03A
         (-99).

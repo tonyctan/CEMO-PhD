@@ -1,0 +1,47 @@
+From: Sverre Berg Ofstad <sverrbo@student.uv.uio.no> 
+Sent: Sunday, 7 August 2022 21:49
+To: Tony Tan <tony.tan@cemo.uio.no>
+Subject: Re: Approval from Sigrid!
+
+That's great to hear! Thank you very much for advice, and also the books; I'll pick them up tomorrow:)
+
+
+Talk to you soon,
+Sverre
+________________________________________
+From: Tony Tan
+Sent: 07 August 2022 21:27:16
+To: Sverre Berg Ofstad
+Subject: RE: Approval from Sigrid! 
+ 
+Good evening Sverre,
+
+Wow, I am excited to hear the good news!
+
+I would be more than happy to help. Feel free to put my name on the CEMO form.
+
+You may share with Björn that your research framework stays the same as before (i.e., IRT parameter estimations in the presence of non-normality) but instead of simulating a bunch of non-normal data, we use actual data from Norwegian national register. This will make the introduction/motivation section much tangible.
+
+I have left two book on your desk, both relate to the missing data theory. You may highlight and annotate on them since you do not need to return them to me. Let me know if you want any other resources.
+
+I will be in Germany between Monday 08 and Monday 15 August 2022. I’ll show you my R scripts in TSD as soon as I get back.
+
+Keep the good work and talk soon.
+
+Regards,
+
+Tony
+
+From: Sverre Berg Ofstad <sverrbo@student.uv.uio.no> 
+Sent: Sunday, 7 August 2022 21:05
+To: Tony Tan <tony.tan@cemo.uio.no>
+Subject: Approval from Sigrid!
+
+Hi Tony,
+
+So goods news: Sigrid approved of me having access to the register data. She just said that she had to get permission from NSD first. 
+
+I know you suggested Rolf as a co-supervisor because he is the national survey "tsar" as you put it, but Sigrid actually recommended either you or Jose as a co-supervisor due to your knowledge and skills with the register data. Is this something you would consider doing? I'll be talking to Bjørn tomorrow and then I know what he'll think about all of this.
+
+Again, thank you so much for giving me this topic; I really appreciate it,
+Sverre

@@ -1,0 +1,44 @@
+\section{Variables}
+
+\subsection{Manipulated Variables}
+Manipulation, blinding, and randomisation is not applicable to any unit of analyses in this study due to its archival data design.
+
+\subsection{Measured Variables}
+The SSB collects person-level information from all Norwegian residents. The education database covers graduation statistics since 1970 and national test results since 2007. The population register includes information about household composition and family relations between 1975 and 2005, as well as housing conditions since 1990. Wealth and income data are available since 1993, including cash support information since 1999 and employment statistics since 2000. The UDIR's GSI database contains information about (primary and lower secondary) schools in Norway since 1992, including COVID-related restrictions and measures in 2020 and 2021.
+
+Table 1 summarizes key variables used in this study. Full variable descriptions can be found in the codebook from our OSF page once all authors have gained data access.
+
+\subsection{Regarding Study 2}
+We will create the dichotomous variables \vn{condition1} and \vn{condition2}, which will encode whether the analysed achievement trends between Year 8 and Year 9 of the students relate to the first period of school closures (\vn{condition1} = 1) or not (\vn{condition1} = 0) or whether the achievement trends relate to the second period of school closures (\vn{condition2} = 1) or not (\vn{condition2} = 0).
+
+Key variables to answer our research questions and to test our hypotheses are:
+\begin{APAenumerate}
+    \item The dependent variables are students achievement in reading and mathematics (scores) measured by national tests (nr. 10 in Table 1).
+    \item We will use the newly computed variables \vn{condition1} as independent variables to test whether there is an effect of school closures in Period 1 on student achievement without considering detailed varying durations of school closures.
+    \item We will use the duration of school closures (nr. 11 in Table 1) as our main independent variable to answer research Question 2.
+    \item We will use after-tax income per consumption unit (nr. 13 in Table 1) as our main moderator representing student's SES to answer RQ3.
+    \item We will use teacher-assigned grades for mathematics and written Norwegian (nr. 7 in Table 1) as our main moderators representing student's previous achievement to answer RQ4.
+\end{APAenumerate}
+
+Figure 1 provides a visual illustration of the temporal locations of key variables relative to student achievement measures and school closures.
+
+\subsection{Unit of Analysis}
+In Study 1, we will focus on Year 10 students as this cohort represents the end of Norway's compulsory education (\textit{grunnskole}) years. Afterwards, students have the option to continue into either vocational (\textit{yrkesfaglig oppl{\ae}ring}) or academic (\textit{studieforberedende oppl{\ae}ring}) streams based on their academic performance (\textit{grunnskolepoeng}, grade point average [GPA]). Resultantly, academic achievement data for Year 10 contain a large number of common subjects and minimal missing data due to their compulsory nature. Based on our current knowledge of the data, we will delete subjects designed for returning adults (e.g., ENGV) as well as subjects in special-purpose school that do not follow the standardized schooling system (e.g., ENGM). According to the second author's previous studies, we estimate that we will exclude one to two percent of the cases from our analyses.
+
+In Study 2, we will focus on Year 9 students as they repeat the national reading and mathematics tests from a year ago, forming a pre-test--intervention--post-test design.
+
+\subsection{Missing Data}
+The first study involves two categories of missing data: missing by design and sporadic missing. Missing by design were the result of random allocation of candidates into mathematics, Norwegian, and English written exams ($2/3$ missing probability; missing completely at random [MCAR]). Sporadic missing refers to small scale absence due to non-recording of some information such as students' education attainment and/or demographic data. Multiple imputation (MI) will be used to impute both types of missings thanks to its ability to calculate parameter standard errors \parencite[][p. 25]{vanbuuren:2018}. Under the advisory of \textcite[][p. 43]{vanbuuren:2018}, 10 draws will be conducted from the posterior distribution using \textsf{R} package \textsf{mice} \parencite{vanbuuren:2011}. Most relevant to Study 1 are the systematic missing of exam grades in 2020 and 2021 resultant from Norway's COVID measures. Dealing with these missing values is the core mission of Study 1. We will use a Bayesian approach to infer the plausible values of missing exam grades (see the Analyses section).
+
+The second study contains sporadic missingness. Although Norway's national tests are compulsory in principle, schools do have the ability to grant exemptions following \href{https://www.ssb.no/en/utdanning/grunnskoler/statistikk/nasjonale-prover}{specific guidelines}, leading to missing values in assessment outcome variables. Furthermore, the past five years witnessed a sharp increase in exemption rates to 30 to 40 percent, likely due to student disadvantages. Since SES are observed variables, the missing process in the national tests can be modelled using MI under the missing at random (MAR) assumption.
+
+Should evidence emerge suggesting the moderating role of SES in national test participation, this study would further investigate the differences between students who have received exemptions (the drop-out group) and those who have not (remain group). More specifically, we will conduct logistic regressions for both reading and mathematics by creating a dichotomous variable (\vn{attr}; 0 = participated in national tests, 1 = exempted from national tests) and predict \vn{attr} using the independent variables (e.g., school closures) and moderators (e.g., SES, low/high achievers). We expect national test exemptions to be correlated with students' background variables (the most disadvantaged students may have been excluded to protect them from unfair testing; \citenp{eisner:2019}).
+
+We pay special attention to the missing data processes. If the probability of missing national tests is correlated only with observable variables such as students' SES and not related to the test grades, assessment outcome data can be considered to be MAR. MAR is not an implausible assumption for Norway since great government efforts are aimed to decouple educational achievement from social disadvantages. Resultantly, MI would guarantee unbiasedness if the regressions incorporate all covariates associated with the MAR process \parencite{graham:2012,vanbuuren:2018}. An alternative to the MAR process is missing not at random (MNAR), under which the probability of missing national tests is correlated with the test grade itself (for instance, poor performing students are discouraged from participating in national tests). This possibility is explicitly prohibited by government regulations and therefore will not be pursued by this study. Lastly, the robustness of the MI procedure will be verified using sensitivity analyses (see the Robustness Testing section).
+
+\subsection{Statistical Outliers}
+In principle, we define outliers as values that are three standard deviations (SDs) away from their means. However, we will exercise discretion in determining the reasonableness of each value. For example, after marking income data 3 SDs away from the national average, we exclude unusually low figures (e.g., 1 Norwegian krone) as outliers due to their inconsistency with Norway's social safety net but retain unusually high income as meaningful financial records. Invalid or impossible entries such as negative floor areas will also be marked as outliers and overwritten as missing values.
+
+\subsection{Sampling Weights}
+
+Sampling weights and stratification do not apply to this study since the national register represents the entire Norwegian population.

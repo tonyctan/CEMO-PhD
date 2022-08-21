@@ -1,0 +1,61 @@
+\documentclass[
+    % Options for apa7
+    a4paper,                % Paper size
+    11pt,                   % Font size
+    stu,                    % Format as assignment
+    donotrepeattitle,       % Start body text without repeating title
+    floatsintext,           % Insert tables and figures with texts
+    biblatex,               % Use BibLaTeX for references
+    % Options for hyperref
+    colorlinks=true,        % Colour all links
+    linkcolor=red,          % Cross-references in red
+    anchorcolor=black,      % Keep anchors black
+    citecolor=blue,         % In-text-referencs in blue
+    urlcolor=blue,          % DOIs and URLs are in blue
+    bookmarks=true,         % Generate bookmarks for PDF readers
+    bookmarksopen=false,    % Expand all bookmarks as default
+    bookmarksnumbered=true, % Keep section number in bookmarks
+    % Options for xcolor
+    dvipsnames              % Use colour BrickRed and PineGreen
+]{apa7}
+
+% Specify absolute path to the tt.sty file
+\usepackage{tt}
+
+\title{Differential Effects of {COVID-19} School Closures on Students' Learning: Preregistration}
+\authorsnames[a,b,b,b]{Tim F{\"u}tterer, Tony C. A. Tan, Rolf V. Olsen, Sigrid Bl{\"o}meke}
+\authorsaffiliations{{Hector Research Institute of Education Sciences and Psychology, University of T{\"u}bingen},{Centre for Educational Measurement, University of Oslo}}
+\authornote{
+    \hspace*{-2.5mm} % Align 1st author with the rest
+    \addORCIDlink{Tim F{\"u}tterer}{0000-0001-5399-9557}
+
+    \addORCIDlink{Tony C. A. Tan}{0000-0001-6632-3791}
+
+    \addORCIDlink{Rolf V. Olsen}{0000-0002-9621-4083}
+
+    \addORCIDlink{Sigrid Bl{\"o}meke}{0000-0001-6068-4932}
+
+    Correspondence concerning this preregistration should be addressed to Dr Tim F{\"u}tterer, University of T{\"u}bingen, Europastra{\ss}e 6, 72072 T{\"u}bingen, Germany. Email: \href{mailto:tim.fuetterer@uni-tuebingen.de}{tim.fuetterer@uni-tuebingen.de}
+    }
+\course{A PDF printout of OSF preregistration}
+\professor{T{\"u}bingen, Germany}
+\duedate{Thursday, 11 August 2022}
+
+\begin{document}
+\maketitle
+
+\input{./Sections/1_study_information.tex}
+
+\input{./Sections/2_data_description.tex}
+
+\input{./Sections/3_variables.tex}
+
+\input{./Sections/4_knowledge_of_data.tex}
+
+\input{./Sections/5_analyses.tex}
+
+\printbibliography
+
+\include{./Sections/6_links.tex}
+
+\end{document}

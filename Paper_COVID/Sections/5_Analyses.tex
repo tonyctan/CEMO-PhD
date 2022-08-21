@@ -1,0 +1,132 @@
+\section{Analyses}
+
+\subsection{Statistical Models}
+
+\subsubsection{Study 1}
+
+\paragraph{Bayesian Approach}
+
+In answering Study 1's research question, we propose a Bayesian procedure for estimating the missing 2020 exam data. Since educational assessment maps students' learning outcomes ($L$) onto a numerical scale ($M$), a valid and reliable assessment inventory should show high degrees of agreement between $L$ and $M$, that is, $\p{M \mid L}$ (“given the learning, how likely these grades appear”) shall be close to $1$. Stakeholders, on the other hand, are more interested in knowing “given the grades, how likely there is learning” (i.e., $\p{L \mid M}$). These two interests can be linked via the Bayes formula:
+\begin{equation}
+    \p{L \mid M} = \frac{\p{M \mid L} \p{L}}{\text{normalising constant}},
+\end{equation}
+where $\p{L}$ is a ``prior belief'' of learning that is to be updated by the exam results. In this study, teacher-assigned grades can serve as the prior. Properties of $\p{M \mid L}$ can be ascertained from earlier years' exam papers as exam questions are reused. The normalizing constant can calculated using the law of total probability.
+
+\subsubsection{Study 2}
+
+\paragraph{Descriptive Statistics}
+
+In a first step, we plan to gain insight into what conditions did Norwegian students study at home during school closures and to get an overview of characteristics of the schools and municipalities, we will report the means and standard deviations of the independent and dependent variables as well as the moderators on student-, school- and municipality-levels. In the second step, we will use ANOVA to test whether the schools differ significantly in key variables (e.g., SES) over the last five years (i.e., 2015 to 2019) before COVID-19 school closures. We consider schools differ with respect to a key variable if differences were evident in three or more years between 2015 and 2019. In a third step, we will describe students exempted and not exempted from the national tests separately (e.g., by age, sex, and SES).
+
+\paragraph{Difference-in-Difference Approach}
+
+We will analyse students' learning progression between 2019 (students' reading and mathematics achievement in national tests in Year 8) and 2020 (same measure in Year 9) using a difference-in-difference (DiD) approach \parencite{angrist:2009} using \textsf{R} \parencite[e.g., ][]{brumback:2021}, similar to the approach in \textcite{engzell:2021}. We will subsequently compare students' learning progression between 2019 and 2020 (Period 1) with that in the preceding five periods. Comparisons were limited from 2015 onwards since systems different from the current \href{https://www.ssb.no/en/utdanning/grunnskoler/statistikk/nasjonale-prover}{score points} were used before 2014.
+
+First, we will calculate differences between students' national test grades of Year 8 and Year 9 using the following equation: $\Delta y_i^{(k+1)-k} = y_i^{k+1} - y_i^k$, where $y_i^k$  is the achievement (i.e., grade) of a student $i$ in the national tests in year $k$ $(i, k \in \mathbb{N})$. The year $k+1$ refers to the year where a student was a Year 9 student and $k$ refers to the year where the same student was a Year 8 student. We will calculate the difference scores $\Delta y_i^{2015-2014}$,  $\Delta y_i^{2016-2015}$, $\Delta y_i^{2017-2016}$, $\Delta y_i^{2018-2017}$, $\Delta y_i^{2019-2018}$ (five difference scores before COVID-19 school closures in 2020) and $\Delta y_i^{2020-2019}$ (difference score regarding the first school closure in 2020).
+
+Second, we will compare these difference scores using a regression specification. More precisely, we will use two-level models with cross-level interactions (i.e., linear mixed-effect models) to account for students nested within schools. Equation 2 shows our basic model (using mathematics as an example; using only the level 2 variables dur [and not condition 1] as an example; using no covariates) that we will use to test our first hypothesis H1. Equation 3 shows or advanced model (using mathematics as an example; using additional covariates; if necessary, additional individual-level and school-level control variables will be included here).
+
+\noindent\textbf{Level 1}
+\begin{equation}\label{eqn:2}\tag{2.1}
+    \Delta y_{ij} = \beta_{0j} + \epsilon_{ij},
+\end{equation}
+$i,j \in \mathbb{N}$, $i$ representing Student $i$, $j$ representing School $j$ and with $\epsilon_{ij} \sim \mathcal{N}(0, \sigma_\epsilon^2)$. An index $ij$ references students within schools. In this example $\Delta y_{ij}$ is np\_math9$_{ij}$ $-$ np\_math8$_{ij}$.
+
+\noindent\textbf{Level 2}
+\begin{equation}\tag{2.2}
+    \beta_{0j} = \gamma_{00} + \gamma_{01} {dur}_j + u_{0j}.
+\end{equation}
+Note that dur is indexed by $j$ as dur varies at the school level. $u_{0j} \sim \mathcal{N}(0, \sigma_{u_0}^2)$, $u_{3j} \sim \mathcal{N}(0, \sigma_{u_3}^2)$, and $u_{4j} \sim \mathcal{N}(0, \sigma_{u_4}^2)$. For the periods before COVID-19 school closures dur is expected to be always 0.
+
+\noindent\textbf{Total composite formula}
+\begin{equation}\tag{2.3}
+    \Delta y_{ij} = \gamma_{00} + \underbrace{\gamma_{01} {dur}_j}_{\text{RQ2}} + u_{0j} + \epsilon_{ij}
+\end{equation}
+The slope $\gamma_{01}$ is of interest to answer RQ2.
+
+\noindent\textbf{Level 1}
+\begin{equation}\label{eqn:3}\tag{3.1}
+    \Delta y_{ij} = \beta_{0j} + \beta_{1j} {sex}_{ij} + \beta_{2j} {age}_{ij} + \beta_{3j} {atipcu}_{ij} + \beta_{4j} {stp\_math}_{ij} + \epsilon_{ij},
+\end{equation}
+$i,j \in \mathbb{N}$, $i$ representing Student $i$, $j$ representing School $j$ and with $\epsilon_{ij} \sim \mathcal{N}(0, \sigma_\epsilon^2)$. An index $ij$ references students within schools. In this example $\Delta y_{ij}$ is np\_math9$_{ij}$ $-$ np\_math8$_{ij}$.
+
+\noindent\textbf{Level 2}
+\begin{equation}\tag{3.2}
+    \begin{aligned}
+    \beta_{0j} &= \gamma_{00} + \gamma_{01} {dur}_j + u_{0j}\\
+    \beta_{3j} &= \gamma_{30} + \gamma_{31} {dur}_j + u_{3j}\\
+    \beta_{4j} &= \gamma_{40} + \gamma_{41} {dur}_j + u_{4j}.
+    \end{aligned}
+\end{equation}
+
+Note that dur is indexed by $j$ as  varies at the school level. $u_{0j} \sim \mathcal{N}(0, \sigma_{u_0}^2)$, $u_{3j} \sim \mathcal{N}(0, \sigma_{u_3}^2)$, and $u_{4j} \sim \mathcal{N}(0, \sigma_{u_4}^2)$. For the periods before COVID-19 school closures dur is expected to be always 0.
+
+\noindent\textbf{Total composite formula}
+\begin{equation}\tag{3.3}
+	\begin{aligned}
+		\Delta y_{ij} &= \gamma_{00} + \gamma_{01} {dur}_j + u_{0j} + \beta_{1j} {sex}_{ij} + \beta_{2j} {age}_{ij}\\
+            &+ (\gamma_{30} + \gamma_{31} {dur}_j + u_{3j}) {atipcu}_{ij} + (\gamma_{40} + \gamma_{41} {dur}_j + u_{4j}) {stp_math}_{ij} + \epsilon_{ij}\\
+			&= \gamma_{00} + \underbrace{\gamma_{01} {dur}_j}_{\text{RQ2 (check, if it is robust, when using covariates)}} + \beta_{1j} {sex}_{ij} + \beta_{2j} {age}_{ij} + \gamma_{30} {atipcu}_{ij}\\
+            &+ \underbrace{\gamma_{31} {dur}_j {atipcu}_{ij}}_{\text{cross-level interaction (RQ3)}} + \gamma_{40} {stp\_math}_{ij} + \underbrace{\gamma_{41} {dur}_j {stp\_math}_{ij}}_{\text{cross-level interaction (RQ4)}}\\
+            &+ \underbrace{u_{3j} {atipcu}_{ij} + u_{4j} {stp\_math}_{ij} + u_{0j} + \epsilon_{ij}}_{\text{random part}}
+	\end{aligned}
+\end{equation}
+
+The slopes of the cross-level interactions between the duration of school closures and students' SES $\gamma_{31}$ and students' previous achievement $\gamma_{41}$ represent the moderations used to answer RQ3 and RQ4.
+
+We will adjust the models according to the research question regarding the centering strategy of variables, following the recommendations of \textcite{enders:2007}. We will run all models separately for the two subjects (i.e., reading and mathematics).
+
+Remarks in this section refer to the second study. The key idea of the DiD approach is that, in the absence of treatments, the trends of the dependent variable (here, the national test results) should be comparable between the treated and the untreated group \parencite[i.e., school closures, ][]{angrist:2009}. Since birth years from a decade ago shall not anticipate the arrival of COVID-19, the underlying student characteristics such as IQs and learning capabilities should remain stable across the cohorts. That is, in the absence of COVID-19, we shall expect no significant differences between the amount of learning growth of the 2020 students and that of the 2019 students. Should such comparability be broken, the ``treatment'' (i.e., school closure) must carry the explanatory power for such differences. As the validity of the DiD approach relies on the assumption of equal trends, we will use the five periods before COVID-19 to compare $\Delta y_i^{(k+1)-k}$. If the $\Delta y_i^{(k+1)-k}$ before COVID-19 are not different, it is reasonable to assume that  $\Delta y_i^{2020-2019}$ would have continued to be the same in the absence of COVID-19.  Similarly, we compare whether the trends are equivalent with respect to the different levels of students' SES (i.e., atipcu) and students' previous achievement (e.g., stp\_math) before COVID-19.
+
+To gain more insight into students' family situation and household, as well as the circumstances of learning at home, and thus identify significant factors for student achievement, we will explore additional individual-level and school-level variables (see Table 1) using this model \cref{eqn:2} as a starting point (see section exploratory analyses).
+
+For all our analyses we plan to use R \parencite{r}. If we reach the limits of R during the analyses (e.g., multi-level analyses), then we will also use the statistical program Mplus \parencite{mplus}.
+
+\paragraph{Nesting of Data}
+
+Study 2 presents data that are hierarchical in nature. Different nesting structures can be considered for our analyses (e.g., students are nested in classes, in schools, or in families), depending on the research questions (``What is of interest?'') and on the level at which key independent variables reside \parencite{scott:2013}. In our study, school closure duration is the key independent variable, therefore suggesting two possible nesting structures (a) students nested in municipalities, or (b) students nested in schools. Option (a) makes sense as municipalities in Norway are responsible for making policies related to lower secondary schools (Norwegian Ministry of Local Government and Modernisation, n.d.) including COVID directories. As scientific knowledge about COVID accumulates, large municipalities such as the capital Oslo initiated differentiated school closure requirements depending on a colored alert level. By the later stage of the pandemic, it makes better sense to use schools as the Level 2 unit since variation started to emerge within the same municipality. We therefore decide to adopt students nesting in schools for our analyses. We will assess the significance of the nesting structure using intraclass correlations \parencite[$\text{ICC}_1$, ][]{ludtke:2009}.
+
+\subsection{Effect Size}%\label[subsec]{effectsize}
+
+In Study 2, learning growth is operationalized as the difference in national test results between Year 8 and Year 9. We then express effect sizes in percentiles using the SD-based metrics Cohen's $d$ \parencite{cohen:1988}, with all effect sizes being considered informative (see explanations in hypotheses). We expect negative effects of school closures on student achievement. Prior studies signaled a learning loss of approximately $d=-0.10\ SD$ in Period 1 for reading and mathematics (Hammerstein et al., 2021). We further expect the effect sizes to be small since Norway's national tests measure youth's basic competencies such as numeracy and literacy—skills that should have stabilized by Year 9 and not immediately sensitive to school closures. We will use earlier findings as benchmarks when judging the importance of effect sizes. \textcite{betthauser:2022} found a learning loss of $d=-0.17$, 95\% CI $[-0.22,\ -0.13]$ early in the pandemic, equivalent to 42 percent of average learning during a school year in the absence school closures \parencite[teachers typically can attain between $d=0.20$ and $d=0.40$ per year; ][]{hattie:2009}. \textcite{hammerstein:2021} found a learning loss of $d=-0.005\ SD$ to $-0.05\ SD$ per week, which can be interpreted as an average summer learning loss. Based on these findings and the fact that Norway's national tests are general competency-based in contrast to curriculum-based (e.g., in the Netherlands), we expect a small effect size of approximately $d=-0.2/52=-0.0038\ SD$ per week or smaller for Period 1.
+
+\subsection{Statistical Power}
+
+Since Norway's national register data preserve the entire population with minimal missing values, we expect our study to have sufficiently high statistical power with significance output for all inferential parameters. The challenge following the analyses is to interpret which magnitudes of effect sizes are of practical relevance and are important (see section effect sizes).
+
+\subsection{Inference Criteria}
+
+Classical statistical tests operate based on sampling distributions and are not directly applicable to our studies involving the entire population. We are nevertheless able to employ the conventional Type I error criterion of $\alpha = .05$ and the Benjamini-Hochberg correction \parencite{benjamini:1995} procedure to adjust for multiple comparisons.
+
+\subsection{Assumption Violation / Model Non-convergence}
+
+Variables with severely non-normal distributions such as income will be subject to log transformations in order to enhance normality. Since no latent construct is involved in current studies and our data size is sufficiently large, we do not expect model identification problems or non-convergence risks.
+
+\subsection{Reliability and Robustness Testing}
+
+We will take several measures to verify the robustness of our results.
+
+\subsubsection{Study 1}
+
+We propose two different methods for handling missing values. The first and primary approach is multiple imputation (see the missing data section). We then wish to corroborate MI with the full information maximum likelihood (FIML) approach \parencite{graham:2012,vanbuuren:2018} thanks to its ability to produce unbiased estimates once all variables associated with missingness are included in the estimation \parencite{graham:2012,schafer:2002}. In executing FIML for independent and dependent variables, we will include demographic and SES variables in addition to those that are already included in the substantive model \parencite[saturated correlates models, ][]{graham:2003}.
+
+\subsubsection{Study 2}
+
+We would like to first of all implement robustness checks at the variable level. In order to gain deeper insight into different facets of SES \parencite{apa:2017,avvisati:2020,oconnell:2019}, students' social capital can be operationalized using alternative measures such as parents' education or using an index approach similar to that in PISA studies \parencite{oecd:2019}. Similarly, students' previous achievement in Norwegian (stp\_norw) and mathematics (stp\_math) can be corroborated using their attainment record in social (stp\_socs) and natural sciences (stp\_nats), respectively. In addition, we will use different methods for missing data treatment. Missing data treatment described in Study 1 can also be applied to Study 2.
+
+Next, our robust checks focus on the modelling level. Our central approach (see analyses) is highly influenced by the \textcite{engzell:2021} paper. An alternative regression design can be found in \textcite{angrist:2009} for validating effect estimations \parencite[see also ][]{brumback:2021}. \poscite{angrist:2009} DiD regression models may include time-varying covariates and are implemented using long data format (see, in particular, pp. 236—239). Furthermore, hierarchical data structure can be re-constructed as students nested in 428 Norwegian municipalities as an alternative to schools. Should the data suggest variations at another level that we are not currently aware of, $ICC_1 \geq .05$ \parencite{lebreton:2008}, we will include this level in our analyses as another robustness check.
+
+If further opportunities to check the robustness of our results arise in the process of the analyses (e.g., suggested by reviewers), we will carry out these checks if they are reasonable (e.g., the costs do not exceed the benefits of the analyses).
+
+\subsection{Exploratory Analysis}
+
+In principle, we will conduct further exploratory analyses if we can theoretically derive them in a plausible way.
+
+First, we plan to also analyze Period 2. Analogous to Period 1, we will calculate the difference in Year 8 and Year 9 student achievement in the national tests $\Delta y_i^{2021-2020}$. We will explore how Period 2 relates to the other periods prior to COVID-19 school closures and to Period 1. To do so, we will use the same methodological approaches (i.e., DiD). On the one hand, a cumulative nature of learning can be assumed (\citenp{hammerstein:2021}; see also \citenp{shuell:1986}), which is why potential learning losses could become greater in the long run. In addition, recent research indicate that at least learning deficit early in the pandemic persist over time \parencite{betthauser:2022}. On the other hand, it can be assumed that measures (e.g., government-initiated training programs, providing free digital devices) were introduced after the first school closures. Furthermore, it can be assumed that all stakeholders have become familiar with distance learning. That is students and parents may have known better how to learn at home in the case of later school closures in Period 2 than in Period 1.
+
+Second, we may compare learning progressions across subjects. Previous studies on the effects of school closures on student achievement reported few differences between reading and mathematics \parencite{hammerstein:2021}. It is unclear, however, whether similar patterns apply to Norway due to its unique education and assessment systems, such as repeating identical tests one year apart and focusing on general competencies rather than on curricula. One's general literacy and numeracy levels are reasonably expected to have stabilized by Year 8—if differential effects were to happen, we expect them to be larger in mathematics than in reading because numeracy depends more heavily on purposeful training than language skills.
+
+Third, we may explore further variables. That is, we aim to map COVID-19 school closures, the socio-economic status, the family situation, and household of the students that may have been particularly significant for learning at home during school closures as comprehensively as possible. For instance, we may explore additional individual-level (e.g., immigrant status, COVID-19 infection, number of siblings; see Table 1), school-level variables (e.g., school type, proportion of immigrants; see Table 1), or household related variables (e.g., floor space per person in the household, working hours of parents; nr. 15 in Table 1).
+
+In general, if we are advised by experts during manuscript preparation (e.g., by reviewers) to include additional variables that make sense in terms of content and make the findings more robust, and we have these variables available in the dataset, then we will include these variables in our model and check whether the findings remain robust.
+

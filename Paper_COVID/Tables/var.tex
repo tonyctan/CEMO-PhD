@@ -1,12 +1,92 @@
+\begin{landscape}
 \begin{table}[htbp]
 \begin{threeparttable}
     \caption{Proposed Variables}
     \label{tab:var}
-    \begin{tabular}{c}
-        1
-    \end{tabular}
+    \begin{tabular}{cp{4em}cp{10em}p{5em}p{25em}p{10em}}
+        \toprule
+        \multicolumn{1}{c}{Nr} & \multicolumn{1}{c}{Construct} & \multicolumn{1}{c}{Level} & \multicolumn{1}{c}{Variable Name (NO)} & \multicolumn{1}{c}{Variable} & \multicolumn{1}{c}{Operationalisation [database]} & \multicolumn{1}{c}{Function (Study)} \\
+        &&&& Name (EN)  &&\\
+        \midrule
+        1     & Identifier & 1     & lopenr\_person & \multicolumn{1}{l}{\vn{idper}} & Person ID (character) & Matching ID (1, 2) \\
+        2     & Identifier & 2     & Skolekommune & \multicolumn{1}{l}{\vn{scmu}} & School municipality (character). This variable is used to link students to the municipalities of their schools. & Matching ID (1, 2)\newline{}Cluster Variable (1, 2) \\
+        3     & Identifier & 2     & Løpenummer\newline{}organisasjonsnummer & \multicolumn{1}{l}{\vn{idsc}} & School ID (character) & Matching ID\newline{}Cluster Variable (1, 2) \\
+        4     & Identifier & 1     & Løpenummer far & \multicolumn{1}{l}{\vn{idfa}} & Person ID of father (character). This is necessary to associate SES and family background to students. & Matching ID (1, 2) \\
+        5     & Identifier & 1     & Løpenummer mor & \multicolumn{1}{l}{\vn{idmo}} & Person ID of mother (character). This is necessary to associate SES and family background to students. & Matching ID (1, 2) \\
+        6     & Identifier & n.u.  & Fagkode for fag i grunnskole & \multicolumn{1}{l}{\vn{idsub}} & Subject code for subjects in primary and lower secondary school (character). Is necessary to link the grades to the subjects. & Matching ID (1, 2) \\
+        7     & Student academic achievement & 1     & Standpunkt (stp) & \vn{stp\_math}\newline{}\vn{stp\_engw}\newline{}\vn{stp\_engo}\newline{}\vn{stp\_norw}\newline{}\vn{stp\_noro} & Teacher-assigned grades for mathematics, written and oral Norwegian, written and oral English (ordered categorical; 1 = very low competence, 2 = low competence, 3 = fairly good competence, 4 = good competence, 5 = very good competence, 6 = superior competence, Regulations for the education act, 2006, §3-5). STPs are usually given at the end of a teaching year in June. & Dependent variable (1)\newline{}Moderator (2, RQ4) \\
+        8     & Student academic achievement & 1     & Skriftlig eksamenskarakter & \vn{e\_math}\newline{}\vn{e\_engw}\newline{}\vn{e\_norw} & Written exams grades for mathematics, Norwegian, and English (ordered categorical; 1 = very low competence, 2 = low competence, 3 = fairly good competence, 4 = good competence, 5 = very good competence, 6 = superior competence, Regulations for the education act, 2006, §3-5). Students are sampled into taking either mathematics, written Norwegian, or written English with equal probability. Written exams were cancelled between 2020 and 2022 due to COVID-19. Only teacher grades (variable Nr 7) are available as outcome measures. & Dependent variable (1) \\
+        \bottomrule
+        \end{tabular}%
+\end{threeparttable}
+\end{table}
+\end{landscape}
+
+\newpage
+
+\begin{landscape}
+\begin{table}[htbp]
+\begin{threeparttable}
+    \begin{tabular}{cp{4em}cp{10em}p{5em}p{25em}p{10em}}
+        \toprule
+        \multicolumn{1}{c}{Nr} & \multicolumn{1}{c}{Construct} & \multicolumn{1}{c}{Level} & \multicolumn{1}{c}{Variable Name (NO)} & \multicolumn{1}{c}{Variable} & \multicolumn{1}{c}{Operationalisation [database]} & \multicolumn{1}{c}{Function (Study)} \\
+        &&&& Name (EN)  &&\\
+        \midrule
+        9     & Student academic achievement & 1     & Muntlig eksamenskarakter & \vn{e\_engo}\newline{}\vn{e\_noro} & Oral exam grades for Norwegian and English (ordered categorical; 1 = very low competence, 2 = low competence, 3 = fairly good competence, 4 = good competence, 5 = very good competence, 6 = superior competence, Regulations for the education act, 2006, §3-5). Oral exams consist of not only English and Norwegian, but also mathematics, social and natural sciences, and other electives. Students are randomly assigned to one subject only for their oral exams. Oral exams were cancelled between 2020 and 2022. & Dependent variable (1) \\
+        10    & Student academic achievement & 1     & NPLES, NPREG & \multicolumn{1}{p{4.93em}}{\vn{np\_read8}\newline{}\vn{np\_math8}\newline{}\vn{np\_read9}\newline{}\vn{np\_math9}} & National tests are used to evaluate students' reading, mathematics, and English proficiency (numeric). These formative assessments are given in October to Year 5, 8, and 9 students. We will use national tests from Year 8 and 9. Norwegian Ministry of Education and Training releases the test results in scaled versions, enabling us to isolate the growth of students' skills and to compare across subjects and across years. The scale is constructed based on item response theory with mean 50 and standard deviation 10. Further information about Norway's national tests can be found in \url{https://www.ssb.no/en/utdanning/grunnskoler/statistikk/nasjonale-prover} & Dependent variable (2) \\
+        11    & Duration of school closures & 2     & ---   & \vn{dur}   & School closure number of days for Year 8 and Year 9 (interger). & Independent variable (2) \\
+        12    & School closures  & 2     & ---   & ---   & e.g., durations of school closure, sick leave days accrued to students and teachers due to COVID infection, number of students needing special support and language support. Further information can be obtained from: \url{https://gsi.udir.no/View?show=form\&formId=90969\&languageId=1\&fromApp=false\&includeMetaContent=true} & Independent variable (2) \\
+        \bottomrule
+    \end{tabular}%
+\end{threeparttable}
+\end{table}
+\end{landscape}
+
+\newpage
+
+\begin{landscape}
+\begin{table}[htbp]
+\begin{threeparttable}
+    \begin{tabular}{cp{4em}cp{10em}p{5em}p{25em}p{10em}}
+        \toprule
+        \multicolumn{1}{c}{Nr} & \multicolumn{1}{c}{Construct} & \multicolumn{1}{c}{Level} & \multicolumn{1}{c}{Variable Name (NO)} & \multicolumn{1}{c}{Variable} & \multicolumn{1}{c}{Operationalisation [database]} & \multicolumn{1}{c}{Function (Study)} \\
+        &&&& Name (EN)  &&\\
+        \midrule
+        13    & Students' SES & 1     & belopm\newline{}Inntekt etter skatt per forbruksenhet (EU-skala) & \vn{atipcu} & After-tax income per consumption unit (EU-scale). Numeric (index: sum of household taxable and non-taxable income, minus taxes, divided by the number of consumption units in the household. Consumption units are calculated by using the modified OECD scale or the EU scale, where the first adult is given a weight of 1, any additional adult a weight of 0.5, and each child a weight of 0.3. The number of consumption units in a household consisting of two adults and two children is thus 2.1 \url{https://www.ssb.no/a/metadata/conceptvariable/vardok/3363/en} & Moderator (2, RQ3) \\
+        14    & Students' SES & 1     & Personens høyeste utdanningsnivå & \vn{phle}  & e.g., person's highest level of education (NUS2000 Code; 1970, then annually from 1980). NUS: Norwegian Standard Classification of Education ranging from 0 (no education) to 8 (a research degree). Used to assess the educational level of the parents. If information is available for both parents, then the highest value is used. More information about the Norwegian Standard Classification of Education (NUS2000) can be found from \url{https://www.ssb.no/en/utdanning/norwegian-standard-classification-of-education} and \url{https://www.ssb.no/klass/klassifikasjoner/36/} e.g., father's and mother's highest education when the person was 16 years old & Moderator (2, RQ3) \\
+        15    & Students’ family background and situation at home & 1     & ---   & ---   & e.g., refugee background (flyktningbakgrunn; dichotomous [0 = no refugee background, 1 = refugee background]), Immigration category (innvandringskategori [dichotomous (0 = no immigrant, 1 = immigrant)]), number of persons per household (per\_18plus\_i\_hushnr), floor space in square metres of household, new variable (floor space per person living in the household), number of a student's siblings, and any other variables that may have been relevant to home learning during school closures & Moderator (2, RQ3) or Control variables (2) \\
+    \bottomrule
+    \end{tabular}%
+\end{threeparttable}
+\end{table}
+\end{landscape}
+
+\newpage
+
+\begin{landscape}
+\begin{table}[htbp]
+\begin{threeparttable}
+    \begin{tabular}{cp{4em}cp{10em}p{5em}p{25em}p{10em}}
+        \toprule
+        \multicolumn{1}{c}{Nr} & \multicolumn{1}{c}{Construct} & \multicolumn{1}{c}{Level} & \multicolumn{1}{c}{Variable Name (NO)} & \multicolumn{1}{c}{Variable} & \multicolumn{1}{c}{Operationalisation [database]} & \multicolumn{1}{c}{Function (Study)} \\
+        &&&& Name (EN)  &&\\
+        \midrule
+        16    & Students' sex & 1     & Kjønn & \vn{sex}   & Dichotomous (0 = boy, 1 = girl) & Control variable (1, 2)\newline{}Description of students (1, 2) \\
+        17    & Students age & 1     & ---   & \vn{age}   & Calculated from the month (Fødselsår og -måned) and year (Fødselsår) of birth & Covariate (1, 2)\newline{}Description of students (1, 2) \\
+        18    & Country of birth & 1     & Fødeland & \vn{cob}   & Nominal (e.g., 1 = Norway) & Description of students (1, 2) \\
+        19    & School type & 2     & UTD   & \vn{types} & School type  & Description of students (1, 2)\newline{}Control Variable (2) \\
+        &&&&&&\\
+        \multicolumn{7}{l}{Variables that may be used (e.g., to merge data or to describe individuals)}\\
+        &&&&&&\\
+        20    & Identifier & n.u.  & lopenr\_familienr or lopenr\_husholdning & \multicolumn{1}{p{4.93em}}{\vn{idfam} or\newline{}\vn{idhus}} & Family or household running number (character) & Matching ID \\
+        21    & Identifier & 2     & Løpenummer organisasjonsnummer & \vn{idsc}  & School ID (character) & Matching ID \\
+        22    & Identifier & 2     & Bostedskommune (per 1. oktober) & \vn{idmu}  & Municipality of residence ID (character; October 1st) & Matching ID \\
+        \bottomrule
+    \end{tabular}%
     \tablenote{Additional variables may be included as the authors gain data access in order to describe the students or to better answer our research questions. Further variable descriptions are available from \url{https://www.ssb.no/a/metadata/definisjoner/variabler/main.html} and \url{https://gsi.udir.no/}.
     Students' SES (e.g., \vn{atipcu}) is measured using Year 9 data. Students' previous achievement (e.g., \vn{stp\_math}) is measured using Year 8 data.
     NO = Norwegian, EN = English, n.u. = not used.}
 \end{threeparttable}
 \end{table}
+\end{landscape}
+

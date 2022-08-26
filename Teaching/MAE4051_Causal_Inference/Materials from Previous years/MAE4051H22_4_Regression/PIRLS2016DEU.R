@@ -11,7 +11,7 @@ library("EdSurvey")
 # Supress warnings for the rest of this R session
 options(warn = - 1)
 
-#             ### [RESEARCHERs NEED TO PREPARE PIRLS DATASET] ###
+#             ### [RESEARCHERS NEED TO PREPARE PIRLS DATASET] ###
 
 # # Download 2016 PIRLS data from the IEA website
 # downloadPIRLS(
@@ -30,7 +30,7 @@ options(warn = - 1)
 
 
 #setwd("~/")
-setwd("M:\\pc\\Dokumenter\\PhD\\Teaching\\MAE4051_Causal_Inference\\Materials from Previous years\\CausalInference_Session5_Material")
+setwd("M:/pc/Dokumenter/PhD/Teaching/MAE4051_Causal_Inference/Materials from Previous years/MAE4051H22_4_Regression")
 # Read Germany's 2016 PIRLS data into R
 load("PIRLS2016DEU.RData")
 

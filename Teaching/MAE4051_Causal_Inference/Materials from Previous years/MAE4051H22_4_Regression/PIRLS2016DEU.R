@@ -1,6 +1,11 @@
 ## Causal Inference Workshop 2022
 ## Session 4: Regression Models
 
+# Set working directory depending on operating system
+Orcs::setwdOS(
+       lin = "~/uio/", win = "M:/",
+       ext = "pc/Dokumenter/PhD/Teaching/MAE4051_Causal_Inference/Materials from Previous years/MAE4051H22_4_Regression/"
+)
 
 ## STEP 1: Load data (PIRLS 2016 Germany)
 
@@ -8,29 +13,26 @@
 # install.packages("EdSurvey", dependencies = T)
 # Load "EdSurvey" package
 library("EdSurvey")
-# Supress warnings for the rest of this R session
+# Suppress warnings for the rest of this R session
 options(warn = - 1)
 
 #             ### [RESEARCHERS NEED TO PREPARE PIRLS DATASET] ###
 
-# # Download 2016 PIRLS data from the IEA website
-# downloadPIRLS(
-#        root = "~/",
-#        year = 2016
-# )
-# # Read Germany's 2016 PIRLS data into R
-# PIRLS2016DEU <- readPIRLS(
-#        path = "~/PIRLS/2016/",
-#        countries = c("deu")
-# )
-# # Save Germany's data to .RData format for future use
-# save(PIRLS2016DEU, file = "~/PIRLS2016DEU.RData")
+# Download 2016 PIRLS data from the IEA website
+downloadPIRLS(
+       root = getwd(), # Download data to the current working directory
+       year = 2016
+)
+# Read Germany's 2016 PIRLS data into R
+PIRLS2016DEU <- readPIRLS(
+       path = paste0(getwd(),"/PIRLS/2016/"),
+       countries = c("deu")
+)
+# Save Germany's data to .RData format for future use
+save(PIRLS2016DEU, file = "PIRLS2016DEU.RData")
+
 
 #             ### [LEARNERS ONLY NEED TO LOAD PIRLS DATASET] ###
-
-
-#setwd("~/")
-setwd("M:/pc/Dokumenter/PhD/Teaching/MAE4051_Causal_Inference/Materials from Previous years/MAE4051H22_4_Regression")
 # Read Germany's 2016 PIRLS data into R
 load("PIRLS2016DEU.RData")
 

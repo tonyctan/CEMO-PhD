@@ -16,7 +16,11 @@ PRIVATE/
 *.nav
 *.out
 !/Stat_Help/**/*.out
+*.RData
 *.run.xml
+*.sav
+Teaching/MAE4051_Causal_Inference/Materials from Previous years/MAE4051H22_4_Regression/PIRLS
 *.snm
 *.synctex.gz
 *.toc
+*.zip

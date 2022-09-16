@@ -1,14 +1,15 @@
 #installing package to be able to open excel data
-
-install.packages("readxl")
+#install.packages("readxl")
 library("readxl")
+
 
 #importing both datasets
 Ydata <- read_excel("data/Ydata.xlsx")
-RTdata<-read_excel("data/RTdata.xlsx")
+RTdata<-read.table("data/RTdata.csv", header=T,sep=";")
+
 
 #installing package to be able to reshape data sets from wide to long format
-install.packages("reshape2")
+#install.packages("reshape2")
 library("reshape2")
 
 #using the function melt to reshaping the data sets into long format with the variable desired
@@ -17,10 +18,37 @@ longY<-melt(Ydata,
 longRT<-melt(RTdata,
              id.vars = c("ID"))
 
+#creating a smaller dataframe with gender and language
+GenderLanguage<-melt(RTdata,
+             id.vars = c("Group","ID"))
+names(GenderLanguage)=c("ikke","Gender","ikke2","ID")
+library("tidyr")
+GenderLanguage2=GenderLanguage%>%
+  separate(ikke,c("1","denne","3"),"_")
+
+
+#splitting up the variables
+library("stringr")
+GenderLanguage2$hei=str_sub(GenderLanguage2$denne,-2)
+
+#Removing the language from the variable with genders 
+GenderLanguage2$denne<-gsub("FR","",as.character(GenderLanguage2$denne))
+GenderLanguage2$denne<-gsub("NL","",as.character(GenderLanguage2$denne))
+
+#changing the names 
+#install.packages("dplyr")
+library(tidyverse)
+GenderLanguage3=rename(GenderLanguage2,feil=Gender)
+GenderLanguage4=rename(GenderLanguage3,Gender=denne)
+GenderLanguage5=rename(GenderLanguage4,Language=hei)
+
+#Making the final dataset for gender, language and ID
+GenderLanguageCorrect<-melt(GenderLanguage5,
+            id.vars = c("ID","Gender","Language"))
 
 
 #changing the names to match, so both are called items
-install.packages("dplyr")
+#install.packages("dplyr")
 library(tidyverse)
 rename(longY,item=variable)
 rename(longRT,item=variable)
@@ -41,6 +69,7 @@ names(longRT)=c("ID","Item","RT")
 longY$problem<-"value"
 longRT$problem<-"value"
 
+#creating the subscore variable for Ydata
 Ydata$P1=Ydata$Item_1+Ydata$Item_2+Ydata$Item_3+Ydata$Item_4
 Ydata$P2=Ydata$Item_5+Ydata$Item_6+Ydata$Item_7+Ydata$Item_8
 Ydata$P3=Ydata$Item_9+Ydata$It_10+Ydata$It_11+Ydata$It_12
@@ -49,19 +78,25 @@ Ydata$P5=Ydata$It_17+Ydata$It_18+Ydata$It_19+Ydata$It_20
 Ydata$P6=Ydata$It_21
 
 Ydata<-melt(Ydata,
-            id.vars = c("ID","P1","P2","P3","P4","P5","P6"))
-Ydata=Ydata[,c(1:7)]
+id.vars = c("ID","P1","P2","P3","P4","P5","P6"))
 
+#creating the subscore variable for RTdata
+RTdata$P01=RTdata$Time01+RTdata$Time02+RTdata$Time03+RTdata$Time04
+RTdata$P02=RTdata$Time05+RTdata$Time06+RTdata$Time07+RTdata$Time08
+RTdata$P03=RTdata$Time09+RTdata$Time10+RTdata$Time11+RTdata$Time12
+RTdata$P04=RTdata$Time13+RTdata$Time14+RTdata$Time15+RTdata$Time16
+RTdata$P05=RTdata$Time17+RTdata$Time18+RTdata$Time19+RTdata$Time20
+RTdata$P06=RTdata$Time21
+
+RTdata<-melt(RTdata,id.vars = c("ID","P01","P02","P03","P04","P05","P06"))
 
 #creating the totalscore 
+longY$totalY<-rowSums((Ydata[2:6]))
+longRT$totalRT<-rowSums((RTdata[2:6]))
 
-Ydata$totalY<-rowSums((Ydata[2:6]))
-longRT$totalRT<-colSums((longRT[3:3]))
-
-                    
-#merging the two datasets
-merged=merge(Ydata,longRT)
-
-merged=merged[,c(1:9)]
+#Merging the datasets
+Merged=merge(longY,longRT,GenderLanguageCorrect,by.x =  "ID",by.y = "Item",all = TRUE)
 
 
+#setting the correct order
+finished=Merged[,c(1,9,10,2,6,4,7,3,8,5)]

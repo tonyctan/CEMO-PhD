@@ -1,47 +1,67 @@
 #importing Ydata
 library(readxl)
-Ydata <- read_excel("~/MAE4000/data/Ydata.xlsx")
+Ydata <- read_excel("data/Ydata.xlsx")
 View(Ydata)
+
 #importing RTdata
-RTdata <- read.csv("~/MAE4000/data/RTdata.csv", sep=";")
+RTdata <- read.csv("data/RTdata.csv", sep=";")
+View(RTdata)
+
 #Cleaning data
 names(Ydata)
 names(RTdata)
 str(Ydata)
 str(RTdata)
+
 #Change Ydata tibble to data.frame
 Ydatadf<- as.data.frame(Ydata)
 str(Ydatadf)
+
 #remove duplicates
-RTdata1= RTdata[!duplicated(RTdata$ID),]
-Ydata1= Ydatadf[!duplicated(Ydatadf$ID),]
+RT.data= RTdata[!duplicated(RTdata$ID),]
+Y.data= Ydatadf[!duplicated(Ydatadf$ID),]
+
 #looking for string inconsistencies
-unique(RTdata1$Group)
+unique(RT.data$Group)
+
 #checking data types
-typeof(Ydata1$ID)
-typeof(RTdata1$ID)
+typeof(Y.data$ID)
+typeof(RT.data$ID)
+
 #substr of RTdata1$Group OR constructing Gender column
-RTdata1$Gender =substr(RTdata1$Group,8,8)
+RT.data$Gender =substr(RT.data$Group,8,8)
+
 #Split RTdata1$Group OR constructing Language column
-RTdata1$Language= substr(RTdata1$Group,nchar(RTdata1$Group)-4,nchar(RTdata1$Group)-3)
+RT.data$Language= substr(RT.data$Group,nchar(RT.data$Group)-4,nchar(RT.data$Group)-3)
+
 #Reshaping from wide to long
-YLong= reshape(data=Ydata1,idvar= "ID",varying=list(c("It_17","It_10","Item_9","It_15","Item_5","Item_8","Item_2","It_19","Item_6","It_16","Item_3","It_11","It_12","It_20","It_14","It_13","Item_7","Item_1","It_18","Item_4","It_21")), direction="long")
-RTLong= reshape(data=RTdata1,idvar="ID", varying=list(c("Time01","Time02","Time03","Time04","Time05","Time06","Time07","Time08","Time09","Time10","Time11","Time12","Time15","Time14","Time13","Time16","Time19","Time18","Time17","Time20","Time21")), direction= "long")
+YLong= reshape(data=Y.data,idvar= "ID",varying=list(c("It_17","It_10","Item_9","It_15","Item_5","Item_8","Item_2","It_19","Item_6","It_16","Item_3","It_11","It_12","It_20","It_14","It_13","Item_7","Item_1","It_18","Item_4","It_21")), direction="long")
+RTLong= reshape(data=RT.data,idvar="ID", varying=list(c("Time01","Time02","Time03","Time04","Time05","Time06","Time07","Time08","Time09","Time10","Time11","Time12","Time15","Time14","Time13","Time16","Time19","Time18","Time17","Time20","Time21")), direction= "long")
+
 #Changing variable names
 names(YLong)[2:3]= c("Item","Y")
 names(RTLong)[5:6]= c("Item", "RT")
+
 #Selecting required columns from RTLong
-RTLong[,c("ID","Item","RT")]
-#Creating new variable "Problem" with 5 levels
-YLong$Problem= cut(YLong$Item, 5,labels= c("1","2","3","4","5"))
-RTLong$Problem= cut(RTLong$Item, 5,labels= c("1","2","3","4","5"))
+RTLong1= RTLong[,c("ID","Item","RT")]
+
+#Add Problem var to YLong dataset
+YLong$Problem= ceiling(YLong$Item/4)
+
+#Add Problem var to RTLong1 dataset
+RTLong1$Problem= ceiling(RTLong1$Item/4)
+
 #Creating variables "Problem 1-6" in wide RTdataset
-RTdata1$Problem1= RTdata1$Time17 + RTdata1$Time10 + RTdata1$Time09 + RTdata1$Time15
-RTdata1$Problem2= RTdata1$Time05 + RTdata1$Time08 + RTdata1$Time02 + RTdata1$Time19
-RTdata1$Problem3= RTdata1$Time06 + RTdata1$Time16 + RTdata1$Time03 + RTdata1$Time11
-RTdata1$Problem4= RTdata1$Time12 + RTdata1$Time20 + RTdata1$Time14 + RTdata1$Time13
-RTdata1$Problem5= RTdata1$Time07 + RTdata1$Time01 + RTdata1$Time18 + RTdata1$Time04
-RTdata1$Problem6= RTdata1$Time21
+RT.data$Problem1= RT.data$Time17 + RT.data$Time10 + RT.data$Time09 + RT.data$Time15
+RT.data$Problem2= RT.data$Time05 + RT.data$Time08 + RT.data$Time02 + RT.data$Time19
+RT.data$Problem3= RT.data$Time06 + RT.data$Time16 + RT.data$Time03 + RT.data$Time11
+RT.data$Problem4= RT.data$Time12 + RT.data$Time20 + RT.data$Time14 + RT.data$Time13
+RT.data$Problem5= RT.data$Time07 + RT.data$Time01 + RT.data$Time18 + RT.data$Time04
+RT.data$Problem6= RT.data$Time21
+
+#Creating subscore RT dataset
+RT.Subscore= RT.data[,-c(1:22)]
+RT.Subscore= RT.Subscore[,-c(2:3)] #removing columns
 
 #Creating variables "Problem 1-6" in wide Ydataset
 Ydatadf$Problem1= Ydatadf$It_17+Ydatadf$It_10+Ydatadf$Item_9+Ydata$It_15
@@ -50,10 +70,6 @@ Ydatadf$Problem3= Ydatadf$Item_6+Ydatadf$It_16+Ydatadf$Item_3+Ydatadf$It_11
 Ydatadf$Problem4= Ydatadf$It_12+Ydatadf$It_20+Ydatadf$It_14+Ydatadf$It_13
 Ydatadf$Problem5= Ydatadf$Item_7+Ydatadf$Item_1+Ydatadf$It_18+Ydatadf$Item_4
 Ydatadf$Problem6= Ydatadf$It_21
-
-#Creating subscore RT dataset
-RT.Subscore= RTdata1[,-c(1:22)]
-RT.Subscore= RT.Subscore[,-c(2:3)] #removing columns
 
 #Creating subscore Y dataset
 Y.Subscore= Ydatadf[,-c(2:22)]
@@ -65,21 +81,44 @@ names(RT.Sub)[2:3]= c("Problem", "RT.sub")
 
 #Reshaping Y subscore dataset
 Y.Sub= reshape(data=Y.Subscore,idvar="ID", varying=list(c("Problem1","Problem2","Problem3","Problem4", "Problem5","Problem6")),direction= "long")
+#Changing variable names
 names(Y.Sub)[2:3]= c("Problem", "Y.sub")
 
-#Calculating totalscore + creating dataset Y.tot
-Ydatadf2$Y.tot= Ydatadf2$Problem1+Ydatadf2$Problem2+Ydatadf2$Problem3+Ydatadf2$Problem4+Ydatadf2$Problem5+Ydatadf2$Problem6
-Y.tot= Ydatadf2[,-c(2:28)]
+#Calculating totalscore + creating dataset Y.Tot
+Ydatadf2=Ydatadf
+Ydatadf2$Y.Tot= Ydatadf2$Problem1+Ydatadf2$Problem2+Ydatadf2$Problem3+Ydatadf2$Problem4+Ydatadf2$Problem5+Ydatadf2$Problem6
+Y.Tot= Ydatadf2[,-c(2:28)]
 
-#Calculating totalscore + creating dataset RT.tot
-RTdata1$RT.tot= RTdata1$Problem1+RTdata1$Problem2+RTdata1$Problem3+RTdata1$Problem4+RTdata1$Problem5+RTdata1$Problem6
-RT.tot= RTdata1[,-c(1:22,24:31)]
+#Calculating totalscore + creating dataset RT.Tot
+RT.data$RT.Tot= RT.data$Problem1+RT.data$Problem2+RT.data$Problem3+RT.data$Problem4+RT.data$Problem5+RT.data$Problem6
+RT.Tot= RT.data[,-c(1:22,24:31)]
 
 #Merging Y and RT datasets
-Long= merge(RTLong,YLong, by= c("ID", "Item", "Problem"),all.x=TRUE, all.y=TRUE)
+Long= merge(RTLong1,YLong, by= c("ID", "Item","Problem"),all.x=TRUE, all.y=TRUE)
 Subscores= merge(RT.Sub,Y.Sub, by= c("ID", "Problem"),all.x=TRUE, all.y=TRUE)
-Total= merge(RT.tot,Y.tot, by= c("ID"),all.x=TRUE, all.y=TRUE)
+Total= merge(RT.Tot,Y.Tot, by= c("ID"),all.x=TRUE, all.y=TRUE)
 Scores= merge(Total,Subscores, by= c("ID"),all.x=TRUE, all.y=TRUE)
+final= merge(Scores,Long, by= c("ID","Problem"),all.x=TRUE, all.y=TRUE)
+
+#Adding Gender,Language & Item variables by creating new dataset then merging
+GLI= RTLong[,2:6]
+Final= merge(final,GLI, by=c("ID","Item", "RT"), all.x=TRUE, all.y=TRUE)
+
 #Rearranging
-Final= Final[,c(1,7,2,9,8,6,5,4,3)]
-Final= merge(Scores,Long, by= c("ID", "Problem"),all.x=TRUE, all.y=TRUE)
+Final= Final[,c(1,10,11,2,4,9,3,8,7,6,5)]
+names(Final)[1]= "Person"
+
+#Changing types of data
+Final$Language=as.factor(Final$Language)
+Final$Gender=as.factor(Final$Gender)
+Final$Item=as.numeric(Final$Item)
+Final$Problem=as.numeric(Final$Problem)
+
+#Reordering & sorting variables
+Final=Final[order(Final$Person, decreasing=TRUE),]
+
+#Checking structure of the dataset
+str(Final)
+
+#Exporting file
+write.table(Final, file="data/DataWrangling.txt", row.names=FALSE, sep="\t", dec=".")

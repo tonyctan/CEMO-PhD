@@ -1,5 +1,5 @@
-###Second assignment in Data Science, Morten Rasmus Puck
-
+### Second assignment in Data Science, Morten Rasmus Puck
+setwd("C:/Users/Tony/Desktop/submissions")
 ###The script is constructed in such way that different aspects are treated by itself, with each bookmark.
 library(tidyr)
 library(dplyr)
@@ -7,11 +7,11 @@ library(readxl)
 library(stringr)
 ###Data import ----
 #Importering the Y-dataset.
-data_Y<-read_xlsx("D:/CEMO/Data Science 1. semester/Data generelt for Data Science/Ydata.xlsx")
+data_Y<-read_xlsx("data/Ydata.xlsx")
 View(data_Y) #View the dataset for correct import and some prior indications of trouble.
 
 #Importering the RT-dataset.
-data_RT <-read.csv("D:/CEMO/Data Science 1. semester/Data generelt for Data Science/RTdata.csv", sep=';')
+data_RT <-read.csv("data/RTdata.csv", sep=';')
 View(data_RT) #View the dataset for correct import and some prior indications of trouble.
 
 ### data cleaning ----
@@ -121,10 +121,10 @@ data_long <- arrange(data_long,ID, Item)
 
 #### Data export ----
 #Export the dataset to a .txt file with "." as decimals.
-write.table(data_long, file="D:/CEMO/Data Science 1. semester/Data science week 2 22-26 aug/R-fil data science week 2 22-26 aug/data_long.txt", dec=".")
+write.table(data_long, file="data/data_long.txt", dec=".")
 
 #Reimport the dataset to se differences. 
-data_reimport <- read.table("D:/CEMO/Data Science 1. semester/Data science week 2 22-26 aug/R-fil data science week 2 22-26 aug/data_long.txt", dec=".")
+data_reimport <- read.table("data/data_long.txt", dec=".")
 #Comparing the exported dataset with the re-imported dataset. 
 all_equal(data_long,data_reimport) #Change some variables form numbers to integers. No problems, since no decimals in the dataset. 
 

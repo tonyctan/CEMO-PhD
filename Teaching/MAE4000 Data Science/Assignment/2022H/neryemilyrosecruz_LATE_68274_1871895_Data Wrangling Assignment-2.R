@@ -1,19 +1,19 @@
 #Imported files
-RTdata = read.table(file = "/Users/emilynery/Documents/MAE4000/data/RTdata.csv", 
+RTdata = read.table(file = "data/RTdata.csv", 
                     header = TRUE, sep = ";")
 View(RTdata)
 
-saveRDS(RTdata, file = "/Users/emilynery/Documents/MAE4000/data/RTdata2.Rds")
-RTdata2 = readRDS(file = "/Users/emilynery/Documents/MAE4000/data/RTdata2.Rds")
+saveRDS(RTdata, file = "data/RTdata2.Rds")
+RTdata2 = readRDS(file = "data/RTdata2.Rds")
 all.equal(RTdata, RTdata2)
 
 library(readxl)
-Ydata <- read_excel("~/Documents/MAE4000/data/Ydata.xlsx")
+Ydata <- read_excel("data/Ydata.xlsx")
 View(Ydata)
 Ydata2 <- as.data.frame(Ydata) #converted tibble to data.frame
 str(Ydata2)
-saveRDS(Ydata2, file = "/Users/emilynery/Documents/MAE4000/data/NewYdata.Rds")
-NewYdata = readRDS(file = "/Users/emilynery/Documents/MAE4000/data/NewYdata.Rds")
+saveRDS(Ydata2, file = "data/NewYdata.Rds")
+NewYdata = readRDS(file = "data/NewYdata.Rds")
 all.equal(Ydata2, NewYdata)
 
 #RTdata restructuring
@@ -76,8 +76,8 @@ NewYdata2$Problem <- as.numeric(NewYdata2$Problem)
 
 #Sub data sets  for sub and tot
 #RT.sub and RT.tot
-saveRDS(NewRTdata, file = "/Users/emilynery/Documents/MAE4000/data/SumsRTdata.Rds")
-SumsRTdata = readRDS(file = "/Users/emilynery/Documents/MAE4000/data/SumsRTdata.Rds")
+saveRDS(NewRTdata, file = "data/SumsRTdata.Rds")
+SumsRTdata = readRDS(file = "data/SumsRTdata.Rds")
 
 SumsRTdata$AA <- rowSums(SumsRTdata[3:6])
 SumsRTdata$BB <- rowSums(SumsRTdata[7:10])
@@ -100,8 +100,8 @@ SumsRTdata2 <- merge(SumsRTdataSub, SumsRTdataTot, by= "ID")
 SumsRTdata2$Person_P <- paste(SumsRTdata2$ID, SumsRTdata2$Problem, sep = "_")
 
 #Y.sub and Y.tot
-saveRDS(NewYdata, file = "/Users/emilynery/Documents/MAE4000/data/SumsYdata.Rds")
-SumsYdata = readRDS(file = "/Users/emilynery/Documents/MAE4000/data/SumsYdata.Rds")
+saveRDS(NewYdata, file = "data/SumsYdata.Rds")
+SumsYdata = readRDS(file = "data/SumsYdata.Rds")
 
 SumsYdata$AA <- rowSums(SumsYdata[2:5])
 SumsYdata$BB <- rowSums(SumsYdata[6:9])
@@ -163,5 +163,5 @@ RTYdatamerge$RT.tot <- as.integer(RTYdatamerge$RT.tot)
 
 RTYdatamerge <- RTYdatamerge[order(RTYdatamerge[,4], -RTYdatamerge[,1]),] #reordered "Item" then "Person"
 
-write.table(RTYdatamerge, file = "/Users/emilynery/Documents/MAE4000/data/RTYdatamerge-exported.txt", row.names = FALSE, sep = "\t", dec = ".")
+write.table(RTYdatamerge, file = "data/RTYdatamerge-exported.txt", row.names = FALSE, sep = "\t", dec = ".")
 

@@ -1,14 +1,14 @@
 #Installing Packages I might need 
 library(dplyr)
-install.packages("readr")
+#install.packages("readr")
 library(readr)
-install.packages("caret")
-install.packages("caTools")
+#install.packages("caret")
+#install.packages("caTools")
 library(caTools)
 library("caret")
 library("tidyr")
-Ydata <- read_excel("~/Desktop/MAE 4000/data/Ydata.xlsx")
-RTdata <- read.csv("~/Desktop/MAE 4000/data/RTdata.csv",header=TRUE, sep=";")
+Ydata <- readxl::read_excel("data/Ydata.xlsx")
+RTdata <- read.csv("data/RTdata.csv",header=TRUE, sep=";")
 View(RTdata)
 View(Ydata)
 str(Ydata)
@@ -28,8 +28,8 @@ max(RTdata1$ID)
 #no more duplicates: The previous line gets rid of duplicated IDS
 RTdata1[98,23] = 401
 max(RTdata1$ID)
-max(RTdata1$ID)
-#Getting 401 instead of 500 shows missing data.
+# max(RTdata1$ID)
+# Getting 401 instead of 500 shows missing data.
 setdiff(1:500, RTdata1$ID)
 setdiff(1:500, Ydata$ID)
 #no missing ID-numbers
@@ -197,7 +197,7 @@ str(Final.dataset)
 head(Final.dataset)
 
 #changing reaction time = o to NA 
-Final_dataset$RT.sub[Final_dataset$RT.sub == 0] = NA
-write.table(Final_dataset, file="../data/Assigment_RAPHAELPLANCE.txt",row.names = FALSE,
+Final.dataset$RT.sub[Final.dataset$RT.sub == 0] = NA
+write.table(Final.dataset, file="data/Assigment_RAPHAELPLANCE.txt",row.names = FALSE,
             sep="\t", dec = ".")
 

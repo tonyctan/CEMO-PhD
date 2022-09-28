@@ -1,0 +1,99 @@
+> # eta_7: 2020 ~ 2019
+> eta_7 <- lmer(delta_np ~ 1 + condition_7 +
++     girl + age_cmc + bakken_cmc + np_math8_cmc + immi1gen + immi2gen +
++     bakken_cmc * condition_7 + np_math8_cmc * condition_7 +
++     (1 | idsc8) + (1 | idsc9),
++     data = math_7,
++     REML = FALSE
++ )
+> summary(eta_7)
+Linear mixed model fit by maximum likelihood . t-tests use Satterthwaite's method ['lmerModLmerTest']
+Formula: delta_np ~ 1 + condition_7 + girl + age_cmc + bakken_cmc + np_math8_cmc +  
+    immi1gen + immi2gen + bakken_cmc * condition_7 + np_math8_cmc *      condition_7 + (1 | idsc8) + (1 | idsc9)
+   Data: math_7
+
+      AIC       BIC    logLik  deviance  df.resid 
+ 688869.0  688994.3 -344421.5  688843.0    113331 
+
+Scaled residuals: 
+    Min      1Q  Median      3Q     Max 
+-7.5653 -0.6194  0.0057  0.6352  8.0100 
+
+Random effects:
+ Groups   Name        Variance Std.Dev.
+ idsc8    (Intercept)  0.07409 0.2722  
+ idsc9    (Intercept)  0.47033 0.6858  
+ Residual             25.27452 5.0274  
+Number of obs: 113344, groups:  idsc8, 1173; idsc9, 1166
+
+Fixed effects:
+                           Estimate Std. Error         df t value Pr(>|t|)    
+(Intercept)               3.667e+00  3.704e-02  2.066e+03  98.998  < 2e-16 ***
+condition_7              -1.534e-01  3.024e-02  1.102e+05  -5.075 3.89e-07 ***
+girl                     -3.960e-01  3.024e-02  1.130e+05 -13.093  < 2e-16 ***
+age_cmc                  -3.787e-02  5.144e-02  1.131e+05  -0.736   0.4616    
+bakken_cmc                4.668e+00  2.471e-01  1.130e+05  18.894  < 2e-16 ***
+np_math8_cmc             -9.388e-02  2.462e-03  1.130e+05 -38.137  < 2e-16 ***
+immi1gen                  3.603e-01  6.173e-02  1.131e+05   5.836 5.35e-09 ***
+immi2gen                  1.399e-01  6.332e-02  9.171e+04   2.210   0.0271 *  
+condition_7:bakken_cmc    1.654e+00  3.406e-01  1.129e+05   4.855 1.21e-06 ***
+condition_7:np_math8_cmc -2.571e-02  3.454e-03  1.131e+05  -7.443 9.92e-14 ***
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+
+Correlation of Fixed Effects:
+            (Intr) cndt_7 girl   ag_cmc bkkn_c np_m8_ imm1gn imm2gn cn_7:_
+condition_7 -0.410                                                        
+girl        -0.405  0.005                                                 
+age_cmc      0.013  0.003  0.004                                          
+bakken_cmc  -0.075  0.059 -0.014  0.025                                   
+np_mth8_cmc -0.028 -0.004  0.052 -0.045 -0.316                            
+immi1gen    -0.140 -0.007  0.005 -0.041  0.130  0.045                     
+immi2gen    -0.130 -0.010  0.010  0.007  0.129  0.029  0.144              
+cndtn_7:bk_  0.043 -0.108 -0.014  0.002 -0.702  0.233  0.011 -0.001       
+cndtn_7:_8_ -0.023  0.017  0.050 -0.001  0.228 -0.706 -0.004 -0.003 -0.323
+> jtools::summ(eta_7)
+MODEL INFO:
+Observations: 113344
+Dependent Variable: delta_np
+Type: Mixed effects linear regression 
+
+MODEL FIT:
+AIC = 688868.96, BIC = 688994.25
+Pseudo-R² (fixed effects) = 0.03
+Pseudo-R² (total) = 0.05 
+
+FIXED EFFECTS:
+-------------------------------------------------------------------------
+                                  Est.   S.E.   t val.        d.f.      p
+------------------------------ ------- ------ -------- ----------- ------
+(Intercept)                       3.67   0.04    99.00     2066.16   0.00
+condition_7                      -0.15   0.03    -5.07   110248.63   0.00
+girl                             -0.40   0.03   -13.09   112987.76   0.00
+age_cmc                          -0.04   0.05    -0.74   113110.92   0.46
+bakken_cmc                        4.67   0.25    18.89   112991.29   0.00
+np_math8_cmc                     -0.09   0.00   -38.14   113045.26   0.00
+immi1gen                          0.36   0.06     5.84   113075.02   0.00
+immi2gen                          0.14   0.06     2.21    91710.86   0.03
+condition_7:bakken_cmc            1.65   0.34     4.85   112905.97   0.00
+condition_7:np_math8_cmc         -0.03   0.00    -7.44   113098.06   0.00
+-------------------------------------------------------------------------
+
+p values calculated using Satterthwaite d.f.
+
+RANDOM EFFECTS:
+------------------------------------
+  Group      Parameter    Std. Dev. 
+---------- ------------- -----------
+  idsc8     (Intercept)     0.27    
+  idsc9     (Intercept)     0.69    
+ Residual                   5.03    
+------------------------------------
+
+Grouping variables:
+-------------------------
+ Group   # groups   ICC  
+------- ---------- ------
+ idsc8     1173     0.00 
+ idsc9     1166     0.02 
+-------------------------

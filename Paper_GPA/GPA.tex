@@ -1,12 +1,12 @@
 \documentclass[
-    % Options for apa7
+% Options for apa7
     a4paper,                % Paper size
     11pt,                   % Font size
     stu,                    % Format as assignment
-    donotrepeattitle,       % Start body text without repeating title
+    % donotrepeattitle,       % Start body text without repeating title
     floatsintext,           % Insert tables and figures with texts
     biblatex,               % Use BibLaTeX for references
-    % Options for hyperref
+% Options for hyperref
     colorlinks=true,        % Colour all links
     linkcolor=red,          % Cross-references in red
     anchorcolor=black,      % Keep anchors black
@@ -23,32 +23,35 @@
 \usepackage{ifplatform}
 \ifwindows
     \usepackage{M:/pc/Dokumenter/tt}
-\else
+\fi
+\iflinux
     \usepackage{/home/tony/uio/pc/Dokumenter/tt} % Must not use ~ for home directory. Spell in full.
 \fi
+\ifmacosx
+    \usepackage{/Users/tctan/uio/pc/Dokumenter/tt}
+\fi
 
-\title{Identifying Inter-subject Difficulties in Norwegian\\
-GPA Data Using Item Response Theory}
+\title{Identifying Inter-subject Difficulties in Norwegian GPA Data}
 \authorsnames{Tony C. A. Tan}
 \authorsaffiliations{{Centre for Educational Measurement, University of Oslo}}
 \course{Continuous Draft}
 \professor{Prof Rolf V. Olsen \& Dr Astrid M. J. Sands{\o}r}
-\duedate{V{\aa}r 2022}
+\duedate{H{\o}st 2022}
+
+\input{0_Front_matter.tex}
 
 \begin{document}
 \maketitle
 
-\input{0_Abstract.tex}
+\input{1_Introduction.tex}  % Use \input{} for Intro.tex so that the title and the first paragraph stay on the same page.
 
-% \input{1_Introduction.tex}  % Use \input{} for Intro.tex so that the title and the first paragraph stay on the same page.
+\input{2_Framework.tex}   % Use \include{} from the second chapter on, such that new chapter, new page.
 
-% \include{2_Framework.tex}   % Use \include{} from the second chapter on, such that new chapter, new page.
+\input{3_Methods.tex}
 
-\include{3_Methods.tex}
+% \input{4_Results.tex}
 
-% \include{4_Results.tex}
-
-% \include{5_Discussions.tex}
+% \input{5_Discussions.tex}
 
 \printbibliography
 

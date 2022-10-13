@@ -24,3 +24,7 @@ Teaching/MAE4051_Causal_Inference/Materials from Previous years/MAE4051H22_4_Reg
 *.synctex.gz
 *.toc
 *.zip
+.bib.bak
+.bib.sav.tmp
+._*
+.DS_Store

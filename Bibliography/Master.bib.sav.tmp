@@ -422,16 +422,16 @@
   journal   = {Hradec Economic Days}
 }
 
-@article{behrman:2012,
+@Article{behrman:2012,
   author  = {Jere R Behrman and Olivia S Mitchell and Cindy K Soo and David Bravo},
+  title   = {How Financial Literacy Affects Household Wealth Accumulation},
   doi     = {10.1257/aer.102.3.300},
-  journal = {American Economic Review: Papers \& Proceedings},
   number  = {3},
   pages   = {300--304},
-  title   = {How Financial Literacy Affects Household Wealth Accumulation},
   volume  = {102},
+  file    = {How financial literacy affects household wealth accumulation:Behrman, Mitchell, Soo & Bravo (2012).pdf:PDF},
+  journal = {American Economic Review: Papers \& Proceedings},
   year    = {2012},
-  file    = {How financial literacy affects household wealth accumulation:Behrman, Mitchell, Soo & Bravo (2012).pdf:PDF}
 }
 
 @article{bel:2015,
@@ -458,16 +458,16 @@
   file    = {Financial literacy of secondary school students\: Case study from the Czech Republic and Slovakia:Belas et al. (2016).pdf:PDF}
 }
 
-@article{bernheim:2001,
-  author  = {B.Douglas Bernheim and Daniel M. Garrett and Dean M. Maki},
+@Article{bernheim:2001,
+  author  = {B. Douglas Bernheim and Daniel M. Garrett and Dean M. Maki},
+  title   = {Education and saving: The long-term effects of high school financial curriculum mandates},
   doi     = {10.1016/s0047-2727(00)00120-1},
-  journal = {Journal of Public Economics},
   number  = {3},
   pages   = {435--465},
-  title   = {Education and saving: The long-term effects of high school financial curriculum mandates},
   volume  = {80},
+  file    = {Education and saving\: The long-term effects of high school financial curriculum mandates:Bernheim, Garrett & Maki (2001).pdf:PDF},
+  journal = {Journal of Public Economics},
   year    = {2001},
-  file    = {Education and saving\: The long-term effects of high school financial curriculum mandates:Bernheim, Garrett & Maki (2001).pdf:PDF}
 }
 
 @article{birbili:2015,
@@ -620,16 +620,17 @@
   file    = {Measuring financial literacy among students\: An application of Rasch analysis:Bongini, Trivellato & Zenga (2012).pdf:PDF}
 }
 
-@article{borgesramalho:2019,
+@Article{borgesramalho:2019,
   author  = {Thiago {Borges Ramalho} and Denis Forte},
+  title   = {Financial literacy in {Brazil}---{Do} knowledge and self-confidence relate with behavior?},
   doi     = {10.1108/RAUSP-04-2018-0008},
-  journal = {{RAUSP} Management Journal},
   number  = {1},
   pages   = {77--95},
-  title   = {Financial literacy in {Brazil}---{Do} knowledge and self-confidence relate with behavior?},
   volume  = {54},
+  file    = {Financial literacy in Brazil--do knowledge and self-confidence relate with behavior?:Borges Ramalho & Forte (2019).pdf:PDF},
+  journal = {{RAUSP} Management Journal},
+  ranking = {rank5},
   year    = {2019},
-  file    = {Financial literacy in Brazil--do knowledge and self-confidence relate with behavior?:Borges Ramalho & Forte (2019).pdf:PDF}
 }
 
 @article{bostan:2020,
@@ -5986,8 +5987,8 @@
 }
 
 @Book{udir:2022,
-  author    = {Utdanningsdirektoratet},
-  publisher = {{Norwegian Directorate for Education and Training}},
+  author    = {{Directorate of Education}},
+  publisher = {Utdanningsdirektoratet},
   title     = {Karakterstatistikk for videreg{\aa}ende skole \normalfont{[Grade statistics for upper secondary school]}},
   url       = {https://www.udir.no/tall-og-forskning/statistikk/statistikk-videregaende-skole/karakterer-vgs/},
   year      = {2022},
@@ -6643,28 +6644,4 @@
 }
 
 @Book{betthaeuser:2022,
-  author    = {Bastian Andreas Betth{\"a}user and Anders Bach-Mortensen and Per Engzell},
-  publisher = {{SocArXiv}},
-  title     = {A systematic review and meta-analysis of the impact of the {COVID}-19 pandemic on learning \emph{[Preprint]}},
-  doi       = {10.31235/osf.io/g2wuy},
-  file      = {A systematic review and meta-analysis of the impact of the COVID-19 pandemic on learning:Betthauser, Bach-Mortensen, & Engzell (2022).pdf:PDF},
-  year      = {2022},
-}
-
-@Article{rauschenberg:2014,
-  author  = {Samuel Rauschenberg},
-  journal = {Education Policy Analysis Archives},
-  number  = {92},
-  pages   = {1--41},
-  title   = {How consistent are course grades? {An} examination of differential grading},
-  volume  = {22},
-  year    = {2014},
-  url     = {https://epaa.asu.edu/index.php/epaa/article/view/1265/1365},
-}
-
-@Comment{jabref-meta: databaseType:biblatex;}
-
-@Comment{jabref-entrytype: presentation: req[doi;author;title;titleaddon;eventtitle;venue;eventdate] opt[subtitle]}
-
-�]��ԝ�]���Z�r���(�j̺�Q�8V���Ҧ��*<r������h�h�H��c'��N^�F̠
-�G2��s��Z���Q��o��M�8��5>�1�Ñ���&��Pd����8�bq��-�*E�*�N�4�,����D����l.�v�w7Zg�H�� �T}����}0Ī+���!J��� r}�w#P�W����WMW.��X��÷J߄����F�DK���ut��k��c�2�|��Xm]&�,�=��׉����&Q�0c�ƞ�BTN�6�/~n�:E
+  autho

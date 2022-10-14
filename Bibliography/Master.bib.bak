@@ -422,16 +422,16 @@
   journal   = {Hradec Economic Days}
 }
 
-@article{behrman:2012,
+@Article{behrman:2012,
   author  = {Jere R Behrman and Olivia S Mitchell and Cindy K Soo and David Bravo},
+  title   = {How Financial Literacy Affects Household Wealth Accumulation},
   doi     = {10.1257/aer.102.3.300},
-  journal = {American Economic Review: Papers \& Proceedings},
   number  = {3},
   pages   = {300--304},
-  title   = {How Financial Literacy Affects Household Wealth Accumulation},
   volume  = {102},
+  file    = {How financial literacy affects household wealth accumulation:Behrman, Mitchell, Soo & Bravo (2012).pdf:PDF},
+  journal = {American Economic Review: Papers \& Proceedings},
   year    = {2012},
-  file    = {How financial literacy affects household wealth accumulation:Behrman, Mitchell, Soo & Bravo (2012).pdf:PDF}
 }
 
 @article{bel:2015,
@@ -458,16 +458,16 @@
   file    = {Financial literacy of secondary school students\: Case study from the Czech Republic and Slovakia:Belas et al. (2016).pdf:PDF}
 }
 
-@article{bernheim:2001,
-  author  = {B.Douglas Bernheim and Daniel M. Garrett and Dean M. Maki},
+@Article{bernheim:2001,
+  author  = {B. Douglas Bernheim and Daniel M. Garrett and Dean M. Maki},
+  title   = {Education and saving: The long-term effects of high school financial curriculum mandates},
   doi     = {10.1016/s0047-2727(00)00120-1},
-  journal = {Journal of Public Economics},
   number  = {3},
   pages   = {435--465},
-  title   = {Education and saving: The long-term effects of high school financial curriculum mandates},
   volume  = {80},
+  file    = {Education and saving\: The long-term effects of high school financial curriculum mandates:Bernheim, Garrett & Maki (2001).pdf:PDF},
+  journal = {Journal of Public Economics},
   year    = {2001},
-  file    = {Education and saving\: The long-term effects of high school financial curriculum mandates:Bernheim, Garrett & Maki (2001).pdf:PDF}
 }
 
 @article{birbili:2015,
@@ -620,16 +620,17 @@
   file    = {Measuring financial literacy among students\: An application of Rasch analysis:Bongini, Trivellato & Zenga (2012).pdf:PDF}
 }
 
-@article{borgesramalho:2019,
+@Article{borgesramalho:2019,
   author  = {Thiago {Borges Ramalho} and Denis Forte},
+  title   = {Financial literacy in {Brazil}---{Do} knowledge and self-confidence relate with behavior?},
   doi     = {10.1108/RAUSP-04-2018-0008},
-  journal = {{RAUSP} Management Journal},
   number  = {1},
   pages   = {77--95},
-  title   = {Financial literacy in {Brazil}---{Do} knowledge and self-confidence relate with behavior?},
   volume  = {54},
+  file    = {Financial literacy in Brazil--do knowledge and self-confidence relate with behavior?:Borges Ramalho & Forte (2019).pdf:PDF},
+  journal = {{RAUSP} Management Journal},
+  ranking = {rank5},
   year    = {2019},
-  file    = {Financial literacy in Brazil--do knowledge and self-confidence relate with behavior?:Borges Ramalho & Forte (2019).pdf:PDF}
 }
 
 @article{bostan:2020,
@@ -5986,8 +5987,8 @@
 }
 
 @Book{udir:2022,
-  author    = {Utdanningsdirektoratet},
-  publisher = {{Norwegian Directorate for Education and Training}},
+  author    = {{Directorate of Education}},
+  publisher = {Utdanningsdirektoratet},
   title     = {Karakterstatistikk for videreg{\aa}ende skole \normalfont{[Grade statistics for upper secondary school]}},
   url       = {https://www.udir.no/tall-og-forskning/statistikk/statistikk-videregaende-skole/karakterer-vgs/},
   year      = {2022},
@@ -6660,11 +6661,66 @@
   volume  = {22},
   year    = {2014},
   url     = {https://epaa.asu.edu/index.php/epaa/article/view/1265/1365},
+  file    = {How consistent are course grades? An examination of differential grading:Rauschenberg (2014).pdf:PDF},
+}
+
+@InBook{raeder:2020,
+  author    = {Henrik Galligani R{\ae}der and Rolf Vegar Olsen and Sigrid Bl{\"o}meke},
+  booktitle = {Monitoring student achievement in the {21st Century}: {European} policy perspectives and assessment strategies},
+  title     = {Large-scale assessments in the {Norwegian} context},
+  doi       = {10.1007/978-3-030-38969-7_16},
+  editor    = {Heidi {Harju-Luukkainen} and Nele {McElvany} and Justine Stang},
+  pages     = {195--206},
+  publisher = {Springer},
+  file      = {Large-scales assessments in the Norwegian context:/home/tony/uio/pc/Dokumenter/PhD/Articles/Raeder, Olsen, & Blomeke (2020).pdf:PDF},
+  year      = {2020},
+}
+
+@Book{gpa:2021,
+  author    = {{Directorate for Higher Education and Skills}},
+  publisher = {{Direktoratet for h{\o}yere utdanning og kompetanse}},
+  title     = {Slik beregner du poeng \normalfont{[How to calculate your GPA]}},
+  url       = {https://utdanning.no/tema/soknad_og_opptak/slik_beregner_du_poeng},
+  year      = {2021},
+}
+
+@Article{Bradlow_1998,
+  author  = {Eric T. Bradlow and Neal Thomas},
+  title   = {Item response theory models applied to data allowing examinee choice},
+  doi     = {10.3102/10769986023003236},
+  number  = {3},
+  pages   = {236--243},
+  volume  = {23},
+  file    = {Item response theory models applied to data allowing examinee choice:Bradlow & Thomas (1998).pdf:PDF},
+  journal = {Journal of Educational and Behavioral Statistics},
+  year    = {1998},
+}
+
+@Report{https://doi.org/10.48550/arxiv.2201.01194,
+  author      = {Roth, Jonathan and {Sant'Anna}, Pedro H. C. and Bilinski, Alyssa and Poe, John},
+  date        = {2022},
+  institution = {{arXiv}},
+  title       = {What's trending in difference-in-differences? {A} synthesis of the recent econometrics literature},
+  type        = {Preprint},
+  doi         = {10.48550/ARXIV.2201.01194},
+  copyright   = {arXiv.org perpetual, non-exclusive license},
+  file        = {What's trending in difference-in-differences? A synthesis of the recent econometrics literature:Roth, Sant'Anna, Bilinski & Poe (2022).pdf:PDF},
+  keywords    = {Econometrics (econ.EM), Methodology (stat.ME), FOS: Economics and business, FOS: Computer and information sciences},
+  publisher   = {arXiv},
+}
+
+@TechReport{bakken:2012,
+  author      = {Anders Bakken and Jon Ivar Elstad},
+  institution = {Norsk Institutt for Forskning om Oppvekst, Velferd og Aldring \normaltext{[NOVA, Norwegian Social Research]}},
+  title       = {For store forventninger? Kunnskapsl{\o}ftet og ulikhetene i grunnskolekarakterer? \normalfont{[Expectation too high? The knowledge promotion and inequalities in school grades]}},
+  type        = {NOVA Report 7/2012},
+  url         = {https://oda.oslomet.no/oda-xmlui/bitstream/handle/20.500.12199/5045/5587_1.pdf},
+  year        = {2012},
 }
 
 @Comment{jabref-meta: databaseType:biblatex;}
 
-@Comment{jabref-entrytype: presentation: req[doi;author;title;titleaddon;eventtitle;venue;eventdate] opt[subtitle]}
+@Comment{jabref-entrytype: presentation: req[doi;author;title;titleaddon;eventtitle;venue;eventdate] opt[subtitle;url]}
 
 �]��ԝ�]���Z�r���(�j̺�Q�8V���Ҧ��*<r������h�h�H��c'��N^�F̠
 �G2��s��Z���Q��o��M�8��5>�1�Ñ���&��Pd����8�bq��-�*E�*�N�4�,����D����l.�v�w7Zg�H�� �T}����}0Ī+���!J��� r}�w#P�W����WMW.��X��÷J߄����F�DK���ut��k��c�2�|��Xm]&�,�=��׉����&Q�0c�ƞ�BTN�6�/~n�:E����s=�S{�R�/眫�(\�V�bp��R�#	<4��n"�.4��(`��E���g���䇗d�)��)�e�\J��>T��??A]ͤ1�yc��2�7�}�s42	i�L{���x���a^�^����e��e��0�>�

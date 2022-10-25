@@ -1,1 +1,1 @@
-pip install $(pip list --outdated --format=columns |tail -n +3|cut -d" " -f1) --upgrade
+pip list --outdated --format=freeze | grep -v '^\-e' | cut -d = -f 1 | xargs -n1 pip install -U

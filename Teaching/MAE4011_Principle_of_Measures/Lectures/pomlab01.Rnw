@@ -1,0 +1,405 @@
+\documentclass[compress]{beamer}
+
+% Load ttbeamer template depending on operating system
+\usepackage{ifplatform}
+\ifwindows
+  \usepackage{M:/pc/Dokumenter/ttbeamer}
+\fi
+\iflinux
+  \usepackage{/home/tony/uio/pc/Dokumenter/ttbeamer}
+\fi
+\ifmacosx
+  \usepackage{/Users/tctan/uio/pc/Dokumenter/ttbeamer}
+\fi
+
+\title{Lecture 4 - Levels of Measurement, Types of Measurement and Scale Scores}
+\author[]{Tony Tan \\\vspace{6pt} {\em{University of Oslo}} }
+\date{Wednesday, 26 October 2021}
+
+\begin{document}
+
+<<echo=FALSE>>=
+  options(prompt = "R> ", continue = "+  ", width = 70, useFancyQuotes = FALSE)
+@
+
+\begin{frame}[fragile]
+\titlepage
+\end{frame}
+
+
+\section{Introduction}
+
+\begin{frame}[fragile]
+  \frametitle{Last time}
+    \begin{itemize}
+      \item Review of some essential probability theory required for the course
+      \item Concepts of expected value, variance, covariance
+      \item Statistical reasoning and the concepts of parameters, estimators and estimates
+    \end{itemize}
+\end{frame}
+
+
+\begin{frame}[fragile]
+  \frametitle{Today}
+    \begin{itemize}
+      \item Levels of measurement -- nominal, ordinal, interval, ratio
+      \item Mean, median, mode
+      \item Criterion-referenced and norm-referenced tests
+      \item Different ways to define test scores
+      \item Some exercises
+    \end{itemize}
+\end{frame}
+
+
+\section{Levels of measurement}
+
+\begin{frame}[fragile]
+  \frametitle{Measurement}
+    \begin{itemize}
+      \item The purpose of measurement is to \ttemph{quantify} an attribute
+      \item We assign a number to an item response
+      \item Based on item responses we assign a test score
+      \item The test score is determined by the item responses but the reverse is typically not true -- the same test score can be obtained from different item responses
+    \end{itemize}
+\end{frame}
+
+
+\begin{frame}[fragile]
+  \frametitle{Ceiling and floor of a test}
+    \begin{itemize}
+      \item Any test has a floor and ceiling in that there is a range of levels of the attribute that the test can actually measure
+      \item With a mathematics test containing 10 binary items, some test-takers may score 0 and some may score 10
+      \item The underlying construct can be too low or too high for the test to be able to measure it
+      \item Example: giving a university calculus exam to a class of second-graders
+      \item Example: giving a diagnostic test for dementia to a group of university students
+    \end{itemize}
+\end{frame}
+%//ref Crocker, L. & Algina, J. (1986). Introduction to classical and modern test theory. Wiley.
+
+
+\begin{frame}[fragile]
+  \frametitle{Measurement scales -- levels of measurement}
+    \begin{itemize}
+      \item Certain physical measurements have specific properties
+      \item We can think of a measurement of length as being twice as large as another measurement of length
+      \item We can think of the interval between 5\C and 6\C as being the same as that between 25\C and 26\C
+      \item To what extent to item scores and test scores fulfill these properties?
+    \end{itemize}
+\end{frame}
+
+
+\begin{frame}[fragile]
+  \frametitle{Ratio scale}
+    \begin{itemize}
+      \item Some measurements have the property that the doubling of the measurement can be be interpreted as being twice as large
+      \item For example, 20\,cm is twice as long as 10\,cm
+      \item We of course also have that the difference between 30\,cm and 20\,cm is the same as the difference between 20\,cm and 10\,cm
+    \end{itemize}
+\end{frame}
+
+
+\begin{frame}[fragile]
+  \frametitle{Interval scale}
+    \begin{itemize}
+      \item The difference between two observations is interpreted in the same way
+      \item Consider temperature as measured by celsius degrees (\textcelsius)
+        \begin{itemize}
+          \item The difference between 3\C and 2\C and the difference between 1003\C and 1002\C has the same interpretation
+          \item We can of course also say that 3\C is higher than 2\C
+          \item However, we can't say that 10\C is twice as warm as 5\C
+        \end{itemize}
+    \end{itemize}
+\end{frame}
+
+
+\begin{frame}[fragile]
+  \frametitle{Ordinal scale}
+    \begin{itemize}
+      \item Some measurements have an ordering, but do not have the property of equal intervals
+      \item Mohs scale for hardness of minerals
+        \begin{itemize}
+          \item The hardness is determined by which mineral scratches another mineral
+          \item A mineral $A$ is harder than a mineral $B$ if $A$ scratches $B$
+          \item However, if $A$ scratches $B$ and $B$ scratches $C$, we wouldn't be able to say that THE difference in hardness between $A$ and $B$ is the same as the difference in hardness between $B$ and $C$
+          \item We could of course also not say that $A$ is twice as hard as $B$ or as $C$
+        \end{itemize}
+    \end{itemize}
+\end{frame}
+
+
+\begin{frame}[fragile]
+  \frametitle{Nominal scale}
+    \begin{itemize}
+      \item If there is no ordering of the measurements, we have a nominal scale
+      \item It won't make sense to speak of a measurement being twice as large, having equal distances or having any order
+    \end{itemize}
+\end{frame}
+
+
+\begin{frame}[fragile]
+  \frametitle{The scale of item scores?}
+    \begin{itemize}
+      \item Consider a \ttemph{Likert scale}
+      \begin{itemize}
+        \item Strongly agree, Agree, Neither agree nor disagree, Disagree, Strongly disagree
+        \item If we assign integer scores from 1 to 5 to the categories, we are imposing a scale on the items
+          \begin{itemize}
+            \item Is Agree twice as large as Disagree?
+            \item Is the difference between Strongly agree and Agree the same as that between Agree and Neither agree nor disagree?
+          \end{itemize}
+        \item It seems that the scale is actually ordinal
+      \end{itemize}
+    \end{itemize}
+\end{frame}
+
+
+\begin{frame}[fragile]
+  \frametitle{The scale of test scores?}
+    \begin{itemize}
+      \item Consider a test score defined by the number of items correct on a 20 item test with binary item scores
+      \item Does this test score have the property of equal intervals?
+      \item Is a score of 10 twice as good as a score of 5?
+    \end{itemize}
+\end{frame}
+
+
+\begin{frame}[fragile]
+  \frametitle{Different test scores}
+    \begin{itemize}
+      \item Consider again a 20-item test with binary item scores
+      \item We are not forced to define a test score which takes integer values from 0 to 20
+      \item We can apply a transformation, such as the test score to the power of 2 or another transformation
+      \item The choice of \ttemph{metric} is the choice of how numbers are assigned to observations
+    \end{itemize}
+\end{frame}
+
+
+\section{Measures of central tendency}
+
+\begin{frame}[fragile]
+  \frametitle{The expected value (revision)}
+    Let $X$ be a discrete R.V. that can take $k$ different values with probabilities $p_1, \dots, p_k$. Then
+    \[ \E{X}=\sum_{i=1}^k x_i\, p_i. \]
+\end{frame}
+
+
+\begin{frame}[fragile]
+  \frametitle{The median}
+    \begin{itemize}
+      \item The median denotes the value $c$ such that
+        \[ \p{X \leq c} \geq 0.5 \text{ and } \p{X \geq c} \geq 0.5. \]
+      \item We can think of the median as the value of the R.V. $X$ which lies in the middle of the \ttemph{probability mass function} or the \ttemph{probability density function}.
+      \item Such a measure will give a better idea of the typical value of $X$ when the density of $X$ is \ttemph{skewed}.
+    \end{itemize}
+\end{frame}
+
+
+\begin{frame}[fragile]
+  \frametitle{The mode}
+    \begin{itemize}
+      \item For a discrete R.V. $X$, the mode denotes the value of $X$ which has the \ttemph{highest probability mass} associated with it.
+      \item For a continuous R.V., the mode denotes the value of $X$ for which the density $f(x)$ reaches its highest value.
+      \item Note that the mode may not be unique.
+    \end{itemize}
+\end{frame}
+
+
+\begin{frame}[fragile]
+  \frametitle{Example}
+    Let $X$ be a discrete R.V. defined by
+
+    \begin{center}
+      \begin{tabular}{ccccc}
+        \hline
+        $X$ &1  &2  &3  &4 \\
+        $\p{X}$ &0.1  &0.5  &0.2  &0.2\\
+        \hline
+      \end{tabular}
+    \end{center}
+
+    What is a) the expected value, b) the median and c) the mode of $X$?
+    \begin{itemize}
+      \item[a] $\E{X} = 1 \times 0.1 + 2 \times 0.5 + 3 \times 0.2 + 4\times 0.2 = 2.5$.
+      \item[b] Since $\p{X \leq 2} = 0.6$ and $\p{X \geq 2} = 0.9$, the median of $X$ is $2$.
+      \item[c] Since $\p{X = 2}$ reaches the higest value 0.5, the mode of $X$ is $2$.
+    \end{itemize}
+\end{frame}
+
+
+\begin{frame}[fragile]
+  \frametitle{Symmetric distributions}
+    \begin{itemize}
+      \item Let $X$ be a R.V. taking values $1$, $2$ and $3$ such that
+        \[ \p{X=1} = 0.2,\ \p{X=2} = 0.6, \text{ and } \p{X=3} = 0.2. \]
+      This is a \ttemph{symmetric} distribution -- whose mean and median coincide.
+      \item Consider a $\N{0}{1}$ distribution. This is also a symmetric distribution, whose mean, median, and mode are all equal.
+    \end{itemize}
+\end{frame}
+
+
+\begin{frame}[fragile]
+  \frametitle{The sample mean}
+    Let $\{x_i\}_{i=1}^n$ denote a sample. The sample mean is
+      \[ \bar{x} = \frac{1}{n} \sum_{i=1}^n x_i \]
+
+    In \CR, we can calculate the sample mean of a vector $\m{x}$ by typing
+      <<echo=TRUE>>=
+        x <- c(12, 8, 19, 13, 8)
+        mean(x)
+      @
+\end{frame}
+
+\begin{frame}[fragile]
+  \frametitle{The sample median}
+    Let $\{x_i\}_{i=1}^n$ denote a sample. The sample median is the middle value of the observations.
+
+    The median may be a more suitable measure of central tendency when the distribution is skewed.
+
+    In \CR, we can find the sample median by typing
+      <<echo=TRUE>>=
+        median(x)
+      @
+\end{frame}
+
+\begin{frame}[fragile]
+  \frametitle{The sample mode}
+    The sample mode is equal to the most common occurence from a set of observations. It is meaningful for \ttemph{categorical data} as an indicator of the most frequent observation.
+
+    We can find the sample mode by using the \cR function \pk{table()}:
+      <<echo=TRUE>>=
+        table(x)
+      @
+
+    The mode is $8$ since it has the highest count.
+\end{frame}
+
+
+\section{Measurement reference}
+
+\begin{frame}[fragile]
+  \frametitle{Criterion-referenced measurement}
+    \begin{itemize}
+      \item Test scores are interpreted as an \ttemph{absolute measure} of an underlying construct
+      \item If an individual reaches a particular score, the individual is seen as having mastered this construct or having fulfilled this level of proficiency
+      \item A test designed in this way is said to be a \ttemph{criterion-reference measurement}
+      \begin{itemize}
+        \item Driver licence test
+        \item Registered Nurse test
+        \item Citizenship tests (\textit{Pr{\o}ve i samfunnskunnskap})
+      \end{itemize}
+    \end{itemize}
+\end{frame}
+
+
+\begin{frame}[fragile]
+  \frametitle{Norm-referenced measurement}
+    \begin{itemize}
+      \item Test scores are seen as indicative of the level of proficiency \ttemph{with reference to} a particular population
+      \item The norms have been established from previous research with individuals from the same population
+      \begin{itemize}
+        \item College entrance exams, SAT, ACT
+        \item Graduate Record Examinations (GRE)
+        \item Wechsler Intelligence Scale for Children
+        \end{itemize}
+    \end{itemize}
+\end{frame}
+
+
+\begin{frame}[fragile]
+  \frametitle{The duality of reference}
+    \begin{itemize}
+      \item The same test can be interpreted in a criterion-referenced manner and in a norm-referenced manner
+      \item  Original motive for the Binet and Simon intelligence test was to identify children with intellectual disabilities -- having nothing to do with national norms for intelligence
+      \item Later the intelligence test has been used to refer to a population norm
+    \end{itemize}
+\end{frame}
+
+
+\section{Scale scores}
+
+\begin{frame}[fragile]
+  \frametitle{Standardised scores ($Z$-scores)}
+    For ease of interpretation, we can standardise raw scores $Y$ into $\N{0}{1}$:
+      \[ Z =\frac{Y - \mu_Y}{\sigma_Y}. \]
+
+    If the resulting standardised scores follow a distribution similar to the \ttemph{standard normal distribution}, we can interpret individual scores as \ttemph{percentiles} of this distribution.
+\end{frame}
+
+
+\begin{frame}[fragile]
+  \frametitle{Linearly transformed scores}
+    Wechsler Intelligence Test has mean $100$ and standard deviation $15$. This distribution can be obtained from the standard normal by a linear transformation:
+      \[ S = cZ + a, \]
+    where $c = 15$ and $a = 100$.
+\end{frame}
+
+\begin{frame}[fragile]
+  \frametitle{Normalised scores and other non-linearly transformed scores}
+    \begin{itemize}
+      \item If the raw scores are not normally distributed, it is often desirable to \ttemph{rescale} the scores to approximately normal
+      \item We can apply square-root or other non-linear transformations, or link the percentiles of the raw-score distribution to those from the normal distributions
+      \item Criterion-referenced tests often have a threshold for certain levels of skill
+    \end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]
+  \frametitle{Permissible operations}
+    \begin{itemize}
+      \item Certain statistical operations are \ttemph{inappropriate} for certain types of item or test scores
+      \item If we have an \ttemph{ordinal} level of measurement we should compute its \ttemph{median} rather than the mean
+      \item See Chapter 4 and 18 of McDonald (1999) for more details
+    \end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]
+  \frametitle{Statistical tests and levels of measurement}
+    \begin{itemize}
+      \item A \ttemph{hypothesis test} of equal means requires approximately normally distributed scale scores ($t$-test)
+      \begin{itemize}
+        \item Does not require the original scale to have interval level properties
+      \end{itemize}
+      \item Hypothesis tests can be affected by a change of scale (see p. 60--61, McDonald (1999))
+    \end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]
+  \frametitle{Review}
+    \begin{itemize}
+      \item Levels of measurement
+      \item Measures of central tendency
+      \item Criterion-referenced and norm-referenced testing
+      \item Linear and non-linear transformations of test scores
+    \end{itemize}
+\end{frame}
+
+
+\section{Exercises}
+
+\begin{frame}[fragile]
+  \frametitle{L4 Task 1}
+    Consider a R.V. $X$ that takes values 1, 2, 3 and 4 with corresponding probabilities 0.1, 0.2, 0.4 and 0.3.
+    \begin{description}
+      \item[a] What is its median?
+      \item[b] What is its mode?
+    \end{description}
+\end{frame}
+
+\begin{frame}[fragile]
+  \frametitle{L4 Task 2}
+    Which of the following are symmetric distributions?
+    \begin{description}
+      \item[a] A $t_{49}$-distribution.
+      \item[b] A $\chi_1^2$-distribution.
+      \item[c] For the R.V. $X$ with PMF
+    \end{description}
+    \begin{center}
+      \begin{tabular}{cccccc}
+        \hline
+        $X$ &1  &2  &3  &4  &5\\
+        $\p{X}$ &0.3  &0.15  &0.1  &0.15  &0.3\\
+        \hline
+      \end{tabular}
+    \end{center}
+\end{frame}
+
+\end{document}

@@ -1,0 +1,15 @@
+\frametitle{L4 Task 2}
+    Which of the following are symmetric distributions?
+    \begin{description}
+      \item[a] A $t_{49}$-distribution.
+      \item[b] A $\chi_1^2$-distribution.
+      \item[c] For the R.V. $X$ with PMF
+    \end{description}
+    \begin{center}
+      \begin{tabular}{cccccc}
+        \hline
+        $X$ &1  &2  &3  &4  &5\\
+        $\p{X}$ &0.3  &0.15  &0.1  &0.15  &0.3\\
+        \hline
+      \end{tabular}
+    \end{center}

@@ -1,0 +1,71 @@
+\frametitle{L3 Task 8: Solution}
+    The covariance between $X$ and $Y$ is
+      \[ \cov{X}{Y} = \E{XY} - \E{X}\,\E{Y} = \frac{1}{n} \sum (x_i-\bar{x})(y_i-\bar{y}). \]
+
+    We first focus on the term
+      \[ \sum_{i=1}^n (x_i-\bar{x})(y_i-\bar{y}). \]
+
+    Since
+      \[ \sum_{i=1}^n (x_i-\bar{x})(y_i-\bar{y}) = \sum_{i=1}^n x_i y_i - \sum_{i=1}^nx_i \bar{y} - \sum_{i=1}^n \bar{x}y_i + \sum_{i=1}^n \bar{x}\,\bar{y}, \]
+    taking expected value on both sides yields
+      \begin{equation*}
+        \begin{aligned}
+          &\Eb{ \sum (x_i - \bar{x})(y_i - \bar{y}) } \\
+          =\, &\Eb{ \sum x_i y_i } - \Eb{ \sum x_i \bar{y} }
+          - \Eb{ \sum \bar{x} y_i } + \Eb{ \sum \bar{x}\,\bar{y}}.
+        \end{aligned}
+      \end{equation*}
+
+    We now study each of the four terms separately:
+    \[ \E{\sum_{i=1}^n x_i y_i} = \sum_{i=1}^n \E{x_i y_i} = n \E{XY}, \]
+
+    \begin{equation*}
+      \begin{aligned}
+        \Eb{ \sum x_i \bar{y} } &= \Eb{ \sum_i x_i \left( \frac{1}{n} \sum_j y_j \right) } \\
+          &= \frac{1}{n} \left[ \sum_i \E{ x_i \sum_j y_j } \right] \\
+          &= \frac{1}{n} \sum_{i} \sum_{i \neq j} \E{x_i}\E{y_j} + \frac{1}{n} \sum_{i=j} \E{x_i y_j} \\
+          &= (n-1)\E{X}\E{Y} + \E{XY},
+      \end{aligned}
+    \end{equation*}
+
+    \begin{equation*}
+      \begin{aligned}
+        \Eb{ \sum \bar{x} y_i } &= \Eb{ \left( \frac{1}{n} \sum_j x_j \right) \sum_i y_i } \\
+          &= \frac{1}{n} \left[ \sum_i \E{ y_i \sum_{j} x_j } \right] \\
+          &= \frac{1}{n} \sum_i \sum_{i \neq j} \E{y_i}\E{x_j} + \frac{1}{n}\sum_{i=j} \E(y_i x_j)\\
+          &= (n-1)\E{Y}\E{X} + \E{YX},
+      \end{aligned}
+    \end{equation*}
+
+    and lastly,
+    \begin{equation*}
+      \begin{aligned}
+        \Eb{ \sum \bar{x} \, \bar{y} } &= n \Eb{ \sum_i \left( \frac{1}{n} \sum_j x_j \right) \left( \frac{1}{n} \sum_k y_k \right) } \\
+          &= \frac{1}{n} \E{ \sum_i x_i \sum_j y_j } \\
+          &= \frac{1}{n} \sum_i \E{ x_i \sum_j y_j } \\
+          &= \frac{1}{n}(n-1)n\E{X}\E{Y} + \frac{1}{n}n\E{XY}\\
+          &= (n-1)\E{X}\E{Y} + \E{XY}.
+      \end{aligned}
+    \end{equation*}
+
+    Combine the four terms:
+    \begin{equation*}
+      \begin{aligned}
+        \Eb{ \sum \left( x_i - \bar{x} \right) \left( y_i - \bar{y} \right) }
+        &= n \E{XY} - (n-1)\E{X}\E{Y} - \E{XY} \\
+        &- (n-1)\E{Y}\E{X} - \E{YX} \\
+        &+ (n-1)\E{X}\E{Y} + \E{XY} \\
+        &= (n-1)\E{XY} - (n-1)\E{X}\E{Y}.
+      \end{aligned}
+    \end{equation*}
+
+    The covariance of $X$ and $Y$ demands a factor of $1/n$:
+      \begin{equation*}
+        \begin{aligned}
+          \E{s_{xy}} &= \frac{n-1}{n} \left[ \E{XY} - \E{X}\E{Y} \right] \\
+          &= \frac{n-1}{n} \sigma_{XY}.
+          \end{aligned}
+      \end{equation*}
+
+    Consequently, an unbiased estimator of $\sigma_{xy}$ is
+      \[ s_{xy}^* = \frac{1}{n-1} \sum_{i=1}^n \left( x_i - \bar{x} \right) \left( y_i - \bar{y} \right). \]

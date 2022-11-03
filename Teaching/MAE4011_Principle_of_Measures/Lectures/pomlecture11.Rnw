@@ -1,0 +1,532 @@
+\documentclass[compress]{beamer}
+\usepackage{amsfonts}
+\usepackage{amsmath}
+\usepackage{amstext}
+\usepackage{graphicx}
+\usepackage{Sweave}
+\usetheme{Berlin}
+\setbeamertemplate{mini frames}{}
+\setbeamertemplate{footline}{}
+\usecolortheme{lily}
+\newcommand{\indep}{\perp\hskip -7pt \perp }
+\newcommand{\nindep}{\indep\hskip -12pt / \hskip 10pt}
+\newcommand{\pkg}[1]{{\normalfont\fontseries{b}\selectfont #1}}
+\DeclareMathOperator*{\argmin}{arg\,min}
+\defbeamertemplate{description item}{align left}{\insertdescriptionitem\hfill}
+\let\proglang=\textsf
+\let\code=\texttt
+\AtBeginSection[]
+{
+  \begin{frame}
+    \frametitle{Table of Contents}
+    \tableofcontents[currentsection, subsectionstyle=show/show/shaded]
+  \end{frame}
+}
+
+\title{Lecture 11 - Latent variable models 2}
+\author[]{Bj\"{o}rn Andersson \\\vspace{6pt} {\em{University of Oslo}} }
+\date{November 24 2021}
+\begin{document}
+<<echo=FALSE>>=
+options(prompt = "R> ", continue = "+  ", width = 70, useFancyQuotes = FALSE)
+@
+\begin{frame}[fragile]
+\titlepage
+\end{frame}
+
+\begin{frame}[fragile]
+\frametitle{Factor scores and sum scores}
+\begin{itemize}
+\item \textbf{The observed score is an unbiased estimator of the true score with single factor models}
+\begin{itemize}
+\item This applies also to the case when the factor loadings are not all equal or when the unique variances are not the same for all the items
+\item With parallel items (equal factor loadings and equal error variances), it is also the least-squares and maximum likelihood estimator (MLE)
+\end{itemize}
+\item With a general single factor model, a different estimator is the MLE
+\[
+\hat{t}_i^{\text{MLE}} = \frac{\sum_{j=1}^m(\lambda_j / \Psi_j^2)(x_{ji}-\mu_j)}{\sum_{j=1}^m\lambda_j^2 / \Psi_j^2} + \sum_{j=1}^m \mu_j.
+\]
+\begin{itemize}
+\item This estimator gives different weights to each item score, depending on the factor loadings and the unique variances.
+\end{itemize}
+\end{itemize}
+\end{frame}
+
+
+\section{More on factor models}
+\begin{frame}[fragile]
+\frametitle{The multiple factor model}
+For an item score $X_j$, we have the following model with, e.g., three dimensions
+\begin{align*}
+X_j = \mu_j + \lambda_{j1}F_1 + \lambda_{j2}F_2 + \lambda_{j3}F_3 + \epsilon_j,
+\end{align*}
+where the factors $\boldsymbol F = (F_1, F_2, F_3)'$ have mean 0 and correlation matrix $\boldsymbol\Sigma$ and where $\epsilon_j$ is independent of $\boldsymbol F$.
+\end{frame}
+
+\begin{frame}[fragile]
+\frametitle{Graphical illustration}
+%reminder: model definition
+\begin{figure}
+\centering
+\includegraphics[width=1\textwidth]{full3d.png}
+\end{figure}
+\end{frame}
+
+\begin{frame}[fragile]
+\frametitle{Interpretation of the model}
+\begin{itemize}
+\item $X_j$ is the observed item score variable - the \textit{indicator}
+\item $F_1$, $F_2$ and $F_3$ are the measures of the attribute - the \textit{factors}
+\item $\epsilon_j$ is the item-specific error
+\item $\mu_j$ is the item difficulty level
+\item $\lambda_{1,j}$ is the \textit{factor loading}, which indicates how "strongly" the item measures the factor $F$
+\end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]
+\frametitle{The factor loadings}
+$\lambda_{1,j}$ is the factor loading of factor 1 for item $j$ 
+\begin{itemize}
+\item The factor loading measures the sensitivity of each item with respect to the attribute
+\item An item with a high factor loading is a better indicator of the attribute $F_1$ than an item with a low factor loading
+\item The factor loading is a measure of the ability of the item to distinguish between individuals with high and low values of the factor
+\end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]
+\frametitle{The factor loadings}
+With the SWLS we had the following estimated factor loadings:
+\begin{tabular}{l|lllll}
+\hline
+& Item 1 & Item 2 & Item 3 & Item 4 & Item 5\\
+\hline
+$\lambda_j$ & 1.29 & 1.10 & 1.15 & 0.95 & 1.19\\
+$\Psi_j^2$ & 0.90 & 1.27 & 1.14 & 1.86 & 1.95\\
+\hline
+\end{tabular}
+\begin{itemize}
+\item This means that an individual with a factor score of 2 has an expected score of $\mu_1 + 1.29 \times 2$ for item 1, while an individual with a factor score of 1 has an expected score of $\mu_1 + 1.29 \times 1$ for the same item.
+\item The error variance for item 1 is the lowest while the factor loading is the largest, among all items. This means that item 1 contributes the most to the reliability of the sum scores among all the items. 
+\item Item 4 has the lowest factor loading, meaning that the average difference between the item scores of individuals with factor scores of 2 and 1 is the lowest among all items.
+\end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]
+\frametitle{Model assumptions}
+%reminder: model definition
+What are the implicit assumptions of the factor model?
+\begin{itemize}
+\item The model assumes conditional independence between item scores (given the factors, the item scores are independent of each other)
+\item We also assume continuous item scores
+\item For the typical estimation methods (ML) we assume that factors are normal distributed
+\end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]
+\frametitle{Relaxing the model assumptions}
+%reminder: model definition
+\begin{itemize}
+\item We can specify models that do not assume normally distributed factors
+\item We can model residual dependence between item scores 
+\item We can specify a model which explicitly takes into account binary and ordinal data
+\item We can combine all the three above things
+\end{itemize}
+In this course we will not pursue such extensions to the main model. How to handle these issues is touched upon in the Item response theory and Measurement models courses given during the spring.
+\end{frame}
+
+
+\begin{frame}[fragile]
+\frametitle{A special case: the bifactor model}
+Let's say we have six item scores and three factors. In case there is a general factor $G$ and two subfactors $F_1$ and $F_2$, the equations for each item score are:
+\begin{align*}
+X_1 &= \mu_1 +\lambda_{G,1} G + \lambda_{1,1} F_1 + \epsilon_1\\
+X_2 &= \mu_2 +\lambda_{G,2} G + \lambda_{1,2} F_1 + \epsilon_2\\
+X_3 &= \mu_3 +\lambda_{G,3} G + \lambda_{1,3} F_1 + \epsilon_3\\
+X_4 &= \mu_4 +\lambda_{G,4} G + \lambda_{2,4} F_2 + \epsilon_4\\
+X_5 &= \mu_5 +\lambda_{G,5} G + \lambda_{2,5} F_2 + \epsilon_5\\
+X_6 &= \mu_6 +\lambda_{G,6} G + \lambda_{2,6} F_2 + \epsilon_6
+\end{align*}
+Here, $G, F_1$ and $F_2$ are \textbf{uncorrelated}.
+\end{frame}
+
+\begin{frame}[fragile]
+\frametitle{Graphical illustration}
+%reminder: model definition
+\includegraphics[width=1\textwidth]{mybif.pdf}
+\end{frame}
+
+\begin{frame}[fragile]
+\frametitle{Interpreting the bifactor model}
+\begin{itemize}
+\item Is this a realistic and interpretable measurement model?
+\item We assume uncorrelated latent variables so the different factors have to be interpreted in this way - kind of like a "residual variance" explained by another independent factor specific to a subset of the items
+\begin{itemize}
+\item Not easily justified to call subfactors of mathematics "algebra" and "geometry", for example
+\item More like: "an algebra/geometry-related factor that is uncorrelated with the common factor"
+\end{itemize}
+\item We can use the model as a tool to evaluate "how unidimensional" a test is
+\end{itemize}
+\end{frame}
+
+%\begin{frame}[fragile]
+%\frametitle{Bifactor model: correlation between item scores}
+%The covariance between two items scores $X_1$ and $X_4$ is then, since the separate factors were all uncorrelated, 
+%\begin{align*}
+%\text{Cov}(X_1, X_4) = &\text{Cov}(\lambda_{G,1} G + \lambda_{1,1} F_1, \lambda_{G,4} G + \lambda_{2,4} F_2)\\
+%=& \text{Cov}(\lambda_{G,1} G \lambda_{G,4} G) + \text{Cov}(\lambda_{G,1} G, \lambda_{2,4} F_2)\\
+%& + \text{Cov}(\lambda_{1,1} F_1, \lambda_{G,4} G) + \text{Cov}(\lambda_{1,1} F_1, \lambda_{2,4} F_2)\\
+% = &\text{Cov}(\lambda_{G,1} G, \lambda_{G,4} G) + 0 + 0 + 0\\
+% = &\text{Cov}(\lambda_{G,1} G, \lambda_{G,4} G)\\
+% = & \lambda_{G,1}\lambda_{G,4} \text{Cov}(G, G)\\
+% = & \lambda_{G,1}\lambda_{G,4} \times 1.
+%\end{align*}
+%So the correlation between bifactor items that are related to a different specific factor is equal to the product of the factor loadings for the general factor.
+%\end{frame}
+
+\begin{frame}[fragile]
+\frametitle{Common variance}
+We define common variance as the variance explained by the model, i.e. the total variance minus the variance of the error score. In a bifactor model, the factors are all uncorrelated so the variance of the item score is just the sum of variances for all the parts:
+\begin{align*}
+\text{Var}(X_1) &= \text{Var}(\mu_1 + \lambda_{G,1}G+ \lambda_{1,1} F_1+ \epsilon_1) \\
+&= \lambda_{G,1}^2 \times \text{Var}(G) + \lambda_{1,1}^2 \times \text{Var}(F_1) + \text{Var}(\epsilon_1)\\
+&= \lambda_{G,1}^2 + \lambda_{1,1}^2 +  \text{Var}(\epsilon_1).
+\end{align*}
+Considering all six items in the scale, we then have that the total common variance is equal two the sum of the first two terms in the above equation, i.e.
+\begin{align*}
+\sum_{j=1}^6\lambda_{G,j}^2 + \sum_{j=1}^3\lambda_{1,j}^2 + \sum_{j=4}^6\lambda_{2,j}^2.
+\end{align*}
+\end{frame}
+
+\begin{frame}[fragile]
+\frametitle{Common variance explained by the general factor}
+The variance explained by the common factor is equal to $\sum_{j=1}^6\lambda_{G,j}^2$. We can then look at how much of the common variance that is explained by the general factor to get an idea of to what degree the test as a whole is unidimensional. We obtain the explained common variance: 
+\begin{align*}
+\text{ECV} = \frac{\sum_{j=1}^6\lambda_{G,j}^2}{\sum_{j=1}^6\lambda_{G,j}^2 + \sum_{j=1}^3\lambda_{1,j}^2 + \sum_{j=4}^6\lambda_{2,j}^2}.
+\end{align*}
+A generally recommended cut-off for "sufficient" unidimensionality is $\text{ECV} \geq 0.7$.
+\end{frame}
+
+\begin{frame}[fragile]
+\frametitle{Example: cognitive scale MoCA}
+%description of MoCA and the study
+%a RANDOM sample :)
+%(weakness is the non-response was not discussed)
+\begin{itemize}
+\item The Montreal Cognitive Assessment (MoCA) is a cognitive scale used as a screening tool for mild cognitive impairment
+\item Data were available from the baseline assessment of a longitudinal study on health and well-being of Cantonese-speaking older persons residing in public rental housing estates in Hong Kong.
+\item Participants in the longitudinal study were randomly sampled in three age strata (65-74 years, 75-84 years, 85 years and older).
+\item Those with known dementia diagnosis or a known psychiatric disorder were excluded from this analysis.
+\item Relevant data collected between July and November 2014 were retrieved from 1,876 participants for this analysis.
+\end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]
+\frametitle{Example: cognitive scale MoCA}
+%single-factor model and bifactor model
+%explained variance
+\begin{itemize}
+\item To investigate the strength of unidimensionality, we specified a bifactor model with item bundles defined based on prior information
+\item We estimated the model and calculated the explained common variance from the general factor\item From the parameter estimates, the explained common variance was 0.76 which supported a unidimensional interpretation of the scale scores
+\item Based on these results, we proceeded to evaluate the item properties with respect to education level using a unidimensional model
+\end{itemize}
+\end{frame}
+
+\section{Model evaluation and selection}
+\begin{frame}[fragile]
+\frametitle{Model evaluation procedures: hypothesis testing}
+%chi-square test
+\begin{itemize}
+\item One way of assessing model fit is to look at the chi-square statistic between a model without restrictions and the restricted model fitted (e.g. a single factor model)
+\item This is what is reported in the default output in lavaan
+\item Generally speaking, the chi-square statistic is not very informative since it investigates an absolute model fit - factor models will practically never fit perfectly
+\end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]
+\frametitle{Model evaluation procedures: model-implied covariance matrix}
+%McDonald book
+Let $s_{jk}$ be the sample covariance between item scores $j$ and $k$ and let $\sigma_{jk}$ be the model-implied covariance between item scores $j$ and $k$, which is a function of the estimated factor model parameters. 
+\begin{itemize}
+\item The McDonald book suggests to always inspect the difference between the model-implied covariance matrix and the observed covariance matrix
+\item We calculate the \textbf{discrepancy matrix} which is the matrix of differences between the $s_{jk}$ and $\sigma_{jk}$ for all item scores $j$ and $k$
+\item If the absolute values are all less than 0.1 between the correlation matrices, McDonald suggests that the fit is acceptable
+\item Inspecting the discrepancy matrix can also inform where in the model possible misfit is present
+\end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]
+\frametitle{Model-implied covariance matrix: SWLS}
+An independent-clusters model with two correlated factors yielded the following discrepancy matrix when using the correlation matrix:
+\begin{align*}
+\boldsymbol S_{\boldsymbol X}- \hat{\boldsymbol\Sigma}_{\boldsymbol X} = \begin{pmatrix} 
+ 0.000 & & & &                        \\  
+ 0.016 & 0.000 & & &                  \\ 
+-0.010 &-0.010 & 0.000 & &          \\    
+ 0.010 &-0.063 & 0.046 & 0.000 & & \\     
+-0.017 & 0.013 & 0.016 & 0.000 & 0.000
+\end{pmatrix}
+\end{align*}
+From inspection of the matrix, does the model fit well?
+\end{frame}
+
+
+\begin{frame}[fragile]
+\frametitle{Model evaluation procedures: GFI}
+%McDonald book
+We can define
+\[
+q_u = \frac{1}{m^2}\sum_{j=1}^m\sum_{k=1}^m(s_{jk}-\sigma_{jk})^2,
+\]
+which is the mean of the squared differences between the sample covariances and the model-implied covariances. Besides these, we also want to account for the magnitude of the sample covariances. If we also compute the statistic
+\[
+c = \frac{1}{m^2}\sum_{j=1}^m\sum_{k=1}^ms_{jk}^2,
+\]
+we can achieve this. 
+\end{frame}
+
+\begin{frame}[fragile]
+\frametitle{Model evaluation procedures: GFI}
+We then define the goodness-of-fit index as
+\[
+\text{GFI} = 1 - q_u / c.
+\]
+If the fit is good, the GFI will be close to 1. We've already mentioned some guidelines that a $\text{GFI} \geq 0.9$ is "acceptable" and a $\text{GFI} \geq 0.95$ is "good".
+\end{frame}
+
+\begin{frame}[fragile]
+\frametitle{Model evaluation procedures: SRMR/SRMSR}
+Another fit measure is the Standardized root mean squared residual (SRMR, also SRMSR) index. Like the GFI, it considers the differences between the sample covariances $s_{jk}$ and the model-implied covariances ${\sigma}_{jk}$:
+\[
+\text{SRMR} = \sqrt{\frac{2\sum_{j=1}^m\sum_{k=1}^j\left[(s_{jk}- {\sigma}_{jk}) / (s_{jj}s_{kk})\right]^2}{m(m +1)}},
+\]
+where $m$ is the number of observed variables and $s_{jj}$ is the sample standard deviation for item $j$. Hu and Bentler (1999) recommends $\text{SRMR} < 0.08$ as a rule of thumb for assessing model fit.
+
+\begin{small}%
+Note: This definition of SRMR is from Hu, L. T., \& Bentler, P. M. (1999). Cutoff criteria for fit indexes in covariance structure analysis: Conventional criteria versus new alternatives. \textit{Structural Equation Modeling: A Multidisciplinary Journal, 6(1)}, 1-55.
+\end{small}
+\end{frame}
+
+\begin{frame}[fragile]
+\frametitle{Model evaluation procedures: RMSEA}
+%McDonald book?
+Another goodness-of-fit measure also incorporates parsimony (penalty is added for more  parameters in the model). Define $L$ as the likelihood value at the MLE, let $df$ be the degrees of freedom and let $n$ be the sample size. We can then calculate
+\[
+d = \frac{L- df}{n},
+\]
+which is an estimate of the "error of approximation of the model to the population". From this statistic we can compute the Root Mean Square Error of Approximation, defined as
+\[
+\text{RMSEA} = \sqrt{d/df},
+\]
+which is equal to zero if the model fits perfectly. McDonald mentions that $\text{RMSEA} < 0.05$ is an acceptable fit while Hu and Bentler (1999) suggests using $\text{RMSEA} < 0.06$.
+%Hu and Bentler (1999) have also suggested to use $\text{RMSEA} \leq 0.06$ in combination with $\text{SRMR} \leq 0.09$ to maximize the combination of rejection of highly misspecified models and the "acceptance" of correctly specified models and models with small misspecification.
+\end{frame}
+
+\begin{frame}[fragile]
+\frametitle{Model selection procedures}
+\begin{itemize}
+\item Hypothesis tests
+\item Information criteria
+\end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]
+\frametitle{Likelihood ratio tests}
+\begin{itemize}
+\item We fit nested models and compare the likelihood between the models
+\item If there is no significant result, we prefer the simpler model
+\item Example: We want to choose between a factor model with two factor loadings restricted to be equal and a model where they are not restricted to be equal.
+\end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]
+\frametitle{Restricted factor loadings likelihood ratio tests}
+Let $L_c$ denote the constrained log-likelihood and let $L_u$ denote the unconstrained log-likelihood, corresponding to the resticted model and the unnrestricted model. We proceed as follows:
+\begin{itemize}
+\item We select a significance level $\alpha$
+\item We estimate the restricted model and the unrestricted model and obtain the values of the likelihood at the MLEs.
+\item We calculate the test statistic
+\[
+T = -2\log \frac{L_c}{L_u} = -2(\log L_c - \log L_u).
+\]
+\item We reject the null hypothesis of no difference between the restricted and unrestricted models if the test statistic has a large enough value, according to the selected $\alpha$
+\end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]
+\frametitle{Pitfalls of likelihood ratio tests}
+\begin{itemize}
+\item Multiple comparison problem
+\begin{itemize}
+\item If we do several comparisons these need to be taken into account with respect to $\alpha$
+\item If we do not know how many comparisons we will do, controlling the overall significance level is a difficult problem to solve
+\end{itemize}
+\item Violation of conditions
+\begin{itemize}
+\item The null hypothesis may imply that the parameters are on the boundary of the parameter space
+\end{itemize}
+\item The test statistic has a $\chi^2$-distribution only with large samples
+\end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]
+\frametitle{Model selection: information criteria}
+\begin{itemize}
+\item For likelihood methods, it is possible to select models based on different information criteria. 
+\item The information criteria are based on the value of the likelihood at the MLE and the number of parameters in the model, and possible other things such as the sample size
+\item The model which has the lowest value of the criterion is selected
+\item A potential problem is to decide which criterion to use, because they may suggest different models
+\end{itemize}
+\end{frame}
+
+
+\begin{frame}[fragile]
+\frametitle{AIC and BIC}
+Let $k$ denote the number of free parameters in the model and let $L$ denote the likelihood. The Akaike Information Criterion (AIC) is defined as
+\[
+\mathrm{AIC} = 2k - 2 \log(L)
+\]
+The AIC only penalizes for including more parameters in the model. The Bayesian Information Criterion (BIC) also accounts for the sample size. Let $n$ denote the sample size. The BIC is defined as
+\[
+\mathrm{BIC} = k \log (n) - 2 \log(L).
+\]
+The BIC has attractive large sample properties for some (but not all) types of models. This means that if you use the BIC to select a model among a number of different models and the true model is among those models, the BIC will select the correct model with probability 1 as the sample size tends to infinity.
+\end{frame}
+
+\begin{frame}[fragile]
+\frametitle{BIC model selection: Thurstone data}
+During Lab 3, you were tasked with estimating three models:
+\begin{itemize}
+\item[1] A single-factor model
+\item[2] A three-factor independent clusters model with correlated factors where the dimensions are defined by:
+\begin{itemize}
+\item Verbal comprehension: Sentences, Vocabulary, Sent.Completion
+\item Word fluency: First.Letters, Four.Letter.Words, Suffixes
+\item Reasoning: Letter.Series, Pedigrees, Letter.Group
+\end{itemize}
+\item[3] A bifactor model with three uncorrelated subfactors defined by the same items as in 2.
+\end{itemize}
+Which one did you choose?
+\end{frame}
+
+\begin{frame}[fragile]
+\frametitle{BIC model selection: Thurstone data}
+The results gave:
+\begin{itemize}
+\item[1] A single-factor model: 4655.247 
+\item[2] A three-factor independent clusters model with correlated factors: 4475.063
+\item[3] A bifactor model with three uncorrelated subfactors: 4493.185
+\end{itemize}
+Thus, we select model 2: the correlated factors model.
+\end{frame}
+
+%\section{Further topics}
+%
+%
+%\begin{frame}[fragile]
+%\frametitle{Classical Test Theory and multiple factors}
+%More specifically, let's say we have two items and two factors $F_1$ (denoting the factor we want to measure) and $F_2$ (denoting a factor we do not want to measure) and our model is
+%\begin{align*}
+%&X_1 = 0.5F_1 + 0.8F_2+\sqrt{1-0.89}E_1\\
+%&X_2 = 0.8F_1 + 0.4F_2+\sqrt{1-0.8}E_2
+%\end{align*}
+%where $F_1, F_2, E_1, E_2$ are $N(0, 1)$ and independent. This implies that $\sigma_{X_1}^2=\sigma_{X_2}^2=1$.
+%
+%Note that this model is not identified, so we can not estimate the parameters. However, we can still see what happens to the reliability and to the true score correlation.
+%\end{frame}
+%
+%\begin{frame}[fragile]
+%\frametitle{Classical Test Theory and multiple factors}
+%The reliabilities of item $X_1$ and $X_2$ are 
+%\begin{align*}
+%\rho_{X_1, X_1'}&=\frac{\mathrm{Cov}(X_1, X_1')}{\mathrm{Var}(X_1)}=\mathrm{Cov}(0.5F_1,0.5F_1) + \mathrm{Cov}(0.8F_2,0.8F_2)\\
+%&= 0.25 + 0.64 = 0.89.
+%\end{align*}
+%\begin{align*}
+%\rho_{X_2, X_2'}&=\frac{\mathrm{Cov}(X_2, X_2')}{\mathrm{Var}(X_2)}=\mathrm{Cov}(0.8F_1,0.8F_1) + \mathrm{Cov}(0.4F_2,0.4F_2)\\
+%&= 0.64 + 0.16 = 0.8.
+%\end{align*}
+%So item $X_1$ is more reliable.
+%\end{frame}
+%
+%\begin{frame}[fragile]
+%\frametitle{Classical Test Theory and multiple factors}
+%However, the true score correlations of $X_1$ and $X_2$ with $F_1$, equal to the factor loadings for $F_1$, are
+%\[
+%\rho_{X_1, F_1}=0.5
+%\]
+%and
+%\[
+%\rho_{X_2, F_1}=0.8.
+%\]
+%So $X_2$ is a "better" item for measuring $F_1$, even though it has lower reliability.
+%\end{frame}
+
+%\begin{frame}[fragile]
+%\frametitle{Adding covariates to the model}
+%\begin{itemize}
+%\item We can extend the factor model by including fixed covariates.
+%\item We obtain a regression model, which models the mean of the latent variable
+%\item We interpret the regression coefficients just as for a regular linear regression model.
+%\item This allows us to infer relationships between the latent variable and demographic variables such as gender and socio-economic status
+%\end{itemize}
+%\end{frame}
+%
+%\begin{frame}[fragile]
+%\frametitle{Models with covariates graphically}
+%%Nice graph
+%\includegraphics[width=1\textwidth]{mycfa.pdf}
+%
+%\end{frame}
+%
+%\begin{frame}[fragile]
+%\frametitle{Structural equation models}
+%\begin{itemize}
+%\item We can also consider an even more complex model with multiple latent variables that are related through regression equations.
+%\item We can include both latent variables and covariates in the same model
+%\item Hence we have three types of variables:
+%\begin{itemize}
+%\item Item responses - observed indicators of a latent variable
+%\item Covariates - observed variables not viewed as having measurement error
+%\item Latent variables - representations of attributes, that are measured by the item responses
+%\end{itemize}
+%\end{itemize}
+%\end{frame}
+%
+%\begin{frame}[fragile]
+%\frametitle{Structural equation models}
+%%\centering
+%\includegraphics[width=1\textwidth]{ungsinn05.png}
+%\end{frame}
+
+%\section*{Applications}
+%
+%
+%\begin{frame}[fragile]
+%\frametitle{A multidimensional model}
+%%Some LISREL example?
+%\begin{itemize}
+%\item 
+%\item 
+%\end{itemize}
+%\end{frame}
+%
+%\begin{frame}[fragile]
+%\frametitle{Scale validation example}
+%%What is a good example..
+%\begin{itemize}
+%\item 
+%\item 
+%\end{itemize}
+%\end{frame}
+
+%\begin{frame}[fragile]
+%\frametitle{Assignment 3}
+%\begin{itemize}
+%\item The term scale is used very broadly in the assignment description: basically means a bundle of items grouped together as indicated by pdf mentioned
+%\item You do not have to write an extremely long report! Keep it simple and focus on what the task asks you to do.
+%\item During seminar 4 you are to prepare an 8 min presentation of your work for Exercise 2
+%\end{itemize}
+%\end{frame}
+%chapter 10 examples?
+
+\end{document}

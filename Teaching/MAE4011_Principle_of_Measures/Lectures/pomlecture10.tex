@@ -1,0 +1,655 @@
+\documentclass[compress]{beamer}
+\usepackage{amsfonts}
+\usepackage{amsmath}
+\usepackage{amstext}
+\usepackage{graphicx}
+\usepackage[utf8]{inputenc}
+\usepackage{Sweave}
+\usetheme{Berlin}
+\setbeamertemplate{mini frames}{}
+\setbeamertemplate{footline}{}
+\usecolortheme{lily}
+\newcommand{\indep}{\perp\hskip -7pt \perp }
+\newcommand{\nindep}{\indep\hskip -12pt / \hskip 10pt}
+\newcommand{\pkg}[1]{{\normalfont\fontseries{b}\selectfont #1}}
+\DeclareMathOperator*{\argmin}{arg\,min}
+\defbeamertemplate{description item}{align left}{\insertdescriptionitem\hfill}
+\let\proglang=\textsf
+\let\code=\texttt
+\AtBeginSection[]
+{
+  \begin{frame}
+    \frametitle{Table of Contents}
+    \tableofcontents[currentsection, subsectionstyle=show/show/shaded]
+  \end{frame}
+}
+
+\title{Lecture 10 - Latent variable models}
+\author[]{Bj\"{o}rn Andersson \\\vspace{6pt} {\em{University of Oslo}} }
+\date{November 22 2021}
+\begin{document}
+\begin{frame}[fragile]
+\titlepage
+\end{frame}
+
+\begin{frame}[fragile]
+\frametitle{The single-factor model}
+\begin{itemize}
+\item We have so far talked mostly about the single factor model:
+\[
+X_j = \mu_j + \lambda_jF + \epsilon_j
+\]
+\item The central assumption of this model is that a single factor can explain the variance of the item score
+\item Corresponds to a single attribute or construct - e.g. a mathematics test and mathematics ability
+\item If a single factor model holds we can say that the test is measuring only a single attribute - the test is unidimensional (homogenous)
+\end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]
+\frametitle{Today}
+\begin{itemize}
+\item We will go through the general multiple-factor model
+\item Illustrate some special cases of the model that are common
+\item How to use the models and how to interpret them
+\item A few things about model comparisons and model fit
+\item A sketch of more complex models
+\end{itemize}
+\end{frame}
+
+\section*{General factor model}
+
+\begin{frame}[fragile]
+\frametitle{Multiple factor model}
+\begin{itemize}
+\item We can extend the single factor model to have additional factors
+\item These may correspond to different aspects of an attribute or to separate attributes
+\begin{itemize}
+\item A mathematics test measuring algebra, calculus and geometry
+\item A mathematics test measuring both reading comprehension and mathematics ability
+\end{itemize}
+\item We can also imagine models where there is one general factor and several "subfactors", that are measured by clusters of items
+\begin{itemize}
+\item An intelligence test that measures general intelligence along with specific subdomains connected to specific items
+\end{itemize}
+\item The models can be very complex and we need to consider if the models we can think of are actually possible to apply (identifiability constraints)
+\end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]
+\frametitle{Graphical representation of factor models}
+\includegraphics[width=1\textwidth]{full3d.pdf}
+\end{frame}
+
+\begin{frame}[fragile]
+\frametitle{Confirmatory factor analysis}
+\begin{itemize}
+\item In confirmatory factor analysis, a hypothesis regarding a certain factor structure in the data is to be tested. 
+\item The number of factors and the relations between the factors and items are hypothesized before collecting the data.
+\item In this course we will focus on confirmatory models.
+\item {Can you think of an example of a confirmatory model?} 
+\end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]
+\frametitle{Exploratory factor analysis}
+\begin{itemize}
+\item With exploratory factor analysis (EFA), the number of factors and their relationship to each item is not specified beforehand.
+\item The object is to find the number of factors and the factor structure which underlies the observed data.
+\item Hypothesis generating procedure.
+\end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]
+\frametitle{Factor analysis with item and subtest scores}
+\begin{itemize}
+\item Like for the single factor model, we will consider the case of item scores, subtest scores or scores from multiple different tests
+\item Strictly speaking, the model we will use applies only when there is a linear relationship between the factor and the item score
+\item The linearity assumption is questionable with binary and ordinal data
+\begin{itemize}
+\item At this point we will just note that there are factor models which take the ordinality into account - we will discuss this in more detail in the item response theory (IRT) course early next semester (factor analysis with ordinal data is basically equivalent to a type of IRT model)
+\end{itemize}
+\item We will proceed with assuming that the regular factor model is OK to use
+\end{itemize}
+\end{frame}
+
+
+
+\begin{frame}[fragile]
+\frametitle{Satisfaction With Life Scale}
+\begin{itemize}
+\item Recall the satisfaction with life scale that had five items
+\item A single factor model for the items on the scale is then
+\[
+X_j = \mu_j +\lambda_jF+\epsilon_j
+\]
+\item We have so far specified that $F$ has mean 0 and variance 1 in the population
+\item The unknown parameters are $\mu_j$, the difficulty of the item, $\lambda_j$, the factor loading, and $\Psi_j^2$, the variance of the error term.
+\item We assume that the factor $F$ is uncorrelated with the error term $\epsilon_j$ and that the error terms of different items are uncorrelated (But note that we \textbf{can} add residual correlations between items - needs motivation from a substantive perspective.)
+\end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]
+\frametitle{SWLS single-factor model graphically}
+\includegraphics[width=1\textwidth]{swls1d.pdf}
+\end{frame}
+
+\begin{frame}[fragile]
+\frametitle{Alternate model for SWLS}
+\begin{itemize}
+\item To illustrate some alternative models we can consider the SWLS again
+\item The subject matter of the items indicates that two items pertain to past satisfaction while three items pertain to current satisfaction
+\item We can imagine these two clusters of items as measuring two separate attributes $F_1$ and $F_2$
+\item We call such a model an independent-cluster model (sometimes referred to as a simple structure model)
+\end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]
+\frametitle{Alternate model for SWLS}
+\begin{itemize}
+\item The model for items $j \in \{1, 2, 3\}$ is then:
+\[
+X_j = \mu_j + \lambda_{j1} F_1 + (0 \times F_2) + \epsilon_j
+\]
+and the model for items $k \in \{4, 5\}$ is
+\[
+X_k = \mu_k + (0 \times F_1) + \lambda_{k2} F_2 + \epsilon_k
+\]
+\item We also assume that the two factors are correlated, i.e. $\text{Cov}(F_1, F_2) \neq 0$.
+\item Question: How many parameters do we estimate compared to the single factor model?
+\end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]
+\frametitle{SWLS two-factor model graphically}
+\includegraphics[width=1\textwidth]{swls2d.pdf}
+\end{frame}
+
+
+\begin{frame}[fragile]
+\frametitle{The general case}
+%r number of factors
+%local independence
+\begin{itemize}
+\item We can specify a fully general model where each item is measuring $r$ number of attributes
+\item We thus have a general model:
+\[
+X_j = \mu_j + \lambda_{j1} F_{1} + \dots + \lambda_{jr}F_r + \epsilon_j 
+\]
+\item As with the other factor models, $\epsilon_j$ is uncorrelated with the factors and with other error terms
+\item The factors $F_1, \dots, F_r$ can be correlated or uncorrelated
+\item This model may be true for all items - but it is not possible to estimate such a model
+\item We need to add constraints to make all the unknown parameters identified.
+\end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]
+\frametitle{Parameter identification}
+\begin{itemize}
+\item A general identification rule is highly complex to describe
+\item For independent cluster items we have the following rules:
+\begin{itemize}
+\item The model parameters are identified if there are at least three items for each factor
+\item If we assume that the factors are correlated, we need only two items for each correlated factor
+\end{itemize}
+\item For further discussion, see Chapter 9 in the textbook.
+\end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]
+\frametitle{Parameter identification}
+%Factorially simple and complex
+\begin{itemize}
+\item We can distinguish between factorially simple and factorially complex items
+\item Simple: The item indicates only a single factor. Measures only one attribute.
+\item Complex: The item indicates two or more factors. Measures more than one attribute.
+\end{itemize}
+\end{frame}
+
+
+\section*{Estimation and model evaluation}
+\begin{frame}[fragile]
+\frametitle{Correlations and covariances}
+%We can use either.
+%Correlation factor loading = factor loading from the covariance matrix divided by the std dev of the observed variable
+\begin{itemize}
+\item We have so far used the covariances to estimate the models
+\item Using the correlations doesn't change the model fit
+\item In fact, the obtained parameter estimates from using the covariance and correlation matrices are possible to directly transform between each other
+\item Factor loading from correlation matrix = factor loading from the covariance matrix / standard deviation of the observed variable, i.e.
+\[
+\hat{\lambda}_j^{\text{Cor}} = \frac{\hat{\lambda}_j^{\text{Cov}}}{\hat{\sigma}_{X_j}}
+\]
+\end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]
+\frametitle{Estimation methods}
+%ULS, maximum likelihood
+\begin{itemize}
+\item In the previous lectures with the single factor model, we used the ULS estimator
+\item Typically a technique called maximum likelihood is used with factor analysis, particularly with more complex models
+\item The maximum likelihood estimator is often statistically efficient, meaning that there is not a better estimator as the sample size tends to infinity
+\item For now, we will not discuss the estimation methods in detail
+\item We can note that there are several different approaches and that different methods can give slightly different results for given data
+\end{itemize}
+\end{frame}
+
+
+\begin{frame}[fragile]
+\frametitle{Model selection and model fit}
+%Goodness of fit
+%RMSEA
+%Observed correlations and model-implied
+\begin{itemize}
+\item If we have different models that we want to compare, we can use hypothesis testing to identify if there are statistically significant differences between two models
+\item When using maximum likelihood, we can use a likelihood ratio test between nested models or we can use an information criterion such as the Bayesian Information Criterion - BIC (works also when models are not nested)
+\item There are several ways to evaluate model fit
+\begin{itemize}
+\item Goodness of fit index (GFI)
+\item Root Mean Square Error of Approximation (RMSEA)
+\item Differences between the observed and model-implied covariance/correlation matrices - i.e.  discrepancies (another word is residuals)
+\end{itemize}
+\end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]
+\frametitle{Guidelines for model fit}
+%Goodness of fit
+%RMSEA
+%Observed correlations and model-implied
+\begin{itemize}
+\item GFI - higher than 0.90 is "acceptable", higher than 0.95 is "good"
+\item RMSEA - less than 0.05 is a "good" fit, but 0.06 has also been suggested in simulation studies (Hu and Bentler, 1999)\\
+\begin{tiny}
+Reference: Hu, L.-t., \& Bentler, P. M. (1999). Cutoff criteria for fit indexes in covariance structure analysis: Conventional criteria versus new alternatives. \textit{Structural Equation Modeling, 6(1)}, 1-55. \url{https://doi.org/10.1080/10705519909540118}
+\end{tiny}
+\item Mean residuals - should be 0
+\item Note that there is not a consensus on which model fit index is the best 
+\end{itemize}
+
+\end{frame}
+
+\begin{frame}[fragile]
+\frametitle{SWLS single-factor model results}
+We fitted the single-factor model with ULS earlier and now we use the ML estimator instead.\newline
+\begin{tabular}{l|lllll}
+\hline
+& Item 1 & Item 2 & Item 3 & Item 4 & Item 5\\
+\hline
+$\lambda_j$ & 1.308 & 1.133 & 1.141 & 0.922 & 1.148\\
+$\Psi_j^2$ & 0.843 & 1.198 & 1.150 & 1.907 & 2.023\\
+\hline
+\end{tabular}\newline
+The GFI was 0.981, mean residuals <0.01 and the RMSEA was 0.070.
+\end{frame}
+
+\begin{frame}[fragile]
+\frametitle{Alternate model for SWLS}
+%Two correlated factors
+%Independent clusters items
+\begin{itemize}
+\item Fitting this model for the SWLS gives the following results:
+\begin{tabular}{l|lll}
+Item & CSWL & PSWL & $\Psi^2$\\
+\hline
+1 & 1.323 & 0 & 0.803 \\
+2 & 1.143 & 0 & 1.174 \\
+3 & 1.138 & 0 & 1.156 \\
+4 & 0 & 1.022 & 1.712 \\
+5 & 0 & 1.289 & 1.680 \\
+\hline
+\end{tabular}\newline
+with {Cor}(CSWL, PSWL) = 0.861.
+\item We can see that the factor loadings are largely the same as before
+\item The correlation between the factors is high, indicating that the factors may not be distinct
+\item The GFI was 0.990, mean residuals <0.01 and the RMSEA was 0.041.
+\end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]
+\frametitle{Three factor model for SWLS}
+%Three factor mdoel
+%Uncorrelated
+\begin{itemize}
+\item We can also imagine that each item is measuring a general factor and that there are clusters of items that measure specific factors in addition to the general factor
+\item An additional assumption typically made is that the specific factors are uncorrelated with the general factor and that they are uncorrelated with each other (the second assumption is strictly speaking not necessary)
+\item This type of model is sometimes referred to as a bifactor model
+\item Question: How do we graphically represent this model?
+\end{itemize}
+\end{frame}
+
+
+\begin{frame}[fragile]
+\frametitle{Evaluating the single factor assumption}
+%General factor ok?
+%0.3 limit
+\begin{itemize}
+\item Speaking more generally, consider a case of a general factor along with multiple subfactors that can be interpreted substantively
+\begin{itemize}
+\item We can have general mathematics ability and specific abilities in algebra and calculus, for example
+\end{itemize} 
+\item Often it is desirable to have a single factor model - but is it justified?
+\item One way to evaluate a single factor assumption is to fit a more complex model and see how much of the explained variance that is accounted for by the general factor 
+\item If the general factor is dominating, the application of a single factor model can be considered appropriate
+\end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]
+\frametitle{Evaluating the single factor assumption - some guidelines}
+%General factor ok?
+%0.3 limit
+\begin{itemize}
+\item If the standardized factor loadings of the specific factor are lower than 0.3, this is an indication that the specific factor does not have a major impact
+\item The product of two standardized factor loadings is the amount of correlation they "explain"
+\begin{itemize}
+\item Two loadings less than 0.3 => "explains" less than 0.1 correlation
+\end{itemize}
+\item We can look at how much of the common variance is explained by the general factor - higher than 0.7 means a high level of unidimensionality 
+\end{itemize}
+\end{frame}
+
+
+\section*{Classical test theory and multiple factors}
+\begin{frame}[fragile]
+\frametitle{Classical Test Theory and multiple factors}
+Consider classical test theory, but instead of a single latent factor we have two latent factors, one of which is not directly related to the factor we want to measure.
+\[
+X = T + \xi + E.
+\]
+What happens?
+\end{frame}
+
+\begin{frame}[fragile]
+\frametitle{Classical Test Theory and multiple factors}
+More specifically, let's say we have two items and two factors $F_1$ (denoting the factor we want to measure) and $F_2$ (denoting a factor we do not want to measure) and our model is
+\begin{align*}
+&X_1 = 0.5F_1 + 0.8F_2+\sqrt{1-0.89}\epsilon_1\\
+&X_2 = 0.8F_1 + 0.4F_2+\sqrt{1-0.8}\epsilon_2
+\end{align*}
+where $F_1, F_2, \epsilon_1, \epsilon_2$ are $N(0, 1)$ and independent. This implies that $\sigma_{X_1}^2=\sigma_{X_2}^2=1$.
+
+Note that this model is not identified, so we can not estimate the parameters. However, we can still see what happens to the reliability and to the true score correlation.
+\end{frame}
+
+\begin{frame}[fragile]
+\frametitle{Classical Test Theory and multiple factors}
+The reliabilities of item $X_1$ and $X_2$ are 
+\begin{align*}
+\rho_{X_1, X_1'}&=\frac{\mathrm{Cov}(X_1, X_1')}{\mathrm{Var}(X_1)}=\mathrm{Cov}(0.5F_1,0.5F_1) + \mathrm{Cov}(0.8F_2,0.8F_2)\\
+&= 0.25 + 0.64 = 0.89.
+\end{align*}
+\begin{align*}
+\rho_{X_2, X_2'}&=\frac{\mathrm{Cov}(X_2, X_2')}{\mathrm{Var}(X_2)}=\mathrm{Cov}(0.8F_1,0.8F_1) + \mathrm{Cov}(0.4F_2,0.4F_2)\\
+&= 0.64 + 0.16 = 0.8.
+\end{align*}
+So item $X_1$ is more reliable.
+\end{frame}
+
+\begin{frame}[fragile]
+\frametitle{Classical Test Theory and multiple factors}
+However, the true score correlations of $X_1$ and $X_2$ with $F_1$, equal to the factor loadings for $F_1$, are
+\[
+\rho_{X_1, F_1}=0.5
+\]
+and
+\[
+\rho_{X_2, F_1}=0.8.
+\]
+So $X_2$ is a "better" item for measuring $F_1$, even though it has lower reliability.
+\end{frame}
+
+
+\begin{frame}[fragile]
+\frametitle{Restricted factor analysis}
+%Identification problem
+\begin{itemize}
+\item A multiple-factor model with restrictions such that some factor loadings are set to zero is called a restricted factor model
+\item A synonym is a confirmatory factor model
+\item We need to be mindful of the identification constraints necessary even with restricted models
+\end{itemize}
+\end{frame}
+
+
+\begin{frame}[fragile]
+\frametitle{Unrestricted factor analysis}
+%Identification problem
+\begin{itemize}
+\item If we have no pre-specified factor structure, we can do an unrestricted factor analysis with a pre-specified number of factors
+\item Such a factor model is however not uniquely identified and we need to choose something called a factor rotation for identification
+\item Generally speaking, this is an exploratory approach and should not be used to draw definite conclusions about the factor structure of set of items
+\item We can use this as a hypothesis generating procedure
+\end{itemize}
+\end{frame}
+
+
+
+\section*{Extensions to the model}
+\begin{frame}[fragile]
+\frametitle{Adding covariates to the model}
+\begin{itemize}
+\item We can extend the factor model by including a column vector of fixed covariates $\boldsymbol c$.
+\item We obtain a regression model, which relates the covariates to the mean of the factor:
+\[
+X_j = \mu_j + \lambda_jF + \epsilon_j,
+\]
+where the mean of $F$ is $\boldsymbol\beta'\boldsymbol c$
+\item We interpret the regression coefficients just as for a regular linear regression model: a regression coefficient $\beta$ means that a one unit increase in the covariate $c$ is associated with a $\beta$ increase in the mean of the factor $F$
+\item This allows us to infer relationships between the factor and demographic variables such as gender and socio-economic status
+\end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]
+\frametitle{Models with covariates graphically}
+%Nice graph
+\includegraphics[width=1\textwidth]{mycfa.pdf}
+
+\end{frame}
+
+\begin{frame}[fragile]
+\frametitle{Structural equation models}
+\begin{itemize}
+\item We can also consider an even more complex model with multiple latent variables that are related through regression equations.
+\item We can include both latent variables and covariates in the same model
+\item Hence we have three types of variables:
+\begin{itemize}
+\item Item responses - observed indicators of a latent variable
+\item Covariates - observed variables not viewed as having measurement error
+\item Latent variables - representations of attributes, that are measured by the item responses
+\end{itemize}
+\end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]
+\frametitle{Structural equation models}
+%\centering
+\includegraphics[width=1\textwidth]{ungsinn05.png}
+\end{frame}
+
+
+\begin{frame}[fragile]
+\frametitle{Computer implementation}
+%\centering
+\begin{itemize}
+\item We will be using the R package \code{lavaan} - \url{http://lavaan.ugent.be/}
+\item \code{lavaan} can estimate all the models we have talked about so far in the course
+\item During the lab we will go through the basic features of \code{lavaan}
+\item To make neat model plots from \code{lavaan} objects  you can use the package \code{semPlot} (not required)
+\end{itemize}
+\end{frame}
+
+
+%Use the covariance matrix for SWLS to estimate the models in lavaan
+
+%\begin{frame}[fragile]
+%\frametitle{The continuous response}
+%In factor analysis, the observed variable for an item $j$, $X_{j}$, is viewed as an additive combination of the common factors and the item-specific residual:
+%\begin{align*}
+%X_{j}^*= \lambda_{1i}\times \xi_1 +\lambda_{2i}\times \xi_2 + \epsilon_{i},
+%\end{align*}
+%where $\lambda_{1i}$ and $\lambda_{2i}$ are the factor loadings of item $i$ for the latent factor scores $\xi_1$ and $\xi_2$ and $\epsilon_{i}$ is the residual. Assume that $\xi_1$ and $\epsilon_i$ and $\xi_2$ and $\epsilon_i$ are independent. We can think of the factor loadings as the correlation between the observed variable and the latent factor. \newline
+%\newline
+%Note the similarity to the classical test theory model:
+%\[
+%Y_1 = 0.5 \times T + E_1
+%\]
+%\end{frame}
+%
+%\begin{frame}[fragile]
+%\frametitle{Example: Ability testing}
+%Six variables were observed for each individual
+%\begin{itemize}
+%\item general - a non-verbal intelligence test
+%\item picture - a picture completion test
+%\item blocks - block design
+%\item maze - mazes
+%\item reading - reading comprehension
+%\item vocab - vocabulary
+%\end{itemize}
+%\end{frame}
+%
+%\begin{frame}[fragile]
+%\frametitle{Example: Ability testing}
+%We fit a single factor model to the data, i.e. each item follows
+%\[
+%y_{i}^*= \lambda_i\times \xi + \epsilon_{i}.
+%\]
+%\begin{itemize}
+%\item loading - the squared factor loading is the percent of variance in the variable which is explained by the factor.
+%\item communality - the sum of all the squared factor loadings for a variable, measures the percent of variance explained by the factors.
+%\item uniqueness - the percent of variance in the variable which is unexplained by the factors.
+%\end{itemize}
+%\end{frame}
+%
+%\begin{frame}[fragile]
+%\frametitle{Example: Ability testing}
+%We obtain the following results:
+%\begin{table}
+%\begin{tabular}{lrrrr}
+%        & loading  & communality & uniqueness \\
+%        \hline
+%general & 0.68 & 0.47 & 0.53\\
+%picture & 0.38 & 0.15 & 0.85\\
+%blocks  & 0.50 & 0.25 & 0.75\\
+%maze    & 0.30 & 0.09 & 0.91\\
+%reading & 0.88 & 0.77 & 0.23\\
+%vocab   & 0.85 & 0.72 & 0.28
+%\end{tabular}
+%\end{table}
+%\end{frame}
+%
+%\begin{frame}[fragile]
+%\frametitle{Example: Ability testing}
+%We fit a two factor model to the data, i.e. each item follows
+%\begin{align*}
+%y_{1}^*&= \lambda_{11}\times \xi_1 +\lambda_{12}\times \xi_2+ \epsilon_{1}\\
+%y_{2}^*&= \lambda_{21}\times \xi_1 +\lambda_{22}\times \xi_2+ \epsilon_{2}\\
+%y_{3}^*&= \lambda_{31}\times \xi_1 +\lambda_{32}\times \xi_2+ \epsilon_{3}\\
+%y_{4}^*&= \lambda_{41}\times \xi_1 +\lambda_{42}\times \xi_2+ \epsilon_{4}\\
+%y_{5}^*&= \lambda_{51}\times \xi_1 +\lambda_{52}\times \xi_2+ \epsilon_{5}\\
+%y_{6}^*&= \lambda_{61}\times \xi_1 +\lambda_{62}\times \xi_2+ \epsilon_{6}
+%\end{align*}
+%\end{frame}
+%
+%\begin{frame}[fragile]
+%\frametitle{Example: Ability testing}
+%We obtain the following results:
+%\begin{table}
+%\begin{tabular}{lrrrrr}
+%        & loading 1 & loading 2 & communality & uniqueness \\
+%        \hline
+%general & 0.39 & 0.47 & 0.54 & 0.455\\
+%picture & -0.01 & 0.65 & 0.41 & 0.589\\
+%blocks  & -0.03 & 0.90 & 0.78 & 0.218\\
+%maze    & -0.02 & 0.49 & 0.23 & 0.769\\
+%reading & 0.99 & -0.04 & 0.95 & 0.052\\
+%vocab   & 0.79 & 0.05 & 0.67 & 0.334\\
+%\end{tabular}
+%\end{table}
+%\end{frame}
+
+
+
+%
+%\begin{frame}[fragile]
+%\frametitle{Factor analysis with dichotomous observed variables}
+%For a factor model with a continuous variable, we had
+%\begin{align*}
+%y_{i}^*= \lambda_{i}\times \xi + \epsilon_{i}.
+%\end{align*}
+%Define $y_{i}$ as a dichotomous variable, it can denote e.g. correct/incorrect answer for an individual to the $i$-th question on a test. We then have
+%\begin{align}
+%y_{i} = 
+%\begin{cases}
+%1, & \text{if } y_{i}^* \geq \tau_i \\
+%0, & \text{if } y_{i}^* < \tau_i
+%\end{cases},
+%\end{align}
+%where $\tau_i$ is called the threshold for item $i$. 
+%\end{frame}
+%
+%\begin{frame}[fragile]
+%\frametitle{An example}
+%We have the following model for the latent response to two items:
+%\begin{align*}
+%y_{1}^* &= 0.8\times \xi + \sqrt{1-0.64}\epsilon_{1}\\
+%y_{2}^* &= 0.6\times \xi + \sqrt{1-0.36}\epsilon_{2}
+%\end{align*}
+%where $\xi, \epsilon_{1}, \epsilon_{2} \sim N(0,1)$ and independent. Note that $y_{1}^* \sim N(0, 1)$ and $, y_{2}^* \sim N(0, 1)$ and that $y_{1}^*|\xi \sim N(0.8\xi, 1-0.64)$ and $y_{1}^*|\xi \sim N(0.6\xi, 1-0.36)$.
+%
+%For the observed variables $y_1$ and $y_2$, we have
+%\begin{align}
+%y_{1} &= 
+%\begin{cases}
+%1, & \text{if } y_{1}^* \geq 0 \\
+%0, & \text{if } y_{1}^* < 0
+%\end{cases},\\
+%y_{2} &= 
+%\begin{cases}
+%1, & \text{if } y_{2}^* \geq 0.5 \\
+%0, & \text{if } y_{2}^* < 0.5
+%\end{cases}.
+%\end{align}
+%So the parameters are $\lambda_{1}=0.8$, $\lambda_{2}=0.6$, $\tau_1=0$ and $\tau_2=0.5$.
+%\end{frame}
+%
+%\begin{frame}[fragile]
+%\frametitle{Dichotomous data generation}
+%For individual $j$
+%\begin{itemize}
+%\item Generate a random number $\xi_j$ from $N(0,1)$
+%\item Generate random numbers $\epsilon_{1j}$ and $\epsilon_{2j}$ from $N(0,1)$
+%\item Let\begin{align*}
+%y_{1j}^* &= 0.8\times \xi_j + \sqrt{1-0.64}\epsilon_{1j}\\
+%y_{2j}^* &= 0.6\times \xi_j + \sqrt{1-0.36}\epsilon_{2j}
+%\end{align*}
+%\item If $y_{1j}^*\geq 0$, set $y_{1j}=1$. Else set $y_{1j}=0$.
+%\item If $y_{2j}^*\geq 0.5$, set $y_{2j}=1$. Else set $y_{2j}=0$.
+%\end{itemize}
+%\end{frame}
+%
+%\begin{frame}[fragile]
+%\frametitle{Two parameter item response theory models}
+%In item response theory, the probability of a correct response to item $i$ (i.e. $y_i=1$) is modelled as
+%\begin{align}
+%P(y_i=1) = f(a_i\times \xi + b_i),
+%\end{align}
+%where $a_i$ is called the discrimination (slope) parameter, $b_i$ is called the difficulty (location) parameter and $f(\cdot)$ denotes a cumulative distribution function. 
+%
+%Two choices for $f(\cdot)$ are 
+%\begin{enumerate}
+%\item The standard logistic distribution (two parameter logistic (2-PL) model) 
+%\item The standard normal distribution (normal ogive model)
+%\end{enumerate}
+%(Note that in IRT the parametrization $P(y_i=1)=f(a_i(\xi-b_i^*))$ is often used.)
+%\end{frame}
+
+
+
+%\begin{frame}[fragile]
+%\frametitle{Until next time}
+%\begin{itemize}
+%\item Read the extract from the book which I have provided
+%\item Prepare a short (1-2 min) introduction (\textbf{in English}) of yourself: your name, study background, research fields you are interested in
+%\end{itemize}
+%\end{frame}
+\end{document}

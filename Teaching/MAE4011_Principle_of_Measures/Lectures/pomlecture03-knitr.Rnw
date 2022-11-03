@@ -1,0 +1,674 @@
+\documentclass[compress]{beamer}
+\usepackage{amsfonts}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amstext}
+\usepackage{graphicx}
+
+\usetheme{Berlin}
+\setbeamertemplate{mini frames}{}
+\setbeamertemplate{footline}{}
+\usecolortheme{lily}
+\newcommand{\indep}{\perp\hskip -7pt \perp }
+\newcommand{\nindep}{\indep\hskip -12pt / \hskip 10pt}
+\newcommand{\pkg}[1]{{\normalfont\fontseries{b}\selectfont #1}}
+
+\newcommand{\E}[1]{\mathbb{E}\left(#1\right)}
+\newcommand{\dd}{\mathrm{d}}
+
+\DeclareMathOperator*{\argmin}{arg\,min}
+\defbeamertemplate{description item}{align left}{\insertdescriptionitem\hfill}
+\let\proglang=\textsf
+\let\code=\texttt
+\AtBeginSection[]
+{
+  \begin{frame}
+    \frametitle{Table of Contents}
+    \tableofcontents[currentsection, subsectionstyle=show/show/shaded]
+  \end{frame}
+}
+
+\title{Lecture 3 - Statistical review and item statistics}
+\author[]{Tony Tan \\\vspace{6pt} {\em{University of Oslo}} }
+\date{Friday, 21 October 2022}
+\begin{document}
+<<echo=FALSE>>=
+options(prompt = "R> ", continue = "+  ", width = 70, useFancyQuotes = FALSE)
+@
+\begin{frame}[fragile]
+  \titlepage
+\end{frame}
+
+\begin{frame}[fragile]
+  \frametitle{Today's lecture}
+  \begin{itemize}
+    \item Review of the concepts expectation, variance, covariance and correlation
+    \item Illustrate statistical principles
+    \item Define some useful notation
+    \item Discuss different types of statistics and their interpretation for various types of item and test data
+  \end{itemize}
+\end{frame}
+
+\section{Statistical review}
+
+\begin{frame}[fragile]
+  \frametitle{Sums and products}
+    Let $a_1, a_2, \dots, a_K$ be a set of constants. The \textbf{sum} of the constants is written
+      \[ \sum_{k = 1}^K a_k = a_1 + a_2 + \dots + a_K. \]
+    The \textbf{product} of the constants is written
+      \[ \prod_{k = 1}^K a_k = a_1 \times a_2 \times \dots \times a_K. \]
+    In this notation, $k$ is an index variable which takes integer values from 1 to the number $K$.  A set is written $A = \{1, 2, \dots, K\}$. To say that "3 is in the set A" we write $3 \in A$.
+\end{frame}
+
+\begin{frame}[fragile]
+  \frametitle{The expected value}
+    Let $X$ be a discrete random variable (R.V.) with can take $k$ different values with probabilities $p_1, \dots, p_k$. Then
+    \[ \E{X}=\sum_{i=1}^kx_i p_i \]
+    Let $Y$ be a continuous R.V. with support $(a, b)$ and density $f(\cdot)$. Then
+    \[ \E{Y}=\int_a^b y f(y)\dd y. \]
+    The expected value is a parameter and is often denoted by $\mu$. We can interpret it as the long-run average value of the random variable under repeated sampling. Sometimes, the expected value is  infinite or undefined.
+\end{frame}
+
+\begin{frame}[fragile]
+  \frametitle{The expected value: Example}
+    Let $X$ be a RV which can take values $x_1 = 0$ or $x_2 = 1$ with corresponding probabilities $p_1 = 0.4$ and $p_2 = 0.6$. We then have that
+    \begin{equation*}
+      \begin{aligned}
+        \E{X} &= \sum_{i = 1}^2 x_i p_i\\
+              &= 0 \times 0.4 + 1 \times 0.6\\
+              &= 0.6.
+      \end{aligned}
+    \end{equation*}
+\end{frame}
+
+\begin{frame}[fragile]
+\frametitle{Linearity of the expected value}
+Let $X_1, \dots, X_k$ be a number of random variables. For the expectation, we have
+\[  
+E(X_1 + \dots + X_k) = E(X_1) + \dots + E(X_k)
+\]
+and for constants $a_1, \dots, a_k$
+\[
+E(a_1X_1 + \dots + a_kX_k) = a_1E(X_1) + \dots + a_kE(X_k).
+\]
+\end{frame}
+
+\begin{frame}[fragile]
+\frametitle{Linearity of the expected value: example}
+Let $X_1$ and $X_2$ be two random variables, where $E(X_1) = 0.6$ and $E(X_2) = 0.4$. We then have
+\begin{align*}
+E(X_1 + X_2) & = E(X_1) + E(X_2)\\
+& = 0.6 + 0.4 \\
+& = 1.
+\end{align*}
+Consider constants $a_1 = 1$ and $a_2 = 2$. We have
+\begin{align*}
+E(a_1X_1 + a_2X_2) & = a_1\times E(X_1) + a_2\times E(X_2) \\
+& = 1 \times 0.6 + 2 \times 0.4 \\
+& = 1.4.
+\end{align*}
+\end{frame}
+
+\begin{frame}[fragile]
+\frametitle{The k-th moment}
+Let $X$ be a discrete random variable with can take $l$ different values with probabilities $p_1, \dots, p_l$. Then
+\[
+E(X^k)=\sum_{i=1}^lx_i^k p_i
+\]
+Let $Y$ be a continuous R.V. with support $(a, b)$ and density $f(\cdot)$. Then
+\[
+E(Y^k)=\int_a^b y^k f(y)dy.
+\]
+\end{frame}
+
+
+\begin{frame}[fragile]
+\frametitle{The k-th moment: example}
+Let $X$ be a random variable which can take values $x_1 = 0$, $x_2 = 1$ or $x_3 = 2$ with corresponding probabilities $p_1 = 0.2$, $p_2 = 0.3$ and $p_2 = 0.5$. We have
+\begin{align*}
+E(X^4) & = 0^4 \times 0.2 + 1^4 \times 0.3 + 2^4 \times 0.5 \\
+& = 0 + 0.3 + 8\\
+& = 8.3.
+\end{align*}
+\end{frame}
+
+
+\begin{frame}[fragile]
+\frametitle{The sample mean}
+Let $x_1, \dots, x_n$ denote the sample. The sample mean $\bar{x}$ is then
+\[
+\bar{x}=\frac{\sum_{i=1}^n x_i}{n}.
+\]
+The sample mean is often used as an estimator of the parameter $\mu$.
+\end{frame}
+
+\begin{frame}[fragile]
+\frametitle{Variance}
+The variance is a measure of the variability in the data. For a random variable $X$ with expected value $\mu$,
+\[
+\mathrm{Var}(X)=E[(X-\mu)^2].
+\]
+The variance is a parameter and is often denoted $\sigma^2$. The standard deviation $\sigma$ is simply the positive square root of the variance.  
+\end{frame}
+
+
+
+\begin{frame}[fragile]
+\frametitle{Variance properties}
+Let $X$ and $Y$ be two random variables. We have that
+\begin{align*}
+\mathrm{Var}(X+Y)=\mathrm{Var}(X)+\mathrm{Var}(Y)+2\mathrm{Cov}(X, Y),
+\end{align*}
+\begin{align*}
+\mathrm{Var}(X-Y)=\mathrm{Var}(X)+\mathrm{Var}(Y)-2\mathrm{Cov}(X, Y).
+\end{align*}
+and, for constants $a, b$,
+\begin{align*}
+\mathrm{Var}(aX+bY)=a^2\mathrm{Var}(X)+b^2\mathrm{Var}(Y)+2ab\mathrm{Cov}(X, Y).
+\end{align*}
+\end{frame}
+
+\begin{frame}[fragile]
+\frametitle{Sample variance}
+We can estimate the variance with the sample variance $s^2$. For a sample $x_1, \dots, x_n$,
+\[
+s^2=\frac{\sum_{i=1}^n (x_i-\bar{x})^2}{n}
+\]
+Dividing by $n - 1$ instead gives the unbiased sample variance.
+\begin{itemize}
+\item We observe: 5, 6, 9, 3, 20
+\item The observed sample mean is: $(5+6+9+3+20)/5=8.6$
+\item The unbiased variance estimate is $[(5-8.6)^2+(6-8.6)^2+(9-8.6)^2+(3-8.6)^2+(20-8.6)^2] / (5-1) = 45.3$
+\end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]
+\frametitle{Covariance}
+Let $X$ and $Y$ be two random variables. The covariance is a measure of the degree to which $X$ and $Y$ are interrelated. 
+\[
+\mathrm{Cov}(X, Y)=E[(X-E(X))(Y-E(Y))]
+\]
+The covariance is a parameter and can be estimated by the sample covariance. With samples $x_i$ and $y_i$, the sample covariance is
+\[
+\hat{\mathrm{Cov}}(X, Y)=\frac{\sum_{i=1}^n(x_i-\bar{x})(y_i-\bar{y})}{n}.
+\]
+\end{frame}
+
+%\begin{frame}[fragile]
+%\frametitle{Covariance properties}
+%We can note that
+%\begin{align*}
+%\mathrm{Cov}(X, Y)&=E[(X-E(X))(Y-E(Y))]\\
+%&= E[XY-XE(Y)-E(X)Y+E(X)E(Y)]\\
+%&=E(XY)-E(X)E(Y)-E(X)E(Y)+E(X)E(Y)\\
+%&=E(XY)-E(X)E(Y).
+%\end{align*}
+%\end{frame}
+
+\begin{frame}[fragile]
+\frametitle{Covariance and independence}
+The covariance can be written
+\[
+\mathrm{Cov}(X, Y)=E(XY)-E(X)E(Y).
+\]
+If $X$ and $Y$ are independent
+\[
+\mathrm{Cov}(X, Y)=E(XY)-E(X)E(Y)=0
+\]
+However, $\mathrm{Cov}(X, Y)=0$ does not necessarily imply that $X$ and $Y$ are independent.
+\end{frame}
+
+
+
+\begin{frame}[fragile]
+\frametitle{Correlation}
+\begin{itemize}
+\item The magnitude of the covariance is difficult to interpret in itself, as the value depends on the scale of the R.V.s $X$ and $Y$.
+\item A standardized measure, the correlation, can be used as a measure of the magnitude of the linear relationship between two random variables.
+\end{itemize}
+The Pearson correlation is
+\[
+\rho_{X,Y}=\frac{\mathrm{Cov}(X, Y)}{\sigma_X\sigma_Y},
+\]
+where $\sigma_X=\sqrt{\mathrm{Var}(X)}$ and $\sigma_Y=\sqrt{\mathrm{Var}(Y)}$, the standard deviations of $X$ and $Y$. We have that $-1 \leq \rho_{X,Y} \leq 1$.
+\end{frame}
+
+\begin{frame}[fragile]
+\frametitle{Pearson correlation measures a linear relationship}
+<<label=plot2, echo=F, include=FALSE, fig.width=8, fig.height=5>>=
+y <- rnorm(1000)
+z <- 1.5 * y + rnorm(1000)
+u <- rnorm(1000)
+v <- 1.5 * u^2 + rnorm(1000)
+par(mfrow = c(1,2))
+plot(y, z, ylab = "z", xlab = "y", main = "Analysis 1", ylim = c(-6, 10), 
+xlim = c(-3, 3))
+plot(u, v, ylab = "v", xlab = "u", main = "Analysis 2", ylim = c(-6, 10), 
+xlim = c(-3, 3))
+@
+\begin{figure}[!htpb]
+\begin{center}
+<<label=plot21, echo=FALSE, fig.width=7, fig.height=5>>=
+<<plot2>>
+@
+\end{center}
+\end{figure}
+\end{frame}
+
+\begin{frame}[fragile]
+\frametitle{Pearson correlation measures a linear relationship}
+<<echo=T>>=
+cor(y, z)
+cor(u, v)
+@
+\end{frame}
+
+\begin{frame}[fragile]
+\frametitle{Statistics}
+\begin{itemize}
+\item Statistics can be viewed as the methods by which we draw conclusions from incomplete information
+\item We design the data collection by considering statistical principles
+\item We utilize statistical methods when analyzing the data
+\item We use statistical inference to accept or reject hypotheses or add knowledge to a body of scientific results
+\item All empirical research utilizes statistical methods and principles
+\end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]
+\frametitle{Parameters, estimators, and estimates}
+\begin{itemize}
+\item The truth: The parameter (e.g. $\mu$)
+\item How we learn about the truth: The estimator (e.g. $\hat{\mu}$)
+\item What we learn from about the truth: The estimate (e.g. $\hat{\mu}_{\mathrm{obs}}$)
+\end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]
+\frametitle{Standard deviation and standard error}
+Note the difference in these two concepts
+\begin{itemize}
+\item Standard deviation - the square root of the variance for a random variable or in a population
+\item Standard error - the square root of the variance of an estimator
+\end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]
+\frametitle{Confidence intervals}
+\begin{itemize}
+\item A 95\% confidence interval $(a, b)$ for a parameter $\theta$ means that the parameter $\theta$ is covered by such an interval 95\% of the time if the sampling would be repeated infinitely.
+\item The confidence interval \textit{does not} mean that the parameter has probability 0.95 of being in the interval.
+\item In practice, we \textit{estimate} a confidence interval and that interval either covers or does not cover the true parameter
+\end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]
+\frametitle{Exercise}
+\begin{itemize}
+\item We observed the heights of 50 randomly selected students at UiO.
+\item The sample mean was 173.4 and the sample standard deviation 15.5.
+\item The standard error of the mean can be calculated by $\text{se}(\bar{x}) = \sqrt(s^2/n)$, where $s^2$ is the sample variance and $n$ is the sample size.
+\end{itemize}
+Estimate a 95\% confidence interval for the population mean height and interpret the results. 
+\end{frame}
+
+\begin{frame}[fragile]
+\frametitle{Exercise}
+\begin{itemize}
+\item We observe $\bar{x}=173.4$ and $\text{se}(\bar{x}) = 15.5 / \sqrt{50} \approx 2.2$.
+\item We note that the statistic $(\bar{x} - \mu) / \text{se}(\bar{x})$ is $t(49)$-distributed. 
+\item We calculate $t(49)_{(0.025)} \approx -2.0$ and hence we obtain the confidence interval for $\mu$ equal to
+\[
+(\bar{x} - 2.0\times 2.2 , \bar{x} + 2.0\times 2.2) = (169.0, 177.8).
+\]
+\end{itemize}
+That is, if we were to repeat the sampling infinitely many times, the true value $\mu$ would be covered by such an estimated interval 95\% of the time.
+\end{frame}
+
+
+
+\begin{frame}[fragile]
+\frametitle{A few things about notation}
+\begin{itemize}
+\item $\mu$ - expected value
+\item $E(X)$ - expected value of $X$
+\item $\sigma^2$ - variance
+\item $\text{Var}(X)$ - variance of $X$
+\item $\text{Cov}(X, Y)$ - covariance of $X$ and $Y$
+\item $\rho$ - correlation
+\end{itemize}
+\end{frame}
+
+
+\begin{frame}[fragile]
+\frametitle{Bias, variance and mean squared error of an estimator}
+For an estimator $\hat{\theta}$ of a parameter $\theta$, the bias is defined as
+\[
+\text{Bias}(\hat{\theta}) = E(\hat{\theta}-\theta).
+\]
+If $\text{Bias}(\hat{\theta}) = 0$, we say that the estimator $\hat{\theta}$ is an unbiased estimator of $\theta$. 
+
+The estimator also has a variance, i.e.
+\[
+\text{Var}(\hat{\theta}) = E[(\hat{\theta}-E(\hat{\theta}))^2].
+\]
+
+We often consider the mean squared error (MSE) of an estimator, defined as
+\[
+\text{MSE}(\hat{\theta}) = E[(\hat{\theta} - \theta)^2].
+\]
+It can be shown that $\text{MSE}(\hat{\theta}) = \text{Var}(\hat{\theta}) + [\text{Bias}(\hat{\theta})]^2$.
+\end{frame}
+
+\begin{frame}[fragile]
+\frametitle{A few things about notation: distributions}
+\begin{itemize}
+\item $X \sim N(\mu, \sigma^2)$ - $X$ is normal-distributed with expected value $\mu$ and variance $\sigma^2$
+\item $X \sim t(df)$ - $X$ is t-distributed with $df$ degrees of freedom
+\item $X \sim \chi^2(df)$  - $X$ is $\chi^2$-distributed with $df$ degrees of freedom
+\end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]
+\frametitle{A few things about notation}
+\begin{itemize}
+\item The book defines upper-case letters as random variables and lower-case letters as observations from a sample. 
+\item $X_j$ denotes the $j$-th item score on a test and is a random variable
+\item $x_{ji}$ denotes the score obtained on item $j$ for an individual $i$ and is an observation and not a random variable
+\end{itemize}
+\end{frame}
+
+%\begin{frame}[fragile]
+%\frametitle{A few things about notation}
+%We can have vector-values random variables. We can for example think of the joint distribution of two variables $X, Y$. 
+%\begin{itemize}
+%\item $\boldsymbol\mu$ - column vector of expected values
+%\item $\boldsymbol\Sigma$ - covariance matrix
+%\end{itemize}
+%\[
+%\boldsymbol\mu = \left(E(X), E(Y)\right)'
+%\]
+%
+%\[
+%\boldsymbol\Sigma = \text{Var}(X), \text{Cov}(X, Y), \text{Cov}(Y, X), \text{Var}(Y)
+%\]
+%\end{frame}
+
+
+\section{Item statistics}
+
+\begin{frame}[fragile]
+\frametitle{Expected value of binary scores}
+\begin{itemize}
+\item If the item score $X_j$ can take values 0 or 1, we have a binary item
+\item The sample mean $\frac{\sum_{i=1}^nx_{ji}}{n}$ can be used to compute an estimate of $\mu_j=E(X_j)$
+\item Since this is a binary item, the parameter $\mu_j=E(X_j)$ can be interpreted as defining the probability $\pi_j$ of a randomly selected individual answering the item correctly
+\end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]
+\frametitle{Variance of binary scores}
+For a random variable $X_j$ defined such that $P(X_j = 1) = \pi_j$ and $P(X_j = 0) = 1 - \pi_j$ we have $E(X_j) = \pi_j$ and
+\[
+E(X_j^2) = 0^2 \times (1 - \pi_j) + 1^2 \times \pi_j= \pi_j.
+\]
+Since $\text{Var}(X_j) = E(X_j^2) - [E(X_j)]^2$, we obtain
+\[
+\text{Var}(X_j) = \pi_j - \pi_j^2 = \pi_j(1-\pi_j).
+\]
+To estimate the variance of a binary variable we can simply calculate the sample mean $\hat{p}_j$ and obtain
+\[
+\hat{\text{Var}}(X_j)= \hat{p}_j(1 -\hat{p}_j).
+\]
+Note that this is a biased estimator of the variance, since it is equivalent to the sample variance with division by $n$ instead of $n-1$.
+\end{frame}
+
+
+
+\begin{frame}[fragile]
+\frametitle{Covariances of binary scores}
+The sample covariance between two sets of observations $\{x_i\}$ and $\{y_i\}$ is, generally, given by
+\[
+s_{xy} = \frac{\sum_{i=1}^n(x_i-\bar{x})(y_i-\bar{y})}{n}.
+\]
+For binary variables $X_j$ and $X_k$, this expression reduces to 
+\[
+s_{jk} = p_{jk} - p_jp_k,
+\]
+where $p_{jk}$ denotes the relative frequency of the event $\{X_j = 1, X_k = 1\}$, which we can estimate from the sample.
+\end{frame}
+
+\begin{frame}[fragile]
+\frametitle{Exercise: variance and covariance of binary scores}
+We observe the following frequencies from a sample $\{x_i\}$, $\{y_i\}$:
+\newline
+\begin{tabular}{|c|c|c|}
+\hline
+& $x_i = 0$ & $x_i = 1$\\
+\hline
+$y_i = 0$ & 4 & 2 \\
+\hline
+$y_i = 1$ & 1 & 3 \\
+\hline
+\end{tabular}
+\newline
+What is $s_x^2$, $s_y^2$ and $s_{xy}$?
+\end{frame}
+
+\begin{frame}[fragile]
+\frametitle{Exercise: variance and covariance of binary scores}
+We have 
+\[
+p_x = 0.5,
+\]
+\[
+p_y = 0.4
+\]
+and 
+\[
+p_{xy} = 0.3.
+\]
+We thus obtain
+\[
+s_x^2 = 0.5 \times (1 - 0.5) = 0.25,
+\]
+\[
+s_y^2 = 0.4 \times (1 - 0.4) = 0.24
+\]
+and 
+\[
+s_{xy} = 0.3 - 0.5 \times 0.4 = 0.1.
+\]
+\end{frame}
+
+
+\begin{frame}[fragile]
+\frametitle{Covariance matrix}
+We can consider a number of item scores and calculate all the covariances of these. If we put these together to form a matrix, we obtain a covariance matrix. With the two-item test:
+\begin{align*}
+\boldsymbol\Sigma_{X, Y} = \begin{bmatrix}
+0.25 &  0.10\\
+0.10 & 0.24
+\end{bmatrix}.
+\end{align*}
+The diagonal elements of the matrix are the variances of $X$ and $Y$ and the upper- and lower-diagonal parts contain the covariances. The matrix $\boldsymbol\Sigma_{X, Y}$ is called a symmetric matrix, since the upper- and lower-diagonal parts contain identical terms.
+\end{frame}
+
+\section{Test score statistics}
+\begin{frame}[fragile]
+\frametitle{Test scores}
+\begin{itemize}
+\item A test score is typically the summation or a transformation of the individual item scores
+\item We may be interested in a single test score or multiple subscores
+\item We are interested in the same statistics as in item statistics: expected values, variances,  covariances, correlations
+\end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]
+\frametitle{Total test score}
+If we consider $m$ number of items for an individual $i$, the total test score $y_i$ is simply the sum of the individual item scores $x_{ji}$:
+\[
+y_i= \sum_{j=1}^mx_{ji}.
+\]
+The mean test score is the mean of the item scores, i.e.
+\[
+m_i= \sum_{j=1}^mx_{ji} / m.
+\]
+
+\end{frame}
+
+\begin{frame}[fragile]
+\frametitle{Sample variance of the total test score}
+We can quickly calculate the sample variance of the total test score $s_y^2$ either from
+\[
+s_y^2 = \sum_{i=1}^n y_i^2 / n - \left(\sum_{i=1}^n y_i / n\right)^2
+\]
+or from the sum of the sample variances and covariances
+\[
+s_y^2 = \sum_{j = 1}^m \sum_{k = 1}^ms_{jk}.
+\]
+\end{frame}
+
+\begin{frame}[fragile]
+\frametitle{Sample variance of the total test score}
+We can for example estimate the variance of the sum $X+Y$ from the previous exercise either by
+\begin{align*}
+s_{x+y}^2 &= (4 \times 0^2 + 3 \times 1^2 + 3\times 2^2) / 10 -  [(4\times 0 + 3 \times 1 + 3\times 2) / 10]^2\\
+&= 1.5 - 0.81 \\
+&= 0.69
+\end{align*}
+or by
+\begin{align*}
+s_{x+y}^2 &= 0.25 + 0.24 + 0.10 + 0.10 \\
+&= 0.69.
+\end{align*}
+\end{frame}
+
+%\begin{frame}[fragile]
+%\frametitle{Covariance of subscores}
+%\begin{itemize}
+%\item 
+%\end{itemize}
+%\end{frame}
+%
+%\begin{frame}[fragile]
+%\frametitle{Correlations of subscores}
+%\begin{itemize}
+%\item 
+%\end{itemize}
+%\end{frame}
+
+\begin{frame}[fragile]
+\frametitle{Review}
+\begin{itemize}
+\item Discrete and continuous random variables
+\item Properties of expectation, variance and covariance
+\item Parameters, estimators and estimates
+\item Statistical inference
+\item How to estimate expectations, variances and covariances for item scores and test scores 
+\end{itemize}
+\end{frame}
+
+\section{Exercises}
+\begin{frame}[fragile]
+\frametitle{L3 Task 1}
+Consider a random variable $X$ which takes values 1, 2, 3 and 4 with corresponding probabilities 0.1, 0.2, 0.4 and 0.3.
+\begin{description}
+\item[a] What is $E(X)$?
+\item[b] What is $E(X^2)$?
+\item[c] What is $\text{Var}(X)$?
+\end{description}
+\textit{Hint}: Recall that $\text{Var}(X)= E[(X-E(X))^2]$.
+\end{frame}
+
+\begin{frame}[fragile]
+\frametitle{L3 Task 2}
+$X$ and $Y$ are two random variables such that $E(X) = 10$, $E(X^2) = 150$, $E(Y) = 5$, $E(Y^2) = 75$ and $E(XY) = 20$. 
+\begin{description}
+\item[a] What is $\text{Cor}(X, Y)$?
+\item[b] What is $\text{Cov}(5X, 10Y)$?
+\item[c] What is $\text{Var}(5X + 10Y)$?
+\end{description}
+\end{frame}
+
+\begin{frame}[fragile]
+\frametitle{L3 Task 3}
+The following frequency table was observed from a two-item test where each item was scored 0/1.
+\newline
+\begin{tabular}{|l|l|l|}
+\hline
+ & Item 1 = 0 & Item 1 = 1  \\
+\hline
+Item 2 = 0 & 42 & 20 \\ 
+\hline
+Item 2 = 1 & 22 & 16 \\
+\hline
+\end{tabular}
+\newline
+\begin{description}
+\item[a] Estimate the difficulty of each item.
+\item[b] Estimate the variance of the total score.
+\end{description}
+\end{frame}
+
+\begin{frame}[fragile]
+\frametitle{L3 Task 4}
+The following covariance matrix was observed from a three-item test.
+\newline
+\begin{align*}
+\boldsymbol\Sigma_{X_1, X_2, X_3} = \begin{bmatrix}
+1.19 & 0.28 & 0.22\\
+0.28 & 1.26 & 0.40\\
+0.22 & 0.40 & 1.47
+\end{bmatrix}.
+\end{align*}
+\newline
+\begin{itemize}
+\item[a] Calculate the sample variance of $X_1+X_2+X_3$.
+\item[b] Calculate the estimated correlation between $X_1$ and $X_3$.
+\end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]
+\frametitle{L3 Task 5}
+Show that the sample mean is an unbiased estimator of the expected value of a random variable $X$. That is,  derive the expected value of
+\[ 
+\bar{x} = \frac{\sum_{i=1}^n x_i}{n}.
+\]
+\end{frame}
+
+
+\begin{frame}[fragile]
+\frametitle{L3 Task 6}
+Assume that observations $x_i$ are independent realizations of a random variable with finite first and second moments. Derive the variance of
+\[ 
+\bar{x} = \frac{\sum_{i=1}^n x_i}{n}.
+\]
+\end{frame}
+
+\begin{frame}[fragile]
+\frametitle{L3 Task 7}
+Show that
+\[
+\text{MSE}(\hat{\theta}) = \text{Var}(\hat{\theta}) + [\text{Bias}(\hat{\theta})]^2.
+\]
+\end{frame}
+
+\begin{frame}[fragile]
+\frametitle{L3 Task 8}
+Derive the expected value of
+\[ 
+s_{xy}^* = \frac{\sum_{i=1}^n x_iy_i-n\bar{x}\bar{y}}{n-1},
+\]
+where observations $k,l, k\neq l$ are independent.
+\end{frame}
+% mymat <-  matrix(c(1.19, 0.28, 0.22, 0.28, 1.26, 0.40, 0.22, 0.40, 1.47), 3, 3)
+
+
+%\begin{frame}[fragile]
+%\frametitle{Until next time}
+%\begin{itemize}
+%\item Read the extract from the book which I have provided
+%\item Prepare a short (1-2 min) introduction (\textbf{in English}) of yourself: your name, study background, research fields you are interested in
+%\end{itemize}
+%\end{frame}
+\end{document}

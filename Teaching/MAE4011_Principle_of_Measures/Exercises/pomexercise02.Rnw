@@ -1,0 +1,246 @@
+\documentclass[compress]{beamer}
+
+% Load ttbeamer template depending on operating system
+\usepackage{ifplatform}
+\ifwindows
+  \usepackage{M:/pc/Dokumenter/ttbeamer}
+\fi
+\iflinux
+  \usepackage{/home/tony/uio/pc/Dokumenter/ttbeamer}
+\fi
+\ifmacosx
+  \usepackage{/Users/tctan/uio/pc/Dokumenter/ttbeamer}
+\fi
+
+\title{Exercise 2}
+\author[]{Tony Tan \\\vspace{6pt} {\em{University of Oslo}} }
+\date{Wednesday, 02 November 2022}
+
+\begin{document}
+
+<<echo=FALSE>>=
+  options(prompt = "R> ", continue = "+  ", width = 70, useFancyQuotes = FALSE)
+@
+
+\begin{frame}[fragile]
+\titlepage
+\end{frame}
+
+
+\section{Lecture 5}
+
+\begin{frame}[fragile]
+  \frametitle{L5 Task 1}
+    Two alternate-form tests were given to the same population, yielding estimated standard deviation of $s_1 = 7.5$, $s_2 = 8$ and an estimated covariance of $s_{12} = 12$. Calculate the estimated standard error of measurement forf the test
+\end{frame}
+
+
+\begin{frame}[fragile]
+  \frametitle{L5 Task 1: Solution}
+    We first estimate the \ttemph{reliability coefficient}
+    \begin{equation*}
+      \begin{aligned}
+        \text{Population: } \rho_{YY'} &= \frac{\cov{Y}{Y'}}{\sigma_Y \sigma_{Y'}} = \frac{\sigma_T^2}{\sqrt{\sigma_Y^2} \sqrt{\sigma_{Y'}^2}} = \frac{\sigma_T^2}{\sigma_Y^2} \\
+        \text{Sample: } \hat{\rho}_{YY'} &= \frac{S_{12}}{s_1 \cdot s_2} = \frac{12}{7.5 \times 8} = 0.2.
+      \end{aligned}
+    \end{equation*}
+
+    We then obtain the \ttemph{standard error of measurement} as
+      \[ \hat{\text{SEM}} (Y) = \sqrt{s_Y^2 (1 - \hat{\rho}_{YY'})} = \sqrt{7.5 \times 8 \times (1 - 0.2)} \approx 6.93. \]
+\end{frame}
+
+
+\begin{frame}[fragile]
+  \frametitle{L5 Task 2}
+    \begin{itemize}
+      \item We have autumn ($A$) and spring ($S$) test-takers of the SweSAT with $A \sim \N{60}{12}$ and $S \sim \N{70}{16}$ true score distributions respectively.
+      \item The test takers are given the same test which is defined by the classical true score model with an error score $E \sim \N{0}{4}$.
+    \end{itemize}
+
+    Calculate the reliability of the test for population $A$ and $S$.
+\end{frame}
+
+
+\begin{frame}[fragile]
+  \frametitle{L5 Task 2: Solution}
+    Recall that the reliability coefficient is defined as
+      \[ \rho_{YY'} = \frac{\sigma_T^2}{\sigma_Y^2} = \frac{\sigma_T^2}{\sigma_T^2 + \sigma_E^2}. \]
+
+    For population $A$, we have
+      \[ \hat{\rho}_{YY'}^A = \frac{12}{12 + 4} = 0.75. \]
+
+    Similarly for population $S$
+    \[ \hat{\rho}_{YY'}^S = \frac{16}{16 + 4} = 0.80. \]
+\end{frame}
+
+
+\section{Lecture 6}
+
+\begin{frame}[fragile]
+  \frametitle{L6 Task 1}
+    The following estimated factor loadings and error variances were obtained from a single factor model for five mathematics items
+
+    \begin{center}
+      \begin{tabular}{cccccc}
+        \hline
+          &Item 1 &Item 2 &Item 3 &Item 4 &Item 5 \\
+          $\hat{\lambda}_j$ &0.109 &0.202 &0.322 &0.068 &0.148 \\
+          $\hat{\Psi}_j^2$ &0.196 &0.173 &0.140 &0.173 &0.147 \\
+        \hline
+      \end{tabular}
+    \end{center}
+
+    Calculate the estimated coefficient omega.
+\end{frame}
+
+
+\begin{frame}[fragile]
+  \frametitle{L6 Task 1: Diagram}
+    \begin{tikzpicture}[
+      latvar/.style={ellipse,draw=black,minimum width=1cm,minimum height=1cm},
+      manvar/.style={rectangle,draw=black,minimum width=1.5cm},
+      mean/.style={fill=black!10!white,regular polygon,regular polygon sides=3},
+      ->,>=stealth',semithick, % Make arrow heads better looking
+      <->,>=latex' % Make arc's arrow heads rorate with the arc endings
+    ]
+
+      % Set 5 items
+        \node[manvar] (i1) at (-4,3.5) {Item 1};
+        \node[manvar] (i2) at (-2,3.5) {Item 2};
+        \node[manvar] (i3) at (0,3.5) {Item 3};
+        \node[manvar] (i4) at (2,3.5) {Item 4};
+        \node[manvar] (i5) at (4,3.5) {Item 5};
+
+      % Set latent variable
+        \node[latvar] (g) at (0,0) {$g$};
+
+      % Set 5 residuals
+        \node[latvar] (e1) at (-4,5) {$\epsilon_1$};
+        \node[latvar] (e2) at (-2,5) {$\epsilon_2$};
+        \node[latvar] (e3) at (0,5) {$\epsilon_3$};
+        \node[latvar] (e4) at (2,5) {$\epsilon_4$};
+        \node[latvar] (e5) at (4,5) {$\epsilon_5$};
+
+      % Link items to g
+        \draw[<-] (i1) to node[below,sloped,pos=0.4] {$\hat{\lambda}_1=0.109$} (g);
+        \draw[<-] (i2) to node[below,sloped,pos=0.42] {$\hat{\lambda}_2=0.202$} (g);
+        \draw[<-] (i3) to node[below,sloped] {$\hat{\lambda}_3=0.322$} (g);
+        \draw[<-] (i4) to node[above,sloped] {$\hat{\lambda}_4=0.068$} (g);
+        \draw[<-] (i5) to node[above,sloped] {$\hat{\lambda}_5=0.148$} (g);
+
+      % Link items to g
+        \draw[->] (e1) to node[right,pos=0.4] {$1$} (i1);
+        \draw[->] (e2) to node[right,pos=0.4] {$1$} (i2);
+        \draw[->] (e3) to node[right,pos=0.4] {$1$} (i3);
+        \draw[->] (e4) to node[right,pos=0.4] {$1$} (i4);
+        \draw[->] (e5) to node[right,pos=0.4] {$1$} (i5);
+
+      % Draw error variance arcs
+        \draw[<->] (-4,5.5) arc (0:257:0.4);
+        \draw[<->] (-2,5.5) arc (0:257:0.4);
+        \draw[<->] (0,5.5) arc (0:257:0.4);
+        \draw[<->] (2,5.5) arc (0:257:0.4);
+        \draw[<->] (4,5.5) arc (0:257:0.4);
+
+      % Draw error variance labels
+        \node[below,rotate=30] at (-5,6.3) {$\hat{\Psi}_1^2=0.196$};
+        \node[below,rotate=30] at (-3,6.3) {$\hat{\Psi}_2^2=0.173$};
+        \node[below,rotate=30] at (-1,6.3) {$\hat{\Psi}_3^2=0.140$};
+        \node[below,rotate=30] at (1,6.3) {$\hat{\Psi}_4^2=0.173$};
+        \node[below,rotate=30] at (3,6.3) {$\hat{\Psi}_5^2=0.147$};
+    \end{tikzpicture}
+\end{frame}
+
+
+\begin{frame}[fragile]
+  \frametitle{L6 Task 1: Solution}
+    Coefficient omega is equal to the reliability of the sum score when a \ttemph{single factor models} holds. We obtain the following estimate of the reliability with the estimated factor model parameters:
+      \[ \hat{\omega} = \frac{ \left( \sum_{j=1}^5 \hat{\lambda}_j \right)^2 }{\left( \sum_{j=1}^5 \hat{\lambda}_j \right)^2 + \sum_{j=1}^5 \hat{\Psi}_j^2} \approx \frac{0.849^2}{0.849^2 + 0.829} \approx 0.465. \]
+
+    If  the factor model is the \ttemph{true model\color{black},} $\hat{\omega}$ is an unbiased estimator of the reliability of the sum score.
+\end{frame}
+
+
+\begin{frame}[fragile]
+  \frametitle{L6 Task 2}
+    A \ttemph{restricted model} with the factor loadings set equal was also estimated. The estimated factor loading was $\hat{\lambda} = 0.164$ and the error variances are given in the table below:
+
+    \begin{center}
+      \begin{tabular}{cccccc}
+        \hline
+          &Item 1 &Item 2 &Item 3 &Item 4 &Item 5 \\
+          $\hat{\Psi}_j^2$ &0.181 &0.188 &0.217 &0.151 &0.142 \\
+        \hline
+      \end{tabular}
+    \end{center}
+
+    Calculate the estimated coefficient alpha/omega.
+\end{frame}
+
+
+\begin{frame}[fragile]
+  \frametitle{L6 Task 2: Diagram}
+    \begin{tikzpicture}[
+      latvar/.style={ellipse,draw=black,minimum width=1cm,minimum height=1cm},
+      manvar/.style={rectangle,draw=black,minimum width=1.5cm},
+      mean/.style={fill=black!10!white,regular polygon,regular polygon sides=3},
+      ->,>=stealth',semithick, % Make arrow heads better looking
+      <->,>=latex' % Make arc's arrow heads rorate with the arc endings
+    ]
+
+      % Set 5 items
+        \node[manvar] (i1) at (-4,3.5) {Item 1};
+        \node[manvar] (i2) at (-2,3.5) {Item 2};
+        \node[manvar] (i3) at (0,3.5) {Item 3};
+        \node[manvar] (i4) at (2,3.5) {Item 4};
+        \node[manvar] (i5) at (4,3.5) {Item 5};
+
+      % Set latent variable
+        \node[latvar] (g) at (0,0) {$g$};
+
+      % Set 5 residuals
+        \node[latvar] (e1) at (-4,5) {$\epsilon_1$};
+        \node[latvar] (e2) at (-2,5) {$\epsilon_2$};
+        \node[latvar] (e3) at (0,5) {$\epsilon_3$};
+        \node[latvar] (e4) at (2,5) {$\epsilon_4$};
+        \node[latvar] (e5) at (4,5) {$\epsilon_5$};
+
+      % Link items to g
+        \draw[<-] (i1) to node[below,sloped,pos=0.4] {$\hat{\lambda}=0.164$} (g);
+        \draw[<-] (i2) to node[below,sloped,pos=0.42] {$\hat{\lambda}=0.164$} (g);
+        \draw[<-] (i3) to node[below,sloped] {$\hat{\lambda}=0.164$} (g);
+        \draw[<-] (i4) to node[above,sloped] {$\hat{\lambda}=0.164$} (g);
+        \draw[<-] (i5) to node[above,sloped] {$\hat{\lambda}=0.164$} (g);
+
+      % Link items to g
+        \draw[->] (e1) to node[right,pos=0.4] {$1$} (i1);
+        \draw[->] (e2) to node[right,pos=0.4] {$1$} (i2);
+        \draw[->] (e3) to node[right,pos=0.4] {$1$} (i3);
+        \draw[->] (e4) to node[right,pos=0.4] {$1$} (i4);
+        \draw[->] (e5) to node[right,pos=0.4] {$1$} (i5);
+
+      % Draw error variance arcs
+        \draw[<->] (-4,5.5) arc (0:257:0.4);
+        \draw[<->] (-2,5.5) arc (0:257:0.4);
+        \draw[<->] (0,5.5) arc (0:257:0.4);
+        \draw[<->] (2,5.5) arc (0:257:0.4);
+        \draw[<->] (4,5.5) arc (0:257:0.4);
+
+      % Draw error variance labels
+        \node[below,rotate=30] at (-5,6.3) {$\hat{\Psi}_1^2=0.181$};
+        \node[below,rotate=30] at (-3,6.3) {$\hat{\Psi}_2^2=0.188$};
+        \node[below,rotate=30] at (-1,6.3) {$\hat{\Psi}_3^2=0.217$};
+        \node[below,rotate=30] at (1,6.3) {$\hat{\Psi}_4^2=0.151$};
+        \node[below,rotate=30] at (3,6.3) {$\hat{\Psi}_5^2=0.142$};
+    \end{tikzpicture}
+\end{frame}
+
+
+\begin{frame}[fragile]
+  \frametitle{L6 Task 2: Solution}
+      \[ \hat{\alpha} = \hat{\omega} = \frac{ 5^2 \times \hat{\lambda}^2 }{ 5^2 \times \hat{\lambda}^2 + \sum_{j=1}^5 \hat{\Psi}_j^2 } = \frac{ 5^2 \times 0.164^2 }{ 5^2 \times 0.164^2 + 0.879 } \approx 0.433 \]
+
+    Comparing Task 2 with Task 1: Cronbach's alpha is only valid under \ttemph{tau-equivalence} and it \ttemph{underestimates} the reliability of the scale.
+\end{frame}
+
+\end{document}

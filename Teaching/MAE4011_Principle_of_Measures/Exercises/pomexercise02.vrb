@@ -1,0 +1,4 @@
+\frametitle{L6 Task 2: Solution}
+      \[ \hat{\alpha} = \hat{\omega} = \frac{ 5^2 \times \hat{\lambda}^2 }{ 5^2 \times \hat{\lambda}^2 + \sum_{j=1}^5 \hat{\Psi}_j^2 } = \frac{ 5^2 \times 0.164^2 }{ 5^2 \times 0.164^2 + 0.879 } \approx 0.433 \]
+
+    Comparing Task 2 with Task 1: Cronbach's alpha is only valid under \ttemph{tau-equivalence} and it \ttemph{underestimates} the reliability of the scale.

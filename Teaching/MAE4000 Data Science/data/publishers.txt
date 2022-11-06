@@ -1,4 +1,0 @@
-"publisher" "yr_founded" "Rating"
-"DC" 1934 4,4
-"Marvel" 1939 4,6
-"Image" 1992 3,8

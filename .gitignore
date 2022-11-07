@@ -16,6 +16,7 @@ PRIVATE/
 *.nav
 *.out
 !/Stat_Help/**/*.out
+!/Paper_Antisocial/Mplus/*.out
 *.RData
 *.run.xml
 *.sav
@@ -28,3 +29,7 @@ Teaching/MAE4051_Causal_Inference/Materials from Previous years/MAE4051H22_4_Reg
 .bib.sav.tmp
 ._*
 .DS_Store
+Teaching/Baysian_SEM
+.vscode/
+.pytest_cache/
+.ipynb_checkpoints/

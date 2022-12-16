@@ -23,22 +23,43 @@ if (Sys.info()["sysname"] == "Windows") {
 } else {
     setwd("/tsd/p1708/data/durable/data/registers")
 }
-if (interactive()) {getwd()} else {cat(paste0(
-    "Working directory is now set to ", getwd(), "\n"
-))}
+if (interactive()) {
+    getwd()
+} else {
+    cat(paste0(
+        "Working directory is now set to ", getwd(), "\n"
+    ))
+}
 
 # Read in W21_4952_TAB_KAR_GRS.csv
-if (!interactive()) {print("Start data loading...")}
+if (!interactive()) {
+    print("Start data loading...")
+}
 gpa <- data.table::fread("W21_4952_TAB_KAR_GRS.csv")
 # Display dataset info only if in interactive mode
-if (interactive()) {names(gpa)} else {print("Data loading complete.")}
-if (interactive()) {dim(gpa)}
+if (interactive()) {
+    names(gpa)
+} else {
+    print("Data loading complete.")
+}
+if (interactive()) {
+    dim(gpa)
+}
+
+# Immediately change working directory to personal space
+if (Sys.info()["sysname"] == "Linux") {
+    setwd("/tsd/p1708/home/p1708-tctan/Documents/Paper_GPA")
+} else {
+    setwd("M:/p1708-tctan/Documents/Paper_GPA")
+}
 
 # Only keep 2019 oral exam data (MUN, Column 9)
 oral_2019 <- gpa[which(gpa$AVGDATO == 201906), c(1:4, 9)]
 # Verify the correct N obs have been imported
 n_student <- dim(oral_2019)[1] # Should be 1,073,204 obs
-if (interactive()) {n_student}
+if (interactive()) {
+    n_student
+}
 
 # Inspect unusual marks in the "MUN" column
 if (interactive()) {
@@ -64,15 +85,19 @@ oral_2019$MUN <- car::recode(oral_2019$MUN, "
 # How many times each subject name appeared (with or without valid score)?
 subject_frequency <- sort(
     table(unlist(oral_2019$FAGKODE)),
-    decreasing = T
+    decreasing = TRUE
 )
-if (interactive()) {subject_frequency}
+if (interactive()) {
+    subject_frequency
+}
 
 # Save subject list
 subject_list <- as.character(data.frame(subject_frequency)[, 1])
 # Save total number of subjects
 n_subject <- length(subject_list)
-if (interactive()) {n_subject} # Should be 200 subjects in total
+if (interactive()) {
+    n_subject
+} # Should be 200 subjects in total
 
 # Create a placeholder spreadsheet
 oral_spreadsheet <- data.frame(
@@ -82,7 +107,9 @@ colnames(oral_spreadsheet) <- subject_list
 
 # Stitch MUN and this empty placeholder spreadsheet together
 oral_reshape <- cbind(oral_2019, oral_spreadsheet)
-if (interactive()) {names(oral_reshape)}
+if (interactive()) {
+    names(oral_reshape)
+}
 
 # Set up a progress bar
 library(progress)
@@ -93,7 +120,7 @@ pb <- progress_bar$new( # Refresh progress bar's internal definition
     complete = "=",
     incomplete = "-",
     current = ">",
-    clear = F,
+    clear = FALSE,
     width = 100
 )
 
@@ -126,20 +153,15 @@ for (j in 6:n_iter) { # 200 cycles
 oral_reshaped <- oral_reshape[, -c(4, 5)]
 
 # # Inspect the newly shaped data set
-if (interactive()) {head(oral_reshaped, 20)}
+if (interactive()) {
+    head(oral_reshaped, 20)
+}
 
 # Save to external file.
-if (Sys.info()["sysname"] == "Windows") {
-    data.table::fwrite(oral_reshaped,
-        "M:/p1708-tctan/Documents/03_oral0.csv",
-        row.names = F
-    )
-} else {
-    data.table::fwrite(oral_reshaped,
-        "/tsd/p1708/home/p1708-tctan/Documents/03_oral0.csv",
-        row.names = F
-    )
-}
+data.table::fwrite(oral_reshaped,
+    "./data/03_oral0.csv",
+    row.names = FALSE
+)
 # Should be 661,759 KB in size
 
 
@@ -147,18 +169,13 @@ if (Sys.info()["sysname"] == "Windows") {
 # Part 2: Re-shape rows: one student per row
 
 # In order to maintain consistency, use the standard Student ID list
-if (Sys.info()["sysname"] == "Windows") {
-    student_list <- data.table::fread(
-        "M:/p1708-tctan/Documents/01_student_id.csv"
-    )
-} else {
-    student_list <- data.table::fread(
-        "/tsd/p1708/home/p1708-tctan/Documents/01_student_id.csv"
-    )
-}
+student_list <- data.table::fread("./data/00_student_id.csv")
+
 # Save total number of unique students
 n_unique_student <- dim(student_list)[1] # 64,918 unique students
-if (interactive()) {n_unique_student}
+if (interactive()) {
+    n_unique_student
+}
 
 # Set up a placeholder spreadsheet
 oral_reshaped_final <- matrix(
@@ -186,11 +203,14 @@ pb <- progress_bar$new( # Refresh progress bar's internal definition
     complete = "=",
     incomplete = "-",
     current = ">",
-    clear = F,
+    clear = FALSE,
     width = 100
 )
 
-for (i in 1:n_iter) {pb$tick()
+for (i in 1:n_iter) {
+    # Insert progress bar here
+    pb$tick() # Update progress bar
+
     # Pull out lines that share the same Student ID
     student_temp <- oral_reshaped[which(
         oral_reshaped[, 1] == as.character(student_list[i, 1])
@@ -198,7 +218,7 @@ for (i in 1:n_iter) {pb$tick()
 
     # Collapse multiple lines into one line
     student_temp_oral <- parallel::mclapply(student_temp[, -c(1:3)],
-    function(x) max(x, na.rm = T), mc.cores = n_cores)
+    function(x) max(x, na.rm = TRUE), mc.cores = n_cores)
 
     # In cases where, same person, same subject, but multiple marks,
     # take the maximum, because I do not know which score was given first.
@@ -220,17 +240,10 @@ for (i in 1:n_iter) {pb$tick()
 }
 
 # Save oral exam marks
-if (Sys.info()["sysname"] == "Windows") {
-    data.table::fwrite(oral_reshaped_final,
-        "M:/p1708-tctan/Documents/03_oral1.csv",
-        row.names = F
-    )
-} else {
-    data.table::fwrite(oral_reshaped_final,
-        "/tsd/p1708/home/p1708-tctan/Documents/03_oral1.csv",
-        row.names = F
-    )
-}
+data.table::fwrite(oral_reshaped_final,
+    "./data/03_oral1.csv",
+    row.names = FALSE
+)
 # Should be 14,480 KB in size
 
 

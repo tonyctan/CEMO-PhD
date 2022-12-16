@@ -13,202 +13,146 @@
 # Computer environment (store-view-edit-execute): any-any-any-TSD
 
 #####      Begin script      #####
- ###                          ### 
-  #                            #  
+###                          ###
+#                            #
 
-# Point working directory to ~/Documents, depending on OS
+# Point working directory to the GPA paper folder depending on OS
 if (Sys.info()["sysname"] == "Windows") {
-    setwd("M:/p1708-tctan/Documents")
+    setwd("M:/p1708-tctan/Documents/Paper_GPA/")
 } else {
-    setwd("/tsd/p1708/home/p1708-tctan/Documents/")
+    setwd("/tsd/p1708/home/p1708-tctan/Documents/Paper_GPA")
 }
-if (interactive()) {getwd()} else {cat(paste0(
-    "Working directory is now set to ", getwd(), "\n"
-))}
 
-# Read in minor_3_plus (N = 57730, the most restrictive dataset)
-if (!interactive()) {print("Start data loading...")}
-difficulty <- data.table::fread("./Rolf/60618.csv")
-if (interactive()) {names(difficulty)} else {print("Data loading complete.")}
-if (interactive()) {dim(difficulty)}
+if (interactive()) {
+    getwd()
+} else {
+    cat(paste0(
+        "Working directory is now set to ", getwd(), "\n"
+    ))
+}
 
-# Save subjects' codes and names
-subj_code <- names(difficulty)[-c(1:8)]
-subj_name <- c(
-    "Written Norwegian",
-    "Oral Norwegian",
-    "Written English",
-    "Oral English",
-    "Mathematics",
-    "Natural Sciences",
-    "Social Sciences",
-    "Religion",
-    "Music",
-    "Arts and Handcraft",
-    "Physical Education",
-    "Food and Health",
-    "Mathematics (written exam)",
-    "English (written exam)",
-    "Norwegian (written exam)",
-    "English (oral exam)",
-    "Norwegian (oral exam)"
+# Set up some bookshelves to receive IRT results
+
+# Difficulty thresholds
+pcm_par_holder <- matrix(NA,
+    nrow = 5 * (12 + 3 + 2),    # 5 parameters each, 17 subjects
+    ncol = 10                   # 10 multiple imputed datasets
+)
+pcm_SE_holder <- matrix(NA,
+    nrow = 5 * (12 + 3 + 2), # 5 parameters each, 17 subjects
+    ncol = 10 # 10 multiple imputed datasets
 )
 
-# Load R package `mirt`
-suppressWarnings(suppressMessages(library(mirt)))
+# Model fit statistics
+pcm_outfit_holder <- matrix(NA, nrow = 17, ncol = 10)
+pcm_zoutfit_holder <- matrix(NA, nrow = 17, ncol = 10)
+pcm_infit_holder <- matrix(NA, nrow = 17, ncol = 10)
+pcm_zinfit_holder <- matrix(NA, nrow = 17, ncol = 10)
 
-# Partial credit model
-pcm <- mirt(difficulty[,c(9:25)], itemtype = "Rasch", SE = T)
-pcm_coef <- coef(pcm, printSE = T, IRTpars = T, as.data.frame = T)
+# Expected item value
+pcm_expected_holder <- matrix(NA, nrow = 17, ncol = 10)
+
+# Iterate PCM over 10 multiple imputed datasets
+for (k in 1:10) {
+    # Read in one MI dataset at a time
+    gpa <- data.table::fread(paste0(
+        "./05_mi/05_mi__IMPDATA",
+        k,
+        ".dat"
+    ))
+    # Run partial credit model (PCM)
+    pcm <- mirt::mirt(gpa[, c(9:25)],
+        itemtype = "Rasch", SE = TRUE
+    )
+
+    # Extract PCM coefficients
+    pcm_coef <- mirt::coef(pcm,
+        printSE = TRUE, IRTpars = TRUE, as.data.frame = TRUE
+    )
+    # Remove GroupPars (the last 2 rows)
+    pcm_coef <- pcm_coef[-c(nrow(pcm_coef), nrow(pcm_coef) - 1), ]
+    # Remove IRT discrimination parameter because they all equal to 1
+    pcm_coef <- pcm_coef[-c(seq(1, 97, 6)), ]
+    # Save par and SE
+    pcm_par_holder[, k] <- pcm_coef[, 1]
+    pcm_SE_holder[, k] <- pcm_coef[, 2]
+
+    # Extract model fit statistics
+    pcm_fit <- mirt::itemfit(pcm, fit_stats = "infit")
+    pcm_outfit_holder[, k] <- pcm_fit[, 2]
+    pcm_zoutfit_holder[, k] <- pcm_fit[, 3]
+    pcm_infit_holder[, k] <- pcm_fit[, 4]
+    pcm_zinfit_holder[, k] <- pcm_fit[, 5]
+
+    # Extract expected item value for an average student (theta = 0)
+    for (i in 1:17) {
+        pcm_expected_holder[i, k] <- mirt::expected.item(
+            mirt::extract.item(pcm, i),
+            Theta = 0 # The average student
+        )
+    }
+}
+
+# Save bookshelves to CSV
 data.table::fwrite(
-    cbind(row.names(pcm_coef), round(pcm_coef, digits = 3)),
-    "./Rolf/pcm/par_60618.csv"
+    data.table(pcm_par_holder),
+    "./data/11_pcm_par_holder.csv"
 )
-
-# Option response function
-# Auto-print is off in loops, causing corrupted PDFs. Insert print().
-for (i in 1:12) {
-    pdf(file = paste0("./Rolf/pcm/trace/trace_", subj_code[i], ".pdf"))
-    print(directlabels::direct.label(
-        itemplot(pcm, item = i, type = 'trace',
-            theta_lim = c(-11,6),
-            main = paste0(
-                "Trace Plot for ", subj_code[i], " (", subj_name[i], ")"
-            )
-        ), 'top.points'
-    ))
-    dev.off()
-}
-
-# Expected scores
-for (i in 1:12) {
-    pdf(file = paste0("./Rolf/pcm/score/score_", subj_code[i], ".pdf"))
-    print(itemplot(pcm, item = i, type = 'score', CE = T,
-            theta_lim = c(-11,6),
-            main = paste0(
-                "Expected Score for ", subj_code[i], " (", subj_name[i], ")"
-            )
-    ))
-    dev.off()
-}
-
-# Information and standard errors
-for (i in 1:12) {
-    pdf(file = paste0("./Rolf/pcm/info/infoSE_", subj_code[i], ".pdf"))
-    print(itemplot(pcm, item = i, type = 'infoSE', CE = T,
-            theta_lim = c(-11,6),
-            main = paste0(
-                "Information and SE for ", subj_code[i], " (", subj_name[i], ")"
-            )
-    ))
-    dev.off()
-}
-
-# Diagnostic tests
-
-# Empirical reliability (F1 = 0.9537, using both EAP (quick) and MAP (slow))
-fscores(pcm, method = "EAP", full.scores = T, full.scores.SE = T, returnER = T)
-
-# Conditional dependence information
-residuals(pcm)
-
-for (i in 1:12) {
-    pdf(file = paste0("./Rolf/pcm/empirical/emp_", subj_code[i], ".pdf"))
-    print(itemfit(pcm,
-        group.bins = 10,
-        empirical.plot = i,
-        empirical.CI = 0.95,
-        empirical.ploy.collapse = T
-    ))
-    dev.off()
-}
-
-itemfit(pcm,
-    group.bins = 10,
-    empirical.plot = 1,
-    empirical.CI = 0.95,
-    empirical.ploy.collapse = T
-)
-
-
-
-
-
-
-
-
-
-
-
-
-
-# Generalised partial credit model
-gpcm <- mirt(difficulty[,c(9:20)], itemtype = "gpcm", SE = T)
-gpcm_coef <- coef(gpcm, printSE = T, IRTpars = T, as.data.frame = T)
 data.table::fwrite(
-    cbind(row.names(gpcm_coef), round(gpcm_coef, digits = 3)),
-    "./Rolf/gpcm/par.csv"
+    data.table(pcm_SE_holder),
+    "./data/11_pcm_SE_holder.csv"
+)
+data.table::fwrite(
+    data.table(pcm_outfit_holder),
+    "./data/11_pcm_outfit_holder.csv"
+)
+data.table::fwrite(
+    data.table(pcm_zoutfit_holder),
+    "./data/11_pcm_zoutfit_holder.csv"
+)
+data.table::fwrite(
+    data.table(pcm_infit_holder),
+    "./data/11_pcm_infit_holder.csv"
+)
+data.table::fwrite(
+    data.table(pcm_zinfit_holder),
+    "./data/11_pcm_zinfit_holder.csv"
+)
+data.table::fwrite(
+    data.table(pcm_expected_holder),
+    "./data/11_pcm_expected.csv"
 )
 
+# Transform IRT result matrix to list form
+pcm_par_holder <- lapply(
+    seq_len(ncol(pcm_par_holder)),
+    function(i) pcm_par_holder[, i]
+)
+pcm_SE_holder <- lapply(
+    seq_len(ncol(pcm_SE_holder)),
+    function(i) pcm_SE_holder[, i]
+)
+# Pull 10 MI results together using Rubin's Rule
+pcm_mi <- mirt::averageMI(pcm_par_holder, pcm_SE_holder)
 
-# Option response function
-for (i in 1:12) {
-    pdf(file = paste0("./Rolf/gpcm/trace/trace_", subj_code[i], ".pdf"))
-    print(directlabels::direct.label(
-        itemplot(gpcm, item = i, type = 'trace',
-            xlim = c(-6.5,6.5),
-            main = paste0(
-                "Trace Plot for ", subj_code[i], " (", subj_name[i], ")"
-            )
-        ), 'top.points'
-    ))
-    dev.off()
-}
-
-# Expected scores
-for (i in 1:12) {
-    pdf(file = paste0("./Rolf/gpcm/score/score_", subj_code[i], ".pdf"))
-    print(itemplot(gpcm, item = i, type = 'score', CE = T,
-            xlim = c(-6.5,6.5),
-            main = paste0(
-                "Expected Score for ", subj_code[i], " (", subj_name[i], ")"
-            )
-    ))
-    dev.off()
-}
-
-# Information and standard errors
-for (i in 1:12) {
-    pdf(file = paste0("./Rolf/gpcm/info/infoSE_", subj_code[i], ".pdf"))
-    print(itemplot(gpcm, item = i, type = 'infoSE', CE = T,
-            xlim = c(-6.5,6.5),
-            main = paste0(
-                "Information and SE for ", subj_code[i], " (", subj_name[i], ")"
-            )
-    ))
-    dev.off()
-}
-
-# Diagnostic tests
-
-# Empirical reliability (F1 = 0.9537, using both EAP (quick) and MAP (slow))
-fscores(gpcm, method = "EAP", full.scores = T, full.scores.SE = T, returnER = T)
-
-# Conditional dependence information
-residuals(gpcm)
-
-for (i in 1:12) {
-    pdf(file = paste0("./Rolf/gpcm/empirical/emp_", subj_code[i], ".pdf"))
-    print(itemfit(gpcm,
-        group.bins = 10,
-        empirical.plot = i,
-        empirical.CI = 0.95,
-        empirical.ploy.collapse = T
-    ))
-    dev.off()
-}
-
-
+data.table::fwrite(data.table(
+    matrix(pcm_mi[, 1],
+        nrow = 12 + 3 + 2,
+        ncol = 5,
+        byrow = TRUE
+    )),
+    "./data/11_pcm_mi_par.csv",
+    row.names=F, col.names = FALSE
+)
+data.table::fwrite(data.table(
+    matrix(pcm_mi[, 2],
+        nrow = 12 + 3 + 2,
+        ncol = 5,
+        byrow = TRUE
+    )),
+    "./data/11_pcm_mi_SE.csv",
+    row.names=F, col.names = FALSE
+)
 
   #                            #  
  ###                          ### 

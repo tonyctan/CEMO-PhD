@@ -31,30 +31,43 @@
     \usepackage{/Users/tctan/uio/pc/Dokumenter/tt}
 \fi
 
+% Specify relative path to Master bib file
+\addbibresource{../Bibliography/Master.bib}
+
 \title{Identifying Inter-subject Difficulties in Norwegian GPA Data}
 \authorsnames{Tony C. A. Tan}
 \authorsaffiliations{{Centre for Educational Measurement, University of Oslo}}
 \course{Continuous Draft}
 \professor{Prof Rolf V. Olsen \& Dr Astrid M. J. Sands{\o}r}
-\duedate{H{\o}st 2022}
+\duedate{V{\aa}r 2023}
 
-\input{0_Front_matter.tex}
+% \input{0_Front_matter.tex}
 
 \begin{document}
 \maketitle
 
-\input{1_Introduction.tex}  % Use \input{} for Intro.tex so that the title and the first paragraph stay on the same page.
+% \input{1_Introduction.tex}  % Use \input{} for Intro.tex so that the title and the first paragraph stay on the same page.
 
-\input{2_Framework.tex}   % Use \include{} from the second chapter on, such that new chapter, new page.
+\input{2_Framework.tex}
 
 \input{3_Methods.tex}
 
-% \input{4_Results.tex}
+\input{4_Results.tex}
 
 % \input{5_Discussions.tex}
 
 \printbibliography
 
-\include{Appendices/app}
+\include{./Tables/descriptive.tex}
+
+\include{./Figures/expected.tex}
+
+\include{./Figures/grade_level.tex}
+
+\include{./Figures/fit.tex}
+
+\include{./Figures/info.tex}
+
+%\include{Appendices/app}
 
 \end{document}

@@ -1,0 +1,132 @@
+\documentclass[
+% Options for apa7
+    a4paper,                % Paper size
+    jou,                    % Journal format
+    twoside,                % Two-sided printing
+    % donotrepeattitle,       % Start body text without repeating title
+    floatsintext,           % Insert tables and figures with texts
+    biblatex,               % Use BibLaTeX for references
+% Options for hyperref
+    colorlinks=true,        % Colour all links
+    linkcolor=red,          % Cross-references in red
+    anchorcolor=black,      % Keep anchors black
+    citecolor=blue,         % In-text-referencs in blue
+    urlcolor=blue,          % DOIs and URLs are in blue
+    bookmarks=true,         % Generate bookmarks for PDF readers
+    bookmarksopen=false,    % Expand all bookmarks as default
+    bookmarksnumbered=true, % Keep section number in bookmarks
+    % Options for xcolor
+    dvipsnames              % Use colour BrickRed and PineGreen
+]{apa7}
+
+\usepackage{adjustbox}
+
+% Specify absolute path to the tt.sty file, depending on the operating system
+\usepackage{ifplatform}
+\ifwindows
+    \usepackage{M:/pc/Dokumenter/tt}
+\fi
+\iflinux
+    \usepackage{/home/tony/uio/pc/Dokumenter/tt} % Must not use ~ for home directory. Spell in full.
+\fi
+\ifmacosx
+    \usepackage{/Users/tctan/uio/pc/Dokumenter/tt}
+\fi
+
+% Specify project's bib library
+\addbibresource{./Bibliography/Antisocial.bib}
+
+\setlength\parindent{0.4cm}
+
+\title{Parental Mental Distress and Adolescent Antisocial Behavior:\\
+\vspace*{1mm}
+The Mediating Role of Family Conflict and Cohesion}
+\shorttitle{Family Dynamics and Adolescent Antisocial Behavior}
+\leftheader{Skancke, Mausethagen, Tan, {Backer-Gr{\o}ndahl}, \& Bj{\o}rnebekk (2024)}
+\journal{\copyright American Psychological Association}
+\volume{ISSN: 0033-2909}
+\ccoppy{Psychological Bulletin}
+\copnum{2024, Vol. 150, No. 2, 91--117\\
+\href{https://doi.org/10.1037/bul0000447}{http://dx.doi.org/10.1037/bul0000447}}
+
+\authorsnames[1,1,2,3,{1,3}]{
+    Frida T. Skancke,
+    Thea Fahle Mausethagen,
+    \correspondingauthor{Tony C. A. Tan},\\
+    Agathe {Backer-Gr{\o}ndahl},
+    Gunnar Bj{\o}rnebekk%
+}
+
+\authorsaffiliations{
+    {Department of Special Education, University of Oslo},
+    {Centre for Educational Measurement, University of Oslo},
+    {Norwegian Center for Child Behavioral Development, Oslo, Norway}
+}
+
+\authornote{
+    \addORCIDlink{Frida T. Skancke}{0000-0002-4374-7038}
+    \addORCIDlink{Thea Fahle Mausethagen}{0000-0002-4532-4370}
+    \addORCIDlink{Tony C. A. Tan}{0000-0001-6632-3791}
+    \addORCIDlink{Agathe {Backer-Gr{\o}ndahl}}{0000-0003-0933-6531}
+    \addORCIDlink{Gunnar Bj{\o}rnebekk}{0000-0003-2176-7393}
+
+Correspondence concerning this article should be addressed to Tony Tan, Centre for Educational Measurement, University of Oslo, P.O. Box 1161 Forskningsparken, 0318 Oslo, Norway. E-mail: \href{mailto:tctan@uio.no}{tctan@uio.no}.
+}
+
+\abstract{%
+Parental mental distress can have a significant impact on adolescents' antisocial behavior (ASB), and this relationship can be exacerbated or alleviated by family dynamics such as conflict and cohesion. By analyzing responses to clinical questionnaires from 157 Norwegian adolescents and their primary caregivers, this study found a significant mediating role family conflict played in strengthening the relationship between parental mental distress and adolescents' ASB. Family cohesion, on the other hand, asserted insufficient protective effect. Both results are consistent with the family stress model, and highlight the importance of addressing not only individuals' mental health but also family-level factors in preventing and treating adolescent ASB. This insight is robust against measurement errors through the use of Bayesian structural equation models.
+}
+
+\keywords{%
+adolescent antisocial behavior, parental mental distress, family conflict, family cohesion, mediation effect, family stress model, Bayesian structural equation model
+
+\bigskip
+
+\textit{Supplemental materials:} \href{https://doi.org/10.1037/bul0000447.supp}{http://dx.doi.org/10.1037/bul0000447.supp}
+}
+\begin{document}
+\maketitle
+
+\setcounter{page}{91}
+
+\input{1_Introduction.tex}  % Use \input{} for Intro.tex so that the title and the first paragraph stay on the same page.
+
+% \input{2_Framework.tex}
+
+\input{3_Methods.tex}
+
+\input{4_Results.tex}
+
+\input{5_Discussion.tex}
+
+\input{6_Back_matter.tex}
+
+\printbibliography
+
+% Figures
+\onecolumn
+\include{./Figures/tikz/results_bayes.tex}
+
+% Tables
+
+\include{./Tables/demographic.tex}
+
+\include{./Tables/descriptive.tex}
+
+\include{./Tables/sigma.tex}
+
+\include{./Tables/lat_PMH.tex}
+
+\include{./Tables/results1.tex}
+
+\include{./Tables/results2.tex}
+
+\appendix
+
+\include{Appendices/ethics}
+
+\include{Appendices/latent}
+
+%\include{Appendices/code}
+
+\end{document}

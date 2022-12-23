@@ -1,0 +1,126 @@
+\documentclass[
+% Options for apa7
+    a4paper,                % Paper size
+    11pt,                   % Font size
+    man,                    % Format as manuscript
+    % donotrepeattitle,       % Start body text without repeating title
+    floatsintext,           % Insert tables and figures with texts
+    biblatex,               % Use BibLaTeX for references
+% Options for hyperref
+    colorlinks=true,        % Colour all links
+    linkcolor=red,          % Cross-references in red
+    anchorcolor=black,      % Keep anchors black
+    citecolor=blue,         % In-text-referencs in blue
+    urlcolor=blue,          % DOIs and URLs are in blue
+    bookmarks=true,         % Generate bookmarks for PDF readers
+    bookmarksopen=false,    % Expand all bookmarks as default
+    bookmarksnumbered=true, % Keep section number in bookmarks
+    % Options for xcolor
+    dvipsnames              % Use colour BrickRed and PineGreen
+]{apa7}
+
+% Specify absolute path to the tt.sty file, depending on the operating system
+\usepackage{ifplatform}
+\ifwindows
+    \usepackage{M:/pc/Dokumenter/tt}
+\fi
+\iflinux
+    \usepackage{/home/tony/uio/pc/Dokumenter/tt} % Must not use ~ for home directory. Spell in full.
+\fi
+\ifmacosx
+    \usepackage{/Users/tctan/uio/pc/Dokumenter/tt}
+\fi
+
+% Specify project's bib library
+\addbibresource{./Bibliography/Antisocial.bib}
+
+\title{Parental Mental Distress and Adolescent Antisocial Behavior:\\The Mediating Role of Family Conflict and Cohesion}
+
+\authorsnames[1,1,2,3,{1,3}]{
+    Frida T. Skancke,
+    Thea Fahle Mausethagen,
+    \correspondingauthor{Tony C. A. Tan},\\
+    Agathe {Backer-Gr{\o}ndahl},
+    Gunnar Bj{\o}rnebekk%
+}
+
+\authorsaffiliations{
+    {Department of Special Education, University of Oslo},
+    {Centre for Educational Measurement, University of Oslo},
+    {Norwegian Center for Child Behavioral Development, Oslo, Norway}
+}
+
+\authornote{
+    \hspace*{-2.5mm} % Align 1st author with the rest
+    \addORCIDlink{Frida T. Skancke}{0000-0002-4374-7038}
+
+    \addORCIDlink{Thea Fahle Mausethagen}{0000-0002-4532-4370}
+
+    \addORCIDlink{Tony C. A. Tan}{0000-0001-6632-3791}
+
+    \addORCIDlink{Agathe {Backer-Gr{\o}ndahl}}{0000-0003-0933-6531}
+
+    \addORCIDlink{Gunnar Bj{\o}rnebekk}{0000-0003-2176-7393}
+
+Correspondence concerning this paper should be addressed to Tony Tan, Centre for Educational Measurement, University of Oslo, P.O. Box 1161 Forskningsparken, 0318 Oslo, Norway. E-mail: \href{mailto:tctan@uio.no}{tctan@uio.no}.
+}
+
+\shorttitle{Familial Factors and Adolescent Antisocial Behavior}
+
+\leftheader{Skancke, Mausethagen, Tan, {Backer-Gr{\o}ndahl}, \& Bj{\o}rnebekk (2023)}
+%\leftheader{}
+
+% Turn off page numbering for the front matter
+\pagenumbering{gobble}
+\input{0_Front_matter.tex}
+
+\begin{document}
+\maketitle
+
+% Turn on page numbering for the main matter
+\pagenumbering{arabic}
+% Reset page number to 1
+\setcounter{page}{1}
+
+
+\input{1_Introduction.tex}  % Use \input{} for Intro.tex so that the title and the first paragraph stay on the same page.
+
+% \input{2_Framework.tex}
+
+\input{3_Methods.tex}
+
+\input{4_Results.tex}
+
+\input{5_Discussion.tex}
+
+\newpage
+\input{6_Back_matter.tex}
+
+\printbibliography
+
+% Figures
+\onecolumn
+
+\include{./Figures/tikz/results_bayes.tex}
+
+% Tables
+
+\include{./Tables/demographic.tex}
+
+\include{./Tables/descriptive.tex}
+
+\include{./Tables/sigma.tex}
+
+\include{./Tables/results1.tex}
+
+\include{./Tables/results2.tex}
+
+\appendix
+
+\include{Appendices/ethics}
+
+\include{Appendices/latent}
+
+%\include{Appendices/code}
+
+\end{document}

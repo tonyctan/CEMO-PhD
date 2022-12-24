@@ -1,0 +1,96 @@
+TITLE: 
+    Parental mental health and youth's antisocial behaviour
+
+DATA: 
+    file = "N:\no-backup\Frida og Thea\mi_asb.dat";
+
+VARIABLE: 
+    names = 
+        Y_AGE P_AGE SIB INC                             ! Demographics
+        scl8_01  scl8_02  scl8_03  scl8_04  scl8_05     ! Mental health
+        scl8_06  scl8_07  scl8_08
+        cbcl002  cbcl026  cbcl028  cbcl039  cbcl043     ! Rule-breaking behaviour
+        cbcl063  cbcl067  cbcl072  cbcl073  cbcl081 
+        cbcl082  cbcl090  cbcl096  cbcl099  cbcl101
+        cbcl105  cbcl106
+        cbcl003  cbcl016  cbcl019  cbcl020  cbcl021     ! Aggression
+        cbcl022  cbcl023  cbcl037  cbcl057  cbcl068
+        cbcl086  cbcl087  cbcl088  cbcl089  cbcl094 
+        cbcl095  cbcl097  cbcl104
+        fes_01  fes_11  fes_21  fes_31  fes_41          ! Cohesion
+        fes_51  fes_61  fes_71  fes_81
+        fes_03  fes_13  fes_23  fes_33  fes_43          ! Conflict
+        fes_53  fes_63  fes_73  fes_83
+        PMH_sum                                         ! Parental mental health
+        CON_sum                                         ! Family conflict
+        COH_sum                                         ! Family cohesion
+        ASB_sum                                         ! Youth's antisocial behavior
+        SES                                             ! Socioeconomic status
+        ;
+
+    usevariables = 
+        Y_AGE P_AGE SIB INC
+        scl8_01  scl8_02  scl8_03  scl8_04  scl8_05
+        scl8_06  scl8_07  scl8_08
+        cbcl002  cbcl026  cbcl028  cbcl039  cbcl043
+        cbcl063  cbcl067  cbcl072  cbcl073  cbcl081 
+        cbcl082  cbcl090  cbcl096  cbcl099  cbcl101
+        cbcl105  cbcl106
+        cbcl003  cbcl016  cbcl019  cbcl020  cbcl021
+        cbcl022  cbcl023  cbcl037  cbcl057  cbcl068
+        cbcl086  cbcl087  cbcl088  cbcl089  cbcl094 
+        cbcl095  cbcl097  cbcl104
+        fes_01  fes_11  fes_21  fes_31  fes_41
+        fes_51  fes_61  fes_71  fes_81
+        fes_03  fes_13  fes_23  fes_33  fes_43
+        fes_53  fes_63  fes_73  fes_83
+        PMH_sum CON_sum COH_sum ASB_sum
+        SES
+        ;
+
+    missing = all (-99);                                ! -99 denotes missing data
+
+DATA IMPUTATION:
+    impute =
+        Y_AGE P_AGE SIB INC
+        scl8_01  scl8_02  scl8_03  scl8_04  scl8_05
+        scl8_06  scl8_07  scl8_08
+        cbcl002  cbcl026  cbcl028  cbcl039  cbcl043
+        cbcl063  cbcl067  cbcl072  cbcl073  cbcl081 
+        cbcl082  cbcl090  cbcl096  cbcl099  cbcl101
+        cbcl105  cbcl106
+        cbcl003  cbcl016  cbcl019  cbcl020  cbcl021
+        cbcl022  cbcl023  cbcl037  cbcl057  cbcl068
+        cbcl086  cbcl087  cbcl088  cbcl089  cbcl094 
+        cbcl095  cbcl097  cbcl104
+        fes_01  fes_11  fes_21  fes_31  fes_41
+        fes_51  fes_61  fes_71  fes_81
+        fes_03  fes_13  fes_23  fes_33  fes_43
+        fes_53  fes_63  fes_73  fes_83
+        PMH_sum CON_sum COH_sum ASB_sum
+        SES (c)
+        ;
+
+    ndatasets = 10;
+
+    save = imp*.dat;
+
+ANALYSIS:
+    estimator = mlr;                                    ! Restricted maximum likelihood
+
+    processors = 4;                                     ! 4 cores
+    chains = 4;                                         ! 4 MCMC chains
+    thin = 20;                                          ! Draw every 20 iterations
+
+MODEL: 
+! Path analysis
+
+    ASB_sum on PMH_sum;                                 ! Direct effect
+
+    ASB_sum on
+        Y_AGE P_AGE SIB INC                             ! Control variables
+        ;
+
+OUTPUT: 
+    stdyx;                                              ! Standarized output
+    cinterval;                                          ! Confidence intervals

@@ -1,0 +1,170 @@
+TITLE: 
+    Parental mental health and youth antisocial behaviour
+
+DATA: 
+    file = "N:\no-backup\Frida og Thea\mi_asb.dat";
+
+VARIABLE: 
+    names = 
+        Y_AGE P_AGE SIB INC                             ! Demographics
+        scl8_01  scl8_02  scl8_03  scl8_04  scl8_05     ! Mental health
+        scl8_06  scl8_07  scl8_08
+        cbcl002  cbcl026  cbcl028  cbcl039  cbcl043     ! Rule-breaking behaviour
+        cbcl063  cbcl067  cbcl072  cbcl073  cbcl081 
+        cbcl082  cbcl090  cbcl096  cbcl099  cbcl101
+        cbcl105  cbcl106
+        cbcl003  cbcl016  cbcl019  cbcl020  cbcl021     ! Aggression
+        cbcl022  cbcl023  cbcl037  cbcl057  cbcl068
+        cbcl086  cbcl087  cbcl088  cbcl089  cbcl094 
+        cbcl095  cbcl097  cbcl104
+        fes_01  fes_11  fes_21  fes_31  fes_41          ! Cohesion
+        fes_51  fes_61  fes_71  fes_81
+        fes_03  fes_13  fes_23  fes_33  fes_43          ! Conflict
+        fes_53  fes_63  fes_73  fes_83
+        PMH_sum                                         ! Parental mental health
+        CON_sum                                         ! Family conflict
+        COH_sum                                         ! Family cohesion
+        ASB_sum                                         ! Youth's antisocial behavior
+        SES                                             ! Socioeconomic status
+        ;
+
+    usevariables = 
+        Y_AGE P_AGE SIB INC
+        scl8_01  scl8_02  scl8_03  scl8_04  scl8_05
+        scl8_06  scl8_07  scl8_08
+        cbcl002  cbcl026  cbcl028  cbcl039  cbcl043
+        cbcl063  cbcl067  cbcl072  cbcl073  cbcl081 
+        cbcl082  cbcl090  cbcl096  cbcl099  cbcl101
+        cbcl105  cbcl106
+        cbcl003  cbcl016  cbcl019  cbcl020  cbcl021
+        cbcl022  cbcl023  cbcl037  cbcl057  cbcl068
+        cbcl086  cbcl087  cbcl088  cbcl089  cbcl094 
+        cbcl095  cbcl097  cbcl104
+        fes_01  fes_11  fes_21  fes_31  fes_41
+        fes_51  fes_61  fes_71  fes_81
+        fes_03  fes_13  fes_23  fes_33  fes_43
+        fes_53  fes_63  fes_73  fes_83
+        PMH_sum CON_sum COH_sum ASB_sum
+        SES
+        ;
+
+    missing = all (-99);                                ! -99 denotes missing data
+
+DATA IMPUTATION:
+    impute =
+        Y_AGE P_AGE SIB INC
+        scl8_01  scl8_02  scl8_03  scl8_04  scl8_05
+        scl8_06  scl8_07  scl8_08
+        cbcl002  cbcl026  cbcl028  cbcl039  cbcl043
+        cbcl063  cbcl067  cbcl072  cbcl073  cbcl081 
+        cbcl082  cbcl090  cbcl096  cbcl099  cbcl101
+        cbcl105  cbcl106
+        cbcl003  cbcl016  cbcl019  cbcl020  cbcl021
+        cbcl022  cbcl023  cbcl037  cbcl057  cbcl068
+        cbcl086  cbcl087  cbcl088  cbcl089  cbcl094 
+        cbcl095  cbcl097  cbcl104
+        fes_01  fes_11  fes_21  fes_31  fes_41
+        fes_51  fes_61  fes_71  fes_81
+        fes_03  fes_13  fes_23  fes_33  fes_43
+        fes_53  fes_63  fes_73  fes_83
+        PMH_sum CON_sum COH_sum ASB_sum
+        SES (c)
+        ;
+
+    ndatasets = 10;
+
+    save = imp*.dat;
+
+ANALYSIS:
+    estimator = bayes;                                  ! Bayesian estimation
+
+    processors = 4;                                     ! Use 4 CPU cores
+    chains = 4;                                         ! 4 MCMC chains
+    thin = 20;                                          ! Draw every 20 iterations
+
+MODEL: 
+
+! Measurement part
+
+    ! Input variable
+    PMH_lat by                                          ! Parental mental health
+        scl8_01  scl8_02  scl8_03  scl8_04  scl8_05     
+        scl8_06  scl8_07  scl8_08
+        ;
+
+    ! Outcome variable
+    RBB_lat by                                          ! Rule-breaking behaviour
+        cbcl002  cbcl026  cbcl028  cbcl039  cbcl043
+        cbcl063  cbcl067  cbcl072  cbcl073  cbcl081 
+        cbcl082  cbcl090  cbcl096  cbcl099  cbcl101
+        cbcl105  cbcl106
+        ;
+    AGG_lat by                                          ! Aggression
+        cbcl003  cbcl016  cbcl019  cbcl020  cbcl021
+        cbcl022  cbcl023  cbcl037  cbcl057  cbcl068
+        cbcl086  cbcl087  cbcl088  cbcl089  cbcl094 
+        cbcl095  cbcl097  cbcl104
+        ;
+    ASB_lat by                                          ! Antisocial behavior
+        RBB_lat AGG_lat
+        ;
+
+    ! Mediators
+    COH_lat by                                          ! Cohesion
+        fes_01  fes_11  fes_21  fes_31  fes_41          
+        fes_51  fes_61  fes_71  fes_81
+        ;
+    CON_lat by                                          ! Conflict
+        fes_03  fes_13  fes_23  fes_33  fes_43
+        fes_53  fes_63  fes_73  fes_83
+        ;
+
+
+! Structural part
+
+    CON_lat on PMH_lat (a1);                            ! Mediator: conflict
+    COH_lat on PMH_lat (a2);                            ! Mediator: cohesion
+    ASB_lat on                                          ! Outcome variable
+        CON_lat (b1)
+        COH_lat (b2)
+        PMH_lat (d)
+        ;
+    
+    ASB_lat on                                          ! Control variables
+        Y_AGE (c1)
+        P_AGE (c2)
+        SIB (c3)
+        INC (c4)
+        ;
+
+! Covariance
+    RBB_lat with AGG_lat (f1);                          ! rule-breaking bahavior
+                                                        ! with aggression
+    CON_lat with COH_lat (f2);                          ! family conflict with
+                                                        ! family cohesion
+MODEL PRIORS:
+    a1~N(0.413, 0.079**);
+    a2~N(-0.300, 0.070**);
+    b1~N(0.270, 0.075**);
+    b2~N(-0.056, 0.070**);
+    d~N(0.268, 0.072**);
+    c1~N(0.102, 0.077**);
+    c2~N(-0.068, 0.084**);
+    c3~N(0.097, 0.085**);
+    c4~N(0.049, 0.065**);
+    f1~U(-1, 1);
+    f2~U(-1, 1);
+
+MODEL CONSTRAINT:
+    new(ind1);
+    ind1 = a1 * b1;                                     ! Indirect path PMH--CON--ASB
+    
+    new(ind2);
+    ind2 = a2 * b2;                                     ! Indirect path PMH--COH--ASB
+
+    new(tot);
+    tot = ind1 + ind2 + d;                              ! Total effect
+
+OUTPUT: 
+    stdyx;                                              ! Standarized output
+    cinterval;                                          ! Credibility intervals

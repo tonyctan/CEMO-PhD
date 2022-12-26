@@ -1,0 +1,51 @@
+\ttptikz{fig:bayes}{Structural Equation Model Predicting Youth's Antisocial Behavior}{
+\begin{tikzpicture}[
+    manvar/.style={rectangle,draw=black,minimum width=1.5cm},
+    latvar/.style={ellipse,draw=black,minimum width=1.5cm,minimum height=1cm},
+    convar/.style={rectangle,draw=black!25!white,minimum width=1.5cm},
+    mean/.style={fill=black!10!white,regular polygon,regular polygon sides=3},
+    ->,>=stealth',semithick,
+    bend angle=-45,
+    decoration={
+        zigzag,
+        amplitude=1pt,
+        segment length=1mm,
+        post=lineto,
+        post length=4pt
+    }
+]
+
+% Set parental mental health (input variable, X)
+\node[latvar] (X) at (0,0) {PMH};
+
+% Set family conflict and family cohesion (mediators, M)
+\node[latvar] (M1) at (5,2.5) {CON};
+\node[latvar] (M2) at (5,-2.5) {COH};
+
+% Set antisocial behaviour (outcome variable, Y)
+\node[latvar] (Y) at (13,0) {ASB};
+
+% Link X to M
+\draw[->,line width=2*0.500mm] (X.east) to node[above,sloped] {\press{0.502}{***}{0.074}} (M1.west);
+\draw[->,line width=2*0.434mm] (X.east) to node[above,sloped] {\press{-0.434}{***}{0.080}} (M2.west);
+
+% Lind M to Y
+\draw[->,line width=2*0.512mm] (M1.east) to node[above,sloped] {\press{0.512}{**}{0.143}} (Y.west);
+\draw[->,dashed] (M2.east) to (Y.west);
+
+% Link X to Y
+\draw[->,line width=2*0.347mm] (X.east) to node[above,pos=0.72] {\press{0.347}{***}{0.108}} (Y.west);
+
+% Covariance between M1 and M2
+\draw[black!25!white,<->,line width=2*0.530mm] (M1.south) to [bend right] (M2.north);
+
+% Control variable (HAR)
+\node[manvar] (S) at (13,-2.5) {HAR};
+
+% Link SES to Y
+\draw[->,line width=2*0.210mm] (S.north) to node[above,sloped] {\press{-0.210}{**}{0.083}} (Y.south);
+
+\end{tikzpicture}
+}{This structural equation model predicts youth's antisocial/externalizing behavior (ASB) from parental mental health (PMH), with mediating effects from family conflict (CON) and family cohesion (COH). Variables in ellipses are latent constructs (see \cref{app:latent}). Standardized regression coefficients are computed using Bayes estimator \parencite{depaoli:2021} and averaged over ten imputed datasets \parencite{little:2020, vanbuuren:2018}. Solid lines are visualized in proportion to their estimates while dashed lines represent nonsignificant relations at $\alpha=.05$ level. Parental perception of economic hardship (HAR) is only significantly related to the outcome variable ASB. All control variables are nonsignificant and are omitted from the diagram.\\
+    $^* p < .05$. $^{**} p < .01$. $^{***} p < .001$.
+}

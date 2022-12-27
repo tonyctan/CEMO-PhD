@@ -1,0 +1,647 @@
+Mplus VERSION 8.3
+MUTHEN & MUTHEN
+02/14/2023   1:34 PM
+
+INPUT INSTRUCTIONS
+
+  TITLE:
+      Parental mental health and youth antisocial behaviour
+      Exploratory factor analysis for aggression (AGG)
+
+  DATA:
+      file = "N:\no-backup\Frida og Thea\Mplus\5.dat";
+
+  VARIABLE:
+      names =
+          YAGE PAGE SIB INC                           ! Demographics
+          scl8_01 scl8_02 scl8_03 scl8_04 scl8_05     ! Parental mental health
+          scl8_06 scl8_07 scl8_08                     !   (PMH)
+          cbcl002 cbcl026 cbcl028 cbcl039 cbcl043     ! Rule-breaking behaviour
+          cbcl063 cbcl067 cbcl072 cbcl073 cbcl081     !   (RBB)
+          cbcl082 cbcl090 cbcl096 cbcl099 cbcl101
+          cbcl105 cbcl106
+          cbcl003 cbcl016 cbcl019 cbcl020 cbcl021     ! Aggression
+          cbcl022 cbcl023 cbcl037 cbcl057 cbcl068     !   (AGG)
+          cbcl086 cbcl087 cbcl088 cbcl089 cbcl094
+          cbcl095 cbcl097 cbcl104
+          fes_01 fes_11 fes_21 fes_31 fes_41          ! Family cohesion
+          fes_51 fes_61 fes_71 fes_81                 !   (COH)
+          fes_03 fes_13 fes_23 fes_33 fes_43          ! Family conflict
+          fes_53 fes_63 fes_73 fes_83                 !   (CON)
+          PMH_sum                                     ! PMH sum score
+          CON_sum                                     ! CON sum score
+          COH_sum                                     ! COH sum score
+          ASB_sum                                     ! ASB sum score
+          SES                                         ! Socioeconomic status
+          ;
+
+      usevariables =                                  ! AGG 18 items
+          cbcl003 cbcl016 cbcl019 cbcl020 cbcl021
+          cbcl022 cbcl023 cbcl037 cbcl057 cbcl068
+          cbcl086 cbcl087 cbcl088 cbcl089 cbcl094
+          cbcl095 cbcl097 cbcl104
+          ;
+
+      categorical =                                   ! Likert scale
+          cbcl003 cbcl016 cbcl019 cbcl020 cbcl021
+          cbcl022 cbcl023 cbcl037 cbcl057 cbcl068
+          cbcl086 cbcl087 cbcl088 cbcl089 cbcl094
+          cbcl095 cbcl097 cbcl104
+          ;
+
+      missing = all (-99);                            ! -99 denotes missing data
+
+  ANALYSIS:
+      type = efa 1 1;                                 ! 1-factor?
+      estimator = wlsmv;                              ! Weighted least square
+      processors = 4;                                 ! Use 4 CPU cores
+
+  OUTPUT:
+      modindices (all);                               ! Modification indices
+
+
+
+INPUT READING TERMINATED NORMALLY
+
+
+
+
+Parental mental health and youth antisocial behaviour
+Exploratory factor analysis for aggression (AGG)
+
+SUMMARY OF ANALYSIS
+
+Number of groups                                                 1
+Number of observations                                         157
+
+Number of dependent variables                                   18
+Number of independent variables                                  0
+Number of continuous latent variables                            0
+
+Observed dependent variables
+
+  Binary and ordered categorical (ordinal)
+   CBCL003     CBCL016     CBCL019     CBCL020     CBCL021     CBCL022
+   CBCL023     CBCL037     CBCL057     CBCL068     CBCL086     CBCL087
+   CBCL088     CBCL089     CBCL094     CBCL095     CBCL097     CBCL104
+
+
+Estimator                                                    WLSMV
+Rotation                                                    GEOMIN
+Row standardization                                    CORRELATION
+Type of rotation                                           OBLIQUE
+Epsilon value                                               Varies
+Maximum number of iterations                                  1000
+Convergence criterion                                    0.500D-04
+Maximum number of steepest descent iterations                   20
+Maximum number of iterations for H1                           2000
+Convergence criterion for H1                             0.100D-03
+Optimization Specifications for the Exploratory Factor Analysis
+Rotation Algorithm
+  Number of random starts                                       30
+  Maximum number of iterations                               10000
+  Derivative convergence criterion                       0.100D-04
+Link                                                        PROBIT
+
+Input data file(s)
+  N:\no-backup\Frida og Thea\Mplus\5.dat
+
+Input data format  FREE
+
+
+SUMMARY OF DATA
+
+     Number of missing data patterns             1
+
+
+COVARIANCE COVERAGE OF DATA
+
+Minimum covariance coverage value   0.100
+
+
+     PROPORTION OF DATA PRESENT
+
+
+           Covariance Coverage
+              CBCL003       CBCL016       CBCL019       CBCL020       CBCL021
+              ________      ________      ________      ________      ________
+ CBCL003        1.000
+ CBCL016        1.000         1.000
+ CBCL019        1.000         1.000         1.000
+ CBCL020        1.000         1.000         1.000         1.000
+ CBCL021        1.000         1.000         1.000         1.000         1.000
+ CBCL022        1.000         1.000         1.000         1.000         1.000
+ CBCL023        1.000         1.000         1.000         1.000         1.000
+ CBCL037        1.000         1.000         1.000         1.000         1.000
+ CBCL057        1.000         1.000         1.000         1.000         1.000
+ CBCL068        1.000         1.000         1.000         1.000         1.000
+ CBCL086        1.000         1.000         1.000         1.000         1.000
+ CBCL087        1.000         1.000         1.000         1.000         1.000
+ CBCL088        1.000         1.000         1.000         1.000         1.000
+ CBCL089        1.000         1.000         1.000         1.000         1.000
+ CBCL094        1.000         1.000         1.000         1.000         1.000
+ CBCL095        1.000         1.000         1.000         1.000         1.000
+ CBCL097        1.000         1.000         1.000         1.000         1.000
+ CBCL104        1.000         1.000         1.000         1.000         1.000
+
+
+           Covariance Coverage
+              CBCL022       CBCL023       CBCL037       CBCL057       CBCL068
+              ________      ________      ________      ________      ________
+ CBCL022        1.000
+ CBCL023        1.000         1.000
+ CBCL037        1.000         1.000         1.000
+ CBCL057        1.000         1.000         1.000         1.000
+ CBCL068        1.000         1.000         1.000         1.000         1.000
+ CBCL086        1.000         1.000         1.000         1.000         1.000
+ CBCL087        1.000         1.000         1.000         1.000         1.000
+ CBCL088        1.000         1.000         1.000         1.000         1.000
+ CBCL089        1.000         1.000         1.000         1.000         1.000
+ CBCL094        1.000         1.000         1.000         1.000         1.000
+ CBCL095        1.000         1.000         1.000         1.000         1.000
+ CBCL097        1.000         1.000         1.000         1.000         1.000
+ CBCL104        1.000         1.000         1.000         1.000         1.000
+
+
+           Covariance Coverage
+              CBCL086       CBCL087       CBCL088       CBCL089       CBCL094
+              ________      ________      ________      ________      ________
+ CBCL086        1.000
+ CBCL087        1.000         1.000
+ CBCL088        1.000         1.000         1.000
+ CBCL089        1.000         1.000         1.000         1.000
+ CBCL094        1.000         1.000         1.000         1.000         1.000
+ CBCL095        1.000         1.000         1.000         1.000         1.000
+ CBCL097        1.000         1.000         1.000         1.000         1.000
+ CBCL104        1.000         1.000         1.000         1.000         1.000
+
+
+           Covariance Coverage
+              CBCL095       CBCL097       CBCL104
+              ________      ________      ________
+ CBCL095        1.000
+ CBCL097        1.000         1.000
+ CBCL104        1.000         1.000         1.000
+
+
+UNIVARIATE PROPORTIONS AND COUNTS FOR CATEGORICAL VARIABLES
+
+    CBCL003
+      Category 1    0.146           23.000
+      Category 2    0.382           60.000
+      Category 3    0.471           74.000
+    CBCL016
+      Category 1    0.669          105.000
+      Category 2    0.287           45.000
+      Category 3    0.045            7.000
+    CBCL019
+      Category 1    0.414           65.000
+      Category 2    0.280           44.000
+      Category 3    0.306           48.000
+    CBCL020
+      Category 1    0.554           87.000
+      Category 2    0.287           45.000
+      Category 3    0.159           25.000
+    CBCL021
+      Category 1    0.561           88.000
+      Category 2    0.312           49.000
+      Category 3    0.127           20.000
+    CBCL022
+      Category 1    0.172           27.000
+      Category 2    0.420           66.000
+      Category 3    0.408           64.000
+    CBCL023
+      Category 1    0.414           65.000
+      Category 2    0.395           62.000
+      Category 3    0.191           30.000
+    CBCL037
+      Category 1    0.414           65.000
+      Category 2    0.325           51.000
+      Category 3    0.261           41.000
+    CBCL057
+      Category 1    0.592           93.000
+      Category 2    0.325           51.000
+      Category 3    0.083           13.000
+    CBCL068
+      Category 1    0.484           76.000
+      Category 2    0.306           48.000
+      Category 3    0.210           33.000
+    CBCL086
+      Category 1    0.204           32.000
+      Category 2    0.452           71.000
+      Category 3    0.344           54.000
+    CBCL087
+      Category 1    0.268           42.000
+      Category 2    0.401           63.000
+      Category 3    0.331           52.000
+    CBCL088
+      Category 1    0.510           80.000
+      Category 2    0.299           47.000
+      Category 3    0.191           30.000
+    CBCL089
+      Category 1    0.554           87.000
+      Category 2    0.287           45.000
+      Category 3    0.159           25.000
+    CBCL094
+      Category 1    0.669          105.000
+      Category 2    0.248           39.000
+      Category 3    0.083           13.000
+    CBCL095
+      Category 1    0.331           52.000
+      Category 2    0.331           52.000
+      Category 3    0.338           53.000
+    CBCL097
+      Category 1    0.580           91.000
+      Category 2    0.318           50.000
+      Category 3    0.102           16.000
+    CBCL104
+      Category 1    0.637          100.000
+      Category 2    0.242           38.000
+      Category 3    0.121           19.000
+
+
+
+RESULTS FOR EXPLORATORY FACTOR ANALYSIS
+
+
+           EIGENVALUES FOR SAMPLE CORRELATION MATRIX
+                  1             2             3             4             5
+              ________      ________      ________      ________      ________
+               10.072         1.359         1.230         0.954         0.844
+
+
+           EIGENVALUES FOR SAMPLE CORRELATION MATRIX
+                  6             7             8             9            10
+              ________      ________      ________      ________      ________
+                0.633         0.550         0.440         0.400         0.366
+
+
+           EIGENVALUES FOR SAMPLE CORRELATION MATRIX
+                 11            12            13            14            15
+              ________      ________      ________      ________      ________
+                0.331         0.226         0.205         0.142         0.116
+
+
+           EIGENVALUES FOR SAMPLE CORRELATION MATRIX
+                 16            17            18
+              ________      ________      ________
+                0.068         0.053         0.011
+
+
+EXPLORATORY FACTOR ANALYSIS WITH 1 FACTOR(S):
+
+
+MODEL FIT INFORMATION
+
+Number of Free Parameters                       18
+
+Chi-Square Test of Model Fit
+
+          Value                            350.993*
+          Degrees of Freedom                   135
+          P-Value                           0.0000
+
+*   The chi-square value for MLM, MLMV, MLR, ULSMV, WLSM and WLSMV cannot be used
+    for chi-square difference testing in the regular way.  MLM, MLR and WLSM
+    chi-square difference testing is described on the Mplus website.  MLMV, WLSMV,
+    and ULSMV difference testing is done using the DIFFTEST option.
+
+RMSEA (Root Mean Square Error Of Approximation)
+
+          Estimate                           0.101
+          90 Percent C.I.                    0.088  0.114
+          Probability RMSEA <= .05           0.000
+
+CFI/TLI
+
+          CFI                                0.938
+          TLI                                0.929
+
+Chi-Square Test of Model Fit for the Baseline Model
+
+          Value                           3616.008
+          Degrees of Freedom                   153
+          P-Value                           0.0000
+
+SRMR (Standardized Root Mean Square Residual)
+
+          Value                              0.103
+
+
+
+MINIMUM ROTATION FUNCTION VALUE      10.23363
+
+
+
+           GEOMIN ROTATED LOADINGS (* significant at 5% level)
+                  1
+              ________
+ CBCL003        0.874*
+ CBCL016        0.807*
+ CBCL019        0.648*
+ CBCL020        0.744*
+ CBCL021        0.843*
+ CBCL022        0.768*
+ CBCL023        0.473*
+ CBCL037        0.816*
+ CBCL057        0.780*
+ CBCL068        0.764*
+ CBCL086        0.634*
+ CBCL087        0.724*
+ CBCL088        0.759*
+ CBCL089        0.667*
+ CBCL094        0.764*
+ CBCL095        0.803*
+ CBCL097        0.784*
+ CBCL104        0.817*
+
+
+           GEOMIN FACTOR CORRELATIONS (* significant at 5% level)
+                  1
+              ________
+      1         1.000
+
+
+           ESTIMATED RESIDUAL VARIANCES
+              CBCL003       CBCL016       CBCL019       CBCL020       CBCL021
+              ________      ________      ________      ________      ________
+                0.235         0.349         0.580         0.447         0.290
+
+
+           ESTIMATED RESIDUAL VARIANCES
+              CBCL022       CBCL023       CBCL037       CBCL057       CBCL068
+              ________      ________      ________      ________      ________
+                0.410         0.776         0.334         0.391         0.416
+
+
+           ESTIMATED RESIDUAL VARIANCES
+              CBCL086       CBCL087       CBCL088       CBCL089       CBCL094
+              ________      ________      ________      ________      ________
+                0.598         0.475         0.423         0.555         0.416
+
+
+           ESTIMATED RESIDUAL VARIANCES
+              CBCL095       CBCL097       CBCL104
+              ________      ________      ________
+                0.355         0.385         0.333
+
+
+           S.E. GEOMIN ROTATED LOADINGS
+                  1
+              ________
+ CBCL003        0.030
+ CBCL016        0.044
+ CBCL019        0.061
+ CBCL020        0.046
+ CBCL021        0.037
+ CBCL022        0.042
+ CBCL023        0.070
+ CBCL037        0.036
+ CBCL057        0.042
+ CBCL068        0.045
+ CBCL086        0.057
+ CBCL087        0.050
+ CBCL088        0.045
+ CBCL089        0.055
+ CBCL094        0.052
+ CBCL095        0.038
+ CBCL097        0.040
+ CBCL104        0.041
+
+
+           S.E. GEOMIN FACTOR CORRELATIONS
+                  1
+              ________
+      1         0.000
+
+
+           S.E. ESTIMATED RESIDUAL VARIANCES
+              CBCL003       CBCL016       CBCL019       CBCL020       CBCL021
+              ________      ________      ________      ________      ________
+                0.052         0.071         0.079         0.069         0.062
+
+
+           S.E. ESTIMATED RESIDUAL VARIANCES
+              CBCL022       CBCL023       CBCL037       CBCL057       CBCL068
+              ________      ________      ________      ________      ________
+                0.065         0.066         0.059         0.065         0.069
+
+
+           S.E. ESTIMATED RESIDUAL VARIANCES
+              CBCL086       CBCL087       CBCL088       CBCL089       CBCL094
+              ________      ________      ________      ________      ________
+                0.072         0.072         0.068         0.073         0.079
+
+
+           S.E. ESTIMATED RESIDUAL VARIANCES
+              CBCL095       CBCL097       CBCL104
+              ________      ________      ________
+                0.061         0.063         0.066
+
+
+           Est./S.E. GEOMIN ROTATED LOADINGS
+                  1
+              ________
+ CBCL003       29.475
+ CBCL016       18.348
+ CBCL019       10.654
+ CBCL020       16.039
+ CBCL021       22.745
+ CBCL022       18.101
+ CBCL023        6.748
+ CBCL037       22.652
+ CBCL057       18.682
+ CBCL068       16.809
+ CBCL086       11.191
+ CBCL087       14.504
+ CBCL088       16.942
+ CBCL089       12.171
+ CBCL094       14.809
+ CBCL095       21.030
+ CBCL097       19.418
+ CBCL104       20.095
+
+
+           Est./S.E. GEOMIN FACTOR CORRELATIONS
+                  1
+              ________
+      1         0.000
+
+
+           Est./S.E. ESTIMATED RESIDUAL VARIANCES
+              CBCL003       CBCL016       CBCL019       CBCL020       CBCL021
+              ________      ________      ________      ________      ________
+                4.534         4.919         7.359         6.476         4.641
+
+
+           Est./S.E. ESTIMATED RESIDUAL VARIANCES
+              CBCL022       CBCL023       CBCL037       CBCL057       CBCL068
+              ________      ________      ________      ________      ________
+                6.282        11.680         5.671         5.998         5.986
+
+
+           Est./S.E. ESTIMATED RESIDUAL VARIANCES
+              CBCL086       CBCL087       CBCL088       CBCL089       CBCL094
+              ________      ________      ________      ________      ________
+                8.333         6.566         6.218         7.604         5.273
+
+
+           Est./S.E. ESTIMATED RESIDUAL VARIANCES
+              CBCL095       CBCL097       CBCL104
+              ________      ________      ________
+                5.775         6.076         5.023
+
+
+MODIFICATION INDICES
+
+
+     MODIFICATION INDICES FOR ANALYSIS WITH 1 FACTOR(S)
+
+
+
+     MODIFICATION INDICES
+
+
+           THETA
+              CBCL003       CBCL016       CBCL019       CBCL020       CBCL021
+              ________      ________      ________      ________      ________
+ CBCL003        0.000
+ CBCL016        0.924         0.000
+ CBCL019        0.094         0.915         0.000
+ CBCL020        2.037         7.889         1.222         0.000
+ CBCL021        0.001         5.003         2.683        96.934         0.000
+ CBCL022        1.193         0.955         0.197         1.608         0.236
+ CBCL023        0.983         0.135         0.950         0.015         0.536
+ CBCL037        0.753         0.108         3.870         2.670         3.393
+ CBCL057        0.150         1.086         0.069         0.198         0.258
+ CBCL068        0.012         0.054         0.117         0.177         0.356
+ CBCL086        0.012         3.845         5.533         3.011         0.389
+ CBCL087        0.388         8.239         0.016         3.036         1.547
+ CBCL088        0.000         3.547         3.073         4.045         6.954
+ CBCL089        2.978         1.554         0.046         2.118         4.227
+ CBCL094        2.034        26.747         0.085         6.943         3.217
+ CBCL095        5.072         1.768         0.512         0.249         0.530
+ CBCL097        1.187         8.659         2.773         4.827         0.969
+ CBCL104        0.522         0.232         4.445         1.133         1.578
+
+
+           THETA
+              CBCL022       CBCL023       CBCL037       CBCL057       CBCL068
+              ________      ________      ________      ________      ________
+ CBCL022        0.000
+ CBCL023        2.851         0.000
+ CBCL037        0.106         0.013         0.000
+ CBCL057        0.007         0.443         0.005         0.000
+ CBCL068        0.429         0.194         0.021         0.027         0.000
+ CBCL086        0.179         2.577         0.003         0.200         0.347
+ CBCL087        0.260         0.009         2.447         1.267         0.246
+ CBCL088        0.446         1.358         0.000         2.146         0.071
+ CBCL089        0.116         2.557         2.838         0.039         0.587
+ CBCL094        1.052         0.309         0.161         1.648         0.830
+ CBCL095        0.342         0.426         0.110         0.800         1.298
+ CBCL097        0.013         0.148         0.539         6.493         0.419
+ CBCL104        0.299         0.441         1.034         0.142         0.509
+
+
+           THETA
+              CBCL086       CBCL087       CBCL088       CBCL089       CBCL094
+              ________      ________      ________      ________      ________
+ CBCL086        0.000
+ CBCL087       12.469         0.000
+ CBCL088        0.469        13.158         0.000
+ CBCL089        0.957         3.370        20.769         0.000
+ CBCL094        1.422         1.345         1.297         2.120         0.000
+ CBCL095        0.053         0.018         0.407         2.335         2.648
+ CBCL097        0.556         1.180         3.252         0.000         5.565
+ CBCL104        0.128         0.960         0.195         0.678         1.820
+
+
+           THETA
+              CBCL095       CBCL097       CBCL104
+              ________      ________      ________
+ CBCL095        0.000
+ CBCL097        1.239         0.000
+ CBCL104        0.004         0.092         0.000
+
+
+     EXPECTED PARAMETER CHANGE
+
+
+           THETA
+              CBCL003       CBCL016       CBCL019       CBCL020       CBCL021
+              ________      ________      ________      ________      ________
+ CBCL003        0.000
+ CBCL016       -0.105         0.000
+ CBCL019        0.024        -0.095         0.000
+ CBCL020       -0.118        -0.293        -0.109         0.000
+ CBCL021       -0.002        -0.224        -0.163         0.453         0.000
+ CBCL022        0.068        -0.099         0.037        -0.115        -0.042
+ CBCL023        0.090         0.033        -0.097        -0.012        -0.074
+ CBCL037        0.049         0.026         0.137        -0.141        -0.153
+ CBCL057       -0.032         0.078        -0.023        -0.038        -0.038
+ CBCL068        0.008        -0.019        -0.032        -0.035        -0.045
+ CBCL086       -0.008        -0.201        -0.231        -0.177        -0.059
+ CBCL087       -0.046        -0.306        -0.011        -0.163        -0.101
+ CBCL088        0.000        -0.190         0.129        -0.191        -0.255
+ CBCL089       -0.160        -0.111         0.019        -0.139        -0.206
+ CBCL094       -0.165         0.290         0.027        -0.281        -0.173
+ CBCL095        0.120        -0.129        -0.063        -0.041        -0.055
+ CBCL097       -0.100         0.187        -0.165        -0.217        -0.080
+ CBCL104       -0.066         0.036         0.158        -0.095        -0.111
+
+
+           THETA
+              CBCL022       CBCL023       CBCL037       CBCL057       CBCL068
+              ________      ________      ________      ________      ________
+ CBCL022        0.000
+ CBCL023        0.150         0.000
+ CBCL037       -0.026        -0.011         0.000
+ CBCL057        0.007         0.058        -0.005         0.000
+ CBCL068        0.052        -0.043         0.010        -0.014         0.000
+ CBCL086        0.034        -0.162         0.004        -0.043         0.045
+ CBCL087        0.040         0.009        -0.135        -0.095         0.040
+ CBCL088       -0.060        -0.116         0.000        -0.131        -0.022
+ CBCL089       -0.033        -0.161         0.120         0.017        -0.075
+ CBCL094       -0.094         0.052        -0.033        -0.126        -0.076
+ CBCL095        0.042         0.059        -0.024         0.066         0.076
+ CBCL097       -0.009        -0.038        -0.062         0.173        -0.056
+ CBCL104       -0.043         0.059         0.072        -0.033         0.050
+
+
+           THETA
+              CBCL086       CBCL087       CBCL088       CBCL089       CBCL094
+              ________      ________      ________      ________      ________
+ CBCL086        0.000
+ CBCL087        0.228         0.000
+ CBCL088        0.054         0.211         0.000
+ CBCL089        0.085         0.139         0.285         0.000
+ CBCL094       -0.123        -0.111        -0.114        -0.152         0.000
+ CBCL095        0.018         0.010        -0.052        -0.149        -0.158
+ CBCL097        0.060        -0.101        -0.168         0.001         0.155
+ CBCL104       -0.031        -0.082        -0.037        -0.079         0.094
+
+
+           THETA
+              CBCL095       CBCL097       CBCL104
+              ________      ________      ________
+ CBCL095        0.000
+ CBCL097       -0.101         0.000
+ CBCL104       -0.005        -0.023         0.000
+
+
+     Beginning Time:  13:34:41
+        Ending Time:  13:34:41
+       Elapsed Time:  00:00:00
+
+
+
+MUTHEN & MUTHEN
+3463 Stoner Ave.
+Los Angeles, CA  90066
+
+Tel: (310) 391-9971
+Fax: (310) 391-8971
+Web: www.StatModel.com
+Support: Support@StatModel.com
+
+Copyright (c) 1998-2019 Muthen & Muthen

@@ -1,0 +1,406 @@
+Mplus VERSION 8.3
+MUTHEN & MUTHEN
+02/14/2023   1:34 PM
+
+INPUT INSTRUCTIONS
+
+  TITLE:
+      Parental mental health and youth antisocial behaviour
+      Exploratory factor analysis for family conflict (CON)
+
+  DATA:
+      file = "N:\no-backup\Frida og Thea\Mplus\5.dat";
+
+  VARIABLE:
+      names =
+          YAGE PAGE SIB INC                           ! Demographics
+          scl8_01 scl8_02 scl8_03 scl8_04 scl8_05     ! Parental mental health
+          scl8_06 scl8_07 scl8_08                     !   (PMH)
+          cbcl002 cbcl026 cbcl028 cbcl039 cbcl043     ! Rule-breaking behaviour
+          cbcl063 cbcl067 cbcl072 cbcl073 cbcl081     !   (RBB)
+          cbcl082 cbcl090 cbcl096 cbcl099 cbcl101
+          cbcl105 cbcl106
+          cbcl003 cbcl016 cbcl019 cbcl020 cbcl021     ! Aggression
+          cbcl022 cbcl023 cbcl037 cbcl057 cbcl068     !   (AGG)
+          cbcl086 cbcl087 cbcl088 cbcl089 cbcl094
+          cbcl095 cbcl097 cbcl104
+          fes_01 fes_11 fes_21 fes_31 fes_41          ! Family cohesion
+          fes_51 fes_61 fes_71 fes_81                 !   (COH)
+          fes_03 fes_13 fes_23 fes_33 fes_43          ! Family conflict
+          fes_53 fes_63 fes_73 fes_83                 !   (CON)
+          PMH_sum                                     ! PMH sum score
+          CON_sum                                     ! CON sum score
+          COH_sum                                     ! COH sum score
+          ASB_sum                                     ! ASB sum score
+          SES                                         ! Socioeconomic status
+          ;
+
+      usevariables =                                  ! CON 9 items
+          fes_03 fes_13 fes_23 fes_33 fes_43
+          fes_53 fes_63 fes_73 fes_83
+          ;
+
+      categorical =                                   ! Likert scale
+          fes_03 fes_13 fes_23 fes_33 fes_43
+          fes_53 fes_63 fes_73 fes_83
+          ;
+
+      missing = all (-99);                            ! -99 denotes missing data
+
+  ANALYSIS:
+  ANALYSIS:
+      type = efa 1 1;                                 ! 1-factor?
+      estimator = wlsmv;                              ! Weighted least square
+      processors = 4;                                 ! Use 4 CPU cores
+
+  OUTPUT:
+      modindices (all);                               ! Modification indices
+
+
+
+INPUT READING TERMINATED NORMALLY
+
+
+
+
+Parental mental health and youth antisocial behaviour
+Exploratory factor analysis for family conflict (CON)
+
+SUMMARY OF ANALYSIS
+
+Number of groups                                                 1
+Number of observations                                         157
+
+Number of dependent variables                                    9
+Number of independent variables                                  0
+Number of continuous latent variables                            0
+
+Observed dependent variables
+
+  Binary and ordered categorical (ordinal)
+   FES_03      FES_13      FES_23      FES_33      FES_43      FES_53
+   FES_63      FES_73      FES_83
+
+
+Estimator                                                    WLSMV
+Rotation                                                    GEOMIN
+Row standardization                                    CORRELATION
+Type of rotation                                           OBLIQUE
+Epsilon value                                               Varies
+Maximum number of iterations                                  1000
+Convergence criterion                                    0.500D-04
+Maximum number of steepest descent iterations                   20
+Maximum number of iterations for H1                           2000
+Convergence criterion for H1                             0.100D-03
+Optimization Specifications for the Exploratory Factor Analysis
+Rotation Algorithm
+  Number of random starts                                       30
+  Maximum number of iterations                               10000
+  Derivative convergence criterion                       0.100D-04
+Link                                                        PROBIT
+
+Input data file(s)
+  N:\no-backup\Frida og Thea\Mplus\5.dat
+
+Input data format  FREE
+
+
+SUMMARY OF DATA
+
+     Number of missing data patterns             1
+
+
+COVARIANCE COVERAGE OF DATA
+
+Minimum covariance coverage value   0.100
+
+
+     PROPORTION OF DATA PRESENT
+
+
+           Covariance Coverage
+              FES_03        FES_13        FES_23        FES_33        FES_43
+              ________      ________      ________      ________      ________
+ FES_03         1.000
+ FES_13         1.000         1.000
+ FES_23         1.000         1.000         1.000
+ FES_33         1.000         1.000         1.000         1.000
+ FES_43         1.000         1.000         1.000         1.000         1.000
+ FES_53         1.000         1.000         1.000         1.000         1.000
+ FES_63         1.000         1.000         1.000         1.000         1.000
+ FES_73         1.000         1.000         1.000         1.000         1.000
+ FES_83         1.000         1.000         1.000         1.000         1.000
+
+
+           Covariance Coverage
+              FES_53        FES_63        FES_73        FES_83
+              ________      ________      ________      ________
+ FES_53         1.000
+ FES_63         1.000         1.000
+ FES_73         1.000         1.000         1.000
+ FES_83         1.000         1.000         1.000         1.000
+
+
+UNIVARIATE PROPORTIONS AND COUNTS FOR CATEGORICAL VARIABLES
+
+    FES_03
+      Category 1    0.541           85.000
+      Category 2    0.459           72.000
+    FES_13
+      Category 1    0.675          106.000
+      Category 2    0.325           51.000
+    FES_23
+      Category 1    0.624           98.000
+      Category 2    0.376           59.000
+    FES_33
+      Category 1    0.573           90.000
+      Category 2    0.427           67.000
+    FES_43
+      Category 1    0.637          100.000
+      Category 2    0.363           57.000
+    FES_53
+      Category 1    0.764          120.000
+      Category 2    0.236           37.000
+    FES_63
+      Category 1    0.752          118.000
+      Category 2    0.248           39.000
+    FES_73
+      Category 1    0.860          135.000
+      Category 2    0.140           22.000
+    FES_83
+      Category 1    0.720          113.000
+      Category 2    0.280           44.000
+
+
+
+RESULTS FOR EXPLORATORY FACTOR ANALYSIS
+
+
+           EIGENVALUES FOR SAMPLE CORRELATION MATRIX
+                  1             2             3             4             5
+              ________      ________      ________      ________      ________
+                4.621         1.605         0.803         0.672         0.494
+
+
+           EIGENVALUES FOR SAMPLE CORRELATION MATRIX
+                  6             7             8             9
+              ________      ________      ________      ________
+                0.437         0.202         0.096         0.069
+
+
+EXPLORATORY FACTOR ANALYSIS WITH 1 FACTOR(S):
+
+
+MODEL FIT INFORMATION
+
+Number of Free Parameters                        9
+
+Chi-Square Test of Model Fit
+
+          Value                             62.257*
+          Degrees of Freedom                    27
+          P-Value                           0.0001
+
+*   The chi-square value for MLM, MLMV, MLR, ULSMV, WLSM and WLSMV cannot be used
+    for chi-square difference testing in the regular way.  MLM, MLR and WLSM
+    chi-square difference testing is described on the Mplus website.  MLMV, WLSMV,
+    and ULSMV difference testing is done using the DIFFTEST option.
+
+RMSEA (Root Mean Square Error Of Approximation)
+
+          Estimate                           0.091
+          90 Percent C.I.                    0.062  0.121
+          Probability RMSEA <= .05           0.014
+
+CFI/TLI
+
+          CFI                                0.944
+          TLI                                0.926
+
+Chi-Square Test of Model Fit for the Baseline Model
+
+          Value                            670.864
+          Degrees of Freedom                    36
+          P-Value                           0.0000
+
+SRMR (Standardized Root Mean Square Residual)
+
+          Value                              0.132
+
+
+
+MINIMUM ROTATION FUNCTION VALUE       4.36048
+
+
+
+           GEOMIN ROTATED LOADINGS (* significant at 5% level)
+                  1
+              ________
+ FES_03         0.926*
+ FES_13        -0.889*
+ FES_23         0.754*
+ FES_33        -0.735*
+ FES_43         0.698*
+ FES_53         0.702*
+ FES_63        -0.141
+ FES_73         0.287*
+ FES_83         0.720*
+
+
+           GEOMIN FACTOR CORRELATIONS (* significant at 5% level)
+                  1
+              ________
+      1         1.000
+
+
+           ESTIMATED RESIDUAL VARIANCES
+              FES_03        FES_13        FES_23        FES_33        FES_43
+              ________      ________      ________      ________      ________
+                0.142         0.209         0.432         0.459         0.513
+
+
+           ESTIMATED RESIDUAL VARIANCES
+              FES_53        FES_63        FES_73        FES_83
+              ________      ________      ________      ________
+                0.507         0.980         0.917         0.481
+
+
+           S.E. GEOMIN ROTATED LOADINGS
+                  1
+              ________
+ FES_03         0.040
+ FES_13         0.051
+ FES_23         0.071
+ FES_33         0.068
+ FES_43         0.070
+ FES_53         0.084
+ FES_63         0.118
+ FES_73         0.143
+ FES_83         0.075
+
+
+           S.E. GEOMIN FACTOR CORRELATIONS
+                  1
+              ________
+      1         0.000
+
+
+           S.E. ESTIMATED RESIDUAL VARIANCES
+              FES_03        FES_13        FES_23        FES_33        FES_43
+              ________      ________      ________      ________      ________
+                0.074         0.090         0.108         0.101         0.098
+
+
+           S.E. ESTIMATED RESIDUAL VARIANCES
+              FES_53        FES_63        FES_73        FES_83
+              ________      ________      ________      ________
+                0.118         0.033         0.082         0.108
+
+
+           Est./S.E. GEOMIN ROTATED LOADINGS
+                  1
+              ________
+ FES_03        23.075
+ FES_13       -17.524
+ FES_23        10.546
+ FES_33       -10.749
+ FES_43         9.959
+ FES_53         8.363
+ FES_63        -1.195
+ FES_73         2.003
+ FES_83         9.632
+
+
+           Est./S.E. GEOMIN FACTOR CORRELATIONS
+                  1
+              ________
+      1         0.000
+
+
+           Est./S.E. ESTIMATED RESIDUAL VARIANCES
+              FES_03        FES_13        FES_23        FES_33        FES_43
+              ________      ________      ________      ________      ________
+                1.913         2.313         4.005         4.565         5.244
+
+
+           Est./S.E. ESTIMATED RESIDUAL VARIANCES
+              FES_53        FES_63        FES_73        FES_83
+              ________      ________      ________      ________
+                4.296        29.318        11.129         4.468
+
+
+MODIFICATION INDICES
+
+
+     MODIFICATION INDICES FOR ANALYSIS WITH 1 FACTOR(S)
+
+
+
+     MODIFICATION INDICES
+
+
+           THETA
+              FES_03        FES_13        FES_23        FES_33        FES_43
+              ________      ________      ________      ________      ________
+ FES_03         0.000
+ FES_13         0.290         0.000
+ FES_23         0.609         1.767         0.000
+ FES_33         0.034         5.901         0.007         0.000
+ FES_43         2.640         0.079         1.850         1.651         0.000
+ FES_53         3.392         0.344        10.520         2.365         1.133
+ FES_63         1.395         2.445         0.108         0.101         0.028
+ FES_73         0.011         1.636         3.027         0.074         0.169
+ FES_83         1.630         0.001         0.050         0.409         0.155
+
+
+           THETA
+              FES_53        FES_63        FES_73        FES_83
+              ________      ________      ________      ________
+ FES_53         0.000
+ FES_63         0.162         0.000
+ FES_73         0.105        22.805         0.000
+ FES_83         0.750         3.759         1.948         0.000
+
+
+     EXPECTED PARAMETER CHANGE
+
+
+           THETA
+              FES_03        FES_13        FES_23        FES_33        FES_43
+              ________      ________      ________      ________      ________
+ FES_03         0.000
+ FES_13         0.052         0.000
+ FES_23        -0.077         0.143         0.000
+ FES_33         0.018         0.213         0.008         0.000
+ FES_43         0.149         0.030        -0.150         0.141         0.000
+ FES_53        -0.214         0.070         0.297         0.186         0.110
+ FES_63        -0.150         0.197        -0.042        -0.040        -0.021
+ FES_73         0.015         0.195         0.226         0.039        -0.058
+ FES_83         0.122        -0.003        -0.024         0.071        -0.043
+
+
+           THETA
+              FES_53        FES_63        FES_73        FES_83
+              ________      ________      ________      ________
+ FES_53         0.000
+ FES_63        -0.055         0.000
+ FES_73        -0.048         0.549         0.000
+ FES_83        -0.103         0.251         0.187         0.000
+
+
+     Beginning Time:  13:34:44
+        Ending Time:  13:34:44
+       Elapsed Time:  00:00:00
+
+
+
+MUTHEN & MUTHEN
+3463 Stoner Ave.
+Los Angeles, CA  90066
+
+Tel: (310) 391-9971
+Fax: (310) 391-8971
+Web: www.StatModel.com
+Support: Support@StatModel.com
+
+Copyright (c) 1998-2019 Muthen & Muthen

@@ -1,0 +1,411 @@
+Mplus VERSION 8.3
+MUTHEN & MUTHEN
+02/14/2023   1:34 PM
+
+INPUT INSTRUCTIONS
+
+  TITLE:
+      Parental mental health and youth antisocial behaviour
+      Exploratory factor analysis for parental mental health (PMH)
+
+  DATA:
+      file = "N:\no-backup\Frida og Thea\Mplus\5.dat";
+
+  VARIABLE:
+      names =
+          YAGE PAGE SIB INC                           ! Demographics
+          scl8_01 scl8_02 scl8_03 scl8_04 scl8_05     ! Parental mental health
+          scl8_06 scl8_07 scl8_08                     !   (PMH)
+          cbcl002 cbcl026 cbcl028 cbcl039 cbcl043     ! Rule-breaking behaviour
+          cbcl063 cbcl067 cbcl072 cbcl073 cbcl081     !   (RBB)
+          cbcl082 cbcl090 cbcl096 cbcl099 cbcl101
+          cbcl105 cbcl106
+          cbcl003 cbcl016 cbcl019 cbcl020 cbcl021     ! Aggression
+          cbcl022 cbcl023 cbcl037 cbcl057 cbcl068     !   (AGG)
+          cbcl086 cbcl087 cbcl088 cbcl089 cbcl094
+          cbcl095 cbcl097 cbcl104
+          fes_01 fes_11 fes_21 fes_31 fes_41          ! Family cohesion
+          fes_51 fes_61 fes_71 fes_81                 !   (COH)
+          fes_03 fes_13 fes_23 fes_33 fes_43          ! Family conflict
+          fes_53 fes_63 fes_73 fes_83                 !   (CON)
+          PMH_sum                                     ! PMH sum score
+          CON_sum                                     ! CON sum score
+          COH_sum                                     ! COH sum score
+          ASB_sum                                     ! ASB sum score
+          SES                                         ! Socioeconomic status
+          ;
+
+      usevariables =                                  ! PMH 8 items
+          scl8_01 scl8_02 scl8_03 scl8_04 scl8_05
+          scl8_06 scl8_07 scl8_08
+          ;
+
+      categorical =                                   ! Likert scale
+          scl8_01 scl8_02 scl8_03 scl8_04 scl8_05
+          ;
+
+      missing = all (-99);                            ! -99 denotes missing data
+
+  ANALYSIS:
+      type = efa 1 1;                                 ! 1-factor?
+      estimator = wlsmv;                              ! Weighted least square
+      processors = 4;                                 ! Use 4 CPU cores
+
+  OUTPUT:
+      modindices (all);                               ! Modification indices
+
+
+
+INPUT READING TERMINATED NORMALLY
+
+
+
+
+Parental mental health and youth antisocial behaviour
+Exploratory factor analysis for parental mental health (PMH)
+
+SUMMARY OF ANALYSIS
+
+Number of groups                                                 1
+Number of observations                                         157
+
+Number of dependent variables                                    8
+Number of independent variables                                  0
+Number of continuous latent variables                            0
+
+Observed dependent variables
+
+  Continuous
+   SCL8_06     SCL8_07     SCL8_08
+
+  Binary and ordered categorical (ordinal)
+   SCL8_01     SCL8_02     SCL8_03     SCL8_04     SCL8_05
+
+
+Estimator                                                    WLSMV
+Rotation                                                    GEOMIN
+Row standardization                                    CORRELATION
+Type of rotation                                           OBLIQUE
+Epsilon value                                               Varies
+Maximum number of iterations                                  1000
+Convergence criterion                                    0.500D-04
+Maximum number of steepest descent iterations                   20
+Maximum number of iterations for H1                           2000
+Convergence criterion for H1                             0.100D-03
+Optimization Specifications for the Exploratory Factor Analysis
+Rotation Algorithm
+  Number of random starts                                       30
+  Maximum number of iterations                               10000
+  Derivative convergence criterion                       0.100D-04
+Link                                                        PROBIT
+
+Input data file(s)
+  N:\no-backup\Frida og Thea\Mplus\5.dat
+
+Input data format  FREE
+
+
+SUMMARY OF DATA
+
+     Number of missing data patterns             1
+
+
+COVARIANCE COVERAGE OF DATA
+
+Minimum covariance coverage value   0.100
+
+
+     PROPORTION OF DATA PRESENT
+
+
+           Covariance Coverage
+              SCL8_01       SCL8_02       SCL8_03       SCL8_04       SCL8_05
+              ________      ________      ________      ________      ________
+ SCL8_01        1.000
+ SCL8_02        1.000         1.000
+ SCL8_03        1.000         1.000         1.000
+ SCL8_04        1.000         1.000         1.000         1.000
+ SCL8_05        1.000         1.000         1.000         1.000         1.000
+ SCL8_06        1.000         1.000         1.000         1.000         1.000
+ SCL8_07        1.000         1.000         1.000         1.000         1.000
+ SCL8_08        1.000         1.000         1.000         1.000         1.000
+
+
+           Covariance Coverage
+              SCL8_06       SCL8_07       SCL8_08
+              ________      ________      ________
+ SCL8_06        1.000
+ SCL8_07        1.000         1.000
+ SCL8_08        1.000         1.000         1.000
+
+
+UNIVARIATE PROPORTIONS AND COUNTS FOR CATEGORICAL VARIABLES
+
+    SCL8_01
+      Category 1    0.452           71.000
+      Category 2    0.382           60.000
+      Category 3    0.121           19.000
+      Category 4    0.045            7.000
+    SCL8_02
+      Category 1    0.446           70.000
+      Category 2    0.382           60.000
+      Category 3    0.140           22.000
+      Category 4    0.032            5.000
+    SCL8_03
+      Category 1    0.312           49.000
+      Category 2    0.427           67.000
+      Category 3    0.185           29.000
+      Category 4    0.076           12.000
+    SCL8_04
+      Category 1    0.439           69.000
+      Category 2    0.369           58.000
+      Category 3    0.153           24.000
+      Category 4    0.038            6.000
+    SCL8_05
+      Category 1    0.210           33.000
+      Category 2    0.490           77.000
+      Category 3    0.223           35.000
+      Category 4    0.076           12.000
+
+
+
+UNIVARIATE SAMPLE STATISTICS
+
+
+     UNIVARIATE HIGHER-ORDER MOMENT DESCRIPTIVE STATISTICS
+
+         Variable/         Mean/     Skewness/   Minimum/ % with                Percentiles
+        Sample Size      Variance    Kurtosis    Maximum  Min/Max      20%/60%    40%/80%    Median
+
+     SCL8_06               1.057       0.498       0.000   29.30%       0.000      1.000      1.000
+             157.000       0.780      -0.486       3.000    7.01%       1.000      2.000
+     SCL8_07               0.828       0.757       0.000   42.68%       0.000      0.000      1.000
+             157.000       0.741      -0.259       3.000    4.46%       1.000      2.000
+     SCL8_08               0.217       3.133       0.000   83.44%       0.000      0.000      0.000
+             157.000       0.310      10.838       3.000    1.91%       0.000      0.000
+
+
+RESULTS FOR EXPLORATORY FACTOR ANALYSIS
+
+
+           EIGENVALUES FOR SAMPLE CORRELATION MATRIX
+                  1             2             3             4             5
+              ________      ________      ________      ________      ________
+                5.298         0.768         0.591         0.475         0.276
+
+
+           EIGENVALUES FOR SAMPLE CORRELATION MATRIX
+                  6             7             8
+              ________      ________      ________
+                0.247         0.220         0.124
+
+
+EXPLORATORY FACTOR ANALYSIS WITH 1 FACTOR(S):
+
+
+MODEL FIT INFORMATION
+
+Number of Free Parameters                       11
+
+Chi-Square Test of Model Fit
+
+          Value                             80.692*
+          Degrees of Freedom                    20
+          P-Value                           0.0000
+
+*   The chi-square value for MLM, MLMV, MLR, ULSMV, WLSM and WLSMV cannot be used
+    for chi-square difference testing in the regular way.  MLM, MLR and WLSM
+    chi-square difference testing is described on the Mplus website.  MLMV, WLSMV,
+    and ULSMV difference testing is done using the DIFFTEST option.
+
+RMSEA (Root Mean Square Error Of Approximation)
+
+          Estimate                           0.139
+          90 Percent C.I.                    0.108  0.171
+          Probability RMSEA <= .05           0.000
+
+CFI/TLI
+
+          CFI                                0.955
+          TLI                                0.937
+
+Chi-Square Test of Model Fit for the Baseline Model
+
+          Value                           1386.166
+          Degrees of Freedom                    28
+          P-Value                           0.0000
+
+SRMR (Standardized Root Mean Square Residual)
+
+          Value                              0.069
+
+
+
+MINIMUM ROTATION FUNCTION VALUE       5.07670
+
+
+
+           GEOMIN ROTATED LOADINGS (* significant at 5% level)
+                  1
+              ________
+ SCL8_01        0.872*
+ SCL8_02        0.891*
+ SCL8_03        0.849*
+ SCL8_04        0.862*
+ SCL8_05        0.825*
+ SCL8_06        0.773*
+ SCL8_07        0.716*
+ SCL8_08        0.515*
+
+
+           GEOMIN FACTOR CORRELATIONS (* significant at 5% level)
+                  1
+              ________
+      1         1.000
+
+
+           ESTIMATED RESIDUAL VARIANCES
+              SCL8_01       SCL8_02       SCL8_03       SCL8_04       SCL8_05
+              ________      ________      ________      ________      ________
+                0.239         0.206         0.279         0.256         0.320
+
+
+           ESTIMATED RESIDUAL VARIANCES
+              SCL8_06       SCL8_07       SCL8_08
+              ________      ________      ________
+                0.402         0.487         0.734
+
+
+           S.E. GEOMIN ROTATED LOADINGS
+                  1
+              ________
+ SCL8_01        0.026
+ SCL8_02        0.028
+ SCL8_03        0.029
+ SCL8_04        0.030
+ SCL8_05        0.029
+ SCL8_06        0.034
+ SCL8_07        0.043
+ SCL8_08        0.070
+
+
+           S.E. GEOMIN FACTOR CORRELATIONS
+                  1
+              ________
+      1         0.000
+
+
+           S.E. ESTIMATED RESIDUAL VARIANCES
+              SCL8_01       SCL8_02       SCL8_03       SCL8_04       SCL8_05
+              ________      ________      ________      ________      ________
+                0.046         0.049         0.049         0.053         0.047
+
+
+           S.E. ESTIMATED RESIDUAL VARIANCES
+              SCL8_06       SCL8_07       SCL8_08
+              ________      ________      ________
+                0.053         0.062         0.072
+
+
+           Est./S.E. GEOMIN ROTATED LOADINGS
+                  1
+              ________
+ SCL8_01       33.217
+ SCL8_02       32.347
+ SCL8_03       29.520
+ SCL8_04       28.287
+ SCL8_05       28.934
+ SCL8_06       22.442
+ SCL8_07       16.605
+ SCL8_08        7.368
+
+
+           Est./S.E. GEOMIN FACTOR CORRELATIONS
+                  1
+              ________
+      1         0.000
+
+
+           Est./S.E. ESTIMATED RESIDUAL VARIANCES
+              SCL8_01       SCL8_02       SCL8_03       SCL8_04       SCL8_05
+              ________      ________      ________      ________      ________
+                5.219         4.207         5.713         4.875         6.804
+
+
+           Est./S.E. ESTIMATED RESIDUAL VARIANCES
+              SCL8_06       SCL8_07       SCL8_08
+              ________      ________      ________
+                7.541         7.878        10.191
+
+
+MODIFICATION INDICES
+
+
+     MODIFICATION INDICES FOR ANALYSIS WITH 1 FACTOR(S)
+
+
+
+     MODIFICATION INDICES
+
+
+           THETA
+              SCL8_01       SCL8_02       SCL8_03       SCL8_04       SCL8_05
+              ________      ________      ________      ________      ________
+ SCL8_01        0.000
+ SCL8_02       58.735         0.000
+ SCL8_03       19.023        10.699         0.000
+ SCL8_04        4.813        11.385        11.516         0.000
+ SCL8_05        3.983         4.282         3.862         1.718         0.000
+ SCL8_06        5.446         3.267         1.938         0.631         1.163
+ SCL8_07        0.811         0.221         0.015         0.002         0.053
+ SCL8_08        0.123         0.189         0.058         0.337         0.028
+
+
+           THETA
+              SCL8_06       SCL8_07       SCL8_08
+              ________      ________      ________
+ SCL8_06        0.000
+ SCL8_07        3.124         0.000
+ SCL8_08        0.126         0.406         0.000
+
+
+     EXPECTED PARAMETER CHANGE
+
+
+           THETA
+              SCL8_01       SCL8_02       SCL8_03       SCL8_04       SCL8_05
+              ________      ________      ________      ________      ________
+ SCL8_01        0.000
+ SCL8_02        0.291         0.000
+ SCL8_03       -0.233        -0.164         0.000
+ SCL8_04       -0.105        -0.159         0.135         0.000
+ SCL8_05       -0.088        -0.096         0.079         0.053         0.000
+ SCL8_06       -0.139        -0.110         0.082         0.047         0.061
+ SCL8_07       -0.053        -0.027         0.007        -0.003        -0.013
+ SCL8_08        0.014         0.017        -0.010        -0.022        -0.006
+
+
+           THETA
+              SCL8_06       SCL8_07       SCL8_08
+              ________      ________      ________
+ SCL8_06        0.000
+ SCL8_07        0.120         0.000
+ SCL8_08       -0.013         0.023         0.000
+
+
+     Beginning Time:  13:34:37
+        Ending Time:  13:34:38
+       Elapsed Time:  00:00:01
+
+
+
+MUTHEN & MUTHEN
+3463 Stoner Ave.
+Los Angeles, CA  90066
+
+Tel: (310) 391-9971
+Fax: (310) 391-8971
+Web: www.StatModel.com
+Support: Support@StatModel.com
+
+Copyright (c) 1998-2019 Muthen & Muthen

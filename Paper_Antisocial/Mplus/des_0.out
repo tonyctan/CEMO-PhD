@@ -1,0 +1,728 @@
+Mplus VERSION 8.3
+MUTHEN & MUTHEN
+02/14/2023   1:14 PM
+
+INPUT INSTRUCTIONS
+
+  TITLE:
+      Parental mental health and youth antisocial behaviour
+      Descriptive Statistics
+
+  DATA:
+      file = "N:\no-backup\Frida og Thea\mi_asb.dat";
+
+  VARIABLE:
+      names =
+          YAGE PAGE SIB INC                           ! Demographics
+          scl8_01 scl8_02 scl8_03 scl8_04 scl8_05     ! Parental mental health
+          scl8_06 scl8_07 scl8_08                     !   (PMH)
+          cbcl002 cbcl026 cbcl028 cbcl039 cbcl043     ! Rule-breaking behaviour
+          cbcl063 cbcl067 cbcl072 cbcl073 cbcl081     !   (RBB)
+          cbcl082 cbcl090 cbcl096 cbcl099 cbcl101
+          cbcl105 cbcl106
+          cbcl003 cbcl016 cbcl019 cbcl020 cbcl021     ! Aggression
+          cbcl022 cbcl023 cbcl037 cbcl057 cbcl068     !   (AGG)
+          cbcl086 cbcl087 cbcl088 cbcl089 cbcl094
+          cbcl095 cbcl097 cbcl104
+          fes_01 fes_11 fes_21 fes_31 fes_41          ! Family cohesion
+          fes_51 fes_61 fes_71 fes_81                 !   (COH)
+          fes_03 fes_13 fes_23 fes_33 fes_43          ! Family conflict
+          fes_53 fes_63 fes_73 fes_83                 !   (CON)
+          PMH_sum                                     ! PMH sum score
+          CON_sum                                     ! CON sum score
+          COH_sum                                     ! COH sum score
+          ASB_sum                                     ! ASB sum score
+          SES                                         ! Socioeconomic status
+          ;
+
+      usevariables =                                  ! Use all variables
+          YAGE PAGE SIB INC
+          scl8_01 scl8_02 scl8_03 scl8_04 scl8_05
+          scl8_06 scl8_07 scl8_08
+          cbcl002 cbcl026 cbcl028 cbcl039 cbcl043
+          cbcl063 cbcl067 cbcl072 cbcl073 cbcl081
+          cbcl082 cbcl090 cbcl096 cbcl099 cbcl101
+          cbcl105 cbcl106
+          cbcl003 cbcl016 cbcl019 cbcl020 cbcl021
+          cbcl022 cbcl023 cbcl037 cbcl057 cbcl068
+          cbcl086 cbcl087 cbcl088 cbcl089 cbcl094
+          cbcl095 cbcl097 cbcl104
+          fes_01 fes_11 fes_21 fes_31 fes_41
+          fes_51 fes_61 fes_71 fes_81
+          fes_03 fes_13 fes_23 fes_33 fes_43
+          fes_53 fes_63 fes_73 fes_83
+          PMH_sum CON_sum COH_sum ASB_sum
+          SES
+          ;
+
+      categorical =                                   ! Likert scale
+          scl8_01 scl8_02 scl8_03 scl8_04 scl8_05
+          scl8_06 scl8_07 scl8_08
+          cbcl002 cbcl026 cbcl028 cbcl039 cbcl043
+          cbcl063 cbcl067 cbcl072 cbcl073 cbcl081
+          cbcl082 cbcl090 cbcl096 cbcl099 cbcl101
+          cbcl105 cbcl106
+          cbcl003 cbcl016 cbcl019 cbcl020 cbcl021
+          cbcl022 cbcl023 cbcl037 cbcl057 cbcl068
+          cbcl086 cbcl087 cbcl088 cbcl089 cbcl094
+          cbcl095 cbcl097 cbcl104
+          fes_01 fes_11 fes_21 fes_31 fes_41
+          fes_51 fes_61 fes_71 fes_81
+          fes_03 fes_13 fes_23 fes_33 fes_43
+          fes_53 fes_63 fes_73 fes_83
+          ;
+
+      missing = all (-99);                            ! -99 denotes missing data
+
+  DATA IMPUTATION:
+      impute =                                        ! (c) = categorical
+          YAGE PAGE SIB INC
+          scl8_01 (c) scl8_02 (c) scl8_03 (c) scl8_04 (c) scl8_05 (c)
+          scl8_06 (c) scl8_07 (c) scl8_08 (c)
+          cbcl002 (c) cbcl026 (c) cbcl028 (c) cbcl039 (c) cbcl043 (c)
+          cbcl063 (c) cbcl067 (c) cbcl072 (c) cbcl073 (c) cbcl081 (c)
+          cbcl082 (c) cbcl090 (c) cbcl096 (c) cbcl099 (c) cbcl101 (c)
+          cbcl105 (c) cbcl106 (c)
+          cbcl003 (c) cbcl016 (c) cbcl019 (c) cbcl020 (c) cbcl021 (c)
+          cbcl022 (c) cbcl023 (c) cbcl037 (c) cbcl057 (c) cbcl068 (c)
+          cbcl086 (c) cbcl087 (c) cbcl088 (c) cbcl089 (c) cbcl094 (c)
+          cbcl095 (c) cbcl097 (c) cbcl104 (c)
+          fes_01 (c) fes_11 (c) fes_21 (c) fes_31 (c) fes_41 (c)
+          fes_51 (c) fes_61 (c) fes_71 (c) fes_81 (c)
+          fes_03 (c) fes_13 (c) fes_23 (c) fes_33 (c) fes_43 (c)
+          fes_53 (c) fes_63 (c) fes_73 (c) fes_83 (c)
+          PMH_sum CON_sum COH_sum ASB_sum
+          SES (c)
+          ;
+
+      ndatasets = 10;                                 ! Order 10 sets of MI data
+      save = imp*.dat;                                ! Save imputed datasets
+
+  ANALYSIS:
+      type = basic;                                   ! Generate descriptive stat
+      algorithm = integration;                        ! Use integration method
+      processors = 4;                                 ! Use 4 CPU cores
+      chains = 4;                                     ! Initiate 4 MCMC chains
+      mcseed = 2023;                                  ! Set seed for replication
+      thin = 20;                                      ! Draw every 20 iterations
+
+  OUTPUT:
+      sampstat;                                       ! Descriptive statistics
+      stdyx;
+
+
+
+*** ERROR
+   (Err#: 30)
+  Error opening file: implist.dat
+  A list of filenames of generated data will not be created.
+   1 ERROR(S) FOUND IN THE INPUT INSTRUCTIONS
+
+
+
+
+Parental mental health and youth antisocial behaviour
+Descriptive Statistics
+
+SUMMARY OF ANALYSIS
+
+Number of groups                                                 1
+Average number of observations                                 157
+
+Number of replications
+    Requested                                                   10
+    Completed                                                   10
+
+Number of dependent variables                                   70
+Number of independent variables                                  0
+Number of continuous latent variables                            0
+
+Observed dependent variables
+
+  Continuous
+   YAGE        PAGE        SIB         INC         PMH_SUM     CON_SUM
+   COH_SUM     ASB_SUM     SES
+
+  Binary and ordered categorical (ordinal)
+   SCL8_01     SCL8_02     SCL8_03     SCL8_04     SCL8_05     SCL8_06
+   SCL8_07     SCL8_08     CBCL002     CBCL026     CBCL028     CBCL039
+   CBCL043     CBCL063     CBCL067     CBCL072     CBCL073     CBCL081
+   CBCL082     CBCL090     CBCL096     CBCL099     CBCL101     CBCL105
+   CBCL106     CBCL003     CBCL016     CBCL019     CBCL020     CBCL021
+   CBCL022     CBCL023     CBCL037     CBCL057     CBCL068     CBCL086
+   CBCL087     CBCL088     CBCL089     CBCL094     CBCL095     CBCL097
+   CBCL104     FES_01      FES_11      FES_21      FES_31      FES_41
+   FES_51      FES_61      FES_71      FES_81      FES_03      FES_13
+   FES_23      FES_33      FES_43      FES_53      FES_63      FES_73
+   FES_83
+
+
+Variables used for imputation
+
+  Variables imputed as continuous
+   YAGE        PAGE        SIB         INC         PMH_SUM     CON_SUM
+   COH_SUM     ASB_SUM
+
+  Variables imputed as categorical
+   SCL8_01     SCL8_02     SCL8_03     SCL8_04     SCL8_05     SCL8_06
+   SCL8_07     SCL8_08     CBCL002     CBCL026     CBCL028     CBCL039
+   CBCL043     CBCL063     CBCL067     CBCL072     CBCL073     CBCL081
+   CBCL082     CBCL090     CBCL096     CBCL099     CBCL101     CBCL105
+   CBCL106     CBCL003     CBCL016     CBCL019     CBCL020     CBCL021
+   CBCL022     CBCL023     CBCL037     CBCL057     CBCL068     CBCL086
+   CBCL087     CBCL088     CBCL089     CBCL094     CBCL095     CBCL097
+   CBCL104     FES_01      FES_11      FES_21      FES_31      FES_41
+   FES_51      FES_61      FES_71      FES_81      FES_03      FES_13
+   FES_23      FES_33      FES_43      FES_53      FES_63      FES_73
+   FES_83      SES
+
+
+Estimator                                                      MLR
+Information matrix                                        OBSERVED
+Optimization Specifications for the Quasi-Newton Algorithm for
+Continuous Outcomes
+  Maximum number of iterations                                 100
+  Convergence criterion                                  0.100D-05
+Optimization Specifications for the EM Algorithm
+  Maximum number of iterations                                 500
+  Convergence criteria
+    Loglikelihood change                                 0.100D-02
+    Relative loglikelihood change                        0.100D-05
+    Derivative                                           0.100D-02
+Optimization Specifications for the M step of the EM Algorithm for
+Categorical Latent variables
+  Number of M step iterations                                    1
+  M step convergence criterion                           0.100D-02
+  Basis for M step termination                           ITERATION
+Optimization Specifications for the M step of the EM Algorithm for
+Censored, Binary or Ordered Categorical (Ordinal), Unordered
+Categorical (Nominal) and Count Outcomes
+  Number of M step iterations                                    1
+  M step convergence criterion                           0.100D-02
+  Basis for M step termination                           ITERATION
+  Maximum value for logit thresholds                            15
+  Minimum value for logit thresholds                           -15
+  Minimum expected cell size for chi-square              0.100D-01
+Maximum number of iterations for H1                           2000
+Convergence criterion for H1                             0.100D-03
+Optimization algorithm                                         EMA
+Integration Specifications
+  Type                                                    STANDARD
+  Number of integration points                                  15
+  Dimensions of numerical integration                            0
+  Adaptive quadrature                                           ON
+Link                                                         LOGIT
+Specifications for Bayesian Estimation
+  Point estimate                                            MEDIAN
+  Number of Markov chain Monte Carlo (MCMC) chains               4
+  Random seed for the first chain                                0
+  Starting value information                           UNPERTURBED
+  Algorithm used for Markov chain Monte Carlo           GIBBS(PX1)
+  Convergence criterion                                  0.500D-01
+  Maximum number of iterations                               50000
+  K-th iteration used for thinning                              20
+Specifications for Data Imputation
+  Number of imputed data sets                                   10
+  H1 imputation model type                              COVARIANCE
+  Iteration intervals for thinning                             100
+Cholesky                                                       OFF
+
+Input data file(s)
+  N:\no-backup\Frida og Thea\mi_asb.dat
+Input data format  FREE
+
+
+SUMMARY OF DATA FOR THE FIRST DATA SET
+
+     Number of missing data patterns             1
+     Number of y missing data patterns           1
+     Number of u missing data patterns           1
+
+
+SUMMARY OF MISSING DATA PATTERNS FOR THE FIRST DATA SET
+
+
+     MISSING DATA PATTERNS FOR Y (x = not missing)
+
+           1
+ YAGE      x
+ PAGE      x
+ SIB       x
+ INC       x
+ PMH_SUM   x
+ CON_SUM   x
+ COH_SUM   x
+ ASB_SUM   x
+ SES       x
+
+
+     MISSING DATA PATTERN FREQUENCIES FOR Y
+
+    Pattern   Frequency
+          1         157
+
+
+COVARIANCE COVERAGE OF DATA FOR THE FIRST DATA SET
+
+Minimum covariance coverage value   0.100
+
+
+     PROPORTION OF DATA PRESENT FOR Y
+
+
+           Covariance Coverage
+              YAGE          PAGE          SIB           INC           PMH_SUM
+              ________      ________      ________      ________      ________
+ YAGE           1.000
+ PAGE           1.000         1.000
+ SIB            1.000         1.000         1.000
+ INC            1.000         1.000         1.000         1.000
+ PMH_SUM        1.000         1.000         1.000         1.000         1.000
+ CON_SUM        1.000         1.000         1.000         1.000         1.000
+ COH_SUM        1.000         1.000         1.000         1.000         1.000
+ ASB_SUM        1.000         1.000         1.000         1.000         1.000
+ SES            1.000         1.000         1.000         1.000         1.000
+
+
+           Covariance Coverage
+              CON_SUM       COH_SUM       ASB_SUM       SES
+              ________      ________      ________      ________
+ CON_SUM        1.000
+ COH_SUM        1.000         1.000
+ ASB_SUM        1.000         1.000         1.000
+ SES            1.000         1.000         1.000         1.000
+
+
+UNIVARIATE PROPORTIONS AND COUNTS FOR CATEGORICAL VARIABLES
+
+    SCL8_01
+      Category 1    0.449           70.000
+      Category 2    0.385           60.000
+      Category 3    0.122           19.000
+      Category 4    0.045            7.000
+    SCL8_02
+      Category 1    0.442           69.000
+      Category 2    0.385           60.000
+      Category 3    0.141           22.000
+      Category 4    0.032            5.000
+    SCL8_03
+      Category 1    0.308           48.000
+      Category 2    0.429           67.000
+      Category 3    0.186           29.000
+      Category 4    0.077           12.000
+    SCL8_04
+      Category 1    0.436           68.000
+      Category 2    0.372           58.000
+      Category 3    0.154           24.000
+      Category 4    0.038            6.000
+    SCL8_05
+      Category 1    0.205           32.000
+      Category 2    0.494           77.000
+      Category 3    0.224           35.000
+      Category 4    0.077           12.000
+    SCL8_06
+      Category 1    0.288           45.000
+      Category 2    0.429           67.000
+      Category 3    0.212           33.000
+      Category 4    0.071           11.000
+    SCL8_07
+      Category 1    0.423           66.000
+      Category 2    0.365           57.000
+      Category 3    0.167           26.000
+      Category 4    0.045            7.000
+    SCL8_08
+      Category 1    0.833          130.000
+      Category 2    0.135           21.000
+      Category 3    0.013            2.000
+      Category 4    0.019            3.000
+    CBCL002
+      Category 1    0.726          114.000
+      Category 2    0.191           30.000
+      Category 3    0.083           13.000
+    CBCL026
+      Category 1    0.327           51.000
+      Category 2    0.372           58.000
+      Category 3    0.301           47.000
+    CBCL028
+      Category 1    0.135           21.000
+      Category 2    0.445           69.000
+      Category 3    0.419           65.000
+    CBCL039
+      Category 1    0.452           70.000
+      Category 2    0.348           54.000
+      Category 3    0.200           31.000
+    CBCL043
+      Category 1    0.250           39.000
+      Category 2    0.385           60.000
+      Category 3    0.365           57.000
+    CBCL063
+      Category 1    0.583           91.000
+      Category 2    0.288           45.000
+      Category 3    0.128           20.000
+    CBCL067
+      Category 1    0.745          117.000
+      Category 2    0.242           38.000
+      Category 3    0.013            2.000
+    CBCL072
+      Category 1    0.892          140.000
+      Category 2    0.102           16.000
+      Category 3    0.006            1.000
+    CBCL073
+      Category 1    0.962          151.000
+      Category 2    0.032            5.000
+      Category 3    0.006            1.000
+    CBCL081
+      Category 1    0.590           92.000
+      Category 2    0.256           40.000
+      Category 3    0.154           24.000
+    CBCL082
+      Category 1    0.776          121.000
+      Category 2    0.192           30.000
+      Category 3    0.032            5.000
+    CBCL090
+      Category 1    0.288           45.000
+      Category 2    0.321           50.000
+      Category 3    0.391           61.000
+    CBCL096
+      Category 1    0.910          141.000
+      Category 2    0.071           11.000
+      Category 3    0.019            3.000
+    CBCL099
+      Category 1    0.720          113.000
+      Category 2    0.127           20.000
+      Category 3    0.153           24.000
+    CBCL101
+      Category 1    0.455           71.000
+      Category 2    0.269           42.000
+      Category 3    0.276           43.000
+    CBCL105
+      Category 1    0.943          148.000
+      Category 2    0.057            9.000
+    CBCL106
+      Category 1    0.828          130.000
+      Category 2    0.153           24.000
+      Category 3    0.019            3.000
+    CBCL003
+      Category 1    0.147           23.000
+      Category 2    0.378           59.000
+      Category 3    0.474           74.000
+    CBCL016
+      Category 1    0.669          105.000
+      Category 2    0.287           45.000
+      Category 3    0.045            7.000
+    CBCL019
+      Category 1    0.410           64.000
+      Category 2    0.282           44.000
+      Category 3    0.308           48.000
+    CBCL020
+      Category 1    0.554           87.000
+      Category 2    0.287           45.000
+      Category 3    0.159           25.000
+    CBCL021
+      Category 1    0.561           88.000
+      Category 2    0.312           49.000
+      Category 3    0.127           20.000
+    CBCL022
+      Category 1    0.172           27.000
+      Category 2    0.420           66.000
+      Category 3    0.408           64.000
+    CBCL023
+      Category 1    0.413           64.000
+      Category 2    0.394           61.000
+      Category 3    0.194           30.000
+    CBCL037
+      Category 1    0.406           63.000
+      Category 2    0.329           51.000
+      Category 3    0.265           41.000
+    CBCL057
+      Category 1    0.590           92.000
+      Category 2    0.327           51.000
+      Category 3    0.083           13.000
+    CBCL068
+      Category 1    0.484           76.000
+      Category 2    0.306           48.000
+      Category 3    0.210           33.000
+    CBCL086
+      Category 1    0.199           31.000
+      Category 2    0.455           71.000
+      Category 3    0.346           54.000
+    CBCL087
+      Category 1    0.269           42.000
+      Category 2    0.397           62.000
+      Category 3    0.333           52.000
+    CBCL088
+      Category 1    0.506           79.000
+      Category 2    0.301           47.000
+      Category 3    0.192           30.000
+    CBCL089
+      Category 1    0.551           86.000
+      Category 2    0.288           45.000
+      Category 3    0.160           25.000
+    CBCL094
+      Category 1    0.669          105.000
+      Category 2    0.248           39.000
+      Category 3    0.083           13.000
+    CBCL095
+      Category 1    0.327           51.000
+      Category 2    0.333           52.000
+      Category 3    0.340           53.000
+    CBCL097
+      Category 1    0.577           90.000
+      Category 2    0.321           50.000
+      Category 3    0.103           16.000
+    CBCL104
+      Category 1    0.635           99.000
+      Category 2    0.244           38.000
+      Category 3    0.122           19.000
+    FES_01
+      Category 1    0.247           38.000
+      Category 2    0.753          116.000
+    FES_11
+      Category 1    0.227           35.000
+      Category 2    0.773          119.000
+    FES_21
+      Category 1    0.379           58.000
+      Category 2    0.621           95.000
+    FES_31
+      Category 1    0.243           37.000
+      Category 2    0.757          115.000
+    FES_41
+      Category 1    0.405           62.000
+      Category 2    0.595           91.000
+    FES_51
+      Category 1    0.235           36.000
+      Category 2    0.765          117.000
+    FES_61
+      Category 1    0.373           57.000
+      Category 2    0.627           96.000
+    FES_71
+      Category 1    0.409           63.000
+      Category 2    0.591           91.000
+    FES_81
+      Category 1    0.316           48.000
+      Category 2    0.684          104.000
+    FES_03
+      Category 1    0.545           84.000
+      Category 2    0.455           70.000
+    FES_13
+      Category 1    0.669          103.000
+      Category 2    0.331           51.000
+    FES_23
+      Category 1    0.617           95.000
+      Category 2    0.383           59.000
+    FES_33
+      Category 1    0.565           87.000
+      Category 2    0.435           67.000
+    FES_43
+      Category 1    0.636           98.000
+      Category 2    0.364           56.000
+    FES_53
+      Category 1    0.766          118.000
+      Category 2    0.234           36.000
+    FES_63
+      Category 1    0.750          114.000
+      Category 2    0.250           38.000
+    FES_73
+      Category 1    0.856          131.000
+      Category 2    0.144           22.000
+    FES_83
+      Category 1    0.719          110.000
+      Category 2    0.281           43.000
+
+
+
+
+RESULTS FOR BASIC ANALYSIS
+
+NOTE:  These are average results over 10 data sets.
+
+
+     SAMPLE STATISTICS
+
+
+           Means
+              YAGE          PAGE          SIB           INC           PMH_SUM
+              ________      ________      ________      ________      ________
+               14.737        43.930         1.255       420.337        14.612
+
+
+           Means
+              CON_SUM       COH_SUM       ASB_SUM       SES
+              ________      ________      ________      ________
+                3.843         5.974        22.725         2.795
+
+
+           Covariances
+              YAGE          PAGE          SIB           INC           PMH_SUM
+              ________      ________      ________      ________      ________
+ YAGE           2.152
+ PAGE           2.599        47.365
+ SIB           -0.214        -2.122         0.992
+ INC           32.946       347.278       -11.147     50454.801
+ PMH_SUM       -0.098        -3.603         0.049       -76.666        26.695
+ CON_SUM       -0.344         0.881         0.017         5.544         5.125
+ COH_SUM        0.494         1.318        -0.011       -43.311        -3.600
+ ASB_SUM        0.672        -7.110         1.304        57.391        26.047
+ SES           -0.001        -0.316        -0.006       -86.869         0.864
+
+
+           Covariances
+              CON_SUM       COH_SUM       ASB_SUM       SES
+              ________      ________      ________      ________
+ CON_SUM        5.729
+ COH_SUM       -2.502         5.373
+ ASB_SUM       11.800        -7.406       156.648
+ SES            0.459        -0.142        -0.390         0.893
+
+
+           Correlations
+              YAGE          PAGE          SIB           INC           PMH_SUM
+              ________      ________      ________      ________      ________
+ YAGE           1.000
+ PAGE           0.257         1.000
+ SIB           -0.146        -0.310         1.000
+ INC            0.100         0.225        -0.050         1.000
+ PMH_SUM       -0.013        -0.101         0.009        -0.066         1.000
+ CON_SUM       -0.098         0.053         0.007         0.010         0.414
+ COH_SUM        0.145         0.083        -0.005        -0.083        -0.301
+ ASB_SUM        0.037        -0.083         0.105         0.020         0.403
+ SES           -0.001        -0.049        -0.007        -0.409         0.177
+
+
+           Correlations
+              CON_SUM       COH_SUM       ASB_SUM       SES
+              ________      ________      ________      ________
+ CON_SUM        1.000
+ COH_SUM       -0.451         1.000
+ ASB_SUM        0.394        -0.255         1.000
+ SES            0.203        -0.065        -0.033         1.000
+
+
+UNIVARIATE SAMPLE STATISTICS
+
+
+     UNIVARIATE HIGHER-ORDER MOMENT DESCRIPTIVE STATISTICS
+
+         Variable/         Mean/     Skewness/   Minimum/ % with                Percentiles
+        Sample Size      Variance    Kurtosis    Maximum  Min/Max      20%/60%    40%/80%    Median
+
+     YAGE                 14.737      -0.151      10.801    0.64%      13.405     14.338     14.782
+             157.000       2.152      -0.377      17.881    0.64%      15.124     16.071
+     PAGE                 43.930       0.777      29.000    1.27%      38.000     42.000     44.000
+             157.000      47.365       2.963      78.000    0.64%      45.000     49.000
+     SIB                   1.255       0.788       0.000   22.29%       0.000      1.000      1.000
+             157.000       0.992       0.596       5.000    0.64%       1.000      2.000
+     INC                 420.336       1.092       0.000    0.64%     250.000    350.000    387.500
+             156.000   50510.906       2.228    1300.000    1.28%     450.000    600.000
+     PMH_SUM              14.641       1.010       8.000    7.05%      10.000     12.000     14.000
+             156.000      26.666       0.878      32.000    1.28%      15.000     19.000
+     CON_SUM               3.849       0.277       0.000    3.95%       1.000      3.000      4.000
+             152.000       5.721      -1.085       9.000    0.66%       4.000      6.000
+     COH_SUM               5.993      -0.435       1.000    2.63%       4.000      5.000      6.000
+             152.000       5.375      -0.912       9.000   15.79%       7.000      8.000
+     ASB_SUM              22.902       0.219       1.000    1.96%      11.000     18.000     22.000
+             153.000     155.644      -0.784      52.000    1.31%      26.000     34.000
+     SES                   2.795       0.327       1.000    7.69%       2.000      3.000      3.000
+             156.000       0.894       0.289       5.000    6.41%       3.000      3.000
+
+
+SAVEDATA INFORMATION
+
+
+  Save file
+    imp*.dat
+
+  Order of variables
+
+    SCL8_01
+    SCL8_02
+    SCL8_03
+    SCL8_04
+    SCL8_05
+    SCL8_06
+    SCL8_07
+    SCL8_08
+    CBCL002
+    CBCL026
+    CBCL028
+    CBCL039
+    CBCL043
+    CBCL063
+    CBCL067
+    CBCL072
+    CBCL073
+    CBCL081
+    CBCL082
+    CBCL090
+    CBCL096
+    CBCL099
+    CBCL101
+    CBCL105
+    CBCL106
+    CBCL003
+    CBCL016
+    CBCL019
+    CBCL020
+    CBCL021
+    CBCL022
+    CBCL023
+    CBCL037
+    CBCL057
+    CBCL068
+    CBCL086
+    CBCL087
+    CBCL088
+    CBCL089
+    CBCL094
+    CBCL095
+    CBCL097
+    CBCL104
+    FES_01
+    FES_11
+    FES_21
+    FES_31
+    FES_41
+    FES_51
+    FES_61
+    FES_71
+    FES_81
+    FES_03
+    FES_13
+    FES_23
+    FES_33
+    FES_43
+    FES_53
+    FES_63
+    FES_73
+    FES_83
+    YAGE
+    PAGE
+    SIB
+    INC
+    PMH_SUM
+    CON_SUM
+    COH_SUM
+    ASB_SUM
+    SES
+
+  Save file format           Free
+
+  Save file record length    10000
+
+
+     Beginning Time:  13:14:24
+        Ending Time:  13:34:36
+       Elapsed Time:  00:20:12
+
+
+
+MUTHEN & MUTHEN
+3463 Stoner Ave.
+Los Angeles, CA  90066
+
+Tel: (310) 391-9971
+Fax: (310) 391-8971
+Web: www.StatModel.com
+Support: Support@StatModel.com
+
+Copyright (c) 1998-2019 Muthen & Muthen

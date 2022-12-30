@@ -1,0 +1,353 @@
+TITLE:
+    Parental mental health and youth antisocial behaviour
+    3 SEM using 2-factor free cross-loading ASB construct (Bayes)
+
+DATA:
+    file = "N:\no-backup\Frida og Thea\mi_asb.dat";
+
+VARIABLE:
+    names =
+        YAGE PAGE SIB INC                           ! Demographics
+        scl8_01  scl8_02  scl8_03  scl8_04  scl8_05 ! Parental mental health
+        scl8_06  scl8_07  scl8_08                   !   (PMH)
+        cbcl002  cbcl026  cbcl028  cbcl039  cbcl043 ! Rule-breaking behaviour
+        cbcl063  cbcl067  cbcl072  cbcl073  cbcl081 !   (RBB)
+        cbcl082  cbcl090  cbcl096  cbcl099  cbcl101
+        cbcl105  cbcl106
+        cbcl003  cbcl016  cbcl019  cbcl020  cbcl021 ! Aggression
+        cbcl022  cbcl023  cbcl037  cbcl057  cbcl068 !   (AGG)
+        cbcl086  cbcl087  cbcl088  cbcl089  cbcl094
+        cbcl095  cbcl097  cbcl104
+        fes_01  fes_11  fes_21  fes_31  fes_41      ! Family cohesion
+        fes_51  fes_61  fes_71  fes_81              !   (COH)
+        fes_03  fes_13  fes_23  fes_33  fes_43      ! Family conflict
+        fes_53  fes_63  fes_73  fes_83              !   (CON)
+        PMH_sum                                     ! PMH sum score
+        CON_sum                                     ! CON sum score
+        COH_sum                                     ! COH sum score
+        ASB_sum                                     ! ASB sum score
+        SES                                         ! Socioeconomic status
+        ;
+
+    usevariables =                                  ! Discard sum scores
+        YAGE PAGE SIB INC
+        scl8_01  scl8_02  scl8_03  scl8_04  scl8_05
+        scl8_06  scl8_07  scl8_08
+        cbcl002  cbcl026  cbcl028  cbcl039  cbcl043
+        cbcl063  cbcl067  cbcl072  cbcl073  cbcl081
+        cbcl082  cbcl090  cbcl096  cbcl099  cbcl101
+        cbcl105  cbcl106
+        cbcl003  cbcl016  cbcl019  cbcl020  cbcl021
+        cbcl022  cbcl023  cbcl037  cbcl057  cbcl068
+        cbcl086  cbcl087  cbcl088  cbcl089  cbcl094
+        cbcl095  cbcl097  cbcl104
+        fes_01  fes_11  fes_21  fes_31  fes_41
+        fes_51  fes_61  fes_71  fes_81
+        fes_03  fes_13  fes_23  fes_33  fes_43
+        fes_53  fes_63  fes_73  fes_83
+        SES
+        ;
+
+
+    categorical =                                   ! Likert scale
+        scl8_01  scl8_02  scl8_03  scl8_04  scl8_05
+        scl8_06  scl8_07  scl8_08
+        cbcl002  cbcl026  cbcl028  cbcl039  cbcl043
+        cbcl063  cbcl067  cbcl072  cbcl073  cbcl081
+        cbcl082  cbcl090  cbcl096  cbcl099  cbcl101
+        cbcl105  cbcl106
+        cbcl003  cbcl016  cbcl019  cbcl020  cbcl021
+        cbcl022  cbcl023  cbcl037  cbcl057  cbcl068
+        cbcl086  cbcl087  cbcl088  cbcl089  cbcl094
+        cbcl095  cbcl097  cbcl104
+        fes_01  fes_21  fes_31  fes_41
+        fes_51  fes_61  fes_71  fes_81
+        fes_03  fes_13  fes_23  fes_33  fes_43
+        fes_53  fes_73  fes_83
+        ;
+
+    missing = all (-99);                            ! -99 denotes missing data
+
+DATA IMPUTATION:
+    impute =                                        ! (c) = categorical
+        YAGE PAGE SIB INC
+        scl8_01 (c) scl8_02 (c) scl8_03 (c) scl8_04 (c) scl8_05 (c)
+        scl8_06 (c) scl8_07 (c) scl8_08 (c)
+        cbcl002 (c) cbcl026 (c) cbcl028 (c) cbcl039 (c) cbcl043 (c)
+        cbcl063 (c) cbcl067 (c) cbcl072 (c) cbcl073 (c) cbcl081 (c)
+        cbcl082 (c) cbcl090 (c) cbcl096 (c) cbcl099 (c) cbcl101 (c)
+        cbcl105 (c) cbcl106 (c)
+        cbcl003 (c) cbcl016 (c) cbcl019 (c) cbcl020 (c) cbcl021 (c)
+        cbcl022 (c) cbcl023 (c) cbcl037 (c) cbcl057 (c) cbcl068 (c)
+        cbcl086 (c) cbcl087 (c) cbcl088 (c) cbcl089 (c) cbcl094 (c)
+        cbcl095 (c) cbcl097 (c) cbcl104 (c)
+        fes_01 (c) fes_21 (c) fes_31 (c) fes_41 (c)
+        fes_51 (c) fes_61 (c) fes_71 (c) fes_81 (c)
+        fes_03 (c) fes_13 (c) fes_23 (c) fes_33 (c) fes_43 (c)
+        fes_53 (c) fes_73 (c) fes_83 (c)
+        SES (c)
+        ;
+
+    ndatasets = 10;                                 ! Order 10 sets of MI data
+    save = imp*.dat;                                ! Save imputed datasets
+
+ANALYSIS:
+    estimator = bayes;                              ! Bayesian estimation
+    algorithm = gibbs (rw);                         ! Gibbs sampler random walk
+    processors = 4;                                 ! Use 4 CPU cores
+    chains = 4;                                     ! Initiate 4 MCMC chains
+    mcseed = 2023;                                  ! Set seed for replication
+    thin = 20;                                      ! Draw every 20 iterations
+
+MODEL:
+! Measurement part
+
+    ! Input variable (X)
+
+        PMH_lat by                                  ! Parental mental health
+            scl8_01 !(l10)                          ! Do not label 1st entry
+            scl8_02 (l11)                           !   in BY syntax
+            scl8_03 (l12)
+            scl8_04 (l13)
+            scl8_05 (l14)
+            scl8_06 (l15)
+            scl8_07 (l16)
+            scl8_08 (l17)
+            ;
+        ! Residual correlation as per suggestion by EFA
+            scl8_01 with scl8_02 scl8_03 scl8_06;
+            scl8_06 with scl8_07;
+
+    ! Outcome variable (Y)
+
+        ASB1_lat by                                 ! ASB1_lat
+            cbcl026 !(m10)
+            cbcl028 (m11)
+            cbcl039 (m12)
+            cbcl043 (m13)
+            cbcl067 (m14)
+            cbcl073 (m15)
+            cbcl081 (m16)
+            cbcl082 (m17)
+            cbcl090 (m18)
+            cbcl096 (m19)
+            cbcl106 (m1a)
+            cbcl003 (m1b)
+            cbcl016 (m1c)
+            cbcl019 (m1d)
+            cbcl020 (m1e)
+            cbcl021 (m1f)
+            cbcl022 (m1g)
+            cbcl023 (m1h)
+            cbcl037 (m1i)
+            cbcl057 (m1j)
+            cbcl068 (m1k)
+            cbcl086 (m1l)
+            cbcl087 (m1m)
+            cbcl088 (m1n)
+            cbcl089 (m1o)
+            cbcl094 (m1p)
+            cbcl095 (m1q)
+            cbcl097 (m1r)
+            cbcl104 (m1s)
+            ;
+        ASB2_lat by                                 ! ASB2_lat
+            cbcl002 !(m20)
+            cbcl028 (m21)
+            cbcl039 (m22)
+            cbcl043 (m23)
+            cbcl063 (m24)
+            cbcl067 (m25)
+            cbcl072 (m26)
+            cbcl073 (m27)
+            cbcl081 (m28)
+            cbcl082 (m29)
+            cbcl099 (m2a)
+            cbcl101 (m2b)
+            cbcl105 (m2c)
+            cbcl016 (m2d)
+            cbcl019 (m2e)
+            cbcl022 (m2f)
+            cbcl023 (m2g)
+            ;
+        ! Residual correlation as per suggestion by EFA
+            cbcl039 with cbcl063;
+            cbcl043 with cbcl073;
+            cbcl016 with cbcl094;
+            cbcl020 with cbcl021;
+            cbcl087 with cbcl088;
+            cbcl088 with cbcl089;
+        ASB_lat by                                  ! Antisocial behavior
+            ASB1_lat ASB2_lat
+            ;
+            ASB1_lat with ASB2_lat;
+
+    ! Mediators (M)
+
+        COH_lat by                                  ! Family cohesion
+            fes_01 !(l40)
+            fes_11 (l41)
+            fes_21 (l42)
+            fes_31 (l43)
+            fes_41 (l44)
+            fes_51 (l45)
+            fes_61 (l46)
+            fes_71 (l47)
+            fes_81 (l48)
+            ;
+
+        CON_lat by                                  ! Family conflict
+            fes_03 !(l50)
+            fes_13 (l51)
+            fes_23 (l52)
+            fes_33 (l53)
+            fes_43 (l54)
+            fes_53 (l55)
+            fes_63 (l56)
+            fes_73 (l57)
+            fes_83 (l58)
+            ;
+        ! Residual correlation as per suggestion by EFA
+            fes_23 with fes_53;
+
+! Structural part
+
+    CON_lat on PMH_lat (a1);                        ! X -> M1
+    COH_lat on PMH_lat (a2);                        ! X -> M2
+
+    ASB_lat on
+        CON_lat (b1)                                ! M1 -> Y
+        COH_lat (b2)                                ! M2 -> Y
+        PMH_lat (d)                                 ! X -> Y
+        ;
+
+    ASB_lat on                                      ! Control variables
+        YAGE (c1)
+        PAGE (c2)
+        SIB (c3)
+        INC (c4)
+        ;
+
+    ASB_lat on SES (e4);                            ! SES affects X, M and Y?
+    PMH_lat on SES (e1);
+    CON_lat on SES (e2);
+    COH_lat on SES (e3);
+
+    CON_lat with COH_lat (f1);                      ! Family conditions covary
+
+MODEL PRIORS:
+    ! From previous path analyses
+        a1 ~ N(0.493, 0.076**);
+        a2 ~ N(-0.416, 0.082**);
+
+        b1 ~ N(0.482, 0.171**);
+        b2 ~ N(0.063, 0.117**);
+
+        d ~ N(0.317, 0.117**);
+
+        c1 ~ N(-0.003, 0.085**);
+        c2 ~ N(-0.046, 0.108**);
+        c3 ~ N(0.104, 0.094**);
+        c4 ~ N(-0.003, 0.098**);
+
+        e1 ~ N(-0.184, 0.093**);
+        e2 ~ N(-0.041, 0.059**);
+        e3 ~ N(0.110, 0.070**);
+        e4 ~ N(0.024, 0.072**);
+
+        f1 ~ U(-1, 1);
+
+    ! From previous SEM (PMH)
+!       l10 ~ N(0.865, 0.022**);                    ! Do not specify 1st entry
+        l11 ~ N(0.826, 0.034**);                    !   in BY syntax
+        l12 ~ N(0.857, 0.029**);
+        l13 ~ N(0.855, 0.030**);
+        l14 ~ N(0.832, 0.032**);
+        l15 ~ N(0.855, 0.030**);
+        l16 ~ N(0.791, 0.040**);
+        l17 ~ N(0.665, 0.074**);
+
+    ! From EFA (ASB1_lat)
+    !   m10 ~ N(0.525, 0.070**);
+        m11 ~ N(0.713, 0.061**);
+        m12 ~ N(0.347, 0.073**);
+        m13 ~ N(0.528, 0.080**);
+        m14 ~ N(0.354, 0.097**);
+        m15 ~ N(0.461, 0.155**);
+        m16 ~ N(0.538, 0.085**);
+        m17 ~ N(0.319, 0.095**);
+        m18 ~ N(0.645, 0.057**);
+        m19 ~ N(0.517, 0.112**);
+        m1a ~ N(0.737, 0.064**);
+        m1b ~ N(0.873, 0.029**);
+        m1c ~ N(0.815, 0.054**);
+        m1d ~ N(0.656, 0.063**);
+        m1e ~ N(0.718, 0.049**);
+        m1f ~ N(0.827, 0.042**);
+        m1g ~ N(0.781, 0.047**);
+        m1h ~ N(0.464, 0.073**);
+        m1i ~ N(0.818, 0.041**);
+        m1j ~ N(0.799, 0.043**);
+        m1k ~ N(0.762, 0.046**);
+        m1l ~ N(0.622, 0.058**);
+        m1m ~ N(0.712, 0.051**);
+        m1n ~ N(0.768, 0.048**);
+        m1o ~ N(0.671, 0.056**);
+        m1p ~ N(0.768, 0.057**);
+        m1q ~ N(0.803, 0.039**);
+        m1r ~ N(0.796, 0.042**);
+        m1s ~ N(0.821, 0.041**);
+
+    ! From EFA (ASB2_lat)
+    !   m21 ~ N(0.896, 0.039**);
+        m21 ~ N(0.458, 0.073**);
+        m22 ~ N(0.532, 0.070**);
+        m23 ~ N(0.529, 0.074**);
+        m24 ~ N(0.472, 0.088**);
+        m25 ~ N(0.381, 0.102**);
+        m26 ~ N(0.421, 0.138**);
+        m27 ~ N(0.530, 0.128**);
+        m28 ~ N(0.492, 0.086**);
+        m29 ~ N(0.503, 0.089**);
+        m2a ~ N(0.829, 0.045**);
+        m2b ~ N(0.609, 0.068**);
+        m2c ~ N(0.853, 0.117**);
+        m2d ~ N(-0.247, 0.098**);
+        m2e ~ N(-0.204, 0.083**);
+        m2f ~ N(0.257, 0.080**);
+        m2g ~ N(0.300, 0.086**);
+
+    ! From previous SEM (COH)
+    !   l40 ~ N(0.810, 0.034**);
+        l41 ~ N(0.009, 0.125**);
+        l42 ~ N(0.303, 0.105**);
+        l43 ~ N(0.749, 0.068**);
+        l44 ~ N(-0.535, 0.091**);
+        l45 ~ N(0.789, 0.059**);
+        l46 ~ N(0.784, 0.054**);
+        l47 ~ N(0.805, 0.050**);
+        l48 ~ N(0.764, 0.060**);
+
+    ! From previous SEM (CON)
+    !   l50 ~ N(0.852, 0.032**);
+        l51 ~ N(-0.838, 0.047**);
+        l52 ~ N(0.764, 0.059**);
+        l53 ~ N(-0.730, 0.064**);
+        l54 ~ N(0.698, 0.069**);
+        l55 ~ N(0.643, 0.082**);
+        l56 ~ N(-0.122, 0.117**);
+        l57 ~ N(0.345, 0.122**);
+        l58 ~ N(0.751, 0.066**);
+
+MODEL CONSTRAINT:
+    new(ind1);                                      ! Indirect path:
+    ind1 = a1 * b1;                                 !   PMH -> CON -> ASB
+
+    new(ind2);                                      ! Indirect path
+    ind2 = a2 * b2;                                 !   PMH -> COH -> ASB
+
+    new(tot);
+    tot = ind1 + ind2 + d;                          ! Total effect
+
+OUTPUT:
+    stdyx;                                          ! Standarized output

@@ -1,0 +1,109 @@
+TITLE:
+    Parental mental health and youth antisocial behaviour
+    0 Direct effect only (MLR)
+
+DATA:
+    file = "N:\no-backup\Frida og Thea\mi_asb.dat";
+
+VARIABLE:
+    names =
+        YAGE PAGE SIB INC                           ! Demographics
+        scl8_01 scl8_02 scl8_03 scl8_04 scl8_05     ! Parental mental health
+        scl8_06 scl8_07 scl8_08                     !   (PMH)
+        cbcl002 cbcl026 cbcl028 cbcl039 cbcl043     ! Rule-breaking behaviour
+        cbcl063 cbcl067 cbcl072 cbcl073 cbcl081     !   (RBB)
+        cbcl082 cbcl090 cbcl096 cbcl099 cbcl101
+        cbcl105 cbcl106
+        cbcl003 cbcl016 cbcl019 cbcl020 cbcl021     ! Aggression
+        cbcl022 cbcl023 cbcl037 cbcl057 cbcl068     !   (AGG)
+        cbcl086 cbcl087 cbcl088 cbcl089 cbcl094
+        cbcl095 cbcl097 cbcl104
+        fes_01 fes_11 fes_21 fes_31 fes_41          ! Family cohesion
+        fes_51 fes_61 fes_71 fes_81                 !   (COH)
+        fes_03 fes_13 fes_23 fes_33 fes_43          ! Family conflict
+        fes_53 fes_63 fes_73 fes_83                 !   (CON)
+        PMH_sum                                     ! PMH sum score
+        CON_sum                                     ! CON sum score
+        COH_sum                                     ! COH sum score
+        ASB_sum                                     ! ASB sum score
+        SES                                         ! Socioeconomic status
+        ;
+
+    usevariables =                                  ! Use all variables
+        YAGE PAGE SIB INC
+        scl8_01 scl8_02 scl8_03 scl8_04 scl8_05
+        scl8_06 scl8_07 scl8_08
+        cbcl002 cbcl026 cbcl028 cbcl039 cbcl043
+        cbcl063 cbcl067 cbcl072 cbcl073 cbcl081
+        cbcl082 cbcl090 cbcl096 cbcl099 cbcl101
+        cbcl105 cbcl106
+        cbcl003 cbcl016 cbcl019 cbcl020 cbcl021
+        cbcl022 cbcl023 cbcl037 cbcl057 cbcl068
+        cbcl086 cbcl087 cbcl088 cbcl089 cbcl094
+        cbcl095 cbcl097 cbcl104
+        fes_01 fes_11 fes_21 fes_31 fes_41
+        fes_51 fes_61 fes_71 fes_81
+        fes_03 fes_13 fes_23 fes_33 fes_43
+        fes_53 fes_63 fes_73 fes_83
+        PMH_sum CON_sum COH_sum ASB_sum
+        SES
+        ;
+
+    categorical =                                   ! Likert scale
+        scl8_01 scl8_02 scl8_03 scl8_04 scl8_05
+        scl8_06 scl8_07 scl8_08
+        cbcl002 cbcl026 cbcl028 cbcl039 cbcl043
+        cbcl063 cbcl067 cbcl072 cbcl073 cbcl081
+        cbcl082 cbcl090 cbcl096 cbcl099 cbcl101
+        cbcl105 cbcl106
+        cbcl003 cbcl016 cbcl019 cbcl020 cbcl021
+        cbcl022 cbcl023 cbcl037 cbcl057 cbcl068
+        cbcl086 cbcl087 cbcl088 cbcl089 cbcl094
+        cbcl095 cbcl097 cbcl104
+        fes_01 fes_11 fes_21 fes_31 fes_41
+        fes_51 fes_61 fes_71 fes_81
+        fes_03 fes_13 fes_23 fes_33 fes_43
+        fes_53 fes_63 fes_73 fes_83
+        ;
+
+    missing = all (-99);                            ! -99 denotes missing data
+
+DATA IMPUTATION:
+    impute =                                        ! (c) = categorical
+        YAGE PAGE SIB INC
+        scl8_01 (c) scl8_02 (c) scl8_03 (c) scl8_04 (c) scl8_05 (c)
+        scl8_06 (c) scl8_07 (c) scl8_08 (c)
+        cbcl002 (c) cbcl026 (c) cbcl028 (c) cbcl039 (c) cbcl043 (c)
+        cbcl063 (c) cbcl067 (c) cbcl072 (c) cbcl073 (c) cbcl081 (c)
+        cbcl082 (c) cbcl090 (c) cbcl096 (c) cbcl099 (c) cbcl101 (c)
+        cbcl105 (c) cbcl106 (c)
+        cbcl003 (c) cbcl016 (c) cbcl019 (c) cbcl020 (c) cbcl021 (c)
+        cbcl022 (c) cbcl023 (c) cbcl037 (c) cbcl057 (c) cbcl068 (c)
+        cbcl086 (c) cbcl087 (c) cbcl088 (c) cbcl089 (c) cbcl094 (c)
+        cbcl095 (c) cbcl097 (c) cbcl104 (c)
+        fes_01 (c) fes_21 (c) fes_31 (c) fes_41 (c)
+        fes_51 (c) fes_61 (c) fes_71 (c) fes_81 (c)
+        fes_03 (c) fes_13 (c) fes_23 (c) fes_33 (c) fes_43 (c)
+        fes_53 (c) fes_73 (c) fes_83 (c)
+        SES (c)
+        ;
+
+    ndatasets = 10;                                 ! Order10 sets of MI data
+    save = imp*.dat;                                ! Save imputed datasets
+
+ANALYSIS:
+    estimator = mlr;                                ! Restricted ML
+    processors = 4;                                 ! Use 4 CPU cores
+
+MODEL:
+! Path analysis
+
+    ASB_sum on PMH_sum;                             ! X -> Y
+
+    ASB_sum on
+        YAGE PAGE SIB INC                           ! Control variables
+        ;
+
+OUTPUT:
+    stdyx;                                          ! Standarized output
+

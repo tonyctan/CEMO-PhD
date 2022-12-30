@@ -1,0 +1,50 @@
+TITLE:
+    Parental mental health and youth antisocial behaviour
+    Exploratory factor analysis for family cohesion (COH)
+
+DATA:
+    file = "N:\no-backup\Frida og Thea\Mplus\5.dat";
+
+VARIABLE:
+    names =
+        YAGE PAGE SIB INC                           ! Demographics
+        scl8_01 scl8_02 scl8_03 scl8_04 scl8_05     ! Parental mental health
+        scl8_06 scl8_07 scl8_08                     !   (PMH)
+        cbcl002 cbcl026 cbcl028 cbcl039 cbcl043     ! Rule-breaking behaviour
+        cbcl063 cbcl067 cbcl072 cbcl073 cbcl081     !   (RBB)
+        cbcl082 cbcl090 cbcl096 cbcl099 cbcl101
+        cbcl105 cbcl106
+        cbcl003 cbcl016 cbcl019 cbcl020 cbcl021     ! Aggression
+        cbcl022 cbcl023 cbcl037 cbcl057 cbcl068     !   (AGG)
+        cbcl086 cbcl087 cbcl088 cbcl089 cbcl094
+        cbcl095 cbcl097 cbcl104
+        fes_01 fes_11 fes_21 fes_31 fes_41          ! Family cohesion
+        fes_51 fes_61 fes_71 fes_81                 !   (COH)
+        fes_03 fes_13 fes_23 fes_33 fes_43          ! Family conflict
+        fes_53 fes_63 fes_73 fes_83                 !   (CON)
+        PMH_sum                                     ! PMH sum score
+        CON_sum                                     ! CON sum score
+        COH_sum                                     ! COH sum score
+        ASB_sum                                     ! ASB sum score
+        SES                                         ! Socioeconomic status
+        ;
+
+    usevariables =                                  ! COH 9 items
+        fes_01 fes_11 fes_21 fes_31 fes_41
+        fes_51 fes_61 fes_71 fes_81
+        ;
+
+    categorical =                                   ! Likert scale
+        fes_01 fes_11 fes_21 fes_31 fes_41
+        fes_51 fes_61 fes_71 fes_81
+        ;
+
+    missing = all (-99);                            ! -99 denotes missing data
+
+ANALYSIS:
+    type = efa 1 1;                                 ! 1-factor?
+    estimator = wlsmv;                              ! Weighted least square
+    processors = 4;                                 ! Use 4 CPU cores
+
+OUTPUT:
+    modindices (all);                               ! Modification indices

@@ -1,0 +1,92 @@
+\documentclass[
+% Options for apa7
+    a4paper,                % Paper size
+    11pt,                   % Font size
+    stu,                    % Format as assignment
+    % donotrepeattitle,       % Start body text without repeating title
+    floatsintext,           % Insert tables and figures with texts
+    biblatex,               % Use BibLaTeX for references
+% Options for hyperref
+    colorlinks=true,        % Colour all links
+    linkcolor=red,          % Cross-references in red
+    anchorcolor=black,      % Keep anchors black
+    citecolor=blue,         % In-text-referencs in blue
+    urlcolor=blue,          % DOIs and URLs are in blue
+    bookmarks=true,         % Generate bookmarks for PDF readers
+    bookmarksopen=false,    % Expand all bookmarks as default
+    bookmarksnumbered=true, % Keep section number in bookmarks
+    % Options for xcolor
+    dvipsnames              % Use colour BrickRed and PineGreen
+]{apa7}
+
+% Specify absolute path to the tt.sty file, depending on the operating system
+\usepackage{ifplatform}
+\ifwindows
+    \usepackage{M:/pc/Dokumenter/tt}
+\fi
+\iflinux
+    \usepackage{/home/tony/uio/pc/Dokumenter/tt} % Must not use ~ for home directory. Spell in full.
+\fi
+\ifmacosx
+    \usepackage{/Users/tctan/uio/pc/Dokumenter/tt}
+\fi
+
+% Specify project's bib library
+\addbibresource{./Bibliography/philosophy.bib}
+
+\title{From grades to learning: A philosophical enquiry into\\
+confirmation and evidence in educational measurement}
+\authorsnames{Tony C. A. Tan}
+\authorsaffiliations{Centre for Educational Measurement, University of Oslo}
+\course{UV9002: Philosophy of Science}
+\professor{Prof Sten R. Ludvigsen}
+\duedate{23 March 2023}
+
+\setlength\abovedisplayskip{0pt}
+
+\begin{document}
+\maketitle
+
+``A Pope is a Catholic'' does not imply ``a Catholic is a Pope''. Symbolically,
+\[ \p{ \text{Catholic} \mid \text{Pope} } \neq \p{ \text{Pope} \mid \text{Catholic} } \]
+where $\p{ \text{event} \mid \text{information} }$ denote the probability of an event (being true) in light of some information. Mixing up the order of the conditional probability is a common mistake in reasoning, frequent enough to earn its name of ``inverse probability fallacy'' \parencite{kalinowski:2008} with severe, even tragic, consequences \parencite{hill:2005, thompson:1987}. I wish to argue in this paper that the same is true for the concept of evidence in educational measurement such that ``learning, given grades'' must not be confused with ``grades, given learning''.
+
+As an integral part of educational practices, grades have long been used to quantify learning. As a measurement device, a test maps students' learning (the ``cause'') onto an ordinal scale (the ``effect''), whose numeric readings are the grades. Map-makers report the goodness of their device by the degree to which the grades faithfully reflect the underlying learning --- knowing a student has high competency or great amount of learning, the measurement device should report a high grade. Should the measurement procedure correspond the ``effect'' closely to its ``cause'', this device is said to be valid, a necessary but not sufficient condition for its use in educational practices. A valid device must also be reliable, that is, the grades reported by the device shall be consistent across repeated measurements \parencite{standards:2014}.
+
+Validity and reliability, however, jointly promote the accuracy of ``grades, given learning'' but \emph{not} ``learning, given grades'' --- while test-makers concern themselves with the former, society at large is more keenly interested in the latter. Such subtlety could be responsible for the news headline ``COVID-19 is learning-neutral'' after repeated efforts failed to demonstrate sizeable drops in ``learning outcomes''. An effect can remain stable even when the underlying cause shifts thanks to interventions of auxiliary measures --- leniency and grade inflation being immediate candidates during COVID lockdowns, or the low sensitivity of the measurement device (e.g., early astronomers' failure of detecting parallax). Should one be convinced by the incongruence between ``grades, given learning'' and ``learning, given grades'', a natural extension would be how to ``flip'' the causal arrow such that the latent construct learning can be inferred from the observed grades.
+
+Enters Bayes formula, the mathematical logic for reasoning about conditional probabilities. Let $L$ and $G$ denote learning and grades, respectively, then the conditional probability of learning given grades can be inferred from the observable data through the bridge
+\[ \p{ L \mid G } = \p{ G \mid L} \cdot \frac{ \p{L} }{ \p{G} } \]
+In practice, the denominator $\p{G}$ offers least insight as it is a constant for a given measurement device and can be numerically approximated by computer algorithms\footnote{
+    \[ \p{G=\m{g}} = \int_{\m{l} \in L} \p{ G=\m{g} \mid L=\m{l}} \cdot \p{L=\m{l}} \dd \m{l} \]
+}. This reduces the Bayes reasoning at the philosophical-level to this core version
+\[ \p{ L \mid G } \propto \p{ G \mid L} \cdot \p{L} \]
+where $\propto$ denotes ``proportional to'' or ``subject to a normalising constant''. There could be no dilemma between ``grades, given learning'' and ``learning, given grades'' as soon as both $\p{ G \mid L}$ and $\p{L}$ become known, at least theoretically.
+
+Practically, however, both terms demand additional examination. The $\p{G \mid L}$ component reflects properties of the mapping device whereas $\p{L}$ is the prior probability of learning, a measure of the existing or ``base rate'' of learning. The empirical estimation of $\p{G \mid L}$ is a technical one involving ascertaining the properties of the test instrument. The first two papers of my thesis focus on this aspect of the problem. The epistemological aspect of the Bayes reasoning resides in the final term $\p{L}$ since it declares that \emph{all knowledge must be built based on existing knowledge}. Such demand opens up a philosophical debate on where, how, and who has the power to obtain the first piece of the prior knowledge $\p{L}$.
+
+A second layer of the epistemological debate concerns itself with the objectivity of science. If all ``hard evidence'' (objectivity) must be blended with ``prior knowledge'' (subjectivity) before becoming ``knowledge'', does the resulting scientific knowledge remain independent from the observer/scientist at all---in the educational measurement context, one may question whether there exists learning in the absence of grades. If the answer is ``no'', then the Bayes reasoning is not a scientific one at all. If the answer is ``yes'', then the Bayes reasoning is a scientific one but the ``learning'' is not a scientific one. I wish to address this debate in the second stage of this course.
+
+\printbibliography
+
+1. Prior knowledge: who possess the prior knowledge? P(learning)
+2. Example on P(L|G) != P(G|L)
+3. What separate L and G? Just grading function?
+4. Learning vs learning outcome?
+5. Can learning exist in the absence of grading?
+6. What does "independent" mean? Can researcher ever be independent?
+7. What is integral there?
+8. "Scientific" vs "non-scientific"
+9. Who gives value to knowledge? Who has the power to determine "this is knowledge while that is NOT knowledge"
+10. Representation: What kind of representation is allowed in philosophical terms because there are three pairs of How different representation are related to each other, or not?
+11. Mathematical representation "itself does not produce insight". Hacking's looping effect
+12. Numbers are not the problem but the consequences of using these numbers.
+13. Causality vs probability: If the causality is there, the numbers don't matter. [focus on this pair]
+14. Intersection between natural and social sciences: causality
+15. Transition between different representation: process, outcome, grades. Causality and probability underlies all of these.
+16. Classification and distribution (of grades) have real implication on real humans. (sorting and decision-making)
+17. Measurement error: Elephant as a whole vs as a pole, fan? (process model vs 
+
+Keep philosophical discussion as the focus. Turn statistics as the tool, not a focus.
+
+\end{document}

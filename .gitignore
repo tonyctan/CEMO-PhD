@@ -21,6 +21,8 @@ PRIVATE/
 *.run.xml
 *.sav
 Teaching/MAE4051_Causal_Inference/Materials from Previous years/MAE4051H22_4_Regression/PIRLS
+Coursework/UV9121 Process data/Analysis/*.csv
+Coursework/UV9002 Philosophy of Sciences/Readings/Readings.pdf
 *.snm
 *.synctex.gz
 *.toc

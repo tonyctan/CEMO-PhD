@@ -1,0 +1,117 @@
+\documentclass[a4paper,11pt,stu]{apa}
+
+% Turn off page numbera
+\thispagestyle{empty}
+
+% Rotate page to landscape
+\usepackage[landscape]{geometry}
+
+% Set double spacing
+\usepackage{setspace}
+
+% Set captions
+\usepackage[
+    format=plain,
+    font={up,normalsize},
+    labelfont={it,bf},
+    textfont=it,
+    labelsep=newline]{caption}
+\captionsetup{
+    justification=raggedright,
+    singlelinecheck=false,
+    margin=0cm
+    } % Align left
+%\AtEveryCite{\normalfont} % Prevent italic anywhere else in the document
+\usepackage[capposition=top]{floatrow} % For ``Note.'' underneath the figures
+%\DeclareCaptionFont{normal}{\fontsize{11}{13.2}\selectfont}
+%\newcommand{\fignote}[1]{\floatsetup{font=normal,cappositon=bottom}\floatfoot{\large \textit{Note.} #1}}
+
+\usepackage{tikz}
+\usetikzlibrary{automata,shapes,arrows,calc,positioning,decorations.pathmorphing}
+
+\begin{document}
+
+\begin{figure}[!h]
+\caption{Latent Growth Curve Models for FFT Effectiveness}
+\label{fig:fft}
+
+\begin{tikzpicture}[
+    latvar/.style={ellipse,draw=black,minimum width=1cm,minimum height=1cm},
+    manvar/.style={rectangle,draw=black,minimum width=1.5cm,minimum height=1cm},
+    misvar/.style={dashed,rectangle,draw=black,minimum width=1cm,minimum height=1cm},
+    mean/.style={fill=black!10!white,regular polygon,regular polygon sides=3},
+    ->,>=stealth',semithick,
+    bend angle=30,
+    decoration={
+        zigzag,
+        amplitude=1pt,
+        segment length=1mm,
+        post=lineto,
+        post length=4pt
+    }
+]
+
+% Draw covariates
+% R> seq(0, 20, 2.4)
+\node[manvar] (x1) at (0,0) {\textsc{age}};
+\node[manvar] (x2) at (2.4,0) {\textsc{female}};
+\node[manvar] (x3) at (4.8,0) {\textsc{immi1}};
+\node[manvar] (x4) at (7.2,0) {\textsc{immi2}};
+\node[manvar] (x5) at (9.6,0) {\textsc{prior}};
+\node[manvar] (x6) at (12,0) {\textsc{insti}};
+\node[manvar] (x7) at (14.4,0) {\textsc{foster}};
+\node[manvar] (x8) at (16.8,0) {\textsc{psyc}};
+\node[manvar] (x9) at (19.2,0) {$\Delta$\textsc{rsk}};
+
+
+% Draw i and s
+\node[latvar] (i) at (5,5.5) {$i$};
+\node[latvar] (s) at (14.5,5.5) {$s$};
+
+% Draw outcome variables
+% R> seq(0, 20, 4.8)
+\node[manvar] (y0) at (0,10) {\textsc{bhv0}};
+\node[manvar] (y1) at (4.8,10) {\textsc{bhv1}};
+\node[manvar] (y2) at (9.6,10) {\textsc{bhv6}};
+\node[manvar] (y3) at (14.4,10) {\textsc{bhv12}};
+\node[manvar] (y4) at (19.2,10) {\textsc{bhv18}};
+
+% Link i to y
+\draw[->] (i.north) to (y0.south);
+\draw[->] (i.north) to (y1.south);
+\draw[->] (i.north) to (y2.south);
+\draw[->] (i.north) to (y3.south);
+\draw[->] (i.north) to (y4.south);
+
+% Link s to y
+\draw[->] (s.north) to node[above,pos=0.8] {$T_0$} (y0.south);
+\draw[->] (s.north) to node[above,pos=0.75] {$T_1$} (y1.south);
+\draw[->] (s.north) to node[above,pos=0.75] {$T_2$} (y2.south);
+\draw[->] (s.north) to node[right,pos=0.82] {$T_3$} (y3.south);
+\draw[->] (s.north) to node[below,pos=0.9] {$T_4$} (y4.south);
+
+% Allow correlation between i and s
+\draw[dashed,<->] (i.east) to [bend left] (s.west);
+
+% Link x to i
+\draw[<-] (x1.north) to node[above,sloped] {$-0.071^{**}$/n.s./n.s.} (i.south);
+\draw[<-] (x2.north) to node[below,sloped] {n.s./n.s./$0.185^{\dagger}$} (i.south);
+\draw[<-] (x4.north) to node[below,sloped] {n.s./$0.169^{\dagger}$/n.s.} (i.south);
+\draw[<-] (x6.north) to node[below,sloped,pos=0.62] {n.s./n.s./$-0.799^{***}$} (i.south);
+\draw[<-] (x8.north) to node[above,sloped,pos=0.71] {n.s./n.s./$-0.163^{\dagger}$} (i.south);
+
+% Link x to s
+\draw[<-] (x4.north) to node[above,sloped,pos=0.75] {n.s./$-0.022^{**}$/$0.018^{\dagger}$} (s.south);
+\draw[<-] (x5.north) to node[below,sloped,pos=0.69] {n.s./n.s./$-0.021^{\dagger}$} (s.south);
+\draw[<-] (x6.north) to node[below,sloped,pos=0.62] {n.s./n.s./$0.042^{*}$} (s.south);
+\draw[<-] (x7.north) to node[below,sloped,pos=0.59] {n.s./$-0.023^{*}$/n.s.} (s.south);
+
+\end{tikzpicture}
+
+\floatfoot{\normalsize \textit{Note.} These latent growth curve models evaluated variables associated with FFT effectiveness through the COVID-19 pandemic. The intercept ($i$) carries factor loadings of $1$s (omitted) to all outcome variables while the slope ($s$) carries time stamps measured in months as factor loadings from $T_0$ to $T_4$. Intervals between admission ($T_0$) and discharge ($T_1$) vary by clients. All subsequent time points are six months apart, representing 6-, 12-, and 18-months follow-up measures. The dashed arrow suggests no significant covariations between intercepts and slopes, hence growth curves do not fan in or out. Unstandardised coefficients are reported in the order Group A/B/C. Covariates receiving no arrows provide insufficient explanatory power for growth curves.
+
+n.s. = not significant at $\alpha=.10$ level, $^{\dagger} p<.10$, $^{*}p<.05$, $^{**}p<.01$, $^{***}p<.001$.}
+
+\end{figure}
+
+\end{document}

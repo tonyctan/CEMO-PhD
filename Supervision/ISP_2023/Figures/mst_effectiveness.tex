@@ -1,0 +1,38 @@
+\documentclass[a4paper,11pt,stu]{apa}
+
+% Turn off page numbera
+\thispagestyle{empty}
+
+\usepackage{pdfpages}
+
+% Set double spacing
+\usepackage{setspace} \doublespacing
+
+% Set captions
+\usepackage[
+    format=plain,
+    font={up,normalsize},
+    labelfont={it,bf},
+    textfont=it,
+    labelsep=newline]{caption}
+\captionsetup{
+    justification=raggedright,
+    singlelinecheck=false,
+    margin=0cm
+    } % Align left
+%\AtEveryCite{\normalfont} % Prevent italic anywhere else in the document
+\usepackage[capposition=top]{floatrow} % For ``Note.'' underneath the figures
+%\DeclareCaptionFont{normal}{\fontsize{11}{13.2}\selectfont}
+%\newcommand{\fignote}[1]{\floatsetup{font=normal,cappositon=bottom}\floatfoot{\large \textit{Note.} #1}}
+
+\begin{document}
+
+\begin{figure}[!h]
+\caption{Distributions of MST Effectiveness Measures}
+\label{fig:eff}
+
+\includepdf[width=\textwidth]{MST_R.pdf}
+
+\end{figure}
+
+\end{document}

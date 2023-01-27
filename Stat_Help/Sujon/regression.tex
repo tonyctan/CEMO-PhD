@@ -1,0 +1,77 @@
+\documentclass[
+    % Options for apa7
+    a4paper,                % Paper size
+    11pt,                   % Font size
+    stu,                    % Format as assignment
+    donotrepeattitle,       % Start body text without repeating title
+    floatsintext,           % Insert tables and figures with texts
+    biblatex,               % Use BibLaTeX for references
+% Options for hyperref
+    colorlinks=true,        % Colour all links
+    linkcolor=red,          % Cross-references in red
+    anchorcolor=black,      % Keep anchors black
+    citecolor=blue,         % In-text-referencs in blue
+    urlcolor=blue,          % DOIs and URLs are in blue
+    bookmarks=true,         % Generate bookmarks for PDF readers
+    bookmarksopen=false,    % Expand all bookmarks as default
+    bookmarksnumbered=true, % Keep section number in bookmarks
+    % Options for xcolor
+    dvipsnames              % Use colour BrickRed and PineGreen
+]{apa7}
+
+\title{Identifying Inter-subject Difficulties in Norwegian GPA Data}
+\authorsnames{Tony C. A. Tan}
+\authorsaffiliations{{Centre for Educational Measurement, University of Oslo}}
+\course{Continuous Draft}
+\professor{Prof Rolf V. Olsen \& Dr Astrid M. J. Sands{\o}r}
+\duedate{H{\o}st 2022}
+
+% Load ttbeamer template depending on operating system
+\usepackage{ifplatform}
+\ifwindows
+    \usepackage{M:/pc/Dokumenter/tt}
+\fi
+\iflinux
+    \usepackage{/home/tony/uio/pc/Dokumenter/tt}
+\fi
+\ifmacosx
+    \usepackage{/Users/tctan/uio/pc/Dokumenter/tt}
+\fi
+
+\begin{document}
+\maketitle
+
+Consider the original regression
+\begin{equation}\label{eq1}
+    y = \hat{\beta}_0 + \hat{\beta}_1 x_1 + \hat{\beta}_2 x_2 + e,
+\end{equation}
+where $e$ is the residual from this regression.
+
+Johan wanted two regressions
+\begin{equation}\label{eq2}
+    x_1 = \hat{\gamma}_0 + \hat{\gamma}_1 x_2 + g,
+\end{equation}
+
+\begin{equation}\label{eq3}
+    y = \hat{\delta}_0 + \hat{\delta}_1 g + h,
+\end{equation}
+and wanted you to show $\hat{\delta}_1 = \hat{\beta_1}$.
+
+From \cref{eq2}, we can save its residual as
+\begin{equation}\label{eq4}
+    g = x_1 - \hat{\gamma}_0 - \hat{\gamma}_1 x_2.
+\end{equation}
+
+Substitute \cref{eq4} into \cref{eq3}:
+\begin{equation}\label{eq5}
+    \begin{aligned}
+        y &= \hat{\delta}_0 + \hat{\delta}_1 (x_1 - \hat{\gamma}_0 - \hat{\gamma}_1  x_2) + h \\
+        &= \hat{\delta}_0 + \hat{\delta}_1 x_1 - \hat{\delta}_1 \hat{\gamma}_0 - \hat{\delta}_1 \hat{\gamma}_1 x_2 + h \\
+        &= \left( \hat{\delta}_0 - \hat{\delta}_1 \hat{\gamma}_0 \right) + \hat{\delta}_1 x_1 + \left( - \hat{\delta}_1 \hat{\gamma}_1 \right) x_2 + h.
+    \end{aligned}
+\end{equation}
+
+Compare \cref{eq5} with \cref{eq1}, we see that $\hat{\delta}_1 = \hat{\beta_1}$, which is what Johan wanted.
+
+
+\end{document}

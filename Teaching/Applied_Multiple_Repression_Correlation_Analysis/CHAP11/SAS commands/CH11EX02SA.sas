@@ -1,0 +1,37 @@
+/* Chapter 11: Example 2 and Table 11.3.1 of 69 academic cases some with missing data */
+
+title 'Chapter 11, Example 2, Table 11.3.1'; 
+proc import datafile='c:\ccwa\chap11\data\c1102dt.txt' out=c1102 dbms=tab replace;
+getnames=yes;
+run;
+proc means data=c1102;
+run;
+data nomissing;
+set c1102;
+if citm ne .;
+proc means data=nomissing;
+run;
+data cc1102;
+set c1102;
+misscit=0;
+citmean=citm;
+if citm=. then misscit=1;
+if citm=. then citmean=40.23;
+citest=citm;
+if citest=. then citest=25.92+1.5*cit1;
+output;
+proc reg data=cc1102;
+model salary=citmean;
+run;
+proc reg data=cc1102;
+model citm=cit1;
+run;
+proc reg data=cc1102;
+model salary=citest;
+run;
+proc reg data=cc1102;
+model salary=citest sex pub time;
+run;
+proc reg data=cc1102;
+model salary=citmean sex pub time;
+run;

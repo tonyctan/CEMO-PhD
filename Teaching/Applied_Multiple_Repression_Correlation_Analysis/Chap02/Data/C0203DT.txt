@@ -1,0 +1,8 @@
+STIMULUS$	TASK	
+None	67	
+None	72	
+None	70	
+None	69	
+Stim	66	
+Stim	64	
+Stim	68	

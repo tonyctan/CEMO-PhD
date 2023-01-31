@@ -1,0 +1,31 @@
+/* Chapter 9: Example 6 and Table 9.3.6 of academic salary in three departments */
+
+title 'Chapter 9, Example 6, Table 9.3.6'; 
+proc import datafile='c:\ccwa\chap09\data\c0904dt.txt' out=c0906 dbms=tab replace;
+getnames=yes;
+run;
+data cc0906;
+set c0906;
+pubd=pub-15.5;
+pub_20=pub-20;
+pub_10=pub-10;
+d1=0;
+if depart=2 then d1=1;
+d2=0;
+if depart=3 then d2=1;
+pd1=pubd*d1;
+pd2=pubd*d2;
+pd1_20=pub_20*d1;
+pd2_20=pub_20*d2;
+pd1_10=pub_10*d1;
+pd2_10=pub_10*d2;
+output;
+proc reg data=cc0906;
+model salary=pubd d1 d2 pd1 pd2;
+run;
+proc reg data=cc0906;
+model salary=d1 d2 pub_20 pd1_20 pd2_20;
+run;
+proc reg data=cc0906;
+model salary=d1 d2 pub_10 pd1_10 pd2_10;
+run;

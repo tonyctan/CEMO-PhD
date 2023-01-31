@@ -1,0 +1,30 @@
+Note 'Chapter 3: TWO OR MORE INDEPEDENT VARIABLES'
+Note 'Table 3.2.1  Senority, Publication, and Salary Data on 15 Faculty Members'
+
+IMPORT "c:\ccwa\CHAP03\DATA\C0301DT.txt" / TYPE=ASCII
+
+CORR
+PEARSON Time Pubs Salary
+
+NOTE 'First we do a regression of salary on publication, then on years, and then on the two independent variables.'
+
+REGRESS 
+MODEL SALARY = CONSTANT+PUBS
+ESTIMATE
+
+REGRESS 
+MODEL SALARY = CONSTANT+TIME
+ESTIMATE
+
+REGRESS 
+MODEL SALARY = CONSTANT+TIME+PUBS
+ESTIMATE
+
+NOTE 'Estimated salaries are calculated by the following equation.'
+
+LET Estsal = (983 * Time) + (122 * Pubs) + 43082
+NOTE 'Residuals are the difference between the estimated and observed values'
+let Ressal = salary - estsal
+LIST Salary Estsal Time Pubs ressal
+corr 
+pearson salary estsal ressal

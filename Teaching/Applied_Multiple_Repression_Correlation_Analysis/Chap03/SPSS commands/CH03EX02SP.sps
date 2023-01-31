@@ -1,0 +1,102 @@
+*************************************************************
+Chapter 3: TWO OR MORE INDEPEDENT VARIABLES
+*************************************************************
+Table 3.5.1  Data on 62 Faculty Members
+*************************************************************
+
+GET DATA  /TYPE = TXT
+ /FILE = 'c:\ccwa\CHAP03\DATA\C0302DT.txt'
+ /DELCASE = LINE
+ /DELIMITERS = "\t"
+ /ARRANGEMENT = DELIMITED
+ /FIRSTCASE = 2
+ /IMPORTCASE = ALL
+ /VARIABLES =
+ CASE F2.1
+ TIME F2.1
+ PUBS F2.1
+ CITS F2.1
+ SALARY F5.2
+ FEMALE F1.0
+ .
+CACHE.
+EXECUTE.
+
+SUMMARIZE
+  /TABLES=Case Time Pubs Female Cits Salary 
+  /FORMAT=VALIDLIST NOCASENUM TOTAL
+  /TITLE='Case Summaries'
+  /MISSING=VARIABLE
+  /CELLS=COUNT SUM MEAN STDDEV .
+
+CORRELATIONS
+  /VARIABLES=Time Pubs Female Cits Salary
+  /PRINT=TWOTAIL NOSIG
+  /MISSING=PAIRWISE .
+
+REGRESSION
+  /MISSING LISTWISE
+  /STATISTICS COEFF OUTS R ANOVA
+  /CRITERIA=PIN(.05) POUT(.10)
+  /NOORIGIN
+  /DEPENDENT Salary
+  /METHOD=ENTER Time
+  /METHOD=ENTER Pubs 
+  /METHOD=ENTER Female   
+  /METHOD=ENTER Cits .
+
+PARTIAL CORR
+  /VARIABLES= Pubs Salary BY Time Female Cits
+  /SIGNIFICANCE=TWOTAIL
+  /STATISTICS=CORR
+  /MISSING=LISTWISE .
+
+PARTIAL CORR
+  /VARIABLES=  Time Salary BY Pubs Cits Female 
+  /SIGNIFICANCE=TWOTAIL
+  /STATISTICS=CORR
+  /MISSING=LISTWISE .
+
+PARTIAL CORR
+  /VARIABLES=  Cits Salary BY Pubs Time Female 
+  /SIGNIFICANCE=TWOTAIL
+  /STATISTICS=CORR
+  /MISSING=LISTWISE .
+
+PARTIAL CORR
+  /VARIABLES=  Female Salary BY Pubs Time Cits
+  /SIGNIFICANCE=TWOTAIL
+  /STATISTICS=CORR
+  /MISSING=LISTWISE .
+
+COMPUTE Estsal=(857.01*Time) + (92.75 * Pubs) - (917.77 * Female) + (201.93 * Cits) + 39587.35
+
+COMPUTE residsal = salary-estsal .
+EXECUTE .
+
+CORRELATIONS
+  /VARIABLES= Estsal Salary Time Female Pubs Cits 
+  /PRINT=TWOTAIL NOSIG
+  /MISSING=PAIRWISE .
+
+CORRELATIONS
+  /VARIABLES= Residsal Salary Time Female Pubs Cits 
+  /PRINT=TWOTAIL NOSIG
+  /MISSING=PAIRWISE .
+
+GRAPH
+  /SCATTERPLOT(MATRIX)=Time Pubs Female Cits Salary
+  /MISSING=LISTWISE .
+
+
+ 
+DESCRIPTIVES
+  VARIABLES=salary estsal
+  /STATISTICS=MEAN STDDEV MIN MAX .
+
+SUMMARIZE
+  /TABLES=time pubs cits salary female estsal
+  /FORMAT=VALIDLIST NOCASENUM TOTAL LIMIT=100
+  /TITLE='Case Summaries'
+  /MISSING=VARIABLE
+  /CELLS=COUNT .

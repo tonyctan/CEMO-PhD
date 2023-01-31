@@ -1,0 +1,38 @@
+NOTE 'Chapter 2: BIVARIATE CORRELATION AND REGRESSION'
+NOTE 'Table 2.2.1  Income and Major Household Appliances in Original Units, Deviation Units, and z Scores'
+
+
+IMPORT "c:\ccwa\CHAP02\DATA\C0201DT.txt" / TYPE=ASCII 
+
+
+LET INCC = income-AVG(24000, 29000, 27000, 30000) 
+LET APPLC = applianc-AVG(3,7,4,5) 
+LET INC2 = INCC*INCC 
+LET APPLC2 = APPLC*APPLC
+
+LET RankINC=income
+RANK RankINC
+
+LET RankAPPL=applianc
+RANK RankAPPL 
+ 
+LET zINCOME=income 
+STANDARDIZE zINCOME
+
+
+LET zApplianc=applianc
+STANDARDIZE zApplianc
+
+LET ZINC2=zIncome*zIncome
+LET ZAPPL2=zApplianc*zApplianc
+
+STATS
+STATS  /  Mean SD Sum
+
+PLOT Applianc*Income / XTICK=4 XMAX=32000 XMIN=23000 YMIN=1 FILL=1
+PLOT zApplianc*zIncome / XTICK=4 FILL=1
+
+
+
+
+

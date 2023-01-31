@@ -1,0 +1,16 @@
+NOTE 'Chapter 2: BIVARIATE CORRELATION AND REGRESSION'
+NOTE 'Table 2.2.2  z Scores, z Score Differences, and z Score Products on Data Example'
+
+
+IMPORT "c:\ccwa\CHAP02\DATA\C0202DT.txt" / TYPE=ASCII 
+
+LET Ztime=Time
+STANDARDIZE Ztime
+LET Zpubs=Pubs
+STANDARDIZE Zpubs
+ 
+STATS
+STATS Time Pubs Ztime Zpubs  /  MAXIMUM MEAN MINIMUM SKEW KURTOSIS SD N
+
+CORR 
+PEARSON Time Pubs

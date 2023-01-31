@@ -1,0 +1,44 @@
+NOTE 'Chapter 2: BIVARIATE CORRELATION AND REGRESSION'
+NOTE 'Table 2.6.1  Estimated and Residual Scores for Academic Example'
+
+
+IMPORT "c:\ccwa\CHAP02\DATA\C0206DT.txt" / TYPE=ASCII 
+
+REGRESS
+MODEL Pubs = CONSTANT+Time
+ESTIMATE
+
+NOTE 'Now we use the regression estimates obtained above to create estimated publications for each case.'
+
+LET Estpubs = 4.731 + 1.983*Time
+LET Respubs = Pubs - Estpubs
+LET Zpubs = Pubs
+STANDARDIZE Zpubs
+
+NOTE 'Now we use standardized variables to create estimated z scores and residuals.'
+LET Ztime = Time
+STANDARDIZE ZTime
+LET Estzpubs = .657*ZTime
+LET Reszpubs = Zpubs-Estzpubs
+
+STATS
+STATS Time Pubs /  MEAN
+
+NOTE 'Now we use the means obtained above to calculate estimated and residual values if the slope was 2.0(W) or 1.9(V).
+
+LET Estpubw = 2.0 * (Time - 7.667) + 19.933
+LET Respubw = Pubs - Estpubw
+
+LET Estpubv = 1.9 * (Time - 7.667) + 19.933
+LET Respubv = Pubs - Estpubv
+
+
+NOTE 'Now we create an absolute value variable for residuals.'
+LET Absrest = ABS(Respubs)
+LET Absresw = ABS(Respubw)
+LET Absresv = ABS(Respubv)
+
+STATS 
+STATS Time Pubs Estpubs Respubs Zpubs Ztime Estzpubs Reszpubs Estpubw,
+Respubw Estpubv Respubv Absrest Absresw Absresv /  MEAN SD SUM VARIANCE
+

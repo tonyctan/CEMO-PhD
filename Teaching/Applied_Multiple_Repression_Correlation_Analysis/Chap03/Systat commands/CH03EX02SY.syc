@@ -1,0 +1,26 @@
+NOTE 'Chapter 3: TWO OR MORE INDEPEDENT VARIABLES'
+
+NOTE 'Table 3.5.1  Data on 62 Faculty Members'
+
+IMPORT "c:\ccwa\CHAP03\DATA\C0302DT.txt" / TYPE=ASCII
+
+STATS
+STATS Time Pubs Female Cits Salary  /  Maximum Mean Minimum SD N
+
+CORR
+PEARSON Time Pubs Female Cits Salary
+
+REGRESS
+MODEL SALARY = CONSTANT+Time+Pubs+Female+Cits
+ESTIMATE
+
+
+LET Estsal=(857.01*Time) + (92.75 * Pubs) - (917.77 * Female) + (201.93 * Cits) + 39587.35
+
+SPLOM Time PUBs FEMALE CITS SALARY
+
+STATS SALARY ESTSAL /  Maximum Mean Minimum SD N
+
+
+LIST Time Pubs Female Cits Salary Estsal / Format = 8,2
+

@@ -53,18 +53,18 @@
 % Load ttbeamer template depending on operating system
 \usepackage{ifplatform}
 \ifwindows
-  \usepackage{M:/pc/Dokumenter/ttbeamer}
+	\usepackage{M:/pc/Dokumenter/ttbeamer}
 \fi
 \iflinux
-  \usepackage{/home/tony/uio/pc/Dokumenter/ttbeamer}
+	\usepackage{/home/tony/uio/pc/Dokumenter/ttbeamer}
 \fi
 \ifmacosx
-  \usepackage{/Users/tctan/uio/pc/Dokumenter/ttbeamer}
+	\usepackage{/Users/tctan/uio/pc/Dokumenter/ttbeamer}
 \fi
 
 \title{Lab 1 - Correlations, reliability and consistency}
-\author[]{Tony Tan \\\vspace{6pt} {\em{University of Oslo}} }
-\date{Friday, 28 October 2021}
+\author[]{Tony Tan \& Jarl Kristensen \\\vspace{6pt} {\em{University of Oslo}} }
+\date{Monday, 7 November 2022}
 \IfFileExists{upquote.sty}{\usepackage{upquote}}{}
 \begin{document}
 
@@ -75,38 +75,152 @@
 \end{frame}
 
 
-\section{Learning intention}
-
 \begin{frame}[fragile]
-  \frametitle{Today}
-  Estimate and interpret
-    \begin{itemize}
-      \item Correlations between variables
-      \item Test-retest reliability
-      \item Alternate/parallel test-forms
-      \item Internal consistency
-        \begin{itemize}
-          \item Cronbach's alpha
-          \item Single factor model
-          \item McDonald's omega
-        \end{itemize}
-    \end{itemize}
+	\frametitle{Today}
+	Estimate and interpret:
+		\begin{itemize}
+			\item Correlations between variables
+			\item Test-retest reliability
+			\item Alternate/parallel test-forms
+			\item Internal consistency
+				\begin{itemize}
+					\item Cronbach's alpha
+					\item Single factor model
+					\item McDonald's omega
+				\end{itemize}
+		\end{itemize}
 \end{frame}
 
 
-\section{Correlation}
-
 \begin{frame}[fragile]
-  \frametitle{Correlations between variables}
+	\frametitle{Correlation}
 
-      \[ \rho_{XY} = \frac{\cov{X}{Y}}{\sigma_X \, \sigma_Y} \]
+			\[ \rho_{XY} = \frac{\cov{X}{Y}}{\sigma_X \, \sigma_Y} \]
 
-    \begin{itemize}
-      \item Correlation is a measure of the strength of the \ttemph{linear relationship} between two variables.
-      \item The correlation coefficient is a number between $-1$ and $1$, where $0$ indicates no linear relationship, and $1$ or $-1$ indicates perfect a linear relationship.
-      \item Correlations are superior to \\ttemph{covariances} for interpreting interrelationship between two variables thanks to the standardisation procedure.
-    \end{itemize}
+		\begin{itemize}
+			\item Correlation is a measure of the strength of the \ttemph{linear relationship} between two variables.
+			\item The correlation coefficient is a number between $-1$ and $1$, where $0$ indicates no linear relationship, and $1$ or $-1$ indicates perfect a linear relationship.
+			\item Correlations are superior to \ttemph{covariances} for interpreting interrelationship between two variables thanks to the standardisation procedure.
+		\end{itemize}
 \end{frame}
 
+
+\begin{frame}[fragile]
+	\frametitle{Task 1: Correlation}
+		Estimate the correlation between a pair of variables in \pk{likert\_data.rds} and comment on the relationship between the variables you chose.
+\end{frame}
+
+
+\begin{frame}[fragile]
+	\frametitle{Test reliability}
+		\begin{itemize}
+			\item Test-retest reliability
+			\item Alternate test forms
+		\end{itemize}
+
+		Use the correlation of the \ttemph{sum scores} of the two test forms to estimate the reliability of the test.
+\end{frame}
+
+
+\begin{frame}[fragile]
+	\frametitle{Cronbach's $\alpha$}
+		\[ \alpha = \frac{m}{m-1} \left[ 1 - \frac{\sum_{j=1}^m \V{X_j}}{\sigma_Y^2} \right] \]
+\end{frame}
+
+
+\begin{frame}[fragile]
+	\frametitle{Task 2: Test reliability}
+		\begin{itemize}
+			\item Estimate coefficient alpha for one of the scales in the \pk{dich\_data.rds} dataset.
+			\item How would you describe the estimated value?
+		\end{itemize}
+\end{frame}
+
+
+\begin{frame}[fragile]
+	\frametitle{Cronbach's $\alpha$: Pitfalls}
+		\begin{itemize}
+			\item Dependent on the number of items
+			\item Assumes a \ttemph{single factor model} with \ttemph{equal loadings} for all items
+			\item A \ttemph{lower bound} estimate of reliability as long as assumptions are met
+		\end{itemize}
+\end{frame}
+
+
+\begin{frame}[fragile]
+	\frametitle{Single factor model}
+		\begin{itemize}
+			\item \pk{lavaan} and other \cR packages
+			\item This lab focuses on \pk{lavaan}
+			\item Lecture 6: single factor model
+		\end{itemize}
+\end{frame}
+
+
+\begin{frame}[fragile]
+	\frametitle{\pk{lavaan}: Syntax}
+		\begin{center}
+			\begin{tabular}{cll}
+				\hline
+				Operator  & \multicolumn{1}{c}{Reading} & \multicolumn{1}{c}{Meaning}  \\
+				\hline
+				$=\sim$ & is measured by & define a latent variable \\
+				$\sim$ & is regressed on & define a regression model \\
+				$\sim\sim$ & is correlated with & specify covariances \\
+				\hline
+			\end{tabular}
+		\end{center}
+\end{frame}
+
+\begin{frame}[fragile]
+	\frametitle{\pk{lavaan}: Example code}
+\begin{knitrout}
+\definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{kframe}
+\begin{alltt}
+        \hlcom{# Load lavaan}
+        \hlkwd{library}\hlstd{(lavaan)}
+
+        \hlcom{# Define latent variable}
+        \hlstd{lat_var} \hlkwb{=} \hlstr{" y =~ x1 + x2 + x3 "}
+
+        \hlcom{# Run a confirmatory factor analysis}
+        \hlstd{cfa} \hlkwb{<-} \hlkwd{cfa}\hlstd{(lat_var,} \hlkwc{data} \hlstd{= mydata)}
+
+        \hlcom{# Model evaluation}
+        \hlkwd{summary}\hlstd{(cfa,} \hlkwc{fit.measures} \hlstd{=} \hlnum{TRUE}\hlstd{)}
+
+        \hlcom{# Extract model coefficients}
+        \hlkwd{coef}\hlstd{(cfa)}
+\end{alltt}
+\end{kframe}
+\end{knitrout}
+\end{frame}
+
+
+\begin{frame}[fragile]
+	\frametitle{Task 3: Single factor model}
+		\begin{itemize}
+			\item Estimate the single factor model using the scale you chose in Task 2
+			\item Evaluate the model fit.
+			\item Evaluate if the $\alpha$ you calculated in Task 2 violates the assumptions $\alpha$ relies on.
+		\end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]
+	\frametitle{Coefficient omega}
+		\[ \omega = \frac{\sigma_C^2}{\sigma_C^2 + \sigma_U^2} = \frac{\sigma_Y^2}{\sigma_{T_Y}^2 + \sigma_{E_Y}^2} = \frac{\left( \sum_{j=1}^m \lambda_j \right)^2 }{ \left( \sum_{j=1}^m \lambda_j \right)^2 + \sum_{j=1}^m \Psi_i^2 } \]
+
+		Coefficient omega is the ratio of the true score variance (common) to total score variance (common + unique).
+	\end{frame}
+
+
+\begin{frame}[fragile]
+	\frametitle{Task 4: Standardised model}
+		\begin{itemize}
+			\item Use the coefficients from Task 3 to calculate $\omega$.
+			\item Evaluate the reliability of the scale.
+			\item Compare $\omega$ (Task 4) and $\alpha$ (Task 3).
+		\end{itemize}
+\end{frame}
 
 \end{document}

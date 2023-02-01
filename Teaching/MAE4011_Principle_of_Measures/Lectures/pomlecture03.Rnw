@@ -473,7 +473,7 @@
     We have
       \[ p_x = 0.5, \]
       \[ p_y = 0.4, \]
-    and 
+    and
       \[ p_{xy} = 0.3. \]
 
     We thus obtain

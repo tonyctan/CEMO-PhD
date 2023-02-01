@@ -1,9 +1,0 @@
-\frametitle{Correlations between variables}
-
-      \[ \rho_{XY} = \frac{\cov{X}{Y}}{\sigma_X \, \sigma_Y} \]
-
-    \begin{itemize}
-      \item Correlation is a measure of the strength of the \ttemph{linear relationship} between two variables.
-      \item The correlation coefficient is a number between $-1$ and $1$, where $0$ indicates no linear relationship, and $1$ or $-1$ indicates perfect a linear relationship.
-      \item Correlations are superior to \\ttemph{covariances} for interpreting interrelationship between two variables thanks to the standardisation procedure.
-    \end{itemize}

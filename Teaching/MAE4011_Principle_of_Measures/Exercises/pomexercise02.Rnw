@@ -31,7 +31,7 @@
 
 \begin{frame}[fragile]
   \frametitle{L5 Task 1}
-    Two alternate-form tests were given to the same population, yielding estimated standard deviation of $s_1 = 7.5$, $s_2 = 8$ and an estimated covariance of $s_{12} = 12$. Calculate the estimated standard error of measurement forf the test
+    Two alternate-form tests were given to the same population, yielding estimated standard deviation of $s_1 = 7.5$, $s_2 = 8$ and an estimated covariance of $s_{12} = 12$. Calculate the estimated standard error of measurement for the test
 \end{frame}
 
 

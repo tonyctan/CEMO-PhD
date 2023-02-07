@@ -1,0 +1,1 @@
+brew install libgit2 zlib protobuf librsvg openssl openmpi mariadb-connector-c

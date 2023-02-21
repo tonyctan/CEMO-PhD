@@ -3,6 +3,7 @@ remove.packages(c("StanHeaders", "rstan"))
 if (file.exists(".RData")) file.remove(".RData")
 
 # 1. Install Rstan
+install.packages(c("sf","stringi"), dependencies = TRUE)
 install.packages("V8", dependencies = TRUE)
 install.packages(
     c("coda", "mvtnorm", "devtools", "loo", "dagitty", "shape"),
@@ -27,7 +28,7 @@ cmdstanr::install_cmdstan(
     cpp_options = list(),
     check_toolchain = TRUE
 )
-cmdstanr::set_cmdstan_path(path = "~/.cmdstan/cmdstan-2.31.0")
+cmdstanr::set_cmdstan_path(path = "~/.cmdstan/cmdstan-2.32.2")
 
 # 3. Compile packages using all cores
 Sys.setenv(MAKEFLAGS = paste0("-j", parallel::detectCores()))
